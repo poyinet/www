@@ -79,7 +79,8 @@
     <div class="ws-tabs">
       <button class="ws-tab on" id="ws-tab-enc" data-i18n="workshop.encTab">🧪 加密</button>
       <button class="ws-tab" id="ws-tab-dec" data-i18n="workshop.decTab">🔓 自动破解</button>
-      <button class="ws-tab" id="ws-tab-modes">🧩 模式实验室</button>
+      <button class="ws-tab" id="ws-tab-modes" data-i18n="workshop.modesTab">🧩 模式实验室</button>
+      <button class="ws-tab" id="ws-tab-stego" data-i18n="workshop.stegoTab">🖼️ 隐写工坊</button>
     </div>
 
     <!-- 加密模式 -->
@@ -137,7 +138,7 @@
         <div class="ws-progress" id="ws-egg-prog" style="margin-top:10px;font-size:12px;color:var(--text-dim)"></div>
       </div>
     </div>
-    <!-- 模式实验室（第五期：ECB vs CBC 可视化） -->
+    <!-- 模式实验室（第五期：ECB vs CBC；第六期 #3：CTR + 位错误扩散） -->
     <div class="ws-panel" id="ws-modes">
       <div class="ws-box">
         <div class="ws-lbl">🧩 ECB 与 CBC：为什么「图案」会泄露秘密</div>
@@ -146,8 +147,62 @@
           <div style="text-align:center"><canvas id="ml-plain" width="128" height="128" style="image-rendering:pixelated;border:1px solid rgba(255,255,255,.2);border-radius:8px"></canvas><div class="ws-note" data-i18n="workshop.modesPlain">明文图案</div></div>
           <div style="text-align:center"><canvas id="ml-ecb" width="128" height="128" style="image-rendering:pixelated;border:1px solid rgba(255,45,149,.4);border-radius:8px"></canvas><div class="ws-note" style="color:var(--neon-pink)">ECB</div></div>
           <div style="text-align:center"><canvas id="ml-cbc" width="128" height="128" style="image-rendering:pixelated;border:1px solid rgba(57,255,20,.4);border-radius:8px"></canvas><div class="ws-note" style="color:var(--neon-green)">CBC</div></div>
+          <div style="text-align:center"><canvas id="ml-ctr" width="128" height="128" style="image-rendering:pixelated;border:1px solid rgba(185,103,255,.45);border-radius:8px"></canvas><div class="ws-note" style="color:var(--neon-purple)">CTR</div></div>
         </div>
+        <div class="ws-note" data-i18n="workshop.modesCtrNote" style="margin-top:8px">CTR 计数器模式把分组密码变成流密码：加密计数器产生密钥流，再与明文逐字节异或——结构与 CBC 一样被抹平，但每个字节可独立并行加解密。</div>
         <button class="btn yellow" id="ml-rekey" style="margin-top:10px">🎲 更换密钥</button>
+      </div>
+      <div class="ws-box" style="border-color:rgba(255,45,149,.25)">
+        <div class="ws-lbl" data-i18n="workshop.errTitle">⚡ 位错误扩散：传输中翻转一个比特会怎样？</div>
+        <div class="ws-note" data-i18n="workshop.errNote">下面两图用同一份带一个错位的密文解密：CBC 解密时——错位所在块整块花掉，下一块对应位跟着翻（自愈）；之后的块安然无恙。CTR 解密时——只有错位覆盖的那一个像素出错，影响范围精确到比特。这是两种模式最经典的工程取舍。</div>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:12px">
+          <div style="text-align:center"><canvas id="ml-err-plain" width="128" height="128" style="image-rendering:pixelated;border:1px solid rgba(255,255,255,.2);border-radius:8px"></canvas><div class="ws-note" data-i18n="workshop.modesPlain">明文图案</div></div>
+          <div style="text-align:center"><canvas id="ml-err-cbc" width="128" height="128" style="image-rendering:pixelated;border:1px solid rgba(57,255,20,.4);border-radius:8px"></canvas><div class="ws-note" style="color:var(--neon-green)" data-i18n="workshop.errCbc">CBC 带错解密</div></div>
+          <div style="text-align:center"><canvas id="ml-err-ctr" width="128" height="128" style="image-rendering:pixelated;border:1px solid rgba(185,103,255,.45);border-radius:8px"></canvas><div class="ws-note" style="color:var(--neon-purple)" data-i18n="workshop.errCtr">CTR 带错解密</div></div>
+        </div>
+        <div class="ws-method" id="ml-err-pos"></div>
+        <button class="btn pink" id="ml-err-go" style="margin-top:6px">⚡ 注入一位错误</button>
+      </div>
+    </div>
+
+    <!-- 隐写工坊（第六期 #2：LSB 图像隐写） -->
+    <div class="ws-panel" id="ws-stego">
+      <div class="ws-box">
+        <div class="ws-lbl" data-i18n="workshop.stegoTitle">🖼️ LSB 图像隐写工坊</div>
+        <div class="ws-note" data-i18n="workshop.stegoIntro">把密文的每一个比特写进图片每个颜色通道的最低有效位（LSB）——肉眼看图毫无变化，数据却藏在「颜色的最后一丝抖动」里。加密锁住内容，隐写藏起「有内容」这件事本身。全程本地运行，不上传任何数据。演示不写透明通道（alpha）。</div>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:flex-start;justify-content:center;margin-top:12px">
+          <div style="text-align:center">
+            <canvas id="stg-view" width="192" height="192" style="image-rendering:pixelated;border:1px solid rgba(0,240,255,.35);border-radius:8px;max-width:min(320px,80vw)"></canvas>
+            <div class="ws-note" id="stg-cap"></div>
+            <div class="ws-samples" style="justify-content:center">
+              <span class="ws-sample" id="stg-sample" data-i18n="workshop.stegoSample">🎨 程序化示例图</span>
+              <span class="ws-sample" id="stg-upload-btn" data-i18n="workshop.stegoUpload">📁 上传图片</span>
+              <input type="file" id="stg-file" accept="image/*" hidden>
+            </div>
+          </div>
+          <div style="flex:1;min-width:240px">
+            <div class="ws-lbl" data-i18n="workshop.stegoSecret">要藏进图里的密文</div>
+            <textarea class="ws-input" id="stg-secret" maxlength="2000">MEET AT THE OLD BRIDGE AT DAWN</textarea>
+            <div class="ws-row" style="margin-top:10px">
+              <button class="btn accent" id="stg-write" data-i18n="workshop.stegoWrite">✍️ 写入图像</button>
+              <button class="btn green" id="stg-extract" data-i18n="workshop.stegoExtract">🔎 提取隐藏文本</button>
+              <button class="btn" id="stg-dl" data-i18n="workshop.stegoDownload">💾 保存 PNG</button>
+            </div>
+            <div class="ws-method" id="stg-msg"></div>
+            <div class="ws-out" id="stg-out" style="min-height:28px"></div>
+          </div>
+        </div>
+      </div>
+      <div class="ws-box" style="border-color:rgba(255,230,0,.3)">
+        <div class="ws-lbl" data-i18n="workshop.stegoAnaTitle">🔬 隐写分析：位平面查看器</div>
+        <div class="ws-note" data-i18n="workshop.stegoAnaNote">隐写的克星视角：把图片某个比特位单独抽出来看。第 7 位是颜色的「主旋律」，平滑如常；第 0 位平时接近随机噪点，而写入密文后会显现出与文本量相关的异常纹理——这就是隐写分析（如卡方检验）的直觉起点。写入后再来对比第 0 平面。</div>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;align-items:center;justify-content:center;margin-top:10px">
+          <div class="ws-samples" id="stg-plane-chips"></div>
+          <div style="text-align:center">
+            <canvas id="stg-plane" width="192" height="192" style="image-rendering:pixelated;border:1px dashed rgba(255,230,0,.5);border-radius:8px;max-width:min(280px,70vw)"></canvas>
+            <div class="ws-note" id="stg-plane-lbl"></div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -337,18 +392,16 @@
     });
 
     /* 标签切换 */
+    var TABS = ['enc', 'dec', 'modes', 'stego'];
     function switchTab(mode) {
-      var enc = document.getElementById('ws-enc'), dec = document.getElementById('ws-dec'), modes = document.getElementById('ws-modes');
-      ['enc', 'dec', 'modes'].forEach(function (m) {
+      TABS.forEach(function (m) {
         document.getElementById('ws-tab-' + m).classList.toggle('on', m === mode);
+        document.getElementById('ws-' + m).classList.toggle('on', m === mode);
       });
-      enc.classList.toggle('on', mode === 'enc');
-      dec.classList.toggle('on', mode === 'dec');
-      modes.classList.toggle('on', mode === 'modes');
     }
-    document.getElementById('ws-tab-enc').addEventListener('click', function () { switchTab('enc'); });
-    document.getElementById('ws-tab-dec').addEventListener('click', function () { switchTab('dec'); });
-    document.getElementById('ws-tab-modes').addEventListener('click', function () { switchTab('modes'); });
+    TABS.forEach(function (m) {
+      document.getElementById('ws-tab-' + m).addEventListener('click', function () { switchTab(m); });
+    });
 
     /* ================= 模式实验室（第五期：ECB vs CBC） =================
        玩具分组密码 E(b) = S[b ^ k0] ^ k1（S 为固定随机置换、k 为密钥字节），
@@ -381,6 +434,13 @@
       }
       var S = makeS(), K0 = 0, K1 = 0;
       function toyE(b, prev) { return S[(b ^ prev ^ K0) & 255] ^ K1; }
+      function makeInv() {
+        var inv = new Uint8Array(256);
+        for (var i = 0; i < 256; i++) inv[S[i]] = i;
+        return inv;
+      }
+      var Sinv = makeInv();
+      function toyD(b, prev) { return Sinv[(b ^ K1) & 255] ^ (prev ^ K0); }
 
       function paint(ctxId, data) {
         var c = document.getElementById(ctxId);
@@ -404,16 +464,239 @@
         var prev = K1;
         for (i = 0; i < plain.length; i++) { prev = toyE(plain[i], prev); cbc[i] = prev; }
         paint('ml-cbc', cbc);
+        /* CTR：加密计数器得密钥流，与明文异或（流式、可并行） */
+        var ctr = new Uint8Array(SIZE * SIZE);
+        for (i = 0; i < plain.length; i++) ctr[i] = plain[i] ^ toyE(i & 255, 0);
+        paint('ml-ctr', ctr);
+        renderErr(null);
       }
+
+      /* ---- 位错误扩散：同一错位密文，CBC 与 CTR 解密的命运分岔 ---- */
+      var errIdx = -1;
+      function buildCiphers() {
+        var cbcC = new Uint8Array(SIZE * SIZE), ctrC = new Uint8Array(SIZE * SIZE);
+        var prev = K1;
+        for (var i = 0; i < plain.length; i++) { prev = toyE(plain[i], prev); cbcC[i] = prev; }
+        for (i = 0; i < plain.length; i++) ctrC[i] = plain[i] ^ toyE(i & 255, 0);
+        return { cbcC: cbcC, ctrC: ctrC };
+      }
+      function renderErr(idx) {
+        drawPlain();
+        paint('ml-err-plain', plain);
+        var cc = buildCiphers();
+        if (idx !== null && idx >= 0 && idx < cc.cbcC.length) {
+          cc.cbcC[idx] ^= 0x01;   /* 翻转最低位 */
+          cc.ctrC[idx] ^= 0x01;
+        } else { idx = -1; }
+        errIdx = idx;
+        /* CBC 解密：p[i]=toyD(c[i],c[i-1])——错位字节整块花掉，下一块仅一位翻转（自愈） */
+        var pC = new Uint8Array(SIZE * SIZE), pcPrev = K1;
+        for (var j = 0; j < cc.cbcC.length; j++) {
+          pC[j] = toyD(cc.cbcC[j], j ? cc.cbcC[j - 1] : K1) & 255;
+        }
+        paint('ml-err-cbc', pC);
+        /* CTR 解密：p[i]=c[i]^ks[i]——只有错位覆盖的那一个像素出错 */
+        var pT = new Uint8Array(SIZE * SIZE);
+        for (j = 0; j < cc.ctrC.length; j++) pT[j] = cc.ctrC[j] ^ toyE(j & 255, 0);
+        paint('ml-err-ctr', pT);
+        var posEl = document.getElementById('ml-err-pos');
+        if (idx >= 0) {
+          var ex2 = idx % SIZE, ey2 = Math.floor(idx / SIZE);
+          posEl.textContent = isEn
+            ? '⚡ Flipped bit at ciphertext pixel (' + ex2 + ', ' + ey2 + ')'
+            : '⚡ 已在密文像素 (' + ex2 + ', ' + ey2 + ') 处翻转一位';
+        } else {
+          posEl.textContent = isEn ? 'Click inject to flip one ciphertext bit' : '点击按钮在密文中翻转一位试试';
+        }
+      }
+      document.getElementById('ml-err-go').addEventListener('click', function () {
+        renderErr(Math.floor(Math.random() * SIZE * SIZE));
+        if (Arcade.audio) Arcade.audio.play('ui');
+      });
       document.getElementById('ml-rekey').addEventListener('click', function () {
-        S = makeS(); K0 = Math.floor(Math.random() * 256); K1 = Math.floor(Math.random() * 256);
+        S = makeS(); Sinv = makeInv(); K0 = Math.floor(Math.random() * 256); K1 = Math.floor(Math.random() * 256);
         renderModes();
         if (Arcade.audio) Arcade.audio.play('ui');
       });
       renderModes();
     })();
-    document.getElementById('ws-tab-enc').addEventListener('click', function () { switchTab('enc'); });
-    document.getElementById('ws-tab-dec').addEventListener('click', function () { switchTab('dec'); });
+
+    /* ================= 隐写工坊（第六期 #2：LSB 图像隐写） =================
+       文本 → UTF-8 字节 → 32 位长度头 + 数据位，逐位写入 R/G/B 通道最低位（不碰 alpha）；
+       位平面查看器提供「隐写分析」对照视角。全程本地 canvas 运算。 */
+    (function () {
+      var view = document.getElementById('stg-view');
+      var vctx = view.getContext('2d');
+      var W = view.width, H = view.height, capBits = W * H * 3;
+      var usedBits = 0;
+      var capEl = document.getElementById('stg-cap'), msgEl = document.getElementById('stg-msg'),
+          outEl = document.getElementById('stg-out');
+      function fmtCap() {
+        var s = T('workshop.stegoCap').replace('{w}', W).replace('{h}', H).replace('{cap}', capBits);
+        if (usedBits) s += T('workshop.stegoUsed').replace('{used}', usedBits);
+        return s;
+      }
+      function syncCap() { capEl.textContent = fmtCap(); }
+
+      /* 程序化示例图：黄昏海湾——大面积平滑色域（LSB 天然安静），带轻微确定性噪点 */
+      function drawSample() {
+        var img = vctx.createImageData(W, H);
+        var horizon = Math.floor(H * 0.58), sea = Math.floor(H * 0.72);
+        for (var y = 0; y < H; y++) {
+          for (var x = 0; x < W; x++) {
+            var r, g, b, t = y / H;
+            if (y < horizon) {           /* 黄昏天空：深紫→暖橙 */
+              r = 40 + t * 180; g = 20 + t * 90; b = 90 - t * 30;
+            } else if (y < sea) {        /* 远山剪影 */
+              var m = Math.abs(x - W * 0.3) < W * 0.22 || Math.abs(x - W * 0.75) < W * 0.18;
+              r = m ? 46 : 70; g = m ? 38 : 60; b = m ? 66 : 96;
+            } else {                     /* 海面：深蓝 + 日光倒影条纹 */
+              var refl = Math.abs((x % 32) - 16) < 3 && ((y + x) % 7) < 2;
+              r = refl ? 220 : 24; g = refl ? 150 : 50; b = refl ? 60 : 110;
+            }
+            var sun = (x - W * 0.78) * (x - W * 0.78) + (y - H * 0.2) * (y - H * 0.2);
+            if (sun < 340) { r = 255; g = 214; b = 107; }
+            else if (sun < 900) { r += 40; g += 18; }
+            var dith = (((x * 73 + y * 151) % 7) - 3);   /* 轻微确定性抖动 */
+            img.data[y * W * 4 + x * 4] = Math.max(0, Math.min(255, r + dith));
+            img.data[y * W * 4 + x * 4 + 1] = Math.max(0, Math.min(255, g + dith));
+            img.data[y * W * 4 + x * 4 + 2] = Math.max(0, Math.min(255, b + dith));
+            img.data[y * W * 4 + x * 4 + 3] = 255;       /* alpha 不参与隐写 */
+          }
+        }
+        vctx.putImageData(img, 0, 0);
+        usedBits = 0;
+        outEl.textContent = '';
+        msgEl.textContent = '';
+        syncCap();
+        renderPlane();
+      }
+
+      function putBits(img, bits) {
+        var bi = 0;
+        for (var i = 0; i < bits.length; i++) {
+          var o = ((bi / 3) | 0) * 4 + (bi % 3);
+          img.data[o] = (img.data[o] & 0xFE) | bits[i];
+          bi++;
+        }
+      }
+      function embed() {
+        var text = document.getElementById('stg-secret').value;
+        if (!text) { msgEl.textContent = T('workshop.stegoNeedText'); return; }
+        var bytes = new TextEncoder().encode(text);
+        var need = 32 + bytes.length * 8;
+        if (need > capBits) {
+          msgEl.textContent = T('workshop.stegoNoRoom').replace('{need}', need).replace('{cap}', capBits);
+          return;
+        }
+        var bits = new Uint8Array(need);
+        for (var i = 31; i >= 0; i--) bits[31 - i] = (bytes.length >>> i) & 1;   /* 32 位大端长度头 */
+        for (i = 0; i < bytes.length; i++) {
+          for (var k = 7; k >= 0; k--) bits[32 + i * 8 + (7 - k)] = (bytes[i] >> k) & 1;
+        }
+        var img = vctx.getImageData(0, 0, W, H);
+        putBits(img, bits);
+        vctx.putImageData(img, 0, 0);
+        usedBits = need;
+        msgEl.textContent = T('workshop.stegoWrote').replace('{bits}', need);
+        syncCap();
+        renderPlane();
+        if (Arcade.audio) Arcade.audio.play('ui');
+      }
+      function extract() {
+        var img = vctx.getImageData(0, 0, W, H);
+        function bit(i) { return img.data[((i / 3) | 0) * 4 + (i % 3)] & 1; }
+        var len = 0;
+        for (var i = 0; i < 32; i++) len = (len << 1) | bit(i);
+        if (!len || len > 8192 || 32 + len * 8 > capBits) {
+          msgEl.textContent = T('workshop.stegoNone');
+          outEl.textContent = '';
+          return;
+        }
+        var bytes = new Uint8Array(len);
+        for (i = 0; i < len; i++) {
+          for (var k = 0; k < 8; k++) bytes[i] = (bytes[i] << 1) | bit(32 + i * 8 + k);
+        }
+        var text;
+        try { text = new TextDecoder('utf-8', { fatal: false }).decode(bytes); } catch (e) { text = ''; }
+        msgEl.textContent = T('workshop.stegoFoundMsg').replace('{n}', len);
+        outEl.textContent = text || '—';
+        if (Arcade.audio) Arcade.audio.play('ui');
+      }
+
+      /* 位平面查看器：三通道该位求和 → 灰度 */
+      var planeSel = 0;
+      function renderPlane() {
+        var c = document.getElementById('stg-plane'), ctx = c.getContext('2d');
+        var img = vctx.getImageData(0, 0, W, H), out = ctx.createImageData(W, H);
+        for (var i = 0; i < W * H; i++) {
+          var v = (((img.data[i * 4] >> planeSel) & 1) + ((img.data[i * 4 + 1] >> planeSel) & 1) + ((img.data[i * 4 + 2] >> planeSel) & 1)) * 85;
+          out.data[i * 4] = out.data[i * 4 + 1] = out.data[i * 4 + 2] = 255 - v;
+          out.data[i * 4 + 3] = 255;
+        }
+        ctx.putImageData(out, 0, 0);
+        document.getElementById('stg-plane-lbl').textContent =
+          T('workshop.stegoPlaneLbl').replace('{n}', planeSel);
+      }
+      (function buildChips() {
+        var box = document.getElementById('stg-plane-chips');
+        for (var p = 7; p >= 0; p--) {
+          (function (p) {
+            var s = document.createElement('span');
+            s.className = 'ws-sample' + (p === planeSel ? ' on' : '');
+            s.style.cssText = p === planeSel ? 'background:rgba(255,230,0,.25);border-color:rgba(255,230,0,.6)' : '';
+            s.textContent = 'bit ' + p;
+            s.addEventListener('click', function () {
+              planeSel = p;
+              Array.prototype.forEach.call(box.children, function (el) { el.style.cssText = ''; });
+              s.style.cssText = 'background:rgba(255,230,0,.25);border-color:rgba(255,230,0,.6)';
+              renderPlane();
+            });
+            box.appendChild(s);
+          })(p);
+        }
+      })();
+
+      document.getElementById('stg-write').addEventListener('click', embed);
+      document.getElementById('stg-extract').addEventListener('click', extract);
+      document.getElementById('stg-sample').addEventListener('click', drawSample);
+      document.getElementById('stg-dl').addEventListener('click', function () {
+        var a = document.createElement('a');
+        a.download = 'stego.png';
+        a.href = view.toDataURL('image/png');
+        a.click();
+      });
+      document.getElementById('stg-upload-btn').addEventListener('click', function () {
+        document.getElementById('stg-file').click();
+      });
+      document.getElementById('stg-file').addEventListener('change', function () {
+        var f = this.files && this.files[0];
+        if (!f) return;
+        var self = this;
+        var fr = new FileReader();
+        fr.onload = function () {
+          var im = new Image();
+          im.onload = function () {
+            var scale = Math.min(W / im.width, H / im.height, 1);
+            var dw = Math.max(1, Math.floor(im.width * scale)), dh = Math.max(1, Math.floor(im.height * scale));
+            vctx.fillStyle = '#000';
+            vctx.fillRect(0, 0, W, H);
+            vctx.drawImage(im, ((W - dw) / 2) | 0, ((H - dh) / 2) | 0, dw, dh);
+            usedBits = 0;
+            msgEl.textContent = '';
+            outEl.textContent = '';
+            syncCap();
+            renderPlane();
+          };
+          im.src = String(fr.result);
+          self.value = '';
+        };
+        fr.readAsDataURL(f);
+      });
+
+      drawSample();
+    })();
+
 
     /* 彩蛋收集（N3） */
     var eggs = window.EASTER_EGGS;

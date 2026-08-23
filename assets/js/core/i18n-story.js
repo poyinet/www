@@ -737,6 +737,9 @@
   /* 第六期 #4：rsa 挂靠现代章（末位追加） */
   d.zh['st.c10.g16'] = 'RSA 小素数保险柜：从两个小素数出发，亲手算出 n、φ、e、d，再加密一个字母——公钥密码的全部数学，一局手算走完。';
   d.en['st.c10.g16'] = 'RSA Small-Prime Vault: from two small primes, hand-compute n, φ, e and d, then encrypt a letter — the whole math of public-key crypto in one round.';
+  /* 第六期 #1：shamir 挂靠现代章（末位追加） */
+  d.zh['st.c10.g17'] = 'Shamir 分钥密约：把密信撕成五份分给五人——任何两份即可拼回原信，一份永远读不出半字，门限秘密分享手算实战。';
+  d.en['st.c10.g17'] = 'Shamir Split-Key Pact: cut a letter into five shares for five allies — any two rebuild it, one reveals nothing; hands-on threshold secret sharing.';
 })();
 
 /* ============================================================

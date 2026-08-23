@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-touch-icon" content="/assets/icons/apple-touch-icon.png">
+  <title>Shamir 分钥密约 · 用游戏破译人类三千年加密解密史</title>
+  <meta name="description" content="破译 DECODE ARCADE · Shamir 分钥密约：把一封密信撕成五份分给五个人——任何两份即可拼回原信，一份都读不出半字。亲手体验门限秘密分享的生成、验证与拉格朗日还原。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://poyi.net/games/shamir/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="破译游戏 DECODE ARCADE">
+  <meta property="og:title" content="Shamir 分钥密约 · 用游戏破译人类三千年加密解密史">
+  <meta property="og:description" content="五份碎片守一封密信——两份即还原、一份无所知，门限秘密分享手算实战。">
+  <meta property="og:url" content="https://poyi.net/games/shamir/">
+  <meta property="og:image" content="https://poyi.net/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Shamir 分钥密约 · 破译 DECODE ARCADE">
+  <meta name="twitter:description" content="五份碎片守一封密信——两份即还原、一份无所知，门限秘密分享手算实战。">
+  <meta name="twitter:image" content="https://poyi.net/assets/og-image.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "Shamir 分钥密约",
+    "url": "https://poyi.net/games/shamir/",
+    "applicationCategory": "Game",
+    "inLanguage": "zh-CN",
+    "isPartOf": { "@type": "WebSite", "name": "破译游戏 DECODE ARCADE", "url": "https://poyi.net/" },
+    "description": "五份碎片守一封密信——两份即还原、一份无所知，门限秘密分享手算实战。"
+  }
+  </script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗝️</text></svg>">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="../../assets/css/theme.css">
+  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
+  <link rel="stylesheet" href="../../assets/css/shell.css">
+  <style>
+    .sm-wrap { padding: 14px; width: min(640px, 96vw); text-align: center; }
+    .sm-prog { font-size: 12px; color: var(--text-dim); margin-bottom: 6px; }
+    .sm-given { font-family: var(--font-mono); font-size: 14px; color: var(--neon-cyan); background: rgba(0,240,255,.06);
+      border: 1px solid rgba(0,240,255,.3); border-radius: 10px; padding: 12px; margin: 10px auto; max-width: 500px; line-height: 1.9; }
+    .sm-given b { color: var(--neon-yellow); }
+    .sm-step { font-size: 13px; color: var(--text-main); line-height: 1.9; min-height: 48px; margin-top: 6px; }
+    .sm-input { width: 60%; font-size: 15px; text-align: center; background: rgba(0,0,0,.35); color: var(--text-main);
+      border: 1px solid rgba(255,255,255,.2); border-radius: 8px; padding: 10px; }
+    .sm-input:focus { border-color: rgba(0,240,255,.6); outline: none; }
+    .sm-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 10px 0; }
+    .sm-msg { min-height: 18px; font-size: 13px; margin: 6px 0; }
+    .sm-msg.ok { color: var(--neon-green); } .sm-msg.no { color: var(--neon-pink); }
+    .sm-hintbox { font-family: var(--font-mono); font-size: 12px; color: var(--neon-yellow); line-height: 1.9;
+      background: rgba(255,230,0,.06); border: 1px dashed rgba(255,230,0,.4); border-radius: 8px;
+      padding: 8px; margin: 8px auto; max-width: 480px; min-height: 0; }
+    .sm-help { font-size: 12px; color: var(--text-dim); line-height: 1.8; margin-top: 12px; text-align: left;
+      background: rgba(255,255,255,.04); border-radius: 8px; padding: 10px 12px; }
+    @media (max-width: 480px) { .sm-input { width: 86%; } }
+  </style>
+</head>
+<body data-game-id="shamir" data-game-title="Shamir 分钥密约" data-best-mode="max">
+  <h1 class="seo-h1">Shamir 分钥密约</h1>
+  <main id="game-root"></main>
+  <script src="../../assets/js/core/storage.js"></script>
+  <script src="../../assets/js/core/input.js"></script>
+  <script src="../../assets/js/core/loop.js"></script>
+    <script src="../../assets/js/core/i18n.js"></script>
+  <script src="../../assets/js/core/i18n-dict.js"></script>
+  <script src="shamir-i18n.js"></script>
+  <script src="../../assets/js/core/extras.js"></script>
+  <script src="../../assets/js/rank.js"></script>
+  <script src="../../assets/js/plot.js"></script>
+  <script src="../../assets/js/stories.js"></script>
+<script src="../../assets/js/shell.js"></script>
+  <script src="shamir.js"></script>
+  <script src="../../assets/js/pwa.js"></script>
+</body>
+</html>

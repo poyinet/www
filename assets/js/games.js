@@ -15,7 +15,7 @@ window.GAME_CATEGORIES = ['经典街机', '动作反应', '逻辑谜题', '空�
 
 /* 每日破译中心：启用「📅 每日一题」的游戏（大厅今日面板 + 档案页共用）
    所有列出的游戏均实现 daily 模式：日种子确定性生成 + 解完调用 Arcade.daily.markSolved */
-window.DAILY_IDS = ['sudoku', 'enigma', 'bifid', 'slitherlink', 'hashi', 'trifid', 'bacon', 'klondike', 'caesar', 'llk', 'spotdiff', 'sectorsiege', 'sheep', 'morse', 'atbash', 'polybius', 'nihilist', 'starflag', 'autokey', 'rsa'];
+window.DAILY_IDS = ['sudoku', 'enigma', 'bifid', 'slitherlink', 'hashi', 'trifid', 'bacon', 'klondike', 'caesar', 'llk', 'spotdiff', 'sectorsiege', 'sheep', 'morse', 'atbash', 'polybius', 'nihilist', 'starflag', 'autokey', 'rsa', 'shamir'];
 
 window.GAMES = [
   /* ---------- 经典街机 ---------- */
@@ -800,5 +800,12 @@ window.GAMES = [
     icon: '🔐', path: 'games/rsa/index.html',
     mobile: 'ok', bestMode: 'max',
     lvl: 'mid', time: '5min',
+  },
+  {
+    id: 'shamir', title: 'Shamir 分钥密约', category: '密码破译',
+    desc: '第六期旗舰 · 把密信撕成五份分给五人：任何两份拼回原信，一份无所知——门限秘密分享的生成、验证与还原手算实战。',
+    icon: '🗝️', path: 'games/shamir/index.html',
+    mobile: 'ok', bestMode: 'max',
+    lvl: 'easy', time: '5min',
   }
 ];

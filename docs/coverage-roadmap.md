@@ -13,7 +13,7 @@
 
 | 维度 | 数量 | 说明 |
 |---|---|---|
-| 游戏 | **110 款** | 8 大分类；密码破译类 44+；每款 audit S1-S13 全绿（第六期批次一 +rsa）|
+| 游戏 | **111 款** | 8 大分类；密码破译类 45+；每款 audit S1-S13 全绿（第六期 +rsa/+shamir）|
 | 编年史章节 | **12 章** | dawn（罗塞塔）→ quantum（量子转折点）；11 章 CODEBREAKER 密语机制 |
 | 人物志 | **48 位** | 凯撒 → 王小云；全字段 zh/en（name/icon/role/era/bio/quote/fact） |
 | 密件册 | **41 件** | real/dramatized/reconstructed 三级史料标注 |
@@ -45,7 +45,7 @@
 | 社会工程 | 🟡 口令喷涂/金丝雀陷阱词条　🔲 钓鱼识别、口令破解成本计算器 |
 
 ### 1.4 质量与工程基座
-- **21 项 qa 门禁**（`node tools/qa-all.js`）：audit S1-S13 ×110 · smoke 四模式 · deep 静态扫描 · preflight 资源完整性 · i18n 三审计 · chapter-copy · link-density 等
+- **21 项 qa 门禁**（`node tools/qa-all.js`）：audit S1-S13 ×111 · smoke 四模式 · deep 静态扫描 · preflight 资源完整性 · i18n 三审计 · chapter-copy · link-density 等
 - **性能基线**：`tools/report/perf-baseline.json`（19 页 FCP ≤408ms 本地）；dict 三层架构（core 143KB + ui 10KB + archive/story 懒加载）
 - **无障碍**：skip-link / prefers-reduced-motion / 浮层焦点管理（Esc+Tab 圈定）
 - **安全**：XSS 清零（escapeHtml+DOM API）、零遥测、纯本地存储
@@ -58,7 +58,7 @@
 
 ### 第六期（建议优先级 P0 —— 教学价值最高 & 技术可行性即战力）
 
-> **执行顺序按风险切两个可部署子批次**：批次一（低风险先落）#6 → #5 → #4 ✅（2026-08-24 已实施，见 `PLAN.md` 同名节；真浏览器验证额外揪出并修复全站 `[hidden]` 被 `.btn` 击穿的潜在 bug）；批次二（新面大后落）#1 → #3 → #2 待执行。每批次结束跑全量回归，保持「随时可部署」。
+> **执行顺序按风险切两个可部署子批次**：批次一（#6/#5/#4）✅ 与批次二（#1/#3/#2）✅ 均已实施（2026-08-24，见 `PLAN.md`「第六期」两节；真浏览器验证额外揪出全站 `[hidden]` 被 `.btn` 击穿的潜在 bug 并修复）。**第六期至此全部收官。**
 
 | # | 项目 | 形态 | 要点 |
 |---|---|---|---|

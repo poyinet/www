@@ -1875,6 +1875,29 @@
           "msg": "ok-generic：（未收录，需人工确认）"
         }
       ]
+    },
+    {
+      "id": "shamir",
+      "title": "Shamir 分钥密约",
+      "category": "密码破译",
+      "mobile": "ok",
+      "issues": [
+        {
+          "sev": "INFO",
+          "code": "M1",
+          "msg": "仅 click 交互（点按类可接受；滑动/连续操作类需复核）"
+        },
+        {
+          "sev": "MINOR",
+          "code": "C1",
+          "msg": "lobby 标签表（TIME_LABELS/DIFF_LABELS）未收录——卡带无时长/难度徽章"
+        },
+        {
+          "sev": "OK",
+          "code": "CP",
+          "msg": "ok-generic：（未收录，需人工确认）"
+        }
+      ]
     }
   ],
   "bySeverity": {
@@ -1908,6 +1931,12 @@
       {
         "id": "rsa",
         "title": "RSA 小素数保险柜",
+        "code": "C1",
+        "msg": "lobby 标签表（TIME_LABELS/DIFF_LABELS）未收录——卡带无时长/难度徽章"
+      },
+      {
+        "id": "shamir",
+        "title": "Shamir 分钥密约",
         "code": "C1",
         "msg": "lobby 标签表（TIME_LABELS/DIFF_LABELS）未收录——卡带无时长/难度徽章"
       }
@@ -2456,6 +2485,12 @@
       {
         "id": "rsa",
         "title": "RSA 小素数保险柜",
+        "code": "M1",
+        "msg": "仅 click 交互（点按类可接受；滑动/连续操作类需复核）"
+      },
+      {
+        "id": "shamir",
+        "title": "Shamir 分钥密约",
         "code": "M1",
         "msg": "仅 click 交互（点按类可接受；滑动/连续操作类需复核）"
       }

@@ -1,6 +1,6 @@
 # 破译 DECODE ARCADE · 全站深度扫描报告（2026-08-23）
 
-扫描范围：110 款游戏（注册表全覆盖）
+扫描范围：111 款游戏（注册表全覆盖）
 
 ## 严重度统计
 
@@ -8,8 +8,8 @@
 |---|---|
 | 🔴 MAJOR | 0 |
 | 🟠 MED | 0 |
-| 🟡 MINOR | 5 |
-| 🔵 INFO | 91 |
+| 🟡 MINOR | 6 |
+| 🔵 INFO | 92 |
 
 ## 逐款结论
 
@@ -125,6 +125,7 @@
 | hashlab（哈希雪崩实验室） | 密码破译 | ok | 🟡 MINOR |
 | solitaire（纸牌密码） | 密码破译 | ok | 🟡 MINOR |
 | rsa（RSA 小素数保险柜） | 密码破译 | ok | 🟡 MINOR |
+| shamir（Shamir 分钥密约） | 密码破译 | ok | 🟡 MINOR |
 
 ## MINOR 明细
 
@@ -133,6 +134,7 @@
 - **hashlab**（哈希雪崩实验室）[C1] lobby 标签表（TIME_LABELS/DIFF_LABELS）未收录——卡带无时长/难度徽章
 - **solitaire**（纸牌密码）[C1] lobby 标签表（TIME_LABELS/DIFF_LABELS）未收录——卡带无时长/难度徽章
 - **rsa**（RSA 小素数保险柜）[C1] lobby 标签表（TIME_LABELS/DIFF_LABELS）未收录——卡带无时长/难度徽章
+- **shamir**（Shamir 分钥密约）[C1] lobby 标签表（TIME_LABELS/DIFF_LABELS）未收录——卡带无时长/难度徽章
 
 ## INFO 明细
 
@@ -227,6 +229,7 @@
 - **solitaire**（纸牌密码）[M1] 仅 click 交互（点按类可接受；滑动/连续操作类需复核）
 - **solitaire**（纸牌密码）[I3] JS 硬编码中文 2 行
 - **rsa**（RSA 小素数保险柜）[M1] 仅 click 交互（点按类可接受；滑动/连续操作类需复核）
+- **shamir**（Shamir 分钥密约）[M1] 仅 click 交互（点按类可接受；滑动/连续操作类需复核）
 
 ## 版权合规
 

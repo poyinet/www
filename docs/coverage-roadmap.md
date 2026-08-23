@@ -102,7 +102,7 @@
 
 ## 三、工程侧配套（随期执行）
 
-1. **版本控制**：本机安装 git 后立即 `git init && git add -A && git commit -m "Phase 5 baseline"`——此后每个项目一 commit（本次事故的最大教训）
+1. **版本控制** ✅（2026-08-24 已落地）：git 已安装并 `git init -b main`，首个基线 commit `c69a7fe`（第六期批次一终态，572 文件 / 88K 行）；此后每个项目一 commit（本次事故的最大教训）
 2. **部署后触发清单**（plan-3 Phase 5）：真实截图替换 assets/screenshots · SW 线上更新实测 · 自定义域 HTTPS · CI 首跑
 3. **门禁扩展**：新游戏沿用 audit S1-S13；新内容沿用 check-knowledge/check-timeline/glossary 校验器（键值对齐即自动适配）
 4. **性能护栏**：每次 dict/ui 改动后重跑 perf-probe 对照 baseline.json

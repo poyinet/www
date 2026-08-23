@@ -1,0 +1,39 @@
+/* 破译 DECODE ARCADE · nonogram 游戏内文案（zh/en 对称）
+   由 i18n-dict.js 拆分生成 —— 游戏页按需加载，减小站点字典体积 */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.nonogram.tut1t'] = '目标';
+  d.en['gs.nonogram.tut1t'] = 'Goal';
+  d.zh['gs.nonogram.tut1'] = '根据行列提示的数字，在 5×5 网格中涂出隐藏图案。';
+  d.en['gs.nonogram.tut1'] = 'Use the numbers beside each row and column to paint the hidden picture on the 5×5 grid.';
+  d.zh['gs.nonogram.tut2t'] = '提示';
+  d.en['gs.nonogram.tut2t'] = 'Hints';
+  d.zh['gs.nonogram.tut2'] = '每行/列上的数字表示连续亮格的段长（如「2 1」=先 2 格亮、再 1 格亮）。';
+  d.en['gs.nonogram.tut2'] = 'Each number on a row/column is the length of a consecutive run of filled cells (e.g. "2 1" = 2 cells, then 1 cell).';
+  d.zh['gs.nonogram.tut3t'] = '操作';
+  d.en['gs.nonogram.tut3t'] = 'Controls';
+  d.zh['gs.nonogram.tut3'] = '点格子切换涂色/留空，涂出与提示一致的图案即胜。';
+  d.en['gs.nonogram.tut3'] = 'Click a cell to fill or clear it. Fill the picture that matches the hints to win.';
+  d.zh['gs.nonogram.tut4t'] = '计分';
+  d.en['gs.nonogram.tut4t'] = 'Scoring';
+  d.zh['gs.nonogram.tut4'] = '用时越少越好，成绩=完成秒数。';
+  d.en['gs.nonogram.tut4'] = 'Finish as fast as you can — your score is the time in seconds.';
+  d.zh['gs.nonogram.picHeart'] = '爱心';
+  d.en['gs.nonogram.picHeart'] = 'Heart';
+  d.zh['gs.nonogram.picSmile'] = '笑脸';
+  d.en['gs.nonogram.picSmile'] = 'Smiley';
+  d.zh['gs.nonogram.picStar'] = '星星';
+  d.en['gs.nonogram.picStar'] = 'Star';
+  d.zh['gs.nonogram.picArrow'] = '箭头';
+  d.en['gs.nonogram.picArrow'] = 'Arrow';
+  d.zh['gs.nonogram.picCross'] = '十字';
+  d.en['gs.nonogram.picCross'] = 'Cross';
+  d.zh['gs.nonogram.picHouse'] = '房屋';
+  d.en['gs.nonogram.picHouse'] = 'House';
+  d.zh['gs.nonogram.picRandom'] = '随机图案';
+  d.en['gs.nonogram.picRandom'] = 'Random pattern';
+  d.zh['gs.nonogram.time'] = '用时 {t}';
+  d.en['gs.nonogram.time'] = 'Time {t}';
+  d.zh['gs.nonogram.win'] = '🎉 「{p}」破译成功！用时 {s} 秒';
+  d.en['gs.nonogram.win'] = '🎉 "{p}" decoded! Time: {s}s';
+})();

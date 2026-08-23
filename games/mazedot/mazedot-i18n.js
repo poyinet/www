@@ -1,0 +1,45 @@
+/* 破译 DECODE ARCADE · mazedot 游戏内文案（zh/en 对称）
+   由 i18n-dict.js 拆分生成 —— 游戏页按需加载，减小站点字典体积 */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.mazedot.tutTitle'] = '迷宫吃豆 · 玩法';
+  d.en['gs.mazedot.tutTitle'] = 'Maze Dot · How to Play';
+  d.zh['gs.mazedot.tut1t'] = '目标';
+  d.en['gs.mazedot.tut1t'] = 'Objective';
+  d.zh['gs.mazedot.tut1'] = '吃掉迷宫里的所有豆子，同时躲开巡逻的幽灵。';
+  d.en['gs.mazedot.tut1'] = 'Eat every dot in the maze while dodging the patrolling ghosts.';
+  d.zh['gs.mazedot.tut2t'] = '操作';
+  d.en['gs.mazedot.tut2t'] = 'Controls';
+  d.zh['gs.mazedot.tut2'] = '方向键 / WASD / 触屏 DPad 控制移动。';
+  d.en['gs.mazedot.tut2'] = 'Arrow keys / WASD / on-screen D-pad to move.';
+  d.zh['gs.mazedot.tut3t'] = '技巧';
+  d.en['gs.mazedot.tut3t'] = 'Tips';
+  d.zh['gs.mazedot.tut3'] = '吃到大力丸后幽灵变蓝，此时撞上它们可以反吃得分！';
+  d.en['gs.mazedot.tut3'] = 'After a power pellet the ghosts turn blue — bump into them to eat them for points!';
+  d.zh['gs.mazedot.tut4t'] = '计分';
+  d.en['gs.mazedot.tut4t'] = 'Scoring';
+  d.zh['gs.mazedot.tut4'] = '豆子 1 分、大力丸 10 分、吃幽灵 50~200 分。清空豆子即通关。';
+  d.en['gs.mazedot.tut4'] = 'Dots 1 pt, power pellets 10 pts, ghosts 50–200 pts. Clear all dots to advance.';
+  d.zh['gs.mazedot.score'] = '得分';
+  d.en['gs.mazedot.score'] = 'Score';
+  d.zh['gs.mazedot.dots'] = '剩余';
+  d.en['gs.mazedot.dots'] = 'Left';
+  d.zh['gs.mazedot.help'] = '方向键移动 · 吃光豆子 · P 暂停';
+  d.en['gs.mazedot.help'] = 'Arrows to move · eat all dots · P pause';
+  d.zh['gs.mazedot.paused'] = '⏸ 已暂停 · 按 P 继续';
+  d.en['gs.mazedot.paused'] = '⏸ Paused · press P to resume';
+  d.zh['gs.mazedot.restart'] = '重新开始';
+  d.en['gs.mazedot.restart'] = 'Restart';
+  d.zh['gs.mazedot.ghostEat'] = '😋 吃掉幽灵 +{n}';
+  d.en['gs.mazedot.ghostEat'] = '😋 Ghost eaten +{n}';
+  d.zh['gs.mazedot.combo'] = '（连吃 x{n}）';
+  d.en['gs.mazedot.combo'] = ' (combo x{n})';
+  d.zh['gs.mazedot.dead'] = '💀 被幽灵抓住了！得分 {n}';
+  d.en['gs.mazedot.dead'] = '💀 Caught by a ghost! Score {n}';
+  d.zh['gs.mazedot.win'] = '🏆 连闯 5 关！总分 {n}';
+  d.en['gs.mazedot.win'] = '🏆 Cleared all 5 levels! Total {n}';
+  d.zh['gs.mazedot.levelUp'] = '🔥 第 {n} 关！幽灵加速';
+  d.en['gs.mazedot.levelUp'] = '🔥 Level {n}! Ghosts speed up';
+  d.zh['gs.mazedot.mirrorGhost'] = '，镜像鬼出没';
+  d.en['gs.mazedot.mirrorGhost'] = ', mirror ghosts appear';
+})();

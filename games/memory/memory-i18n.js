@@ -1,0 +1,45 @@
+/* 破译 DECODE ARCADE · memory 游戏内文案（zh/en 对称）
+   由 i18n-dict.js 拆分生成 —— 游戏页按需加载，减小站点字典体积 */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.memory.tutTitle'] = '记忆翻牌 · 玩法';
+  d.en['gs.memory.tutTitle'] = 'Memory Match · How to Play';
+  d.zh['gs.memory.tut1t'] = '目标';
+  d.en['gs.memory.tut1t'] = 'Objective';
+  d.zh['gs.memory.tut1'] = '找出全部相同的图案（难度决定牌数：简单6对/普通8对/困难10对）';
+  d.en['gs.memory.tut1'] = 'Find all matching pairs (cards depend on difficulty: 6 pairs Easy / 8 Normal / 10 Hard)';
+  d.zh['gs.memory.tut2t'] = '操作';
+  d.en['gs.memory.tut2t'] = 'Controls';
+  d.zh['gs.memory.tut2'] = '点击卡片翻开，每次同时翻两张';
+  d.en['gs.memory.tut2'] = 'Click a card to flip it; only two cards flip at a time';
+  d.zh['gs.memory.tut3t'] = '计分';
+  d.en['gs.memory.tut3t'] = 'Scoring';
+  d.zh['gs.memory.tut3'] = '用最少的步数配完当前难度的全部牌对（简单 6 对 / 普通 8 对 / 困难 10 对）';
+  d.en['gs.memory.tut3'] = 'Match all pairs for the current difficulty in as few moves as possible (Easy 6 / Normal 8 / Hard 10)';
+  d.zh['gs.memory.dEasy'] = '简单';
+  d.en['gs.memory.dEasy'] = 'Easy';
+  d.zh['gs.memory.dNormal'] = '普通';
+  d.en['gs.memory.dNormal'] = 'Normal';
+  d.zh['gs.memory.dHard'] = '困难';
+  d.en['gs.memory.dHard'] = 'Hard';
+  d.zh['gs.memory.msgStart'] = '点击卡片，找出所有相同的图案！';
+  d.en['gs.memory.msgStart'] = 'Click the cards to find all matching pairs!';
+  d.zh['gs.memory.moves'] = '步数';
+  d.en['gs.memory.moves'] = 'Moves';
+  d.zh['gs.memory.time'] = '用时';
+  d.en['gs.memory.time'] = 'Time';
+  d.zh['gs.memory.sec'] = '秒';
+  d.en['gs.memory.sec'] = 'sec';
+  d.zh['gs.memory.pairs'] = '已配对';
+  d.en['gs.memory.pairs'] = 'Matched';
+  d.zh['gs.memory.restart'] = '重新开始';
+  d.en['gs.memory.restart'] = 'Restart';
+  d.zh['gs.memory.help'] = '💡 每翻开两张计 1 步，用最少步数配对所有图案';
+  d.en['gs.memory.help'] = '💡 Every two flips count as 1 move — match every pair in as few moves as possible';
+  d.zh['gs.memory.winNew'] = '🏆 新纪录！';
+  d.en['gs.memory.winNew'] = '🏆 New record!';
+  d.zh['gs.memory.winAll'] = '🎉 全部配对成功！';
+  d.en['gs.memory.winAll'] = '🎉 All pairs matched!';
+  d.zh['gs.memory.winDetail'] = ' 共用 {m} 步，{s} 秒';
+  d.en['gs.memory.winDetail'] = ' in {m} moves, {s} sec';
+})();

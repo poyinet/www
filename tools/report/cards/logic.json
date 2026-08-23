@@ -1,0 +1,154 @@
+[
+  {
+    "id": "sudoku",
+    "score": 8,
+    "verdict": "MINOR",
+    "playable": true,
+    "issues": [
+      { "severity": "P1", "area": "移动端/溢出", "description": "棋盘格固定 38px，9×9 总宽约 350px，超出 min(420px,96vw) 容器（320px 屏下内容区约 287px），页面横向溢出。建议 su-cell 用 CSS clamp 或 @media 缩到约 30px，或用 grid 按容器等分。" },
+      { "severity": "P2", "area": "教程一致性/计分", "description": "教程写「成绩=完成秒数」，实际计分为 秒数+错误数×5s（winErr 罚时），教程与实际公式不一致，应补一句错误罚时说明。" },
+      { "severity": "P3", "area": "输入", "description": "仅屏幕数字键盘可输入，无键盘方向键选格/数字键直填；触屏友好但桌面键盘玩家只能点选。" }
+    ],
+    "notes": "回溯填满+挖洞唯一解校验+每日一题（日期种子）齐全，win() 正常调用 submitScore，重开无重复绑定；仅 320px 溢出与计分文案不一致两处小瑕。"
+  },
+  {
+    "id": "nonogram",
+    "score": 8,
+    "verdict": "MINOR",
+    "playable": true,
+    "issues": [
+      { "severity": "P2", "area": "谜题生成/可解性", "description": "30% 概率的随机 5×5 图案，行列线索可能不唯一（多解），玩家按线索填出与目标不一致的合法图案时无任何错误反馈且永远不判胜，只能反复试错或重开，属软锁风险。建议随机模式改为从手绘图案派生或做唯一解校验。" },
+      { "severity": "P3", "area": "操作", "description": "无 X 排除标记操作，5×5 小盘误点即翻转；可加右键/长按标记排除格。" }
+    ],
+    "notes": "手绘图案库+计时+胜局 submitScore 完整，GAME_RESTART 用整页刷新无泄漏；随机图案多解是唯一实质疑点。"
+  },
+  {
+    "id": "slitherlink",
+    "score": 8,
+    "verdict": "MINOR",
+    "playable": true,
+    "issues": [
+      { "severity": "P1", "area": "移动端/溢出", "description": "单元格固定 26px（内联 gridTemplateColumns）：中等 7×7 约 390px、困难 9×9 约 494px 宽，320px 手机横向溢出且无缩放媒体查询。建议把 26px 改为按容器宽度计算的变量或 scale 整板。" },
+      { "severity": "P3", "area": "触控目标", "description": "边线点击目标仅 26px（触屏建议 ≥40px），且循环三态（画→✕→清）易误触多记步；可加 44px 命中区或滑动模式。" },
+      { "severity": "P3", "area": "性能", "description": "困难难度生成（双路径成环+挖洞唯一解求解）有 4s 预算且最多 100 次重试，低端机可能卡顿数秒；建议首屏先出易题或后台生成。" }
+    ],
+    "notes": "双路径成环+带约束传播的唯一解求解是本站逻辑质量标杆，检查/换题/每日一题/计步与 submitScore 完整；仅移动端缩放缺失。"
+  },
+  {
+    "id": "hashi",
+    "score": 9,
+    "verdict": "PASS",
+    "playable": true,
+    "issues": [
+      { "severity": "P3", "area": "触控目标", "description": "小屏下画布坐标命中半径 20px 折算屏幕约 12-14px，岛与岛之间桥位点触易误判；建议触屏时放大命中半径（按 scale 换算）。" }
+    ],
+    "notes": "生长法连树+双桥加深+唯一解验证、提示道具、每日一题、胜局 overlay 与 submitScore 全部到位；canvas width:100% 随容器缩放，移动端可玩。"
+  },
+  {
+    "id": "minesweeper",
+    "score": 8,
+    "verdict": "MINOR",
+    "playable": true,
+    "issues": [
+      { "severity": "P1", "area": "移动端/触控目标", "description": "高难度 20×20 在 320px 下格宽约 15px（94vw/20），触控极易点错；建议移动端限制最大列数或保证最小格宽 ≥22px（如窄屏自动降为中级布局）。" },
+      { "severity": "P3", "area": "操作", "description": "仅触屏有「翻开/插旗」模式切换，无长按插旗快捷方式；自定义雷数已按首点 3×3 安全区钳制（max cols*rows-9），无死循环。" }
+    ],
+    "notes": "首点安全布雷、洪水展开、右键/模式插旗、计时与胜局 submitScore 均正确，重开仅重建 DOM 不重复绑监听；仅高难度移动端格太小。"
+  },
+  {
+    "id": "lightsout",
+    "score": 8,
+    "verdict": "PASS",
+    "playable": true,
+    "issues": [
+      { "severity": "P3", "area": "操作", "description": "无撤销/悔步，成绩按点击步数计，误点一次即多计步；可加一步撤销按钮提升体验。" }
+    ],
+    "notes": "由全灭态按随机序列按灯构造，必可解；3×3/5×5 切换、胜局 submitScore、GAME_RESTART 复位 over 标志均正确；56px 大格触控友好。"
+  },
+  {
+    "id": "shikaku",
+    "score": 8,
+    "verdict": "MINOR",
+    "playable": true,
+    "issues": [
+      { "severity": "P2", "area": "教程一致性", "description": "中文教程写「选中一个格角拖动到对角格」（暗示拖拽），实现是两次点选定对角；英文版写 tap 一致，中文版应改为「点两个格」避免误导。" },
+      { "severity": "P2", "area": "视觉残留", "description": "成功划分分支未调用 mark() 清除上一角点高亮，.mark 会残留在已划块的第一角上直到下次选角，视觉误导；应在成功分支补 mark()。" }
+    ],
+    "notes": "贪心矩形分割保证全覆盖可解，重叠/面积校验、胜局 submitScore 与难度切换正常；两处小瑕疵不影响通关。"
+  },
+  {
+    "id": "fillomino",
+    "score": 2,
+    "verdict": "MAJOR",
+    "playable": false,
+    "issues": [
+      { "severity": "P0", "area": "可通关性/结算", "description": "checkWin() 遍历全部格子时取 need = puzzle[r][c] || solution[r][c]，而种子格（puzzle>0）不可点击、fills 恒为 0，0≠need 使判定永远 return，胜利条件不可达（无种子格概率≈3e-10），游戏无法通关也无法调用 submitScore。修法：跳过种子格，仅对空格校验 fills===solution。" },
+      { "severity": "P0", "area": "规则一致性", "description": "生成器允许同值块相邻（代码注释自认实测不可满足），与教程/帮助「相同数字连通成块、不同数字块不相邻」规则冲突；按真实 Fillomino 规则填写的玩家可能永远得不到代码里的解。建议改为按面积≤4 分区后校验同值邻接，或改为纯「对照解填数」玩法并改文案。" }
+    ],
+    "notes": "唯一一款不可通关的游戏：胜利判定对种子格恒不成立（P0），且生成解违反教程所述规则；修法明确（跳过种子格+规则校验），修复前应下架或标 WIP。"
+  },
+  {
+    "id": "wordsearch",
+    "score": 8,
+    "verdict": "PASS",
+    "playable": true,
+    "issues": [
+      { "severity": "P3", "area": "健壮性", "description": "placeWord 全部失败时 setup() 递归重试，理论上有无限递归风险（实际概率极低，9×9 放 5 词基本一次成功）；可改为有限次重试后兜底。" },
+      { "severity": "P3", "area": "视觉反馈", "description": "每找到一个词会整体重建棋盘 DOM，只有最新词的路径高亮保留，此前找到的词路径高亮消失（列表划线仍在）；可在重建后保留全部已找到路径高亮。" }
+    ],
+    "notes": "8 向随机放置+正反匹配+胜局 submitScore 完整，两点选线在触屏可用，无溢出；仅小体验问题。"
+  },
+  {
+    "id": "paintbynum",
+    "score": 8,
+    "verdict": "PASS",
+    "playable": true,
+    "issues": [
+      { "severity": "P3", "area": "i18n 文案", "description": "填错提示 wrongColor 直接展示目标色十六进制（如 #ff2d95），英文用户看到技术字符串而非颜色名；建议给色板配颜色名键。" }
+    ],
+    "notes": "按数字上色/擦除、胜局 submitScore 正常；图案库为原创像素造型（含「像素恐龙」非 Chrome 恐龙），无商标风险。"
+  },
+  {
+    "id": "game24",
+    "score": 9,
+    "verdict": "PASS",
+    "playable": true,
+    "issues": [
+      { "severity": "P3", "area": "教程/计分说明", "description": "计分规则（BEST=本次会话累计解出题数，自动续题）未在教程中说明，玩家可能误解 BEST 含义；建议教程补一句。" }
+    ],
+    "notes": "全排列×4 运算符×5 括号形态求解完备（含除零防护），发牌保证有解，撤销/提示/自动续题/提交成绩均正常。"
+  },
+  {
+    "id": "guess",
+    "score": 9,
+    "verdict": "PASS",
+    "playable": true,
+    "issues": [
+      { "severity": "P3", "area": "移动端 UX", "description": "init() 自动 input.focus()，移动端进页面即弹键盘；建议仅桌面聚焦或延迟到首次交互。" }
+    ],
+    "notes": "难度/限次与二分法必中保证一致（2^limit 覆盖范围），范围收窄提示清晰，胜局 submitScore 与非法输入校验完整。"
+  },
+  {
+    "id": "llk",
+    "score": 7,
+    "verdict": "MED",
+    "playable": true,
+    "issues": [
+      { "severity": "P1", "area": "计时/成绩", "description": "跨关计时重复累计：winLevel 中 totalMs += now - chalStart，但过关后不重置 chalStart（只在 startGame/标签切换/重开时 resetClock），导致第 2、3 关把前关时长反复计入，最终总用时与 submitScore 被放大（三关等长时约翻倍）。修法：winLevel 过关分支里调用 resetClock(true) 或重置 chalStart。" },
+      { "severity": "P3", "area": "移动端/触控目标", "description": "第三关 9×10 在 320px 下牌宽约 28px，触控偏小；建议窄屏缩小 gap 或允许横向滚动。" },
+      { "severity": "P3", "area": "死锁兜底", "description": "重排道具 3 次用尽后若仍死锁只能手动重开；可加「自动重排」兜底或重排不再消耗次数直至有解。" }
+    ],
+    "notes": "两段三折绕边连通判定、死锁检测、提示/重排道具、闯关+每日一题架构完整；P1 计时 bug 直接影响 BEST 成绩真实性，需优先修复。"
+  },
+  {
+    "id": "sheep",
+    "score": 8,
+    "verdict": "MINOR",
+    "playable": true,
+    "issues": [
+      { "severity": "P1", "area": "移动端/溢出", "description": "棋盘宽固定内联 478px（GAP=47×10+8），320px 手机横向溢出约 150px；@media 只缩牌面（36px）不缩布局间距，溢出依旧。建议把 GAP/宽度改为按视口缩放（如容器宽度/10 计算）或整体 scale。" },
+      { "severity": "P3", "area": "渲染裁剪", "description": "顶行（y=0）叠牌 z≥1 时 top 为负，被 .yg-board overflow:hidden 裁掉部分牌面；建议给顶部预留 LIFT 余量。" }
+    ],
+    "notes": "反向构造生成器保证存在通关序列（照序可消），计时跨关用 resetClock(true) 正确累计，胜/负结算与 submitScore 完整，道具次数明示；移动端横向溢出为主问题。"
+  }
+]

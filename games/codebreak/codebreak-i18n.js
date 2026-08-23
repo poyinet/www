@@ -1,0 +1,43 @@
+/* 破译 DECODE ARCADE · codebreak 游戏内文案（zh/en 对称）
+   由 i18n-dict.js 拆分生成 —— 游戏页按需加载，减小站点字典体积 */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.codebreak.tutTitle'] = '大师密码 · 玩法';
+  d.en['gs.codebreak.tutTitle'] = 'Code Breaker · How to Play';
+  d.zh['gs.codebreak.tut1t'] = '目标';
+  d.en['gs.codebreak.tut1t'] = 'Objective';
+  d.zh['gs.codebreak.tut1'] = '在限定次数内猜出颜色密码（颜色可重复）。';
+  d.en['gs.codebreak.tut1'] = 'Guess the color code within a limited number of tries (colors may repeat).';
+  d.zh['gs.codebreak.tut2t'] = '操作';
+  d.en['gs.codebreak.tut2t'] = 'Controls';
+  d.zh['gs.codebreak.tut2'] = '点下方色板选色填入当前行，凑满后点「提交推测」。';
+  d.en['gs.codebreak.tut2'] = 'Pick colors from the palette below to fill the current row, then press "Submit guess".';
+  d.zh['gs.codebreak.tut3t'] = '反馈';
+  d.en['gs.codebreak.tut3t'] = 'Feedback';
+  d.zh['gs.codebreak.tut3'] = '●黑钉=颜色与位置都对；○白钉=颜色对但位置错。';
+  d.en['gs.codebreak.tut3'] = '● Black peg = right color, right spot; ○ white peg = right color, wrong spot.';
+  d.zh['gs.codebreak.tut4t'] = '难度';
+  d.en['gs.codebreak.tut4t'] = 'Difficulty';
+  d.zh['gs.codebreak.tut4'] = '简单 4 色×4 位 / 普通 6 色×4 位 / 困难 8 色×5 位。';
+  d.en['gs.codebreak.tut4'] = 'Easy 4 colors × 4 slots / Normal 6 colors × 4 slots / Hard 8 colors × 5 slots.';
+  d.zh['gs.codebreak.tut5t'] = '计分';
+  d.en['gs.codebreak.tut5t'] = 'Scoring';
+  d.zh['gs.codebreak.tut5'] = '越早破解越好，成绩=推测次数（越少越高）。';
+  d.en['gs.codebreak.tut5'] = 'Break it as early as you can; score = number of guesses (fewer is better).';
+  d.zh['gs.codebreak.dEasy'] = '简单';
+  d.en['gs.codebreak.dEasy'] = 'Easy';
+  d.zh['gs.codebreak.dNormal'] = '普通';
+  d.en['gs.codebreak.dNormal'] = 'Normal';
+  d.zh['gs.codebreak.dHard'] = '困难';
+  d.en['gs.codebreak.dHard'] = 'Hard';
+  d.zh['gs.codebreak.submit'] = '提交推测';
+  d.en['gs.codebreak.submit'] = 'Submit guess';
+  d.zh['gs.codebreak.msgFill'] = '先选满 {n} 个颜色';
+  d.en['gs.codebreak.msgFill'] = 'Fill all {n} colors first';
+  d.zh['gs.codebreak.msgWin'] = '🎉 密码破解！用了 {n} 次';
+  d.en['gs.codebreak.msgWin'] = '🎉 Code cracked! It took {n} guesses';
+  d.zh['gs.codebreak.msgLose'] = '💀 密码是 {code}';
+  d.en['gs.codebreak.msgLose'] = '💀 The code was {code}';
+  d.zh['gs.codebreak.feedback'] = '黑钉 {b} · 白钉 {w}（剩 {n} 次）';
+  d.en['gs.codebreak.feedback'] = '{b} black · {w} white ({n} left)';
+})();

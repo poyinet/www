@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="破译游戏">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <title>2048 · 用游戏破译人类三千年加密解密史</title>
+  <meta name="description" content="破译 DECODE ARCADE · 2048：滑动合并相同数字，冲击 2048 神话！ 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://poyi.net/games/g2048/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="破译游戏 DECODE ARCADE">
+  <meta property="og:title" content="2048 · 用游戏破译人类三千年加密解密史">
+  <meta property="og:description" content="破译 DECODE ARCADE · 2048：滑动合并相同数字，冲击 2048 神话！ 打开即玩，最高分记录保存在本地浏览器。">
+  <meta property="og:url" content="https://poyi.net/games/g2048/">
+  <meta property="og:image" content="https://poyi.net/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="2048 · 用游戏破译人类三千年加密解密史">
+  <meta name="twitter:description" content="破译 DECODE ARCADE · 2048：滑动合并相同数字，冲击 2048 神话！ 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="twitter:image" content="https://poyi.net/assets/og-image.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "2048",
+    "url": "https://poyi.net/games/g2048/",
+    "applicationCategory": "Game",
+    "inLanguage": "zh-CN",
+    "isPartOf": { "@type": "WebSite", "name": "破译游戏 DECODE ARCADE", "url": "https://poyi.net/" },
+    "description": "破译 DECODE ARCADE · 2048：滑动合并相同数字，冲击 2048 神话！ 打开即玩，最高分记录保存在本地浏览器。"
+  }
+  </script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🔢</text></svg>">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="../../assets/css/theme.css">
+  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
+  <link rel="stylesheet" href="../../assets/css/shell.css">
+  <style>
+    .g2048-board {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      width: min(400px, 92vw);
+      aspect-ratio: 1;
+      margin: 0 auto;
+      touch-action: none;
+    }
+    .g2048-cell {
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 8px;
+      font-family: var(--font-pixel);
+      font-size: 20px;
+      color: var(--text-dim);
+      background: rgba(255, 255, 255, 0.04);
+      user-select: none;
+    }
+    /* 数字块配色：2/4 暗 → 1024/2048 金 */
+    .g2048-cell.v2    { background: rgba(0, 240, 255, 0.07); color: #9adfe8; }
+    .g2048-cell.v4    { background: rgba(0, 240, 255, 0.14); color: var(--neon-cyan); text-shadow: 0 0 6px rgba(0, 240, 255, 0.5); }
+    .g2048-cell.v8    { background: rgba(57, 255, 20, 0.16); color: var(--neon-green); text-shadow: 0 0 8px rgba(57, 255, 20, 0.6); }
+    .g2048-cell.v16   { background: rgba(185, 103, 255, 0.2); color: var(--neon-purple); text-shadow: 0 0 8px rgba(185, 103, 255, 0.6); }
+    .g2048-cell.v32   { background: rgba(255, 45, 149, 0.22); color: var(--neon-pink); text-shadow: 0 0 8px rgba(255, 45, 149, 0.6); }
+    .g2048-cell.v64   { background: rgba(255, 45, 149, 0.38); color: #ff7cc0; text-shadow: 0 0 10px rgba(255, 45, 149, 0.8); box-shadow: 0 0 14px rgba(255, 45, 149, 0.35); }
+    .g2048-cell.v128  { background: rgba(255, 159, 28, 0.32); color: var(--neon-orange); text-shadow: 0 0 10px rgba(255, 159, 28, 0.7); box-shadow: 0 0 14px rgba(255, 159, 28, 0.3); font-size: 16px; }
+    .g2048-cell.v256  { background: rgba(255, 159, 28, 0.48); color: #ffc25e; text-shadow: 0 0 12px rgba(255, 159, 28, 0.85); box-shadow: 0 0 18px rgba(255, 159, 28, 0.4); font-size: 16px; }
+    .g2048-cell.v512  { background: rgba(255, 230, 0, 0.38); color: var(--neon-yellow); text-shadow: 0 0 12px rgba(255, 230, 0, 0.85); box-shadow: 0 0 18px rgba(255, 230, 0, 0.4); font-size: 16px; }
+    .g2048-cell.v1024 { background: rgba(255, 230, 0, 0.58); color: #fff3a0; text-shadow: 0 0 14px rgba(255, 230, 0, 1); box-shadow: 0 0 24px rgba(255, 230, 0, 0.55); font-size: 13px; }
+    .g2048-cell.v2048 { background: var(--neon-yellow); color: #1a1604; text-shadow: none; box-shadow: 0 0 28px rgba(255, 230, 0, 0.85); font-size: 13px; }
+    .g2048-cell.vsuper { background: var(--neon-pink); color: #1a0410; text-shadow: none; box-shadow: 0 0 28px rgba(255, 45, 149, 0.85); font-size: 12px; }
+    /* 动画：新块弹出 / 合并块脉冲 */
+    @keyframes g2048-pop {
+      0% { transform: scale(0); }
+      100% { transform: scale(1); }
+    }
+    @keyframes g2048-merge {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.22); }
+      100% { transform: scale(1); }
+    }
+    .g2048-cell.tile-new { animation: g2048-pop 0.15s ease; }
+    .g2048-cell.tile-merged { animation: g2048-merge 0.18s ease; }
+    @media (max-width: 480px) {
+      .g2048-cell { font-size: 15px; }
+      .g2048-cell.v128, .g2048-cell.v256, .g2048-cell.v512 { font-size: 12px; }
+      .g2048-cell.v1024, .g2048-cell.v2048 { font-size: 10px; }
+      .g2048-cell.vsuper { font-size: 9px; }
+    }
+  </style>
+</head>
+<body data-game-id="g2048" data-game-title="2048" data-best-mode="max">
+  <h1 class="seo-h1">2048</h1>
+  <main id="game-root"></main>
+  <script src="../../assets/js/core/storage.js"></script>
+  <script src="../../assets/js/core/input.js"></script>
+  <script src="../../assets/js/core/loop.js"></script>
+    <script src="../../assets/js/core/i18n.js"></script>
+  <script src="../../assets/js/core/i18n-dict.js"></script>
+  <script src="g2048-i18n.js"></script>
+  <script src="../../assets/js/core/extras.js"></script>
+  <script src="../../assets/js/rank.js"></script>
+  <script src="../../assets/js/plot.js"></script>
+  <script src="../../assets/js/stories.js"></script>
+<script src="../../assets/js/shell.js"></script>
+  <script src="g2048.js"></script>
+  <script src="../../assets/js/pwa.js"></script>
+</body>
+</html>

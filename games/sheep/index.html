@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="破译游戏">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <title>绵羊三消 · 用游戏破译人类三千年加密解密史</title>
+  <meta name="description" content="破译 DECODE ARCADE · 绵羊三消：多层叠牌 + 7 格卡槽三消 + 三道具，第一关教学 / 第二关地狱（保证可解）。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://poyi.net/games/sheep/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="破译游戏 DECODE ARCADE">
+  <meta property="og:title" content="绵羊三消 · 用游戏破译人类三千年加密解密史">
+  <meta property="og:description" content="破译 DECODE ARCADE · 绵羊三消：多层叠牌 + 7 格卡槽三消 + 三道具，第一关教学 / 第二关地狱（保证可解）。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta property="og:url" content="https://poyi.net/games/sheep/">
+  <meta property="og:image" content="https://poyi.net/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="绵羊三消 · 用游戏破译人类三千年加密解密史">
+  <meta name="twitter:description" content="破译 DECODE ARCADE · 绵羊三消：多层叠牌 + 7 格卡槽三消 + 三道具，第一关教学 / 第二关地狱（保证可解）。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="twitter:image" content="https://poyi.net/assets/og-image.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "绵羊三消",
+    "url": "https://poyi.net/games/sheep/",
+    "applicationCategory": "Game",
+    "inLanguage": "zh-CN",
+    "isPartOf": { "@type": "WebSite", "name": "破译游戏 DECODE ARCADE", "url": "https://poyi.net/" },
+    "description": "破译 DECODE ARCADE · 绵羊三消：多层叠牌 + 7 格卡槽三消 + 三道具，第一关教学 / 第二关地狱（保证可解）。 打开即玩，最高分记录保存在本地浏览器。"
+  }
+  </script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐑</text></svg>">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="../../assets/css/theme.css">
+  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
+  <link rel="stylesheet" href="../../assets/css/shell.css">
+  <style>
+    .yg-wrap { padding: 14px 10px 24px; width: min(520px, 98vw); text-align: center; }
+    .yg-info {
+      display: flex; justify-content: space-between; align-items: center; gap: 8px;
+      font-size: 12px; color: var(--text-dim); margin: 6px 2px; flex-wrap: wrap;
+      padding: 8px 10px; background: linear-gradient(90deg, rgba(57,255,20,0.08), rgba(185,103,255,0.06));
+      border: 1px solid rgba(57,255,20,0.3); border-radius: 8px;
+    }
+    .yg-info span:last-child { font-family: var(--font-pixel); color: var(--neon-yellow); }
+    .yg-daily { font-size: 11px; padding: 4px 10px; }
+    .yg-board {
+      position: relative; height: 480px; margin: 10px auto;
+      background: radial-gradient(circle at 50% 30%, rgba(57,255,20,0.07), rgba(10,10,18,0.4));
+      border: 1px solid rgba(57,255,20,0.2); border-radius: 14px;
+      overflow: hidden;
+    }
+    .yg-card {
+      position: absolute; width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; border-radius: 8px; cursor: pointer;
+      background: linear-gradient(180deg, #1d2b3f, #131d2e);
+      border: 1px solid rgba(255,255,255,0.22);
+      box-shadow: 0 4px 0 rgba(0,0,0,0.55), 0 6px 12px rgba(0,0,0,0.4);
+      transition: transform 0.08s, box-shadow 0.08s;
+      padding: 0;
+    }
+    .yg-card:hover { transform: translateY(-3px); box-shadow: 0 7px 0 rgba(0,0,0,0.55), 0 10px 16px rgba(0,0,0,0.45); border-color: rgba(255,230,0,0.5); }
+    .yg-card:active { transform: translateY(0); }
+    .yg-slot {
+      display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; margin: 12px auto; max-width: 420px;
+      background: rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.12); border-radius: 12px; padding: 8px;
+    }
+    .yg-slot.flash { border-color: var(--neon-green); box-shadow: 0 0 14px rgba(57,255,20,0.4); }
+    .yg-scell {
+      aspect-ratio: 1; border-radius: 8px; border: 1px dashed rgba(255,255,255,0.15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; background: rgba(0,0,0,0.25);
+    }
+    .yg-scell.has { border-style: solid; border-color: rgba(255,230,0,0.4); background: rgba(255,230,0,0.07); animation: yg-pop 0.18s ease; }
+    @keyframes yg-pop { 0% { transform: scale(0.6); } 100% { transform: scale(1); } }
+    .yg-actions { display: flex; gap: 10px; justify-content: center; margin: 12px 0; flex-wrap: wrap; }
+    .yg-actions .btn { min-width: 96px; }
+    .yg-msg {
+      font-size: 12px; color: var(--text-main); min-height: 22px; text-align: left;
+      background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.08); border-radius: 8px;
+      padding: 8px; margin: 6px 0;
+    }
+    @media (max-width: 480px) {
+      .yg-board { height: 400px; }
+      .yg-card { width: 36px; height: 36px; font-size: 19px; }
+      .yg-scell { font-size: 20px; }
+    }
+  </style>
+</head>
+<body data-game-id="sheep" data-game-title="绵羊三消" data-best-mode="min">
+  <h1 class="seo-h1">绵羊三消</h1>
+  <main id="game-root"></main>
+  <script src="../../assets/js/core/storage.js"></script>
+  <script src="../../assets/js/core/input.js"></script>
+  <script src="../../assets/js/core/loop.js"></script>
+    <script src="../../assets/js/core/i18n.js"></script>
+  <script src="../../assets/js/core/i18n-dict.js"></script>
+  <script src="sheep-i18n.js"></script>
+  <script src="../../assets/js/core/extras.js"></script>
+  <script src="../../assets/js/rank.js"></script>
+  <script src="../../assets/js/plot.js"></script>
+  <script src="../../assets/js/stories.js"></script>
+<script src="../../assets/js/shell.js"></script>
+  <script src="sheep.js"></script>
+  <script src="../../assets/js/pwa.js"></script>
+</body>
+</html>

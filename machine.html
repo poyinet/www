@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="破译游戏">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <title>密码机博物馆 · 用游戏破译人类三千年加密解密史</title>
+  <meta name="description" content="破译 DECODE ARCADE · 密码机博物馆：恩尼格玛、炸弹机、M-209、紫密、洛伦兹——五台改变历史的密码机，原理、参数、历史一页看尽。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://poyi.net/machine.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="破译游戏 DECODE ARCADE">
+  <meta property="og:title" content="密码机博物馆 · 用游戏破译人类三千年加密解密史">
+  <meta property="og:description" content="恩尼格玛、炸弹机、M-209、紫密、洛伦兹——五台改变历史的密码机，原理、参数、历史一页看尽。">
+  <meta property="og:url" content="https://poyi.net/machine.html">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:image" content="https://poyi.net/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="密码机博物馆 · 破译 DECODE ARCADE">
+  <meta name="twitter:description" content="五台改变历史的密码机：原理、参数、历史一页看尽。">
+  <meta name="twitter:image" content="https://poyi.net/assets/og-image.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "密码机博物馆 · 用游戏破译人类三千年加密解密史",
+    "url": "https://poyi.net/machine.html",
+    "isPartOf": { "@type": "WebSite", "name": "破译游戏 DECODE ARCADE", "url": "https://poyi.net/" },
+    "inLanguage": "zh-CN",
+    "about": "二战密码机历史",
+    "description": "恩尼格玛、炸弹机、M-209、紫密、洛伦兹——五台改变历史的密码机。"
+  }
+  </script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="assets/css/theme.css">
+  <style>
+    .cm-wrap { max-width: 920px; margin: 0 auto; padding: 8px 16px 60px; position: relative; z-index: 1; }
+    .cm-hero { text-align: center; padding: 26px 16px 8px; }
+    .cm-title { font-family: var(--font-pixel); font-size: 22px; letter-spacing: 3px; color: var(--neon-gold, var(--neon-yellow)); text-shadow: 0 0 10px rgba(255,214,0,.7), 0 0 30px rgba(255,214,0,.3); }
+    .cm-sub { margin-top: 8px; color: var(--text-dim); font-size: 13px; line-height: 1.8; }
+
+    .cm-nav { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 18px; }
+    .cm-nav button { padding: 8px 14px; border-radius: 8px; cursor: pointer; font-size: 13px; background: rgba(0,0,0,.3); border: 1px solid rgba(255,255,255,.12); color: var(--text-main); }
+    .cm-nav button.on { border-color: rgba(255,214,0,.55); background: rgba(255,214,0,.1); color: var(--neon-yellow); }
+    .cm-nav button:hover { border-color: rgba(255,214,0,.5); }
+
+    .cm-card { margin-top: 20px; background: linear-gradient(180deg, rgba(20,20,34,.85), rgba(10,10,18,.6)); border: 1px solid rgba(255,214,0,.3); border-radius: 14px; padding: 20px 18px; }
+    .cm-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .cm-ic { font-size: 34px; }
+    .cm-name { font-size: 19px; font-weight: 700; color: var(--neon-yellow); }
+    .cm-era { font-family: var(--font-pixel); font-size: 10px; color: var(--text-dim); margin-left: auto; }
+    .cm-summary { margin-top: 10px; font-size: 13px; color: var(--text-main); line-height: 1.8; background: rgba(255,214,0,.05); border-radius: 8px; padding: 10px 12px; }
+    .cm-sec { margin-top: 14px; }
+    .cm-sec-title { font-size: 12px; color: var(--neon-cyan); margin-bottom: 6px; border-left: 3px solid var(--neon-cyan); padding-left: 8px; }
+    .cm-history { font-size: 13px; color: var(--text-main); line-height: 1.9; }
+    .cm-params { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; }
+    .cm-param { padding: 10px 12px; border-radius: 8px; background: rgba(0,0,0,.25); border: 1px solid rgba(255,255,255,.08); }
+    .cm-param .k { font-size: 11px; color: var(--text-dim); }
+    .cm-param .v { font-size: 13px; color: var(--neon-green); margin-top: 3px; }
+    .cm-play { display: inline-block; margin-top: 14px; font-size: 12px; color: var(--neon-pink); text-decoration: none; border: 1px solid rgba(255,45,149,.4); border-radius: 8px; padding: 8px 16px; background: rgba(255,45,149,.07); }
+    .cm-play:hover { background: rgba(255,45,149,.16); }
+
+    @media (max-width: 480px) {
+      .cm-title { font-size: 16px; }
+      .cm-era { margin-left: 0; width: 100%; }
+    }
+    .lobby-footer { position: relative; z-index: 1; text-align: center; padding: 20px 16px 30px; color: var(--text-dim); font-size: 12px; line-height: 2; }
+    .lobby-footer .pixel-line { font-family: var(--font-pixel); font-size: 9px; color: rgba(0,240,255,.5); }
+  </style>
+</head>
+<body>
+  <div id="arcade-nav"></div>
+
+  <div class="cm-wrap" id="content">
+    <div class="cm-hero">
+      <h1 class="cm-title" data-i18n="cm.title">🏛️ 密码机博物馆</h1>
+      <p class="cm-sub" data-i18n="cm.sub">五台改变历史的密码机——原理、参数、历史，一页看尽；每台都能在游戏厅亲手操作</p>
+    </div>
+    <div class="cm-nav" id="cm-nav"></div>
+    <div id="cm-card"></div>
+  </div>
+
+  <footer class="lobby-footer">
+    <div class="pixel-line" data-i18n="home.footBrand">© 2026 破译游戏 · POYI.NET · 用游戏破译人类三千年加密解密史</div>
+    <div data-i18n="home.footNote">纪录仅存本地 · 不上传任何数据 · 史料整理自公开信息仅供学习</div>
+  </footer>
+
+  <script src="assets/js/core/i18n.js"></script>
+  <script src="assets/js/core/i18n-dict.js"></script>
+  <script src="assets/js/core/i18n-ui.js"></script>
+  <script src="assets/js/core/storage.js"></script>
+  <script src="assets/js/core/extras.js"></script>
+  <script src="assets/js/games.js"></script>
+  <script src="assets/js/machine.js"></script>
+  <script src="assets/js/nav.js"></script>
+  <script>
+    (function () {
+      if (!window.Arcade || !Arcade.i18n || !window.MACHINE_MUSEUM) return;
+      Arcade.i18n.applyStatic();
+      document.title = Arcade.i18n.t('cm.title') + Arcade.i18n.t('app.titleSuffix');
+      var T = Arcade.i18n.t;
+      var isEn = Arcade.i18n.getLang() === 'en';
+      var M = window.MACHINE_MUSEUM;
+      var pre = window.__arcadePagePrefix || '';
+
+      var navBox = document.getElementById('cm-nav');
+      var nh = '';
+      M.MACHINES.forEach(function (m, i) {
+        nh += '<button data-idx="' + i + '" class="' + (i === 0 ? 'on' : '') + '">' + m.icon + ' ' + (isEn ? m.name.en : m.name.zh) + '</button>';
+      });
+      navBox.innerHTML = nh;
+
+      var cardBox = document.getElementById('cm-card');
+      function render(idx) {
+        var m = M.MACHINES[idx];
+        if (!m) return;
+        var params = '';
+        m.params.forEach(function (p) {
+          params += '<div class="cm-param"><div class="k">' + (isEn ? p.en : p.zh) + '</div><div class="v">' + (isEn ? p.v.en : p.v.zh) + '</div></div>';
+        });
+        cardBox.innerHTML =
+          '<div class="cm-card">' +
+            '<div class="cm-head"><span class="cm-ic">' + m.icon + '</span>' +
+            '<span class="cm-name">' + (isEn ? m.name.en : m.name.zh) + '</span>' +
+            '<span class="cm-era">' + (isEn ? m.era.en : m.era.zh) + '</span></div>' +
+            '<div class="cm-summary">' + (isEn ? m.summary.en : m.summary.zh) + '</div>' +
+            '<div class="cm-sec"><div class="cm-sec-title">📜 ' + (isEn ? 'History' : '历史') + '</div>' +
+            '<div class="cm-history">' + (isEn ? m.history.en : m.history.zh) + '</div></div>' +
+            '<div class="cm-sec"><div class="cm-sec-title">⚙️ ' + (isEn ? 'Specs' : '参数') + '</div>' +
+            '<div class="cm-params">' + params + '</div></div>' +
+            '<a class="cm-play" href="' + pre + 'games/' + m.game + '/index.html">🎮 ' + (isEn ? 'Play the machine' : '去游戏厅操作这台机器') + ' →</a>' +
+          '</div>';
+        var navs = navBox.querySelectorAll('button');
+        for (var i = 0; i < navs.length; i++) navs[i].classList.toggle('on', parseInt(navs[i].getAttribute('data-idx'), 10) === idx);
+      }
+      render(0);
+
+      var btns = navBox.querySelectorAll('button');
+      for (var i = 0; i < btns.length; i++) {
+        (function (b) {
+          b.addEventListener('click', function () { render(parseInt(b.getAttribute('data-idx'), 10)); });
+        })(btns[i]);
+      }
+    })();
+  </script>
+  <script src="assets/js/pwa.js"></script>
+</body>
+</html>

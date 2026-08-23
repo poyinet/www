@@ -1,0 +1,39 @@
+/* 破译 DECODE ARCADE · roperescue 游戏内文案（zh/en 对称）
+   由 i18n-dict.js 拆分生成 —— 游戏页按需加载，减小站点字典体积 */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.roperescue.tutTitle'] = '切绳救星 · 玩法';
+  d.en['gs.roperescue.tutTitle'] = 'Rope Rescue · How to Play';
+  d.zh['gs.roperescue.tut1t'] = '目标';
+  d.en['gs.roperescue.tut1t'] = 'Objective';
+  d.zh['gs.roperescue.tut1'] = '糖果被绳子吊着，点绳子把它切断，让糖果摆落进下方的小嘴。';
+  d.en['gs.roperescue.tut1'] = 'The candy hangs from a rope — cut the rope so the candy swings down into the little mouth below.';
+  d.zh['gs.roperescue.tut2t'] = '操作';
+  d.en['gs.roperescue.tut2t'] = 'Controls';
+  d.zh['gs.roperescue.tut2'] = '在糖果上按住并滑动 = 画切割线，松开即切断穿过线的绳子。';
+  d.en['gs.roperescue.tut2'] = 'Press and drag over a candy to draw a cut line; release to sever any rope it crosses.';
+  d.zh['gs.roperescue.tut3t'] = '技巧';
+  d.en['gs.roperescue.tut3t'] = 'Tips';
+  d.zh['gs.roperescue.tut3'] = '切绳时机决定摆动方向——在糖果摆向目标一侧时切，更容易进嘴。';
+  d.en['gs.roperescue.tut3'] = 'Timing decides the swing — cut while the candy swings toward the mouth for an easier drop.';
+  d.zh['gs.roperescue.tut4t'] = '计分';
+  d.en['gs.roperescue.tut4t'] = 'Scoring';
+  d.zh['gs.roperescue.tut4'] = '收齐本关全部糖果（第 1 关 2 颗、之后 3 颗），三关全通即通关。成绩=累计进嘴数。';
+  d.en['gs.roperescue.tut4'] = 'Eat all candies in a level (2 in level 1, 3 afterwards); clear all three levels to win. Score = total candies eaten.';
+  d.zh['gs.roperescue.paused'] = '⏸ 已暂停 · 按 P 继续';
+  d.en['gs.roperescue.paused'] = '⏸ Paused · press P to resume';
+  d.zh['gs.roperescue.hudLevel'] = '第 {n} 关';
+  d.en['gs.roperescue.hudLevel'] = 'Level {n}';
+  d.zh['gs.roperescue.hudEaten'] = '进嘴';
+  d.en['gs.roperescue.hudEaten'] = 'In mouth';
+  d.zh['gs.roperescue.help'] = '按住糖果区域滑动 = 切割 · 让糖果掉进小嘴';
+  d.en['gs.roperescue.help'] = 'Press and swipe over a candy to cut · drop it into the little mouth';
+  d.zh['gs.roperescue.retry'] = '重试本关';
+  d.en['gs.roperescue.retry'] = 'Retry';
+  d.zh['gs.roperescue.allDone'] = '🏆 全部关卡完成！总分 {n}';
+  d.en['gs.roperescue.allDone'] = '🏆 All levels complete! Total {n}';
+  d.zh['gs.roperescue.levelDone'] = '🎉 第 {n} 关完成！点「下一关」';
+  d.en['gs.roperescue.levelDone'] = '🎉 Level {n} complete! Tap "Next"';
+  d.zh['gs.roperescue.nextLevel'] = '下一关 ▶';
+  d.en['gs.roperescue.nextLevel'] = 'Next ▶';
+})();

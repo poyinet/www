@@ -1,0 +1,41 @@
+/* 破译 DECODE ARCADE · bowling 游戏内文案（zh/en 对称）
+   由 i18n-dict.js 拆分生成 —— 游戏页按需加载，减小站点字典体积 */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.bowling.hudFrame'] = '第 {n}/10 帧 · 第 {m} 投';
+  d.en['gs.bowling.hudFrame'] = 'Frame {n}/10 · Throw {m}';
+  d.zh['gs.bowling.total'] = '总分';
+  d.en['gs.bowling.total'] = 'Total';
+  d.zh['gs.bowling.dEasy'] = '简单';
+  d.en['gs.bowling.dEasy'] = 'Easy';
+  d.zh['gs.bowling.dNormal'] = '普通';
+  d.en['gs.bowling.dNormal'] = 'Normal';
+  d.zh['gs.bowling.dHard'] = '困难';
+  d.en['gs.bowling.dHard'] = 'Hard';
+  d.zh['gs.bowling.angle'] = '角度';
+  d.en['gs.bowling.angle'] = 'Angle';
+  d.zh['gs.bowling.power'] = '力度';
+  d.en['gs.bowling.power'] = 'Power';
+  d.zh['gs.bowling.curve'] = '旋转';
+  d.en['gs.bowling.curve'] = 'Spin';
+  d.zh['gs.bowling.throw'] = '投球';
+  d.en['gs.bowling.throw'] = 'Throw';
+  d.zh['gs.bowling.paused'] = '⏸ 已暂停 · 按 P 继续';
+  d.en['gs.bowling.paused'] = '⏸ Paused · Press P to resume';
+  d.zh['gs.bowling.resume'] = '▶ 继续';
+  d.en['gs.bowling.resume'] = '▶ Resume';
+  d.zh['gs.bowling.tutTitle'] = '保龄球 · 玩法';
+  d.en['gs.bowling.tutTitle'] = 'Bowling · How to Play';
+  d.zh['gs.bowling.tut1t'] = '目标';
+  d.en['gs.bowling.tut1t'] = 'Objective';
+  d.zh['gs.bowling.tut1'] = '10 帧保龄球：每帧两次投球，全部击倒 10 瓶为 Strike，两投击倒为 Spare，第 10 帧追加投球。';
+  d.en['gs.bowling.tut1'] = '10-frame bowling: two throws per frame; knocking down all 10 pins on the first throw is a Strike, on two throws a Spare; the 10th frame grants bonus throws.';
+  d.zh['gs.bowling.tut2t'] = '操作';
+  d.en['gs.bowling.tut2t'] = 'Controls';
+  d.zh['gs.bowling.tut2'] = '拖动设置 角度/力度/旋转，点「投球」；正中击倒最多，边缘瓶不中。';
+  d.en['gs.bowling.tut2'] = 'Drag to set Angle / Power / Spin, then click Throw; dead center knocks down the most, edge pins miss.';
+  d.zh['gs.bowling.tut3t'] = '计分';
+  d.en['gs.bowling.tut3t'] = 'Scoring';
+  d.zh['gs.bowling.tut3'] = 'Strike=10+下两投，Spare=10+下一投；总分越高越好。（困难难度单投有随机偏差，全中几乎不可能）';
+  d.en['gs.bowling.tut3'] = 'Strike = 10 + next two throws, Spare = 10 + next throw; the higher the total, the better. (Hard mode adds random error, so a Strike is nearly impossible.)';
+})();

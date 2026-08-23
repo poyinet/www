@@ -1,0 +1,36 @@
+User-agent: *
+Allow: /
+
+# AI 爬虫策略：允许收录（结构化数据 + 语义化 HTML 已就绪）
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+# 纯前端静态站点：除 sitemap 外无其他收录入口
+Sitemap: https://poyi.net/sitemap.xml

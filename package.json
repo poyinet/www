@@ -1,0 +1,22 @@
+{
+  "name": "decode-arcade",
+  "version": "1.0.0",
+  "private": true,
+  "description": "破译 DECODE ARCADE —— 纯前端密码学游戏博物馆（零构建、零依赖、双语、PWA）",
+  "scripts": {
+    "audit": "node audit.js",
+    "audit:one": "node audit.js",
+    "smoke": "node smoke.js",
+    "smoke:zh": "node smoke.js zh",
+    "smoke:en": "node smoke.js en",
+    "smoke:page": "node smoke.js page",
+    "deep": "node tools/audit-deep.js",
+    "preflight": "node tools/preflight.js",
+    "ghpages": "node tools/check-ghpages.js",
+    "e2e": "playwright test",
+    "qa": "node tools/qa-all.js"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.62.1"
+  }
+}

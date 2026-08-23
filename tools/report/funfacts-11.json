@@ -1,0 +1,57 @@
+[
+  {
+    "chapter": "dawn",
+    "zh": "罗塞塔石碑是公元前 196 年孟菲斯祭司为托勒密五世颁布的诏书，1799 年 7 月由法军军官布沙尔挖出，1802 年起藏于大英博物馆。商博良破译的另一把钥匙，是他自幼精通的科普特语——古埃及语最后的活后裔。",
+    "en": "The Rosetta Stone is a decree issued in 196 BC by the priests of Memphis in honour of Ptolemy V. It was dug up in July 1799 by the French officer Pierre-François Bouchard, weighs about 760 kg (1,676 lb), and has been in the British Museum since 1802. Champollion's other key was Coptic, which he had mastered since boyhood — the last living descendant of ancient Egyptian."
+  },
+  {
+    "chapter": "caesar",
+    "zh": "互联网上仍活着凯撒密码的直系后裔——ROT13：偏移 13 位，因为 13 是 26 的一半，加密两次即还原。1990 年代 Usenet 论坛用它隐藏剧透，至今编程工具仍内置。它挡不住的频率分析，正是下一章肯迪的武器。",
+    "en": "A direct descendant of Caesar's cipher still lives on the internet — ROT13: shift the alphabet by 13, and since 13 is half of 26, encrypting twice restores the text. In the 1990s Usenet forums used it to hide spoilers, and many programming tools still build it in. The frequency analysis it cannot stop is precisely the weapon of the next chapter's al-Kindi."
+  },
+  {
+    "chapter": "arab",
+    "zh": "肯迪《解译加密信息手稿》的孤本抄本藏在伊斯坦布尔的苏莱曼尼耶图书馆，九百年来少有人翻阅。这位「阿拉伯的哲学家」还撰写了《论印度数字的使用》，把十进制带入阿拉伯世界——破译之父，也是「0」的传播者。",
+    "en": "The only surviving copy of al-Kindi's A Manuscript on Deciphering Cryptographic Messages rests in the Süleymaniye Library in Istanbul, unread for nine centuries. The \"Philosopher of the Arabs\" also wrote On the Use of Indian Numerals, carrying the decimal system into the Arab world — the father of codebreaking was also an apostle of zero."
+  },
+  {
+    "chapter": "bacon",
+    "zh": "「不可破译」的维吉尼亚密码，1854 年就被差分机之父巴贝奇破解——但他受军方嘱咐保密，成果从未发表；直到 1863 年普鲁士军官卡西斯基独立破解，巴贝奇的功绩被埋没了一百多年。维吉尼亚输给的，是「尚未公布的天才」。",
+    "en": "The \"indecipherable\" Vigenère cipher was actually broken in 1854 by Charles Babbage, father of the Difference Engine — but he kept it secret at military request and never published; only in 1863, when the Prussian officer Kasiski independently cracked it, did the world learn. The Vigenère lost not to a genius, but to a genius who stayed silent."
+  },
+  {
+    "chapter": "ww1",
+    "zh": "ADFGVX 的名字就是它全部的密文字母：A、D、F、G、V、X——选这六个字母，是因为它们的摩斯电码差异最大，炮火下的报务员不容易抄错。这个「防抄错」的贴心设计，恰好给了破译者最整齐的频率统计入口。",
+    "en": "ADFGVX's name is the entire alphabet of its ciphertext: A, D, F, G, V, X — chosen because their Morse codes differ the most, so signallers under shellfire could hardly mis-copy them. That considerate \"anti-error\" design handed the codebreakers their neatest frequency statistics."
+  },
+  {
+    "chapter": "bletchley",
+    "zh": "Enigma 有个怪癖：字母加密后绝不变回自己——「不自映射」正是 Bombe 的立足点。而首位破译者不是图灵：雷耶夫斯基 1932 年用群论还原了转子，1939 年 7 月把全套成果交给英国。布莱切利园站在波兰人肩上。",
+    "en": "Enigma had a famous quirk: no letter ever enciphered to itself — this \"no self-mapping\" rule was the very foothold of the Bombe. And the first breaker was not Turing: the Polish mathematician Marian Rejewski reconstructed the rotors with group theory in 1932, handing the full package to Britain in July 1939. Bletchley Park stood on Polish shoulders."
+  },
+  {
+    "chapter": "midway",
+    "zh": "罗奇福特常穿着睡衣、趿着拖鞋，在珍珠港的地下室里指挥破译。这位中途岛功臣战后反被调离情报岗位，未获任何战时勋章；直到 1986 年（逝世十年后），海军才追授他杰出服役勋章——功劳簿上迟到四十年的名字。",
+    "en": "Joe Rochefort ran his codebreakers from a Pearl Harbor basement, often in a bathrobe and slippers. Yet the hero of Midway was reassigned away from intelligence after the battle and won no wartime medal; only in 1986, ten years after his death, did the Navy posthumously award him the Distinguished Service Medal — a name forty years late to the honours list."
+  },
+  {
+    "chapter": "purple",
+    "zh": "日本的「气象暗号」按风向区分开战对象：「东风，雨」指对美、「西风，晴」指对英、「北风，阴」指对苏。美军监听站日夜守听这套广播暗号，据战后调查，真实的「东风，雨」从未被完整截获——珍珠港之晨，暗号始终没有现身。",
+    "en": "Japan's \"winds code\" announced which enemy war was coming by wind direction: \"East wind, rain\" meant war with the US, \"West wind, clear\" with Britain, \"North wind, cloudy\" with the USSR. American listening posts stood watch around the clock, yet postwar investigation suggests a genuine full \"East wind, rain\" broadcast was never confirmed — on the morning of Pearl Harbor, the code never showed."
+  },
+  {
+    "chapter": "lorenz",
+    "zh": "洛伦兹机 12 轮共装 501 根针：χ 轮 41、31、29、26、23，ψ 轮 43、47、51、53、59，μ 轮 37、61——针数两两互质，周期长如天文数字。破译要猜每根针当天的「开」「关」位置。",
+    "en": "The Lorenz machine's twelve wheels carried 501 pins in all: the χ wheels 41, 31, 29, 26, 23; the ψ wheels 43, 47, 51, 53, 59; the μ wheels 37 and 61 — all pairwise coprime, so the keystream period grew astronomically long. The codebreaker's task was to guess, for that day, which of the 501 pins were \"on\" and which \"off\"."
+  },
+  {
+    "chapter": "venona",
+    "zh": "VENONA 电文中，苏联对美国原子弹计划的代号是「ENORMOZ」（巨大）——这个词反复出现，是锁定核间谍网的关键。而罗森伯格案审判时，破译内容因保密无法上庭，定罪主要靠格林格拉斯的证词；埃塞尔是否知情，至今仍是争议。",
+    "en": "In the VENONA traffic the Soviets codenamed the American atomic bomb project ENORMOZ — the word recurred again and again and became the key to tracing the nuclear spy ring. Ironically, at the Rosenbergs' trial the decrypts were too secret to present in court; the conviction rested mainly on Greenglass's testimony, and whether Ethel knew remains a historical dispute."
+  },
+  {
+    "chapter": "modern",
+    "zh": "公钥密码险些不叫 RSA：英国 GCHQ 的埃利斯 1969 年就提出「非保密加密」构想，科克斯 1973 年写出了与 RSA 等价的算法——两者皆因机密被雪藏，直到 1997 年解密，世界才知公钥革命的第一棒在伦敦。",
+    "en": "Public-key cryptography almost wasn't called RSA: at Britain's GCHQ, James Ellis proposed \"non-secret encryption\" in 1969, and Clifford Cocks wrote down an algorithm equivalent to RSA in 1973 — both locked away as secrets until declassified in 1997. The world then learned that the first baton of the public-key revolution had been passed in London."
+  }
+]

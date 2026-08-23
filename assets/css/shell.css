@@ -1,0 +1,201 @@
+/* ============================================================
+   游戏页共享骨架样式（顶栏由 shell.js 注入）
+   ============================================================ */
+
+.shell-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 16px;
+  background: rgba(10, 10, 18, 0.92);
+  border-bottom: 1px solid rgba(0, 240, 255, 0.25);
+  backdrop-filter: blur(6px);
+}
+
+.shell-back {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: var(--neon-pink);
+  text-decoration: none;
+  border: 2px solid var(--neon-pink);
+  border-radius: 6px;
+  padding: 8px 12px;
+  white-space: nowrap;
+  text-shadow: 0 0 6px rgba(255, 45, 149, 0.6);
+  box-shadow: 0 0 8px rgba(255, 45, 149, 0.2);
+  transition: background 0.15s, color 0.15s;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.shell-back:hover {
+  background: var(--neon-pink);
+  color: #1a0410;
+  text-shadow: none;
+}
+
+.shell-title {
+  font-family: var(--font-pixel);
+  font-size: 14px;
+  color: var(--neon-cyan);
+  text-shadow: 0 0 8px rgba(0, 240, 255, 0.7), 0 0 20px rgba(0, 240, 255, 0.35);
+  flex: 1;
+  /* E2E 修复：flex 子项默认 min-width:auto，长标题会顶开顶栏导致 320px 溢出 */
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.shell-best {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: var(--neon-yellow);
+  text-shadow: 0 0 8px rgba(255, 230, 0, 0.6);
+  white-space: nowrap;
+  padding: 6px 10px;
+  border: 1px dashed rgba(255, 230, 0, 0.4);
+  border-radius: 6px;
+}
+
+/* 破纪录闪烁动画 */
+@keyframes best-flash {
+  0%, 100% { color: var(--neon-yellow); transform: scale(1); }
+  50%      { color: #ffffff;             transform: scale(1.18); }
+}
+
+.shell-best.flash {
+  animation: best-flash 0.35s ease 3;
+}
+
+/* 游戏内容容器（与全站内容容器同宽 920px，切换不跳宽） */
+#game-root {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 18px 12px 40px;
+  max-width: 920px;
+  margin: 0 auto;
+}
+
+.shell-help {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: var(--neon-cyan);
+  text-decoration: none;
+  border: 2px solid var(--neon-cyan);
+  border-radius: 6px;
+  padding: 8px 12px;
+  white-space: nowrap;
+  cursor: pointer;
+  background: transparent;
+  text-shadow: 0 0 6px rgba(0, 240, 255, 0.6);
+  box-shadow: 0 0 8px rgba(0, 240, 255, 0.2);
+  transition: background 0.15s, color 0.15s;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.shell-help:hover {
+  background: var(--neon-cyan);
+  color: #04121a;
+  text-shadow: none;
+}
+
+.shell-restart {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  color: var(--neon-green);
+  text-decoration: none;
+  border: 2px solid var(--neon-green);
+  border-radius: 6px;
+  padding: 8px 12px;
+  white-space: nowrap;
+  cursor: pointer;
+  background: transparent;
+  text-shadow: 0 0 6px rgba(57, 255, 20, 0.6);
+  box-shadow: 0 0 8px rgba(57, 255, 20, 0.2);
+  transition: background 0.15s, color 0.15s;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.shell-restart:hover {
+  background: var(--neon-green);
+  color: #041a06;
+  text-shadow: none;
+}
+
+/* 全屏按钮：紫色系图标按钮（紧凑，节省顶栏空间） */
+.shell-fs {
+  font-family: var(--font-pixel);
+  font-size: 13px;
+  line-height: 1;
+  color: var(--neon-purple);
+  text-decoration: none;
+  border: 2px solid var(--neon-purple);
+  border-radius: 6px;
+  padding: 8px 10px;
+  white-space: nowrap;
+  cursor: pointer;
+  background: transparent;
+  text-shadow: 0 0 6px rgba(185, 103, 255, 0.6);
+  box-shadow: 0 0 8px rgba(185, 103, 255, 0.2);
+  transition: background 0.15s, color 0.15s;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+}
+.shell-fs:hover {
+  background: var(--neon-purple);
+  color: #12041a;
+  text-shadow: none;
+}
+
+.shell-back:focus-visible,
+.shell-help:focus-visible,
+.shell-restart:focus-visible,
+.shell-fs:focus-visible {
+  outline: 2px solid var(--accent, #00f0ff);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent, #00f0ff) 25%, transparent);
+}
+
+@media (max-width: 480px) {
+  .shell-header { gap: 8px; padding: 8px 10px; }
+  .shell-title { font-size: 11px; }
+  .shell-best { font-size: 8px; padding: 5px 7px; }
+  .shell-back { font-size: 9px; padding: 7px 9px; }
+  .shell-help, .shell-restart { font-size: 9px; padding: 7px 9px; }
+  .shell-fs { font-size: 12px; padding: 7px 8px; }
+  #game-root { padding: 10px 8px 24px; }
+}
+
+@media (max-width: 380px) {
+  /* E2E 320px 扫描修复：允许顶栏换行，BEST 徽章自然落到第二行 */
+  .shell-header { flex-wrap: wrap; }
+  .shell-header { gap: 5px; padding: 6px 7px; }
+  .shell-title { font-size: 10px; }
+  .shell-best { font-size: 7px; padding: 4px 5px; }
+  .shell-back { font-size: 8px; padding: 5px 6px; }
+  .shell-help, .shell-restart { font-size: 8px; padding: 5px 6px; }
+  .shell-fs { font-size: 11px; padding: 5px 6px; }
+  .shell-back { display: inline-flex; }
+  .shell-back::before { content: ''; display: inline-block; width: 0; overflow: hidden; }
+}
+
+/* 减动效偏好（A4）：同 theme.css */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

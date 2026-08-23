@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="破译游戏">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <title>破译工坊 · 用游戏破译人类三千年加密解密史</title>
+  <meta name="description" content="破译 DECODE ARCADE · 破译工坊：全网独有的加密/破解二合一实验室——15 种经典算法现场加密，或粘贴密文一键自动破解（凯撒/摩斯/培根/二进制/异或/Base64 自动识别）。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://poyi.net/workshop.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="破译游戏 DECODE ARCADE">
+  <meta property="og:title" content="破译工坊 · 加密/破解二合一实验室">
+  <meta property="og:description" content="15 种经典算法现场加密，或粘贴密文一键自动破解。">
+  <meta property="og:url" content="https://poyi.net/workshop.html">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:image" content="https://poyi.net/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="破译工坊 · 破译 DECODE ARCADE">
+  <meta name="twitter:description" content="15 种经典算法现场加密，或粘贴密文一键自动破解。">
+  <meta name="twitter:image" content="https://poyi.net/assets/og-image.png">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔬</text></svg>">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="assets/css/theme.css">
+  <style>
+    .ws-wrap { max-width: 920px; margin: 0 auto; padding: 8px 16px 60px; position: relative; z-index: 1; }
+    .ws-hero { text-align: center; padding: 26px 16px 8px; }
+    .ws-title { font-family: var(--font-pixel); font-size: 22px; letter-spacing: 3px; color: var(--neon-cyan); text-shadow: 0 0 10px rgba(0,240,255,.7), 0 0 30px rgba(0,240,255,.3); }
+    .ws-sub { margin-top: 8px; color: var(--text-dim); font-size: 13px; line-height: 1.8; }
+    @media (max-width: 480px) { .ws-title { font-size: 17px; } }
+
+    .ws-tabs { display: flex; gap: 10px; justify-content: center; margin: 22px 0 18px; }
+    .ws-tab { font-family: var(--font-pixel); font-size: 12px; letter-spacing: 1px; padding: 10px 22px; border-radius: 8px; cursor: pointer; border: 1px solid rgba(255,255,255,.15); color: var(--text-dim); background: transparent; transition: all .15s; }
+    .ws-tab.on { color: var(--on-accent, #04121a); background: var(--accent, #00f0ff); border-color: var(--accent, #00f0ff); box-shadow: 0 0 14px rgba(0,240,255,.25); }
+
+    .ws-panel { display: none; }
+    .ws-panel.on { display: block; }
+
+    .ws-box { background: rgba(0,0,0,.28); border: 1px solid rgba(255,255,255,.08); border-radius: 12px; padding: 18px; margin-bottom: 14px; }
+    .ws-lbl { font-family: var(--font-pixel); font-size: 10px; color: var(--text-dim); letter-spacing: 1px; margin-bottom: 6px; }
+    .ws-input { width: 100%; padding: 11px 14px; border-radius: 8px; border: 1px solid rgba(0,240,255,.25); background: rgba(0,0,0,.35); color: var(--text-main); font-size: 14px; outline: none; box-sizing: border-box; }
+    .ws-input:focus { border-color: var(--neon-cyan); }
+    textarea.ws-input { min-height: 84px; resize: vertical; font-family: 'Courier New', monospace; }
+    .ws-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-end; }
+    .ws-row .ws-field { flex: 1; min-width: 160px; }
+    .ws-out { margin-top: 12px; font-family: 'Courier New', monospace; font-size: 14px; color: var(--neon-green); background: rgba(57,255,20,.05); border: 1px solid rgba(57,255,20,.2); border-radius: 8px; padding: 12px; word-break: break-all; min-height: 40px; }
+    .ws-method { font-size: 11px; color: var(--neon-yellow); margin-top: 6px; }
+    .ws-note { font-size: 10px; color: rgba(138,138,160,.8); margin-top: 8px; line-height: 1.7; }
+    .ws-samples { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+    .ws-sample { font-size: 11px; color: var(--neon-purple); border: 1px solid rgba(185,103,255,.35); border-radius: 999px; padding: 3px 10px; cursor: pointer; background: rgba(185,103,255,.07); }
+    .ws-sample:hover { background: rgba(185,103,255,.18); }
+    .ws-copy { font-size: 11px; color: var(--neon-cyan); border: 1px solid rgba(0,240,255,.35); border-radius: 6px; padding: 4px 12px; cursor: pointer; background: transparent; margin-top: 8px; }
+    .ws-copy:hover { background: rgba(0,240,255,.1); }
+
+    .lobby-footer { position: relative; z-index: 1; text-align: center; padding: 20px 16px 30px; color: var(--text-dim); font-size: 12px; line-height: 2; }
+    .lobby-footer .pixel-line { font-family: var(--font-pixel); font-size: 9px; color: rgba(0,240,255,.5); }
+  </style>
+</head>
+<body>
+  <div id="arcade-nav"></div>
+
+  <div id="content" class="ws-wrap">
+    <div class="ws-hero">
+      <h1 class="ws-title" data-i18n="workshop.title">🔬 破译工坊</h1>
+      <p class="ws-sub" data-i18n="workshop.sub">全网独有的加密/破解二合一实验室——16 种经典算法现场加密，或粘贴密文一键自动破解</p>
+      <div style="margin-top:10px"><a class="btn" href="morse-listen.html" style="font-size:12px;padding:8px 16px" data-i18n="workshop.morseLink">👂 摩斯听音训练 →</a></div>
+    </div>
+
+    <div class="ws-tabs">
+      <button class="ws-tab on" id="ws-tab-enc" data-i18n="workshop.encTab">🧪 加密</button>
+      <button class="ws-tab" id="ws-tab-dec" data-i18n="workshop.decTab">🔓 自动破解</button>
+      <button class="ws-tab" id="ws-tab-modes">🧩 模式实验室</button>
+    </div>
+
+    <!-- 加密模式 -->
+    <div class="ws-panel on" id="ws-enc">
+      <div class="ws-box">
+        <div class="ws-lbl" data-i18n="workshop.plain">明文</div>
+        <textarea class="ws-input" id="ws-enc-plain" placeholder="ATTACK AT DAWN">ATTACK AT DAWN</textarea>
+      </div>
+      <div class="ws-box">
+        <div class="ws-row">
+          <div class="ws-field">
+            <div class="ws-lbl" data-i18n="workshop.algo">算法</div>
+            <select class="ws-input" id="ws-enc-algo"></select>
+          </div>
+          <div class="ws-field" id="ws-enc-keywrap">
+            <div class="ws-lbl" id="ws-enc-keylbl">密钥</div>
+            <input class="ws-input" id="ws-enc-key">
+          </div>
+        </div>
+        <div class="ws-samples" id="ws-enc-samples"></div>
+      </div>
+      <div class="ws-box">
+        <button class="btn accent" id="ws-enc-go" data-i18n="workshop.encGo">🔐 生成密文</button>
+        <button class="ws-copy" id="ws-enc-copy" data-i18n="workshop.copy">📋 复制</button>
+        <button class="ws-copy" id="ws-enc-share" data-i18n="share.letterBtn">📨 分享密信</button>
+        <button class="ws-copy" id="ws-enc-link" data-i18n="share.linkBtn">🔗 复制链接</button>
+        <div class="ws-out" id="ws-enc-out"></div>
+      </div>
+    </div>
+
+    <!-- 破解模式 -->
+    <div class="ws-panel" id="ws-dec">
+      <div class="ws-box">
+        <div class="ws-lbl" data-i18n="workshop.cipher">密文</div>
+        <textarea class="ws-input" id="ws-dec-in" data-i18n-attr="workshop.decPh|placeholder" placeholder="粘贴密文…"></textarea>
+        <div class="ws-samples" id="ws-dec-samples"></div>
+        <div class="ws-note" data-i18n="workshop.decNote">自动识别：凯撒 / 摩斯 / 培根 / 二进制 / 异或 / Base64 / 栅栏 / 维吉尼亚（常用密钥）</div>
+      </div>
+      <div class="ws-box">
+        <button class="btn green" id="ws-dec-go" data-i18n="workshop.decGo">🔓 一键破解</button>
+        <button class="ws-copy" id="ws-dec-copy" data-i18n="workshop.copy">📋 复制</button>
+        <div class="ws-method" id="ws-dec-method"></div>
+        <div class="ws-out" id="ws-dec-out"></div>
+      </div>
+      <div class="ws-box" style="border-color:rgba(255,230,0,.3)">
+        <div class="ws-lbl" data-i18n="workshop.eggTitle">🎯 彩蛋收集（全站寻宝）</div>
+        <div class="ws-note" data-i18n="workshop.eggNote">全站藏有 20 条密文彩蛋——破解后在下方输入答案单词，收集进度点亮。全部集齐解锁隐藏成就！</div>
+        <div class="ws-row" style="margin-top:10px">
+          <div class="ws-field">
+            <input class="ws-input" id="ws-egg-in" data-i18n-attr="workshop.eggPh|placeholder" placeholder="输入答案单词（如 ARCADE）">
+          </div>
+          <button class="btn yellow" id="ws-egg-go">🎯 提交</button>
+        </div>
+        <div class="ws-method" id="ws-egg-msg" style="color:var(--neon-yellow)"></div>
+        <div class="ws-progress" id="ws-egg-prog" style="margin-top:10px;font-size:12px;color:var(--text-dim)"></div>
+      </div>
+    </div>
+    <!-- 模式实验室（第五期：ECB vs CBC 可视化） -->
+    <div class="ws-panel" id="ws-modes">
+      <div class="ws-box">
+        <div class="ws-lbl">🧩 ECB 与 CBC：为什么「图案」会泄露秘密</div>
+        <div class="ws-note" data-i18n="workshop.modesNote">同一张图，两种分组工作模式：ECB 每块独立加密——相同明文块得到相同密文块，图案轮廓赫然可见；CBC 每块先与前一块密文混合再加密，一个比特的雪崩抹掉一切结构。（演示用玩具分组密码，教学示意非真实强度）</div>
+        <div style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:12px">
+          <div style="text-align:center"><canvas id="ml-plain" width="128" height="128" style="image-rendering:pixelated;border:1px solid rgba(255,255,255,.2);border-radius:8px"></canvas><div class="ws-note" data-i18n="workshop.modesPlain">明文图案</div></div>
+          <div style="text-align:center"><canvas id="ml-ecb" width="128" height="128" style="image-rendering:pixelated;border:1px solid rgba(255,45,149,.4);border-radius:8px"></canvas><div class="ws-note" style="color:var(--neon-pink)">ECB</div></div>
+          <div style="text-align:center"><canvas id="ml-cbc" width="128" height="128" style="image-rendering:pixelated;border:1px solid rgba(57,255,20,.4);border-radius:8px"></canvas><div class="ws-note" style="color:var(--neon-green)">CBC</div></div>
+        </div>
+        <button class="btn yellow" id="ml-rekey" style="margin-top:10px">🎲 更换密钥</button>
+      </div>
+    </div>
+  </div>
+
+  <footer class="lobby-footer">
+    <div class="pixel-line" data-i18n="home.footBrand">© 2026 破译游戏 · POYI.NET · 用游戏破译人类三千年加密解密史</div>
+    <div data-i18n="home.footNote">纪录仅存本地 · 不上传任何数据 · 史料整理自公开信息仅供学习</div>
+      <span class="egg-hint" data-egg="e11"><span class="egg-zh">🎯 第十一枚：本页页脚。5×5 方阵，密钥 ARCADE。</span><span class="egg-en">Workshop footer · Playfair key ARCADE</span></span>
+<!-- EGG:e11:ELUCUUCV -->
+  </footer>
+
+  <script src="assets/js/core/i18n.js"></script>
+  <script src="assets/js/core/i18n-dict.js"></script>
+  <script src="assets/js/core/i18n-ui.js"></script>
+  <script src="assets/js/core/storage.js"></script>
+  <script src="assets/js/workshop.js"></script>
+  <script src="assets/js/easter-eggs.js"></script>
+  <script src="assets/js/nav.js"></script>
+  <script>
+    if (window.Arcade && Arcade.i18n) {
+      Arcade.i18n.applyStatic();
+      document.title = (Arcade.i18n.getLang() === 'en' ? 'Cipher Workshop' : '破译工坊') + Arcade.i18n.t('app.titleSuffix');
+    }
+    var W = window.Workshop;
+    var isEn = window.Arcade && Arcade.i18n && Arcade.i18n.getLang() === 'en';
+
+    /* 算法下拉 */
+    var algoSel = document.getElementById('ws-enc-algo');
+    Object.keys(W.ALGOS).forEach(function (id) {
+      var opt = document.createElement('option');
+      opt.value = id;
+      opt.textContent = isEn ? (W.ALGOS[id].enName || W.ALGOS[id].name) : W.ALGOS[id].name;
+      algoSel.appendChild(opt);
+    });
+    function keyVisible(algoId) { return W.ALGOS[algoId].key !== 'none'; }
+    function syncKey() {
+      var a = W.ALGOS[algoSel.value];
+      var wrap = document.getElementById('ws-enc-keywrap');
+      var lbl = document.getElementById('ws-enc-keylbl');
+      var key = document.getElementById('ws-enc-key');
+      wrap.style.display = keyVisible(algoSel.value) ? '' : 'none';
+      lbl.textContent = isEn ? (a.keyEn || a.keyLabel || 'Key') : (a.keyLabel || '密钥');
+      if (!key.value) key.value = a.keyDefault;
+      renderSamples();
+    }
+    function renderSamples() {
+      var box = document.getElementById('ws-enc-samples');
+      var plain = document.getElementById('ws-enc-plain').value.trim() || 'HELLO';
+      var k = document.getElementById('ws-enc-key').value;
+      box.innerHTML = '';
+      ['HELLO', 'SECRET', 'ATTACK AT DAWN'].forEach(function (p) {
+        var b = document.createElement('span');
+        b.className = 'ws-sample';
+        b.textContent = p;
+        b.addEventListener('click', function () {
+          document.getElementById('ws-enc-plain').value = p;
+        });
+        box.appendChild(b);
+      });
+    }
+    algoSel.addEventListener('change', syncKey);
+    document.getElementById('ws-enc-plain').addEventListener('input', renderSamples);
+    document.getElementById('ws-enc-key').addEventListener('input', renderSamples);
+
+    /* 加密执行 */
+    document.getElementById('ws-enc-go').addEventListener('click', function () {
+      var plain = document.getElementById('ws-enc-plain').value;
+      var key = document.getElementById('ws-enc-key').value;
+      var out = W.enc(algoSel.value, plain, key);
+      document.getElementById('ws-enc-out').textContent = out || '—';
+    });
+    document.getElementById('ws-enc-copy').addEventListener('click', function () {
+      var t = document.getElementById('ws-enc-out').textContent;
+      if (t && navigator.clipboard) navigator.clipboard.writeText(t).then(function () {
+        if (Arcade.ui) Arcade.ui.toast(T('workshop.copied'));
+      });
+    });
+
+    /* 分享密信（B2）：算法+密钥+密文 → 可复制文本 */
+    document.getElementById('ws-enc-share').addEventListener('click', function () {
+      var out = document.getElementById('ws-enc-out').textContent;
+      if (!out || out === '—') {
+        if (Arcade.ui) Arcade.ui.toast(T('share.letterNoOut'), 'err');
+        return;
+      }
+      var a = W.ALGOS[algoSel.value];
+      var key = document.getElementById('ws-enc-key').value;
+      var lines = [
+        T('share.letterTitle'),
+        T('share.letterAlgo').replace('{a}', isEn ? a.name : a.name),
+        T('share.letterKey').replace('{k}', key || '—'),
+        T('share.letterCipher').replace('{c}', out),
+        T('share.letterFooter')
+      ];
+      var text = lines.join('\n');
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () {
+          if (Arcade.ui) Arcade.ui.toast(T('share.letterDone'), 'ok');
+        }).catch(function () { fallbackShare(text); });
+      } else { fallbackShare(text); }
+    });
+    function fallbackShare(text) {
+      if (window.prompt) {
+        var r = prompt(T('share.letterDone') + '\n\n', text);
+        if (r === null && Arcade.ui) Arcade.ui.toast(T('share.letterDone'), 'ok');
+      }
+    }
+
+    /* 分享链接（D7）：?c=<base64url([algoId, key, cipher])>，打开自动载入破解面板 */
+    function b64u(s) {
+      return btoa(unescape(encodeURIComponent(s))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+    }
+    function unb64u(s) {
+      var t = s.replace(/-/g, '+').replace(/_/g, '/');
+      while (t.length % 4) t += '=';
+      return decodeURIComponent(escape(atob(t)));
+    }
+    document.getElementById('ws-enc-link').addEventListener('click', function () {
+      var out = document.getElementById('ws-enc-out').textContent;
+      if (!out || out === '—') { if (Arcade.ui) Arcade.ui.toast(T('share.letterNoOut'), 'err'); return; }
+      var payload;
+      try { payload = JSON.stringify([algoSel.value, String(document.getElementById('ws-enc-key').value || ''), out]); } catch (e) { return; }
+      var url = location.origin + location.pathname + '?c=' + b64u(payload);
+      if (url.length > 1800) { if (Arcade.ui) Arcade.ui.toast(T('share.linkTooLong'), 'err'); return; }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(url).then(function () {
+          if (Arcade.ui) Arcade.ui.toast(T('share.linkDone'), 'ok');
+        }).catch(function () { fallbackShare(url); });
+      } else fallbackShare(url);
+    });
+    /* 载入分享密文：严格校验（算法必须存在 / 长度钳制），输入一律走 DOM 属性赋值防注入 */
+    (function loadShared() {
+      try {
+        var m = /[?&]c=([A-Za-z0-9\-_]+)/.exec(location.search || '');
+        if (!m) return;
+        var data = JSON.parse(unb64u(m[1]));
+        if (!Array.isArray(data) || data.length !== 3) throw new Error('shape');
+        var algoId = String(data[0]), key = String(data[1]).slice(0, 64), cipher = String(data[2]).slice(0, 2000);
+        if (!W.ALGOS[algoId] || !cipher) throw new Error('invalid');
+        algoSel.value = algoId;
+        if (algoSel.dispatchEvent) algoSel.dispatchEvent(new Event('change'));
+        document.getElementById('ws-enc-key').value = key;
+        document.getElementById('ws-dec-in').value = cipher;
+        if (Arcade.ui && Arcade.ui.toast) {
+          Arcade.ui.toast(T('share.loaded').replace('{a}', W.ALGOS[algoId].name).replace('{k}', key || '—'), 'ok');
+        }
+      } catch (e) {
+        if (Arcade.ui && Arcade.ui.toast) Arcade.ui.toast(T('share.linkBad'), 'err');
+      }
+    })();
+
+    /* 破解执行 */
+    document.getElementById('ws-dec-go').addEventListener('click', function () {
+      var ct = document.getElementById('ws-dec-in').value;
+      var r = W.autoCrack(ct);
+      document.getElementById('ws-dec-method').textContent = r.method || '';
+      document.getElementById('ws-dec-out').textContent = r.result || '';
+    });
+    document.getElementById('ws-dec-copy').addEventListener('click', function () {
+      var t = document.getElementById('ws-dec-out').textContent;
+      if (t && navigator.clipboard) navigator.clipboard.writeText(t).then(function () {
+        if (Arcade.ui) Arcade.ui.toast(T('workshop.copied'));
+      });
+    });
+
+    /* 破解示例（点击填入） */
+    var samples = [
+      { label: (isEn ? 'Caesar' : '凯撒'), ct: 'RUGHU WKH OHJLRQV' },
+      { label: (isEn ? 'Morse' : '摩斯'), ct: '... . -.-. .-. . -' },
+      { label: (isEn ? 'Bacon' : '培根'), ct: 'AAAAABAABBBAABBAAAAAAAABAABABA' },
+      { label: (isEn ? 'Binary' : '二进制'), ct: '01000011 01001111 01000100 01000101' },
+      { label: (isEn ? 'XOR' : '异或'), ct: '0a110d0a0612' },
+      { label: 'Base64', ct: 'U0VDUkVUIE1FU1NBR0U=' }
+    ];
+    var sbox = document.getElementById('ws-dec-samples');
+    samples.forEach(function (s) {
+      var b = document.createElement('span');
+      b.className = 'ws-sample';
+      b.textContent = s.label;
+      b.addEventListener('click', function () {
+        document.getElementById('ws-dec-in').value = s.ct;
+        var r = W.autoCrack(s.ct);
+        document.getElementById('ws-dec-method').textContent = r.method || '';
+        document.getElementById('ws-dec-out').textContent = r.result || '';
+      });
+      sbox.appendChild(b);
+    });
+
+    /* 标签切换 */
+    function switchTab(mode) {
+      var enc = document.getElementById('ws-enc'), dec = document.getElementById('ws-dec'), modes = document.getElementById('ws-modes');
+      ['enc', 'dec', 'modes'].forEach(function (m) {
+        document.getElementById('ws-tab-' + m).classList.toggle('on', m === mode);
+      });
+      enc.classList.toggle('on', mode === 'enc');
+      dec.classList.toggle('on', mode === 'dec');
+      modes.classList.toggle('on', mode === 'modes');
+    }
+    document.getElementById('ws-tab-enc').addEventListener('click', function () { switchTab('enc'); });
+    document.getElementById('ws-tab-dec').addEventListener('click', function () { switchTab('dec'); });
+    document.getElementById('ws-tab-modes').addEventListener('click', function () { switchTab('modes'); });
+
+    /* ================= 模式实验室（第五期：ECB vs CBC） =================
+       玩具分组密码 E(b) = S[b ^ k0] ^ k1（S 为固定随机置换、k 为密钥字节），
+       非真实强度，仅演示「块独立 vs 块链接」的结构性差异。 */
+    (function () {
+      var SIZE = 32, B = 128; /* 32×32 像素图 → 每像素 1 字节明文；canvas 4x 放大 */
+      var plain = new Uint8Array(SIZE * SIZE);
+      /* 明文图案：程序化「企鹅感」——大圆身体+白肚+双眼（灰度阶梯，块结构明显） */
+      function drawPlain() {
+        for (var y = 0; y < SIZE; y++) {
+          for (var x = 0; x < SIZE; x++) {
+            var v = 30;
+            var dx = x - 16, dy = y - 17;
+            if (dx * dx / 100 + dy * dy / 130 <= 1) v = 200;                 /* 身体 */
+            var bx = x - 16, by = y - 21;
+            if (bx * bx / 36 + by * by / 64 <= 1) v = 240;                    /* 白肚 */
+            if (y >= 10 && y <= 12 && x >= 9 && x <= 23) v = 30;              /* 头顶 */
+            var e1 = (x - 11), e2 = (x - 20);
+            if ((e1 * e1 + (y - 13) * (y - 13)) <= 3 || (e2 * e2 + (y - 13) * (y - 13)) <= 3) v = 255; /* 双眼 */
+            if ((x - 16) * (x - 16) + (y - 16) * (y - 16) <= 1.5) v = 120;    /* 喙 */
+            plain[y * SIZE + x] = v;
+          }
+        }
+      }
+      function makeS() {
+        var s = new Uint8Array(256);
+        for (var i = 0; i < 256; i++) s[i] = i;
+        for (i = 255; i > 0; i--) { var j = Math.floor(Math.random() * (i + 1)); var t = s[i]; s[i] = s[j]; s[j] = t; }
+        return s;
+      }
+      var S = makeS(), K0 = 0, K1 = 0;
+      function toyE(b, prev) { return S[(b ^ prev ^ K0) & 255] ^ K1; }
+
+      function paint(ctxId, data) {
+        var c = document.getElementById(ctxId);
+        var ctx = c.getContext('2d');
+        var img = ctx.createImageData(SIZE, SIZE);
+        for (var i = 0; i < data.length; i++) {
+          img.data[i * 4] = data[i]; img.data[i * 4 + 1] = data[i]; img.data[i * 4 + 2] = data[i]; img.data[i * 4 + 3] = 255;
+        }
+        ctx.putImageData(img, 0, 0);
+      }
+
+      function renderModes() {
+        drawPlain();
+        paint('ml-plain', plain);
+        /* ECB：逐字节独立（同明文→同密文） */
+        var ecb = new Uint8Array(SIZE * SIZE);
+        for (var i = 0; i < plain.length; i++) ecb[i] = toyE(plain[i], 0);
+        paint('ml-ecb', ecb);
+        /* CBC：字节链 prev=密文前值（IV 起始），雪崩抹平图案 */
+        var cbc = new Uint8Array(SIZE * SIZE);
+        var prev = K1;
+        for (i = 0; i < plain.length; i++) { prev = toyE(plain[i], prev); cbc[i] = prev; }
+        paint('ml-cbc', cbc);
+      }
+      document.getElementById('ml-rekey').addEventListener('click', function () {
+        S = makeS(); K0 = Math.floor(Math.random() * 256); K1 = Math.floor(Math.random() * 256);
+        renderModes();
+        if (Arcade.audio) Arcade.audio.play('ui');
+      });
+      renderModes();
+    })();
+    document.getElementById('ws-tab-enc').addEventListener('click', function () { switchTab('enc'); });
+    document.getElementById('ws-tab-dec').addEventListener('click', function () { switchTab('dec'); });
+
+    /* 彩蛋收集（N3） */
+    var eggs = window.EASTER_EGGS;
+    function eggProgress() {
+      var prog = document.getElementById('ws-egg-prog');
+      if (!prog || !eggs) return;
+      var found = eggs.count();
+      var stars = '';
+      for (var i = 0; i < eggs.EGGS.length; i++) stars += (i < found ? '⭐' : '☆');
+      prog.textContent = (isEn ? 'Collected ' : '已收集 ') + found + '/' + eggs.EGGS.length + '  ' + stars;
+    }
+    var eggGo = document.getElementById('ws-egg-go');
+    if (eggGo && eggs) {
+      eggGo.addEventListener('click', function () {
+        var inp = document.getElementById('ws-egg-in');
+        var msg = document.getElementById('ws-egg-msg');
+        var r = eggs.submit(inp.value);
+        if (r.ok) {
+          var eh = eggs.hintText(r.id);
+          msg.textContent = (r.isNew
+            ? (isEn ? '🎉 New egg collected! (' + eh + ')' : '🎉 新彩蛋收集成功！（' + r.hint + '）')
+            : (isEn ? '✓ Already collected (' + eh + ')' : '✓ 已收集过（' + r.hint + '）'));
+          if (r.isNew && Arcade.audio) Arcade.audio.play('record');
+          if (r.isNew && r.found >= r.total && Arcade.ui) Arcade.ui.toast(isEn ? '🏆 Code Hunter unlocked!' : '🏆 解锁成就「密码猎人」！', 'win');
+          inp.value = '';
+        } else {
+          msg.textContent = isEn ? '✗ No egg matches — try the hint below the footer line' : '✗ 没有匹配的彩蛋——再试试页脚的线索';
+          if (Arcade.audio) Arcade.audio.play('error');
+        }
+        eggProgress();
+      });
+    }
+    eggProgress();
+
+    syncKey();
+  </script>
+  <script src="assets/js/pwa.js"></script>
+</body>
+</html>

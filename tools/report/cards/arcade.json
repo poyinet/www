@@ -1,0 +1,195 @@
+[
+  {
+    "id": "snake",
+    "score": 8.5,
+    "verdict": "PASS",
+    "playable": true,
+    "issues": [
+      {
+        "severity": "P3",
+        "area": "胜利展示",
+        "description": "冲刺 60s 模式通关后 endGame(true) 里用 document.querySelector('.ov-title') 改标题，但实际标题元素类名是 .snake-overlay-title，选择器永远落空，冲刺胜利仍显示「游戏结束」。应改为查询 .snake-overlay-title 或给该元素补 ov-title 类。"
+      },
+      {
+        "severity": "P3",
+        "area": "HUD 可见性",
+        "description": "冲刺倒计时写进位于菜单容器内、开局后 hidden 的 #msg 元素，玩家游玩时永远看不到剩余秒数。建议把倒计时渲染到 game-stats 的可见区。"
+      }
+    ],
+    "notes": "整体扎实：4 模式×3 难度、防 180° 掉头、吃豆粒子特效、DPad+滑动双触控，结算路径完整（endGame 必调 submitScore）。存疑点：障碍模式食物可能生成在障碍围成的封闭区域而不可达，导致分数停滞（非硬锁，玩家仍可撞墙结束）；键盘绑定一次、无定时器泄漏，GAME_RESTART 复用现有循环。"
+  },
+  {
+    "id": "g2048",
+    "score": 8.5,
+    "verdict": "PASS",
+    "playable": true,
+    "issues": [
+      {
+        "severity": "P3",
+        "area": "结算路径",
+        "description": "只有棋盘死局才提交成绩，达成 2048 后继续冲分是主流玩法无碍；但若玩家合成 2048 后直接离开页面，成绩不会记录。可考虑在合成 2048 时先提交一次（或记 best 于死局时），属旗舰打磨建议。"
+      }
+    ],
+    "notes": "标准 2048 实现质量高：单行压缩合并、四向读写复用、新块/合并动画、撤销栈（U 键+按钮）均正确；合成 2048 有绿字提示可继续。触屏滑动 + 键盘齐备，棋盘 min(400px,92vw) 随容器缩放，320px 无溢出。无监听器重复绑定，GAME_RESTART=init 干净。"
+  },
+  {
+    "id": "blocks",
+    "score": 7.0,
+    "verdict": "MED",
+    "playable": true,
+    "issues": [
+      {
+        "severity": "P1",
+        "area": "竞速模式按钮崩溃",
+        "description": "sprintLabel 变量先在第 83 行被赋值，随后第 103 行 `var sprintLabel = null` 将其覆盖为 null（同函数作用域）。点击「竞速 40 行」按钮时 handler 第 93 行 `sprintLabel.style.display` 抛 TypeError，init()/resume 不再执行：按钮文字被切换、sprintMode 状态被污染（旧棋盘+页面加载时的计时器），倒计时标签也永不更新（update 中 `if (sprintMode && sprintLabel)` 恒 false）。修复：删除第 103 行的 `sprintLabel = null` 或改在声明时初始化 DOM 查询。"
+      }
+    ],
+    "notes": "主玩法（经典堆叠/HOLD/NEXT/ghost 预览/消行动画/升级加速）实现完整且手感良好，触屏 6 键行 flex-wrap 在 320px 正常换行；教程与控件一致（←→/↑/↓/空格/C，触屏按钮行）。扣分主因：竞速按钮点击即抛错、该功能完全不可用；HOLD/NEXT 标签为硬编码英文（双语界面下均显示英文，属轻微展示瑕疵）。"
+  },
+  {
+    "id": "match3",
+    "score": 7.0,
+    "verdict": "MED",
+    "playable": true,
+    "issues": [
+      {
+        "severity": "P1",
+        "area": "移动端点选失效",
+        "description": "每个格子同时绑定了 touchstart/touchend（passive，不 preventDefault）和 click。触屏上点一下会触发两次处理：touchend 里把小位移当作点击手动调 onCellClick 选中该格，随后浏览器合成的 click 事件再次触发 onCellClick，因 i===selected 又立刻取消选中。结果移动端「点选→点相邻交换」流程永远无法完成（每次点选都选中又取消），只能靠滑动交换。修复：touchend 手动点击分支里 e.preventDefault() 抑制合成 click，或去掉手动点击分支只保留 click（移动端 click 本就会触发）。"
+      }
+    ],
+    "notes": "棋盘生成保证无初始三连且有可行步、死局自动重洗、级联倍率与 gen 局数守卫防旧定时器污染，均为亮点；30 步封顶结算调 submitScore。扣分主因：移动端点选被双击处理破坏，教程教的「点选交换」在手机上不可用（滑动交换仍可用）。格子 98vw 约 37px 触控目标达标。"
+  },
+  {
+    "id": "fruitmerge",
+    "score": 8.5,
+    "verdict": "PASS",
+    "playable": true,
+    "issues": [
+      {
+        "severity": "P3",
+        "area": "音效键缺失",
+        "description": "merge() 调用 Arcade.audio.play('merge')，但音频库（LIB）没有 'merge' 键，合成时实际静音（合并反馈仅靠 juice.clear 的 clear 音）。应改用 'match'/'clear' 或补 'merge' 音效键。"
+      },
+      {
+        "severity": "P3",
+        "area": "提示文案竞态",
+        "description": "合成西瓜后的 1.2s setTimeout 只判 !over 不判局数：重开（setup）后若旧定时器未到期，会把重开后的帮助文案覆盖成「继续合成冲击更高！」。建议像 match3 一样用局数标记守卫。"
+      }
+    ],
+    "notes": "合成物理（重力/碰撞/合并动量/越顶判定）与瞄准交互完整，触摸点按即投+拖拽瞄准，canvas 96vw 自适应；得分=最大等级×10+合成次数，越顶时必调 submitScore。小瑕疵不影响游玩；无监听器重复绑定，GAME_RESTART 干净。"
+  },
+  {
+    "id": "mazedot",
+    "score": 7.0,
+    "verdict": "MED",
+    "playable": true,
+    "issues": [
+      {
+        "severity": "P2",
+        "area": "版权视觉与标题",
+        "description": "游戏标题直接用「吃豆人」（PAC-MAN 的中文名），canvas 绘制的黄色带嘴圆弧主角与圆顶+波浪裙边+双眼的幽灵造型与 PAC-MAN 标志性角色高度相似，属高风险模仿。建议改名（如「迷宫豆」）并给主角/幽灵做差异化造型（改形状、配色、去裙边），避免商标/形象侵权。"
+      },
+      {
+        "severity": "P3",
+        "area": "高关难度失衡",
+        "description": "幽灵速度 = 2.6 + 等级×0.25，第 4 关起（3.6~4.05）已超过玩家 3.4 的恒定速度，第 5 关还有 5 只幽灵且镜像鬼更快，只能靠大力丸硬吃，容错极低。建议封顶幽灵速度或随等级小幅提升玩家速度。"
+      }
+    ],
+    "notes": "玩法与结算完整：5 关制、清豆通关调 submitScore，大力丸/连吃倍率/镜像鬼等细节到位，DPad 触控目标 54px 达标。扣分主因是吃豆人形象/标题的版权暴露；另外触屏端无暂停按钮（仅 P 键），高关难度偏硬。"
+  },
+  {
+    "id": "pixeldino",
+    "score": 8.5,
+    "verdict": "PASS",
+    "playable": true,
+    "issues": [
+      {
+        "severity": "P3",
+        "area": "障碍生成公平性",
+        "description": "每帧 1.8% 概率独立生成障碍，无最小间距约束，高速时可能连续刷出无法同时规避的障碍组合（单跳/二段跳都难救）。建议加最小间隔（如 40 帧）或保证相邻障碍间隔大于一次跳跃落地时间。"
+      }
+    ],
+    "notes": "恐龙为青色方块+腿/尾的抽象造型、仙人掌为纯色矩形，未复刻 Chrome 恐龙剪影，版权风险低（玩法同款但视觉差异化，可存疑留意）；跳跃/二段跳、pointerdown 触屏点按、速度递增都正常，撞障碍即结算并调 submitScore。触屏无暂停按钮（仅 P 键），属小瑕疵。"
+  },
+  {
+    "id": "frogcross",
+    "score": 8.5,
+    "verdict": "PASS",
+    "playable": true,
+    "issues": [
+      {
+        "severity": "P3",
+        "area": "触屏暂停缺失",
+        "description": "暂停仅绑 P 键（桌面），触屏玩家无法暂停；死亡/重开虽可用，但实时类游戏建议补一个暂停按钮或点按画布暂停。"
+      }
+    ],
+    "notes": "过河逻辑完整：车道撞车、浮木漂流判定、抵达顶部即胜并 submitScore(秒数)，页面 data-best-mode=\"min\" 与教程「用时越少越好」一致，计时/死亡计数 HUD 正常。青蛙为绿色圆点造型，无 Frogger 形象侵权。DPad 触控 54px 达标；无监听器重复绑定，GAME_RESTART 干净。"
+  },
+  {
+    "id": "brickbash",
+    "score": 8.5,
+    "verdict": "PASS",
+    "playable": true,
+    "issues": [
+      {
+        "severity": "P3",
+        "area": "触屏暂停缺失",
+        "description": "暂停仅 P 键；触屏玩家在球运行中无法暂停（拖动挡板仍是主流操作，影响不大，属打磨建议）。"
+      }
+    ],
+    "notes": "实现完整：挡板按击中位置变反弹角、砖块 AABB 最小穿透轴反弹、清屏进下一关提速、3 命结束调 submitScore 并显示新纪录提示；pointermove/pointerdown 拖动+发球在触屏可用，canvas min(400px,92vw) 自适应。无 setInterval、监听器单次绑定，GAME_RESTART=init 干净。"
+  },
+  {
+    "id": "asteroidf",
+    "score": 7.0,
+    "verdict": "MED",
+    "playable": true,
+    "issues": [
+      {
+        "severity": "P1",
+        "area": "移动端 DPad 方向键粘连",
+        "description": "触屏 DPad 回调把 left/right 直接置 keys.left/keys.right=true，但没有任何释放路径（桌面靠 keyup，触屏 click 型 DPad 无 keyup）：点一下左键飞船就永远左转，直到再点右键互相抵消，方向完全失控。修复：DPad 改用 pointerdown/pointerup 成对置位（参考 tank 的 tk-dpad 写法），或回调里用 setTimeout 短时脉冲（与 thrust 相同策略）。"
+      }
+    ],
+    "notes": "桌面端玩法完整：转向/推进/射击、惯性漂移、大行星分裂、清空小行星即胜并 submitScore（坠毁也结算），三难度切换正常。扣分主因：移动端方向键粘连导致飞船不可控，实质不可操作；触屏也无暂停按钮。横版画布 96vw 缩放可用但偏小，未见横屏适配（可作存疑点）。"
+  },
+  {
+    "id": "ballpop",
+    "score": 8.5,
+    "verdict": "PASS",
+    "playable": true,
+    "issues": [
+      {
+        "severity": "P3",
+        "area": "内容准确性",
+        "description": "index.html 的 description/OG 文案宣称「倒退/爆炸球」，但代码只实现了 15% 倒退球，没有爆炸球；教程文案（tut1-4）未提爆炸球故内部一致。建议删掉「爆炸球」表述或补实现，避免宣传与玩法不符。"
+      },
+      {
+        "severity": "P3",
+        "area": "重启入口",
+        "description": "游戏区内没有重启按钮（仅依赖 shell 顶栏），难度切换会直接开新局；建议加一个明确的重新开始控件。"
+      }
+    ],
+    "notes": "球链消除旗舰实现干净：路径取点/插入消解核心纯函数化（ZUMA-CORE 可测）、级联连击、倒退球、三难度递进、3 关清空即胜调 submitScore（进洞败北也结算）；点按发射在触屏可用，canvas 98vw 自适应。GAME_RESTART 先 stop 旧 loop 再 start 新 loop，无 rAF/监听器泄漏。"
+  },
+  {
+    "id": "tank",
+    "score": 8.5,
+    "verdict": "PASS",
+    "playable": true,
+    "issues": [
+      {
+        "severity": "P2",
+        "area": "教程与实现不一致",
+        "description": "教程 tut3 称「摧毁敌人后可能掉落：⭐🛡⏲🔧」，但代码只在波次切换时 T_genItem 生成道具（击杀不掉落）。建议改教程文案为「波次间隙掉落」或在击杀时真正加入掉落逻辑。"
+      },
+      {
+        "severity": "P3",
+        "area": "败北不记分",
+        "description": "endGame(false)（基地被炸/生命用尽）不调 submitScore，只有胜利才记录；与站内其他游戏「结算即提交」的模式不一致，玩家败北时成绩（含击杀分）不保留。建议败北也提交一次。"
+      }
+    ],
+    "notes": "旗舰级完成度：程序生成地图（mulberry32 种子）、格点平滑移动/转向对齐、敌坦 AI 寻路+开火、砖消/钢挡/穿墙、四道具、波次推进与胜利结算（submitScore），核心用 TANK-CORE 标记便于 Node 提取。触屏 DPad 用 pointerdown/up/leave 成对释放（方向可控，正例），canvas min(416px,92vw) 自适应；难度选择页交互完整。唯一 P2 是教程道具掉落描述与实现不符。"
+  }
+]

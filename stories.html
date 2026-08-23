@@ -1,0 +1,236 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="破译游戏">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <title>破译编年史 · 用游戏破译人类三千年加密解密史</title>
+  <meta name="description" content="破译 DECODE ARCADE · 破译编年史：从罗塞塔石碑到 VENONA，密码学三千年的智识战争。12 章真实历史故事 + 人物志 + 密件收藏册。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://poyi.net/stories.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="破译游戏 DECODE ARCADE">
+  <meta property="og:title" content="破译编年史 · 用游戏破译人类三千年加密解密史">
+  <meta property="og:description" content="从罗塞塔石碑到 VENONA，12 章真实密码学历史故事：读史、玩戏、破链、收藏。">
+  <meta property="og:locale" content="zh_CN">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta property="og:url" content="https://poyi.net/stories.html">
+  <meta property="og:image" content="https://poyi.net/assets/og-image.png">
+  <meta name="twitter:title" content="破译编年史 · 用游戏破译人类三千年加密解密史">
+  <meta name="twitter:description" content="从罗塞塔石碑到 VENONA，12 章真实密码学历史故事：读史、玩戏、破链、收藏。">
+  <meta name="twitter:image" content="https://poyi.net/assets/og-image.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "破译编年史 · 用游戏破译人类三千年加密解密史",
+    "url": "https://poyi.net/stories.html",
+    "isPartOf": { "@type": "WebSite", "name": "破译游戏 DECODE ARCADE", "url": "https://poyi.net/" },
+    "inLanguage": "zh-CN",
+    "about": "密码学三千年编年史",
+    "description": "从罗塞塔石碑到 VENONA，12 章真实密码学历史故事：读史、玩戏、破链、收藏。"
+  }
+  </script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📜</text></svg>">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="assets/css/theme.css">
+  <style>
+    .st-wrap { max-width: 920px; margin: 0 auto; padding: 8px 16px 60px; position: relative; z-index: 1; }
+    .st-hero { text-align: center; padding: 26px 16px 8px; }
+    .st-title { font-family: var(--font-pixel); font-size: 22px; letter-spacing: 3px; color: var(--neon-cyan); text-shadow: 0 0 10px rgba(0,240,255,.7), 0 0 30px rgba(0,240,255,.3); }
+    .st-sub { margin-top: 10px; color: var(--text-dim); font-size: 13px; line-height: 1.8; }
+    .st-back { display: inline-block; margin: 14px 0 4px; font-family: var(--font-pixel); font-size: 11px; color: var(--neon-purple); text-decoration: none; border: 1px solid rgba(185,103,255,.4); padding: 8px 16px; border-radius: 8px; background: rgba(185,103,255,.07); }
+    .st-back:hover { background: rgba(185,103,255,.16); }
+
+    /* 进度条 */
+    .st-progress { margin: 14px auto 4px; max-width: 520px; }
+    .st-progress .st-plbl { font-size: 11px; color: var(--text-dim); margin-bottom: 6px; letter-spacing: 1px; }
+    .st-progress .st-prow { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* 时间轴视图：章节主节点（大卡）与历史事件（紧凑行）按时间交织 */
+    .st-timeline { border-left: 2px solid rgba(0,240,255,.25); margin: 8px 0 0 10px; padding-left: 22px; }
+    .st-chapter { position: relative; padding: 14px 16px; margin: 12px 0; border-radius: 10px; background: rgba(0,0,0,.28); border: 1px solid rgba(255,255,255,.08); text-decoration: none; display: block; color: var(--text-main); transition: border-color .15s, box-shadow .15s; }
+    .st-chapter:hover { border-color: rgba(0,240,255,.55); box-shadow: 0 0 14px rgba(0,240,255,.12); }
+    .st-chapter::before { content: ''; position: absolute; left: -29px; top: 20px; width: 12px; height: 12px; border-radius: 50%; background: var(--neon-cyan); box-shadow: 0 0 8px rgba(0,240,255,.7); }
+    .st-chapter.locked::before { background: #444; box-shadow: none; }
+    .st-chapter .st-era { font-family: var(--font-pixel); font-size: 10px; color: var(--neon-yellow); letter-spacing: 1px; }
+    .st-chapter .st-name { font-size: 15px; font-weight: 700; margin: 4px 0; }
+    .st-chapter .st-one { font-size: 12px; color: var(--text-dim); line-height: 1.6; }
+    .st-chapter .st-meta { margin-top: 8px; font-size: 11px; color: var(--text-dim); display: flex; gap: 12px; flex-wrap: wrap; }
+    .st-chapter .st-meta .ok { color: var(--neon-green); }
+    .st-chapter .st-meta .lk { color: var(--neon-yellow); }
+
+    /* 历史事件次节点：紧凑行，穿插在章节之间 */
+    .st-ev { position: relative; display: flex; align-items: baseline; gap: 10px; padding: 4px 0 4px 2px; }
+    .st-ev::before { content: ''; position: absolute; left: -28px; top: 11px; width: 8px; height: 8px; border-radius: 50%; background: var(--bg-deep); border: 2px solid rgba(185,103,255,.5); }
+    .st-ev a { text-decoration: none; }
+    .st-ev-year { font-family: var(--font-pixel); font-size: 9px; color: var(--neon-pink); letter-spacing: 1px; min-width: 52px; text-align: right; flex-shrink: 0; }
+    .st-ev-ic { font-size: 13px; width: 18px; text-align: center; flex-shrink: 0; }
+    .st-ev-tx { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+    .st-ev a .st-ev-tx { color: var(--text-main); }
+    .st-ev a:hover .st-ev-tx { color: var(--neon-cyan); }
+    .st-ev a:hover::before { background: var(--neon-purple); box-shadow: 0 0 8px rgba(185,103,255,.6); }
+
+    @media (max-width: 480px) {
+      .st-title { font-size: 17px; }
+    }
+    .lobby-footer { position: relative; z-index: 1; text-align: center; padding: 20px 16px 30px; color: var(--text-dim); font-size: 12px; line-height: 2; }
+    .lobby-footer .pixel-line { font-family: var(--font-pixel); font-size: 9px; color: rgba(0,240,255,.5); }
+  </style>
+</head>
+<body>
+  <div id="arcade-nav"></div>
+  <div id="content" class="st-wrap">
+    <div class="st-hero">
+      <h1 class="st-title" data-i18n="st.title">破译编年史</h1>
+      <div class="st-sub" id="st-hero-sub"></div>
+      <div class="st-progress">
+        <div class="st-plbl" id="st-progress-lbl"></div>
+        <div class="st-prow" id="st-progress"></div>
+      </div>
+      <div style="margin-top:12px;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+        <a class="btn" href="map.html" style="font-size:12px;padding:8px 16px">🗺️ 密码学世界地图 →</a>
+        <a class="btn" href="machine.html" style="font-size:12px;padding:8px 16px">🏛️ 密码机博物馆 →</a>
+      </div>
+    </div>
+
+    <div class="st-timeline" id="st-timeline"></div>
+  </div>
+
+  <footer class="lobby-footer">
+    <div class="pixel-line" data-i18n="home.footBrand">© 2026 破译游戏 · POYI.NET · 用游戏破译人类三千年加密解密史</div>
+    <div data-i18n="home.footNote">纪录仅存本地 · 不上传任何数据 · 史料整理自公开信息仅供学习</div>
+      <span class="egg-hint" data-egg="e03"><span class="egg-zh">🎯 第三枚：本页页脚。A 与 B 的 5 位密码，培根之书。</span><span class="egg-en">Chronicles footer · Bacon cipher</span></span>
+<!-- EGG:e03:BAABABAABBABBBABAAABBBAAA -->
+      <span class="egg-hint" data-egg="e17"><span class="egg-zh">🎯 第十七枚：编年史时间线 · Bifid，密钥 SPARTA。</span><span class="egg-en">Chronicles timeline · Bifid key SPARTA</span></span>
+<!-- EGG:e17:PVABEXY -->
+  </footer>
+
+  <script src="assets/js/core/i18n.js"></script>
+  <script src="assets/js/core/i18n-dict.js"></script>
+  <script src="assets/js/core/i18n-ui.js"></script>
+  <script src="assets/js/core/i18n-story.js"></script>
+  <script src="assets/js/core/storage.js"></script>
+  <script src="assets/js/core/extras.js"></script>
+  <script src="assets/js/core/music.js"></script>
+  <script src="assets/js/games.js"></script>
+  <script src="assets/js/stories.js"></script>
+  <script src="assets/js/timeline.js"></script>
+  <script src="assets/js/rank.js"></script>
+  <script src="assets/js/nav.js"></script>
+  <script>
+
+    if (window.Arcade && Arcade.i18n) {
+      Arcade.i18n.applyStatic();
+      document.title = T('st.pageTitle') + Arcade.i18n.t('app.titleSuffix');
+      var d = document.querySelector('meta[name="description"]');
+      if (d) d.setAttribute('content', Arcade.i18n.t('st.pageDesc'));
+    }
+    var stories = window.Arcade && Arcade.stories ? Arcade.stories : null;
+    if (!stories) document.getElementById('st-timeline').textContent = 'stories 模块未加载';
+
+    /* 进度 */
+    document.getElementById('st-hero-sub').textContent = T('st.heroSub');
+    var readN = stories.readCount(), totalN = stories.getAll().length, letterN = stories.letterTotal();
+    var letters = stories.letterCount(), arts = stories.artifactsCount();
+    document.getElementById('st-progress-lbl').textContent =
+      T('st.progressF').replace('{r}', readN).replace('{t}', totalN);
+    var prog = document.getElementById('st-progress');
+    [['📖', readN + '/' + totalN, 'st.progRead'], ['🔑', letters + '/' + letterN, 'st.progLetters'], ['📎', arts + '/' + window.ARTIFACTS.length, 'st.progArts']].forEach(function (it) {
+      var el = document.createElement('span');
+      el.style.cssText = 'font-family:var(--font-pixel);font-size:11px;color:var(--neon-cyan)';
+      el.textContent = it[0] + ' ' + it[1] + ' ' + T(it[2]);
+      prog.appendChild(el);
+    });
+
+    /* 时间轴：章节主节点 + 历史事件次节点，按年份交织成一条时间线 */
+    var tl = document.getElementById('st-timeline');
+    var isEn = window.Arcade && Arcade.i18n && Arcade.i18n.getLang() === 'en';
+
+    /* 章节 → 代表年份（用于排序定位） */
+    var CH_YEAR = {
+      dawn: -196, caesar: -50, arab: 850, bacon: 1623, ww1: 1914,
+      bletchley: 1939, midway: 1942, purple: 1941, lorenz: 1943, venona: 1943, modern: 1948,
+      quantum: 2024
+    };
+    /* 时间线中与章节重复的 story 节点 id（章节已由主节点呈现，次节点跳过） */
+    var DUP_STORY = { dawn: 1, caesar: 1, arab: 1, bacon: 1, ww1: 1, bletchley: 1, midway: 1, purple: 1, lorenz: 1, venona: 1, modern: 1, quantum: 1 };
+
+    function chapterYear(ch) { return CH_YEAR[ch.id] !== undefined ? CH_YEAR[ch.id] : 1900; }
+
+    /* 组装节点列表：{ kind:'ch'|'ev', y, ... } */
+    var nodes = [];
+    stories.getAll().forEach(function (ch) {
+      nodes.push({ kind: 'ch', y: chapterYear(ch), ch: ch });
+    });
+    var evSeen = {};
+    (window.CRYPTO_TIMELINE || []).forEach(function (it) {
+      if (it.link && it.link.type === 'story' && DUP_STORY[it.link.id]) return; // 章节重复节点跳过
+      nodes.push({ kind: 'ev', y: it.y, ev: it });
+    });
+    /* 按年份排序（同年章节优先） */
+    nodes.sort(function (a, b) { return a.y - b.y || (a.kind === 'ch' ? -1 : 1); });
+
+    nodes.forEach(function (n) {
+      if (n.kind === 'ch') {
+        var ch = n.ch;
+        var read = stories.isRead(ch.id);
+        var a = document.createElement('a');
+        a.className = 'st-chapter' + (read ? '' : ' locked');
+        a.href = 'story.html?id=' + ch.id;
+        var gamesCount = ch.games.length;
+        a.innerHTML = '<span class="st-era">' + T(ch.era) + '</span>' +
+          '<div class="st-name">' + T(ch.titleKey) + '</div>' +
+          '<div class="st-one">' + T(ch.titleKey + '.one') + '</div>' +
+          '<div class="st-meta">' +
+          '<span>' + T('st.gamesCount').replace('{n}', gamesCount) + '</span>' +
+          '<span class="' + (read ? 'ok' : 'lk') + '">' + (read ? '✓ ' + T('st.read') : T('st.unread')) + '</span>' +
+          (stories.letters().indexOf(ch.id) >= 0 ? '<span class="ok">🔑 ' + T('st.letterGot') + '</span>' : '') +
+          '</div>';
+        tl.appendChild(a);
+      } else {
+        var it = n.ev;
+        var label = isEn ? it.en : it.zh;
+        var pre = window.__arcadePagePrefix || '';
+        var href = null;
+        if (it.link) {
+          if (it.link.type === 'story') href = pre + 'story.html?id=' + it.link.id;
+          else if (it.link.type === 'game') href = pre + 'games/' + it.link.id + '/index.html';
+          else if (it.link.type === 'people') href = pre + 'people.html';
+          else if (it.link.type === 'artifact') href = pre + 'artifacts.html';
+          else if (it.link.type === 'page') href = pre + it.link.id + '.html';
+          else if (it.link.type === 'term') href = pre + 'glossary.html';
+        }
+        var div = document.createElement(href ? 'a' : 'div');
+        div.className = 'st-ev';
+        if (href) div.href = href;
+        var yearTxt = it.y < 0 ? 'BC ' + (-it.y) : it.y;
+        div.innerHTML = '<span class="st-ev-year">' + yearTxt + '</span>' +
+          '<span class="st-ev-ic">' + it.icon + '</span>' +
+          '<span class="st-ev-tx">' + label + '</span>';
+        tl.appendChild(div);
+      }
+    });
+
+    /* 人物志与密件册已拆分为独立页面（people.html / artifacts.html），经全局导航访问 */
+  </script>
+  <script>
+    /* 编年史背景音乐：破译主题曲 */
+    if (window.Arcade && Arcade.music && Arcade.settings) {
+      Arcade.music.setEnabled(Arcade.settings.get().music !== false);
+      Arcade.music.play('cipher');
+    }
+  </script>
+  <script src="assets/js/pwa.js"></script>
+</body>
+</html>

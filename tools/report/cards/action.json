@@ -1,0 +1,191 @@
+[
+  {
+    "id": "pixelbird",
+    "score": 8.5,
+    "verdict": "PASS",
+    "playable": true,
+    "issues": [
+      {
+        "severity": "P3",
+        "area": "内容原创性",
+        "description": "玩法是 Flappy Bird 式一碰即死飞行，但视觉完全原创（🐤 emoji + 霓虹描边管道），无商标/角色造型侵权风险；仅提示玩法同质化，可作为后续差异化卖点的方向。"
+      }
+    ],
+    "notes": "循环/监听器只在页面加载时绑定一次，GAME_RESTART=init 纯状态重置，无重复绑定与残留计时器；结算路径完整（坠地→settle→submitScore）。教程、HUD、帮助文案全部走 T()，中英对称，无中文泄漏。存疑点：idle 态点击立即起飞无 3-2-1 预备，对新手稍突然，但符合品类惯例。"
+  },
+  {
+    "id": "catch",
+    "score": 8.5,
+    "verdict": "PASS",
+    "playable": true,
+    "issues": [
+      {
+        "severity": "P3",
+        "area": "i18n 展示层",
+        "description": "HUD 难度值用硬编码 'Lv.' + level（zh 模式显示「难度 Lv.1」），与其它全部走 T() 的文案不一致；建议改为 T('gs.catch.lvFmt') 之类的键。"
+      }
+    ],
+    "notes": "漏接不惩罚、3 条命扣完必结算并 submitScore；pointerdown/pointermove 拖动篮子与 ←→ 键双输入，教程描述与实现一致。canvas 随 92vw 缩放无溢出。存疑点：速度/密度每 15 秒无限递档且炸弹权重 15%，长局几乎必死，属设计取向而非缺陷。"
+  },
+  {
+    "id": "reaction",
+    "score": 8.5,
+    "verdict": "PASS",
+    "playable": true,
+    "issues": [],
+    "notes": "5 轮取平均后 submitScore（data-best-mode=min 与 storage 的 min 语义一致），抢跑重开逻辑用 clearTimeout 正确回收旧计时器，GAME_RESTART=reset+startRound 无重复绑定。面板整块是触控目标（min 280px 高），移动端体验好。存疑点：评级阈值（<200 神级等）为硬编码与教程一致，无问题。"
+  },
+  {
+    "id": "platformer",
+    "score": 8.0,
+    "verdict": "MINOR",
+    "playable": true,
+    "issues": [
+      {
+        "severity": "P2",
+        "area": "输入健壮性",
+        "description": "按一次 Enter（onKeys 的 action 映射包含 Enter）起跳后，window keyup 只清除 ArrowUp/Space/KeyW 而漏掉 Enter，keys.jump 永久为 true，落地即自动连跳。建议 keyup 一并清除 Enter，或 action 改为瞬时触发。"
+      },
+      {
+        "severity": "P2",
+        "area": "HUD 状态",
+        "description": "死亡/重开后 build() 重置了 score 变量但未同步 scoreEl.textContent，HUD 残留上一局金币数，直到拾取第一枚金币才刷新（winFmt 用的是变量所以终局分数正确）。建议 build() 内一并重置 DOM。"
+      },
+      {
+        "severity": "P3",
+        "area": "内容准确性",
+        "description": "撞尖刺死亡也显示「💀 摔了！」（fall 文案），与实际死因不符；建议区分 spike/fall 两种消息。"
+      }
+    ],
+    "notes": "通关路径可达（win 时 submitScore），平台落差/间距均在跳跃能力范围内（约 80px 上升极限的临界跳需要从平台边缘起跳，仍可完成）。移动端 DPad 52px、canvas 96vw 缩放、touchstart 跳均正常。存疑点：中段平台尖刺正上方放了金币，需空中拾取，属设计而非 bug。"
+  },
+  {
+    "id": "rhythm",
+    "score": 8.0,
+    "verdict": "MINOR",
+    "playable": true,
+    "issues": [
+      {
+        "severity": "P2",
+        "area": "i18n 展示层",
+        "description": "判定文字 MISS/PERFECT/GOOD 为硬编码英文，zh 模式下直接展示英文，且与教程中文用词（完美/良好）不一致；建议走 T() 键（如 gs.rhythm.jPerfect）。"
+      },
+      {
+        "severity": "P3",
+        "area": "输入误触",
+        "description": "按住空格/↑ 时键盘自动连发会触发多次 tap()，第二次 tap 落在误差窗口外被判 MISS 并清零连击；建议对同键重复事件去抖或仅取最近音符。"
+      }
+    ],
+    "notes": "32 音符固定谱面必定可结算（全 MISS 也会走完→submitScore），暂停用 startTs 偏移正确冻结时间轴。pointerdown 整画布可点、canvas 96vw 缩放。存疑点：全自动连发问题在触屏端不存在，仅桌面键盘可见。"
+  },
+  {
+    "id": "catapult",
+    "score": 8.0,
+    "verdict": "MINOR",
+    "playable": true,
+    "issues": [
+      {
+        "severity": "P1",
+        "area": "移动端触控",
+        "description": "石头发射抓取判定半径仅 30 canvas 像素，600 宽画布缩到 ~360px 手机屏后约 18-20 物理像素，远低于 44px 触控目标建议；建议扩大抓取热区（如 44px 屏幕像素换算）并在石头周围画可视高亮。"
+      },
+      {
+        "severity": "P2",
+        "area": "内容准确性",
+        "description": "level 变量声明后从不递增（恒为 1，每关固定 4 目标），注释声称「每关目标递增」但无对应实现/UI，属死代码；要么实现难度递进，要么删掉避免误导。"
+      },
+      {
+        "severity": "P3",
+        "area": "物理健壮性",
+        "description": "大力拖拽时石头单帧位移可达 ~40px，而目标+石头碰撞半径约 20-23px，存在高速穿透漏判；9 发打 4 靶可承受，建议用扫掠碰撞（线段-圆）提升手感。"
+      }
+    ],
+    "notes": "胜/负两条结算路径都会 submitScore（best-mode=min，剩石越多越好），拖出画布下方蓄力可达最高处目标，无软锁。抛物线预估线对新手友好。存疑点：目标 y 下限 120 需拖到画布外才够得到，桌面无碍、移动端靠 touch 事件捕获也能拖出画布。"
+  },
+  {
+    "id": "spaceshooter",
+    "score": 8.0,
+    "verdict": "MINOR",
+    "playable": true,
+    "issues": [
+      {
+        "severity": "P2",
+        "area": "教程一致性",
+        "description": "教程称移动端「点上方射击」，实际任何点击都会开火并按左右半屏移动，不存在独立射击区；建议改教程文案为「按住左/右半屏移动并自动射击」，或实现两段式触控。"
+      },
+      {
+        "severity": "P3",
+        "area": "移动端操作性",
+        "description": "触屏只有按住移动（无拖动跟随/相对位移），单手操作时左移右移需频繁换手；建议支持 pointermove 拖动控制或加 DPad。"
+      }
+    ],
+    "notes": "敌舰只下压不射击，玩家只能被「突破底线」扣命，3 次即 gameOver 并 submitScore；波次无限推进、wave 递增行数/速度，可玩性足够。键盘 keyup 正确清除方向/开火无粘滞。存疑点：敌人永不还击使难度完全取决于下压速度，可考虑加敌弹丰富性（P3 级建议）。"
+  },
+  {
+    "id": "railshooter",
+    "score": 7.8,
+    "verdict": "MINOR",
+    "playable": true,
+    "issues": [
+      {
+        "severity": "P2",
+        "area": "教程一致性",
+        "description": "教程 tut4 声称「打到友方 -5」，但 6 个目标全部是 enemy 类型，友方根本不存在；实际的 -5 惩罚作用于脱靶（else 分支）。应删除友方描述或加入友方目标，帮助文案「别打偏」才是正确规则。"
+      },
+      {
+        "severity": "P3",
+        "area": "无障碍/键鼠",
+        "description": "准星只能鼠标/手指移动，纯键盘用户无法瞄准（空格只对当前准星位置开火，初始居中）；建议支持方向键移动准星。"
+      }
+    ],
+    "notes": "90 秒倒计时到点必然结算并 submitScore，移动端 touchmove 跟随准星 + touchstart 射击可用（touch-action:none 防滚动）。暂停通过停掉 loop 使基于 Date.now() 的倒计时同步冻结，无错位。存疑点：miss -5 惩罚对新手较严，教程却暗示惩罚只针对友方，属上文已报的文案失配。"
+  },
+  {
+    "id": "dungeon",
+    "score": 8.5,
+    "verdict": "MINOR",
+    "playable": true,
+    "issues": [
+      {
+        "severity": "P2",
+        "area": "内容准确性",
+        "description": "第 5 层楼梯封锁条件是 monsters.length>0（任意怪存活即封锁），但提示文案固定为「Boss 还在，先消灭它再下楼梯」；清完 Boss 后若还有小怪，玩家会被误导。建议条件改为仅检查 boss，或文案改为「还有敌人存活」。"
+      },
+      {
+        "severity": "P3",
+        "area": "桌面端 UI",
+        "description": "虚拟 DPad 未做 isTouch() 守卫（对比 platformer 仅移动端创建），桌面也会显示一组方向按钮；建议同样加 isTouch 判断或默认隐藏。"
+      }
+    ],
+    "notes": "地图生成保证连通（房间+走廊），楼梯必在末房间可达，5 层+Boss 通关路径完整，死亡/通关双路径 submitScore；迷雾、追击 AI、拾取、回合制战斗实现扎实，属旗舰水准。存疑点：Boss 52HP/9 攻对无装甲玩家偏硬，需依赖药水/护甲积累，平衡偏紧但可通关；另 Arcade.fx.burst 为合法 API（extras.js 中已定义）。"
+  },
+  {
+    "id": "bullethell",
+    "score": 7.5,
+    "verdict": "MINOR",
+    "playable": true,
+    "issues": [
+      {
+        "severity": "P2",
+        "area": "重开逻辑",
+        "description": "newGame() 不重建第 1 波：GAME_RESTART 或切换难度后画面空转约 0.7 秒，然后直接从「第 2 波」开始（首次加载才显式 spawnWave(1)）。建议 newGame() 内统一 spawnWave(1)。"
+      },
+      {
+        "severity": "P2",
+        "area": "受击公平性",
+        "description": "命中后无无敌帧且玩家不位移，密集弹幕下可在连续数帧内被重叠弹连扣 3 条命，玩家无反应窗口；建议受击后给 1-2 秒无敌闪烁或强制短距位移。"
+      },
+      {
+        "severity": "P2",
+        "area": "暂停反馈",
+        "description": "按 P/空格暂停后 loop 停止，但「已暂停」文案写在 draw() 里，而 draw 暂停期间不执行，实际没有任何暂停视觉提示（画面直接定格）；建议在 togglePause 里直接设置 msgEl。"
+      },
+      {
+        "severity": "P2",
+        "area": "教程一致性",
+        "description": "help 文案称「2px 判定点」，实际 HIT_R=3（3px 半径），教程 tut3 写的是 3px；两处数值矛盾，应统一。"
+      }
+    ],
+    "notes": "擦弹/环形/螺旋/扇形弹幕与三阶段 Boss 实现到位，胜/败均结算一次 submitScore（有 gameOver/won 防重入），loop 在重启时 stop 后重建无泄漏。移动端拖动控制与 touch-action:none 正常。存疑点：auto-fire 使射击无操作维度，属于弹幕生存向设计；擦弹每帧 +1 的计分在判定点贴弹时收益可观，符合旗舰卖点。"
+  }
+]

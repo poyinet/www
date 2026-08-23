@@ -1,0 +1,41 @@
+/* 破译 DECODE ARCADE · frogcross 游戏内文案（zh/en 对称）
+   由 i18n-dict.js 拆分生成 —— 游戏页按需加载，减小站点字典体积 */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.frogcross.time'] = '用时';
+  d.en['gs.frogcross.time'] = 'Time';
+  d.zh['gs.frogcross.deaths'] = '失败';
+  d.en['gs.frogcross.deaths'] = 'Deaths';
+  d.zh['gs.frogcross.hint'] = '方向键 / DPad 移动 · 抵达顶部 · P 暂停';
+  d.en['gs.frogcross.hint'] = 'Arrow keys / D-pad to move · reach the top · P pause';
+  d.zh['gs.frogcross.restart'] = '重新开始';
+  d.en['gs.frogcross.restart'] = 'Restart';
+  d.zh['gs.frogcross.paused'] = '⏸ 已暂停 · 按 P / 按钮继续';
+  d.en['gs.frogcross.paused'] = '⏸ Paused · Press P or the button to resume';
+  d.zh['gs.frogcross.pause'] = '暂停';
+  d.en['gs.frogcross.pause'] = 'Pause';
+  d.zh['gs.frogcross.win'] = '🎉 过河成功！用时 {n} 秒';
+  d.en['gs.frogcross.win'] = '🎉 River crossed! Time: {n}s';
+  d.zh['gs.frogcross.die'] = '💀 失败了！回到起点…';
+  d.en['gs.frogcross.die'] = '💀 You failed! Back to the start…';
+  d.zh['gs.frogcross.goal'] = '🏁 目标';
+  d.en['gs.frogcross.goal'] = '🏁 Goal';
+  d.zh['gs.frogcross.tutTitle'] = '青蛙过河 · 玩法';
+  d.en['gs.frogcross.tutTitle'] = 'Frog Crossing · How to Play';
+  d.zh['gs.frogcross.tut1t'] = '目标';
+  d.en['gs.frogcross.tut1t'] = 'Objective';
+  d.zh['gs.frogcross.tut1'] = '引导青蛙从底部穿越车道和河流，抵达顶部安全区。越快越好！';
+  d.en['gs.frogcross.tut1'] = 'Guide the frog from the bottom across the road and river to the safe zone at the top. The faster, the better!';
+  d.zh['gs.frogcross.tut2t'] = '操作';
+  d.en['gs.frogcross.tut2t'] = 'Controls';
+  d.zh['gs.frogcross.tut2'] = '方向键 / WASD / 触屏 DPad 控制青蛙四向跳跃。';
+  d.en['gs.frogcross.tut2'] = 'Move the frog in four directions with the arrow keys / WASD / touch D-pad.';
+  d.zh['gs.frogcross.tut3t'] = '规则';
+  d.en['gs.frogcross.tut3t'] = 'Rules';
+  d.zh['gs.frogcross.tut3'] = '车道撞车会失败；河里必须踩在浮木上，否则溺水。';
+  d.en['gs.frogcross.tut3'] = 'Getting hit by a car on the road fails you; in the river you must stay on logs or you drown.';
+  d.zh['gs.frogcross.tut4t'] = '计分';
+  d.en['gs.frogcross.tut4t'] = 'Scoring';
+  d.zh['gs.frogcross.tut4'] = '成绩=用时秒数，越少越好。';
+  d.en['gs.frogcross.tut4'] = 'Your score is the time in seconds — the lower, the better.';
+})();

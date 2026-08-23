@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-touch-icon" content="/assets/icons/apple-touch-icon.png">
+  <title>RSA 小素数保险柜 · 用游戏破译人类三千年加密解密史</title>
+  <meta name="description" content="破译 DECODE ARCADE · RSA 小素数保险柜：从两个小素数出发，亲手算出模数 n、欧拉 φ、选出公钥 e、求出私钥 d，最后加密一个字母——把公钥密码的全部数学装进一局手算。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://poyi.net/games/rsa/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="破译游戏 DECODE ARCADE">
+  <meta property="og:title" content="RSA 小素数保险柜 · 用游戏破译人类三千年加密解密史">
+  <meta property="og:description" content="算 n、求 φ、选 e、得 d、加密一个字母——公钥密码数学的一局手算。">
+  <meta property="og:url" content="https://poyi.net/games/rsa/">
+  <meta property="og:image" content="https://poyi.net/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="RSA 小素数保险柜 · 破译 DECODE ARCADE">
+  <meta name="twitter:description" content="算 n、求 φ、选 e、得 d、加密一个字母——公钥密码数学的一局手算。">
+  <meta name="twitter:image" content="https://poyi.net/assets/og-image.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "RSA 小素数保险柜",
+    "url": "https://poyi.net/games/rsa/",
+    "applicationCategory": "Game",
+    "inLanguage": "zh-CN",
+    "isPartOf": { "@type": "WebSite", "name": "破译游戏 DECODE ARCADE", "url": "https://poyi.net/" },
+    "description": "算 n、求 φ、选 e、得 d、加密一个字母——公钥密码数学的一局手算。"
+  }
+  </script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔐</text></svg>">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="../../assets/css/theme.css">
+  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
+  <link rel="stylesheet" href="../../assets/css/shell.css">
+  <style>
+    .rs-wrap { padding: 14px; width: min(640px, 96vw); text-align: center; }
+    .rs-prog { font-size: 12px; color: var(--text-dim); margin-bottom: 6px; }
+    .rs-given { font-family: var(--font-mono); font-size: 15px; color: var(--neon-cyan); background: rgba(0,240,255,.06);
+      border: 1px solid rgba(0,240,255,.3); border-radius: 10px; padding: 12px; margin: 10px auto; max-width: 480px; line-height: 1.9; }
+    .rs-given b { color: var(--neon-yellow); }
+    .rs-step { font-size: 13px; color: var(--text-main); line-height: 1.9; min-height: 48px; margin-top: 6px; }
+    .rs-input { width: 60%; font-size: 15px; text-align: center; background: rgba(0,0,0,.35); color: var(--text-main);
+      border: 1px solid rgba(255,255,255,.2); border-radius: 8px; padding: 10px; }
+    .rs-input:focus { border-color: rgba(0,240,255,.6); outline: none; }
+    .rs-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 10px 0; }
+    .rs-msg { min-height: 18px; font-size: 13px; margin: 6px 0; }
+    .rs-msg.ok { color: var(--neon-green); } .rs-msg.no { color: var(--neon-pink); }
+    .rs-hintbox { font-family: var(--font-mono); font-size: 12px; color: var(--neon-yellow); line-height: 1.9;
+      background: rgba(255,230,0,.06); border: 1px dashed rgba(255,230,0,.4); border-radius: 8px;
+      padding: 8px; margin: 8px auto; max-width: 480px; min-height: 0; }
+    .rs-help { font-size: 12px; color: var(--text-dim); line-height: 1.8; margin-top: 12px; text-align: left;
+      background: rgba(255,255,255,.04); border-radius: 8px; padding: 10px 12px; }
+    @media (max-width: 480px) { .rs-input { width: 86%; } }
+  </style>
+</head>
+<body data-game-id="rsa" data-game-title="RSA 小素数保险柜" data-best-mode="max">
+  <h1 class="seo-h1">RSA 小素数保险柜</h1>
+  <main id="game-root"></main>
+  <script src="../../assets/js/core/storage.js"></script>
+  <script src="../../assets/js/core/input.js"></script>
+  <script src="../../assets/js/core/loop.js"></script>
+    <script src="../../assets/js/core/i18n.js"></script>
+  <script src="../../assets/js/core/i18n-dict.js"></script>
+  <script src="rsa-i18n.js"></script>
+  <script src="../../assets/js/core/extras.js"></script>
+  <script src="../../assets/js/rank.js"></script>
+  <script src="../../assets/js/plot.js"></script>
+  <script src="../../assets/js/stories.js"></script>
+<script src="../../assets/js/shell.js"></script>
+  <script src="rsa.js"></script>
+  <script src="../../assets/js/pwa.js"></script>
+</body>
+</html>

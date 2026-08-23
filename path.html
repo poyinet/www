@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="破译游戏">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <title>24 天破译之旅 · 用游戏破译人类三千年加密解密史</title>
+  <meta name="description" content="破译 DECODE ARCADE · 24 天破译之旅：从零开始的密码学学习路径——每天读 1 章、玩 2 款游戏、懂 1 个术语，24 天走完三千年密码史。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://poyi.net/path.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="破译游戏 DECODE ARCADE">
+  <meta property="og:title" content="24 天破译之旅 · 学习路径">
+  <meta property="og:description" content="从零开始的密码学学习路径：24 天走完三千年密码史。">
+  <meta property="og:url" content="https://poyi.net/path.html">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:image" content="https://poyi.net/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="24 天破译之旅 · 破译 DECODE ARCADE">
+  <meta name="twitter:description" content="从零开始的密码学学习路径。">
+  <meta name="twitter:image" content="https://poyi.net/assets/og-image.png">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗓️</text></svg>">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="assets/css/theme.css">
+  <style>
+    .pt-wrap { max-width: 920px; margin: 0 auto; padding: 8px 16px 60px; position: relative; z-index: 1; }
+    .pt-hero { text-align: center; padding: 26px 16px 8px; }
+    .pt-title { font-family: var(--font-pixel); font-size: 22px; letter-spacing: 3px; color: var(--neon-cyan); text-shadow: 0 0 10px rgba(0,240,255,.7), 0 0 30px rgba(0,240,255,.3); }
+    .pt-sub { margin-top: 8px; color: var(--text-dim); font-size: 13px; line-height: 1.8; }
+    @media (max-width: 480px) { .pt-title { font-size: 17px; } }
+
+    .pt-day { margin: 14px 0; padding: 16px 18px; border-radius: 12px; background: rgba(0,0,0,.28); border: 1px solid rgba(255,255,255,.08); }
+    .pt-day:hover { border-color: rgba(0,240,255,.35); }
+    .pt-day-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+    .pt-day-no { font-family: var(--font-pixel); font-size: 14px; color: var(--neon-pink); min-width: 40px; }
+    .pt-day-chapter { font-size: 15px; font-weight: 700; color: var(--neon-cyan); }
+    .pt-day-quest { font-size: 11px; color: var(--text-dim); flex: 1; text-align: right; }
+    .pt-day-body { margin-top: 10px; display: flex; gap: 10px; flex-wrap: wrap; }
+    .pt-link { display: inline-flex; align-items: center; gap: 6px; padding: 6px 12px; border-radius: 8px; text-decoration: none; font-size: 12px; border: 1px solid rgba(255,255,255,.15); color: var(--text-main); background: rgba(255,255,255,.03); }
+    .pt-link:hover { border-color: var(--neon-cyan); }
+    .pt-link.term { color: var(--neon-purple); border-color: rgba(185,103,255,.4); }
+    .pt-prog { margin: 18px 0; padding: 12px 16px; border-radius: 10px; background: rgba(0,0,0,.25); border: 1px solid rgba(0,240,255,.2); }
+    .pt-prog-bar { height: 8px; border-radius: 4px; background: rgba(255,255,255,.08); overflow: hidden; margin-top: 8px; }
+    .pt-prog-fill { height: 100%; width: 0%; background: linear-gradient(90deg, var(--neon-cyan), var(--neon-green)); transition: width .3s; }
+    .pt-day.done { border-color: rgba(57,255,20,.35); }
+    .pt-day.done .pt-day-no { color: var(--neon-green); }
+
+    .lobby-footer { position: relative; z-index: 1; text-align: center; padding: 20px 16px 30px; color: var(--text-dim); font-size: 12px; line-height: 2; }
+    .lobby-footer .pixel-line { font-family: var(--font-pixel); font-size: 9px; color: rgba(0,240,255,.5); }
+  </style>
+</head>
+<body>
+  <div id="arcade-nav"></div>
+
+  <div id="content" class="pt-wrap">
+    <div class="pt-hero">
+      <h1 class="pt-title" data-i18n="path.title">🗓️ 24 天破译之旅</h1>
+      <p class="pt-sub" data-i18n="path.sub">从零开始的密码学学习路径——每天读 1 章、玩 2 款游戏、懂 1 个术语，24 天走完三千年密码史</p>
+    </div>
+    <div class="pt-prog" id="pt-prog"></div>
+    <div id="pt-list"></div>
+  </div>
+
+  <footer class="lobby-footer">
+    <div class="pixel-line" data-i18n="home.footBrand">© 2026 破译游戏 · POYI.NET · 用游戏破译人类三千年加密解密史</div>
+    <div data-i18n="home.footNote">纪录仅存本地 · 不上传任何数据 · 史料整理自公开信息仅供学习</div>
+      <span class="egg-hint" data-egg="e16"><span class="egg-zh">🎯 第十六枚：本页页脚。栅栏 4 轨。</span><span class="egg-en">24-day path footer · Rail fence, 4 rails</span></span>
+<!-- EGG:e16:JYOEUNR -->
+  </footer>
+
+  <script src="assets/js/core/i18n.js"></script>
+  <script src="assets/js/core/i18n-dict.js"></script>
+  <script src="assets/js/core/i18n-ui.js"></script>
+  <script src="assets/js/core/i18n-story.js"></script>
+  <script src="assets/js/core/storage.js"></script>
+  <script src="assets/js/core/extras.js"></script>
+  <script src="assets/js/games.js"></script>
+  <script src="assets/js/stories.js"></script>
+  <script src="assets/js/nav.js"></script>
+  <script>
+    if (window.Arcade && Arcade.i18n) {
+      Arcade.i18n.applyStatic();
+      document.title = (Arcade.i18n.getLang() === 'en' ? '24-Day Decode Journey' : '24 天破译之旅') + Arcade.i18n.t('app.titleSuffix');
+    }
+    var isEn = window.Arcade && Arcade.i18n && Arcade.i18n.getLang() === 'en';
+
+    /* 24 天路径：按编年史顺序，每章 2 天（第 1 天读章+玩首游戏，第 2 天玩剩余+术语）；12 章 ×2 = 24 */
+    var CHS = window.STORIES || [];
+    var TERM_MAP = {
+      dawn: 'Cryptanalysis', caesar: 'Caesar Cipher', arab: 'Frequency Analysis', bacon: "Bacon's Biliteral",
+      ww1: 'Polybius Square', bletchley: 'Enigma', midway: 'Depth', purple: 'Purple',
+      lorenz: 'XOR', venona: 'One-Time Pad (OTP)', modern: 'Public-Key Crypto', quantum: 'BB84'
+    };
+
+    function build() {
+      var list = document.getElementById('pt-list');
+      if (!list || !CHS.length) return;
+      var html = '';
+      var day = 1;
+      var TOTAL_DAYS = CHS.length * 2;
+      CHS.forEach(function (ch) {
+        /* 该章游戏：前 2 款放第 1 天，其余放第 2 天 */
+        var gs = ch.games.map(function (gid) {
+          var g = null;
+          (window.GAMES || []).forEach(function (x) { if (x.id === gid) g = x; });
+          return g;
+        }).filter(Boolean);
+        var first = gs.slice(0, 2), rest = gs.slice(2, 4);
+        var term = TERM_MAP[ch.id];
+        var num = ch.id === 'dawn' ? 'c0' : 'c' + (CHS.indexOf(ch));
+        html += dayCard(day++, ch, [ch], first, term, num);
+        /* 第四期 D3：随章节扩容改为 12 章 × 2 天 = 24 天，进度统计同步动态化 */
+        if (day <= TOTAL_DAYS) html += dayCard(day++, ch, rest.length ? rest : first, [], term, num, true);
+      });
+      list.innerHTML = html;
+      buildProg();
+      bindDone();
+    }
+    function dayCard(n, ch, chapters, games, term, num, second) {
+      var pre = '';
+      var chapterLink = '<a class="pt-link" href="story.html?id=' + ch.id + '">📜 ' + T(ch.titleKey) + '</a>';
+      var gameLinks = games.map(function (g) {
+        return '<a class="pt-link" href="' + g.path + '">' + g.icon + ' ' + T('g.' + g.id + '.t') + '</a>';
+      }).join('');
+      var termLink = term ? '<a class="pt-link term" href="glossary.html">📖 ' + term + '</a>' : '';
+      var quizLink = '<a class="pt-link" href="quiz.html">🧠 ' + (isEn ? 'Self-test' : '自测') + '</a>';
+      var quest = second
+        ? (isEn ? 'Replay & collect the artifact' : '再玩一轮 · 解锁本章密件')
+        : (isEn ? 'Read the chapter & play' : '读本章 · 玩关联游戏');
+      return '<div class="pt-day" data-day="' + n + '">' +
+        '<div class="pt-day-head"><span class="pt-day-no">DAY ' + n + '</span>' +
+        '<span class="pt-day-chapter">' + T(ch.titleKey) + '</span>' +
+        '<span class="pt-day-quest">' + quest + '</span></div>' +
+        '<div class="pt-day-body">' + chapterLink + gameLinks + termLink + quizLink + '</div></div>';
+    }
+    function buildProg() {
+      var prog = document.getElementById('pt-prog');
+      if (!prog) return;
+      var totalDays = CHS.length * 2;
+      var done = 0;
+      for (var i = 1; i <= totalDays; i++) {
+        try { if (localStorage.getItem('arcade_path_d' + i)) done++; } catch (e) {}
+      }
+      prog.innerHTML = (isEn ? 'Progress: ' : '完成进度：') + '<b>' + done + '</b>/' + totalDays +
+        '<div class="pt-prog-bar"><div class="pt-prog-fill" style="width:' + Math.round(done / totalDays * 100) + '%"></div></div>';
+      var days = document.querySelectorAll('.pt-day');
+      for (var j = 0; j < days.length; j++) {
+        try { if (localStorage.getItem('arcade_path_d' + days[j].getAttribute('data-day'))) days[j].classList.add('done'); } catch (e) {}
+      }
+    }
+    function bindDone() {
+      var days = document.querySelectorAll('.pt-day');
+      for (var i = 0; i < days.length; i++) {
+        (function (el) {
+          el.addEventListener('click', function () {
+            var n = el.getAttribute('data-day');
+            try {
+              if (localStorage.getItem('arcade_path_d' + n)) localStorage.removeItem('arcade_path_d' + n);
+              else localStorage.setItem('arcade_path_d' + n, '1');
+            } catch (e) {}
+            buildProg();
+          });
+        })(days[i]);
+      }
+    }
+    build();
+  </script>
+  <script src="assets/js/pwa.js"></script>
+</body>
+</html>

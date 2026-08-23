@@ -1,0 +1,41 @@
+/* 破译 DECODE ARCADE · pixelbird 游戏内文案（zh/en 对称）
+   由 i18n-dict.js 拆分生成 —— 游戏页按需加载，减小站点字典体积 */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.pixelbird.tutTitle'] = '像素飞鸟 · 玩法';
+  d.en['gs.pixelbird.tutTitle'] = 'Pixel Bird · How to Play';
+  d.zh['gs.pixelbird.tut1t'] = '目标';
+  d.en['gs.pixelbird.tut1t'] = 'Objective';
+  d.zh['gs.pixelbird.tut1'] = '穿过管道缝隙得分，飞得越远越好';
+  d.en['gs.pixelbird.tut1'] = 'Fly through the pipe gaps to score — the farther, the better';
+  d.zh['gs.pixelbird.tut2t'] = '操作';
+  d.en['gs.pixelbird.tut2t'] = 'Controls';
+  d.zh['gs.pixelbird.tut2'] = '点击画面 / 空格 / 触屏点按，让小鸟向上扑一下';
+  d.en['gs.pixelbird.tut2'] = 'Click, press Space, or tap the screen to make the bird flap upward';
+  d.zh['gs.pixelbird.tut3t'] = '失败';
+  d.en['gs.pixelbird.tut3t'] = 'Game Over';
+  d.zh['gs.pixelbird.tut3'] = '撞到管道、地面或天花板都算结束';
+  d.en['gs.pixelbird.tut3'] = 'Hitting a pipe, the ground, or the ceiling ends the run';
+  d.zh['gs.pixelbird.hudScore'] = '得分';
+  d.en['gs.pixelbird.hudScore'] = 'Score';
+  d.zh['gs.pixelbird.hudSpeed'] = '速度';
+  d.en['gs.pixelbird.hudSpeed'] = 'Speed';
+  d.zh['gs.pixelbird.ovTitle'] = '游戏结束';
+  d.en['gs.pixelbird.ovTitle'] = 'Game Over';
+  d.zh['gs.pixelbird.btnRestart'] = '重新开始';
+  d.en['gs.pixelbird.btnRestart'] = 'Restart';
+  d.zh['gs.pixelbird.help'] = '🖱️ 点击画面 / 空格 / 触屏点按 = 向上扑一下<br>穿过一对管道 +1 分，碰到管道、地面或天花板都算失败';
+  d.en['gs.pixelbird.help'] = '🖱️ Click / Space / tap = flap upward<br>Each pipe pair passed is +1; hitting a pipe, the ground, or the ceiling ends the run';
+  d.zh['gs.pixelbird.helpTap'] = '🖱️ 点击画面 / 空格 / 触屏点按 = 向上扑一下';
+  d.en['gs.pixelbird.helpTap'] = '🖱️ Click / Space / tap = flap upward';
+  d.zh['gs.pixelbird.paused'] = '⏸ 已暂停 · 按 P / 按钮继续';
+  d.en['gs.pixelbird.paused'] = '⏸ Paused · Press P or the button to resume';
+  d.zh['gs.pixelbird.pause'] = '暂停';
+  d.en['gs.pixelbird.pause'] = 'Pause';
+  d.zh['gs.pixelbird.newRecord'] = '🎉 新纪录！';
+  d.en['gs.pixelbird.newRecord'] = '🎉 New record!';
+  d.zh['gs.pixelbird.idleTitle'] = '点击开始';
+  d.en['gs.pixelbird.idleTitle'] = 'Tap to Start';
+  d.zh['gs.pixelbird.idleHint'] = '点击 / 空格 让小鸟向上飞';
+  d.en['gs.pixelbird.idleHint'] = 'Tap / Space to flap';
+})();

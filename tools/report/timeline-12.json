@@ -1,0 +1,14 @@
+[
+  { "y": 1466, "zh": "Alberti 发明密码盘", "en": "Alberti invents the cipher disk", "icon": "🔃", "link": { "type": "story", "id": "bacon" } },
+  { "y": 1499, "zh": "威尼斯设立密码局", "en": "Venice founds a cipher office", "icon": "🎭", "link": null },
+  { "y": 1795, "zh": "杰斐逊发明转轮密码", "en": "Jefferson invents his cipher wheel", "icon": "🛞", "link": null },
+  { "y": 1844, "zh": "莫尔斯电报首传", "en": "First Morse telegraph message", "icon": "📠", "link": { "type": "term", "id": "Morse Code" } },
+  { "y": 1861, "zh": "联邦军密码盘服役", "en": "Union Army cipher disk in use", "icon": "🪖", "link": null },
+  { "y": 1891, "zh": "Bazeries 密码筒", "en": "Bazeries' cylinder cipher", "icon": "🛢️", "link": null },
+  { "y": 1926, "zh": "德国海军列装 Enigma", "en": "German Navy adopts Enigma", "icon": "⚓", "link": { "type": "term", "id": "Enigma" } },
+  { "y": 1938, "zh": "Zygalski 穿孔片", "en": "Zygalski's perforated sheets", "icon": "📄", "link": { "type": "people", "id": "rejewski" } },
+  { "y": 1952, "zh": "美国 NSA 成立", "en": "NSA founded in the US", "icon": "🕵️", "link": { "type": "term", "id": "NSA" } },
+  { "y": 1970, "zh": "Feistel 研发 Lucifer", "en": "Feistel builds Lucifer", "icon": "🔀", "link": { "type": "people", "id": "feistel" } },
+  { "y": 1985, "zh": "椭圆曲线密码提出", "en": "ECC proposed (Miller & Koblitz)", "icon": "📈", "link": { "type": "term", "id": "Elliptic Curve Cryptography (ECC)" } },
+  { "y": 1991, "zh": "PGP 免费发布", "en": "PGP released free", "icon": "📧", "link": { "type": "story", "id": "modern" } }
+]

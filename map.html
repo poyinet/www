@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="破译游戏">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <title>密码学世界地图 · 用游戏破译人类三千年加密解密史</title>
+  <meta name="description" content="破译 DECODE ARCADE · 密码学世界地图：44 个密码史事件标注在真实地理位置上——罗塞塔、巴格达、布莱切利园、MIT……点开每个坐标，走进密码学的地理故事。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://poyi.net/map.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="破译游戏 DECODE ARCADE">
+  <meta property="og:title" content="密码学世界地图 · 用游戏破译人类三千年加密解密史">
+  <meta property="og:description" content="44 个密码史事件标注在真实地理位置上，点开每个坐标走进密码学的地理故事。">
+  <meta property="og:url" content="https://poyi.net/map.html">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:image" content="https://poyi.net/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="密码学世界地图 · 破译 DECODE ARCADE">
+  <meta name="twitter:description" content="44 个密码史事件标注在真实地理位置上。">
+  <meta name="twitter:image" content="https://poyi.net/assets/og-image.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "密码学世界地图 · 用游戏破译人类三千年加密解密史",
+    "url": "https://poyi.net/map.html",
+    "isPartOf": { "@type": "WebSite", "name": "破译游戏 DECODE ARCADE", "url": "https://poyi.net/" },
+    "inLanguage": "zh-CN",
+    "about": "密码学历史地理",
+    "description": "44 个密码史事件标注在真实地理位置上，点开每个坐标走进密码学的地理故事。"
+  }
+  </script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🗺️</text></svg>">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="assets/css/theme.css">
+  <style>
+    .mp-wrap { max-width: 1080px; margin: 0 auto; padding: 8px 16px 60px; position: relative; z-index: 1; }
+    .mp-hero { text-align: center; padding: 26px 16px 8px; }
+    .mp-title { font-family: var(--font-pixel); font-size: 22px; letter-spacing: 3px; color: var(--neon-cyan); text-shadow: 0 0 10px rgba(0,240,255,.7), 0 0 30px rgba(0,240,255,.3); }
+    .mp-sub { margin-top: 8px; color: var(--text-dim); font-size: 13px; line-height: 1.8; }
+    .mp-count { font-family: var(--font-pixel); font-size: 11px; color: var(--neon-yellow); margin-top: 8px; }
+
+    .mp-map-wrap { margin-top: 20px; background: linear-gradient(180deg, rgba(20,20,34,.85), rgba(10,10,18,.6)); border: 1px solid rgba(0,240,255,.22); border-radius: 14px; padding: 14px; }
+    .mp-svg { width: 100%; height: auto; display: block; }
+    .mp-land { fill: rgba(0,240,255,.10); stroke: rgba(0,240,255,.35); stroke-width: 1; }
+    .mp-ocean { fill: rgba(0,0,0,.28); }
+    .mp-dot { cursor: pointer; }
+    .mp-dot circle { fill: var(--neon-yellow, #ffe600); stroke: rgba(0,0,0,.6); stroke-width: 1.5; transition: r .15s; }
+    .mp-dot:hover circle { fill: var(--neon-pink, #ff2d95); }
+    .mp-dot text { font-size: 9px; fill: var(--text-dim, #aaa); pointer-events: none; }
+
+    .mp-detail { margin-top: 14px; min-height: 90px; background: rgba(0,0,0,.3); border: 1px solid rgba(0,240,255,.2); border-radius: 12px; padding: 14px 16px; }
+    .mp-detail .mp-d-head { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .mp-detail .mp-d-ic { font-size: 26px; }
+    .mp-detail .mp-d-name { font-size: 16px; font-weight: 700; color: var(--neon-cyan); }
+    .mp-detail .mp-d-year { font-family: var(--font-pixel); font-size: 11px; color: var(--neon-yellow); }
+    .mp-detail .mp-d-desc { margin-top: 8px; font-size: 13px; color: var(--text-main); line-height: 1.8; }
+    .mp-detail .mp-d-go { display: inline-block; margin-top: 10px; font-size: 12px; color: var(--neon-green); text-decoration: none; border: 1px solid rgba(57,255,20,.35); border-radius: 6px; padding: 5px 12px; background: rgba(57,255,20,.06); }
+    .mp-detail .mp-d-go:hover { background: rgba(57,255,20,.15); }
+    .mp-detail .mp-d-empty { color: var(--text-dim); font-size: 13px; text-align: center; padding: 20px 0; }
+
+    .mp-list { margin-top: 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 8px; }
+    .mp-chip { padding: 8px 12px; border-radius: 8px; background: rgba(0,0,0,.25); border: 1px solid rgba(255,255,255,.08); font-size: 12px; color: var(--text-dim); cursor: pointer; text-align: left; }
+    .mp-chip:hover { border-color: rgba(0,240,255,.4); color: var(--text-main); }
+    .mp-chip b { color: var(--neon-yellow); font-family: var(--font-pixel); font-size: 9px; margin-right: 6px; }
+
+    @media (max-width: 480px) {
+      .mp-title { font-size: 16px; }
+    }
+    .lobby-footer { position: relative; z-index: 1; text-align: center; padding: 20px 16px 30px; color: var(--text-dim); font-size: 12px; line-height: 2; }
+    .lobby-footer .pixel-line { font-family: var(--font-pixel); font-size: 9px; color: rgba(0,240,255,.5); }
+  </style>
+</head>
+<body>
+  <div id="arcade-nav"></div>
+
+  <div class="mp-wrap" id="content">
+    <div class="mp-hero">
+      <h1 class="mp-title" data-i18n="map.title">🗺️ 密码学世界地图</h1>
+      <p class="mp-sub" data-i18n="map.sub">把密码史事件放回真实地理位置——点开每个坐标，走进密码学的地理故事</p>
+      <div class="mp-count" id="mp-count"></div>
+    </div>
+    <div class="mp-map-wrap" id="mp-map"></div>
+    <div class="mp-detail" id="mp-detail"></div>
+    <div class="mp-list" id="mp-list"></div>
+  </div>
+
+  <footer class="lobby-footer">
+    <div class="pixel-line" data-i18n="home.footBrand">© 2026 破译游戏 · POYI.NET · 用游戏破译人类三千年加密解密史</div>
+    <div data-i18n="home.footNote">纪录仅存本地 · 不上传任何数据 · 史料整理自公开信息仅供学习</div>
+  </footer>
+
+  <script src="assets/js/core/i18n.js"></script>
+  <script src="assets/js/core/i18n-dict.js"></script>
+  <script src="assets/js/core/i18n-ui.js"></script>
+  <script src="assets/js/core/storage.js"></script>
+  <script src="assets/js/core/extras.js"></script>
+  <script src="assets/js/games.js"></script>
+  <script src="assets/js/stories.js"></script>
+  <script src="assets/js/map.js"></script>
+  <script src="assets/js/nav.js"></script>
+  <script>
+    (function () {
+      if (!window.Arcade || !Arcade.i18n || !window.CRYPTO_MAP) return;
+      Arcade.i18n.applyStatic();
+      document.title = Arcade.i18n.t('map.title') + Arcade.i18n.t('app.titleSuffix');
+      var T = Arcade.i18n.t;
+      var isEn = Arcade.i18n.getLang() === 'en';
+      var M = window.CRYPTO_MAP;
+      var pre = window.__arcadePagePrefix || '';
+
+      document.getElementById('mp-count').textContent = isEn
+        ? M.EVENTS.length + ' events · from Egypt to Silicon Valley'
+        : M.EVENTS.length + ' 个事件 · 从埃及到硅谷';
+
+      /* 简化世界地图 path（等距圆柱投影，1000×500） */
+      var LAND = 'M0,250 L0,180 L45,180 L45,140 L90,140 L90,120 L135,120 L135,100 L180,100 L180,90 L225,90 L225,80 L315,80 L315,70 L360,70 L360,60 L450,60 L450,70 L540,70 L540,80 L630,80 L630,90 L675,90 L675,110 L720,110 L720,130 L765,130 L765,140 L810,140 L810,120 L855,120 L855,100 L900,100 L900,110 L945,110 L945,130 L990,130 L990,140 L1000,140 L1000,180 L1000,250 L1000,320 L945,320 L945,340 L900,340 L900,360 L855,360 L855,380 L810,380 L810,360 L765,360 L765,340 L720,340 L720,330 L675,330 L675,350 L630,350 L630,370 L585,370 L585,380 L540,380 L540,370 L495,370 L495,350 L450,350 L450,360 L405,360 L405,370 L360,370 L360,360 L315,360 L315,350 L270,350 L270,340 L225,340 L225,330 L180,330 L180,340 L135,340 L135,320 L90,320 L90,300 L45,300 L45,280 L0,280 L0,250 Z ' +
+        'M90,90 L90,70 L135,70 L135,90 Z ' + /* 澳洲近似 */
+        'M720,120 L720,100 L810,100 L810,120 Z ' + /* 北美 */
+        'M90,300 L90,280 L135,280 L135,300 Z ' + /* 南美 */
+        'M630,130 L630,110 L720,110 L720,130 Z M540,90 L540,70 L630,70 L630,90 Z ' + /* 欧亚大陆内海 */
+        'M810,250 L810,230 L900,230 L900,250 Z M450,250 L450,230 L540,230 L540,250 Z '; /* 洋区点缀 */
+
+      var svg =
+        '<svg class="mp-svg" viewBox="0 0 1000 500" role="img" aria-label="' + (isEn ? 'World map of cryptography events' : '密码学事件世界地图') + '">' +
+        '<rect class="mp-ocean" x="0" y="0" width="1000" height="500"/>' +
+        '<path class="mp-land" d="' + LAND + '"/>';
+
+      M.EVENTS.forEach(function (ev) {
+        var p = M.project(ev.x, ev.y);
+        svg += '<g class="mp-dot" data-id="' + ev.id + '" transform="translate(' + p.px + ',' + p.py + ')" tabindex="0" role="button" aria-label="' + (isEn ? ev.en : ev.zh) + '">' +
+          '<circle r="7"></circle>' +
+          '<text y="-10" text-anchor="middle">' + (isEn ? ev.en : ev.zh) + '</text></g>';
+      });
+      svg += '</svg>';
+      var mapBox = document.getElementById('mp-map');
+      mapBox.innerHTML = svg;
+
+      var detail = document.getElementById('mp-detail');
+      function showDetail(ev) {
+        if (!ev) {
+          detail.innerHTML = '<div class="mp-d-empty">' + (isEn ? '👆 Tap a dot to explore' : '👆 点击地图上的点，查看事件详情') + '</div>';
+          return;
+        }
+        var href = null;
+        if (ev.link) {
+          var l = ev.link;
+          if (l.type === 'story') href = pre + 'story.html?id=' + l.id;
+          else if (l.type === 'game') href = pre + 'games/' + l.id + '/index.html';
+          else if (l.type === 'people') href = pre + 'people.html';
+          else if (l.type === 'artifact') href = pre + 'artifacts.html';
+          else if (l.type === 'term') href = pre + 'glossary.html';
+        }
+        var go = href
+          ? '<a class="mp-d-go" href="' + href + '">' + (isEn ? 'Explore →' : '去探索 →') + '</a>'
+          : '';
+        detail.innerHTML =
+          '<div class="mp-d-head">' +
+            '<span class="mp-d-ic">' + ev.icon + '</span>' +
+            '<span class="mp-d-name">' + (isEn ? ev.en : ev.zh) + '</span>' +
+            '<span class="mp-d-year">' + (ev.year < 0 ? 'BC ' + (-ev.year) : ev.year) + '</span>' +
+          '</div>' +
+          '<div class="mp-d-desc">' + (isEn ? ev.desc.en : ev.desc.zh) + '</div>' +
+          go;
+      }
+      showDetail(null);
+
+      var dots = mapBox.querySelectorAll('.mp-dot');
+      for (var i = 0; i < dots.length; i++) {
+        (function (d) {
+          function pick() {
+            var id = d.getAttribute('data-id');
+            var ev = null;
+            M.EVENTS.forEach(function (e) { if (e.id === id) ev = e; });
+            showDetail(ev);
+          }
+          d.addEventListener('click', pick);
+          d.addEventListener('keydown', function (ev2) {
+            if (ev2.key === 'Enter' || ev2.key === ' ') { ev2.preventDefault(); pick(); }
+          });
+        })(dots[i]);
+      }
+
+      /* 事件列表 chips */
+      var list = document.getElementById('mp-list');
+      var lh = '';
+      M.EVENTS.forEach(function (ev) {
+        lh += '<button class="mp-chip" data-id="' + ev.id + '"><b>' + (ev.year < 0 ? 'BC ' + (-ev.year) : ev.year) + '</b>' +
+          (isEn ? ev.en : ev.zh) + '</button>';
+      });
+      list.innerHTML = lh;
+      var chips = list.querySelectorAll('.mp-chip');
+      for (var j = 0; j < chips.length; j++) {
+        (function (c) {
+          c.addEventListener('click', function () {
+            var id = c.getAttribute('data-id');
+            var ev = null;
+            M.EVENTS.forEach(function (e) { if (e.id === id) ev = e; });
+            showDetail(ev);
+          });
+        })(chips[j]);
+      }
+    })();
+  </script>
+  <script src="assets/js/pwa.js"></script>
+</body>
+</html>

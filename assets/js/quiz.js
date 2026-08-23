@@ -1,0 +1,465 @@
+/* ============================================================
+   密码学测验场 Quiz —— A1 互动玩法
+   100 题分 4 级（入门/进阶/专家/大师），每轮随机抽 10 题，
+   实时计分，答完评「密码学段位」并写入 localStorage（档案页读取）。
+   中英双语题库（zh/en 对称），依赖 i18n.js + i18n-dict.js。
+   ============================================================ */
+window.QUIZ = (function () {
+  /* 题库：{ lvl:1-4, a:正确选项索引, zh:{q,opts[4],explain}, en:{q,opts[4],explain} } */
+  var BANK = [
+    /* ---------- 入门 L1 ---------- */
+    { lvl: 1, a: 1,
+      zh: { q: '凯撒密码的经典偏移量是多少？', opts: ['2', '3', '4', '5'], explain: '凯撒本人通常后移 3 位，但史载并不固定（奥古斯都用 1）。' },
+      en: { q: 'What is the classic Caesar shift?', opts: ['2', '3', '4', '5'], explain: 'Caesar usually shifted by 3, though records show it varied (Augustus used 1).' } },
+    { lvl: 1, a: 0,
+      zh: { q: '「明文」指的是什么？', opts: ['加密前的原始文字', '加密后的密文', '密钥', '破译工具'], explain: '明文是加密的输入，密文是输出。' },
+      en: { q: 'What is plaintext?', opts: ['The original text before encryption', 'The encrypted text', 'The key', 'A cracking tool'], explain: 'Plaintext is the input to encryption; ciphertext is the output.' } },
+    { lvl: 1, a: 2,
+      zh: { q: '频率分析主要破解哪类密码？', opts: ['换位密码', '哈希函数', '单表替换密码', '公钥密码'], explain: '统计字母频率可破单表替换，肯迪 850 年发明。' },
+      en: { q: 'Frequency analysis mainly breaks which kind of cipher?', opts: ['Transposition ciphers', 'Hash functions', 'Monoalphabetic substitution', 'Public-key ciphers'], explain: 'Counting letter frequencies defeats simple substitution; invented by Al-Kindi c. 850.' } },
+    { lvl: 1, a: 3,
+      zh: { q: '摩斯电码用什么表示字母？', opts: ['数字', '图形', '颜色', '点与划'], explain: '点（.）与划（-）的组合。' },
+      en: { q: 'What does Morse code use to represent letters?', opts: ['Numbers', 'Shapes', 'Colors', 'Dots and dashes'], explain: 'A combination of dots (.) and dashes (-).' } },
+    { lvl: 1, a: 1,
+      zh: { q: '栅栏密码属于哪一类？', opts: ['替换密码', '换位密码', '流密码', '分组密码'], explain: '字母不变、只重排顺序。' },
+      en: { q: 'Which family does the rail fence cipher belong to?', opts: ['Substitution', 'Transposition', 'Stream cipher', 'Block cipher'], explain: 'The letters stay the same; only their order is rearranged.' } },
+    { lvl: 1, a: 0,
+      zh: { q: '维吉尼亚密码是……', opts: ['多表替换密码', '单表替换密码', '换位密码', '一次性密码本'], explain: '密钥逐字母选字母表，抹平频率。' },
+      en: { q: 'The Vigenère cipher is a …', opts: ['polyalphabetic substitution cipher', 'monoalphabetic substitution cipher', 'transposition cipher', 'one-time pad'], explain: 'The key picks a fresh alphabet per letter, flattening frequencies.' } },
+    { lvl: 1, a: 2,
+      zh: { q: '培根双字体密码用几种字形编码？', opts: ['3 种', '4 种', '2 种', '26 种'], explain: 'A/B 两种字形，5 位一组 = 二进制先声。' },
+      en: { q: 'How many typefaces does Bacon\'s biliteral cipher use?', opts: ['3', '4', '2', '26'], explain: 'Two typefaces (A/B), five bits per letter — an early glimpse of binary.' } },
+    { lvl: 1, a: 1,
+      zh: { q: '「密文」是……', opts: ['加密前的文字', '加密后的文本', '解密后的文本', '密钥'], explain: '加密输出，无密钥无法读懂。' },
+      en: { q: 'Ciphertext is …', opts: ['the text before encryption', 'the text after encryption', 'the text after decryption', 'the key'], explain: 'The output of encryption; unreadable without the key.' } },
+    { lvl: 1, a: 3,
+      zh: { q: '一次性密码本（OTP）的密钥特点是？', opts: ['很短', '可复用', '固定不变', '与明文等长且只用一次'], explain: '随机、等长、一次性——理论上不可破。' },
+      en: { q: 'What is the key property of a one-time pad?', opts: ['Very short', 'Reusable', 'Fixed forever', 'As long as the message, used once'], explain: 'Random, equal-length, single-use — theoretically unbreakable.' } },
+    { lvl: 1, a: 2,
+      zh: { q: 'BASE64 的作用是？', opts: ['加密', '压缩', '把二进制转成可打印文本', '哈希'], explain: '编码而非加密，现代协议日常用。' },
+      en: { q: 'What does Base64 do?', opts: ['Encryption', 'Compression', 'Turns binary into printable text', 'Hashing'], explain: 'Encoding, not encryption — used everywhere in modern protocols.' } },
+    { lvl: 1, a: 0,
+      zh: { q: '二进制中字母 A 用几个比特表示？', opts: ['8 位', '4 位', '16 位', '2 位'], explain: 'ASCII 中 A=01000001（8 位）。' },
+      en: { q: 'How many bits represent the letter A in binary?', opts: ['8', '4', '16', '2'], explain: 'In ASCII, A = 01000001 (8 bits).' } },
+    { lvl: 1, a: 1,
+      zh: { q: '异或运算的规则是？', opts: ['相同得 1', '相同得 0、不同得 1', '总是得 1', '总是得 0'], explain: '现代密码的原子：A⊕K⊕K=A。' },
+      en: { q: 'What is the XOR rule?', opts: ['Equal bits give 1', 'Equal bits give 0, different bits give 1', 'Always 1', 'Always 0'], explain: 'The atom of modern crypto: A⊕K⊕K=A.' } },
+    { lvl: 1, a: 2,
+      zh: { q: '罗塞塔石碑上有几种文字？', opts: ['1 种', '2 种', '3 种', '4 种'], explain: '象形文、世俗体、古希腊文三语对照。' },
+      en: { q: 'How many scripts are on the Rosetta Stone?', opts: ['1', '2', '3', '4'], explain: 'Hieroglyphs, Demotic, and Ancient Greek side by side.' } },
+    { lvl: 1, a: 0,
+      zh: { q: '「密钥」的作用是？', opts: ['控制加解密方式', '显示明文', '压缩数据', '美化界面'], explain: '密钥决定加密如何发生。' },
+      en: { q: 'What does the key do?', opts: ['Controls how encryption/decryption works', 'Shows the plaintext', 'Compresses data', 'Beautifies the UI'], explain: 'The key decides how encryption happens.' } },
+    { lvl: 1, a: 3,
+      zh: { q: '「加密」的本质是什么？', opts: ['压缩数据', '删除数据', '转换数据', '用密钥把明文变成密文'], explain: '加密是受密钥控制的可逆变换。' },
+      en: { q: 'What is encryption at its core?', opts: ['Compressing data', 'Deleting data', 'Transforming data', 'Turning plaintext into ciphertext under a key'], explain: 'Encryption is a reversible transformation controlled by a key.' } },
+
+    /* ---------- 进阶 L2 ---------- */
+    { lvl: 2, a: 2,
+      zh: { q: 'Kasiski 检验法用来判断什么？', opts: ['密钥内容', '明文长度', '维吉尼亚密钥长度', '密文长度'], explain: '找重复片段间距的最大公约数。' },
+      en: { q: 'What does the Kasiski test reveal?', opts: ['The key content', 'The plaintext length', 'The Vigenère key length', 'The ciphertext length'], explain: 'It finds repeated fragments and takes the GCD of their spacings.' } },
+    { lvl: 2, a: 1,
+      zh: { q: 'Playfair 密码用多大的方阵？', opts: ['4×4', '5×5', '6×6', '3×3'], explain: '5×5（I/J 合并），字母成对加密。' },
+      en: { q: 'What grid size does Playfair use?', opts: ['4×4', '5×5', '6×6', '3×3'], explain: 'A 5×5 square (I/J combined), encrypting letter pairs.' } },
+    { lvl: 2, a: 0,
+      zh: { q: 'ADFGVX 密码由哪两部分组成？', opts: ['6×6 方阵替换 + 列换位', '转子 + 插线板', '凯撒 + 摩斯', '哈希 + 盐'], explain: '替换叠加换位的双层加密。' },
+      en: { q: 'Which two parts make up the ADFGVX cipher?', opts: ['6×6 square substitution + columnar transposition', 'Rotors + plugboard', 'Caesar + Morse', 'Hash + salt'], explain: 'Substitution stacked on transposition — a double cipher.' } },
+    { lvl: 2, a: 3,
+      zh: { q: 'Enigma 加密和解密的关系是？', opts: ['完全不同', '需要逆算法', '无法解密', '相同操作'], explain: '同一设置下加密=解密，奇妙对称。' },
+      en: { q: 'How are Enigma encryption and decryption related?', opts: ['Completely different', 'Needs an inverse algorithm', 'Cannot be decrypted', 'The same operation'], explain: 'With identical settings, encrypting equals decrypting — an eerie symmetry.' } },
+    { lvl: 2, a: 1,
+      zh: { q: 'Bombe 是做什么的？', opts: ['加密机', '破译 Enigma 的筛选机', '摩斯发报机', '哈希机'], explain: '图灵设计，用 crib 筛转子设置。' },
+      en: { q: 'What was the Bombe for?', opts: ['Encryption', 'An Enigma-breaking sieve', 'A Morse transmitter', 'A hashing machine'], explain: 'Designed by Turing, it used cribs to sieve rotor settings.' } },
+    { lvl: 2, a: 2,
+      zh: { q: '「Crib」在破译中指？', opts: ['一种密码', '一种密钥', '已知明文片段', '密文碎片'], explain: '猜测的明文钩子，如固定的「WETTER」。' },
+      en: { q: 'In codebreaking, a "crib" is …', opts: ['a type of cipher', 'a type of key', 'a known plaintext fragment', 'a piece of ciphertext'], explain: 'A guessed plaintext hook, like the fixed "WETTER".' } },
+    { lvl: 2, a: 0,
+      zh: { q: '仿射密码 E=ax+b mod 26 中，a 必须满足？', opts: ['与 26 互质', '等于 26', '小于 b', '任意值'], explain: '互质才有逆元，才能解密。' },
+      en: { q: 'In the affine cipher E=ax+b mod 26, a must be …', opts: ['coprime with 26', 'equal to 26', 'less than b', 'anything'], explain: 'Only then does a have an inverse, so decryption works.' } },
+    { lvl: 2, a: 3,
+      zh: { q: '中途岛破译靠的「深度」指？', opts: ['深水炸弹', '密码强度', '电文长度', '同密钥两电文相减'], explain: '同一天共享加表，相减抵消密钥。' },
+      en: { q: 'In Midway codebreaking, "depth" means …', opts: ['depth charges', 'cipher strength', 'message length', 'subtracting two messages sharing a key'], explain: 'Messages sharing the same daily additive; subtracting cancels the key.' } },
+    { lvl: 2, a: 1,
+      zh: { q: '紫密（Purple）的核心结构是？', opts: ['三个转子', '双路步进开关', '插线板', '磁鼓'], explain: '六元音路 + 二十辅音路，无转子。' },
+      en: { q: 'What is the core structure of Purple?', opts: ['Three rotors', 'Two-bank stepping switches', 'A plugboard', 'A drum'], explain: 'Six vowel paths plus twenty consonant paths — no rotors at all.' } },
+    { lvl: 2, a: 2,
+      zh: { q: 'VENONA 破译利用了哪个漏洞？', opts: ['密码太弱', '密钥太短', '一次性密码本被复用', '算法公开'], explain: '复用密钥流 → 相减抵消 → 读出明文。' },
+      en: { q: 'Which flaw did VENONA exploit?', opts: ['A weak cipher', 'Keys too short', 'One-time pads reused', 'A public algorithm'], explain: 'Reused key streams → subtract to cancel → read the plaintext.' } },
+    { lvl: 2, a: 0,
+      zh: { q: '哈希函数的特点是？', opts: ['单向不可逆', '可逆', '输出可还原', '需要密钥'], explain: '任意输入 → 固定输出，不可逆。' },
+      en: { q: 'What is a property of hash functions?', opts: ['One-way and irreversible', 'Reversible', 'Output can be restored', 'Needs a key'], explain: 'Any input maps to a fixed-length output; you cannot go back.' } },
+    { lvl: 2, a: 3,
+      zh: { q: '「盐」（Salt）用来防什么？', opts: ['暴力破解密钥', '重放攻击', '中间人攻击', '彩虹表攻击'], explain: '口令哈希前加随机值，防预计算表。' },
+      en: { q: 'What does a salt defend against?', opts: ['Brute-forcing keys', 'Replay attacks', 'Man-in-the-middle attacks', 'Rainbow-table attacks'], explain: 'Adding random data before hashing defeats precomputed tables.' } },
+    { lvl: 2, a: 1,
+      zh: { q: '博多码（Baudot）是几比特编码？', opts: ['3 比特', '5 比特', '7 比特', '8 比特'], explain: '5 比特电传码，洛伦兹密文的底层字母表。' },
+      en: { q: 'How many bits does Baudot code use?', opts: ['3 bits', '5 bits', '7 bits', '8 bits'], explain: 'A 5-bit teleprinter code — the alphabet under Lorenz ciphertext.' } },
+    { lvl: 2, a: 0,
+      zh: { q: '维吉尼亚密码真正的发明者是？', opts: ['贝拉索（Bellaso）', '维吉尼亚', '培根', '凯撒'], explain: '贝拉索 1553 年发明，维吉尼亚 1586 年才描述并因此留名。' },
+      en: { q: 'Who really invented the Vigenère cipher?', opts: ['Giovan Battista Bellaso', 'Vigenère', 'Bacon', 'Caesar'], explain: 'Bellaso invented it in 1553; Vigenère described it in 1586 and got the credit.' } },
+    { lvl: 2, a: 0,
+      zh: { q: '杰斐逊转轮（M-94）属于哪类？', opts: ['多字母替换圆盘', '换位密码', '公钥密码', '哈希'], explain: '多个圆盘转出不同替换表，每行一字母。' },
+      en: { q: 'What kind of device is the Jefferson disk (M-94)?', opts: ['A polyalphabetic disk cipher', 'A transposition cipher', 'A public-key cipher', 'A hash'], explain: 'Stacked disks rotate to produce fresh alphabets, one letter per row.' } },
+
+    /* ---------- 专家 L3 ---------- */
+    { lvl: 3, a: 1,
+      zh: { q: 'Diffie-Hellman 解决的核心问题是？', opts: ['数据压缩', '公开信道协商共享密钥', '身份认证', '数据加密'], explain: '无需秘密通道即可协商密钥，公钥密码开端。' },
+      en: { q: 'What core problem does Diffie-Hellman solve?', opts: ['Data compression', 'Agreeing a shared key over a public channel', 'Identity authentication', 'Data encryption'], explain: 'Two parties can agree on a key with no secret channel — the dawn of public-key crypto.' } },
+    { lvl: 3, a: 2,
+      zh: { q: 'RSA 的安全性基于哪个数学难题？', opts: ['椭圆曲线离散对数', '背包问题', '大整数分解', '离散对数'], explain: '大数分解难以逆向，1977 年 RSA 三杰。' },
+      en: { q: 'Which math problem underpins RSA security?', opts: ['Elliptic-curve discrete log', 'The knapsack problem', 'Integer factorization', 'Discrete logarithm'], explain: 'Factoring large numbers is hard — RSA, 1977.' } },
+    { lvl: 3, a: 0,
+      zh: { q: 'Feistel 网络的典型代表是？', opts: ['DES', 'AES', 'ChaCha20', 'RSA'], explain: 'DES 用 Feistel 结构；AES 是 SPN。' },
+      en: { q: 'Which cipher is the classic Feistel network?', opts: ['DES', 'AES', 'ChaCha20', 'RSA'], explain: 'DES uses a Feistel structure; AES is an SPN.' } },
+    { lvl: 3, a: 3,
+      zh: { q: 'AES 的分组大小是？', opts: ['64 位', '32 位', '256 位', '128 位'], explain: '128 位分组，密钥 128/192/256。' },
+      en: { q: 'What is the AES block size?', opts: ['64 bits', '32 bits', '256 bits', '128 bits'], explain: '128-bit blocks, with 128/192/256-bit keys.' } },
+    { lvl: 3, a: 1,
+      zh: { q: 'Kerckhoffs 原则主张什么？', opts: ['算法保密', '安全只依赖密钥保密', '密钥公开', '算法越复杂越好'], explain: '算法可公开，安全全在密钥。' },
+      en: { q: 'What does Kerckhoffs\' principle argue?', opts: ['The algorithm must be secret', 'Security rests only on key secrecy', 'Keys must be public', 'Complexity equals safety'], explain: 'The algorithm can be public; security rests entirely on the key.' } },
+    { lvl: 3, a: 2,
+      zh: { q: '生日攻击针对的是？', opts: ['RSA', 'AES', '哈希碰撞', '凯撒'], explain: '约 2^(n/2) 次即可找到碰撞。' },
+      en: { q: 'What does the birthday attack target?', opts: ['RSA', 'AES', 'Hash collisions', 'Caesar'], explain: 'A collision appears after about 2^(n/2) tries.' } },
+    { lvl: 3, a: 0,
+      zh: { q: '侧信道攻击利用的是？', opts: ['设备物理泄露', '算法数学弱点', '弱口令', '网络延迟'], explain: '功耗/电磁/时间/缓存等泄露。' },
+      en: { q: 'What does a side-channel attack exploit?', opts: ['Physical leakage from the device', 'Mathematical weaknesses', 'Weak passwords', 'Network latency'], explain: 'Power, EM, timing, or cache leakage.' } },
+    { lvl: 3, a: 3,
+      zh: { q: '已知明文攻击（KPA）需要什么？', opts: ['只有密文', '选择密文', '解密预言机', '明文-密文对'], explain: '比对已知对推密钥或算法。' },
+      en: { q: 'What does a known-plaintext attack need?', opts: ['Ciphertext only', 'Chosen ciphertexts', 'A decryption oracle', 'Plaintext-ciphertext pairs'], explain: 'Comparing known pairs to deduce the key or system.' } },
+    { lvl: 3, a: 1,
+      zh: { q: 'Colossus 的用途是？', opts: ['破译 Enigma', '破译洛伦兹（Tunny）', '加密电报', '解数独'], explain: '世界第一台可编程电子计算机，差分统计。' },
+      en: { q: 'What was Colossus used for?', opts: ['Breaking Enigma', 'Breaking Lorenz (Tunny)', 'Encrypting telegrams', 'Solving Sudoku'], explain: 'The world\'s first programmable electronic computer, doing statistical differencing.' } },
+    { lvl: 3, a: 2,
+      zh: { q: '「完美保密」由谁严格证明？', opts: ['图灵', '维吉尼亚', '香农', '迪菲'], explain: '香农 1949 年证明 OTP 绝对安全。' },
+      en: { q: 'Who rigorously proved "perfect secrecy"?', opts: ['Turing', 'Vigenère', 'Shannon', 'Diffie'], explain: 'Shannon proved in 1949 that the OTP is absolutely secure.' } },
+    { lvl: 3, a: 0,
+      zh: { q: '零知识证明的核心是？', opts: ['不泄露秘密证明断言', '泄露部分秘密', '需要可信第三方', '必须线下验证'], explain: '证明「我知道密码」却不透露密码。' },
+      en: { q: 'What is the core of a zero-knowledge proof?', opts: ['Proving a claim without revealing the secret', 'Revealing part of the secret', 'Needing a trusted third party', 'Must verify offline'], explain: 'Prove "I know the password" without revealing the password.' } },
+    { lvl: 3, a: 3,
+      zh: { q: '中间人攻击（MITM）冒充的是？', opts: ['服务器', '客户端', '证书机构', '通信双方'], explain: '同时冒充两端，截听或篡改。' },
+      en: { q: 'Who does a man-in-the-middle attack impersonate?', opts: ['The server', 'The client', 'The certificate authority', 'Both parties'], explain: 'It pretends to be both ends, intercepting or altering traffic.' } },
+    { lvl: 3, a: 1,
+      zh: { q: 'SSL/TLS 握手后，数据用什么加密传输？', opts: ['公钥加密整条消息', '对称加密', 'OTP', '摩斯'], explain: '握手协商对称密钥，之后用快速对称加密传数据。' },
+      en: { q: 'After the SSL/TLS handshake, how is data encrypted?', opts: ['Public-key for the whole message', 'Symmetric encryption', 'OTP', 'Morse'], explain: 'The handshake agrees a symmetric key; bulk data then flows under fast symmetric encryption.' } },
+    { lvl: 3, a: 0,
+      zh: { q: '流密码（如 RC4）与分组密码的区别？', opts: ['逐比特/字节加密', '成块加密', '无需密钥', '不可逆'], explain: '流密码按比特流处理，分组密码按固定块处理。' },
+      en: { q: 'How does a stream cipher (e.g. RC4) differ from a block cipher?', opts: ['Encrypts bit by bit', 'Encrypts in blocks', 'Needs no key', 'Is irreversible'], explain: 'Stream ciphers process a bitstream; block ciphers process fixed-size blocks.' } },
+    { lvl: 3, a: 2,
+      zh: { q: 'Diffie-Hellman 公开交换的是什么？', opts: ['私钥', '最终密钥', '中间数', '密文'], explain: '双方交换公开中间数，各自算出相同共享密钥。' },
+      en: { q: 'What does Diffie-Hellman exchange publicly?', opts: ['Private keys', 'The final key', 'Intermediate numbers', 'Ciphertext'], explain: 'Parties exchange public intermediates and each derives the same shared secret.' } },
+
+    /* ---------- 大师 L4 ---------- */
+    { lvl: 4, a: 1,
+      zh: { q: '选择密文攻击（CCA）中攻击者能？', opts: ['只拿密文', '选择密文并获取解密', '选择明文', '获取密钥'], explain: '现代公钥加密须 CCA 安全。' },
+      en: { q: 'In a chosen-ciphertext attack (CCA), the attacker can …', opts: ['only get ciphertexts', 'choose ciphertexts and obtain decryptions', 'choose plaintexts', 'obtain the key'], explain: 'Modern public-key encryption must be CCA-secure.' } },
+    { lvl: 4, a: 2,
+      zh: { q: '同态加密允许……', opts: ['解密他人数据', '共享密钥', '直接对密文做运算', '绕过密钥'], explain: '密文运算结果=明文运算结果，隐私计算核心。' },
+      en: { q: 'Homomorphic encryption allows …', opts: ['decrypting others\' data', 'sharing keys', 'computing directly on ciphertexts', 'bypassing keys'], explain: 'Computing on ciphertext equals computing on plaintext — the core of privacy computing.' } },
+    { lvl: 4, a: 0,
+      zh: { q: '后量子密码基于哪类难题？', opts: ['格、编码、多变量', '大数分解', '椭圆曲线', '离散对数'], explain: '抗量子算法；NIST 已标准化。' },
+      en: { q: 'Which problems does post-quantum crypto rely on?', opts: ['Lattices, codes, multivariates', 'Factoring', 'Elliptic curves', 'Discrete log'], explain: 'Quantum-resistant algorithms; NIST has standardized several.' } },
+    { lvl: 4, a: 3,
+      zh: { q: 'GCHQ 的科克斯 1973 年发明了什么？', opts: ['DES', 'Enigma', '摩斯', '与 RSA 等价的算法'], explain: '秘密超前 RSA 4 年，1997 年才解密。' },
+      en: { q: 'What did GCHQ\'s Clifford Cocks invent in 1973?', opts: ['DES', 'Enigma', 'Morse', 'An algorithm equivalent to RSA'], explain: 'Secretly four years ahead of RSA; declassified only in 1997.' } },
+    { lvl: 4, a: 1,
+      zh: { q: '中途相遇攻击破解什么最有效？', opts: ['单重加密', '双重加密', '哈希', '流密码'], explain: '两端匹配中间值，2DES 因此不安全。' },
+      en: { q: 'What does a meet-in-the-middle attack break best?', opts: ['Single encryption', 'Double encryption', 'Hashes', 'Stream ciphers'], explain: 'Matching intermediate values from both ends is why 2DES is insecure.' } },
+    { lvl: 4, a: 2,
+      zh: { q: '彩虹表（Rainbow Table）是？', opts: ['一种密码', '一种密钥', '预计算哈希链表', '物理设备'], explain: '加速反查哈希，加盐可防。' },
+      en: { q: 'A rainbow table is …', opts: ['a cipher', 'a key', 'a precomputed hash-chain table', 'a physical device'], explain: 'It speeds up reversing hashes; salting defeats it.' } },
+    { lvl: 4, a: 0,
+      zh: { q: '量子密码（QKD）的安全性基于？', opts: ['量子不可克隆定理', '大数分解', '椭圆曲线', '随机数'], explain: '窃听会扰动量子态被察觉。' },
+      en: { q: 'What is QKD security based on?', opts: ['The quantum no-cloning theorem', 'Factoring', 'Elliptic curves', 'Random numbers'], explain: 'Eavesdropping disturbs quantum states and gets detected.' } },
+    { lvl: 4, a: 3,
+      zh: { q: 'Merkle 树主要用于？', opts: ['加密', '压缩', '传输', '区块链与分布式系统'], explain: '哈希树，高效验证数据完整。' },
+      en: { q: 'What are Merkle trees mainly for?', opts: ['Encryption', 'Compression', 'Transmission', 'Blockchains and distributed systems'], explain: 'Hash trees that verify data integrity efficiently.' } },
+    { lvl: 4, a: 1,
+      zh: { q: '「非秘密加密」概念由谁提出？', opts: ['科克斯', '埃利斯', '迪菲', '香农'], explain: 'GCHQ 埃利斯 1969 年，公钥隐秘先驱。' },
+      en: { q: 'Who conceived "non-secret encryption"?', opts: ['Cocks', 'Ellis', 'Diffie', 'Shannon'], explain: 'GCHQ\'s James Ellis in 1969 — the secret pioneer of public keys.' } },
+    { lvl: 4, a: 2,
+      zh: { q: 'DES 的 56 位密钥为何受质疑？', opts: ['太复杂', '无法实现', '过短易暴力破解，疑被 NSA 削弱', '无法加密中文'], explain: '原 Lucifer 128 位，标准仅 56 位。' },
+      en: { q: 'Why was DES\'s 56-bit key questioned?', opts: ['Too complex', 'Impossible to build', 'Too short for brute force, allegedly weakened by the NSA', 'Cannot encrypt Chinese'], explain: 'The original Lucifer had 128 bits; the standard shipped with 56.' } },
+    { lvl: 3, a: 0,
+      zh: { q: '「自动密钥」（Autokey）密码是谁的发明？', opts: ['维吉尼亚', '培根', '贝拉索', '凯撒'], explain: '维吉尼亚 1586 年独创，明文延伸为密钥。' },
+      en: { q: 'Who invented the autokey cipher?', opts: ['Vigenère', 'Bacon', 'Blaise de Vigenère\'s rival Bellaso', 'Caesar'], explain: 'Vigenère in 1586 — plaintext extends the key.' } },
+    { lvl: 4, a: 3,
+      zh: { q: 'Bombe 的对角线板是谁加的？', opts: ['图灵', '诺克斯', '雷耶夫斯基', '韦尔奇曼'], explain: '提速约十倍，让破译走向日常。' },
+      en: { q: 'Who added the diagonal board to the Bombe?', opts: ['Turing', 'Knox', 'Rejewski', 'Welchman'], explain: 'It sped the Bombe up about tenfold, making daily breaking practical.' } },
+    { lvl: 4, a: 1,
+      zh: { q: 'NIST 后量子标准化主打哪类方案？', opts: ['大数分解', '格基密码', '椭圆曲线', '凯撒'], explain: '如 Kyber（格）、Dilithium、SPHINCS+ 等。' },
+      en: { q: 'Which family dominates NIST\'s post-quantum standard?', opts: ['Factoring', 'Lattice-based', 'Elliptic curves', 'Caesar'], explain: 'Kyber (lattice), Dilithium, SPHINCS+ and friends.' } },
+    { lvl: 4, a: 0,
+      zh: { q: '「IND-CCA2」安全指什么？', opts: ['自适应选择密文攻击下不可区分', '唯密文攻击下不可区分', '暴力破解不可行', '密钥可公开'], explain: '最严格的公钥加密安全模型。' },
+      en: { q: 'What does "IND-CCA2" security mean?', opts: ['Indistinguishable under adaptive chosen-ciphertext attack', 'Indistinguishable under ciphertext-only attack', 'Brute force infeasible', 'Key may be public'], explain: 'The strictest security model for public-key encryption.' } },
+    { lvl: 3, a: 2,
+      zh: { q: 'Zimmermann 电报为什么能撼动一战？', opts: ['密码太强', '内容加密', '破译后暴露德国结盟墨西哥', '电报太长'], explain: '40 号房破译后公开，美国舆论转向参战。' },
+      en: { q: 'Why did the Zimmermann Telegram shake WWI?', opts: ['The cipher was too strong', 'Its content was encrypted', 'Breaking it exposed Germany\'s Mexico alliance', 'It was too long'], explain: 'Room 40\'s break went public and swung US opinion toward war.' } },
+    /* ---------- D2 扩充：+40 题（4 级 × 10） ---------- */
+    { lvl: 1, a: 1,
+      zh: { q: 'ROT13 的偏移量是多少？', opts: ['3', '13', '5', '26'], explain: '13 位对称，加密两次即还原。' },
+      en: { q: 'What is the shift of ROT13?', opts: ['3', '13', '5', '26'], explain: 'A shift of 13 is its own inverse: encrypt twice and you are back.' } },
+    { lvl: 1, a: 3,
+      zh: { q: 'Atbash 密码的规则是什么？', opts: ['后移三位', '点划编码', '交换相邻字母', '字母表反序替换'], explain: 'A 对 Z、B 对 Y，希伯来古籍中已使用。' },
+      en: { q: 'What is the rule of the Atbash cipher?', opts: ['Shift by three', 'Use dots and dashes', 'Swap adjacent letters', 'Reverse the alphabet'], explain: 'A maps to Z, B to Y — found in ancient Hebrew texts.' } },
+    { lvl: 1, a: 2,
+      zh: { q: '古希腊的斯巴达棒（Scytale）属于哪类密码？', opts: ['替换密码', '公钥密码', '换位密码', '哈希'], explain: '绕棒写字、解下重排，字母不变只换顺序。' },
+      en: { q: 'What kind of cipher is the ancient Greek scytale?', opts: ['Substitution', 'Public-key', 'Transposition', 'Hash'], explain: 'Text wrapped around a rod and read off — letters keep, order changes.' } },
+    { lvl: 1, a: 0,
+      zh: { q: '隐写术（Steganography）与加密的区别是什么？', opts: ['隐写术隐藏信息的存在', '隐写术更安全', '隐写术需要密钥', '隐写术不可逆'], explain: '加密让内容读不懂，隐写让信息根本不被发现。' },
+      en: { q: 'How does steganography differ from encryption?', opts: ['It hides that a message exists', 'It is stronger', 'It needs a key', 'It is irreversible'], explain: 'Encryption makes content unreadable; steganography hides its existence.' } },
+    { lvl: 2, a: 1,
+      zh: { q: '对称加密使用什么密钥？', opts: ['一对公钥私钥', '一把共享密钥', '两把不同密钥', '不需要密钥'], explain: '加解密用同一把密钥。' },
+      en: { q: 'What key does symmetric encryption use?', opts: ['A public/private pair', 'One shared key', 'Two different keys', 'No key'], explain: 'The same key encrypts and decrypts.' } },
+    { lvl: 2, a: 3,
+      zh: { q: '「密码学」（Cryptography）一词源自希腊语的哪个含义？', opts: ['数字计算', '战争密码', '石头铭文', '隐藏书写'], explain: 'kryptós（隐藏）+ gráphein（书写）。' },
+      en: { q: 'The word "cryptography" comes from Greek meaning …', opts: ['Number calculation', 'War code', 'Stone carving', 'Hidden writing'], explain: 'kryptós (hidden) + gráphein (to write).' } },
+    { lvl: 2, a: 2,
+      zh: { q: 'SHA-256 的输出长度是多少？', opts: ['128 位', '512 位', '256 位', '64 位'], explain: '任意输入都映射为固定的 256 位摘要。' },
+      en: { q: 'How long is the SHA-256 output?', opts: ['128 bits', '512 bits', '256 bits', '64 bits'], explain: 'Any input maps to a fixed 256-bit digest.' } },
+    { lvl: 2, a: 0,
+      zh: { q: '「Nonce」（现时数）指什么？', opts: ['只用一次的数', '固定密码', '公钥', '哈希值'], explain: 'Number used ONCE，用来防重放攻击。' },
+      en: { q: 'What is a "nonce"?', opts: ['A number used only once', 'A fixed password', 'A public key', 'A hash value'], explain: 'A number used ONCE, to prevent replay attacks.' } },
+    { lvl: 1, a: 1,
+      zh: { q: '猪圈密码（Pigpen）用什么表示字母？', opts: ['点与划', '方格与符号', '数字', '颜色'], explain: '把字母放进网格，用边框形状表示。' },
+      en: { q: 'What does the pigpen cipher use to represent letters?', opts: ['Dots and dashes', 'Grid shapes and symbols', 'Numbers', 'Colors'], explain: 'Letters sit in grids and are shown by their border shapes.' } },
+    { lvl: 2, a: 2,
+      zh: { q: '公钥密码（非对称加密）使用几把密钥？', opts: ['一把', '三把', '两把（公钥 + 私钥）', '零把'], explain: '公钥加密，私钥解密。' },
+      en: { q: 'How many keys does public-key (asymmetric) encryption use?', opts: ['One', 'Three', 'Two (public + private)', 'Zero'], explain: 'The public key encrypts; the private key decrypts.' } },
+    { lvl: 2, a: 0,
+      zh: { q: '波利比奥斯方阵（Polybius square）如何表示字母？', opts: ['行列坐标（如 23）', '点与划', '图形', '随机数'], explain: '5×5 方格中，字母用行号列号定位。' },
+      en: { q: 'How does the Polybius square represent letters?', opts: ['Row-column coordinates (e.g. 23)', 'Dots and dashes', 'Pictures', 'Random numbers'], explain: 'In a 5×5 grid, each letter is a row-and-column coordinate.' } },
+    { lvl: 2, a: 2,
+      zh: { q: '希尔密码（Hill cipher）用什么数学工具加密？', opts: ['质因数分解', '椭圆曲线', '矩阵乘法', '斐波那契数列'], explain: '明文分组乘以密钥矩阵，Lester Hill 1929 年发表。' },
+      en: { q: 'Which math tool does the Hill cipher use?', opts: ['Prime factorization', 'Elliptic curves', 'Matrix multiplication', 'Fibonacci numbers'], explain: 'Plaintext blocks are multiplied by a key matrix; published by Lester Hill in 1929.' } },
+    { lvl: 2, a: 1,
+      zh: { q: 'Bifid 密码的关键技巧是什么？', opts: ['矩阵求逆', '先把坐标拆分再重组（分馏）', '换位', '异或'], explain: '每个字母拆成行、列坐标，混合后再成对还原。' },
+      en: { q: 'What is the key trick of the Bifid cipher?', opts: ['Matrix inversion', 'Fractionation — split then recombine coordinates', 'Transposition', 'XOR'], explain: 'Each letter splits into row and column, mixed and re-paired.' } },
+    { lvl: 2, a: 3,
+      zh: { q: '谁发明了阿尔伯蒂密码盘（Alberti disk）？', opts: ['凯撒', '维吉尼亚', '图灵', '阿尔伯蒂（Alberti）'], explain: '1466 年，第一个多表替换加密装置。' },
+      en: { q: 'Who invented the Alberti cipher disk?', opts: ['Caesar', 'Vigenère', 'Turing', 'Leon Battista Alberti'], explain: 'In 1466 — the first polyalphabetic encryption device.' } },
+    { lvl: 2, a: 0,
+      zh: { q: '列换位密码（Columnar transposition）中密钥的作用是什么？', opts: ['决定列的读取顺序', '改变字母表', '生成随机数', '求逆矩阵'], explain: '按密钥排定的列顺序读写，字母不变只重排。' },
+      en: { q: 'In a columnar transposition cipher, what does the key do?', opts: ['Sets the column reading order', 'Changes the alphabet', 'Generates randomness', 'Inverts the matrix'], explain: 'It orders the columns for reading; letters change only position.' } },
+    { lvl: 2, a: 2,
+      zh: { q: '卡尔达诺格栅（Cardan grille）是如何工作的？', opts: ['替换字母', '转动转子', '透过挖洞模板读字', '求模运算'], explain: '透过格栅孔读出字母，换一个方向再读。' },
+      en: { q: 'How does a Cardan grille work?', opts: ['Substitutes letters', 'Rotates rotors', 'Reads letters through holes in a mask', 'Takes a modulus'], explain: 'Letters are read through holes in a mask, then the mask turns.' } },
+    { lvl: 2, a: 1,
+      zh: { q: '路易十四的「大密码」（Grand Chiffre）为何著名？', opts: ['第一个公钥密码', '两百多年无人能破', '只用一次', '从未被使用'], explain: '罗西尼奥父子设计，1890 年代才被巴泽里斯破译。' },
+      en: { q: 'Why is Louis XIV\'s Great Cipher famous?', opts: ['It was the first public-key cipher', 'It stayed unbroken for over 200 years', 'It was used once', 'It was never used'], explain: 'Built by the Rossignols and unbroken until Étienne Bazeries in the 1890s.' } },
+    { lvl: 2, a: 3,
+      zh: { q: '书密码（Book cipher）的「密钥」是什么？', opts: ['一串数字', '一把锁', '一张地图', '一本约定的书'], explain: '用页码、行号、字序号定位明文，贝尔宝藏传说即此。' },
+      en: { q: 'What is the "key" of a book cipher?', opts: ['A number string', 'A lock', 'A map', 'An agreed-upon book'], explain: 'Page, line and word positions point to plaintext — the Beale ciphers legend.' } },
+    { lvl: 2, a: 0,
+      zh: { q: '二战中纳瓦霍语密码通话员（Navajo code talkers）的作用是什么？', opts: ['用鲜为人知的语言传递军令', '操作 Enigma', '破译日本密码', '编写哈希算法'], explain: '纳瓦霍语外人几乎听不懂，实战中未被破译。' },
+      en: { q: 'What did the Navajo code talkers do in WWII?', opts: ['Passed orders in a little-known language', 'Operated Enigma', 'Broke Japanese ciphers', 'Wrote hash algorithms'], explain: 'Navajo was nearly impossible for outsiders — and was never broken.' } },
+    { lvl: 2, a: 1,
+      zh: { q: 'Playfair 密码的真正发明者是谁？', opts: ['普莱费尔（Playfair）', '惠斯通（Wheatstone）', '凯撒', '培根'], explain: '惠斯通发明，因普莱费尔男爵推广而冠其名。' },
+      en: { q: 'Who actually invented the Playfair cipher?', opts: ['Playfair', 'Charles Wheatstone', 'Caesar', 'Bacon'], explain: 'Wheatstone invented it; Lord Playfair popularized it and lent his name.' } },
+    { lvl: 3, a: 1,
+      zh: { q: 'ECB 模式的最大弱点是什么？', opts: ['太慢', '相同明文块产生相同密文块', '需要公钥', '无法解密'], explain: '密文重复泄露模式，著名的 ECB 企鹅图即此。' },
+      en: { q: 'What is ECB mode\'s biggest weakness?', opts: ['It is too slow', 'Identical plaintext blocks yield identical ciphertext blocks', 'It needs a public key', 'It cannot decrypt'], explain: 'Repeated ciphertext leaks patterns — the famous ECB penguin.' } },
+    { lvl: 3, a: 0,
+      zh: { q: '初始化向量（IV）在分组密码模式中的作用是什么？', opts: ['使相同明文每次加密结果不同', '生成公钥', '压缩数据', '求哈希'], explain: '给第一个块一个随机起点，防止模式泄露。' },
+      en: { q: 'What does an initialization vector (IV) do in block modes?', opts: ['Makes identical plaintext encrypt differently each time', 'Generates public keys', 'Compresses data', 'Computes hashes'], explain: 'It gives the first block a fresh starting point, hiding patterns.' } },
+    { lvl: 3, a: 2,
+      zh: { q: '填充预言攻击（Padding oracle）利用了哪一点？', opts: ['密钥泄露', '明文直接可见', '解密方对填充错误的不同反应', '哈希碰撞'], explain: '借「填充是否合法」的反馈逐字节解出明文（如 Bleichenbacher）。' },
+      en: { q: 'What does a padding-oracle attack exploit?', opts: ['A leaked key', 'Directly visible plaintext', 'The decryptor\'s reaction to padding errors', 'Hash collisions'], explain: 'It uses valid-vs-invalid padding feedback to decrypt byte by byte (e.g. Bleichenbacher).' } },
+    { lvl: 3, a: 3,
+      zh: { q: '重合指数（Index of Coincidence）用于判断什么？', opts: ['哈希强度', '密钥内容', '公钥大小', '文本是否多表加密及密钥长度'], explain: '弗里德曼提出，测字母分布是否被多表抹平。' },
+      en: { q: 'What does the Index of Coincidence measure?', opts: ['Hash strength', 'Key content', 'Public-key size', 'Whether text is polyalphabetic / its key length'], explain: 'Friedman\'s measure of whether a polyalphabetic cipher has flattened letter frequencies.' } },
+    { lvl: 3, a: 0,
+      zh: { q: '谁在 1932 年率先破译了 Enigma？', opts: ['马里安·雷耶夫斯基', '图灵', '香农', '凯撒'], explain: '波兰数学家雷耶夫斯基用数学与「特征法」先行破译。' },
+      en: { q: 'Who first broke Enigma, in 1932?', opts: ['Marian Rejewski', 'Turing', 'Shannon', 'Caesar'], explain: 'Polish mathematician Rejewski broke it first with pure math and characteristics.' } },
+    { lvl: 3, a: 1,
+      zh: { q: 'AES 标准选用的算法原名是什么？', opts: ['Lucifer', 'Rijndael', 'Twofish', 'Serpent'], explain: '达门与莱门设计，2001 年胜出成为 AES。' },
+      en: { q: 'What is the original name of the AES algorithm?', opts: ['Lucifer', 'Rijndael', 'Twofish', 'Serpent'], explain: 'Designed by Daemen and Rijmen; it won and became AES in 2001.' } },
+    { lvl: 3, a: 2,
+      zh: { q: '椭圆曲线密码（ECC）相比 RSA 的优势是什么？', opts: ['更快但更不安全', '无需密钥', '更短密钥达到同等强度', '输出更长'], explain: '短密钥即可抵抗离散对数，移动端更省资源。' },
+      en: { q: 'What advantage does ECC have over RSA?', opts: ['Faster but weaker', 'No key needed', 'Shorter keys for equal strength', 'Longer outputs'], explain: 'Short keys withstand discrete-log attacks, saving resources on devices.' } },
+    { lvl: 3, a: 3,
+      zh: { q: '3DES 的加密顺序通常是什么？', opts: ['加密-加密-加密', '解密-解密-解密', '三个不同密钥', '加密-解密-加密'], explain: 'E-D-E 结构让 3DES 兼容单 DES。' },
+      en: { q: 'What is the usual 3DES operation order?', opts: ['Encrypt-encrypt-encrypt', 'Decrypt-decrypt-decrypt', 'Three different keys', 'Encrypt-decrypt-encrypt'], explain: 'The E-D-E structure keeps 3DES compatible with single DES.' } },
+    { lvl: 3, a: 0,
+      zh: { q: 'HMAC 的主要用途是什么？', opts: ['验证消息完整性与真实性', '加密大文件', '生成公钥', '压缩'], explain: '带密钥的哈希，确认消息未被篡改且来自持钥方。' },
+      en: { q: 'What is HMAC mainly used for?', opts: ['Verifying message integrity and authenticity', 'Encrypting large files', 'Generating public keys', 'Compression'], explain: 'A keyed hash that confirms a message was not altered and came from the key holder.' } },
+    { lvl: 3, a: 1,
+      zh: { q: '差分密码分析（Differential cryptanalysis）是由谁公开的？', opts: ['图灵', '比哈姆与沙米尔', '香农', '凯撒'], explain: '1990 年公开，DES 设计者其实早已考虑。' },
+      en: { q: 'Who published differential cryptanalysis?', opts: ['Turing', 'Biham and Shamir', 'Shannon', 'Caesar'], explain: 'Published in 1990; the DES designers had actually known about it.' } },
+    { lvl: 4, a: 0,
+      zh: { q: '香农提出的「混淆与扩散」分别指什么？', opts: ['混淆=密钥与密文关系复杂化，扩散=明文影响散布到整个密文', '混淆=加密，扩散=解密', '混淆=换位，扩散=替换', '两者都指增加密钥长度'], explain: '1949 年提出，是现代分组密码设计的基石。' },
+      en: { q: '"Confusion and diffusion" mean …', opts: ['Confusion obscures key–ciphertext links; diffusion spreads plaintext influence', 'Confusion encrypts; diffusion decrypts', 'Confusion transposes; diffusion substitutes', 'Both mean longer keys'], explain: 'Shannon\'s 1949 principles — the foundation of modern block-cipher design.' } },
+    { lvl: 4, a: 1,
+      zh: { q: '香农的「唯一解距离」（Unicity distance）指什么？', opts: ['密钥长度', '唯一确定密钥所需的最短密文长度', '破解时间', '密文冗余'], explain: '密文多到足以排除其他所有密钥为止。' },
+      en: { q: 'What is Shannon\'s unicity distance?', opts: ['The key length', 'The minimum ciphertext length to uniquely determine the key', 'The break time', 'Ciphertext redundancy'], explain: 'The amount of ciphertext needed to rule out every other key.' } },
+    { lvl: 4, a: 2,
+      zh: { q: 'Shor 算法威胁哪类密码？', opts: ['对称密码', '哈希', '基于大数分解/离散对数的 RSA 与 ECC', '凯撒'], explain: '量子多项式时间分解大数，RSA/ECC 将失效。' },
+      en: { q: 'Which ciphers does Shor\'s algorithm threaten?', opts: ['Symmetric ciphers', 'Hashes', 'RSA and ECC (factoring / discrete log)', 'Caesar'], explain: 'Quantum factoring breaks RSA and ECC in polynomial time.' } },
+    { lvl: 4, a: 3,
+      zh: { q: 'Grover 算法对 AES-256 的影响是什么？', opts: ['彻底破解', '无影响', '密钥减半为 64 位', '安全强度降到约 128 位'], explain: '二次加速穷举，256 位密钥只剩约 128 位安全性。' },
+      en: { q: 'How does Grover\'s algorithm affect AES-256?', opts: ['Breaks it completely', 'No effect', 'Halves the key to 64 bits', 'Drops its security to ~128 bits'], explain: 'A quadratic speedup leaves a 256-bit key with only ~128 bits of security.' } },
+    { lvl: 4, a: 0,
+      zh: { q: '「雪崩效应」（Avalanche effect）描述的是什么？', opts: ['改一个输入位，约一半输出位翻转', '密钥越长越好', '密文越长越好', '速度越快越好'], explain: '理想密码要求微小改动引发半数比特变化。' },
+      en: { q: 'What does the avalanche effect describe?', opts: ['Flipping one input bit changes about half the output bits', 'Longer keys are better', 'Longer ciphertext is better', 'Faster is better'], explain: 'A good cipher turns a one-bit change into roughly half the bits flipping.' } },
+    { lvl: 4, a: 1,
+      zh: { q: '前向保密（Forward secrecy）保证什么？', opts: ['密钥永不泄露', '长期密钥泄露也不危及过去会话', '算法永远保密', '密文不可重复'], explain: '每次会话用临时密钥，事后无法回溯解密。' },
+      en: { q: 'What does forward secrecy guarantee?', opts: ['Keys never leak', 'Past sessions stay safe even if the long-term key leaks', 'Algorithms stay secret', 'Ciphertext never repeats'], explain: 'Ephemeral per-session keys mean old traffic cannot be decrypted later.' } },
+    { lvl: 4, a: 2,
+      zh: { q: 'IND-CPA 安全意味着什么？', opts: ['密钥不可破解', '密文长度隐藏', '选择明文攻击下密文不可区分', '算法保密'], explain: '攻击者无法区分两条加密消息，故需随机化加密。' },
+      en: { q: 'What does IND-CPA security mean?', opts: ['The key is unbreakable', 'Ciphertext length is hidden', 'Ciphertexts are indistinguishable under chosen-plaintext attack', 'The algorithm is secret'], explain: 'An attacker cannot tell two encrypted messages apart — hence randomized encryption.' } },
+    { lvl: 4, a: 3,
+      zh: { q: '第一个量子密钥分发（QKD）协议是？', opts: ['RSA', 'AES', 'TLS', 'BB84'], explain: '贝内特与布拉萨尔 1984 年提出，用光子偏振分发密钥。' },
+      en: { q: 'What was the first quantum key distribution protocol?', opts: ['RSA', 'AES', 'TLS', 'BB84'], explain: 'Bennett and Brassard, 1984 — key distribution via photon polarization.' } },
+    { lvl: 4, a: 0,
+      zh: { q: '「带误差学习」（LWE, Learning With Errors）是什么？', opts: ['后量子密码所依赖的格难题', '一种对称密码', '哈希函数', '换位密码'], explain: '解含噪声的线性方程组极难，是格密码的基础。' },
+      en: { q: 'What is Learning With Errors (LWE)?', opts: ['A lattice problem underpinning post-quantum crypto', 'A symmetric cipher', 'A hash function', 'A transposition cipher'], explain: 'Solving noisy linear equations is hard — the basis of lattice cryptography.' } },
+    { lvl: 4, a: 1,
+      zh: { q: 'Argon2 是针对什么场景设计的算法？', opts: ['流加密', '抗 GPU 暴力的口令哈希', '公钥生成', '数据压缩'], explain: '内存困难设计，2015 年 PHC 竞赛冠军。' },
+      en: { q: 'What is Argon2 designed for?', opts: ['Stream encryption', 'GPU-resistant password hashing', 'Public-key generation', 'Data compression'], explain: 'Memory-hard by design — winner of the 2015 PHC competition.' } },
+    /* ---- 第四期 A7：量子时代专题 +10 题（lvl 3-4） ---- */
+    { lvl: 3, a: 1,
+      zh: { q: 'BB84 协议中，Alice 与 Bob 为什么要公开比对「基」？', opts: ['为了压缩数据', '只保留基一致的位作为共享密钥', '为了加速传输', '为了加密密钥'], explain: '基匹配的测量结果才可靠，构成筛选密钥；比对本身不泄露比特值。' },
+      en: { q: 'In BB84, why do Alice and Bob publicly compare bases?', opts: ['To compress data', 'To keep only matching-basis bits as the shared key', 'To speed up transmission', 'To encrypt the key'], explain: 'Measurements with matching bases are reliable and form the sifted key; comparing bases reveals nothing about bit values.' } },
+    { lvl: 3, a: 2,
+      zh: { q: 'BB84 的安全性由什么保证？', opts: ['密钥足够长', '算法未公开', '量子力学的测不准与不可克隆', '超高速计算'], explain: '窃听必扰动量子态并留下误码指纹——安全基于物理定律而非算力。' },
+      en: { q: 'What guarantees BB84\'s security?', opts: ['Long keys', 'A secret algorithm', 'Quantum uncertainty and no-cloning', 'Faster computers'], explain: 'Eavesdropping disturbs quantum states and leaves error fingerprints — security rests on physics, not computing power.' } },
+    { lvl: 3, a: 0,
+      zh: { q: '威斯纳约 1970 年写成的《共轭编码》最初遭遇了什么？', opts: ['被多家期刊拒稿、沉睡十余年', '立即获得专利', '登上《自然》封面', '被 NSA 立即采用'], explain: '思想过于超前屡遭拒稿，直到贝内特与布拉萨德重新发现才催生 BB84。' },
+      en: { q: 'What first became of Wiesner\'s "Conjugate Coding" (c. 1970)?', opts: ['Rejected by journals, dormant for a decade', 'Instantly patented', 'On the cover of Nature', 'Adopted by the NSA at once'], explain: 'Too far ahead of its time; Bennett and Brassard rediscovered it and BB84 was born.' } },
+    { lvl: 4, a: 3,
+      zh: { q: 'Shor 算法把大数分解的计算复杂度降到哪一档？', opts: ['指数级', 'O(n²)', '对数级', '多项式级'], explain: '多项式时间分解意味着经典难解问题在量子机上可解。' },
+      en: { q: 'To what complexity class does Shor\'s algorithm reduce factoring?', opts: ['Exponential', 'O(n²)', 'Logarithmic', 'Polynomial'], explain: 'Polynomial-time factoring means classically hard problems become solvable on a quantum machine.' } },
+    { lvl: 4, a: 1,
+      zh: { q: '「先截获、后解密」（Harvest now, decrypt later）威胁的是？', opts: ['今天的对称密码', '保密期跨越数十年的数据', '哈希函数', '所有摩斯通信'], explain: '对手囤积今日密文等量子机成熟回放解读——长寿命机密现在就要后量子保护。' },
+      en: { q: 'Whom does "harvest now, decrypt later" threaten?', opts: ['Today\'s symmetric ciphers', 'Data whose secrecy must span decades', 'Hash functions', 'All Morse traffic'], explain: 'Adversaries warehouse today\'s ciphertext for tomorrow\'s quantum machines — long-lived secrets need post-quantum protection now.' } },
+    { lvl: 4, a: 2,
+      zh: { q: '2022 年 SIKE 在后量子竞选中被怎样的攻击击倒？', opts: ['超级计算机穷举', '量子计算机演示', '一台普通笔记本约一小时', '侧信道监听'], explain: 'Castryck-Decru 用经典数学攻击在笔记本上破译——公开评审的价值所在。' },
+      en: { q: 'How was SIKE broken in the 2022 NIST tournament?', opts: ['Supercomputer brute force', 'A live quantum computer', 'An ordinary laptop in about an hour', 'Side-channel listening'], explain: 'The Castryck–Decru classical attack felled it on a laptop — proof open vetting works.' } },
+    { lvl: 4, a: 0,
+      zh: { q: 'NIST 后量子标准 ML-KEM（FIPS 203）源自哪个提交方案？', opts: ['CRYSTALS-Kyber', 'SIKE', 'Rainbow', 'SPHINCS+'], explain: 'Kyber 经标准化成为 ML-KEM；SPHINCS+ 则演化为 SLH-DSA（FIPS 205）。' },
+      en: { q: 'Which submission became NIST\'s ML-KEM (FIPS 203)?', opts: ['CRYSTALS-Kyber', 'SIKE', 'Rainbow', 'SPHINCS+'], explain: 'Kyber was standardized as ML-KEM; SPHINCS+ became SLH-DSA (FIPS 205).' } },
+    { lvl: 4, a: 1,
+      zh: { q: '格密码为何被认为能抵抗量子攻击？', opts: ['密钥特别长', '其核心难题尚无高效量子解法（Shor 无用武之地）', '它运行更快', '它不使用数学'], explain: '最短向量等问题没有已知的量子多项式时间算法。' },
+      en: { q: 'Why are lattice ciphers considered quantum-resistant?', opts: ['Their keys are longer', 'Their core problems lack known efficient quantum attacks — Shor has no purchase', 'They run faster', 'They use no math'], explain: 'Shortest-vector-type problems have no known polynomial-time quantum algorithms.' } },
+    { lvl: 4, a: 3,
+      zh: { q: '2017 年实现星地量子密钥分发、把 BB84 搬上太空的卫星是？', opts: ['旅行者一号', '哈勃', '北斗三号', '墨子号'], explain: '「墨子号」2016 年升空，次年完成星地 QKD 与洲际量子保密通话。' },
+      en: { q: 'Which satellite achieved space-to-ground QKD in 2017, lifting BB84 into orbit?', opts: ['Voyager 1', 'Hubble', 'BeiDou-3', 'Micius'], explain: 'Launched in 2016, Micius completed space-to-ground QKD and intercontinental quantum-secured calls.' } },
+    { lvl: 3, a: 2,
+      zh: { q: '面对 Grover 算法，对称密码的标准对策是？', opts: ['换用公钥密码', '放弃加密', '将密钥长度加倍（如 AES-256）', '减少加密轮数'], explain: '√N 加速只需密钥加倍抵消——AES-256 因此依然安全。' },
+      en: { q: 'Against Grover\'s algorithm, what is the standard countermeasure for symmetric ciphers?', opts: ['Switch to public-key crypto', 'Abandon encryption', 'Double the key length (e.g., AES-256)', 'Reduce cipher rounds'], explain: 'A √N speedup is neutralized by doubling the key — AES-256 stays secure.' } }
+  ];
+
+  /* 段位评级（8 级）：按得分率 */
+  var RANKS = [
+    { min: 0.95, name: 'legend', zh: '传说破译者', en: 'Legendary Codebreaker', icon: '👑' },
+    { min: 0.85, name: 'master', zh: '密码大师', en: 'Cipher Master', icon: '💎' },
+    { min: 0.75, name: 'expert', zh: '资深破译者', en: 'Expert Cryptanalyst', icon: '🛡️' },
+    { min: 0.65, name: 'advanced', zh: '进阶破译者', en: 'Advanced Breaker', icon: '⚔️' },
+    { min: 0.5, name: 'intermediate', zh: '中级破译者', en: 'Intermediate', icon: '🔎' },
+    { min: 0.35, name: 'novice', zh: '入门破译者', en: 'Novice', icon: '📖' },
+    { min: 0.15, name: 'rookie', zh: '新手学徒', en: 'Rookie', icon: '🌱' },
+    { min: 0, name: 'initiate', zh: '初识者', en: 'Initiate', icon: '🕯️' }
+  ];
+
+  function rankFor(score, total) {
+    var pct = total ? score / total : 0;
+    for (var i = 0; i < RANKS.length; i++) {
+      if (pct >= RANKS[i].min) return RANKS[i];
+    }
+    return RANKS[RANKS.length - 1];
+  }
+
+  /* 抽 10 题：按级别权重（L1×4 L2×3 L3×2 L4×1）+ 随机 */
+  function draw10() {
+    var picks = [];
+    var lvlPool = { 1: [], 2: [], 3: [], 4: [] };
+    BANK.forEach(function (q, i) { lvlPool[q.lvl].push(i); });
+    var need = { 1: 4, 2: 3, 3: 2, 4: 1 };
+    for (var lvl in need) {
+      var pool = lvlPool[lvl];
+      for (var k = 0; k < need[lvl]; k++) {
+        if (!pool.length) break;
+        var idx = Math.floor(Math.random() * pool.length);
+        picks.push(pool.splice(idx, 1)[0]);
+      }
+    }
+    for (var i = picks.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      var t = picks[i]; picks[i] = picks[j]; picks[j] = t;
+    }
+    return picks.map(function (bi) { return BANK[bi]; });
+  }
+
+  /* 记录最近一次段位（档案页可读） */
+  function recordResult(score, total) {
+    var r = rankFor(score, total);
+    try {
+      localStorage.setItem('arcade_quiz_best_score', String(score));
+      localStorage.setItem('arcade_quiz_best_total', String(total));
+      localStorage.setItem('arcade_quiz_rank', r.name);
+      localStorage.setItem('arcade_quiz_rank_zh', r.zh);
+      localStorage.setItem('arcade_quiz_rank_en', r.en);
+      localStorage.setItem('arcade_quiz_icon', r.icon);
+      /* 历史最佳：只升不降 */
+      var best = parseInt(localStorage.getItem('arcade_quiz_best_ever') || '0', 10);
+      if (score > best) localStorage.setItem('arcade_quiz_best_ever', String(score));
+    } catch (e) {}
+    return r;
+  }
+  function lastResult() {
+    try {
+      var score = parseInt(localStorage.getItem('arcade_quiz_best_score') || '0', 10);
+      var total = parseInt(localStorage.getItem('arcade_quiz_best_total') || '0', 10);
+      var name = localStorage.getItem('arcade_quiz_rank') || '';
+      var zh = localStorage.getItem('arcade_quiz_rank_zh') || '未测验';
+      var en = localStorage.getItem('arcade_quiz_rank_en') || 'Not tested';
+      var icon = localStorage.getItem('arcade_quiz_icon') || '🕯️';
+      var ever = parseInt(localStorage.getItem('arcade_quiz_best_ever') || '0', 10);
+      return { score: score, total: total, name: name, zh: zh, en: en, icon: icon, ever: ever };
+    } catch (e) { return { score: 0, total: 0, name: '', zh: '未测验', en: 'Not tested', icon: '🕯️', ever: 0 }; }
+  }
+
+  /* ---------- D2 错题本 ----------
+     key 用 zh 题干（跨会话稳定）；答错入本、连对 3 次自动移出 */
+  var WRONG_KEY = 'arcade_quiz_wrong';
+  function wrongMap() {
+    try { return JSON.parse(localStorage.getItem(WRONG_KEY) || '{}'); } catch (e) { return {}; }
+  }
+  function saveWrong(m) {
+    try { localStorage.setItem(WRONG_KEY, JSON.stringify(m)); } catch (e) {}
+  }
+  function markWrong(q) {
+    if (!q || !q.zh || !q.zh.q) return;
+    var m = wrongMap();
+    m[q.zh.q] = { wrong: ((m[q.zh.q] && m[q.zh.q].wrong) || 0) + 1, streak: 0 };
+    saveWrong(m);
+  }
+  function markRight(q) {
+    if (!q || !q.zh || !q.zh.q) return;
+    var m = wrongMap();
+    var k = q.zh.q;
+    if (!m[k]) return;
+    m[k].streak = (m[k].streak || 0) + 1;
+    if (m[k].streak >= 3) delete m[k];
+    saveWrong(m);
+  }
+  /* 取错题（按错误次数降序）最多 n 道在题库中的对象 */
+  function drawWrong(n) {
+    var m = wrongMap();
+    var keys = Object.keys(m);
+    keys.sort(function (a, b) { return (m[b].wrong || 0) - (m[a].wrong || 0); });
+    var out = [];
+    for (var i = 0; i < keys.length && out.length < n; i++) {
+      for (var j = 0; j < BANK.length; j++) {
+        if (BANK[j].zh.q === keys[i]) { out.push(BANK[j]); break; }
+      }
+    }
+    return out;
+  }
+  function wrongCount() { return Object.keys(wrongMap()).length; }
+
+  return {
+    BANK: BANK, RANKS: RANKS, draw10: draw10,
+    rankFor: rankFor, recordResult: recordResult, lastResult: lastResult,
+    markWrong: markWrong, markRight: markRight, drawWrong: drawWrong, wrongCount: wrongCount
+  };
+})();

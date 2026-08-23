@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="破译游戏">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <title>摩斯听音训练 · 用游戏破译人类三千年加密解密史</title>
+  <meta name="description" content="破译 DECODE ARCADE · 摩斯听音训练：浏览器实时合成点划电码音，听音辨字母，三档速度，10 题一轮训练你的耳力。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://poyi.net/morse-listen.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="破译游戏 DECODE ARCADE">
+  <meta property="og:title" content="摩斯听音训练 · 用游戏破译人类三千年加密解密史">
+  <meta property="og:description" content="浏览器实时合成点划电码音，听音辨字母，三档速度，10 题一轮。">
+  <meta property="og:url" content="https://poyi.net/morse-listen.html">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:image" content="https://poyi.net/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="摩斯听音训练 · 破译 DECODE ARCADE">
+  <meta name="twitter:description" content="浏览器实时合成点划电码音，听音辨字母，三档速度。">
+  <meta name="twitter:image" content="https://poyi.net/assets/og-image.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "摩斯听音训练 · 用游戏破译人类三千年加密解密史",
+    "url": "https://poyi.net/morse-listen.html",
+    "isPartOf": { "@type": "WebSite", "name": "破译游戏 DECODE ARCADE", "url": "https://poyi.net/" },
+    "inLanguage": "zh-CN",
+    "about": "摩斯电码听音训练",
+    "description": "浏览器实时合成点划电码音，听音辨字母，三档速度，10 题一轮训练耳力。"
+  }
+  </script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👂</text></svg>">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="assets/css/theme.css">
+  <style>
+    .ml-wrap { max-width: 720px; margin: 0 auto; padding: 8px 16px 60px; position: relative; z-index: 1; }
+    .ml-hero { text-align: center; padding: 26px 16px 8px; }
+    .ml-title { font-family: var(--font-pixel); font-size: 22px; letter-spacing: 3px; color: var(--neon-yellow); text-shadow: 0 0 10px rgba(255,214,0,.7), 0 0 30px rgba(255,214,0,.3); }
+    .ml-sub { margin-top: 8px; color: var(--text-dim); font-size: 13px; line-height: 1.8; }
+
+    .ml-card { margin-top: 22px; background: linear-gradient(180deg, rgba(20,20,34,.85), rgba(10,10,18,.6)); border: 1px solid rgba(255,214,0,.3); border-radius: 12px; padding: 20px 16px; text-align: center; }
+    .ml-speed-row { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
+    .ml-speed { padding: 9px 16px; border-radius: 8px; cursor: pointer; font-size: 13px; background: rgba(0,0,0,.3); border: 1px solid rgba(255,255,255,.12); color: var(--text-main); }
+    .ml-speed.on { border-color: rgba(255,214,0,.55); background: rgba(255,214,0,.1); color: var(--neon-yellow); }
+    .ml-speed:hover { border-color: rgba(255,214,0,.5); }
+
+    .ml-progress { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+    .ml-progress .bar { flex: 1; height: 8px; border-radius: 4px; background: rgba(255,255,255,.07); border: 1px solid rgba(255,214,0,.3); overflow: hidden; }
+    .ml-progress .bar i { display: block; height: 100%; background: linear-gradient(90deg, #a88600, #ffd600); box-shadow: 0 0 8px rgba(255,214,0,.4); transition: width .3s; }
+    .ml-progress .num { font-family: var(--font-pixel); font-size: 10px; color: var(--neon-yellow); white-space: nowrap; }
+    .ml-play { font-size: 34px; margin: 8px 0 4px; }
+    .ml-replay { display: inline-block; margin-top: 8px; cursor: pointer; font-size: 13px; color: var(--neon-cyan); border: 1px solid rgba(0,240,255,.35); border-radius: 8px; padding: 8px 18px; background: rgba(0,240,255,.06); }
+    .ml-replay:hover { background: rgba(0,240,255,.14); }
+    .ml-dots { margin: 10px 0 4px; min-height: 26px; font-family: monospace; font-size: 22px; letter-spacing: 4px; color: var(--neon-green); }
+    .ml-input-row { display: flex; justify-content: center; gap: 10px; margin-top: 12px; flex-wrap: wrap; }
+    .ml-input {
+      width: 90px; text-align: center; font-size: 24px; letter-spacing: 4px;
+      background: rgba(0,0,0,.35); color: var(--text-main); border: 1px solid rgba(255,255,255,.2);
+      border-radius: 8px; padding: 8px; font-family: monospace; text-transform: uppercase;
+    }
+    .ml-input:focus { border-color: rgba(255,214,0,.6); outline: none; }
+    .ml-go { font-size: 14px; padding: 10px 22px; }
+    .ml-fb { margin-top: 12px; font-size: 14px; min-height: 20px; }
+    .ml-fb.ok { color: var(--neon-green); }
+    .ml-fb.no { color: var(--neon-pink); }
+    .ml-fb .code { font-family: monospace; letter-spacing: 2px; }
+
+    .ml-result { margin-top: 22px; background: linear-gradient(180deg, rgba(20,20,34,.85), rgba(10,10,18,.6)); border: 1px solid rgba(255,214,0,.3); border-radius: 12px; padding: 24px 16px; text-align: center; }
+    .ml-result .big { font-size: 44px; }
+    .ml-result h2 { font-size: 18px; color: var(--neon-yellow); margin: 8px 0 4px; }
+    .ml-result .score-line { font-family: var(--font-pixel); font-size: 22px; color: var(--neon-green); margin: 12px 0 4px; }
+    .ml-result .best-line { font-size: 12px; color: var(--text-dim); margin-bottom: 14px; }
+
+    @media (max-width: 480px) {
+      .ml-title { font-size: 17px; }
+    }
+    .lobby-footer { position: relative; z-index: 1; text-align: center; padding: 20px 16px 30px; color: var(--text-dim); font-size: 12px; line-height: 2; }
+    .lobby-footer .pixel-line { font-family: var(--font-pixel); font-size: 9px; color: rgba(0,240,255,.5); }
+  </style>
+</head>
+<body>
+  <div id="arcade-nav"></div>
+
+  <div id="content" class="ml-wrap">
+    <div class="ml-hero">
+      <h1 class="ml-title" data-i18n="morseL.title">👂 摩斯听音训练</h1>
+      <p class="ml-sub" data-i18n="morseL.sub">浏览器实时合成点划电码音 · 听音辨字母 · 三档速度 · 10 题一轮</p>
+    </div>
+    <div id="ml-root"></div>
+  </div>
+
+  <footer class="lobby-footer">
+    <div class="pixel-line" data-i18n="home.footBrand">© 2026 破译游戏 · POYI.NET · 用游戏破译人类三千年加密解密史</div>
+    <div data-i18n="home.footNote">纪录仅存本地 · 不上传任何数据 · 史料整理自公开信息仅供学习</div>
+      <span class="egg-hint" data-egg="e15"><span class="egg-zh">🎯 第十五枚：本页页脚。点与划，听出它。</span><span class="egg-en">Morse trainer footer · Morse code</span></span>
+<!-- EGG:e15:.-.. .. ... - . -. -->
+  </footer>
+
+  <script src="assets/js/core/i18n.js"></script>
+  <script src="assets/js/core/i18n-dict.js"></script>
+  <script src="assets/js/core/i18n-ui.js"></script>
+  <script src="assets/js/core/storage.js"></script>
+  <script src="assets/js/core/extras.js"></script>
+  <script src="assets/js/morse-listen.js"></script>
+  <script src="assets/js/nav.js"></script>
+  <script>
+    (function () {
+      if (!window.Arcade || !Arcade.i18n || !window.MORSE_L) return;
+      Arcade.i18n.applyStatic();
+      document.title = Arcade.i18n.t('morseL.title') + Arcade.i18n.t('app.titleSuffix');
+      var T = Arcade.i18n.t;
+      var M = window.MORSE_L;
+
+      var root = document.getElementById('ml-root');
+      var state = { speed: 'normal', list: [], idx: 0, score: 0, answered: false };
+
+      /* 开始屏 */
+      function renderStart() {
+        var html = '<div class="ml-card">';
+        html += '<div style="font-size:13px;color:var(--text-main)">' + T('morseL.pickSpeed') + '</div>';
+        html += '<div class="ml-speed-row">';
+        ['slow', 'normal', 'fast', 'fw'].forEach(function (s) {
+          html += '<button class="ml-speed' + (state.speed === s ? ' on' : '') + '" data-s="' + s + '">' + T('morseL.speed' + s.charAt(0).toUpperCase() + s.slice(1)) + '</button>';
+        });
+        html += '</div>';
+        html += '<div style="margin-top:8px;font-size:11px;color:var(--text-dim)">' + (state.speed === 'fw' ? T('morseL.fwHint') : '') + '</div>';
+        html += '<div style="margin-top:18px"><button class="btn yellow ml-go" id="ml-go">' + T('morseL.start') + '</button></div>';
+        html += '</div>';
+        root.innerHTML = html;
+        var speeds = root.querySelectorAll('.ml-speed');
+        for (var i = 0; i < speeds.length; i++) {
+          (function (btn) {
+            btn.addEventListener('click', function () {
+              state.speed = btn.getAttribute('data-s');
+              renderStart();
+            });
+          })(speeds[i]);
+        }
+        var go = document.getElementById('ml-go');
+        if (go) go.addEventListener('click', function () {
+          state.list = M.pickLetters(10);
+          state.idx = 0; state.score = 0; state.answered = false;
+          renderQ(); // renderQ 内部已调度首题播放
+        });
+      }
+
+      function playCurrent() {
+        var ch = state.list[state.idx];
+        if (!ch) return;
+        var dots = document.getElementById('ml-dots');
+        if (dots) dots.textContent = '';
+        /* D6 Farnsworth：三字母一组、字符间 7 单位大间隔；答案为整组 */
+        if (state.speed === 'fw') {
+          state.group = M.makeGroup(ch, 3);
+          state.target = state.group.join('');
+          var totalFw = M.playGroup(state.group, { mul: M.FARNWORTH.mul, charGap: M.FARNWORTH.charGap }, function (s) {
+            var el = document.getElementById('ml-dots');
+            if (el && !state.answered) el.textContent += s;
+          });
+          setTimeout(function () {
+            var el = document.getElementById('ml-dots');
+            if (el && !state.answered) el.textContent = '';
+          }, totalFw + 600);
+          return;
+        }
+        var code = M.MORSE[ch];
+        state.target = ch;
+        var total = M.playCode(code, M.SPEEDS[state.speed], function (s) {
+          var el = document.getElementById('ml-dots');
+          if (el && !state.answered) el.textContent += s;
+        });
+        setTimeout(function () {
+          var el = document.getElementById('ml-dots');
+          if (el && !state.answered) el.textContent = '';
+        }, total + 400);
+      }
+
+      /* 题目屏 */
+      function renderQ() {
+        var ch = state.list[state.idx];
+        if (!ch) { renderResult(); return; }
+        var n = state.idx + 1, total = state.list.length;
+        var pct = Math.round(n / total * 100);
+        root.innerHTML =
+          '<div class="ml-card">' +
+            '<div class="ml-progress">' +
+              '<span class="num">' + T('morseL.q').replace('{n}', n + '/' + total) + '</span>' +
+              '<span class="bar"><i style="width:' + pct + '%"></i></span>' +
+            '</div>' +
+            '<div class="ml-play">📡</div>' +
+            '<div><button class="ml-replay" id="ml-replay">🔊 ' + T('morseL.replay') + '</button></div>' +
+            '<div class="ml-dots" id="ml-dots"></div>' +
+            '<div class="ml-input-row">' +
+              '<input class="ml-input" id="ml-input" maxlength="' + (state.speed === 'fw' ? 3 : 1) + '" autocomplete="off" placeholder="?" />' +
+              '<button class="btn yellow ml-go" id="ml-submit">' + T('morseL.submit') + '</button>' +
+            '</div>' +
+            '<div class="ml-fb" id="ml-fb"></div>' +
+          '</div>';
+        var replay = document.getElementById('ml-replay');
+        if (replay) replay.addEventListener('click', playCurrent);
+        var inp = document.getElementById('ml-input');
+        var submit = document.getElementById('ml-submit');
+        function doSubmit() {
+          if (state.answered) return;
+          var v = (inp.value || '').trim().toUpperCase();
+          if (!v) return;
+          check(v);
+        }
+        if (submit) submit.addEventListener('click', doSubmit);
+        if (inp) {
+          inp.focus();
+          inp.addEventListener('keydown', function (ev) {
+            if (ev.key === 'Enter') { ev.preventDefault(); doSubmit(); }
+          });
+        }
+        setTimeout(playCurrent, 250);
+      }
+
+      function check(v) {
+        var ch = state.list[state.idx];
+        var right = v === state.target;
+        if (right) state.score++;
+        state.answered = true;
+        var fb = document.getElementById('ml-fb');
+        fb.className = 'ml-fb ' + (right ? 'ok' : 'no');
+        if (right) {
+          fb.innerHTML = T('morseL.right');
+        } else {
+          var show = (state.speed === 'fw' && state.group)
+            ? state.group.map(function (l) { return l + ' ' + M.MORSE[l]; }).join(' · ')
+            : M.MORSE[ch];
+          fb.innerHTML = T('morseL.wrong').replace('{c}', state.target) + ' <span class="code">' + show + '</span>';
+        }
+        setTimeout(function () { state.idx++; state.answered = false; state.group = null; renderQ(); }, 1200);
+      }
+
+      /* 结果屏 */
+      function renderResult() {
+        M.record(state.score, state.list.length, state.speed);
+        var b = M.best();
+        root.innerHTML =
+          '<div class="ml-result">' +
+            '<div class="big">' + (state.score >= 8 ? '🏆' : state.score >= 5 ? '👍' : '📚') + '</div>' +
+            '<h2>' + T('morseL.result') + '</h2>' +
+            '<div class="score-line">' + state.score + ' / ' + state.list.length + '</div>' +
+            '<div class="best-line">' + T('morseL.best').replace('{s}', b.score).replace('{t}', b.total) + '</div>' +
+            '<button class="btn yellow" id="ml-again">' + T('morseL.again') + '</button>' +
+          '</div>';
+        var again = document.getElementById('ml-again');
+        if (again) again.addEventListener('click', renderStart);
+      }
+
+      renderStart();
+    })();
+  </script>
+  <script src="assets/js/pwa.js"></script>
+</body>
+</html>

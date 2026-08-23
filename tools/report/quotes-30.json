@@ -1,0 +1,233 @@
+[
+  {
+    "who": { "zh": "奥古斯特·克尔克霍夫斯", "en": "Auguste Kerckhoffs" },
+    "year": "1883",
+    "zh": "密码体制不应当要求保密，即使落入敌人手中也不应带来不便。",
+    "en": "The system must not require secrecy, and it must be able to fall into the hands of the enemy without inconvenience.",
+    "tag": "security",
+    "personId": "kerckhoffs"
+  },
+  {
+    "who": { "zh": "奥古斯特·克尔克霍夫斯", "en": "Auguste Kerckhoffs" },
+    "year": "1883",
+    "zh": "密码体制即便在数学上无法保证，也必须在实际上无法破译。",
+    "en": "The system must be practically, if not mathematically, indecipherable.",
+    "tag": "security",
+    "personId": "kerckhoffs"
+  },
+  {
+    "who": { "zh": "克劳德·香农", "en": "Claude Shannon" },
+    "year": "1949",
+    "zh": "敌人是知道所用系统的。",
+    "en": "The enemy knows the system being used.",
+    "tag": "security",
+    "personId": "shannon"
+  },
+  {
+    "who": { "zh": "罗纳德·李维斯特", "en": "Ronald Rivest" },
+    "year": "20世纪90年代",
+    "zh": "密码学是研究在对手存在的情况下进行通信的学问。",
+    "en": "Cryptography is about communication in the presence of adversaries.",
+    "tag": "security",
+    "personId": "rivest"
+  },
+  {
+    "who": { "zh": "阿迪·萨莫尔", "en": "Adi Shamir" },
+    "year": "1986",
+    "zh": "世上有两种密码学：一种能让你的小妹妹读不了你的文件，另一种能让大国政府读不了你的文件。",
+    "en": "There are two kinds of cryptography in this world: cryptography that will stop your kid sister from reading your files, and cryptography that will stop major governments reading your files.",
+    "tag": "security",
+    "personId": "shamir"
+  },
+  {
+    "who": { "zh": "布鲁斯·施奈尔", "en": "Bruce Schneier" },
+    "year": "1999",
+    "zh": "安全是一个过程，而不是一件产品。",
+    "en": "Security is a process, not a product.",
+    "tag": "security",
+    "personId": "schneier"
+  },
+  {
+    "who": { "zh": "布鲁斯·施奈尔", "en": "Bruce Schneier" },
+    "year": "2000",
+    "zh": "如果你以为技术能解决你的安全问题，那么你既不懂问题，也不懂技术。",
+    "en": "If you think technology can solve your security problems, then you don't understand the problems and you don't understand the technology.",
+    "tag": "security",
+    "personId": "schneier"
+  },
+  {
+    "who": { "zh": "布鲁斯·施奈尔", "en": "Bruce Schneier" },
+    "year": "2000",
+    "zh": "唯一安全的计算机，是断电、锁进保险柜、埋在 20 英尺（约 6 米）深秘密地点的那台——而且连这一点我也不敢打包票。",
+    "en": "The only secure computer is one that's unplugged, locked in a safe, and buried 20 feet under the ground in a secret location — and I'm not even sure about that one.",
+    "tag": "security",
+    "personId": "schneier"
+  },
+  {
+    "who": { "zh": "苏埃托尼乌斯", "en": "Suetonius" },
+    "year": "约121年",
+    "zh": "凡有需要保密的话，恺撒都用密码书写，即改变字母表的顺序，使任何词语都无法辨认。",
+    "en": "If he had anything confidential to say, he wrote it in cipher, that is, by so changing the order of the letters of the alphabet, that not a word could be made out.",
+    "tag": "history"
+  },
+  {
+    "who": { "zh": "乔治·华盛顿", "en": "George Washington" },
+    "year": "1777",
+    "zh": "获取良好情报的必要性是显而易见的，无需再多强调。",
+    "en": "The necessity of procuring good intelligence is apparent and need not be further urged.",
+    "tag": "history"
+  },
+  {
+    "who": { "zh": "塞缪尔·莫尔斯", "en": "Samuel Morse" },
+    "year": "1844",
+    "zh": "神为他行了何等的大事！",
+    "en": "What hath God wrought.",
+    "tag": "history"
+  },
+  {
+    "who": { "zh": "阿尔·金迪", "en": "Al-Kindi" },
+    "year": "约850年",
+    "zh": "如果知道密文所用的语言，破解它的一种方法是：找一篇同一语言的明文样本，长度约够一页，然后统计其中每个字母出现的次数。",
+    "en": "One way to solve an encrypted message, if we know its language, is to find a different plaintext of the same language long enough to fill one sheet or so, and then we count the occurrences of each letter.",
+    "tag": "math",
+    "personId": "kindi"
+  },
+  {
+    "who": { "zh": "查尔斯·巴贝奇", "en": "Charles Babbage" },
+    "year": "1864",
+    "zh": "用不充分的数据所造成的错误，远小于完全不用数据所造成的错误。",
+    "en": "Errors using inadequate data are much less than those using no data at all.",
+    "tag": "math",
+    "personId": "babbage"
+  },
+  {
+    "who": { "zh": "查尔斯·巴贝奇", "en": "Charles Babbage" },
+    "year": "1864",
+    "zh": "整个算术如今已尽在机械的掌握之中。",
+    "en": "The whole of arithmetic now appeared within the grasp of mechanism.",
+    "tag": "math",
+    "personId": "babbage"
+  },
+  {
+    "who": { "zh": "克劳德·香农", "en": "Claude Shannon" },
+    "year": "1948",
+    "zh": "通信的根本问题，是在一点上精确地或近似地重现另一点所选定的消息。",
+    "en": "The fundamental problem of communication is that of reproducing at one point either exactly or approximately a message selected at another point.",
+    "tag": "science",
+    "personId": "shannon"
+  },
+  {
+    "who": { "zh": "惠特菲尔德·迪菲与马丁·赫尔曼", "en": "Whitfield Diffie & Martin Hellman" },
+    "year": "1976",
+    "zh": "今天我们正站在密码学革命的门槛上。",
+    "en": "We stand today on the brink of a revolution in cryptography.",
+    "tag": "science",
+    "personId": "diffie"
+  },
+  {
+    "who": { "zh": "艾伦·图灵", "en": "Alan Turing" },
+    "year": "1950",
+    "zh": "我们只能看到前方很短的距离，但可以看到那里有许多需要做的事情。",
+    "en": "We can only see a short distance ahead, but we can see plenty there that needs to be done.",
+    "tag": "science",
+    "personId": "turing"
+  },
+  {
+    "who": { "zh": "惠特菲尔德·迪菲", "en": "Whitfield Diffie" },
+    "year": "20世纪90年代",
+    "zh": "隐私，是选择性地向世界展现自我的能力。",
+    "en": "Privacy is the power to selectively reveal oneself to the world.",
+    "tag": "privacy",
+    "personId": "diffie"
+  },
+  {
+    "who": { "zh": "菲尔·齐默尔曼", "en": "Phil Zimmermann" },
+    "year": "1991",
+    "zh": "如果隐私被宣布为非法，那么只有不法之徒才能拥有隐私。",
+    "en": "If privacy is outlawed, only outlaws will have privacy.",
+    "tag": "privacy",
+    "personId": "pzimmermann"
+  },
+  {
+    "who": { "zh": "托马斯·杰斐逊", "en": "Thomas Jefferson" },
+    "year": "1791",
+    "zh": "我宁愿承受自由过多所带来的不便，也不愿承受自由过少所带来的不便。",
+    "en": "I would rather be exposed to the inconveniences attending too much liberty, than those attending too small a degree of it.",
+    "tag": "privacy",
+    "personId": "jefferson"
+  },
+  {
+    "who": { "zh": "温斯顿·丘吉尔", "en": "Winston Churchill" },
+    "year": "1940年代",
+    "zh": "那些下了金蛋却从不咯咯叫的鹅。（丘吉尔对布莱切利园破译员的赞语）",
+    "en": "The geese that laid the golden eggs and never cackled.",
+    "tag": "war"
+  },
+  {
+    "who": { "zh": "温斯顿·丘吉尔", "en": "Winston Churchill" },
+    "year": "1943",
+    "zh": "战时，真相如此珍贵，以至于必须时刻由谎言组成的卫队来护卫。",
+    "en": "In wartime, truth is so precious that she should always be attended by a bodyguard of lies.",
+    "tag": "war"
+  },
+  {
+    "who": { "zh": "德怀特·D·艾森豪威尔", "en": "Dwight D. Eisenhower" },
+    "year": "1945",
+    "zh": "战役开始前及进行中，你及你的组织所提供的情报对我具有无可估量的价值。它挽救了成千上万英美士兵的生命，并在很大程度上加快了敌人被击溃并最终投降的进程。",
+    "en": "The intelligence which has emanated from you and your organization before and during the campaign has been of priceless value to me. It has saved thousands of British and American lives and, in no small way, contributed to the speed with which the enemy was routed and eventually forced to surrender.",
+    "tag": "war"
+  },
+  {
+    "who": { "zh": "拿破仑·波拿巴", "en": "Napoleon Bonaparte" },
+    "year": "19世纪",
+    "zh": "在战争中，精神因素与物质因素之比为三比一。",
+    "en": "In war, the moral is to the physical as three is to one.",
+    "tag": "war"
+  },
+  {
+    "who": { "zh": "弗朗西斯·培根", "en": "Francis Bacon" },
+    "year": "1597",
+    "zh": "知识就是力量。",
+    "en": "Nam et ipsa scientia potestas est (knowledge itself is power).",
+    "tag": "philosophy",
+    "personId": "bacon"
+  },
+  {
+    "who": { "zh": "尤利乌斯·恺撒", "en": "Julius Caesar" },
+    "year": "公元前1世纪",
+    "zh": "人们总是乐于相信自己愿意相信的事情。",
+    "en": "Men willingly believe what they wish.",
+    "tag": "philosophy",
+    "personId": "caesar"
+  },
+  {
+    "who": { "zh": "埃德加·爱伦·坡", "en": "Edgar Allan Poe" },
+    "year": "1841",
+    "zh": "可以断言：人类的才智造不出人类才智解不开的密码。",
+    "en": "It may be roundly asserted that human ingenuity cannot concoct a cipher which human ingenuity cannot resolve.",
+    "tag": "philosophy"
+  },
+  {
+    "who": { "zh": "夏洛克·福尔摩斯（阿瑟·柯南·道尔）", "en": "Sherlock Holmes (Arthur Conan Doyle)" },
+    "year": "1903",
+    "zh": "一个人能发明的东西，另一个人就能发现。",
+    "en": "What one man can invent, another can discover.",
+    "tag": "cracking"
+  },
+  {
+    "who": { "zh": "布鲁斯·施奈尔", "en": "Bruce Schneier" },
+    "year": "1994",
+    "zh": "从最糊涂的业余爱好者到最优秀的密码学家，任何人都能发明一个连自己也破译不了的算法。",
+    "en": "Anyone, from the most clueless amateur to the best cryptographer, can create an algorithm that he himself can't break.",
+    "tag": "cracking",
+    "personId": "schneier"
+  },
+  {
+    "who": { "zh": "查尔斯·巴贝奇", "en": "Charles Babbage" },
+    "year": "1864",
+    "zh": "依我之见，破译密码是最迷人的技艺之一，恐怕我在它上面花费的时间已经超出了它应得的分量。",
+    "en": "Deciphering is, in my opinion, one of the most fascinating of arts, and I fear I have wasted upon it more time than it deserves.",
+    "tag": "cracking",
+    "personId": "babbage"
+  }
+]

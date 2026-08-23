@@ -1,0 +1,114 @@
+[
+  {
+    "id": "culper-ring",
+    "name": { "zh": "库尔珀间谍圈密信", "en": "Culper Ring Cipher Letters" },
+    "era": { "zh": "1778–1780 · 美国纽约长岛", "en": "1778–1780 · Long Island, New York, USA" },
+    "desc": {
+      "zh": "美国独立战争中华盛顿亲自组建的间谍圈，用数字代号与隐形墨水传递英军情报；代号密信与密码本至今藏于美国国家档案馆。",
+      "en": "A spy ring personally formed by George Washington during the American Revolution, trading British intelligence in numeric codes and invisible ink; the coded letters and codebook survive in the U.S. National Archives."
+    },
+    "text": {
+      "zh": "代号「711」是华盛顿本人，「71」是英军统帅克林顿，「355」是一位女谍；密信夹藏于商业信件行间，以隐形墨水显形，成就独立战争最传奇的情报网。",
+      "en": "Code 711 meant Washington himself, 71 the British commander Clinton, and 355 a female agent; messages hidden between the lines of business letters surfaced with sympathetic ink — the Revolution's most legendary spy ring."
+    },
+    "nature": "real",
+    "chapterId": "dawn",
+    "unlockGameId": "codeguess"
+  },
+  {
+    "id": "bazeries-cylinder",
+    "name": { "zh": "巴泽里密码圆筒", "en": "Bazeries Cylinder" },
+    "era": { "zh": "1891 · 法国", "en": "1891 · France" },
+    "desc": {
+      "zh": "法国密码学家巴泽里重造的轮式密码：二十枚乱序字母圆盘穿于同一轴，对齐转动即可加解密；1901 年被法国陆军列装，服役至一战。",
+      "en": "French cryptanalyst Étienne Bazeries reinvented the wheel cipher — twenty scrambled-letter disks on one rod, aligned and rotated to encipher; adopted by the French Army in 1901 and still in service during WWI."
+    },
+    "text": {
+      "zh": "1891 年巴泽里把二十枚乱序字母圆盘串于一轴，收发双方对齐明文与密文行即完成加密；法军以「密码圆筒」之名列装，与杰斐逊轮式密码异曲同工。",
+      "en": "In 1891 Bazeries threaded twenty scrambled-letter disks onto one rod: sender and receiver align plaintext and ciphertext rows and the code appears on the other row; the French Army fielded it as the “cipher cylinder,” echoing Jefferson's wheel cypher."
+    },
+    "nature": "real",
+    "chapterId": "ww1",
+    "unlockGameId": "bifid"
+  },
+  {
+    "id": "commercial-enigma",
+    "name": { "zh": "商业恩尼格玛（D 型）", "en": "Commercial Enigma (Model D)" },
+    "era": { "zh": "1923–1927 · 德国柏林", "en": "1923–1927 · Berlin, Germany" },
+    "desc": {
+      "zh": "谢尔比乌斯推向市场的民用转子密码机，曾在伯尔尼万国邮政大会公开演示；它没有插线板、密钥空间有限，却是德军军用恩尼格玛的直系前身。",
+      "en": "Scherbius's civilian rotor machine, publicly demonstrated at the Bern Postal Congress; without a plugboard its key space was limited, yet it was the direct ancestor of the military Enigma."
+    },
+    "text": {
+      "zh": "1923 年谢尔比乌斯携恩尼格玛 D 型亮相伯尔尼邮政大会，向各国推销这台「无法破译」的机器；德军以它为蓝本加装插线板改出军用型，日后让布莱切利园吃尽苦头。",
+      "en": "In 1923 Scherbius presented the Enigma D at the Bern Postal Congress, pitching an “unbreakable” machine to the world's postal services; the Reichswehr rebuilt that commercial design with a plugboard into the military Enigma that would torment Bletchley Park."
+    },
+    "nature": "real",
+    "chapterId": "bletchley",
+    "unlockGameId": "enigma"
+  },
+  {
+    "id": "navajo-code",
+    "name": { "zh": "纳瓦霍密码", "en": "Navajo Code Talkers" },
+    "era": { "zh": "1942–1945 · 太平洋战场", "en": "1942–1945 · Pacific Theater" },
+    "desc": {
+      "zh": "美国海军陆战队以纳瓦霍语编制两套密码，训练纳瓦霍人担任无线电通讯员；日军始终无法破解，硫磺岛六名译电员 48 小时无差错收发 800 余条电文。",
+      "en": "The U.S. Marine Corps built two codebooks on the Navajo language and trained Navajo speakers as radio operators; the Japanese never broke it — at Iwo Jima six code talkers relayed over 800 error-free messages in 48 hours."
+    },
+    "text": {
+      "zh": "初版密码仅 211 词：战斗机叫「蜂鸟」，潜艇叫「铁鱼」，战列舰叫「鲸鱼」；硫磺岛六名译电员 48 小时收发 800 余条电文，无一差错。",
+      "en": "The original code held just 211 words: a fighter was “hummingbird,” a submarine “iron fish,” a battleship “whale”; at Iwo Jima six operators passed 800-plus messages in 48 hours without a single error."
+    },
+    "nature": "real",
+    "chapterId": "midway",
+    "unlockGameId": "morse"
+  },
+  {
+    "id": "monastic-cipher",
+    "name": { "zh": "中世纪修道院密写字母", "en": "Medieval Monastic Cipher Alphabets" },
+    "era": { "zh": "8–16 世纪 · 西欧修道院", "en": "8th–16th century · Western European monasteries" },
+    "desc": {
+      "zh": "中世纪抄经修士以符文式替代字母在羊皮纸上藏写署名与批注；16 世纪初修道院院长特里特米乌斯更创制多套「天使字母表」，开西方密码学著作之先河。",
+      "en": "Medieval scribes hid signatures and glosses on parchment in rune-like substitution alphabets; in the early 1500s Abbot Trithemius went further, inventing “angelic alphabets” that launched Western cryptographic literature."
+    },
+    "text": {
+      "zh": "修士在古英语手稿里用符文替换拉丁字母，把署名藏进寻常抄本；1518 年特里特米乌斯出版《多文书写法》，创制多套「天使字母」，开西方密码学著作先河。",
+      "en": "In Old English manuscripts monks swapped Anglo-Saxon runes for Latin letters, burying signatures inside ordinary-looking codices; in 1518 Trithemius published Polygraphia with invented “angelic” alphabets, among the first books of cryptography."
+    },
+    "nature": "real",
+    "chapterId": "dawn",
+    "unlockGameId": "wordsearch"
+  },
+  {
+    "id": "civilwar-disk",
+    "name": { "zh": "美国内战密码盘", "en": "Civil War Cipher Disk" },
+    "era": { "zh": "1861–1865 · 美国", "en": "1861–1865 · United States" },
+    "desc": {
+      "zh": "南北战争联邦军信号兵团使用的双盘式密码盘：两枚同心铜盘错位旋转即完成字母替换；南军多次破译其电文，迫使联邦不断更换密钥与用法。",
+      "en": "The twin-disk device of the Union Signal Corps: two concentric brass rings rotated against each other to substitute letters; Confederate codebreakers repeatedly read its traffic, forcing constant changes in Union practice."
+    },
+    "text": {
+      "zh": "两盘同心铜盘，外盘为正常字母，内盘乱序；转动至约定偏移后逐字替换。战争中南军多次破译其电文，联邦军被迫频繁更换密钥，密盘遂成联邦信号密码的象征。",
+      "en": "Two concentric brass disks — a normal outer alphabet, a scrambled inner one — slid to an agreed shift for letter-by-letter substitution. Confederate codebreakers read its traffic more than once, so the Union kept changing keys; the disk became the emblem of federal signal ciphers."
+    },
+    "nature": "real",
+    "chapterId": "ww1",
+    "unlockGameId": "caesar"
+  },
+  {
+    "id": "adfgvx-break",
+    "name": { "zh": "ADFGVX 破译（佩恩万）", "en": "Breaking ADFGVX (Painvin)" },
+    "era": { "zh": "1918 年 6 月 · 法国西线", "en": "June 1918 · Western Front, France" },
+    "desc": {
+      "zh": "1918 年 6 月 3 日，法国密码专家佩恩万破译德军 ADFGVX 密电，读出「速运弹药，昼间亦无妨」等句，据此判明德军进攻方向，联军得以挫败六月攻势。",
+      "en": "On June 3, 1918, French cryptanalyst Georges Painvin broke a German ADFGVX message reading “Rush munitions. Even by day if not seen,” pinpointing the coming offensive so the Allies could blunt it."
+    },
+    "text": {
+      "zh": "德军 3 月启用 ADFGX，6 月换用含数字的 ADFGVX；佩恩万 6 月 3 日数小时破译密电：「速运弹药，昼间亦无妨」，判明主攻方向，为此瘦了 15 公斤。",
+      "en": "The Germans fielded ADFGX in March and switched to the digit-adding ADFGVX on June 1; on June 3 Painvin decrypted a message within hours — “Rush munitions. Even by day if not seen” — revealing the offensive's focus. Cracking it cost him 15 kg."
+    },
+    "nature": "real",
+    "chapterId": "ww1",
+    "unlockGameId": "adfgvx"
+  }
+]

@@ -1,0 +1,41 @@
+/* 破译 DECODE ARCADE · shikaku 游戏内文案（zh/en 对称）
+   由 i18n-dict.js 拆分生成 —— 游戏页按需加载，减小站点字典体积 */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.shikaku.tutTitle'] = '方形分割 · 玩法';
+  d.en['gs.shikaku.tutTitle'] = 'Shikaku · How to Play';
+  d.zh['gs.shikaku.tut1t'] = '目标';
+  d.en['gs.shikaku.tut1t'] = 'Objective';
+  d.zh['gs.shikaku.tut1'] = '把网格分割成若干矩形，每块矩形恰好包含一个数字，且矩形面积=该数字。';
+  d.en['gs.shikaku.tut1'] = 'Divide the grid into rectangles, each containing exactly one number, with the rectangle\u2019s area equal to that number.';
+  d.zh['gs.shikaku.tut2t'] = '操作';
+  d.en['gs.shikaku.tut2t'] = 'Controls';
+  d.zh['gs.shikaku.tut2'] = '点两个格子定义矩形的对角，划出一块矩形区域。';
+  d.en['gs.shikaku.tut2'] = 'Tap two cells to define opposite corners of a rectangle, marking out its region.';
+  d.zh['gs.shikaku.tut3t'] = '技巧';
+  d.en['gs.shikaku.tut3t'] = 'Tips';
+  d.zh['gs.shikaku.tut3'] = '数字 1 是单格；数字大的区域先确定边界，小数字填缝。';
+  d.en['gs.shikaku.tut3'] = 'A 1 is a single cell; fix the borders of large-number regions first, then fill the gaps with small numbers.';
+  d.zh['gs.shikaku.tut4t'] = '计分';
+  d.en['gs.shikaku.tut4t'] = 'Scoring';
+  d.zh['gs.shikaku.tut4'] = '分割错误次数越少越好（成绩=操作步数）。';
+  d.en['gs.shikaku.tut4'] = 'The fewer mistakes, the better (score = number of moves).';
+  d.zh['gs.shikaku.dEasy'] = '简单';
+  d.en['gs.shikaku.dEasy'] = 'Easy';
+  d.zh['gs.shikaku.dNormal'] = '中等';
+  d.en['gs.shikaku.dNormal'] = 'Medium';
+  d.zh['gs.shikaku.dHard'] = '困难';
+  d.en['gs.shikaku.dHard'] = 'Hard';
+  d.zh['gs.shikaku.startMsg'] = '点两个格定义矩形对角，面积要等于数字';
+  d.en['gs.shikaku.startMsg'] = 'Tap two cells to define a rectangle \u2014 its area must equal the number';
+  d.zh['gs.shikaku.restart'] = '重新开始';
+  d.en['gs.shikaku.restart'] = 'Restart';
+  d.zh['gs.shikaku.help'] = '💡 规则：每个数字格所在矩形，面积必须恰好等于数字本身，且所有格子被矩形完整覆盖、互不重叠。';
+  d.en['gs.shikaku.help'] = '💡 Rule: each numbered cell\u2019s rectangle must have an area exactly equal to its number, and every cell must be covered with no overlaps.';
+  d.zh['gs.shikaku.overlap'] = '✗ 这块与已分割区域重叠';
+  d.en['gs.shikaku.overlap'] = '✗ This overlaps an existing rectangle';
+  d.zh['gs.shikaku.wrongRect'] = '✗ 这个矩形不对（面积需等于唯一数字）';
+  d.en['gs.shikaku.wrongRect'] = '✗ Wrong rectangle (area must equal its single number)';
+  d.zh['gs.shikaku.win'] = '🎉 分割完成！用了 {n} 步';
+  d.en['gs.shikaku.win'] = '🎉 Grid divided! {n} moves';
+})();

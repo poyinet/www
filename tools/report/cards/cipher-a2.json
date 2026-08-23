@@ -1,0 +1,193 @@
+[
+  {
+    "id": "railfence",
+    "score": 7,
+    "verdict": "MINOR",
+    "playable": true,
+    "issues": [
+      {
+        "severity": "P2",
+        "area": "内容准确性/游戏性",
+        "description": "密文标签直接显示加密用的轨道数（「截获密文（轨道 N 的 Z 字形栅栏）」），且滑块初始值即正确答案、解码预览开屏就还原出明文——谜题等于把答案印在界面上，玩家只需点一次「验证」即通关（1 次尝试=满分）。建议：标签只显示「截获密文（Z 字形栅栏）」，滑块随机起点，预览在首次验证前打码或仅显示字母位。"
+      },
+      {
+        "severity": "P3",
+        "area": "内容深度",
+        "description": "明文池仅 10 条固定英文句子、轨道数只取 2~4，重复游玩内容很快见底；可考虑按关卡递进或支持标点/数字。"
+      }
+    ],
+    "notes": "加密/解密互为逆运算验证无误，滑块 2~6 可覆盖全部生成轨道数，结算调用 submitScore(tries) 且 data-best-mode=min 一致；GAME_RESTART 无监听器/定时器残留，结构干净。主要缺陷是答案被 UI 直接泄露导致游戏退化为「读数字点验证」，其余维度（移动端/i18n/版权）均无问题。"
+  },
+  {
+    "id": "affine",
+    "score": 8,
+    "verdict": "PASS",
+    "playable": true,
+    "issues": [
+      {
+        "severity": "P3",
+        "area": "旗舰升级建议",
+        "description": "a 滑块被 snapA 吸附到最近互质值，但滑块仍可短暂停留在非法值（吸附是渲染时回写）；另外缺少键盘微调（方向键/+-）与「显示已知频次 E 对应关系」等教学辅助，属可选项。"
+      }
+    ],
+    "notes": "a∈{1,3,5,7,9,11,15,17,19,21,23,25}、b∈0~25 均可通过滑块到达，模逆解密正确，胜利条件必达且通关调用 submitScore；教程描述的「滑块自动跳过非法值」与 snapA 实现一致，移动端滑块/按钮可用，无溢出、无版权、i18n 全走 T()。整体达标。"
+  },
+  {
+    "id": "base64",
+    "score": 8,
+    "verdict": "PASS",
+    "playable": true,
+    "issues": [
+      {
+        "severity": "P3",
+        "area": "旗舰升级建议",
+        "description": "页面没有任何解码辅助（无解码工具/逐块提示/答案字母数提示），普通玩家无法手算 Base64，只能靠外部工具或瞎猜英文句子；建议提供「查看二进制位」或分段解码演练，或把答案限定为可直接由密文尾部 = 数量推长度的短词。"
+      }
+    ],
+    "notes": "编码实现（含 = 填充）正确，答案大小写不敏感、空格需匹配，回车与按钮均可提交，通关调用 submitScore；无定时器/监听器残留。可通关性依赖玩家自行具备 Base64 知识（存疑点：对纯新手门槛偏高），已作为 P3 建议写入；移动端输入框全宽可用，无版权与 i18n 问题。"
+  },
+  {
+    "id": "morsetap",
+    "score": 7,
+    "verdict": "MINOR",
+    "playable": true,
+    "issues": [
+      {
+        "severity": "P2",
+        "area": "教程一致性",
+        "description": "听写中提示文案称「播放中可看提示下划线」，但界面没有任何下划线提示（只有输入框 maxLength 限制和答错后的长度提示），教程/提示与实现不符。建议：要么实现逐字母下划线占位（如 _ _ _ _），要么删掉该句。"
+      },
+      {
+        "severity": "P3",
+        "area": "可玩性/学习性",
+        "description": "纯音频听写对不熟悉摩斯的玩家门槛极高（无视觉摩斯、无字母表参考、无逐字符回放），建议提供「显示本词摩斯」切换或先听后看的渐进模式。"
+      },
+      {
+        "severity": "P3",
+        "area": "健壮性",
+        "description": "playCode 每次点击新建 AudioContext 并以 setTimeout 关闭，快速连点会短暂堆积多个 AC（影响小）；GAME_RESTART 不会中断正在播放的音频，属轻微残留。"
+      }
+    ],
+    "notes": "5 词制、答对推进、通关 finish() 调用 submitScore(correct)（max 模式），无软锁；教程「▶播放/回车提交/答对5词」与实现一致。主要问题是「下划线提示」文案与 UI 不符（P2），其余为新手门槛与音频残留的小建议；移动端输入框与按钮可用。"
+  },
+  {
+    "id": "freq",
+    "score": 7,
+    "verdict": "MINOR",
+    "playable": true,
+    "issues": [
+      {
+        "severity": "P1",
+        "area": "移动端操作性",
+        "description": "频率柱是 flex:1 的窄列，320px 宽度下每列仅约 14px 宽，触控目标过小且极易误点相邻列；建议移动端给每列最小宽度并允许整行换行，或改为点击后弹出字母选择器（顺便与教程文案对齐）。"
+      },
+      {
+        "severity": "P2",
+        "area": "教程一致性",
+        "description": "教程称「点密文字母柱，在弹出的选择里指定对应明文字母」，但实际实现是点击循环 A→Z（跳过已用）而非弹窗选择，教程与实现不符。"
+      },
+      {
+        "severity": "P2",
+        "area": "操作性",
+        "description": "映射只能单向循环：想把某密文字母从错误的映射改到指定字母，必须绕过多达 25 次点击（每次还计入 tries 影响成绩），无直接输入/双向选择；建议增加点选明文字母列表或直接键盘输入。"
+      }
+    ],
+    "notes": "单表替换谜题必可解（映射覆盖密文中出现的全部字母即还原明文），通关调用 submitScore(tries) 与 min 模式一致；词频柱按次数排序、helpText 的 ETAOINSHRDLU 提示有效。扣分集中在移动端柱体触控目标（P1）与教程「弹窗选择」描述不符（P2）、循环映射繁琐（P2）；无定时器残留，i18n/版权无问题。"
+  },
+  {
+    "id": "enigma",
+    "score": 7,
+    "verdict": "MINOR",
+    "playable": true,
+    "issues": [
+      {
+        "severity": "P1",
+        "area": "健壮性（模式切换）",
+        "description": "限时截获战 raidTick 只在 startRaid/GAME_RESTART 时清理：玩家在 raid 中切换到其他标签页后，隐藏的倒计时继续运行，归零时 endRaid() 会在当前模式下后台调用 submitScore、弹出「时间到」toast，并对已不存在的 #raid-go 赋 onclick 抛 TypeError。建议：setMode 内统一 stopRaid()（清 raidTick 并置 raid.running=false），或切换标签时暂停/退出 raid。"
+      },
+      {
+        "severity": "P2",
+        "area": "内容/公平性",
+        "description": "M4 每日挑战的「🗝 查看今日密钥」直接亮出完整密钥（静转子+转子序+位置+反射器），配合挑战本身密文即可秒通关并刷分（submitScore + daily.markSolved），每日挑战形同虚设；建议改为只显示部分（如第 1 位）或设置查看后不计分。"
+      },
+      {
+        "severity": "P1",
+        "area": "移动端操作性",
+        "description": "插线板字母圆钮 34px（≤480px 时 30px）、转子 ▲/▼ 为 mode-btn（padding 4px 10px，高约 24px），触控目标均低于 44px 建议值，移动端易误触；建议加大圆钮至 40px+、转子按钮 min-height 44px。"
+      },
+      {
+        "severity": "P3",
+        "area": "计分一致性",
+        "description": "提示惩罚用布尔 usedHint 固定 +10s，与教程「每次 +10 秒惩罚」不符（用 3 次提示也只 +10s）；建议按提示次数累计。另：挑战通关后 900ms 的 setTimeout 内若切换模式，startLevel 会因 DOM 已重建对 null 取属性报错（与 playfair/xor 同类边缘问题）。"
+      }
+    ],
+    "notes": "内容最丰富的旗舰（自由演练/三关挑战/M4 海军/限时截获战），Enigma I 双步进、M4 静转子+薄反射器实现严谨，加密=解密对称性成立；挑战关用提示可保证通关，各模式结算均调用 submitScore 且 best-mode=min 一致。主要扣分：raid 计时器在切页后泄漏并在后台提交成绩/报错（P1）、M4 密钥按钮泄露答案（P2）、插线板与转子按钮移动端目标过小（P1）。m4Tick 在切到挑战模式时不清理（null 守卫下无感，P3）。"
+  },
+  {
+    "id": "playfair",
+    "score": 7,
+    "verdict": "MINOR",
+    "playable": true,
+    "issues": [
+      {
+        "severity": "P2",
+        "area": "内容准确性",
+        "description": "第 1 关提示写「第 5 个字母被抹掉（PLAYF?IR）」，但 mask=[4] 实际抹掉的是下标 4 的 F，界面显示「PLAY·AIR」——提示示例与真实谜题不一致；建议统一为 PLAY?AIR 或改 mask。"
+      },
+      {
+        "severity": "P2",
+        "area": "教程一致性",
+        "description": "教程称「系统会告诉你解密结果有多少字母对正确」，实际反馈只有二元结果（解密文本 vs 目标明文，全对才通关），没有逐字母对反馈；建议按教程实现 digraph 级对勾反馈，或改教程文案。"
+      },
+      {
+        "severity": "P2",
+        "area": "内容/难度",
+        "description": "第 3 关提示直接写出缺失字母「缺 C/O/Y」，答案被剧透，关卡退化为照抄；建议改为只给字母数或一个特征提示。"
+      }
+    ],
+    "notes": "Playfair 方阵构建（去重+I/J 合并+补齐）与加解密（同行/同列/矩形 + 插 X/补 X）实现正确，三关均可通过试错+提示通关，通关调用 submitScore(elapsed) 且 min 模式一致，定时器清理完整。扣分均为内容/教程层：L1 提示示例与实际抹除位不符、教程声称的字母对反馈未实现、L3 提示泄露答案。"
+  },
+  {
+    "id": "xor",
+    "score": 8,
+    "verdict": "PASS",
+    "playable": true,
+    "issues": [
+      {
+        "severity": "P3",
+        "area": "内容/难度",
+        "description": "三关挑战的「提示」就是答案谜语（异或缩写=XOR、像素=PIXEL、黄道十二宫=ZODIAC），输入即秒通，破译挑战几乎无思考量；建议改为只提示首字母/密钥长度内的部分字节。"
+      },
+      {
+        "severity": "P3",
+        "area": "健壮性",
+        "description": "通关后 900ms 的 setTimeout 内若切换模式，startChal 对已重建的 DOM 取元素会抛 null 错误（边缘场景，与 playfair/adfgvx 同类）；建议 setTimeout 前检查模式仍为 chal。"
+      }
+    ],
+    "notes": "XOR 逐字节运算、十六进制转换、已知明文攻击分析模式（密钥=密文⊕假设）实现正确且教学价值高，挑战通关调用 submitScore 与 min 模式一致，定时器/监听器管理干净，移动端输入框与按钮可用。扣分仅 P3：挑战提示即答案使难度趋零、通关延迟切模式的 null 边缘错误。分析模式本身不提交成绩（无结算调用），属合理设计。"
+  },
+  {
+    "id": "adfgvx",
+    "score": 7,
+    "verdict": "MINOR",
+    "playable": true,
+    "issues": [
+      {
+        "severity": "P2",
+        "area": "内容准确性/误导",
+        "description": "挑战模式页面常驻的 6×6 方阵始终由自由模式密钥输入框（默认 RAILWAY）生成：第 1 关恰好匹配，第 2/3 关（KAISER/BLITZKRIEG）页面上的方阵与关卡密钥不符，玩家照着页面上错误的表手工解密必然失败；建议 startChal 时用关卡密钥重建方阵（或隐藏方阵并提示自建）。"
+      },
+      {
+        "severity": "P3",
+        "area": "可玩性",
+        "description": "挑战要求玩家手工完成 Polybius 替换 + 列换位两层运算后输入明文，页面无任何分步工具（如按列填字网格），对普通玩家门槛很高；建议提供列换位网格填写界面或逐层校验。"
+      },
+      {
+        "severity": "P3",
+        "area": "健壮性",
+        "description": "通关后 900ms 延迟内切换模式，startChal 会对已销毁的 DOM 取 null 报错（与 xor/playfair 同类边缘问题）。"
+      }
+    ],
+    "notes": "方阵生成（密钥词+剩余 A-Z0-9）、Polybius 双向、列换位加密/解密互为逆运算验证正确，三关给定密钥后必可解，通关调用 submitScore(elapsed) 且 min 模式一致，定时器清理完整，密钥按设计在提示中给出与教程一致。主要问题：挑战时页面方阵停留在默认密钥表、与 L2/L3 关卡密钥不符（P2，误导性强）；手工解密无工具支撑（P3）。"
+  }
+]

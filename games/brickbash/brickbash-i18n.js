@@ -1,0 +1,45 @@
+/* 破译 DECODE ARCADE · brickbash 游戏内文案（zh/en 对称）
+   由 i18n-dict.js 拆分生成 —— 游戏页按需加载，减小站点字典体积 */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.brickbash.tutTitle'] = '打砖块 · 玩法';
+  d.en['gs.brickbash.tutTitle'] = 'Brick Bash · How to Play';
+  d.zh['gs.brickbash.tut1t'] = '目标';
+  d.en['gs.brickbash.tut1t'] = 'Objective';
+  d.zh['gs.brickbash.tut1'] = '击碎全部砖块，守住你的 3 条命';
+  d.en['gs.brickbash.tut1'] = 'Smash every brick while keeping your 3 lives';
+  d.zh['gs.brickbash.tut2t'] = '操作';
+  d.en['gs.brickbash.tut2t'] = 'Controls';
+  d.zh['gs.brickbash.tut2'] = '←→ 或拖动移动挡板，点击 / 空格发球';
+  d.en['gs.brickbash.tut2'] = '←→ or drag to move the paddle; click / Space to launch';
+  d.zh['gs.brickbash.tut3t'] = '技巧';
+  d.en['gs.brickbash.tut3t'] = 'Tips';
+  d.zh['gs.brickbash.tut3'] = '击中挡板边缘可打出大角度反弹；清屏后进入下一关加速';
+  d.en['gs.brickbash.tut3'] = 'Hit the paddle edge for a wide-angle bounce; clearing a level speeds up the next one';
+  d.zh['gs.brickbash.msgStart'] = '点击画面或按空格发球';
+  d.en['gs.brickbash.msgStart'] = 'Click or press Space to launch';
+  d.zh['gs.brickbash.msgPlaying'] = '游戏进行中 · P 暂停';
+  d.en['gs.brickbash.msgPlaying'] = 'In game · P to pause';
+  d.zh['gs.brickbash.hudScore'] = '得分';
+  d.en['gs.brickbash.hudScore'] = 'Score';
+  d.zh['gs.brickbash.hudLives'] = '生命';
+  d.en['gs.brickbash.hudLives'] = 'Lives';
+  d.zh['gs.brickbash.hudLevel'] = '关卡';
+  d.en['gs.brickbash.hudLevel'] = 'Level';
+  d.zh['gs.brickbash.ovTitle'] = '游戏结束';
+  d.en['gs.brickbash.ovTitle'] = 'Game Over';
+  d.zh['gs.brickbash.btnRestart'] = '重新开始';
+  d.en['gs.brickbash.btnRestart'] = 'Restart';
+  d.zh['gs.brickbash.help'] = '🖱️ 拖动鼠标/手指或 ←→ 键移动挡板 · 点击/空格发球<br>击中挡板边缘可以打出大角度反弹';
+  d.en['gs.brickbash.help'] = '🖱️ Drag mouse/finger or use ←→ to move the paddle · Click/Space to launch<br>Hitting the paddle edge gives a wide-angle bounce';
+  d.zh['gs.brickbash.paused'] = '⏸ 已暂停 · 按 P / 按钮继续';
+  d.en['gs.brickbash.paused'] = '⏸ Paused · Press P or the button to resume';
+  d.zh['gs.brickbash.pause'] = '暂停';
+  d.en['gs.brickbash.pause'] = 'Pause';
+  d.zh['gs.brickbash.newRecord'] = '🎉 新纪录！';
+  d.en['gs.brickbash.newRecord'] = '🎉 New record!';
+  d.zh['gs.brickbash.livesLeft'] = '还剩 {n} 条命，点击或空格发球';
+  d.en['gs.brickbash.livesLeft'] = '{n} lives left — click or press Space to launch';
+  d.zh['gs.brickbash.levelUp'] = '🎉 清屏！进入第 {n} 关，球速提升';
+  d.en['gs.brickbash.levelUp'] = '🎉 Cleared! Entering level {n} — ball speed up';
+})();

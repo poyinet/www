@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="破译游戏">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <title>反应力测试 · 用游戏破译人类三千年加密解密史</title>
+  <meta name="description" content="破译 DECODE ARCADE · 反应力测试：变绿的一瞬间点下去，测测你的反应毫秒数。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://poyi.net/games/reaction/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="破译游戏 DECODE ARCADE">
+  <meta property="og:title" content="反应力测试 · 用游戏破译人类三千年加密解密史">
+  <meta property="og:description" content="破译 DECODE ARCADE · 反应力测试：变绿的一瞬间点下去，测测你的反应毫秒数。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta property="og:url" content="https://poyi.net/games/reaction/">
+  <meta property="og:image" content="https://poyi.net/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="反应力测试 · 用游戏破译人类三千年加密解密史">
+  <meta name="twitter:description" content="破译 DECODE ARCADE · 反应力测试：变绿的一瞬间点下去，测测你的反应毫秒数。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="twitter:image" content="https://poyi.net/assets/og-image.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "反应力测试",
+    "url": "https://poyi.net/games/reaction/",
+    "applicationCategory": "Game",
+    "inLanguage": "zh-CN",
+    "isPartOf": { "@type": "WebSite", "name": "破译游戏 DECODE ARCADE", "url": "https://poyi.net/" },
+    "description": "破译 DECODE ARCADE · 反应力测试：变绿的一瞬间点下去，测测你的反应毫秒数。 打开即玩，最高分记录保存在本地浏览器。"
+  }
+  </script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>⚡</text></svg>">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="../../assets/css/theme.css">
+  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
+  <link rel="stylesheet" href="../../assets/css/shell.css">
+  <style>
+    .reaction-panel{
+      width:min(520px,92vw);min-height:280px;margin:0 auto;padding:24px;
+      display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;
+      text-align:center;border-radius:var(--radius);cursor:pointer;
+      user-select:none;-webkit-user-select:none;touch-action:manipulation;
+      background:rgba(0,240,255,0.04);border:2px solid rgba(0,240,255,0.35);
+      transition:background .15s,border-color .15s,box-shadow .15s;
+    }
+    .reaction-panel .rp-icon{font-size:54px;line-height:1;filter:drop-shadow(0 0 10px rgba(0,240,255,0.6));}
+    .reaction-panel .rp-text{font-family:var(--font-pixel);font-size:20px;color:var(--text-main);text-shadow:0 0 10px rgba(0,240,255,0.5);}
+    .reaction-panel .rp-sub{color:var(--text-dim);font-size:13px;}
+    .reaction-panel.waiting{background:rgba(255,45,74,0.14);border-color:#ff2d4a;box-shadow:0 0 26px rgba(255,45,74,0.3);}
+    .reaction-panel.waiting .rp-text{color:#ff5c74;text-shadow:0 0 10px rgba(255,45,74,0.7);}
+    .reaction-panel.ready{background:rgba(57,255,20,0.16);border-color:var(--neon-green);box-shadow:0 0 32px rgba(57,255,20,0.45);}
+    .reaction-panel.ready .rp-text{color:var(--neon-green);text-shadow:0 0 12px rgba(57,255,20,0.8);}
+    .reaction-panel.result{border-color:var(--neon-cyan);}
+    .reaction-panel.result .rp-text{color:var(--neon-cyan);font-size:26px;text-shadow:0 0 12px rgba(0,240,255,0.8);}
+    .reaction-panel.falsestart{background:rgba(255,230,0,0.1);border-color:var(--neon-yellow);box-shadow:0 0 22px rgba(255,230,0,0.25);}
+    .reaction-panel.falsestart .rp-text{color:var(--neon-yellow);text-shadow:0 0 10px rgba(255,230,0,0.7);}
+    .reaction-panel.done{background:rgba(185,103,255,0.1);border-color:var(--neon-purple);box-shadow:0 0 26px rgba(185,103,255,0.3);}
+    .reaction-panel.done .rp-text{color:var(--neon-purple);font-size:26px;text-shadow:0 0 12px rgba(185,103,255,0.8);}
+    .reaction-rounds{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:16px;min-height:30px;}
+    .reaction-chip{font-size:12px;padding:4px 10px;border-radius:999px;border:1px solid;}
+    .reaction-chip.s-god{color:var(--neon-green);border-color:rgba(57,255,20,0.6);background:rgba(57,255,20,0.08);}
+    .reaction-chip.s-great{color:var(--neon-cyan);border-color:rgba(0,240,255,0.5);background:rgba(0,240,255,0.08);}
+    .reaction-chip.s-ok{color:var(--neon-yellow);border-color:rgba(255,230,0,0.5);background:rgba(255,230,0,0.08);}
+    .reaction-chip.s-slow{color:var(--neon-pink);border-color:rgba(255,45,149,0.5);background:rgba(255,45,149,0.08);}
+  </style>
+</head>
+<body data-game-id="reaction" data-game-title="反应力测试" data-best-mode="min">
+  <h1 class="seo-h1">反应力测试</h1>
+  <main id="game-root"></main>
+  <script src="../../assets/js/core/storage.js"></script>
+  <script src="../../assets/js/core/input.js"></script>
+  <script src="../../assets/js/core/loop.js"></script>
+    <script src="../../assets/js/core/i18n.js"></script>
+  <script src="../../assets/js/core/i18n-dict.js"></script>
+  <script src="reaction-i18n.js"></script>
+  <script src="../../assets/js/core/extras.js"></script>
+  <script src="../../assets/js/rank.js"></script>
+  <script src="../../assets/js/plot.js"></script>
+  <script src="../../assets/js/stories.js"></script>
+<script src="../../assets/js/shell.js"></script>
+  <script src="reaction.js"></script>
+  <script src="../../assets/js/pwa.js"></script>
+</body>
+</html>

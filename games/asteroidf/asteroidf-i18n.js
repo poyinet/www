@@ -1,0 +1,45 @@
+/* 破译 DECODE ARCADE · asteroidf 游戏内文案（zh/en 对称）
+   由 i18n-dict.js 拆分生成 —— 游戏页按需加载，减小站点字典体积 */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.asteroidf.tutTitle'] = '小行星 · 玩法';
+  d.en['gs.asteroidf.tutTitle'] = 'Asteroid Field · How to Play';
+  d.zh['gs.asteroidf.tut1t'] = '目标';
+  d.en['gs.asteroidf.tut1t'] = 'Objective';
+  d.zh['gs.asteroidf.tut1'] = '驾驶飞船击碎所有小行星，小心别被撞毁！';
+  d.en['gs.asteroidf.tut1'] = 'Pilot your ship and shatter every asteroid — don\'t get destroyed!';
+  d.zh['gs.asteroidf.tut2t'] = '操作';
+  d.en['gs.asteroidf.tut2t'] = 'Controls';
+  d.zh['gs.asteroidf.tut2'] = '←→ 旋转，↑ 推进，空格射击；触屏 DPad + 射击键。';
+  d.en['gs.asteroidf.tut2'] = '← → rotate, ↑ thrust, Space to shoot; on touch use the D-pad + fire button.';
+  d.zh['gs.asteroidf.tut3t'] = '技巧';
+  d.en['gs.asteroidf.tut3t'] = 'Tips';
+  d.zh['gs.asteroidf.tut3'] = '大行星打碎成两个小行星，清空全部才算赢；船有惯性，留出刹车距离。';
+  d.en['gs.asteroidf.tut3'] = 'Big asteroids split into two small ones; clear them all to win. The ship drifts — leave braking distance.';
+  d.zh['gs.asteroidf.tut4t'] = '计分';
+  d.en['gs.asteroidf.tut4t'] = 'Scoring';
+  d.zh['gs.asteroidf.tut4'] = '大行星 20 分、小行星 50 分。成绩=总分。';
+  d.en['gs.asteroidf.tut4'] = 'Big asteroids 20 pts, small ones 50 pts. Score = total points.';
+  d.zh['gs.asteroidf.dEasy'] = '简单';
+  d.en['gs.asteroidf.dEasy'] = 'Easy';
+  d.zh['gs.asteroidf.dNormal'] = '中等';
+  d.en['gs.asteroidf.dNormal'] = 'Normal';
+  d.zh['gs.asteroidf.dHard'] = '困难';
+  d.en['gs.asteroidf.dHard'] = 'Hard';
+  d.zh['gs.asteroidf.score'] = '得分';
+  d.en['gs.asteroidf.score'] = 'Score';
+  d.zh['gs.asteroidf.lives'] = '生命';
+  d.en['gs.asteroidf.lives'] = 'Lives';
+  d.zh['gs.asteroidf.help'] = '←→ 旋转 · ↑ 推进 · 空格射击 · P 暂停';
+  d.en['gs.asteroidf.help'] = '← → rotate · ↑ thrust · Space shoot · P pause';
+  d.zh['gs.asteroidf.paused'] = '⏸ 已暂停 · 按 P 继续';
+  d.en['gs.asteroidf.paused'] = '⏸ Paused · press P to resume';
+  d.zh['gs.asteroidf.restart'] = '重新开始';
+  d.en['gs.asteroidf.restart'] = 'Restart';
+  d.zh['gs.asteroidf.dead'] = '💀 飞船坠毁！得分 {n}';
+  d.en['gs.asteroidf.dead'] = '💀 Ship destroyed! Score {n}';
+  d.zh['gs.asteroidf.hit'] = '💥 被撞！剩余生命 {n}';
+  d.en['gs.asteroidf.hit'] = '💥 Hit! {n} lives left';
+  d.zh['gs.asteroidf.clear'] = '🎉 清空小行星！得分 {n}';
+  d.en['gs.asteroidf.clear'] = '🎉 Asteroid field cleared! Score {n}';
+})();

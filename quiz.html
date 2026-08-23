@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="破译游戏">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <title>密码学测验场 · 用游戏破译人类三千年加密解密史</title>
+  <meta name="description" content="破译 DECODE ARCADE · 密码学测验场：110 道题分四个段位（入门/进阶/专家/大师），每轮随机抽 10 题，实时计分，答完评出你的密码学段位。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://poyi.net/quiz.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="破译游戏 DECODE ARCADE">
+  <meta property="og:title" content="密码学测验场 · 用游戏破译人类三千年加密解密史">
+  <meta property="og:description" content="110 道题 · 4 个段位 · 每轮随机 10 题，答完评出你的密码学段位。">
+  <meta property="og:url" content="https://poyi.net/quiz.html">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:image" content="https://poyi.net/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="密码学测验场 · 破译 DECODE ARCADE">
+  <meta name="twitter:description" content="110 道题 · 4 个段位 · 每轮随机 10 题，答完评出你的密码学段位。">
+  <meta name="twitter:image" content="https://poyi.net/assets/og-image.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "密码学测验场 · 用游戏破译人类三千年加密解密史",
+    "url": "https://poyi.net/quiz.html",
+    "isPartOf": { "@type": "WebSite", "name": "破译游戏 DECODE ARCADE", "url": "https://poyi.net/" },
+    "inLanguage": "zh-CN",
+    "about": "密码学知识测验",
+    "description": "110 道题分四个段位（入门/进阶/专家/大师），每轮随机抽 10 题，实时计分，答完评出密码学段位。"
+  }
+  </script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧠</text></svg>">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="assets/css/theme.css">
+  <style>
+    .qz-wrap { max-width: 780px; margin: 0 auto; padding: 8px 16px 60px; position: relative; z-index: 1; }
+    .qz-hero { text-align: center; padding: 26px 16px 8px; }
+    .qz-title { font-family: var(--font-pixel); font-size: 22px; letter-spacing: 3px; color: var(--neon-purple); text-shadow: 0 0 10px rgba(185,103,255,.7), 0 0 30px rgba(185,103,255,.3); }
+    .qz-sub { margin-top: 8px; color: var(--text-dim); font-size: 13px; line-height: 1.8; }
+    .qz-pool { font-family: var(--font-pixel); font-size: 11px; color: var(--neon-yellow); margin-top: 8px; }
+
+    /* 开始屏 */
+    .qz-start { margin-top: 26px; text-align: center; }
+    .qz-start .qz-rank-row { display: flex; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+    .qz-rank-chip { padding: 8px 14px; border-radius: 8px; background: rgba(0,0,0,.3); border: 1px solid rgba(255,255,255,.1); font-size: 12px; color: var(--text-main); }
+    .qz-rank-chip b { display: block; font-family: var(--font-pixel); font-size: 9px; color: var(--neon-cyan); margin-top: 2px; letter-spacing: 1px; }
+
+    /* 题目屏 */
+    .qz-card { margin-top: 22px; background: linear-gradient(180deg, rgba(20,20,34,.85), rgba(10,10,18,.6)); border: 1px solid rgba(185,103,255,.25); border-radius: 12px; padding: 18px 16px; }
+    .qz-progress { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+    .qz-progress .bar { flex: 1; height: 8px; border-radius: 4px; background: rgba(255,255,255,.07); border: 1px solid rgba(185,103,255,.3); overflow: hidden; }
+    .qz-progress .bar i { display: block; height: 100%; background: linear-gradient(90deg, #7a2bd6, #b967ff); box-shadow: 0 0 8px rgba(185,103,255,.4); transition: width .3s; }
+    .qz-progress .num { font-family: var(--font-pixel); font-size: 10px; color: var(--neon-purple); white-space: nowrap; }
+    .qz-progress .score { font-family: var(--font-pixel); font-size: 10px; color: var(--neon-green); white-space: nowrap; }
+    .qz-q { font-size: 16px; font-weight: 700; color: var(--text-main); line-height: 1.6; min-height: 48px; }
+    .qz-lvl { display: inline-block; font-family: var(--font-pixel); font-size: 9px; color: var(--neon-yellow); border: 1px solid rgba(255,214,0,.4); border-radius: 4px; padding: 2px 8px; margin-bottom: 10px; letter-spacing: 1px; }
+    .qz-opts { margin-top: 14px; display: grid; gap: 10px; }
+    .qz-opt {
+      text-align: left; padding: 12px 14px; border-radius: 10px; cursor: pointer;
+      background: rgba(0,0,0,.28); border: 1px solid rgba(255,255,255,.1);
+      color: var(--text-main); font-size: 14px; line-height: 1.5; transition: border-color .15s, background .15s;
+    }
+    .qz-opt:hover { border-color: rgba(185,103,255,.55); background: rgba(185,103,255,.08); }
+    .qz-opt .k { font-family: var(--font-pixel); font-size: 10px; color: var(--neon-purple); margin-right: 8px; }
+    .qz-opt.right { border-color: rgba(57,255,20,.55); background: rgba(57,255,20,.1); }
+    .qz-opt.right .k { color: var(--neon-green); }
+    .qz-opt.wrong { border-color: rgba(255,80,80,.55); background: rgba(255,80,80,.12); }
+    .qz-opt.wrong .k { color: var(--neon-pink); }
+    .qz-opt.dim { opacity: .45; }
+    .qz-feedback { margin-top: 14px; padding: 12px 14px; border-radius: 10px; font-size: 13px; line-height: 1.7; display: none; }
+    .qz-feedback.ok { display: block; border: 1px solid rgba(57,255,20,.35); background: rgba(57,255,20,.07); color: var(--neon-green); }
+    .qz-feedback.no { display: block; border: 1px solid rgba(255,80,80,.35); background: rgba(255,80,80,.08); color: var(--neon-pink); }
+    .qz-feedback .ex { color: var(--text-dim); margin-top: 4px; }
+    .qz-next { margin-top: 14px; text-align: right; }
+    .qz-next .btn { font-size: 13px; padding: 9px 20px; }
+
+    /* 结果屏 */
+    .qz-result { margin-top: 22px; background: linear-gradient(180deg, rgba(20,20,34,.85), rgba(10,10,18,.6)); border: 1px solid rgba(185,103,255,.25); border-radius: 12px; padding: 24px 16px; text-align: center; }
+    .qz-result .big-icon { font-size: 46px; }
+    .qz-result h2 { font-size: 17px; color: var(--neon-cyan); margin: 8px 0 4px; }
+    .qz-result .rank-name { font-family: var(--font-pixel); font-size: 15px; color: var(--neon-purple); letter-spacing: 1px; margin: 8px 0 4px; }
+    .qz-result .rank-sub { font-size: 12px; color: var(--text-dim); }
+    .qz-result .score-line { font-family: var(--font-pixel); font-size: 22px; color: var(--neon-green); margin: 14px 0 4px; }
+    .qz-result .best-line { font-size: 12px; color: var(--text-dim); margin-bottom: 14px; }
+    .qz-ladder { margin: 16px auto 0; max-width: 380px; display: grid; gap: 6px; text-align: left; }
+    .qz-ladder .r { display: flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 8px; font-size: 12px; color: var(--text-dim); border: 1px solid rgba(255,255,255,.06); background: rgba(0,0,0,.2); }
+    .qz-ladder .r.on { border-color: rgba(57,255,20,.45); background: rgba(57,255,20,.07); color: var(--neon-green); }
+    .qz-ladder .r .pct { margin-left: auto; font-family: var(--font-pixel); font-size: 9px; color: var(--neon-yellow); }
+
+    @media (max-width: 480px) {
+      .qz-title { font-size: 17px; }
+      .qz-q { font-size: 15px; }
+    }
+    .lobby-footer { position: relative; z-index: 1; text-align: center; padding: 20px 16px 30px; color: var(--text-dim); font-size: 12px; line-height: 2; }
+    .lobby-footer .pixel-line { font-family: var(--font-pixel); font-size: 9px; color: rgba(0,240,255,.5); }
+  </style>
+</head>
+<body>
+  <div id="arcade-nav"></div>
+
+  <div id="content" class="qz-wrap">
+    <div class="qz-hero">
+      <h1 class="qz-title" data-i18n="quiz.title">🧠 密码学测验场</h1>
+      <p class="qz-sub" data-i18n="quiz.sub">110 道题 · 4 个段位（入门/进阶/专家/大师）· 每轮随机抽 10 题——答完评出你的「密码学段位」</p>
+      <div class="qz-pool" id="qz-pool"></div>
+    </div>
+    <div id="qz-root"></div>
+  </div>
+
+  <footer class="lobby-footer">
+    <div class="pixel-line" data-i18n="home.footBrand">© 2026 破译游戏 · POYI.NET · 用游戏破译人类三千年加密解密史</div>
+    <div data-i18n="home.footNote">纪录仅存本地 · 不上传任何数据 · 史料整理自公开信息仅供学习</div>
+      <span class="egg-hint" data-egg="e13"><span class="egg-zh">🎯 第十三枚：本页页脚。维吉尼亚，密钥 QUIZ。</span><span class="egg-en">Quiz footer · Vigenere key QUIZ</span></span>
+<!-- EGG:e13:BYIQD -->
+  </footer>
+
+  <script src="assets/js/core/i18n.js"></script>
+  <script src="assets/js/core/i18n-dict.js"></script>
+  <script src="assets/js/core/i18n-ui.js"></script>
+  <script src="assets/js/core/storage.js"></script>
+  <script src="assets/js/core/extras.js"></script>
+  <script src="assets/js/quiz.js"></script>
+  <script src="assets/js/nav.js"></script>
+  <script>
+    (function () {
+      if (!window.Arcade || !Arcade.i18n || !window.QUIZ) return;
+      Arcade.i18n.applyStatic();
+      document.title = Arcade.i18n.t('quiz.title') + Arcade.i18n.t('app.titleSuffix');
+
+      var T = Arcade.i18n.t;
+      var isEn = Arcade.i18n.getLang() === 'en';
+      var QUIZ = window.QUIZ;
+
+      /* 顶部：题库规模 */
+      document.getElementById('qz-pool').textContent = isEn
+        ? QUIZ.BANK.length + ' questions · ' + QUIZ.RANKS.length + ' ranks · 10 per round'
+        : QUIZ.BANK.length + ' 道题 · ' + QUIZ.RANKS.length + ' 个段位 · 每轮 10 题';
+
+      var root = document.getElementById('qz-root');
+      var state = { list: [], idx: 0, score: 0, practice: false };
+
+      function lvName(lvl) {
+        return T('quiz.lvl' + lvl);
+      }
+
+      /* 开始屏 */
+      function startNormal() {
+        state.list = QUIZ.draw10(); state.idx = 0; state.score = 0; state.practice = false; renderQ();
+      }
+      function startPractice() {
+        state.list = QUIZ.drawWrong(10); state.idx = 0; state.score = 0; state.practice = true; renderQ();
+      }
+      function renderStart() {
+        var html = '<div class="qz-start">';
+        html += '<button class="btn qz-go" id="qz-go">' + T('quiz.start') + '</button>';
+        var wc = QUIZ.wrongCount();
+        if (wc > 0) {
+          html += '<div style="margin-top:12px"><button class="btn yellow" id="qz-wrong" style="font-size:12px;padding:9px 18px">' +
+            T('quiz.wrongBtn').replace('{n}', wc) + '</button></div>';
+        }
+        html += '<div style="margin-top:12px"><a class="btn pink" href="duel.html" style="font-size:12px;padding:9px 18px">' + T('quiz.duel') + '</a></div>';
+        html += '<div class="qz-rank-row">';
+        QUIZ.RANKS.forEach(function (r) {
+          html += '<div class="qz-rank-chip">' + r.icon + ' ' + (isEn ? r.en : r.zh) + '<b>' + Math.round(r.min * 100) + '%+</b></div>';
+        });
+        html += '</div></div>';
+        root.innerHTML = html;
+        var go = document.getElementById('qz-go');
+        if (go) go.addEventListener('click', startNormal);
+        var wr = document.getElementById('qz-wrong');
+        if (wr) wr.addEventListener('click', function () { if (QUIZ.wrongCount() > 0) startPractice(); else startNormal(); });
+      }
+
+      /* 题目屏 */
+      function renderQ() {
+        var q = state.list[state.idx];
+        if (!q) { renderResult(); return; }
+        var qd = isEn ? q.en : q.zh;
+        var n = state.idx + 1, total = state.list.length;
+        var pct = Math.round(n / total * 100);
+        var opts = '';
+        var KEYS = ['A', 'B', 'C', 'D'];
+        qd.opts.forEach(function (o, i) {
+          opts += '<button class="qz-opt" data-i="' + i + '"><span class="k">' + KEYS[i] + '</span>' + o + '</button>';
+        });
+        root.innerHTML =
+          '<div class="qz-card">' +
+            '<div class="qz-progress">' +
+              '<span class="num">' + T('quiz.q').replace('{n}', n + '/' + total) + '</span>' +
+              '<span class="bar"><i style="width:' + pct + '%"></i></span>' +
+              '<span class="score">' + T('quiz.score').replace('{s}', state.score) + '</span>' +
+            '</div>' +
+            '<span class="qz-lvl">' + lvName(q.lvl) + '</span>' +
+            '<div class="qz-q">' + qd.q + '</div>' +
+            '<div class="qz-opts">' + opts + '</div>' +
+            '<div class="qz-feedback" id="qz-fb"></div>' +
+            '<div class="qz-next"><button class="btn" id="qz-next" style="display:none">' + T('quiz.next') + '</button></div>' +
+          '</div>';
+        var btns = root.querySelectorAll('.qz-opt');
+        for (var i = 0; i < btns.length; i++) {
+          btns[i].addEventListener('click', answer);
+        }
+      }
+
+      /* 作答 */
+      function answer(ev) {
+        var btn = ev.currentTarget;
+        if (btn.classList.contains('right') || btn.classList.contains('wrong')) return;
+        var i = parseInt(btn.getAttribute('data-i'), 10);
+        var q = state.list[state.idx];
+        var qd = isEn ? q.en : q.zh;
+        var right = i === q.a;
+        if (right) { state.score++; QUIZ.markRight(q); }
+        else QUIZ.markWrong(q);
+
+        var opts = root.querySelectorAll('.qz-opt');
+        for (var k = 0; k < opts.length; k++) {
+          var oi = parseInt(opts[k].getAttribute('data-i'), 10);
+          if (oi === q.a) opts[k].classList.add('right');
+          else opts[k].classList.add('dim');
+          if (oi === i && !right) opts[k].classList.add('wrong');
+          opts[k].disabled = true;
+        }
+        var fb = document.getElementById('qz-fb');
+        fb.className = right ? 'qz-feedback ok' : 'qz-feedback no';
+        fb.innerHTML = (right ? T('quiz.right') : T('quiz.wrong')) +
+          '<div class="ex">' + T('quiz.explain').replace('{e}', qd.explain) + '</div>';
+        var nx = document.getElementById('qz-next');
+        nx.style.display = 'inline-block';
+        nx.addEventListener('click', function () { state.idx++; renderQ(); });
+      }
+
+      /* 结果屏 */
+      function renderResult() {
+        /* 错题重练模式：不计段位、不写最佳，只反馈本轮成绩 */
+        if (state.practice) {
+          root.innerHTML =
+            '<div class="qz-result">' +
+              '<div class="big-icon">🔁</div>' +
+              '<h2>' + T('quiz.practiceDone') + '</h2>' +
+              '<div class="score-line">' + state.score + ' / ' + state.list.length + '</div>' +
+              '<div class="rank-sub">' + T('quiz.practiceSub') + '</div>' +
+              '<div style="margin-top:18px"><button class="btn" id="qz-again">' + T('quiz.resultAgain') + '</button></div>' +
+            '</div>';
+          var againP = document.getElementById('qz-again');
+          if (againP) againP.addEventListener('click', renderStart);
+          return;
+        }
+        var r = QUIZ.recordResult(state.score, state.list.length);
+        var best = QUIZ.lastResult();
+        var ladder = '';
+        QUIZ.RANKS.forEach(function (rr) {
+          ladder += '<div class="r' + (rr.name === r.name ? ' on' : '') + '">' + rr.icon + ' ' +
+            (isEn ? rr.en : rr.zh) + '<span class="pct">' + Math.round(rr.min * 100) + '%+</span></div>';
+        });
+        root.innerHTML =
+          '<div class="qz-result">' +
+            '<div class="big-icon">' + r.icon + '</div>' +
+            '<h2>' + T('quiz.resultTitle') + '</h2>' +
+            '<div class="score-line">' + state.score + ' / ' + state.list.length + '</div>' +
+            '<div class="best-line">' + T('quiz.bestLabel').replace('{s}', best.ever).replace('{t}', state.list.length) + '</div>' +
+            '<div class="rank-name">' + (isEn ? r.en : r.zh) + '</div>' +
+            '<div class="rank-sub">' + T('quiz.resultSub') + '</div>' +
+            '<div class="qz-ladder">' + ladder + '</div>' +
+            '<div style="margin-top:18px"><button class="btn" id="qz-again">' + T('quiz.resultAgain') + '</button></div>' +
+          '</div>';
+        var again = document.getElementById('qz-again');
+        if (again) again.addEventListener('click', startNormal);
+        if (Arcade.ui && Arcade.ui.toast) {
+          setTimeout(function () { Arcade.ui.toast(T('quiz.resultRank') + (isEn ? ': ' : '：') + (isEn ? r.en : r.zh), 'win'); }, 350);
+        }
+      }
+
+      /* B2：#wrong 深链 —— 档案页错题卡直达练习模式 */
+      if ((location.hash || '') === '#wrong' && QUIZ.wrongCount() > 0) startPractice();
+      else renderStart();
+    })();
+  </script>
+  <script src="assets/js/pwa.js"></script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="破译游戏">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <title>词频分析 · 用游戏破译人类三千年加密解密史</title>
+  <meta name="description" content="破译 DECODE ARCADE · 词频分析：按字母出现频率破解单表替换密文。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://poyi.net/games/freq/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="破译游戏 DECODE ARCADE">
+  <meta property="og:title" content="词频分析 · 用游戏破译人类三千年加密解密史">
+  <meta property="og:description" content="破译 DECODE ARCADE · 词频分析：按字母出现频率破解单表替换密文。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta property="og:url" content="https://poyi.net/games/freq/">
+  <meta property="og:image" content="https://poyi.net/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="词频分析 · 用游戏破译人类三千年加密解密史">
+  <meta name="twitter:description" content="破译 DECODE ARCADE · 词频分析：按字母出现频率破解单表替换密文。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="twitter:image" content="https://poyi.net/assets/og-image.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "词频分析",
+    "url": "https://poyi.net/games/freq/",
+    "applicationCategory": "Game",
+    "inLanguage": "zh-CN",
+    "isPartOf": { "@type": "WebSite", "name": "破译游戏 DECODE ARCADE", "url": "https://poyi.net/" },
+    "description": "破译 DECODE ARCADE · 词频分析：按字母出现频率破解单表替换密文。 打开即玩，最高分记录保存在本地浏览器。"
+  }
+  </script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="../../assets/css/theme.css">
+  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
+  <link rel="stylesheet" href="../../assets/css/shell.css">
+  <style>
+    .fq-wrap { padding: 14px; width: min(620px, 96vw); text-align: center; }
+    .fq-label { font-size: 12px; color: var(--text-dim); margin: 12px 0 4px; }
+    .fq-text { font-family: var(--font-mono); font-size: 13px; line-height: 1.8; word-break: break-all; color: var(--neon-cyan);
+      background: rgba(0,240,255,0.06); border: 1px solid rgba(0,240,255,0.3); border-radius: 8px; padding: 10px 12px; text-align: left; }
+    .fq-bars { display: flex; align-items: flex-end; gap: 3px; height: 90px; margin: 10px 0; padding: 8px; border-radius: 8px; background: rgba(255,255,255,0.03); }
+    .fq-col { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; align-items: center; gap: 3px; cursor: pointer; min-width: 0; }
+    .fq-bar { width: 100%; border-radius: 3px 3px 0 0; background: var(--neon-pink); min-height: 2px; transition: background 0.15s; }
+    .fq-col.mapped .fq-bar { background: var(--neon-green); }
+    /* 窄屏：26 列换行显示，保证每列可触控（320px 下每列约 34px） */
+    @media (max-width: 520px) {
+      .fq-bars { flex-wrap: wrap; height: auto; align-content: flex-start; }
+      .fq-col { flex: 0 0 calc(100% / 9); min-width: 34px; padding: 2px 0; }
+    }
+    .fq-char { font-family: var(--font-mono); font-size: 11px; color: var(--text-dim); }
+    .fq-map { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin: 10px 0; }
+    .fq-tile { display: flex; align-items: center; gap: 6px; border: 1px solid rgba(255,255,255,0.18); border-radius: 8px; padding: 4px 10px; background: rgba(255,255,255,0.04); }
+    .fq-tile b { font-family: var(--font-mono); color: var(--neon-yellow); }
+    .fq-msg { min-height: 18px; font-size: 13px; color: var(--neon-green); margin: 8px 0; }
+    .fq-help { font-size: 12px; color: var(--text-dim); line-height: 1.7; margin-top: 6px; text-align: left;
+      background: rgba(255,255,255,0.04); border-radius: 8px; padding: 10px 12px; }
+  </style>
+</head>
+<body data-game-id="freq" data-game-title="词频分析" data-best-mode="min">
+  <h1 class="seo-h1">词频分析</h1>
+  <main id="game-root"></main>
+  <script src="../../assets/js/core/storage.js"></script>
+  <script src="../../assets/js/core/input.js"></script>
+  <script src="../../assets/js/core/loop.js"></script>
+    <script src="../../assets/js/core/i18n.js"></script>
+  <script src="../../assets/js/core/i18n-dict.js"></script>
+  <script src="freq-i18n.js"></script>
+  <script src="../../assets/js/core/extras.js"></script>
+  <script src="../../assets/js/rank.js"></script>
+  <script src="../../assets/js/plot.js"></script>
+  <script src="../../assets/js/stories.js"></script>
+<script src="../../assets/js/shell.js"></script>
+  <script src="freq.js"></script>
+  <script src="../../assets/js/pwa.js"></script>
+</body>
+</html>

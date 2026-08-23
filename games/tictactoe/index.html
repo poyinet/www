@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="破译游戏">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <title>井字棋 · 用游戏破译人类三千年加密解密史</title>
+  <meta name="description" content="破译 DECODE ARCADE · 井字棋：三子连线定胜负，困难模式 AI 永不败。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://poyi.net/games/tictactoe/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="破译游戏 DECODE ARCADE">
+  <meta property="og:title" content="井字棋 · 用游戏破译人类三千年加密解密史">
+  <meta property="og:description" content="破译 DECODE ARCADE · 井字棋：三子连线定胜负，困难模式 AI 永不败。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta property="og:url" content="https://poyi.net/games/tictactoe/">
+  <meta property="og:image" content="https://poyi.net/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="井字棋 · 用游戏破译人类三千年加密解密史">
+  <meta name="twitter:description" content="破译 DECODE ARCADE · 井字棋：三子连线定胜负，困难模式 AI 永不败。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="twitter:image" content="https://poyi.net/assets/og-image.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "井字棋",
+    "url": "https://poyi.net/games/tictactoe/",
+    "applicationCategory": "Game",
+    "inLanguage": "zh-CN",
+    "isPartOf": { "@type": "WebSite", "name": "破译游戏 DECODE ARCADE", "url": "https://poyi.net/" },
+    "description": "破译 DECODE ARCADE · 井字棋：三子连线定胜负，困难模式 AI 永不败。 打开即玩，最高分记录保存在本地浏览器。"
+  }
+  </script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>❌</text></svg>">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="../../assets/css/theme.css">
+  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
+  <link rel="stylesheet" href="../../assets/css/shell.css">
+  <style>
+    .ttt-board {
+      display: grid;
+      grid-template-columns: repeat(3, min(88px, 26vw));
+      gap: 8px;
+      justify-content: center;
+      margin: 10px auto;
+      user-select: none;
+    }
+    .ttt-cell {
+      width: min(88px, 26vw);
+      height: min(88px, 26vw);
+      font-family: var(--font-pixel);
+      font-size: min(38px, 11vw);
+      color: var(--text-dim);
+      background: var(--bg-panel);
+      border: 2px solid rgba(0, 240, 255, 0.25);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: border-color 0.15s, box-shadow 0.15s, background 0.15s;
+    }
+    .ttt-cell:hover:not(:disabled) {
+      border-color: var(--neon-cyan);
+      box-shadow: 0 0 12px rgba(0, 240, 255, 0.3);
+    }
+    .ttt-cell:disabled { cursor: default; }
+    .ttt-cell.x {
+      color: var(--neon-cyan);
+      text-shadow: 0 0 8px rgba(0, 240, 255, 0.8), 0 0 22px rgba(0, 240, 255, 0.45);
+      animation: ttt-pop 0.25s ease-out;
+    }
+    .ttt-cell.o {
+      color: var(--neon-pink);
+      text-shadow: 0 0 8px rgba(255, 45, 149, 0.8), 0 0 22px rgba(255, 45, 149, 0.45);
+      animation: ttt-pop 0.25s ease-out;
+    }
+    @keyframes ttt-pop {
+      0% { transform: scale(0.3); }
+      60% { transform: scale(1.12); }
+      100% { transform: scale(1); }
+    }
+    .ttt-cell.win {
+      border-color: var(--neon-yellow);
+      animation: ttt-win 0.5s ease-in-out infinite alternate;
+    }
+    @keyframes ttt-win {
+      from { box-shadow: 0 0 8px rgba(255, 230, 0, 0.35); background: rgba(255, 230, 0, 0.05); }
+      to { box-shadow: 0 0 24px rgba(255, 230, 0, 0.8); background: rgba(255, 230, 0, 0.16); }
+    }
+    .mode-btn.active {
+      background: var(--neon-cyan);
+      color: #04121a;
+      text-shadow: none;
+      box-shadow: 0 0 16px rgba(0, 240, 255, 0.6);
+    }
+    .mode-btn.pink.active {
+      background: var(--neon-pink);
+      color: #1a0410;
+      box-shadow: 0 0 16px rgba(255, 45, 149, 0.6);
+    }
+    .mode-btn.purple.active {
+      background: var(--neon-purple);
+      color: #12041a;
+      box-shadow: 0 0 16px rgba(185, 103, 255, 0.6);
+    }
+  </style>
+</head>
+<body data-game-id="tictactoe" data-game-title="井字棋" data-best-mode="max">
+  <h1 class="seo-h1">井字棋</h1>
+  <main id="game-root"></main>
+  <script src="../../assets/js/core/storage.js"></script>
+  <script src="../../assets/js/core/input.js"></script>
+  <script src="../../assets/js/core/loop.js"></script>
+    <script src="../../assets/js/core/i18n.js"></script>
+  <script src="../../assets/js/core/i18n-dict.js"></script>
+  <script src="tictactoe-i18n.js"></script>
+  <script src="../../assets/js/core/extras.js"></script>
+  <script src="../../assets/js/rank.js"></script>
+  <script src="../../assets/js/plot.js"></script>
+  <script src="../../assets/js/stories.js"></script>
+<script src="../../assets/js/shell.js"></script>
+  <script src="tictactoe.js"></script>
+  <script src="../../assets/js/pwa.js"></script>
+</body>
+</html>

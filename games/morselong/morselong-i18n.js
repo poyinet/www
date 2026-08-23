@@ -1,0 +1,43 @@
+/* 破译 DECODE ARCADE · morselong 游戏内文案（zh/en 对称）
+   由 i18n-dict.js 拆分生成 —— 游戏页按需加载，减小站点字典体积 */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.morselong.tutTitle'] = '摩斯长报文 · 玩法';
+  d.en['gs.morselong.tutTitle'] = 'Long Morse · How to Play';
+  d.zh['gs.morselong.tut1t'] = '目标';
+  d.en['gs.morselong.tut1t'] = 'Objective';
+  d.zh['gs.morselong.tut1'] = '把一长串摩斯电码还原成英文句子。';
+  d.en['gs.morselong.tut1'] = 'Decode the long Morse transmission into an English sentence.';
+  d.zh['gs.morselong.tut2t'] = '操作';
+  d.en['gs.morselong.tut2t'] = 'Controls';
+  d.zh['gs.morselong.tut2'] = '点「播放电码」听（或看）点划，在输入框逐字母打出明文。';
+  d.en['gs.morselong.tut2'] = 'Press "Play code" to hear (or read) the dots and dashes, then type the plaintext letter by letter.';
+  d.zh['gs.morselong.tut3t'] = '规则';
+  d.en['gs.morselong.tut3t'] = 'Rules';
+  d.zh['gs.morselong.tut3'] = '空格表字母间隔，/ 表单词间隔。';
+  d.en['gs.morselong.tut3'] = 'A space separates letters; / separates words.';
+  d.zh['gs.morselong.tut4t'] = '计分';
+  d.en['gs.morselong.tut4t'] = 'Scoring';
+  d.zh['gs.morselong.tut4'] = '用时越短成绩越高（成绩=完成秒数）。';
+  d.en['gs.morselong.tut4'] = 'Faster is better (score = seconds to finish).';
+  d.zh['gs.morselong.dEasy'] = '简单';
+  d.en['gs.morselong.dEasy'] = 'Easy';
+  d.zh['gs.morselong.dNormal'] = '普通';
+  d.en['gs.morselong.dNormal'] = 'Normal';
+  d.zh['gs.morselong.dHard'] = '困难';
+  d.en['gs.morselong.dHard'] = 'Hard';
+  d.zh['gs.morselong.lblCipher'] = '截获电码（·=滴 -=划，/ =词间）';
+  d.en['gs.morselong.lblCipher'] = 'Intercepted code (· = dot, − = dash, / = word gap)';
+  d.zh['gs.morselong.play'] = '▶ 播放电码';
+  d.en['gs.morselong.play'] = '▶ Play code';
+  d.zh['gs.morselong.typeHint'] = '逐字母打出明文';
+  d.en['gs.morselong.typeHint'] = 'Type the plaintext letter by letter';
+  d.zh['gs.morselong.phInput'] = '在此输入明文…';
+  d.en['gs.morselong.phInput'] = 'Type the plaintext here…';
+  d.zh['gs.morselong.newPuzzle'] = '换一题';
+  d.en['gs.morselong.newPuzzle'] = 'New puzzle';
+  d.zh['gs.morselong.msgWin'] = '✓ 破译成功！明文：{plain}';
+  d.en['gs.morselong.msgWin'] = '✓ Cipher broken! Plaintext: {plain}';
+  d.zh['gs.morselong.noAudio'] = '当前环境不支持音频';
+  d.en['gs.morselong.noAudio'] = 'Audio is not supported in this environment';
+})();

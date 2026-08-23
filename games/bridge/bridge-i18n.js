@@ -1,0 +1,41 @@
+/* 破译 DECODE ARCADE · bridge 游戏内文案（zh/en 对称）
+   由 i18n-dict.js 拆分生成 —— 游戏页按需加载，减小站点字典体积 */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.bridge.tutTitle'] = '桥梁搭建 · 玩法';
+  d.en['gs.bridge.tutTitle'] = 'Bridge Builder · How to Play';
+  d.zh['gs.bridge.tut1t'] = '目标';
+  d.en['gs.bridge.tut1t'] = 'Objective';
+  d.zh['gs.bridge.tut1'] = '在两岸之间用「板」搭桥，让小球从左侧滚到右侧终点。';
+  d.en['gs.bridge.tut1'] = 'Build a bridge of planks between the banks so the ball rolls from the left to the finish on the right.';
+  d.zh['gs.bridge.tut2t'] = '操作';
+  d.en['gs.bridge.tut2t'] = 'Controls';
+  d.zh['gs.bridge.tut2'] = '点两岸之间的空白位置放置木板（连接两岸或已有木板）；点木板可删除。';
+  d.en['gs.bridge.tut2'] = 'Click empty space between the banks to place a plank (connecting the banks or existing planks); click a plank to remove it.';
+  d.zh['gs.bridge.tut3t'] = '规则';
+  d.en['gs.bridge.tut3t'] = 'Rules';
+  d.zh['gs.bridge.tut3'] = '木板只能搭在两岸或已有木板之间；搭好桥后点「放球」，小球开始滚动。';
+  d.en['gs.bridge.tut3'] = 'Planks can only be placed between the banks or existing planks; once your bridge is ready, press "Drop" to release the ball.';
+  d.zh['gs.bridge.tut4t'] = '计分';
+  d.en['gs.bridge.tut4t'] = 'Scoring';
+  d.zh['gs.bridge.tut4'] = '成绩=搭桥用木板数，越少越好。';
+  d.en['gs.bridge.tut4'] = 'Score = planks used; fewer is better.';
+  d.zh['gs.bridge.paused'] = '⏸ 已暂停 · 按 P 继续';
+  d.en['gs.bridge.paused'] = '⏸ Paused · press P to resume';
+  d.zh['gs.bridge.hudPlanks'] = '木板';
+  d.en['gs.bridge.hudPlanks'] = 'Planks';
+  d.zh['gs.bridge.hudGoal'] = '目标：球到达右侧 🏁';
+  d.en['gs.bridge.hudGoal'] = 'Goal: get the ball to the right 🏁';
+  d.zh['gs.bridge.help'] = '点空白放木板 · 点木板删除 · 搭好后点「放球」';
+  d.en['gs.bridge.help'] = 'Click empty space to place a plank · click a plank to delete · press "Drop" when ready';
+  d.zh['gs.bridge.drop'] = '放球 🏀';
+  d.en['gs.bridge.drop'] = 'Drop 🏀';
+  d.zh['gs.bridge.reset'] = '重置';
+  d.en['gs.bridge.reset'] = 'Reset';
+  d.zh['gs.bridge.win'] = '🎉 球到达终点！用时 {n}s · 木板 {m}';
+  d.en['gs.bridge.win'] = '🎉 The ball reached the finish! {n}s · {m} planks';
+  d.zh['gs.bridge.timeout'] = '⏰ 超时！球没到终点';
+  d.en['gs.bridge.timeout'] = '⏰ Time\'s up — the ball didn\'t make it';
+  d.zh['gs.bridge.rolling'] = '球滚动了！看它能不能到终点…';
+  d.en['gs.bridge.rolling'] = 'The ball is rolling — let\'s see if it makes it…';
+})();

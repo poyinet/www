@@ -1,0 +1,39 @@
+/* 破译 DECODE ARCADE · fourline 游戏内文案（zh/en 对称）
+   由 i18n-dict.js 拆分生成 —— 游戏页按需加载，减小站点字典体积 */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.fourline.tutTitle'] = '四子棋 · 玩法';
+  d.en['gs.fourline.tutTitle'] = 'Four in a Row · How to Play';
+  d.zh['gs.fourline.tut1t'] = '目标';
+  d.en['gs.fourline.tut1t'] = 'Objective';
+  d.zh['gs.fourline.tut1'] = '率先让自己的棋子在横、竖或斜方向连成 4 子。';
+  d.en['gs.fourline.tut1'] = 'Be the first to line up four of your pieces in a row, column or diagonal.';
+  d.zh['gs.fourline.tut2t'] = '操作';
+  d.en['gs.fourline.tut2t'] = 'Controls';
+  d.zh['gs.fourline.tut2'] = '点任意一列，棋子落入该列最底部。你执粉（先手），AI 执黄。';
+  d.en['gs.fourline.tut2'] = 'Click any column and your piece drops to the lowest empty slot. You play pink (first), AI plays yellow.';
+  d.zh['gs.fourline.tut3t'] = '计分';
+  d.en['gs.fourline.tut3t'] = 'Scoring';
+  d.zh['gs.fourline.tut3'] = '连续战胜 AI 越多越好，成绩=当前连胜数。';
+  d.en['gs.fourline.tut3'] = 'Beat the AI as many times in a row as you can — your score is the current win streak.';
+  d.zh['gs.fourline.hudStreak'] = '连胜 {n}';
+  d.en['gs.fourline.hudStreak'] = 'Streak {n}';
+  d.zh['gs.fourline.yourTurn'] = '你的回合（粉）';
+  d.en['gs.fourline.yourTurn'] = 'Your turn (pink)';
+  d.zh['gs.fourline.aiTurn'] = 'AI 思考中…';
+  d.en['gs.fourline.aiTurn'] = 'AI thinking…';
+  d.zh['gs.fourline.dEasy'] = '简单';
+  d.en['gs.fourline.dEasy'] = 'Easy';
+  d.zh['gs.fourline.dMedium'] = '中等';
+  d.en['gs.fourline.dMedium'] = 'Normal';
+  d.zh['gs.fourline.dHard'] = '困难';
+  d.en['gs.fourline.dHard'] = 'Hard';
+  d.zh['gs.fourline.win'] = '🎉 你赢了！连胜 {n}';
+  d.en['gs.fourline.win'] = '🎉 You win! Streak {n}';
+  d.zh['gs.fourline.lose'] = '💀 AI 连成四子，连胜中断';
+  d.en['gs.fourline.lose'] = '💀 AI got four in a row — streak broken';
+  d.zh['gs.fourline.draw'] = '🤝 平局，连胜中断';
+  d.en['gs.fourline.draw'] = '🤝 Draw — streak broken';
+  d.zh['gs.fourline.colFull'] = '这列已满，换一列！';
+  d.en['gs.fourline.colFull'] = 'That column is full — pick another!';
+})();

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-touch-icon" content="/assets/icons/apple-touch-icon.png">
+  <title>BB84 量子密钥 · 用游戏破译人类三千年加密解密史</title>
+  <meta name="description" content="破译 DECODE ARCADE · BB84 量子密钥分发：扮演接收方 Bob，选基测量光子、筛出共享密钥、抽样比对误码，揪出留下指纹的窃听者 Eve。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://poyi.net/games/bb84/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="破译游戏 DECODE ARCADE">
+  <meta property="og:title" content="BB84 量子密钥 · 用游戏破译人类三千年加密解密史">
+  <meta property="og:description" content="BB84 量子密钥分发：选基测量光子、筛出共享密钥，抓出窃听者 Eve。">
+  <meta property="og:url" content="https://poyi.net/games/bb84/">
+  <meta property="og:image" content="https://poyi.net/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="BB84 量子密钥 · 破译 DECODE ARCADE">
+  <meta name="twitter:description" content="BB84 量子密钥分发：选基测量光子、筛出共享密钥，抓出窃听者 Eve。">
+  <meta name="twitter:image" content="https://poyi.net/assets/og-image.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "BB84 量子密钥",
+    "url": "https://poyi.net/games/bb84/",
+    "applicationCategory": "Game",
+    "inLanguage": "zh-CN",
+    "isPartOf": { "@type": "WebSite", "name": "破译游戏 DECODE ARCADE", "url": "https://poyi.net/" },
+    "description": "BB84 量子密钥分发：选基测量光子、筛出共享密钥，抓出窃听者 Eve。"
+  }
+  </script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚛️</text></svg>">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="../../assets/css/theme.css">
+  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
+  <link rel="stylesheet" href="../../assets/css/shell.css">
+  <style>
+    .bb-wrap { padding: 14px; width: min(600px, 96vw); text-align: center; }
+    .bb-prog { font-size: 12px; color: var(--text-dim); margin-bottom: 10px; }
+    .bb-photon { font-size: 34px; line-height: 1.4; min-height: 52px; color: var(--neon-cyan);
+      background: rgba(0,240,255,.05); border: 1px solid rgba(0,240,255,.25); border-radius: 10px;
+      padding: 10px 8px; margin: 8px 0; word-break: break-all; }
+    .bb-result { min-height: 20px; font-family: var(--font-mono); font-size: 13px; letter-spacing: 2px;
+      color: var(--neon-yellow); margin-bottom: 8px; }
+    .bb-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 8px; }
+    .bb-key { font-family: var(--font-mono); font-size: 13px; letter-spacing: 2px; color: var(--neon-green);
+      background: rgba(0,255,140,.05); border: 1px solid rgba(0,255,140,.25); border-radius: 8px;
+      padding: 10px; word-break: break-all; margin: 8px 0; min-height: 40px; }
+    .bb-sample { font-size: 12px; color: var(--text-dim); line-height: 1.9; margin: 6px 0; }
+    .bb-sample b.err { color: var(--neon-pink); } .bb-sample b.okc { color: var(--neon-green); }
+    .bb-msg { min-height: 18px; font-size: 13px; margin: 8px 0; }
+    .bb-msg.ok { color: var(--neon-green); } .bb-msg.no { color: var(--neon-pink); }
+    .bb-help { font-size: 12px; color: var(--text-dim); line-height: 1.8; margin-top: 10px; text-align: left;
+      background: rgba(255,255,255,0.04); border-radius: 8px; padding: 10px 12px; }
+    @media (max-width: 480px) { .bb-btns .btn { flex: 1 1 40%; } }
+  </style>
+</head>
+<body data-game-id="bb84" data-game-title="BB84 量子密钥" data-best-mode="max">
+  <h1 class="seo-h1">BB84 量子密钥</h1>
+  <main id="game-root"></main>
+  <script src="../../assets/js/core/storage.js"></script>
+  <script src="../../assets/js/core/input.js"></script>
+  <script src="../../assets/js/core/loop.js"></script>
+    <script src="../../assets/js/core/i18n.js"></script>
+  <script src="../../assets/js/core/i18n-dict.js"></script>
+  <script src="bb84-i18n.js"></script>
+  <script src="../../assets/js/core/extras.js"></script>
+  <script src="../../assets/js/rank.js"></script>
+  <script src="../../assets/js/plot.js"></script>
+  <script src="../../assets/js/stories.js"></script>
+<script src="../../assets/js/shell.js"></script>
+  <script src="bb84.js"></script>
+  <script src="../../assets/js/pwa.js"></script>
+</body>
+</html>

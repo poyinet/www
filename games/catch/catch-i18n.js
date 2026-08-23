@@ -1,0 +1,43 @@
+/* 破译 DECODE ARCADE · catch 游戏内文案（zh/en 对称）
+   由 i18n-dict.js 拆分生成 —— 游戏页按需加载，减小站点字典体积 */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.catch.tutTitle'] = '接物大作战 · 玩法';
+  d.en['gs.catch.tutTitle'] = 'Catch & Collect · How to Play';
+  d.zh['gs.catch.tut1t'] = '目标';
+  d.en['gs.catch.tut1t'] = 'Objective';
+  d.zh['gs.catch.tut1'] = '移动篮子接住下落好物，冲击最高分';
+  d.en['gs.catch.tut1'] = 'Move the basket to catch falling goodies and chase a high score';
+  d.zh['gs.catch.tut2t'] = '操作';
+  d.en['gs.catch.tut2t'] = 'Controls';
+  d.zh['gs.catch.tut2'] = '鼠标拖动或 ←→ 移动篮子';
+  d.en['gs.catch.tut2'] = 'Drag with the mouse or use ←→ to move the basket';
+  d.zh['gs.catch.tut3t'] = '注意';
+  d.en['gs.catch.tut3t'] = 'Watch Out';
+  d.zh['gs.catch.tut3'] = '🍎+1 ⭐+3 💎+5，接到 💣 或漏接好物都会掉一条命，难度随时间长提升';
+  d.en['gs.catch.tut3'] = '🍎+1 ⭐+3 💎+5; catching a 💣 or missing a goodie costs a life, and difficulty grows over time';
+  d.zh['gs.catch.hudScore'] = '得分';
+  d.en['gs.catch.hudScore'] = 'Score';
+  d.zh['gs.catch.hudLives'] = '生命';
+  d.en['gs.catch.hudLives'] = 'Lives';
+  d.zh['gs.catch.hudLevel'] = '难度';
+  d.en['gs.catch.hudLevel'] = 'Difficulty';
+  d.zh['gs.catch.lvFmt'] = '难度 {n}';
+  d.en['gs.catch.lvFmt'] = 'Lv {n}';
+  d.zh['gs.catch.ovTitle'] = '游戏结束';
+  d.en['gs.catch.ovTitle'] = 'Game Over';
+  d.zh['gs.catch.btnRestart'] = '重新开始';
+  d.en['gs.catch.btnRestart'] = 'Restart';
+  d.zh['gs.catch.help'] = '🖱️ 移动鼠标或拖动手指控制篮子，←→ 键也可以<br>🍎+1 ⭐+3 💎+5 · 接到 💣 或漏接好物都掉一条命';
+  d.en['gs.catch.help'] = '🖱️ Move the mouse or drag a finger to control the basket; ←→ keys work too<br>🍎+1 ⭐+3 💎+5 · a 💣 or a missed goodie costs a life';
+  d.zh['gs.catch.helpMove'] = '🖱️ 移动鼠标或拖动手指控制篮子，←→ 键也可以';
+  d.en['gs.catch.helpMove'] = '🖱️ Move the mouse or drag a finger to control the basket; ←→ keys work too';
+  d.zh['gs.catch.paused'] = '⏸ 已暂停 · 按 P 继续';
+  d.en['gs.catch.paused'] = '⏸ Paused · Press P to resume';
+  d.zh['gs.catch.newRecord'] = '🎉 新纪录！';
+  d.en['gs.catch.newRecord'] = '🎉 New record!';
+  d.zh['gs.catch.loseLife'] = '-1 命';
+  d.en['gs.catch.loseLife'] = '-1 ♥';
+  d.zh['gs.catch.miss'] = '漏接 -1';
+  d.en['gs.catch.miss'] = 'Missed -1';
+})();

@@ -1,0 +1,41 @@
+/* 破译 DECODE ARCADE · bullethell 游戏内文案（zh/en 对称）
+   由 i18n-dict.js 拆分生成 —— 游戏页按需加载，减小站点字典体积 */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.bullethell.graze'] = '擦弹连击';
+  d.en['gs.bullethell.graze'] = 'Graze combo';
+  d.zh['gs.bullethell.wave'] = '第 {n} 波';
+  d.en['gs.bullethell.wave'] = 'Wave {n}';
+  d.zh['gs.bullethell.dEasy'] = '简单';
+  d.en['gs.bullethell.dEasy'] = 'Easy';
+  d.zh['gs.bullethell.dNormal'] = '普通';
+  d.en['gs.bullethell.dNormal'] = 'Normal';
+  d.zh['gs.bullethell.dHard'] = '困难';
+  d.en['gs.bullethell.dHard'] = 'Hard';
+  d.zh['gs.bullethell.help'] = '💡 3px 判定点：贴弹擦分 · 方向键/拖动移动 · P 暂停';
+  d.en['gs.bullethell.help'] = '💡 3px hitbox: graze bullets · Arrows/drag to move · P pause';
+  d.zh['gs.bullethell.dead'] = '💀 战机坠毁！得分 {n}';
+  d.en['gs.bullethell.dead'] = '💀 Ship destroyed! Score {n}';
+  d.zh['gs.bullethell.win'] = '🏆 击破 Boss，全波清空！得分 {n}';
+  d.en['gs.bullethell.win'] = '🏆 Boss down, all waves cleared! Score {n}';
+  d.zh['gs.bullethell.paused'] = '⏸ 已暂停 · 按 P 继续';
+  d.en['gs.bullethell.paused'] = '⏸ Paused · Press P to resume';
+  d.zh['gs.bullethell.tutTitle'] = '弹幕射击 · 玩法';
+  d.en['gs.bullethell.tutTitle'] = 'Bullet Hell · How to Play';
+  d.zh['gs.bullethell.tut1t'] = '目标';
+  d.en['gs.bullethell.tut1t'] = 'Objective';
+  d.zh['gs.bullethell.tut1'] = '操控战机在弹幕中生存并击破敌机，最终击败关底 Boss。';
+  d.en['gs.bullethell.tut1'] = 'Pilot your ship through the bullet storm, destroy enemies, and defeat the end-of-level Boss.';
+  d.zh['gs.bullethell.tut2t'] = '操作';
+  d.en['gs.bullethell.tut2t'] = 'Controls';
+  d.zh['gs.bullethell.tut2'] = '方向键/WASD 移动，触屏直接拖动。';
+  d.en['gs.bullethell.tut2'] = 'Arrow keys / WASD to move; drag on touch screens.';
+  d.zh['gs.bullethell.tut3t'] = '擦弹';
+  d.en['gs.bullethell.tut3t'] = 'Graze';
+  d.zh['gs.bullethell.tut3'] = '贴近弹幕但不被命中 = 擦弹，每帧 +1 分且连击数上涨；判定点极小（半径 3px），敢于贴脸才能高分。';
+  d.en['gs.bullethell.tut3'] = 'Passing close to bullets without being hit is a graze: +1 point per frame and a growing combo. Your hitbox is tiny (3px radius) — dare to get close for high scores.';
+  d.zh['gs.bullethell.tut4t'] = '计分';
+  d.en['gs.bullethell.tut4t'] = 'Scoring';
+  d.zh['gs.bullethell.tut4'] = '击破敌机 +100、Boss 击破 +5000、擦弹每帧 +1 且连击越高越有利；成绩=总分。';
+  d.en['gs.bullethell.tut4'] = 'Destroy an enemy +100, defeat the Boss +5000, graze +1 per frame with bigger combos paying off; your score is the total.';
+})();

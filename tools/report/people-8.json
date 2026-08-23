@@ -1,0 +1,250 @@
+[
+  {
+    "id": "jefferson",
+    "name": {
+      "zh": "托马斯·杰斐逊",
+      "en": "Thomas Jefferson"
+    },
+    "icon": "🏛️",
+    "role": {
+      "zh": "美国第三任总统 · 「杰斐逊转轮」发明者",
+      "en": "3rd US President · inventor of the Jefferson wheel cipher"
+    },
+    "era": {
+      "zh": "1743–1826 · 美国",
+      "en": "1743–1826 · USA"
+    },
+    "bio": {
+      "zh": "杰斐逊是《独立宣言》起草人、美国第三任总统，也是一位隐秘的密码爱好者。1790 年代他设计出「杰斐逊转轮」——26 片乱序字母圆盘套在同一轴上，转动圆盘拼出明文、从另一行读出密文。他至死没有公布这件作品，直到 120 年后美国陆军独立重造出同款装置，以 M-94 之名列装，杰斐逊的「转轮」才被追认为现代轮式密码机的始祖。",
+      "en": "Jefferson drafted the Declaration of Independence and served as the third US President — but he was also a secret cipher hobbyist. In the 1790s he designed a wheel cipher: 26 wooden disks, each carrying a scrambled alphabet, threaded on one axle; turn the disks to spell the plaintext across one row and read the ciphertext from another. He never published it. Only 120 years later, when the US Army independently re-invented the same device and adopted it as the M-94, was Jefferson's wheel recognised as the ancestor of all wheel ciphers."
+    },
+    "quote": {
+      "zh": "「我终于制成了一种我认为绝对可靠的密码。」——致罗伯特·帕特森的信（1802）",
+      "en": "\"I have at length produced a cipher which I think infallible.\" — letter to Robert Patterson, 1802"
+    },
+    "fact": {
+      "zh": "冷知识：杰斐逊的转轮在手稿里躺了一百多年，美国陆军 1922 年列装的 M-94 是工程师们的「独立再发明」——发明人本人对此一无所知，直到 1920 年代学者翻出他的手稿，历史才补上了这一课。",
+      "en": "Fun fact: Jefferson's wheel lay in his papers for over a century while the US Army's M-94, adopted in 1922, was an independent re-invention by engineers who had never heard of him; only when scholars found his manuscripts in the 1920s did history connect the dots."
+    },
+    "chapters": [
+      "ww1"
+    ]
+  },
+  {
+    "id": "wheatstone",
+    "name": {
+      "zh": "查尔斯·惠斯通",
+      "en": "Charles Wheatstone"
+    },
+    "icon": "🌉",
+    "role": {
+      "zh": "物理学家与发明家 · Playfair 密码的创造者",
+      "en": "Physicist and inventor · creator of the Playfair cipher"
+    },
+    "era": {
+      "zh": "1802–1875 · 英国",
+      "en": "1802–1875 · England"
+    },
+    "bio": {
+      "zh": "惠斯通是维多利亚时代的科学全才：与库克合作发明实用电报，推广了以他命名的电桥，还痴迷于用机器藏信。1854 年他发明 Playfair 密码——把明文按字母两两分组，用 5×5 方阵整体加密，单字母的频率统计从此失效。它由好友莱昂·普莱费尔引荐给军方并冠名，后被英军用于布尔战争与一战，成为「双字母加密」的经典范本。",
+      "en": "Wheatstone was a Victorian polymath: with Cooke he built the first practical electric telegraph, popularised the bridge that bears his name, and loved mechanical secrecy. In 1854 he devised the Playfair cipher — plaintext is split into letter pairs and enciphered as a whole through a 5×5 square, so single-letter frequency analysis collapses. His friend Lord Lyon Playfair pitched it to the War Office and lent it his name; the British Army later used it in the Boer War and WWI, making it the classic example of digraph encryption."
+    },
+    "quote": {
+      "zh": "「让字母两两起舞，单字母的频率统计就失去了准头。」（概括 Playfair 密码的设计思想）",
+      "en": "\"Make the letters dance in pairs, and single-letter frequency analysis loses its aim.\" (a paraphrase of the Playfair design idea)"
+    },
+    "fact": {
+      "zh": "冷知识：他名下最出名的两样东西其实都不「属于」他——Playfair 密码以推广者普莱费尔命名，惠斯通电桥的真正发明者是克里斯蒂；倒是那台用偏振光传送密文的「惠斯通密码机」，才是他亲手造的原汁原味发明。",
+      "en": "Fun fact: the two most famous things in his name weren't really his — the Playfair cipher honours its promoter Lord Playfair, and the Wheatstone bridge was invented by Samuel Hunter Christie. His genuinely own invention was the Wheatstone cryptograph, a machine that sent secret messages by polarised light."
+    },
+    "chapters": [
+      "ww1"
+    ]
+  },
+  {
+    "id": "mauborgne",
+    "name": {
+      "zh": "约瑟夫·毛博涅",
+      "en": "Joseph Mauborgne"
+    },
+    "icon": "🎲",
+    "role": {
+      "zh": "美国陆军通信兵 · 一次性密码本（OTP）的共同发明者",
+      "en": "US Army Signal Corps officer · co-inventor of the one-time pad"
+    },
+    "era": {
+      "zh": "1881–1971 · 美国",
+      "en": "1881–1971 · USA"
+    },
+    "bio": {
+      "zh": "毛博涅是美国陆军通信兵军官，军旅生涯的最后四年担任全军通信兵主任。1917 年，他与 AT&T 工程师弗纳姆合作，给弗纳姆的密钥流电报系统补上最关键的一环：密钥必须随机、与明文等长、并且永不重复使用——「一次性密码本」就此诞生，成为历史上第一种被数学证明绝对不可破解的密码。他还与希特上尉一道独立重造了杰斐逊转轮，其成果演化为 1922 年列装的 M-94。",
+      "en": "Mauborgne was a US Army Signal Corps officer who capped his career as Chief Signal Officer. In 1917, working with AT&T engineer Gilbert Vernam, he added the decisive piece to Vernam's keystream telegraph: the key must be random, as long as the message, and never reused — the one-time pad, the first cipher ever proven mathematically unbreakable. He and Captain Parker Hitt also independently rebuilt the Jefferson wheel, which evolved into the Army's M-94 of 1922."
+    },
+    "quote": {
+      "zh": "「密钥必须随机、与明文等长、并且只用一次——少一样，都不是完美保密。」（概括 OTP 三原则）",
+      "en": "\"The key must be random, as long as the plaintext, and used exactly once — miss any one, and it is no longer perfect secrecy.\" (a paraphrase of the OTP principle)"
+    },
+    "fact": {
+      "zh": "冷知识：弗纳姆的原始系统靠重复密钥带工作，毛博涅坚持用随机密钥「用一次就扔」——而香农直到 1949 年才用信息论证明他们做对了；更妙的是，美国国务院 1919 年也独立发明过同款密码，历史上一共「撞车」了至少三次。",
+      "en": "Fun fact: Vernam's original system reused its key tape; Mauborgne insisted on random, single-use keys — and Shannon only proved them right with information theory in 1949. The US State Department had even independently invented the same cipher in 1919: history staged the OTP at least three times."
+    },
+    "chapters": [
+      "ww1"
+    ]
+  },
+  {
+    "id": "yardley",
+    "name": {
+      "zh": "赫伯特·亚德利",
+      "en": "Herbert Yardley"
+    },
+    "icon": "🕶️",
+    "role": {
+      "zh": "「美国黑室」掌门人 · 第一位自曝国密的畅销书作家",
+      "en": "Chief of the American Black Chamber · the man who told the world"
+    },
+    "era": {
+      "zh": "1889–1958 · 美国",
+      "en": "1889–1958 · USA"
+    },
+    "bio": {
+      "zh": "一战期间，亚德利领导美国陆军 MI-8 破译处；1919 年起又以国务院秘密经费运营「美国黑室」，专攻日本外交密电。1921 年华盛顿海军会议上，他破译的情报让美方谈判代表提前读到了日本的底牌，直接促成了 5:5:3 的海军吨位比例。1929 年黑室被新任国务卿史汀生以「君子不读他人信件」为由关闭；两年后他出版回忆录《美国黑室》，把国家机密写成畅销书，也把自己的名字写进了密码史。",
+      "en": "In WWI Yardley headed MI-8, the US Army's codebreaking section; from 1919 he ran the secret \"American Black Chamber\" on State Department money, specialising in Japanese diplomatic traffic. At the Washington Naval Conference of 1921–22 his solutions let US negotiators read Japan's bottom line in advance — a key to the 5:5:3 naval ratio. When Secretary Stimson shut the Chamber down in 1929, quipping that gentlemen do not read each other's mail, Yardley responded by publishing The American Black Chamber (1931), turning state secrets into a bestseller and himself into a legend."
+    },
+    "quote": {
+      "zh": "「能读懂对方密码的一方，在谈判桌上就已经赢了。」（概括《美国黑室》主旨）",
+      "en": "\"The side that can read the other's codes has already won at the negotiating table.\" (a paraphrase of the book's thesis)"
+    },
+    "fact": {
+      "zh": "冷知识：他的回忆录是全球第一本自曝国家破译内幕的畅销书——日本恼羞成怒全面更换密码，间接让美国在珍珠港前监听日本变得更加困难；「黑室」一词也因此成了秘密破译机构的代名词。",
+      "en": "Fun fact: his memoir was the first tell-all about a nation's codebreaking ever published — an outraged Japan overhauled its codes, making US monitoring harder in the run-up to Pearl Harbor, while the phrase \"Black Chamber\" entered the language as shorthand for a secret codebreaking bureau."
+    },
+    "chapters": [
+      "ww1"
+    ]
+  },
+  {
+    "id": "pzimmermann",
+    "name": {
+      "zh": "菲尔·齐默尔曼",
+      "en": "Phil Zimmermann"
+    },
+    "icon": "📧",
+    "role": {
+      "zh": "PGP 发明人 · 把强加密带给普通人的活动家",
+      "en": "Creator of PGP · the man who gave strong crypto to everyone"
+    },
+    "era": {
+      "zh": "1954– · 美国",
+      "en": "1954– · USA"
+    },
+    "bio": {
+      "zh": "1991 年，软件工程师齐默尔曼担心政府对公民隐私的窥探步步紧逼，连夜写成了 PGP——「相当好的隐私」——把 RSA 公钥加密与 IDEA 对称加密组装成任何人都能免费使用的电子邮件加密工具，还公开了全部源码。美国司法部随后以「出口军火」为由调查了他整整三年，最终于 1996 年撤销指控；PGP 从此成为全球邮件加密的事实标准，也点燃了旷日持久的「密码战争」。",
+      "en": "In 1991, software engineer Zimmermann — alarmed by creeping government surveillance — coded PGP, \"Pretty Good Privacy,\" fusing RSA public-key and IDEA symmetric encryption into a free email-encryption tool anyone could use, source code published. The US Justice Department investigated him for three years for allegedly exporting munitions; the case was dropped in 1996. PGP became the de facto standard for encrypted mail and lit the fuse of the Crypto Wars."
+    },
+    "quote": {
+      "zh": "「这是私人的。这是私密的。这不关任何人的事。」（PGP 官方标语）",
+      "en": "\"It's personal. It's private. And it's no one's business but yours.\" (the PGP slogan)"
+    },
+    "fact": {
+      "zh": "冷知识：为了论证「代码也是言论」，他把 PGP 的完整源码印成一本 600 页的书公开出版——因为书可以自由出口，而「军火」不行；联邦调查结束后，他获颁的「自由技术先驱奖」成了加密界津津乐道的注脚。",
+      "en": "Fun fact: to argue that code is speech, he published the entire PGP source code as a printed book — books travel freely across borders, munitions do not. After the federal probe collapsed, his Pioneer of Freedom award became a favourite footnote of the crypto community."
+    },
+    "chapters": [
+      "modern"
+    ]
+  },
+  {
+    "id": "schneier",
+    "name": {
+      "zh": "布鲁斯·施奈尔",
+      "en": "Bruce Schneier"
+    },
+    "icon": "🧠",
+    "role": {
+      "zh": "现代安全思想家 · Blowfish / Twofish 设计者",
+      "en": "Modern security thinker · designer of Blowfish and Twofish"
+    },
+    "era": {
+      "zh": "1963– · 美国",
+      "en": "1963– · USA"
+    },
+    "bio": {
+      "zh": "施奈尔是美国密码学家与安全思想家。1994 年出版的《应用密码学》把密码学从学术圈讲给全世界，成为一代程序员与安全工程师的启蒙书；他亲手设计了 Blowfish、Twofish 等算法，其中 Twofish 杀进了 AES 全球决赛五强。此后的三十年里，他以博客与著作持续追问同一个问题：真正的安全不在算法里，而在人与流程之中。",
+      "en": "Schneier is an American cryptographer and security thinker. His 1994 Applied Cryptography carried the field from the ivory tower to the world and became the bible of a generation of engineers; his own designs include Blowfish and Twofish, the latter a finalist in the worldwide AES competition. For thirty years since, his blog and books have hammered one question: real security lives not in algorithms but in people and process."
+    },
+    "quote": {
+      "zh": "「安全是一个过程，而不是一件产品。」（其安全哲学的标志性表述）",
+      "en": "\"Security is a process, not a product.\" (his signature maxim)"
+    },
+    "fact": {
+      "zh": "冷知识：他的《应用密码学》序言里藏着一句著名的提醒——「学习密码学的正确方式是先学会忘记它」；而他运营至今二十余年的博客「Schneier on Security」，是世界上读者最多的安全专栏。",
+      "en": "Fun fact: the preface of Applied Cryptography carries his famous warning that \"the right way to learn cryptography is to first learn to forget it\"; and his blog, Schneier on Security, running for over two decades, is the most-read security column on the planet."
+    },
+    "chapters": [
+      "modern"
+    ]
+  },
+  {
+    "id": "daemen",
+    "name": {
+      "zh": "约安·达门",
+      "en": "Joan Daemen"
+    },
+    "icon": "🧮",
+    "role": {
+      "zh": "比利时密码学家 · AES（Rijndael）共同设计者",
+      "en": "Belgian cryptographer · co-designer of AES (Rijndael)"
+    },
+    "era": {
+      "zh": "1965– · 比利时",
+      "en": "1965– · Belgium"
+    },
+    "bio": {
+      "zh": "达门是比利时密码学家，现为奈梅亨大学教授。1997 至 2000 年，他与文森特·赖门合作设计的 Rijndael 从 NIST 全球征集的 15 个候选算法中胜出，被选为高级加密标准 AES——你今天每一次 HTTPS 连接背后，都是它在一轮轮地「混淆与扩散」。他还参与设计了哈希函数 Keccak，后来被采纳为美国标准 SHA-3。",
+      "en": "Daemen is a Belgian cryptographer, now a professor at Radboud University Nijmegen. In the 1997–2000 NIST competition, the cipher Rijndael he designed with Vincent Rijmen beat fourteen rivals to become the Advanced Encryption Standard (AES) — every HTTPS connection you make today rides on its rounds of confusion and diffusion. He also co-designed the hash function Keccak, later standardised as SHA-3."
+    },
+    "quote": {
+      "zh": "「最好的密码，是能用几行字讲清楚、却让攻击者无计可施的密码。」（概括 Rijndael 设计理念）",
+      "en": "\"The best cipher is one you can explain in a few lines — and still leaves attackers empty-handed.\" (a paraphrase of the Rijndael design philosophy)"
+    },
+    "fact": {
+      "zh": "冷知识：「Rijndael」是两位设计者姓氏的拼接——Ri-jn-dael；而达门是唯一一位同时参与设计 AES 与 SHA-3 两大美国国家标准算法的密码学家，堪称「一人双标准」。",
+      "en": "Fun fact: \"Rijndael\" is a blend of Rijmen and Daemen — Ri-jn-dael. Daemen is the only cryptographer to have co-designed both AES and SHA-3, two US federal standards: one man, two standards."
+    },
+    "chapters": [
+      "modern"
+    ]
+  },
+  {
+    "id": "bazeries",
+    "name": {
+      "zh": "艾蒂安·巴泽里",
+      "en": "Étienne Bazeries"
+    },
+    "icon": "🔍",
+    "role": {
+      "zh": "法国军事情报破译专家 · 路易十四「大密码」的破解者",
+      "en": "French military cryptanalyst · breaker of Louis XIV's Great Cipher"
+    },
+    "era": {
+      "zh": "1846–1931 · 法国",
+      "en": "1846–1931 · France"
+    },
+    "bio": {
+      "zh": "巴泽里是法国陆军军官、自学成才的破译高手。1893 年，他攻破了罗西尼奥尔家族为路易十四打造、沉睡近两百年的「大密码」，读出了太阳王的私人信件——其中竟藏着一桩宫廷悬案：那位神秘「铁面人」的下落。他还发明了巴泽里转筒密码机，并卷入了世纪之交最轰动的案子：德雷福斯事件中，他公开指认军方呈堂的密件里有伪证。",
+      "en": "Bazeries was a French army officer and a self-taught codebreaker. In 1893 he cracked the \"Great Cipher\" of the Rossignol family, used by Louis XIV and unread for nearly two centuries, and read the Sun King's private letters — including the court mystery of the Man in the Iron Mask. He also invented the Bazeries cylinder cipher device, and in the century's most explosive affair he testified that documents the army had used to convict Dreyfus were forgeries."
+    },
+    "quote": {
+      "zh": "「沉睡了两百年的太阳王密信，终于等到了肯读它的人。」（概括其破译事迹）",
+      "en": "\"After two centuries, the Sun King's secret letters finally found a reader willing to read them.\" (a paraphrase of his feat)"
+    },
+    "fact": {
+      "zh": "冷知识：他自称从「铁面人」的密信里读出了真相——那位神秘囚徒是将军维维安·德·比隆德，这个说法至今仍在历史学界争论；而他发明的巴泽里转筒，正是杰斐逊转轮、M-94 这条轮式密码家族谱系上的法国分支。",
+      "en": "Fun fact: he claimed the secret letters revealed the Man in the Iron Mask as General Vivien de Bulonde — a theory historians still debate — and his Bazeries cylinder is the French branch of the same wheel-cipher family that runs from Jefferson to the M-94."
+    },
+    "chapters": [
+      "ww1"
+    ]
+  }
+]

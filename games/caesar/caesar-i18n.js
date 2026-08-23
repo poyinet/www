@@ -1,0 +1,41 @@
+/* 破译 DECODE ARCADE · caesar 游戏内文案（zh/en 对称）
+   由 i18n-dict.js 拆分生成 —— 游戏页按需加载，减小站点字典体积 */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.caesar.tutTitle'] = '凯撒解码 · 玩法';
+  d.en['gs.caesar.tutTitle'] = 'Caesar Decoder · How to Play';
+  d.zh['gs.caesar.tut1t'] = '目标';
+  d.en['gs.caesar.tut1t'] = 'Objective';
+  d.zh['gs.caesar.tut1'] = '密文由凯撒密码加密：每个字母按固定偏移平移。';
+  d.en['gs.caesar.tut1'] = 'The ciphertext was encrypted with a Caesar cipher: every letter is shifted by a fixed offset.';
+  d.zh['gs.caesar.tut2t'] = '操作';
+  d.en['gs.caesar.tut2t'] = 'Controls';
+  d.zh['gs.caesar.tut2'] = '拖动下方滑块改变偏移量，上方实时显示解码预览。';
+  d.en['gs.caesar.tut2'] = 'Drag the slider below to change the offset; the decode preview updates in real time.';
+  d.zh['gs.caesar.tut3t'] = '破译';
+  d.en['gs.caesar.tut3t'] = 'Break';
+  d.zh['gs.caesar.tut3'] = '当预览读起来是通顺的英文时，点「验证破译」提交。';
+  d.en['gs.caesar.tut3'] = 'When the preview reads as proper English, press "Verify Decode" to submit.';
+  d.zh['gs.caesar.tut4t'] = '计分';
+  d.en['gs.caesar.tut4t'] = 'Scoring';
+  d.zh['gs.caesar.tut4'] = '尝试次数越少成绩越高。';
+  d.en['gs.caesar.tut4'] = 'Fewer attempts earn a better score.';
+  d.zh['gs.caesar.lblCipher'] = '截获密文';
+  d.en['gs.caesar.lblCipher'] = 'Intercepted ciphertext';
+  d.zh['gs.caesar.lblPreview'] = '解码预览';
+  d.en['gs.caesar.lblPreview'] = 'Decode preview';
+  d.zh['gs.caesar.offset'] = '偏移';
+  d.en['gs.caesar.offset'] = 'Offset';
+  d.zh['gs.caesar.tries'] = '尝试：{n}';
+  d.en['gs.caesar.tries'] = 'Tries: {n}';
+  d.zh['gs.caesar.check'] = '验证破译';
+  d.en['gs.caesar.check'] = 'Verify Decode';
+  d.zh['gs.caesar.msgWin'] = '✓ 破译成功！密钥偏移 = {shift}';
+  d.en['gs.caesar.msgWin'] = '✓ Decoded! Key offset = {shift}';
+  d.zh['gs.caesar.msgFail'] = '✗ 还不是明文，继续调整偏移…';
+  d.en['gs.caesar.msgFail'] = '✗ Not plaintext yet — keep adjusting the offset…';
+  d.zh['gs.caesar.dailyBtn'] = '📅 每日一题（全球同题）';
+  d.en['gs.caesar.dailyBtn'] = '📅 Daily (same for everyone)';
+  d.zh['gs.caesar.dailyTag'] = '📅 每日一题 · 今天全世界同一个密文';
+  d.en['gs.caesar.dailyTag'] = '📅 Daily puzzle · the same ciphertext for everyone today';
+})();

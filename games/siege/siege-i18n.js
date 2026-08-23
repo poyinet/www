@@ -1,0 +1,47 @@
+/* 破译 DECODE ARCADE · siege 游戏内文案（zh/en 对称）
+   由 i18n-dict.js 拆分生成 —— 游戏页按需加载，减小站点字典体积 */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.siege.tutTitle'] = '攻城棋 · 玩法';
+  d.en['gs.siege.tutTitle'] = 'Siege · How to Play';
+  d.zh['gs.siege.tut1t'] = '目标';
+  d.en['gs.siege.tut1t'] = 'Objective';
+  d.zh['gs.siege.tut1'] = '你是蓝方，攻入 AI 红方大本营，吃掉敌方国王即胜。';
+  d.en['gs.siege.tut1'] = 'You are Blue — storm the AI Red fortress and capture the enemy king to win.';
+  d.zh['gs.siege.tut2t'] = '操作';
+  d.en['gs.siege.tut2t'] = 'Controls';
+  d.zh['gs.siege.tut2'] = '点己方棋子看可走格（白圈=移动，红圈=攻击），再点目标落子。';
+  d.en['gs.siege.tut2'] = 'Tap one of your pieces to see valid cells (white ring = move, red ring = attack), then tap a target to move.';
+  d.zh['gs.siege.tut3t'] = '规则';
+  d.en['gs.siege.tut3t'] = 'Rules';
+  d.zh['gs.siege.tut3'] = '兵走 1 格斜吃；王走 1 格任意方向吃。高台（深色格）上的兵攻击 +1 距离。';
+  d.en['gs.siege.tut3'] = 'Soldiers move 1 step and capture diagonally; the king moves 1 step in any direction. Soldiers on high ground (dark cells) get +1 attack range.';
+  d.zh['gs.siege.tut4t'] = '计分';
+  d.en['gs.siege.tut4t'] = 'Scoring';
+  d.zh['gs.siege.tut4'] = '每吃一个兵 +1 分，吃掉国王 +10。成绩=总分。';
+  d.en['gs.siege.tut4'] = 'Each soldier captured +1 point, capturing the king +10. Your score is the total.';
+  d.zh['gs.siege.dEasy'] = '简单';
+  d.en['gs.siege.dEasy'] = 'Easy';
+  d.zh['gs.siege.dNormal'] = '中等';
+  d.en['gs.siege.dNormal'] = 'Normal';
+  d.zh['gs.siege.dHard'] = '困难';
+  d.en['gs.siege.dHard'] = 'Hard';
+  d.zh['gs.siege.startMsg'] = '你是蓝方，攻向红方大本营！';
+  d.en['gs.siege.startMsg'] = 'You are Blue — march on the Red fortress!';
+  d.zh['gs.siege.restart'] = '重新开始';
+  d.en['gs.siege.restart'] = 'Restart';
+  d.zh['gs.siege.help'] = '💡 ♟=兵 ♚=王。深色格是高地：上面的兵攻击距离 2。兵冲到对方底线会晋升为王。';
+  d.en['gs.siege.help'] = '💡 ♟=soldier ♚=king. Dark cells are high ground: soldiers there attack at range 2. A soldier reaching the enemy back row is promoted to king.';
+  d.zh['gs.siege.win'] = '🏆 攻下王城！得分 {n}';
+  d.en['gs.siege.win'] = '🏆 The fortress has fallen! Score {n}';
+  d.zh['gs.siege.lose'] = '💀 国王阵亡！得分 {n}';
+  d.en['gs.siege.lose'] = '💀 Your king has fallen! Score {n}';
+  d.zh['gs.siege.stalemateWin'] = '🏆 敌人无子可走，不战而胜！得分 {n}';
+  d.en['gs.siege.stalemateWin'] = '🏆 The enemy has no moves left — victory by stalemate! Score {n}';
+  d.zh['gs.siege.stalemateLose'] = '💀 你无子可走！得分 {n}';
+  d.en['gs.siege.stalemateLose'] = '💀 You have no moves left! Score {n}';
+  d.zh['gs.siege.yourTurn'] = '你的回合（蓝），攻向红方！';
+  d.en['gs.siege.yourTurn'] = 'Your turn (Blue) — press the attack!';
+  d.zh['gs.siege.aiTurn'] = 'AI 思考中…';
+  d.en['gs.siege.aiTurn'] = 'AI thinking…';
+})();

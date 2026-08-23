@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="破译游戏">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <title>扫雷 · 用游戏破译人类三千年加密解密史</title>
+  <meta name="description" content="破译 DECODE ARCADE · 扫雷：推理与运气的博弈，找出所有隐藏的地雷。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://poyi.net/games/minesweeper/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="破译游戏 DECODE ARCADE">
+  <meta property="og:title" content="扫雷 · 用游戏破译人类三千年加密解密史">
+  <meta property="og:description" content="破译 DECODE ARCADE · 扫雷：推理与运气的博弈，找出所有隐藏的地雷。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta property="og:url" content="https://poyi.net/games/minesweeper/">
+  <meta property="og:image" content="https://poyi.net/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="扫雷 · 用游戏破译人类三千年加密解密史">
+  <meta name="twitter:description" content="破译 DECODE ARCADE · 扫雷：推理与运气的博弈，找出所有隐藏的地雷。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="twitter:image" content="https://poyi.net/assets/og-image.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "扫雷",
+    "url": "https://poyi.net/games/minesweeper/",
+    "applicationCategory": "Game",
+    "inLanguage": "zh-CN",
+    "isPartOf": { "@type": "WebSite", "name": "破译游戏 DECODE ARCADE", "url": "https://poyi.net/" },
+    "description": "破译 DECODE ARCADE · 扫雷：推理与运气的博弈，找出所有隐藏的地雷。 打开即玩，最高分记录保存在本地浏览器。"
+  }
+  </script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>💣</text></svg>">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="../../assets/css/theme.css">
+  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
+  <link rel="stylesheet" href="../../assets/css/shell.css">
+  <style>
+    .ms-board { margin: 0 auto; gap: 4px; touch-action: manipulation; }
+    .ms-board.d-easy { width: min(396px, 94vw); }
+    .ms-board.d-mid { width: min(560px, 94vw); gap: 3px; }
+    .ms-board.d-hard { width: min(620px, 96vw); gap: 2px; }
+    .ms-cell {
+      aspect-ratio: 1;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-pixel);
+      font-size: 14px;
+      color: var(--text-main);
+      background: var(--bg-panel-2);
+      border: 1px solid rgba(0, 240, 255, 0.28);
+      border-radius: 4px;
+      cursor: pointer;
+      user-select: none;
+      -webkit-user-select: none;
+      transition: background 0.12s;
+      overflow: hidden;
+    }
+    .ms-board.d-mid .ms-cell { font-size: 11px; border-radius: 3px; }
+    .ms-cell:hover { background: #20204a; border-color: rgba(0, 240, 255, 0.6); }
+    .ms-cell.open {
+      background: rgba(0, 240, 255, 0.05);
+      border-color: rgba(0, 240, 255, 0.1);
+      cursor: default;
+    }
+    .ms-cell.open:hover { background: rgba(0, 240, 255, 0.05); }
+    .ms-cell.flagged { background: rgba(255, 230, 0, 0.1); }
+    .ms-cell.mine { background: rgba(255, 45, 149, 0.18); }
+    .ms-cell.boom {
+      background: var(--neon-pink);
+      box-shadow: 0 0 16px rgba(255, 45, 149, 0.8);
+    }
+    /* 数字 1-8 分色 */
+    .ms-cell.n1 { color: #00f0ff; text-shadow: 0 0 6px rgba(0, 240, 255, 0.6); }
+    .ms-cell.n2 { color: #39ff14; text-shadow: 0 0 6px rgba(57, 255, 20, 0.6); }
+    .ms-cell.n3 { color: #ff2d95; text-shadow: 0 0 6px rgba(255, 45, 149, 0.6); }
+    .ms-cell.n4 { color: #b967ff; text-shadow: 0 0 6px rgba(185, 103, 255, 0.6); }
+    .ms-cell.n5 { color: #ffe600; text-shadow: 0 0 6px rgba(255, 230, 0, 0.6); }
+    .ms-cell.n6 { color: #ff9f1c; text-shadow: 0 0 6px rgba(255, 159, 28, 0.6); }
+    .ms-cell.n7 { color: #7ee8fa; text-shadow: 0 0 6px rgba(126, 232, 250, 0.6); }
+    .ms-cell.n8 { color: #e8e8f0; text-shadow: 0 0 6px rgba(232, 232, 240, 0.6); }
+  </style>
+</head>
+<body data-game-id="minesweeper" data-game-title="扫雷" data-best-mode="min">
+  <h1 class="seo-h1">扫雷</h1>
+  <main id="game-root"></main>
+  <script src="../../assets/js/core/storage.js"></script>
+  <script src="../../assets/js/core/input.js"></script>
+  <script src="../../assets/js/core/loop.js"></script>
+    <script src="../../assets/js/core/i18n.js"></script>
+  <script src="../../assets/js/core/i18n-dict.js"></script>
+  <script src="minesweeper-i18n.js"></script>
+  <script src="../../assets/js/core/extras.js"></script>
+  <script src="../../assets/js/rank.js"></script>
+  <script src="../../assets/js/plot.js"></script>
+  <script src="../../assets/js/stories.js"></script>
+<script src="../../assets/js/shell.js"></script>
+  <script src="minesweeper.js"></script>
+  <script src="../../assets/js/pwa.js"></script>
+</body>
+</html>

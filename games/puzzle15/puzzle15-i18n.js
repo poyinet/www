@@ -1,0 +1,47 @@
+/* 破译 DECODE ARCADE · puzzle15 游戏内文案（zh/en 对称）
+   由 i18n-dict.js 拆分生成 —— 游戏页按需加载，减小站点字典体积 */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.puzzle15.tutTitle'] = '数字华容道 · 玩法';
+  d.en['gs.puzzle15.tutTitle'] = '15-Puzzle · How to Play';
+  d.zh['gs.puzzle15.tut1t'] = '目标';
+  d.en['gs.puzzle15.tut1t'] = 'Objective';
+  d.zh['gs.puzzle15.tut1'] = '把数字方块按顺序排好，空格留在最后。';
+  d.en['gs.puzzle15.tut1'] = 'Arrange the number tiles in order, with the empty space last.';
+  d.zh['gs.puzzle15.tut2t'] = '操作';
+  d.en['gs.puzzle15.tut2t'] = 'Controls';
+  d.zh['gs.puzzle15.tut2'] = '点击与空格相邻的数字块即可移动。';
+  d.en['gs.puzzle15.tut2'] = 'Click a tile next to the empty space to move it.';
+  d.zh['gs.puzzle15.tut3t'] = '难度';
+  d.en['gs.puzzle15.tut3t'] = 'Difficulty';
+  d.zh['gs.puzzle15.tut3'] = '简单 3×3 / 普通 4×4 / 困难 5×5。';
+  d.en['gs.puzzle15.tut3'] = 'Easy 3×3 / Normal 4×4 / Hard 5×5.';
+  d.zh['gs.puzzle15.tut4t'] = '计分';
+  d.en['gs.puzzle15.tut4t'] = 'Scoring';
+  d.zh['gs.puzzle15.tut4'] = '用最少的步数复原（可随时重新打乱）。';
+  d.en['gs.puzzle15.tut4'] = 'Solve it in as few moves as possible (reshuffle anytime).';
+  d.zh['gs.puzzle15.dEasy'] = '简单 3×3';
+  d.en['gs.puzzle15.dEasy'] = 'Easy 3×3';
+  d.zh['gs.puzzle15.dNormal'] = '普通 4×4';
+  d.en['gs.puzzle15.dNormal'] = 'Normal 4×4';
+  d.zh['gs.puzzle15.dHard'] = '困难 5×5';
+  d.en['gs.puzzle15.dHard'] = 'Hard 5×5';
+  d.zh['gs.puzzle15.msgStart'] = '点击与空格相邻的数字块，按顺序排好！';
+  d.en['gs.puzzle15.msgStart'] = 'Click tiles next to the empty space to put them in order!';
+  d.zh['gs.puzzle15.moves'] = '步数';
+  d.en['gs.puzzle15.moves'] = 'Moves';
+  d.zh['gs.puzzle15.time'] = '用时';
+  d.en['gs.puzzle15.time'] = 'Time';
+  d.zh['gs.puzzle15.sec'] = '秒';
+  d.en['gs.puzzle15.sec'] = 'sec';
+  d.zh['gs.puzzle15.shuffle'] = '重新打乱';
+  d.en['gs.puzzle15.shuffle'] = 'Reshuffle';
+  d.zh['gs.puzzle15.help'] = '💡 只有空格上下左右相邻的数字块可以移动';
+  d.en['gs.puzzle15.help'] = '💡 Only tiles adjacent (up/down/left/right) to the empty space can move';
+  d.zh['gs.puzzle15.winNew'] = '🏆 新纪录！';
+  d.en['gs.puzzle15.winNew'] = '🏆 New record!';
+  d.zh['gs.puzzle15.winDone'] = '🎉 完成！';
+  d.en['gs.puzzle15.winDone'] = '🎉 Solved!';
+  d.zh['gs.puzzle15.winDetail'] = ' 共用 {m} 步，{s} 秒';
+  d.en['gs.puzzle15.winDetail'] = ' in {m} moves, {s} sec';
+})();

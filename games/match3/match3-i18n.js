@@ -1,0 +1,43 @@
+/* 破译 DECODE ARCADE · match3 游戏内文案（zh/en 对称）
+   由 i18n-dict.js 拆分生成 —— 游戏页按需加载，减小站点字典体积 */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.match3.tutTitle'] = '消消乐 · 玩法';
+  d.en['gs.match3.tutTitle'] = 'Match-3 · How to Play';
+  d.zh['gs.match3.tut1t'] = '目标';
+  d.en['gs.match3.tut1t'] = 'Objective';
+  d.zh['gs.match3.tut1'] = '在 30 步限制内冲击最高分';
+  d.en['gs.match3.tut1'] = 'Score as high as you can within 30 moves';
+  d.zh['gs.match3.tut2t'] = '操作';
+  d.en['gs.match3.tut2t'] = 'Controls';
+  d.zh['gs.match3.tut2'] = '点选一颗糖果，再点相邻糖果交换';
+  d.en['gs.match3.tut2'] = 'Select a candy, then tap an adjacent one to swap';
+  d.zh['gs.match3.tut3t'] = '消除';
+  d.en['gs.match3.tut3t'] = 'Matching';
+  d.zh['gs.match3.tut3'] = '三颗及以上连成线即消除，连锁倍率逐层递增';
+  d.en['gs.match3.tut3'] = 'Three or more in a line pop; the chain multiplier grows with each cascade';
+  d.zh['gs.match3.msgStart'] = '点击选中糖果，再点相邻糖果交换，三连即消除！';
+  d.en['gs.match3.msgStart'] = 'Tap a candy to select it, then tap an adjacent one to swap — three in a line pops!';
+  d.zh['gs.match3.score'] = '得分';
+  d.en['gs.match3.score'] = 'Score';
+  d.zh['gs.match3.movesLeft'] = '剩余步数';
+  d.en['gs.match3.movesLeft'] = 'Moves left';
+  d.zh['gs.match3.restart'] = '重新开始';
+  d.en['gs.match3.restart'] = 'Restart';
+  d.zh['gs.match3.help'] = '💡 连锁消除倍率递增：第 n 连锁得分 ×n，{m} 步内冲击高分！';
+  d.en['gs.match3.help'] = '💡 Chain pops multiply: the n-th cascade scores ×n — hit a high score within {m} moves!';
+  d.zh['gs.match3.chain'] = '🔥 连锁 ×{n}！';
+  d.en['gs.match3.chain'] = '🔥 Chain ×{n}!';
+  d.zh['gs.match3.deadlock'] = '🔄 死局！自动重洗棋盘…';
+  d.en['gs.match3.deadlock'] = '🔄 No moves left! Auto-reshuffling…';
+  d.zh['gs.match3.reshuffled'] = '已重洗棋盘，继续加油！';
+  d.en['gs.match3.reshuffled'] = 'Board reshuffled — keep going!';
+  d.zh['gs.match3.winNew'] = '🏆 新纪录！';
+  d.en['gs.match3.winNew'] = '🏆 New record!';
+  d.zh['gs.match3.over'] = '🏁 步数用完！';
+  d.en['gs.match3.over'] = '🏁 Out of moves!';
+  d.zh['gs.match3.finalScore'] = ' 最终得分 {n} 分';
+  d.en['gs.match3.finalScore'] = ' Final score: {n}';
+  d.zh['gs.match3.invalid'] = '无效交换：没有形成三连';
+  d.en['gs.match3.invalid'] = 'Invalid swap: no match of three';
+})();

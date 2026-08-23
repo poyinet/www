@@ -1,0 +1,41 @@
+/* 破译 DECODE ARCADE · twopaddle 游戏内文案（zh/en 对称）
+   由 i18n-dict.js 拆分生成 —— 游戏页按需加载，减小站点字典体积 */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.twopaddle.dEasy'] = '简单';
+  d.en['gs.twopaddle.dEasy'] = 'Easy';
+  d.zh['gs.twopaddle.dNormal'] = '中等';
+  d.en['gs.twopaddle.dNormal'] = 'Normal';
+  d.zh['gs.twopaddle.dHard'] = '困难';
+  d.en['gs.twopaddle.dHard'] = 'Hard';
+  d.zh['gs.twopaddle.you'] = '你';
+  d.en['gs.twopaddle.you'] = 'You';
+  d.zh['gs.twopaddle.hint'] = '↑/↓ 移动 · 先得 {n} 分胜 · P 暂停';
+  d.en['gs.twopaddle.hint'] = '↑/↓ move · first to {n} wins · P pause';
+  d.zh['gs.twopaddle.restart'] = '重新开始';
+  d.en['gs.twopaddle.restart'] = 'Restart';
+  d.zh['gs.twopaddle.paused'] = '⏸ 已暂停 · 按 P 继续';
+  d.en['gs.twopaddle.paused'] = '⏸ Paused · Press P to resume';
+  d.zh['gs.twopaddle.win'] = '🏆 你赢了！';
+  d.en['gs.twopaddle.win'] = '🏆 You win!';
+  d.zh['gs.twopaddle.lose'] = '💀 AI 赢了！';
+  d.en['gs.twopaddle.lose'] = '💀 AI wins!';
+  d.zh['gs.twopaddle.tutTitle'] = '乒乓球 · 玩法';
+  d.en['gs.twopaddle.tutTitle'] = 'Two-Paddle · How to Play';
+  d.zh['gs.twopaddle.tut1t'] = '目标';
+  d.en['gs.twopaddle.tut1t'] = 'Objective';
+  d.zh['gs.twopaddle.tut1'] = '用球拍把球打到 AI 那边得分，先得 7 分获胜。';
+  d.en['gs.twopaddle.tut1'] = 'Hit the ball past the AI with your paddle to score; first to 7 points wins.';
+  d.zh['gs.twopaddle.tut2t'] = '操作';
+  d.en['gs.twopaddle.tut2t'] = 'Controls';
+  d.zh['gs.twopaddle.tut2'] = '↑/↓ 或 W/S 移动左拍；触屏用下方虚拟方向键（按住持续移动）。';
+  d.en['gs.twopaddle.tut2'] = 'Move your left paddle with ↑/↓ or W/S; on touch screens use the virtual D-pad below (press and hold to move).';
+  d.zh['gs.twopaddle.tut3t'] = '技巧';
+  d.en['gs.twopaddle.tut3t'] = 'Tip';
+  d.zh['gs.twopaddle.tut3'] = '用拍子边缘击球可打出大角度，AI 更难接住。';
+  d.en['gs.twopaddle.tut3'] = 'Hit the ball with the edge of your paddle for sharp angles that are harder for the AI to return.';
+  d.zh['gs.twopaddle.tut4t'] = '计分';
+  d.en['gs.twopaddle.tut4t'] = 'Scoring';
+  d.zh['gs.twopaddle.tut4'] = '每赢一球得 1 分，率先 7 分获胜。成绩=你的得分。';
+  d.en['gs.twopaddle.tut4'] = 'Each rally you win scores 1 point; first to 7 wins. Your score is your points.';
+})();

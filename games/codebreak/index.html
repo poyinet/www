@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="破译游戏">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <title>大师密码 · 用游戏破译人类三千年加密解密史</title>
+  <meta name="description" content="破译 DECODE ARCADE · 大师密码：用黑白钉反馈，10 次内推理出 4 位颜色密码。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://poyi.net/games/codebreak/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="破译游戏 DECODE ARCADE">
+  <meta property="og:title" content="大师密码 · 用游戏破译人类三千年加密解密史">
+  <meta property="og:description" content="破译 DECODE ARCADE · 大师密码：用黑白钉反馈，10 次内推理出 4 位颜色密码。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta property="og:url" content="https://poyi.net/games/codebreak/">
+  <meta property="og:image" content="https://poyi.net/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="大师密码 · 用游戏破译人类三千年加密解密史">
+  <meta name="twitter:description" content="破译 DECODE ARCADE · 大师密码：用黑白钉反馈，10 次内推理出 4 位颜色密码。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="twitter:image" content="https://poyi.net/assets/og-image.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "大师密码",
+    "url": "https://poyi.net/games/codebreak/",
+    "applicationCategory": "Game",
+    "inLanguage": "zh-CN",
+    "isPartOf": { "@type": "WebSite", "name": "破译游戏 DECODE ARCADE", "url": "https://poyi.net/" },
+    "description": "破译 DECODE ARCADE · 大师密码：用黑白钉反馈，10 次内推理出 4 位颜色密码。 打开即玩，最高分记录保存在本地浏览器。"
+  }
+  </script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🟪</text></svg>">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="../../assets/css/theme.css">
+  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
+  <link rel="stylesheet" href="../../assets/css/shell.css">
+  <style>
+    .mm-wrap { padding: 16px 12px 24px; width: min(420px, 96vw); text-align: center; }
+    .mm-secret { display: flex; gap: 8px; justify-content: center; margin-bottom: 12px; }
+    .mm-hole { width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,0.08); border: 2px solid rgba(255,255,255,0.18); display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--text-dim); }
+    .mm-history { display: flex; flex-direction: column-reverse; gap: 6px; margin-bottom: 12px; max-height: 230px; overflow-y: auto; }
+    .mm-row { display: flex; align-items: center; gap: 8px; justify-content: center; }
+    .mm-pegs { display: flex; gap: 5px; }
+    .mm-peg { width: 24px; height: 24px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.25); }
+    .mm-fb { display: grid; grid-template-columns: repeat(2, 9px); grid-gap: 3px; }
+    .mm-dot { width: 9px; height: 9px; border-radius: 50%; }
+    .mm-dot.b { background: #111; border: 1px solid rgba(255,255,255,0.6); }
+    .mm-dot.w { background: #fff; opacity: .55; }
+    .mm-dot.e { background: transparent; }
+    .mm-current { display: flex; gap: 8px; justify-content: center; margin: 10px 0; }
+    .mm-slot { width: 34px; height: 34px; border-radius: 50%; border: 2px dashed rgba(255,255,255,0.3); }
+    .mm-palette { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 12px; }
+    .mm-color { width: 36px; height: 36px; border-radius: 50%; cursor: pointer; border: 2px solid rgba(255,255,255,0.2); }
+    .mm-color:active { transform: scale(0.92); }
+    .mm-msg { min-height: 18px; font-size: 13px; color: var(--neon-pink); margin: 8px 0; }
+  </style>
+</head>
+<body data-game-id="codebreak" data-game-title="大师密码" data-best-mode="min">
+  <h1 class="seo-h1">大师密码</h1>
+  <main id="game-root"></main>
+  <script src="../../assets/js/core/storage.js"></script>
+  <script src="../../assets/js/core/input.js"></script>
+  <script src="../../assets/js/core/loop.js"></script>
+    <script src="../../assets/js/core/i18n.js"></script>
+  <script src="../../assets/js/core/i18n-dict.js"></script>
+  <script src="codebreak-i18n.js"></script>
+  <script src="../../assets/js/core/extras.js"></script>
+  <script src="../../assets/js/rank.js"></script>
+  <script src="../../assets/js/plot.js"></script>
+  <script src="../../assets/js/stories.js"></script>
+<script src="../../assets/js/shell.js"></script>
+  <script src="codebreak.js"></script>
+  <script src="../../assets/js/pwa.js"></script>
+</body>
+</html>

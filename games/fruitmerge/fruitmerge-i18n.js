@@ -1,0 +1,41 @@
+﻿/* 破译 DECODE ARCADE · fruitmerge 游戏内文案（zh/en 对称）
+   由 i18n-dict.js 拆分生成 —— 游戏页按需加载，减小站点字典体积 */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.fruitmerge.tutTitle'] = '西瓜合成 · 玩法';
+  d.en['gs.fruitmerge.tutTitle'] = 'Watermelon Merge · How to Play';
+  d.zh['gs.fruitmerge.tut1t'] = '目标';
+  d.en['gs.fruitmerge.tut1t'] = 'Objective';
+  d.zh['gs.fruitmerge.tut1'] = '投下水果，两个相同水果相碰会合成更大一级。挑战合成终极西瓜！';
+  d.en['gs.fruitmerge.tut1'] = 'Drop fruits; two identical fruits that touch merge into the next size. Chase the ultimate watermelon!';
+  d.zh['gs.fruitmerge.tut2t'] = '操作';
+  d.en['gs.fruitmerge.tut2t'] = 'Controls';
+  d.zh['gs.fruitmerge.tut2'] = '左右移动瞄准，点击/空格投放当前水果；连续合成会刷新更大水果。';
+  d.en['gs.fruitmerge.tut2'] = 'Move left/right to aim, click/Space to drop the current fruit; chain merges spawn bigger fruits.';
+  d.zh['gs.fruitmerge.tut3t'] = '规则';
+  d.en['gs.fruitmerge.tut3t'] = 'Rules';
+  d.zh['gs.fruitmerge.tut3'] = '水果超过顶线即游戏结束。等级：葡萄→樱桃→橙→柠檬→猕猴桃→番茄→桃→菠萝→椰子→半个西瓜→西瓜。';
+  d.en['gs.fruitmerge.tut3'] = 'The game ends when fruit piles past the top line. Ranks: grape → cherry → orange → lemon → kiwi → tomato → peach → pineapple → coconut → half watermelon → watermelon.';
+  d.zh['gs.fruitmerge.tut4t'] = '计分';
+  d.en['gs.fruitmerge.tut4t'] = 'Scoring';
+  d.zh['gs.fruitmerge.tut4'] = '成绩=合成最大等级 ×10 + 合成次数。';
+  d.en['gs.fruitmerge.tut4'] = 'Score = highest rank ×10 + number of merges.';
+  d.zh['gs.fruitmerge.max'] = '最高';
+  d.en['gs.fruitmerge.max'] = 'Best';
+  d.zh['gs.fruitmerge.merges'] = '合成';
+  d.en['gs.fruitmerge.merges'] = 'Merges';
+  d.zh['gs.fruitmerge.current'] = '当前';
+  d.en['gs.fruitmerge.current'] = 'Next';
+  d.zh['gs.fruitmerge.help'] = '左右移动瞄准 · 点击 / 空格投放';
+  d.en['gs.fruitmerge.help'] = 'Move to aim · click / Space to drop';
+  d.zh['gs.fruitmerge.paused'] = '⏸ 已暂停 · 按 P 继续';
+  d.en['gs.fruitmerge.paused'] = '⏸ Paused · press P to resume';
+  d.zh['gs.fruitmerge.restart'] = '重新开始';
+  d.en['gs.fruitmerge.restart'] = 'Restart';
+  d.zh['gs.fruitmerge.dead'] = '💀 水果堆积越顶！成绩 {n}';
+  d.en['gs.fruitmerge.dead'] = '💀 Fruit piled past the top! Score {n}';
+  d.zh['gs.fruitmerge.watermelon'] = '🍉 合成了大西瓜！';
+  d.en['gs.fruitmerge.watermelon'] = '🍉 Watermelon created!';
+  d.zh['gs.fruitmerge.keepGoing'] = '继续合成冲击更高！';
+  d.en['gs.fruitmerge.keepGoing'] = 'Keep merging for even higher!';
+})();

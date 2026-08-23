@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="破译游戏">
+  <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
+  <title>希尔密码机 · 用游戏破译人类三千年加密解密史</title>
+  <meta name="description" content="破译 DECODE ARCADE · 希尔密码机：史上第一个矩阵分组密码，2×2 密钥矩阵加密解密，已知明文攻击(KPA)反推密钥。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://poyi.net/games/hill/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="破译游戏 DECODE ARCADE">
+  <meta property="og:title" content="希尔密码机 · 用游戏破译人类三千年加密解密史">
+  <meta property="og:description" content="破译 DECODE ARCADE · 希尔密码机：史上第一个矩阵分组密码，2×2 密钥矩阵加密解密，已知明文攻击(KPA)反推密钥。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta property="og:url" content="https://poyi.net/games/hill/">
+  <meta property="og:image" content="https://poyi.net/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="希尔密码机 · 用游戏破译人类三千年加密解密史">
+  <meta name="twitter:description" content="破译 DECODE ARCADE · 希尔密码机：史上第一个矩阵分组密码，2×2 密钥矩阵加密解密，已知明文攻击(KPA)反推密钥。 打开即玩，最高分记录保存在本地浏览器。">
+  <meta name="twitter:image" content="https://poyi.net/assets/og-image.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "希尔密码机",
+    "url": "https://poyi.net/games/hill/",
+    "applicationCategory": "Game",
+    "inLanguage": "zh-CN",
+    "isPartOf": { "@type": "WebSite", "name": "破译游戏 DECODE ARCADE", "url": "https://poyi.net/" },
+    "description": "破译 DECODE ARCADE · 希尔密码机：史上第一个矩阵分组密码，2×2 密钥矩阵加密解密，已知明文攻击(KPA)反推密钥。 打开即玩，最高分记录保存在本地浏览器。"
+  }
+  </script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔢</text></svg>">
+    <!-- 字体 preload（S5）：Press Start 2P 无条件；中文像素字仅 zh（内联脚本探测语言） -->
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="../../assets/css/theme.css">
+  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
+  <link rel="stylesheet" href="../../assets/css/shell.css">
+  <style>
+    .hl-wrap { padding: 14px 10px 24px; width: min(720px, 98vw); text-align: center; }
+    .hl-tabs { flex-wrap: wrap; display: flex; gap: 8px; justify-content: center; margin-bottom: 14px; }
+    .hl-tab { flex: 1; max-width: 200px; }
+    .hl-machine {
+      position: relative; width: 100%; border-radius: 12px; overflow: hidden;
+      background: linear-gradient(180deg, #1a1a2e, #0d0d18);
+      border: 1px solid rgba(185,103,255,0.3);
+      box-shadow: 0 0 24px rgba(185,103,255,0.12); padding: 14px; margin: 8px 0;
+    }
+    .hl-matrix {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+      max-width: 300px; margin: 8px auto;
+    }
+    .hl-cell {
+      background: rgba(0,0,0,0.35); border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 10px; padding: 8px 4px; text-align: center;
+    }
+    .hl-cell .clabel { font-size: 9px; color: var(--text-dim); letter-spacing: 1px; }
+    .hl-cell .cletter {
+      font-family: var(--font-pixel); font-size: 26px; color: var(--neon-cyan);
+      text-shadow: 0 0 10px rgba(0,240,255,0.6); margin: 2px 0;
+    }
+    .hl-cell .carrow { font-size: 13px; color: var(--neon-purple); cursor: pointer; border: none; background: none; padding: 6px 10px; border-radius: 6px; }
+    .hl-det { font-family: var(--font-pixel); font-size: 11px; line-height: 1.9; color: var(--neon-green); margin: 8px 0; word-break: break-all; }
+    .hl-det.bad { color: var(--neon-pink); }
+    .hl-info { display: flex; justify-content: space-between; font-size: 12px; color: var(--text-dim); margin: 6px 2px; flex-wrap: wrap; gap: 6px; }
+    .hl-msg { min-height: 20px; font-size: 13px; color: var(--neon-pink); margin: 8px 0; line-height: 1.7; }
+    .hl-hint { font-size: 12px; color: var(--text-dim); line-height: 1.8; margin: 6px 0; }
+    .hl-hint b { color: var(--neon-purple); }
+    .hl-cipher {
+      font-family: var(--font-pixel); font-size: 13px; letter-spacing: 2px; color: var(--neon-pink);
+      background: rgba(255,45,149,0.06); border: 1px solid rgba(255,45,149,0.3); border-radius: 8px;
+      padding: 10px; margin: 6px 0; text-shadow: 0 0 8px rgba(255,45,149,.4); word-break: break-all;
+    }
+    .hl-keynotice {
+      font-family: var(--font-pixel); font-size: 13px; letter-spacing: 1px; color: var(--neon-yellow);
+      background: rgba(255,230,0,0.06); border: 1px solid rgba(255,230,0,0.35); border-radius: 8px;
+      padding: 10px; margin: 6px 0; text-shadow: 0 0 8px rgba(255,230,0,.4); word-break: break-all;
+    }
+    .hl-pairs {
+      font-family: var(--font-pixel); font-size: 13px; letter-spacing: 1px; color: var(--neon-purple);
+      background: rgba(185,103,255,0.07); border: 1px solid rgba(185,103,255,0.35); border-radius: 8px;
+      padding: 10px; margin: 6px 0; word-break: break-all;
+    }
+    .hl-codebook { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin: 8px 0; }
+    .hl-word {
+      font-family: var(--font-pixel); font-size: 14px; letter-spacing: 2px; padding: 8px 12px;
+      border-radius: 8px; border: 1px solid rgba(57,255,20,0.4); color: var(--neon-green);
+      background: rgba(57,255,20,0.06); cursor: pointer;
+    }
+    .hl-word:hover { background: rgba(57,255,20,0.15); }
+    .hl-word.used { opacity: 0.4; }
+    .hl-result {
+      font-family: var(--font-pixel); font-size: 12px; line-height: 1.9; color: var(--neon-green);
+      background: rgba(57,255,20,0.06); border: 1px solid rgba(57,255,20,0.3); border-radius: 8px;
+      padding: 10px; margin: 6px 0; min-height: 38px; text-align: left; word-break: break-all;
+    }
+    .hl-row { display: flex; gap: 8px; justify-content: center; align-items: center; margin: 8px 0; flex-wrap: wrap; }
+    .hl-lbl { font-size: 12px; color: var(--text-dim); }
+    .hl-row input {
+      font-family: var(--font-pixel); font-size: 15px; letter-spacing: 3px; text-align: center;
+      text-transform: uppercase; padding: 10px; width: min(280px, 80%);
+      background: var(--bg-panel-2); color: var(--text-main);
+      border: 1px solid rgba(185,103,255,0.4); border-radius: 8px; outline: none;
+    }
+    .hl-math { font-size: 11px; color: var(--text-dim); line-height: 1.8; margin: 6px 0; word-break: break-all; }
+    @media (max-width: 480px) {
+      .hl-cell .cletter { font-size: 20px; }
+      .hl-cipher, .hl-pairs, .hl-keynotice { font-size: 11px; }
+    }
+  </style>
+</head>
+<body data-game-id="hill" data-game-title="希尔密码机" data-best-mode="min">
+  <h1 class="seo-h1">希尔密码机</h1>
+  <main id="game-root"></main>
+  <script src="../../assets/js/core/storage.js"></script>
+  <script src="../../assets/js/core/input.js"></script>
+  <script src="../../assets/js/core/loop.js"></script>
+    <script src="../../assets/js/core/i18n.js"></script>
+  <script src="../../assets/js/core/i18n-dict.js"></script>
+  <script src="hill-i18n.js"></script>
+  <script src="../../assets/js/core/extras.js"></script>
+  <script src="../../assets/js/rank.js"></script>
+  <script src="../../assets/js/plot.js"></script>
+  <script src="../../assets/js/stories.js"></script>
+<script src="../../assets/js/shell.js"></script>
+  <script src="hill.js"></script>
+  <script src="../../assets/js/pwa.js"></script>
+</body>
+</html>

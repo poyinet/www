@@ -1,0 +1,45 @@
+/* 破译 DECODE ARCADE · morse 游戏内文案（zh/en 对称）
+   由 i18n-dict.js 拆分生成 —— 游戏页按需加载，减小站点字典体积 */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.morse.tutTitle'] = '摩斯破译 · 玩法';
+  d.en['gs.morse.tutTitle'] = 'Morse Code · How to Play';
+  d.zh['gs.morse.tut1t'] = '目标';
+  d.en['gs.morse.tut1t'] = 'Objective';
+  d.zh['gs.morse.tut1'] = '把上方摩斯电码还原成英文字母串，共 5 题。';
+  d.en['gs.morse.tut1'] = 'Decode the Morse code above back into a string of English letters — 5 questions.';
+  d.zh['gs.morse.tut2t'] = '密码表';
+  d.en['gs.morse.tut2t'] = 'Code Table';
+  d.zh['gs.morse.tut2'] = '· = 短音点，− = 长音划。A=·−  B=−···  S=···  E=·  T=−  M=−− 。';
+  d.en['gs.morse.tut2'] = '· = short dot, − = long dash. A=·−  B=−···  S=···  E=·  T=−  M=−−.';
+  d.zh['gs.morse.tut3t'] = '操作';
+  d.en['gs.morse.tut3t'] = 'Controls';
+  d.zh['gs.morse.tut3'] = '在输入框键入你破解出的字母（自动转大写），回车或点「提交」确认。';
+  d.en['gs.morse.tut3'] = 'Type the letters you decoded in the input (auto-uppercase), then press Enter or "Submit".';
+  d.zh['gs.morse.tut4t'] = '计分';
+  d.en['gs.morse.tut4t'] = 'Scoring';
+  d.zh['gs.morse.tut4'] = '5 题内破解越多越好，成绩=正确题数（满分 5）。';
+  d.en['gs.morse.tut4'] = 'The more you crack in 5 questions the better; score = correct answers (max 5).';
+  d.zh['gs.morse.submit'] = '提交';
+  d.en['gs.morse.submit'] = 'Submit';
+  d.zh['gs.morse.progress'] = '第 {n} / {total} 题 · 已破 {correct}';
+  d.en['gs.morse.progress'] = 'Q {n} / {total} · {correct} solved';
+  d.zh['gs.morse.msgEmpty'] = '先输入你破解的字母';
+  d.en['gs.morse.msgEmpty'] = 'Type the letters you decoded first';
+  d.zh['gs.morse.msgRight'] = '✓ 正确！';
+  d.en['gs.morse.msgRight'] = '✓ Correct!';
+  d.zh['gs.morse.msgWrong'] = '✗ 应为 {answer}';
+  d.en['gs.morse.msgWrong'] = '✗ It was {answer}';
+  d.zh['gs.morse.done'] = '📡 全部完成';
+  d.en['gs.morse.done'] = '📡 All done';
+  d.zh['gs.morse.summary'] = '破译 {n} / {total} 题';
+  d.en['gs.morse.summary'] = 'Decoded {n} / {total}';
+  d.zh['gs.morse.perfect'] = '🎉 全能译电员！';
+  d.en['gs.morse.perfect'] = '🎉 Master telegrapher!';
+  d.zh['gs.morse.goodJob'] = '训练完成，再接再厉！';
+  d.en['gs.morse.goodJob'] = 'Training complete — keep it up!';
+  d.zh['gs.morse.dailyBtn'] = '📅 每日一题（固定电文）';
+  d.en['gs.morse.dailyBtn'] = '📅 Daily (fixed message)';
+  d.zh['gs.morse.dailyTag'] = '· 今日全球同一组电文';
+  d.en['gs.morse.dailyTag'] = '· same messages for everyone today';
+})();

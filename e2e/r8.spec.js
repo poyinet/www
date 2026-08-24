@@ -94,7 +94,7 @@ test('phishhunt：八封连判 + 线索亮出', async function ({ page }) {
 test('protocols：ChaCha20 单步与 A5/1 密钥流', async function ({ page }) {
   const errors = await trackErrors(page);
   await page.goto('/protocols.html', { waitUntil: 'networkidle' });
-  await expect(page.locator('#pl-ready')).toHaveText('8', { timeout: 10_000 });
+  await expect(page.locator('#pl-ready')).toHaveText('9', { timeout: 10_000 });
 
   await page.locator('#cc-step').scrollIntoViewIfNeeded();
   for (let i = 0; i < 3; i++) { await page.locator('#cc-step').click(); await page.waitForTimeout(60); }
@@ -113,7 +113,7 @@ test('protocols：ChaCha20 单步与 A5/1 密钥流', async function ({ page }) 
 test('machine：AES 卡四拍动画渲染', async function ({ page }) {
   const errors = await trackErrors(page);
   await page.goto('/machine.html', { waitUntil: 'networkidle' });
-  await page.locator('#cm-nav button').last().click();
+  await page.locator('#cm-nav button', { hasText: 'AES' }).click();
   await expect(page.locator('#aes-lab')).toBeVisible({ timeout: 10_000 });
   await expect(page.locator('#aes-grid .aes-cell')).toHaveCount(16);
 

@@ -148,7 +148,7 @@
             '<div class="cm-history">' + (isEn ? m.history.en : m.history.zh) + '</div></div>' +
             '<div class="cm-sec"><div class="cm-sec-title">⚙️ ' + (isEn ? 'Specs' : '参数') + '</div>' +
             '<div class="cm-params">' + params + '</div></div>' +
-            '<a class="cm-play" href="' + pre + 'games/' + m.game + '/index.html">🎮 ' + (isEn ? 'Play the machine' : '去游戏厅操作这台机器') + ' →</a>' +
+            (m.game ? '<a class="cm-play" href="' + pre + 'games/' + m.game + '/index.html">🎮 ' + (isEn ? 'Play the machine' : '去游戏厅操作这台机器') + ' →</a>' : '') +
           '</div>';
         if (m.lab) cardBox.innerHTML += buildAesLab(isEn);
         var navs = navBox.querySelectorAll('button');

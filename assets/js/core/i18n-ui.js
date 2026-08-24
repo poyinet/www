@@ -247,4 +247,6 @@
   d.en['pl.chachaH'] = 'ChaCha20: avalanche in eight instructions';
   d.zh['pl.a51H'] = 'A5/1：多数投票驱动的三转子移位寄存器';
   d.en['pl.a51H'] = 'A5/1: three LFSRs driven by majority vote';
+  d.zh['pl.rc4H'] = 'RC4 警示录：密钥流绝不能用两次';
+  d.en['pl.rc4H'] = 'RC4 Cautionary Tale: never reuse a keystream';
 })();

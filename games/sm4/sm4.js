@@ -190,6 +190,36 @@ var SM4 = (function () {
       ok: { zh: '4 个（每字节一个）', en: '4 — one per byte' },
       bad: { zh: ['1 个串行复用', '8 个半字节级', '16 个'], en: ['1 reused serially', '8 nibble-level', '16'] },
       hint: { zh: '32 位字 ÷ 8 位 S 盒。', en: '32-bit word ÷ 8-bit S-box.' }
+    },
+    {
+      q: { zh: 'SM4 与 AES 的加密轮数分别是？', en: 'Rounds of SM4 vs AES-128?' },
+      ok: { zh: '32 轮 vs 10 轮', en: '32 vs 10' },
+      bad: { zh: ['10 轮 vs 32 轮', '都是 16 轮', '64 轮 vs 32 轮'], en: ['10 vs 32', 'both 16', '64 vs 32'] },
+      hint: { zh: '轮数翻倍换来硬件友好下的充分冗余。', en: 'Doubled rounds buy ample margin while staying hardware-friendly.' }
+    },
+    {
+      q: { zh: 'tau 与 L 的分工是？', en: 'Division of labor between tau and L?' },
+      ok: { zh: 'tau 提供非线性（混淆），L 提供线性扩散', en: 'tau gives non-linearity (confusion), L spreads it (diffusion)' },
+      bad: { zh: ['都只做代换', 'tau 扩散、L 混淆', '两者都可逆但都不必要'], en: ['both just substitute', 'tau diffuses, L confuses', 'both invertible but unnecessary'] },
+      hint: { zh: '香农的两大原则：混淆 + 扩散。', en: 'Shannon\'s two principles: confusion and diffusion.' }
+    },
+    {
+      q: { zh: 'SM4 属于哪一类密码结构？', en: 'SM4 belongs to which cipher structure?' },
+      ok: { zh: '非平衡 Feistel 网络', en: 'Unbalanced Feistel network' },
+      bad: { zh: ['SPN 替换-置换网络', '纯流密码', 'Lai-Massey 结构'], en: ['SPN', 'pure stream cipher', 'Lai-Massey'] },
+      hint: { zh: '每轮只更新一个字——与 AES 的整体置换不同。', en: 'One word updates per round — unlike AES\' whole-state permutation.' }
+    },
+    {
+      q: { zh: '加解密共用同一套电路的关键在于？', en: 'What lets SM4 reuse the encryption circuit for decryption?' },
+      ok: { zh: '轮密钥反序即可，结构完全同构', en: 'Same structure — just reverse the round-key order' },
+      bad: { zh: ['需要独立的解密算法', '把 S 盒换成逆 S 盒', '把 L 改为 L\''], en: ['needs a separate algorithm', 'swap in inverse S-box', 'replace L with L\''] },
+      hint: { zh: '硬件工程师最爱的一点。', en: 'Hardware engineers love this bit.' }
+    },
+    {
+      q: { zh: '反序变换 R 输出的是？', en: 'The reverse transform R outputs…' },
+      ok: { zh: '(X35, X34, X33, X32) 反序作为密文', en: '(X35, X34, X33, X32) reversed as ciphertext' },
+      bad: { zh: ['(X32..X35) 原序', '仅 X35 一个字', '全部 X0..X35'], en: ['(X32…X35) in order', 'only X35', 'all of X0…X35'] },
+      hint: { zh: '32 轮跑完停在 X35，倒着读出来就是密文。', en: 'After 32 rounds you stop at X35; read backwards for ciphertext.' }
     }
   ];
   var HISTORY_Q = [
@@ -216,6 +246,24 @@ var SM4 = (function () {
       ok: { zh: '吕述望', en: 'Shu-Wang Lu' },
       bad: { zh: ['王小云', '冯登国', '卿斯汉'], en: ['Xiaoyun Wang', 'Deng-Guo Feng', 'Sihan Qing'] },
       hint: { zh: '中科院信息安全中心元老。', en: 'A veteran of the CAS information-security center.' }
+    },
+    {
+      q: { zh: 'SM4 被收录进的国际标准是？', en: 'Which international standard includes SM4?' },
+      ok: { zh: 'ISO/IEC 18033-3 (2017)', en: 'ISO/IEC 18033-3 (2017)' },
+      bad: { zh: ['NIST FIPS 197', 'RFC 8439', 'ITU-T X.509'], en: ['NIST FIPS 197', 'RFC 8439', 'ITU-T X.509'] },
+      hint: { zh: '加密算法国际标准第 3 部分：分组密码。', en: 'Part 3 of the encryption-algorithm standard: block ciphers.' }
+    },
+    {
+      q: { zh: '国密家族的分工正确的是？', en: 'Correct division of labor in the Guomi family?' },
+      ok: { zh: 'SM2 公钥 · SM3 哈希 · SM4 分组 · ZUC 流', en: 'SM2 public-key · SM3 hash · SM4 block · ZUC stream' },
+      bad: { zh: ['SM2 哈希 · SM3 分组', '全部都是分组密码', 'SM4 公钥 · SM2 流密码'], en: ['SM2 hash, SM3 block', 'all four are block ciphers', 'SM4 public-key, SM2 stream'] },
+      hint: { zh: '四件套覆盖公钥/哈希/分组/流四大赛道。', en: 'Four tools covering public-key, hash, block and stream.' }
+    },
+    {
+      q: { zh: 'SMS4 于 2006 年公开时伴随的重要承诺是？', en: 'What accompanied SMS4\'s 2006 publication?' },
+      ok: { zh: '算法全文完全公开——可被全世界审查', en: 'The full algorithm was published — open to worldwide review' },
+      bad: { zh: ['仅公布接口不公布细节', '只对签约企业公开', '十年后才解密'], en: ['interface only, no details', 'signed partners only', 'declassified a decade later'] },
+      hint: { zh: '与「保密才有安全」的旧思路分道扬镳。', en: 'A clean break from security-by-secrecy thinking.' }
     }
   ];
 

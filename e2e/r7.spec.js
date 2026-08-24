@@ -18,7 +18,7 @@ async function trackErrors(page) {
 test('TLS：六步走完 + Eve 在第 3 步露馅', async function ({ page }) {
   const errors = await trackErrors(page);
   await page.goto('/protocols.html', { waitUntil: 'networkidle' });
-  await expect(page.locator('#pl-ready')).toHaveText('8', { timeout: 10_000 });
+  await expect(page.locator('#pl-ready')).toHaveText('9', { timeout: 10_000 });
 
   await page.locator('#tls-eve').click();
   for (let i = 0; i < 6; i++) {

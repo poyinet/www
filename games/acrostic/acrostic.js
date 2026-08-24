@@ -27,7 +27,10 @@ window.GAME_TUTORIAL_STEPS = [
     { word: 'SECRET', lines: ['Sentinels watch the silent hall', 'Every wall has heard it all', 'Candles gutter, shadows crawl', 'Runes await the final call', 'Evil plans will rise and fall', 'Truth outlasts them all'] },
     { word: 'ENIGMA', lines: ['Embers glow in the machine', 'Night shifts keep the rotors clean', 'In the hut the lamplight keen', 'Ghosts of messages unseen', 'Morse at midnight, sharp and mean', 'At dawn the seas turn green'] },
     { word: 'VENONA', lines: ['Valley deep and mountain high', 'Enemies pass the message by', 'Nobody reads the numbers fly', 'Only patience can untie', 'Nods of chance where secrets lie', 'After war the truth runs dry'] },
-    { word: 'QUANTUM', lines: ['Quiet labs where lasers gleam', 'Unbroken codes were once their dream', 'A new lock built on lattice scheme', 'Nature guards the quantum seam', 'The future runs on photon beam'] }
+    { word: 'QUANTUM', lines: ['Quiet labs where lasers gleam', 'Unbroken codes were once their dream', 'A new lock built on lattice scheme', 'Nature guards the quantum seam', 'The future runs on photon beam'] },
+    { word: 'SHADOW', lines: ['Shadows lengthen across the wall', 'Hints in letters, short and tall', 'Answer hidden in the hall', 'Do not trust the written call', 'Only readers break the thrall', 'Wisdom waits behind it all'] },
+    { word: 'ORACLE', lines: ['Old books whisper in the stack', 'Rarely does one answer back', 'Ancient scripts and zodiac', 'Ciphers wait for minds that track', 'Letters lock what others lack', 'Eyes of patience crack the black'] },
+    { word: 'PUZZLE', lines: ['Pieces scattered on the floor', 'Unfolding patterns at the door', 'Zones of logic to explore', 'Zigzags leading to the core', 'Loops of thought forevermore', 'Every answer wants one more'] }
   ];
 
   function isEn() { return window.Arcade && Arcade.i18n && Arcade.i18n.getLang() === 'en'; }

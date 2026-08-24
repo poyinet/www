@@ -116,6 +116,15 @@
           return g;
         }).filter(Boolean);
         var first = gs.slice(0, 2), rest = gs.slice(2, 4);
+        /* 第八期：精选第 2 天游戏——把新旗舰编入学习路径 */
+        var CURATED_REST = { bacon: ['acrostic', 'autokey'], modern: ['sm4', 'phishhunt'] };
+        if (CURATED_REST[ch.id]) {
+          var picked = [];
+          CURATED_REST[ch.id].forEach(function (pid) {
+            gs.forEach(function (g) { if (g.id === pid) picked.push(g); });
+          });
+          if (picked.length === 2) rest = picked;
+        }
         var term = TERM_MAP[ch.id];
         var num = ch.id === 'dawn' ? 'c0' : 'c' + (CHS.indexOf(ch));
         html += dayCard(day++, ch, [ch], first, term, num);

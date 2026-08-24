@@ -35,8 +35,15 @@ window.PROTOCOL_LAB = (function () {
       { id: 'chacha', icon: '🌀', name: { zh: 'ChaCha20', en: 'ChaCha20' } },
       { id: 'ecc', icon: '📈', name: { zh: 'ECC 点加法', en: 'ECC Point Addition' } },
       { id: 'a51', icon: '📡', name: { zh: 'A5/1 流密码', en: 'A5/1 Stream Cipher' } },
+      { id: 'rc4', icon: '🧨', name: { zh: 'RC4 警示录', en: 'RC4 Cautionary Tale' } },
       { id: 'pwd', icon: '⏳', name: { zh: '口令破解成本', en: 'Password Cracking Cost' } }
     ],
+
+    /* ================= RC4 历史警示 ================= */
+    rc4Intro: {
+      zh: 'RC4 曾加密过 WEP Wi-Fi 与半个互联网的 TLS 流量——却在 2015 年被 RFC 7465 全面禁用。死因不是算法核心被攻破，而是「密钥流重用」：同一密钥流绝不能用两次。本演示用真实 RC4（KSA+PRGA）复现 WEP 式灾难：固定密钥、只换 3 字节 IV，窃听者无需密钥就能读出两段明文的异或关系。',
+      en: 'RC4 once encrypted WEP Wi-Fi and half the internet\'s TLS traffic — until RFC 7465 banned it outright in 2015. The cause of death was not the core algorithm but keystream reuse: never encrypt twice under the same stream. This demo reproduces the WEP-style disaster with REAL RC4 (KSA+PRGA): fixed key, only a 3-byte IV changes — and an eavesdropper reads the XOR of two plaintexts without any key.'
+    },
 
     /* ================= ChaCha20 quarter-round ================= */
     chachaIntro: {
@@ -734,6 +741,68 @@ window.PROTOCOL_LAB = (function () {
       resetRegs(); render(false, false);
     })();
 
-    el('pl-ready').textContent = '8';
+    /* ---------- 🧨 RC4 警示录：密钥流重用灾难（真实 RC4） ---------- */
+    (function () {
+      el('rc4-intro').textContent = L(LAB.rc4Intro);
+      function ksa(key) {
+        var S = [], i, j = 0;
+        for (i = 0; i < 256; i++) S[i] = i;
+        for (i = 0; i < 256; i++) {
+          j = (j + S[i] + key[i % key.length]) & 255;
+          var t = S[i]; S[i] = S[j]; S[j] = t;
+        }
+        return S;
+      }
+      function prga(S, n) {
+        var S2 = S.slice(), i = 0, j = 0, out = [];
+        for (var k = 0; k < n; k++) {
+          i = (i + 1) & 255;
+          j = (j + S2[i]) & 255;
+          var t = S2[i]; S2[i] = S2[j]; S2[j] = t;
+          out.push(S2[(S2[i] + S2[j]) & 255]);
+        }
+        return out;
+      }
+      function toBytes(str) {
+        var b = [];
+        for (var i = 0; i < str.length; i++) b.push(str.charCodeAt(i) & 255);
+        return b;
+      }
+      function hexRow(label, bytes) {
+        var h = '';
+        for (var i = 0; i < bytes.length; i++) h += ('0' + bytes[i].toString(16)).slice(-2).toUpperCase() + ' ';
+        return '<div class="pl-r"><span class="pl-rl">' + label + '</span><span class="pl-cells">' + h + '</span></div>';
+      }
+      var M1 = 'ATTACK', M2 = 'RETREA';
+      el('rc4-run').addEventListener('click', function () {
+        var secret = [];
+        for (var i = 0; i < 5; i++) secret.push(Math.floor(Math.random() * 256));
+        var iv = [];
+        for (i = 0; i < 3; i++) iv.push(Math.floor(Math.random() * 256));
+        var p1 = toBytes(M1), p2 = toBytes(M2);
+        var ks1 = prga(ksa(secret.concat(iv)), p1.length);
+        var ks2 = prga(ksa(secret.concat(iv)), p2.length);   /* WEP 式：IV 不变 → 同一密钥流 */
+        var c1 = p1.map(function (b, k) { return b ^ ks1[k]; });
+        var c2 = p2.map(function (b, k) { return b ^ ks2[k]; });
+        var xorC = c1.map(function (b, k) { return b ^ c2[k]; });
+        var xorP = p1.map(function (b, k) { return b ^ p2[k]; });
+        var kh = secret.map(function () { return '••'; }).join(' ');
+        var ivh = iv.map(function (b) { return ('0' + b.toString(16)).slice(-2).toUpperCase(); }).join(' ');
+        el('rc4-view').innerHTML =
+          '<div class="pl-r"><span class="pl-rl">' + (isEn ? 'secret key' : '秘密密钥') + '</span><span class="pl-cells mono">' + kh + '</span></div>' +
+          '<div class="pl-r"><span class="pl-rl">IV</span><span class="pl-cells mono">' + ivh + '</span></div>' +
+          hexRow('P1 ⊕ P2', xorP) +
+          hexRow('C1 ⊕ C2', xorC) +
+          '<div class="ws-note" style="text-align:center">' + (isEn
+            ? 'The two rows are IDENTICAL — the eavesdropper recovered P1⊕P2 without the key. Reused keystream hands over plaintext relations for free.'
+            : '两行完全相同——窃听者没拿到密钥，却白得了两段明文的异或关系。重用的密钥流等于把明文关系拱手送上。') + '</div>';
+        if (Arcade.audio) Arcade.audio.play('ui');
+      });
+      el('rc4-reset').addEventListener('click', function () {
+        el('rc4-view').innerHTML = '';
+      });
+    })();
+
+    el('pl-ready').textContent = '9';
   };
 })();

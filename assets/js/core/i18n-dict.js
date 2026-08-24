@@ -44,11 +44,7 @@ Arcade.i18n.dicts = {
     'search.artifacts': '📎 密件',
     'search.empty': '没有找到匹配内容',
     'theme.neon': '街机霓虹',
-    'theme.crimson': '猩红夜袭',
-    'theme.aurora': '极光幻境',
-    'theme.gold': '鎏金王朝',
-    'theme.daylight': '晨光档案', 'theme.auto': '跟随系统',
-    'theme.warm': '夜读灯',
+    'theme.daylight': '晨光档案',
     /* ---------- extras（全局组件 fallback） ---------- */
     'extras.tutDefaultTitle': '玩法说明',
     'extras.tutStart': '开始游戏',
@@ -430,11 +426,7 @@ Arcade.i18n.dicts = {
     'search.artifacts': '📎 Artifacts',
     'search.empty': 'No matches found',
     'theme.neon': 'Arcade Neon',
-    'theme.crimson': 'Crimson Raid',
-    'theme.aurora': 'Aurora Dream',
-    'theme.gold': 'Golden Dynasty',
-    'theme.daylight': 'Morning Light', 'theme.auto': 'Auto (system)',
-    'theme.warm': 'Night Lamp',
+    'theme.daylight': 'Morning Light',
 
     /* ---------- extras ---------- */
     'extras.tutDefaultTitle': 'How to Play',

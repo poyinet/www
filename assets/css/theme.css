@@ -762,55 +762,6 @@ html.theme-daylight .tabbar { border-top-color: rgba(122, 91, 184, 0.28); }
   --accent: #00f0ff;
 }
 
-/* 主题② 猩红夜袭 · 暗血红 + 荧光橙红（战争警报/敌后突击氛围） */
-html.theme-crimson {
-  --bg-deep: #160a0c;
-  --bg-panel: #241014;
-  --bg-panel-2: #331820;
-  --neon-cyan: #ff5a3c;
-  --neon-pink: #ff2d55;
-  --neon-green: #ffb020;
-  --neon-yellow: #ffd166;
-  --neon-purple: #ff6b6b;
-  --neon-orange: #ff8c42;
-  --text-main: #ffecec;
-  --text-dim: #b08888;
-  --accent: #ff5a3c;
-}
-
-/* 主题③ 极光幻境 · 深紫黑 + 极光紫粉绿（极光帷幕/异星幻境，与霓虹拉开反差：主色紫罗兰） */
-html.theme-aurora {
-  --bg-deep: #0d0620;
-  --bg-panel: #1a0f38;
-  --bg-panel-2: #271647;
-  --neon-cyan: #9d7bff;
-  --neon-pink: #ff7ad9;
-  --neon-green: #6ef2c2;
-  --neon-yellow: #ffd76e;
-  --neon-purple: #c58cff;
-  --neon-orange: #ffb86b;
-  --text-main: #f2edff;
-  --text-dim: #9c8fc9;
-  --accent: #c58cff;
-}
-
-/* 主题④ 鎏金王朝 · 黑金 + 琥珀（奢华档案/皇家金库氛围） */
-html.theme-gold {
-  --bg-deep: #14100a;
-  --bg-panel: #221a10;
-  --bg-panel-2: #2e2416;
-  --neon-cyan: #ffd700;
-  --neon-pink: #ff9d5c;
-  --neon-green: #d4af37;
-  --neon-yellow: #ffe08a;
-  --neon-purple: #c9a227;
-  --neon-orange: #ffb347;
-  --text-main: #f5ecd0;
-  --text-dim: #a89460;
-  --accent: #ffd700;
-}
-
-/* 主题⑤ 晨光档案 · 亮色（晨光暖白 + 暖橙/天蓝 + 深棕文字，温润有层次，与暗色主题最大反差）
    卡片底色用奶油纸色（比背景深），配合边框与柔和投影突出层次 */
 html.theme-daylight {
   --bg-deep: #f2ead8;
@@ -862,44 +813,6 @@ html.theme-daylight .progress-bar.slim { background: rgba(122, 91, 184, 0.16); }
 html.theme-daylight .fp-dot.off,
 html.theme-daylight .footprint .fp-dot { background: rgba(122, 91, 184, 0.08); color: var(--text-dim); }
 html.theme-daylight .anav-item:hover { background: rgba(122, 91, 184, 0.10); }
-
-/* 主题⑥ 夜读灯 · 护眼（D2）：暗底暖橙低蓝光，减少夜间蓝光刺激；对比度保持 WCAG AA */
-html.theme-warm {
-  --bg-deep: #1a1208;
-  --bg-panel: #241a0e;
-  --bg-panel-2: #2e2313;
-  --card-border: rgba(255, 166, 61, 0.30);
-  --neon-cyan: #e8a35a;
-  --neon-pink: #e88a6a;
-  --neon-green: #a8c36a;
-  --neon-yellow: #e8c35a;
-  --neon-purple: #c9a06a;
-  --neon-orange: #ffb35c;
-  --text-main: #e8dcc8;
-  --text-dim: #b3a184; /* 暖棕灰，深底上 ≈5.5:1，通过 WCAG AA */
-  --accent: #ffb35c;
-  --on-accent: #2a1a08;
-}
-html.theme-warm body::before { opacity: 0.5; }
-html.theme-warm .card,
-html.theme-warm .game-card,
-html.theme-warm .st-chapter,
-html.theme-warm .jp-node,
-html.theme-warm .daily-hub,
-html.theme-warm .daily-row,
-html.theme-warm .recent-card,
-html.theme-warm .footprint,
-html.theme-warm .st-person,
-html.theme-warm .ar-item,
-html.theme-warm .pp-card,
-html.theme-warm .home-daily,
-html.theme-warm .search-box {
-  background: var(--bg-panel);
-  border-color: var(--card-border);
-}
-html.theme-warm .progress-bar,
-html.theme-warm .progress-bar.slim { background: rgba(255, 179, 92, 0.16); }
-html.theme-warm .anav-item:hover { background: rgba(255, 179, 92, 0.10); }
 
 /* 隐藏密文彩蛋线索（N3 ARG）：极小字，细心玩家才会发现 */
 .egg-hint {

@@ -36,13 +36,11 @@ Arcade.ensureArchive = function (cb) {
 /* ---------------- 设置：音效 / 音乐 / 语言 / 主题 / 触感 ---------------- */
 Arcade.settings = (function () {
   var KEY = 'arcade_settings';
-  var THEMES = ['auto', 'neon', 'crimson', 'aurora', 'gold', 'daylight', 'warm'];
+  var THEMES = ['neon', 'daylight'];
   /* 各主题的主题色（meta theme-color / iOS 状态栏联动；与 theme.css 配色一致） */
-  var THEME_COLORS = {
-    neon: '#0a0a12', crimson: '#160a0c', aurora: '#0d0620', gold: '#14100a', daylight: '#f2ead8', warm: '#1a1208'
-  };
-  /* B1：auto 为默认初值 —— 跟随系统深浅色实时解析为 neon/daylight */
-  var state = { sound: true, music: true, reducedMotion: false, theme: 'auto', haptic: true };
+  var THEME_COLORS = { neon: '#0a0a12', daylight: '#f2ead8' };
+  /* 默认街机霓虹（neon）；历史存档中的 auto/已下线主题一律迁移回默认 */
+  var state = { sound: true, music: true, reducedMotion: false, theme: 'neon', haptic: true };
 
   try {
     var raw = localStorage.getItem(KEY);
@@ -51,6 +49,7 @@ Arcade.settings = (function () {
       for (var k in state) if (s[k] !== undefined) state[k] = s[k];
     }
   } catch (e) {}
+  if (THEMES.indexOf(state.theme) < 0) { state.theme = 'neon'; save(); }
 
   if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     state.reducedMotion = true;
@@ -65,28 +64,16 @@ Arcade.settings = (function () {
     if (sb) sb.setAttribute('content', t === 'daylight' ? 'default' : 'black-translucent');
   }
 
-  /* B1：auto 档解析 + 系统深浅色实时联动（须在首次 apply 前定义） */
-  var darkQuery = window.matchMedia ? window.matchMedia('(prefers-color-scheme: dark)') : null;
-  function resolve(t) {
-    if (t !== 'auto') return t;
-    return (darkQuery && darkQuery.matches) ? 'neon' : 'daylight';
-  }
   function apply() {
     var root = document.documentElement;
-    root.classList.remove('theme-neon', 'theme-crimson', 'theme-aurora', 'theme-gold', 'theme-daylight', 'theme-warm');
-    var t = resolve(THEMES.indexOf(state.theme) >= 0 ? state.theme : 'auto');
+    root.classList.remove('theme-daylight');
+    var t = THEMES.indexOf(state.theme) >= 0 ? state.theme : 'neon';
     if (t !== 'neon') root.classList.add('theme-' + t);
     root.classList.toggle('reduced-motion', !!state.reducedMotion);
     syncThemeColor(t);
   }
   function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
   apply();
-
-  if (darkQuery) {
-    var onSchemeChange = function () { if (state.theme === 'auto') apply(); };
-    if (darkQuery.addEventListener) darkQuery.addEventListener('change', onSchemeChange);
-    else if (darkQuery.addListener) darkQuery.addListener(onSchemeChange);
-  }
 
   function get() { return JSON.parse(JSON.stringify(state)); }
   function set(k, v) {
@@ -335,7 +322,7 @@ Arcade.ui = (function () {
     });
     bar.appendChild(langBtn);
 
-    // 主题：点击按 THEMES 顺序循环切换（neon→crimson→aurora→gold→daylight→warm→neon）
+    // 主题：点击按 THEMES 顺序循环切换（街机霓虹 → 晨光档案 → 街机霓虹）
     var themeBtn = document.createElement('button');
     themeBtn.className = 'qb-btn';
     themeBtn.setAttribute('aria-label', T('settings.theme'));

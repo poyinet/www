@@ -9,7 +9,7 @@ const { chromium } = require('@playwright/test');
 const BASE = 'http://localhost:4173';
 const PAGES = ['index.html', 'games.html', 'stories.html', 'people.html', 'artifacts.html',
   'glossary.html', 'stats.html', 'workshop.html', 'quiz.html', 'duel.html',
-  'morse-listen.html', 'path.html', 'map.html', 'machine.html', 'quotes.html', '404.html'];
+  'morse-listen.html', 'path.html', 'map.html', 'machine.html', 'protocols.html', 'quotes.html', '404.html'];
 /* 游戏页抽样 3 款（重/中/轻） */
 const GAMES = ['games/enigma/index.html', 'games/bb84/index.html', 'games/guess/index.html'];
 

@@ -1,181 +1,188 @@
 {
- "date": "2026-08-23",
+ "date": "2026-08-24",
  "env": "localhost:4173 (no network throttling)",
  "pages": [
   {
    "page": "index.html",
-   "fcpMs": 408,
+   "fcpMs": 356,
    "lcpMs": null,
-   "dclMs": 55,
-   "loadMs": 72,
-   "transferKB": 221
+   "dclMs": 36,
+   "loadMs": 43,
+   "transferKB": 128
   },
   {
    "page": "games.html",
-   "fcpMs": 288,
+   "fcpMs": 304,
    "lcpMs": null,
-   "dclMs": 65,
+   "dclMs": 67,
    "loadMs": 73,
-   "transferKB": 90
+   "transferKB": 106
   },
   {
    "page": "stories.html",
-   "fcpMs": 268,
+   "fcpMs": 284,
    "lcpMs": null,
-   "dclMs": 62,
-   "loadMs": 69,
-   "transferKB": 118
+   "dclMs": 57,
+   "loadMs": 63,
+   "transferKB": 119
   },
   {
    "page": "people.html",
-   "fcpMs": 260,
+   "fcpMs": 268,
    "lcpMs": null,
-   "dclMs": 66,
-   "loadMs": 75,
-   "transferKB": 126
+   "dclMs": 61,
+   "loadMs": 69,
+   "transferKB": 116
   },
   {
    "page": "artifacts.html",
-   "fcpMs": 196,
+   "fcpMs": 188,
    "lcpMs": null,
-   "dclMs": 68,
-   "loadMs": 76,
-   "transferKB": 117
+   "dclMs": 48,
+   "loadMs": 65,
+   "transferKB": 112
   },
   {
    "page": "glossary.html",
-   "fcpMs": 232,
+   "fcpMs": 236,
    "lcpMs": null,
-   "dclMs": 36,
-   "loadMs": 45,
-   "transferKB": 174
+   "dclMs": 39,
+   "loadMs": 49,
+   "transferKB": 185
   },
   {
    "page": "stats.html",
    "fcpMs": 272,
    "lcpMs": null,
-   "dclMs": 221,
-   "loadMs": 225,
-   "transferKB": 55
+   "dclMs": 64,
+   "loadMs": 71,
+   "transferKB": 158
   },
   {
    "page": "workshop.html",
-   "fcpMs": 184,
+   "fcpMs": 200,
    "lcpMs": null,
-   "dclMs": 35,
-   "loadMs": 125,
-   "transferKB": 125
+   "dclMs": 153,
+   "loadMs": 161,
+   "transferKB": 222
   },
   {
    "page": "quiz.html",
-   "fcpMs": 176,
-   "lcpMs": null,
-   "dclMs": 32,
-   "loadMs": 36,
-   "transferKB": 94
-  },
-  {
-   "page": "duel.html",
-   "fcpMs": 164,
-   "lcpMs": null,
-   "dclMs": 36,
-   "loadMs": 41,
-   "transferKB": 114
-  },
-  {
-   "page": "morse-listen.html",
    "fcpMs": 188,
    "lcpMs": null,
-   "dclMs": 43,
+   "dclMs": 39,
    "loadMs": 46,
    "transferKB": 119
   },
   {
+   "page": "duel.html",
+   "fcpMs": 172,
+   "lcpMs": null,
+   "dclMs": 42,
+   "loadMs": 50,
+   "transferKB": 115
+  },
+  {
+   "page": "morse-listen.html",
+   "fcpMs": 176,
+   "lcpMs": null,
+   "dclMs": 37,
+   "loadMs": 43,
+   "transferKB": 105
+  },
+  {
    "page": "path.html",
-   "fcpMs": 356,
+   "fcpMs": 236,
    "lcpMs": null,
-   "dclMs": 58,
-   "loadMs": 84,
-   "transferKB": 80
-  },
-  {
-   "page": "map.html",
-   "fcpMs": 400,
-   "lcpMs": null,
-   "dclMs": 105,
-   "loadMs": 112,
-   "transferKB": 117
-  },
-  {
-   "page": "machine.html",
-   "fcpMs": 116,
-   "lcpMs": null,
-   "dclMs": 150,
-   "loadMs": 158,
-   "transferKB": 257
-  },
-  {
-   "page": "quotes.html",
-   "fcpMs": 368,
-   "lcpMs": null,
-   "dclMs": 80,
-   "loadMs": 84,
+   "dclMs": 48,
+   "loadMs": 58,
    "transferKB": 116
   },
   {
-   "page": "404.html",
-   "fcpMs": 152,
+   "page": "map.html",
+   "fcpMs": 204,
    "lcpMs": null,
-   "dclMs": 63,
-   "loadMs": 70,
-   "transferKB": 73
-  },
-  {
-   "page": "games/enigma/index.html",
-   "fcpMs": 148,
-   "lcpMs": null,
-   "dclMs": 51,
-   "loadMs": 119,
-   "transferKB": 111
-  },
-  {
-   "page": "games/bb84/index.html",
-   "fcpMs": 144,
-   "lcpMs": null,
-   "dclMs": 38,
-   "loadMs": 42,
-   "transferKB": 106
-  },
-  {
-   "page": "games/guess/index.html",
-   "fcpMs": 132,
-   "lcpMs": null,
-   "dclMs": 105,
-   "loadMs": 112,
-   "transferKB": 106
-  }
- ],
- "slowTop5": [
-  {
-   "page": "stats.html",
-   "lcpMs": null
+   "dclMs": 43,
+   "loadMs": 50,
+   "transferKB": 118
   },
   {
    "page": "machine.html",
-   "lcpMs": null
+   "fcpMs": 200,
+   "lcpMs": null,
+   "dclMs": 37,
+   "loadMs": 41,
+   "transferKB": 121
   },
+  {
+   "page": "protocols.html",
+   "fcpMs": 244,
+   "lcpMs": null,
+   "dclMs": 39,
+   "loadMs": 157,
+   "transferKB": 125
+  },
+  {
+   "page": "quotes.html",
+   "fcpMs": 208,
+   "lcpMs": null,
+   "dclMs": 33,
+   "loadMs": 37,
+   "transferKB": 111
+  },
+  {
+   "page": "404.html",
+   "fcpMs": 116,
+   "lcpMs": null,
+   "dclMs": 43,
+   "loadMs": 50,
+   "transferKB": 76
+  },
+  {
+   "page": "games/enigma/index.html",
+   "fcpMs": 140,
+   "lcpMs": null,
+   "dclMs": 40,
+   "loadMs": 99,
+   "transferKB": 119
+  },
+  {
+   "page": "games/bb84/index.html",
+   "fcpMs": 152,
+   "lcpMs": null,
+   "dclMs": 41,
+   "loadMs": 111,
+   "transferKB": 108
+  },
+  {
+   "page": "games/guess/index.html",
+   "fcpMs": 140,
+   "lcpMs": null,
+   "dclMs": 109,
+   "loadMs": 114,
+   "transferKB": 103
+  }
+ ],
+ "slowTop5": [
   {
    "page": "workshop.html",
    "lcpMs": null
   },
   {
-   "page": "games/enigma/index.html",
+   "page": "protocols.html",
    "lcpMs": null
   },
   {
-   "page": "map.html",
+   "page": "games/guess/index.html",
+   "lcpMs": null
+  },
+  {
+   "page": "games/bb84/index.html",
+   "lcpMs": null
+  },
+  {
+   "page": "games/enigma/index.html",
    "lcpMs": null
   }
- ],
- "note": "LCP 需 PerformanceObserver buffered（本 harness 时序拿不到），以 FCP+DCL+load+transfer 为基线口径；复测对比用同脚本"
+ ]
 }

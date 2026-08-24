@@ -100,6 +100,8 @@ test('ZKP：轮次推进且节点经历模糊承诺', async function ({ page }) 
 test('ECC：(-1,4)+(3,4)=(2,-4) 几何加法断言', async function ({ page }) {
   const errors = await trackErrors(page);
   await page.goto('/protocols.html', { waitUntil: 'networkidle' });
+  await page.locator('#pl-ecc').scrollIntoViewIfNeeded();
+  await page.waitForTimeout(400);          /* LAZY 预热 */
   await expect(page.locator('#ecc-ab')).toHaveText('a=-7 , b=10');
 
   function px(x) { return (x + 3.4) / 6.8 * 420; }
@@ -138,6 +140,8 @@ test('ECC：(-1,4)+(3,4)=(2,-4) 几何加法断言', async function ({ page }) {
 test('口令成本：熵与穷举时间随算法/装备变化', async function ({ page }) {
   const errors = await trackErrors(page);
   await page.goto('/protocols.html', { waitUntil: 'networkidle' });
+  await page.locator('#pl-pwd').scrollIntoViewIfNeeded();
+  await page.waitForTimeout(400);          /* LAZY 预热 */
   await expect(page.locator('#pwd-len-v')).toHaveText('10');
   /* 默认 lower+upper=52, sha256 @ 8×GPU */
   await expect(page.locator('#pwd-out')).toContainText(/57\.0 bits/);

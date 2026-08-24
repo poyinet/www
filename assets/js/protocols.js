@@ -165,8 +165,20 @@ window.PROTOCOL_LAB = (function () {
     var doc = document;
     function el(id) { return doc.getElementById(id); }
 
+    /* 懒初始化：演示卡临近视口才构建（无 IntersectionObserver 的环境立即执行，兼容冒烟桩） */
+    function LAZY(secId, fn) {
+      var sec = doc.getElementById(secId);
+      if (!sec || typeof window.IntersectionObserver === 'undefined') { fn(); return; }
+      var io = new window.IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { io.disconnect(); fn(); }
+        });
+      }, { rootMargin: '600px' });
+      io.observe(sec);
+    }
+
     /* ---------- ① TLS 握手 ---------- */
-    (function () {
+    LAZY('pl-tls', function () {
       var steps = LAB.tlsSteps();
       var box = el('tls-steps');
       var idx = 0, eve = false;
@@ -201,10 +213,10 @@ window.PROTOCOL_LAB = (function () {
         render();
       });
       render();
-    })();
+    });
 
     /* ---------- ② DH 中间人 ---------- */
-    (function () {
+    LAZY('pl-dh', function () {
       var p = LAB.dhParams.p, g = LAB.dhParams.g;
       var e = 6; /* Eve 的私钥（演示固定） */
       var eveOn = false;
@@ -257,10 +269,10 @@ window.PROTOCOL_LAB = (function () {
       });
       el('dh-run').addEventListener('click', run);
       run();
-    })();
+    });
 
     /* ---------- ③ Merkle 树与区块链 ---------- */
-    (function () {
+    LAZY('pl-merkle', function () {
       var leaves = LAB.merkleLeaves.slice();
       function treeOf(lvs) {
         var lv = [lvs.map(H)];
@@ -344,10 +356,10 @@ window.PROTOCOL_LAB = (function () {
       buildChain(); renderChain(null);
       el('chain-note').textContent = L(LAB.chainNote);
       });
-    })();
+    });
 
     /* ---------- ④ 零知识证明（三色图） ---------- */
-    (function () {
+    LAZY('pl-zkp', function () {
       var nodes = LAB.zkpNodes, edges = LAB.zkpEdges, base = LAB.zkpBase;
       var pos = {};
       nodes.forEach(function (n) { pos[n.id] = n; });
@@ -403,10 +415,10 @@ window.PROTOCOL_LAB = (function () {
       });
       stat();
       el('zkp-intro').textContent = L(LAB.zkpIntro);
-    })();
+    });
 
     /* ---------- ⑤ ECC 点加法 ---------- */
-    (function () {
+    LAZY('pl-ecc', function () {
       var cv = el('ecc-cv');
       var ctx = cv.getContext('2d');
       var WID = cv.width, HEI = cv.height;
@@ -524,10 +536,10 @@ window.PROTOCOL_LAB = (function () {
       el('ecc-ab').textContent = 'a=' + st.a + ' , b=' + st.b;
       el('ecc-clear').addEventListener('click', function () { st.P = st.Q = null; redraw(); });
       redraw();
-    })();
+    });
 
     /* ---------- ⑥ 口令破解成本计算器 ---------- */
-    (function () {
+    LAZY('pl-pwd', function () {
       var lenEl = el('pwd-len');
       /* 动态构建字符集勾选框 / 算法与装备下拉 */
       (function () {
@@ -621,10 +633,10 @@ window.PROTOCOL_LAB = (function () {
       lenEl.addEventListener('input', run);
       ['pwd-algo', 'pwd-rig'].forEach(function (id) { el(id).addEventListener('change', run); });
       run();
-    })();
+    });
 
     /* ---------- 🌀 ChaCha20 quarter-round ---------- */
-    (function () {
+    LAZY('pl-chacha', function () {
       el('cc-intro').textContent = L(LAB.chachaIntro);
       var st = new Uint32Array(16);
       var CONSTANTS = [0x61707865, 0x3320646e, 0x79622d32, 0x6b206574]; /* "expand 32-byte k" */
@@ -692,10 +704,10 @@ window.PROTOCOL_LAB = (function () {
       });
       el('cc-reset').addEventListener('click', reset);
       reset();
-    })();
+    });
 
     /* ---------- 📡 A5/1 LFSR ---------- */
-    (function () {
+    LAZY('pl-a51', function () {
       el('a51-intro').textContent = L(LAB.a51Intro);
       var LEN = [19, 22, 23];
       var TAPS = [[13, 16, 17, 18], [20, 21], [7, 20, 21, 22]];
@@ -747,10 +759,10 @@ window.PROTOCOL_LAB = (function () {
       });
       el('a51-reset').addEventListener('click', function () { resetRegs(); render(false, false); });
       resetRegs(); render(false, false);
-    })();
+    });
 
     /* ---------- 🧨 RC4 警示录：密钥流重用灾难（真实 RC4） ---------- */
-    (function () {
+    LAZY('pl-rc4', function () {
       el('rc4-intro').textContent = L(LAB.rc4Intro);
       function ksa(key) {
         var S = [], i, j = 0;
@@ -809,7 +821,7 @@ window.PROTOCOL_LAB = (function () {
       el('rc4-reset').addEventListener('click', function () {
         el('rc4-view').innerHTML = '';
       });
-    })();
+    });
 
     el('pl-ready').textContent = '9';
   };

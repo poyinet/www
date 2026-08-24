@@ -60,8 +60,8 @@ window.GAME_TUTORIAL_STEPS = [
     '<div class="ac-poem" id="ac-poem"></div>' +
     '<div class="ac-btns" id="ac-opts"></div>' +
     '<div class="ac-msg" id="ac-msg"></div>' +
-    '<div class="ac-btnrow"><button class="btn yellow" id="ac-next" hidden></button></div>' +
-    '<div class="ac-btnrow"><button class="btn" id="ac-daily"></button></div>' +
+    '<div class="ac-btns"><button class="btn yellow" id="ac-next" hidden></button></div>' +
+    '<div class="ac-btns"><button class="btn" id="ac-daily"></button></div>' +
     '<div class="ac-help">' + T('gs.acrostic.helpText') + '</div>';
   root.appendChild(wrap);
   var el = function (id) { return wrap.querySelector('#' + id); };
@@ -72,7 +72,7 @@ window.GAME_TUTORIAL_STEPS = [
   dailyBtn.textContent = T('gs.acrostic.dailyBtn');
 
   var idx = 0, score = 0, streak = 0, answered = false, finished = false,
-      dailyMode = false, startTs = 0, cur = null;
+      dailyMode = false, startTs = 0, cur = null, nextTimer = null;
 
   function updProg() {
     progEl.textContent = fmt('gs.acrostic.qText', { n: Math.min(idx + 1, TOTAL), total: TOTAL });
@@ -83,7 +83,7 @@ window.GAME_TUTORIAL_STEPS = [
     poemEl.classList.toggle('show', !!reveal);
     var h = '';
     for (var i = 0; i < lines.length; i++) {
-      var head = isEn() ? lines[i].charAt(0) : lines[i].charAt(0);
+      var head = lines[i].charAt(0);
       var rest = lines[i].slice(1);
       h += '<div class="ac-line"><b>' + head + '</b>' + rest + '</div>';
     }
@@ -118,9 +118,10 @@ window.GAME_TUTORIAL_STEPS = [
           answered = true;
           if (firstTryOfQ) { streak++; score += 20 + (streak - 1) * 5; } else { score += 10; }
           if (Arcade.juice) Arcade.juice.win();
-          setMsg('ok', fmt('gs.acrostic.ok', { pts: '+' + (firstTryOfQ ? 20 + (streak - 1) * 5 : 10) }));
+          var gained = firstTryOfQ ? 20 + (streak - 1) * 5 : 10;
+          setMsg('ok', fmt('gs.acrostic.ok', { pts: gained }));
           renderPoem(cur.lines, true);
-          setTimeout(nextQ, 1100);
+          nextTimer = setTimeout(nextQ, 1100);
         } else {
           firstTryOfQ = false;
           streak = 0;
@@ -157,6 +158,7 @@ window.GAME_TUTORIAL_STEPS = [
     newQuestion(dailyMode ? mulberry(daySeed() * 31 + idx * 7) : mulberry(Math.floor(Math.random() * 2147483000) + 1));
   }
   function startGame(daily) {
+    if (nextTimer) { clearTimeout(nextTimer); nextTimer = null; }
     idx = 0; score = 0; streak = 0; finished = false;
     firstTryOfQ = true;
     dailyMode = !!daily;

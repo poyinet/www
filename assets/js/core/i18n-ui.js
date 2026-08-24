@@ -8,7 +8,7 @@
   d.zh['nav.people'] = '人物志';
   d.zh['nav.artifacts'] = '密件册';
   d.zh['glossary.title'] = '🔐 密码学词典';
-  d.zh['glossary.sub'] = '158 个术语 · 中英对照 · 边玩边懂——每个词都能在站内找到对应的游戏或章节';
+  d.zh['glossary.sub'] = '166 个术语 · 中英对照 · 边玩边懂——每个词都能在站内找到对应的游戏或章节';
   d.zh['glossary.play'] = '玩一玩';
   d.zh['workshop.title'] = '🔬 破译工坊';
   d.zh['workshop.sub'] = '全网独有的加密/破解二合一实验室——16 种经典算法现场加密，或粘贴密文一键自动破解';
@@ -37,7 +37,7 @@
   d.zh['map.title'] = '🗺️ 密码学世界地图';
   d.zh['map.sub'] = '把密码史事件放回真实地理位置——点开每个坐标，走进密码学的地理故事';
   d.zh['cm.title'] = '🏛️ 密码机博物馆';
-  d.zh['cm.sub'] = '五台改变历史的密码机——原理、参数、历史，一页看尽；每台都能在游戏厅亲手操作';
+  d.zh['cm.sub'] = '七台改变历史的密码机——原理、参数、历史，一页看尽；每台都能在游戏厅亲手操作';
   d.zh['quotes.title'] = '💬 密码学名言墙';
   d.zh['quotes.sub'] = '图灵、香农、施奈尔……密码学家与破译者的经典语录，中英对照，按主题筛选';
   d.zh['save.title'] = '💾 存档备份';
@@ -58,7 +58,7 @@
   d.zh['artifacts.need'] = '需破译';
   d.zh['app.desc404'] = '404 页面走丢了 —— 回破译 DECODE ARCADE 大厅继续玩。';
   d.zh['err.msg'] = 'GAME OVER · 页面不存在';
-  d.zh['err.sub'] = '这张卡带被吞了，或者地址敲错了。回大厅再投一枚硬币，继续挑战 108 款小游戏吧。';
+  d.zh['err.sub'] = '这张卡带被吞了，或者地址敲错了。回大厅再投一枚硬币，继续挑战 114 款小游戏吧。';
   d.zh['err.back'] = '◀ 回大厅';
   d.zh['lobby.brand'] = '破译游戏';
   d.zh['lobby.desc'] = '密码破译街机 · 打开即玩 · 本地记录你的最高分';
@@ -91,7 +91,7 @@
   d.en['nav.people'] = 'People';
   d.en['nav.artifacts'] = 'Artifacts';
   d.en['glossary.title'] = '🔐 Cryptography Glossary';
-  d.en['glossary.sub'] = '158 terms · bilingual · learn by playing — every word maps to a game or chapter in this arcade';
+  d.en['glossary.sub'] = '166 terms · bilingual · learn by playing — every word maps to a game or chapter in this arcade';
   d.en['glossary.play'] = 'Play';
   d.en['workshop.title'] = '🔬 Cipher Workshop';
   d.en['workshop.sub'] = 'A one-of-a-kind encrypt/decrypt lab — encrypt with 16 classic ciphers, or paste ciphertext for one-click auto-cracking';
@@ -120,7 +120,7 @@
   d.en['map.title'] = '🗺️ Crypto World Map';
   d.en['map.sub'] = 'Pin cryptographic history back onto real geography — tap a coordinate and step into the story';
   d.en['cm.title'] = '🏛️ Cipher Machine Museum';
-  d.en['cm.sub'] = 'Five machines that changed history — principles, specs, and history on one page; play each one in the arcade';
+  d.en['cm.sub'] = 'Seven machines that changed history — principles, specs, and history on one page; play each one in the arcade';
   d.en['quotes.title'] = '💬 Quote Wall of Cryptography';
   d.en['quotes.sub'] = 'Turing, Shannon, Schneier… the classic words of cryptographers and codebreakers, bilingual, filterable by theme';
   d.en['save.title'] = '💾 Save Backup';
@@ -142,7 +142,7 @@
   d.en['app.desc404'] = 'Page not found — head back to the DECODE ARCADE lobby and keep playing.';
   d.en['err.msg'] = 'GAME OVER · PAGE NOT FOUND';
   d.en['err.code'] = '404';
-  d.en['err.sub'] = 'This cartridge got swallowed — or the address was mistyped. Head back to the lobby, drop in another coin, and keep playing 105 mini-games.';
+  d.en['err.sub'] = 'This cartridge got swallowed — or the address was mistyped. Head back to the lobby, drop in another coin, and keep playing 114 mini-games.';
   d.en['err.back'] = '◀ Back to lobby';
   d.en['lobby.brand'] = 'DECODE ARCADE';
   d.en['lobby.desc'] = 'A retro cipher arcade — open and play, best scores stored locally';
@@ -217,8 +217,8 @@
   /* 第七期：协议实验室 */
   d.zh['pl.title'] = '🛡️ 协议实验室';
   d.en['pl.title'] = '🛡️ Protocol Lab';
-  d.zh['pl.sub'] = 'TLS 握手 · DH 中间人 · Merkle 树与区块链 · 零知识证明 · ECC 几何 · 口令破解成本——现代密码学的六堂交互课';
-  d.en['pl.sub'] = 'TLS handshake · DH man-in-the-middle · Merkle tree & blockchain · zero-knowledge proof · ECC geometry · password cracking cost — six interactive lessons in modern crypto';
+  d.zh['pl.sub'] = 'TLS 握手 · DH 中间人 · Merkle 树与区块链 · 零知识证明 · ECC 几何 · 口令破解成本——现代密码学的九堂交互课';
+  d.en['pl.sub'] = 'TLS handshake · DH man-in-the-middle · Merkle tree & blockchain · zero-knowledge proof · ECC geometry · password cracking cost — nine interactive lessons in modern crypto';
   d.zh['pl.tlsH'] = 'TLS 握手：HTTPS 的第一秒';
   d.en['pl.tlsH'] = 'TLS Handshake: the first second of HTTPS';
   d.zh['pl.tlsNote'] = '逐步走完一次 TLS 握手，观察「哪些是明文、哪些已加密」；打开中间人开关，看看窃听者在哪一步露馅。';
@@ -241,8 +241,8 @@
   d.en['pl.pwdH'] = 'Password Cracking Cost Calculator';
   d.zh['workshop.protocolLink'] = '🛡️ 协议实验室 →';
   d.en['workshop.protocolLink'] = '🛡️ Protocol Lab →';
-  d.zh['pl.tls13Note'] = '📌 本演示为教学清晰采用经典握手叙事（RSA 式预主密钥传输，TLS 1.2 及更早）。现代 TLS 1.3 已改为强制（EC）DHE 密钥协商、废弃无前向安全的 RSA 传输，且 ServerHello 之后的所有握手消息全部加密——「认证身份」这一防中间人根基从未改变。';
-  d.en['pl.tls13Note'] = '📌 For clarity this demo uses the classic handshake narrative (RSA-style pre-master transport, TLS ≤1.2). Modern TLS 1.3 mandates (EC)DHE key agreement, drops non-forward-secret RSA transport, and encrypts all handshake messages after ServerHello — the anti-MITM foundation of authenticating identity never changed.';
+  d.zh['pl.tls13Note'] = '📌 本演示为教学清晰采用经典握手叙事（RSA 式预主密钥传输，TLS 1.2 及更早）。现代 TLS 1.3 已改为默认采用（EC）DHE 密钥协商（PSK 复用除外）、废弃无前向安全的 RSA 传输，且 ServerHello 之后的所有握手消息全部加密——「认证身份」这一防中间人根基从未改变。';
+  d.en['pl.tls13Note'] = '📌 For clarity this demo uses the classic handshake narrative (RSA-style pre-master transport, TLS ≤1.2). Modern TLS 1.3 defaults to (EC)DHE key agreement (PSK reuse excepted), drops non-forward-secret RSA transport, and encrypts all handshake messages after ServerHello — the anti-MITM foundation of authenticating identity never changed.';
   d.zh['pl.chachaH'] = 'ChaCha20：八条指令的雪崩';
   d.en['pl.chachaH'] = 'ChaCha20: avalanche in eight instructions';
   d.zh['pl.a51H'] = 'A5/1：多数投票驱动的三转子移位寄存器';

@@ -1,6 +1,6 @@
 ﻿/* ============================================================
    破译编年史 · 数据模块（P5 阶段 0 骨架）
-   数据：STORIES（11 章）/ PEOPLE（12 人）/ ARTIFACTS（11 件）
+   数据：STORIES（12 章）/ PEOPLE（48 人）/ ARTIFACTS（41 件）
    进度：localStorage（arcade_story_read / arcade_letters / arcade_artifacts / arcade_challenges）
    API：Arcade.stories —— 阅读 / 密信 / 密件 / 挑战 / 微型解算器
    依赖：core/storage.js（先加载）；正文文案经 i18n 字典（st.* / stp.* / sta.*）

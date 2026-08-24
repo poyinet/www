@@ -34,7 +34,7 @@ test('shamir：完整对局（三轮 × 五步通关 + BEST 上报）', async fu
     const stepTxt = await page.locator('#sm-step').innerText();
     if (stepTxt.indexOf('\u2460') >= 0) {           /* ① 分发验证 f(x)=a·x mod P */
       const a = parseInt(stepTxt.match(/a\s*=\s*(\d+)/)[1], 10);
-      const xm = stepTxt.match(/#\s*(\d+)/) || stepTxt.match(/第\s*(\d+)\s*号/);
+      const xm = stepTxt.match(/#\s*(\d+)/) || stepTxt.match(/第\s*(\d+)\s*号/) || stepTxt.match(/x\s*=\s*(\d+)/);
       await page.locator('#sm-in').fill(String((a * parseInt(xm[1], 10)) % P));
       await page.locator('#sm-sub').click();
     } else if (stepTxt.indexOf('\u2461') >= 0) {    /* ② 门限 k=2 */

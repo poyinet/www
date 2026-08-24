@@ -14,7 +14,7 @@ const GATES = [
   ['smoke',     'node', ['smoke.js'],                    '游戏冒烟（默认）'],
   ['smoke:zh',  'node', ['smoke.js', 'zh'],              '游戏冒烟（中文）'],
   ['smoke:en',  'node', ['smoke.js', 'en'],              '游戏冒烟（英文）'],
-  ['smoke:page','node', ['smoke.js', 'page'],            '页面冒烟 ×17'],
+  ['smoke:page','node', ['smoke.js', 'page'],            '页面冒烟 ×18'],
   ['deep',      'node', ['tools/audit-deep.js'],         '静态深度扫描'],
   ['preflight', 'node', ['tools/preflight.js'],          '部署前资源完整性'],
   ['ghpages',   'node', ['tools/check-ghpages.js'],      'GitHub Pages 兼容'],

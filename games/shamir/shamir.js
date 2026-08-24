@@ -77,7 +77,7 @@ window.GAME_TUTORIAL_STEPS = [
 
   var roundNum = 0, score = 0, streak = 0, stepIdx = 1, firstTry = true,
       answered = false, finished = false, dailyMode = false, startTs = 0,
-      cur = null, nextTimer = null;
+      cur = null, nextTimer = null, hintTaken = false;
 
   function updProg() {
     progEl.textContent = fmt('gs.shamir.prog', {
@@ -88,6 +88,7 @@ window.GAME_TUTORIAL_STEPS = [
 
   function renderStep() {
     updProg();
+    hintTaken = false;
     hintBox.hidden = true;
     optsEl.innerHTML = '';
     givenEl.innerHTML = T('gs.shamir.given');
@@ -134,7 +135,7 @@ window.GAME_TUTORIAL_STEPS = [
       var g = award(true);
       if (Arcade.juice) Arcade.juice.win();
       setMsg('ok', fmt('gs.shamir.ok', { pts: g }));
-      setTimeout(advance, 700);
+      nextTimer = setTimeout(advance, 700);
     } else {
       firstTry = false;
       award(false);
@@ -213,6 +214,8 @@ window.GAME_TUTORIAL_STEPS = [
   });
   hintBtn.addEventListener('click', function () {
     if (finished) return;
+    if (hintTaken) { hintBox.hidden = false; return; }
+    hintTaken = true;
     score = Math.max(0, score - 10);
     hintBox.hidden = false;
     if (stepIdx === 1) {
@@ -222,7 +225,7 @@ window.GAME_TUTORIAL_STEPS = [
     } else if (stepIdx === 4) {
       hintBox.textContent = fmt('gs.shamir.hint4', { y1: cur.y1, y2: cur.y2, diff: (cur.y2 - cur.y1 + P) % P });
     } else if (stepIdx === 5) {
-      var inner = (cur.y1 - cur.x1 * cur.a) % P;
+      var inner = ((cur.y1 - cur.x1 * cur.a) % P + P) % P;
       hintBox.textContent = fmt('gs.shamir.hint5', { y1: cur.y1, x1: cur.x1, ap: cur.a, inner: inner });
     } else {
       hintBox.textContent = '';

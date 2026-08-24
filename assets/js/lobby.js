@@ -223,7 +223,7 @@
 
   /* ---------- 最高分格式化 ---------- */
   // 各游戏 BEST 徽章单位（计时 s / 步数 / 次数 / 连胜 等）；未列出的默认无单位
-  // A2 补齐：全部 105 款记分游戏均有单位（语义对照各游戏 submitScore 实参）
+  // A2 补齐：全部记分游戏均有单位（语义对照各游戏 submitScore 实参）
   var BEST_UNITS = {
     /* 计时（秒，越低越好） */
     sudoku: 's', nonogram: 's', fillomino: 's', wordsearch: 's', paintbynum: 's',

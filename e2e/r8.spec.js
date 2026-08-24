@@ -98,7 +98,7 @@ test('protocols：ChaCha20 单步与 A5/1 密钥流', async function ({ page }) 
 
   await page.locator('#cc-step').scrollIntoViewIfNeeded();
   for (let i = 0; i < 3; i++) { await page.locator('#cc-step').click(); await page.waitForTimeout(60); }
-  await expect(page.locator('#cc-stat')).toContainText(/3\/64/);
+  await expect(page.locator('#cc-stat')).toContainText(/3\/96/);
   await expect(page.locator('#cc-grid td.hot')).toHaveCount(1);   /* 第 3 步是旋转：仅 d 一格 */
 
   await page.locator('#a51-step').scrollIntoViewIfNeeded();

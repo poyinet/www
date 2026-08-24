@@ -84,7 +84,7 @@ Phase 1 → Phase 2 → 回归 → Phase 3（每 4 款一回归）→ 回归 →
 |---|---|---|
 | A1 verify-content | ✅ | tag 废弃字段检查替换为 lvl/time 合法值校验（105/105 ✓），非法即非零退出 |
 | A2 死键门禁化 | ✅ | check-dict-dead 候选>0 即失败，纳入 qa（第 20 项） |
-| B1 跟随系统主题 | ✅ | THEMES 增 auto 并设为默认初值；resolve() 经 matchMedia 解析 neon/daylight，change 监听实时切换；theme-color/status-bar 同步；新增 theme.auto 标签。老用户已存手动主题不受影响 |
+| B1 跟随系统主题（历史：auto 档已于 2026-08-24 移除） | ✅ | THEMES 增 auto 并设为默认初值；resolve() 经 matchMedia 解析 neon/daylight，change 监听实时切换；theme-color/status-bar 同步；新增 theme.auto 标签。老用户已存手动主题不受影响 |
 | B2 错题本可视化 | ✅ | 档案页徽章墙下错题直达卡（0 时隐藏，直读 localStorage 不引入 quiz.js）+ quiz.html#wrong 深链自动进入练习模式 |
 | B3 配额提示 | ✅ | storage 写失败置位 → extras 启动 4s 后一次性 toast（settings.storageWarn），会话不打扰 |
 | C1 分级清单 | ✅ 结论=零改动 | tools/report/m1-tiering.md：71 款全部「点按即玩法」，blocks/sokoban 已有屏幕控件、typecode 一期已补键盘——无需任何游戏改动 |

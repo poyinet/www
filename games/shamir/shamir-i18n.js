@@ -29,8 +29,8 @@
   d.en['gs.shamir.given'] = 'P = <b>101</b> (prime)　k = <b>2</b>　n = <b>5</b>　f(x) = s + a·x (mod P)';
   d.zh['gs.shamir.reveal'] = '🔓 秘密字母揭晓：<b>{L}</b>';
   d.en['gs.shamir.reveal'] = '🔓 Secret letter revealed: <b>{L}</b>';
-  d.zh['gs.shamir.step1'] = '① 分发验证：已知 a = {a}，求第 {x} 号份额 f({x}) = ?（mod P 取余）';
-  d.en['gs.shamir.step1'] = '① Deal & verify: given a = {a}, compute share #{x}: f({x}) = ? (remainder mod P)';
+  d.zh['gs.shamir.step1'] = '① 骨架预热：已知 a = {a}——真实份额 f(x)=s+a·x 里 s 尚保密，先算骨架 a·x mod P（x = {x}）';
+  d.en['gs.shamir.step1'] = '① Skeleton warm-up: given a = {a} — the real share f(x)=s+a·x keeps s secret; compute its skeleton a·x mod P (x = {x})';
   d.zh['gs.shamir.step2'] = '② 门限认知：至少集齐几份不同份额，才可能还原出秘密？';
   d.en['gs.shamir.step2'] = '② Threshold sense: how many distinct shares are needed at minimum to recover the secret?';
   d.zh['gs.shamir.step3'] = '③ 收集判断：你手上现在有 {m} 份——够还原吗？';

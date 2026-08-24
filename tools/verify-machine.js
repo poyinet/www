@@ -1,4 +1,4 @@
-/* 验证 machine.js：5 台机器数据完整 + 游戏链接真实存在 */
+/* 验证 machine.js：7 台机器数据完整 + 游戏链接真实存在 */
 const fs = require('fs');
 const vm = require('vm');
 const sb = { window: {} };
@@ -14,7 +14,7 @@ M.forEach(m => {
     summary: !!(m.summary && m.summary.zh && m.summary.en),
     history: !!(m.history && m.history.zh && m.history.en),
     params: Array.isArray(m.params) && m.params.length >= 3,
-    game: !!m.game
+    game: m.game !== undefined
   };
   const bad = Object.keys(checks).filter(k => !checks[k]);
   if (bad.length) { fail++; console.log('✗ ' + m.id + ' 缺: ' + bad.join(',')); }

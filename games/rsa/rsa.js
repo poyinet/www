@@ -41,7 +41,7 @@ window.GAME_TUTORIAL_STEPS = [
     }
     return out;
   }
-  var SUP = { 2: '\u00b2', 4: '\u2074', 8: '\u2078', 16: '\u00b9\u2076' };
+  var SUP = { 1: '', 2: '\u00b2', 4: '\u2074', 8: '\u2078', 16: '\u00b9\u2076' };
   function daySeed() {
     var dt = new Date();
     return dt.getFullYear() * 10000 + (dt.getMonth() + 1) * 100 + dt.getDate();
@@ -125,7 +125,7 @@ window.GAME_TUTORIAL_STEPS = [
 
   var roundNum = 0, score = 0, streak = 0, stepIdx = 1, firstTry = true,
       answered = false, finished = false, dailyMode = false, startTs = 0,
-      cur = null, nextTimer = null;
+      cur = null, nextTimer = null, hintTaken = false;
 
   function updProg() {
     progEl.textContent = fmt('gs.rsa.prog', {
@@ -136,6 +136,7 @@ window.GAME_TUTORIAL_STEPS = [
 
   function renderStep() {
     updProg();
+    hintTaken = false;
     hintBox.hidden = true;
     optsEl.innerHTML = '';
     var s = cur;
@@ -177,7 +178,7 @@ window.GAME_TUTORIAL_STEPS = [
       var g = award(true);
       if (Arcade.juice) Arcade.juice.win();
       setMsg('ok', fmt('gs.rsa.ok', { pts: g }));
-      setTimeout(advance, 700);
+      nextTimer = setTimeout(advance, 700);
     } else {
       firstTry = false;
       award(false);
@@ -253,6 +254,8 @@ window.GAME_TUTORIAL_STEPS = [
   });
   hintBtn.addEventListener('click', function () {
     if (finished || stepIdx < 4) return;
+    if (hintTaken) { hintBox.hidden = false; return; }
+    hintTaken = true;
     score = Math.max(0, score - 10);
     hintBox.hidden = false;
     hintBox.textContent = stepIdx === 4

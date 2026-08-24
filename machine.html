@@ -11,19 +11,19 @@
   <meta name="apple-mobile-web-app-title" content="破译游戏">
   <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
   <title>密码机博物馆 · 用游戏破译人类三千年加密解密史</title>
-  <meta name="description" content="破译 DECODE ARCADE · 密码机博物馆：恩尼格玛、炸弹机、M-209、紫密、洛伦兹——五台改变历史的密码机，原理、参数、历史一页看尽。">
+  <meta name="description" content="破译 DECODE ARCADE · 密码机博物馆：恩尼格玛、炸弹机、M-209、紫密、洛伦兹——七台改变历史的密码机，原理、参数、历史一页看尽。">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://poyi.net/machine.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="破译游戏 DECODE ARCADE">
   <meta property="og:title" content="密码机博物馆 · 用游戏破译人类三千年加密解密史">
-  <meta property="og:description" content="恩尼格玛、炸弹机、M-209、紫密、洛伦兹——五台改变历史的密码机，原理、参数、历史一页看尽。">
+  <meta property="og:description" content="恩尼格玛、炸弹机、M-209、紫密、洛伦兹——七台改变历史的密码机，原理、参数、历史一页看尽。">
   <meta property="og:url" content="https://poyi.net/machine.html">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:image" content="https://poyi.net/assets/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="密码机博物馆 · 破译 DECODE ARCADE">
-  <meta name="twitter:description" content="五台改变历史的密码机：原理、参数、历史一页看尽。">
+  <meta name="twitter:description" content="七台改变历史的密码机：原理、参数、历史一页看尽。">
   <meta name="twitter:image" content="https://poyi.net/assets/og-image.png">
   <script type="application/ld+json">
   {
@@ -34,7 +34,7 @@
     "isPartOf": { "@type": "WebSite", "name": "破译游戏 DECODE ARCADE", "url": "https://poyi.net/" },
     "inLanguage": "zh-CN",
     "about": "二战密码机历史",
-    "description": "恩尼格玛、炸弹机、M-209、紫密、洛伦兹——五台改变历史的密码机。"
+    "description": "恩尼格玛、炸弹机、M-209、紫密、洛伦兹——七台改变历史的密码机。"
   }
   </script>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏛️</text></svg>">
@@ -72,6 +72,7 @@
     .cm-play:hover { background: rgba(255,45,149,.16); }
     .aes-lab { margin-top: 14px; border: 1px dashed rgba(0,240,255,.4); }
     .aes-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; max-width: 300px; margin: 12px auto; }
+    .aes-row { display: contents; }
     .aes-cell { display: block; text-align: center; font-family: var(--font-mono); font-size: 13px; padding: 9px 0;
       background: rgba(0,240,255,.06); border: 1px solid rgba(0,240,255,.3); border-radius: 6px; color: var(--neon-cyan); }
     .aes-cell.hot { background: rgba(57,255,20,.14); border-color: rgba(57,255,20,.55); color: var(--neon-green); animation: aespulse .8s ease-out; }
@@ -94,7 +95,7 @@
   <div class="cm-wrap" id="content">
     <div class="cm-hero">
       <h1 class="cm-title" data-i18n="cm.title">🏛️ 密码机博物馆</h1>
-      <p class="cm-sub" data-i18n="cm.sub">五台改变历史的密码机——原理、参数、历史，一页看尽；每台都能在游戏厅亲手操作</p>
+      <p class="cm-sub" data-i18n="cm.sub">七台改变历史的密码机——原理、参数、历史，一页看尽；每台都能在游戏厅亲手操作</p>
     </div>
     <div class="cm-nav" id="cm-nav"></div>
     <div id="cm-card"></div>
@@ -131,6 +132,7 @@
       navBox.innerHTML = nh;
 
       var cardBox = document.getElementById('cm-card');
+      var aesTimer = null;
       function render(idx) {
         var m = M.MACHINES[idx];
         if (!m) return;
@@ -151,6 +153,7 @@
             (m.game ? '<a class="cm-play" href="' + pre + 'games/' + m.game + '/index.html">🎮 ' + (isEn ? 'Play the machine' : '去游戏厅操作这台机器') + ' →</a>' : '') +
           '</div>';
         if (m.lab) cardBox.innerHTML += buildAesLab(isEn);
+        if (aesTimer) { clearInterval(aesTimer); aesTimer = null; }
         var navs = navBox.querySelectorAll('button');
         for (var i = 0; i < navs.length; i++) navs[i].classList.toggle('on', parseInt(navs[i].getAttribute('data-idx'), 10) === idx);
       }
@@ -179,7 +182,8 @@
       }
       function wireAesLab(isEn) {
         var lab = document.getElementById('aes-lab');
-        if (!lab) return;
+        if (!lab || lab.dataset.wired) return;
+        lab.dataset.wired = '1';
         var seed = 'AES-ROCKS-2026!!';
         var base = [];
         for (var i = 0; i < 16; i++) base.push(seed.charCodeAt(i % seed.length));
@@ -188,7 +192,7 @@
           isEn ? 'SubBytes: byte-wise substitution — non-linearity lives here (real AES: GF(2⁸) inverse S-box).' : 'SubBytes：逐字节代换——非线性来源（真 AES 用 GF(2⁸) 逆元 S 盒）。',
           isEn ? 'ShiftRows: row r rotates left by r — spreads bytes across columns.' : 'ShiftRows：第 r 行左旋 r 位——把字节摊到不同列。',
           isEn ? 'MixColumns: each column mixed linearly — diffusion across rows (here: weighted sums mod 256).' : 'MixColumns：逐列线性混合——行间扩散（此处：加权和 mod 256）。',
-          isEn ? 'AddRoundKey: XOR with round key derived from your secret — the only step using the key.' : 'AddRoundKey：与轮密钥异或——唯一用到密钥的一拍。'
+          isEn ? 'AddRoundKey: XOR with the round key — the only beat that touches key material (here: a fixed illustrative constant, not derived from your input).' : 'AddRoundKey：与轮密钥异或——唯一触碰密钥材料的一拍（此处为固定示意常量，非由输入派生）。'
         ];
         function transform(step, arr) {
           var out = arr.slice();
@@ -209,23 +213,29 @@
           }
           return out;
         }
-        function renderGrid(arr, hotRowFrom) {
+        function renderGrid(arr, hotSet) {
           var h = '';
           for (var r = 0; r < 4; r++) {
             h += '<div class="aes-row">';
             for (var c = 0; c < 4; c++) {
               var v = arr[r * 4 + c];
-              var hot = hotRowFrom !== undefined && r >= hotRowFrom;
+              var hot = hotSet && hotSet.indexOf(r * 4 + c) >= 0;
               h += '<span class="aes-cell' + (hot ? ' hot' : '') + '">' + ('00' + v.toString(16)).slice(-2).toUpperCase() + '</span>';
             }
             h += '</div>';
           }
-          document.getElementById('aes-grid').innerHTML = h;
+          var g = document.getElementById('aes-grid');
+          if (g) g.innerHTML = h;
         }
         var states = [base];
         for (var s = 1; s <= 4; s++) states.push(transform(s, states[s - 1]));
         function show(stepIdx) {
-          renderGrid(states[stepIdx], stepIdx === 0 ? undefined : stepIdx - 1);
+          var hot = null;
+          if (stepIdx > 0) {
+            hot = [];
+            for (var hi = 0; hi < 16; hi++) if (states[stepIdx][hi] !== states[stepIdx - 1][hi]) hot.push(hi);
+          }
+          renderGrid(states[stepIdx], hot);
           document.getElementById('aes-note').textContent = NOTES[stepIdx];
           var bs = lab.querySelectorAll('.aes-steps button[data-step]');
           for (var i = 0; i < bs.length; i++) bs[i].classList.toggle('on', parseInt(bs[i].getAttribute('data-step'), 10) === stepIdx);
@@ -236,16 +246,15 @@
             b.addEventListener('click', function () { show(parseInt(b.getAttribute('data-step'), 10)); });
           })(bs2[j]);
         }
-        var timer = null;
         var auto = document.getElementById('aes-auto');
         if (auto) {
           auto.addEventListener('click', function () {
-            if (timer) { clearInterval(timer); timer = null; return; }
+            if (aesTimer) { clearInterval(aesTimer); aesTimer = null; return; }
             var k = 0;
             show(0);
-            timer = setInterval(function () {
+            aesTimer = setInterval(function () {
               k++;
-              if (k > 4) { clearInterval(timer); timer = null; return; }
+              if (k > 4 || !document.getElementById('aes-grid')) { clearInterval(aesTimer); aesTimer = null; return; }
               show(k);
             }, 900);
           });

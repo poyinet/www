@@ -1,4 +1,4 @@
-/* 全站 105 款游戏通用冒烟（站点质量门禁，随代码长期维护）
+/* 全站 114 款游戏通用冒烟（站点质量门禁，随代码长期维护）
    逐个模拟页面加载：storage → input → loop → extras → rank → plot → shell → game
    触发初始化 + GAME_RESTART，捕获运行期错误。 */
 const fs = require('fs');

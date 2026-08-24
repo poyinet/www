@@ -26,7 +26,7 @@ window.GAME_TUTORIAL_STEPS = [
               en: 'Thanks for your Professional plan subscription. This month\'s invoice is ready in Billing after you sign in — download the PDF from the dashboard.' },
       clues: { zh: ['域名与官方一致', '不索要任何凭据', '引导回站内而非外部链接'], en: ['Domain matches the official one', 'Asks for no credentials', 'Points in-dashboard, not to external links'] } },
     { phish: true,
-      from: 'CEO 微信别名 <ceo.office@hq-mailer.net>',
+      from: '"Boss" <ceo.office@hq-mailer.net>',
       subj: { zh: '保密：帮我处理一件事，别告诉财务', en: 'Confidential: handle this for me, don\'t tell finance' },
       body: { zh: '我在开会不方便打电话。立刻购买 5 张各 2000 元的礼品卡，把卡号密码拍照发我，今天下班前完成，事后报销。',
               en: 'I am in meetings, can\'t call. Buy five $400 gift cards NOW, photograph codes and numbers to me before end of day; you\'ll be reimbursed.' },
@@ -133,8 +133,8 @@ window.GAME_TUTORIAL_STEPS = [
     '</div>' +
     '<div class="ph-msg" id="ph-msg"></div>' +
     '<div class="ph-clues" id="ph-clues"></div>' +
-    '<div class="ph-btnrow"><button class="btn yellow" id="ph-next" hidden></button></div>' +
-    '<div class="ph-btnrow"><button class="btn" id="ph-daily"></button></div>' +
+    '<div class="ph-btns"><button class="btn yellow" id="ph-next" hidden></button></div>' +
+    '<div class="ph-btns"><button class="btn" id="ph-daily"></button></div>' +
     '<div class="ph-help">' + T('gs.phishhunt.helpText') + '</div>';
   root.appendChild(wrap);
   var el = function (id) { return wrap.querySelector('#' + id); };
@@ -146,7 +146,7 @@ window.GAME_TUTORIAL_STEPS = [
   nextBtn.textContent = T('gs.phishhunt.againBtn');
 
   var idx = 0, score = 0, streak = 0, answered = false, finished = false,
-      dailyMode = false, startTs = 0, cur = null, order = [];
+      dailyMode = false, startTs = 0, cur = null, order = [], nextTimer = null;
 
   function updProg() {
     progEl.textContent = fmt('gs.phishhunt.prog', { n: Math.min(idx + 1, TOTAL), total: TOTAL, streak: streak });
@@ -155,9 +155,10 @@ window.GAME_TUTORIAL_STEPS = [
 
   function renderMail(m) {
     var lang = isEn() ? 'en' : 'zh';
+    function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
     mailEl.innerHTML =
-      '<div class="ph-from">📧 ' + m.from + '</div>' +
-      '<div class="ph-subj">' + m.subj[lang] + '</div>' +
+      '<div class="ph-from">📧 ' + esc(m.from) + '</div>' +
+      '<div class="ph-subj">' + esc(m.subj[lang]) + '</div>' +
       '<div class="ph-body">' + m.body[lang].replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
         .replace(/&lt;a&gt;/g, '<a>').replace(/&lt;\/a&gt;/g, '</a>') + '</div>';
   }
@@ -176,14 +177,14 @@ window.GAME_TUTORIAL_STEPS = [
       streak++;
       score += 20 + (streak - 1) * 5;
       if (Arcade.juice) Arcade.juice.win();
-      setMsg('ok', fmt('gs.phishhunt.ok', { pts: '+' + (20 + (streak - 1) * 5) }));
+      setMsg('ok', fmt('gs.phishhunt.ok', { pts: (20 + (streak - 1) * 5) }));
     } else {
       streak = 0;
       if (Arcade.juice) Arcade.juice.lose();
       setMsg('no', T('gs.phishhunt.no'));
     }
     showClues(cur);
-    setTimeout(nextQ, 1600);
+    nextTimer = setTimeout(nextQ, 1600);
   }
   function nextQ() {
     idx++;
@@ -204,6 +205,7 @@ window.GAME_TUTORIAL_STEPS = [
   }
   function startQuestion() {
     updProg();
+    answered = false;
     cur = MAILS[order[idx]];
     renderMail(cur);
     setMsg('', '');
@@ -218,6 +220,7 @@ window.GAME_TUTORIAL_STEPS = [
     return arr.slice(0, TOTAL);
   }
   function startGame(daily) {
+    if (nextTimer) { clearTimeout(nextTimer); nextTimer = null; }
     idx = 0; score = 0; streak = 0; finished = false;
     dailyMode = !!daily;
     if (dailyMode) startTs = Date.now();

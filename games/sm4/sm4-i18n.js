@@ -55,6 +55,10 @@
   d.en['gs.sm4.nextBtn'] = '🔁 Next round';
   d.zh['gs.sm4.againBtn'] = '🔁 再来一局';
   d.en['gs.sm4.againBtn'] = '🔁 Play again';
+  d.zh['gs.sm4.hintBtn'] = '💡 提示（−10）';
+  d.en['gs.sm4.hintBtn'] = '💡 Hint (−10)';
+  d.zh['gs.sm4.hintUsed'] = '💡 提示已用（−10 分）';
+  d.en['gs.sm4.hintUsed'] = '💡 Hint used (−10 pts)';
   d.zh['gs.sm4.dailyBtn'] = '📅 每日挑战';
   d.en['gs.sm4.dailyBtn'] = '📅 Daily challenge';
   d.zh['gs.sm4.helpText'] = '为什么重要：SM4 由吕述望团队设计，2006 年以 SMS4 之名公开、2012 年更名、2016 年成为国家标准 GB/T 32907，2017 年进入 ISO/IEC 18033-3——中国密码从跟随走向输出。它保护着 WAPI 无线局域网与大量国密 TLS 通道。本页引擎每次加载都与官方向量 681EDF34…4246 对拍：密码学的尊严，就在「可验证」三个字里。';

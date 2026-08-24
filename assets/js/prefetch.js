@@ -27,6 +27,7 @@
     '/map.html',
     '/machine.html',
     '/protocols.html',
+    '/assets/js/protocols.js',
     '/quotes.html',
     '/path.html'
   ];

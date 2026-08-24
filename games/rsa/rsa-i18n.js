@@ -21,8 +21,8 @@
   d.en['gs.rsa.tut4'] = 'Anyone holding the public key (n,e) locks with c = m^e mod n; only the holder of d unlocks via c^d ≡ m — two different keys for locking and opening.';
   d.zh['gs.rsa.tut5t'] = '计分与每日';
   d.en['gs.rsa.tut5t'] = 'Scoring & daily';
-  d.zh['gs.rsa.tut5'] = '每步首答 +20、连击有加成、整轮造锁 +30；提示每次 −10。总分入 BEST（max）。「每日挑战」按日种子固定出题，全球同题。';
-  d.en['gs.rsa.tut5'] = 'First-try answers earn +20 each, streaks add bonuses, and finishing a round adds +30; every hint costs −10. Total goes to BEST (max). The daily challenge fixes the puzzle by date seed — same puzzle worldwide.';
+  d.zh['gs.rsa.tut5'] = '每步首答 +20、连击有加成、整轮造锁 +30；提示每次 −10。总分入 BEST（max）。「每日挑战」按日种子固定出题，当日全球一致。';
+  d.en['gs.rsa.tut5'] = 'First-try answers earn +20 each, streaks add bonuses, and finishing a round adds +30; every hint costs −10. Total goes to BEST (max). The daily challenge is fixed by date seed — consistent for the whole day.';
   d.zh['gs.rsa.prog'] = '第 {round}/{total} 轮 · 步骤 {step}/5 · 连击 {streak}';
   d.en['gs.rsa.prog'] = 'Round {round}/{total} · step {step}/5 · streak {streak}';
   d.zh['gs.rsa.given'] = 'p = <b>{p}</b>　q = <b>{q}</b>';

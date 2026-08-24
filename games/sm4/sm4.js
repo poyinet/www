@@ -275,16 +275,20 @@ var SM4 = (function () {
     '<div class="s4-step" id="s4-step"></div>' +
     '<div class="s4-btns" id="s4-opts"></div>' +
     '<div class="s4-msg" id="s4-msg"></div>' +
-    '<div class="s4-btnrow"><button class="btn yellow" id="s4-sboxbtn"></button></div>' +
+    '<div class="s4-btns"><button class="btn yellow" id="s4-hint" hidden></button></div>' +
+    '<div class="s4-hintbox" id="s4-hintbox" hidden></div>' +
+    '<div class="s4-btns"><button class="btn yellow" id="s4-sboxbtn"></button></div>' +
     '<div class="s4-sbox" id="s4-sbox"></div>' +
-    '<div class="s4-btnrow"><button class="btn yellow" id="s4-next" hidden></button></div>' +
-    '<div class="s4-btnrow"><button class="btn" id="s4-daily"></button></div>' +
+    '<div class="s4-btns"><button class="btn yellow" id="s4-next" hidden></button></div>' +
+    '<div class="s4-btns"><button class="btn" id="s4-daily"></button></div>' +
     '<div class="s4-help">' + T('gs.sm4.helpText') + '</div>';
   root.appendChild(wrap);
   var el = function (id) { return wrap.querySelector('#' + id); };
   var progEl = el('s4-prog'), stepEl = el('s4-step'), optsEl = el('s4-opts'),
       msgEl = el('s4-msg'), nextBtn = el('s4-next'), dailyBtn = el('s4-daily'),
-      badgeEl = el('s4-badge'), sboxBox = el('s4-sbox'), sboxBtn = el('s4-sboxbtn');
+      badgeEl = el('s4-badge'), sboxBox = el('s4-sbox'), sboxBtn = el('s4-sboxbtn'),
+      hintBtn = el('s4-hint'), hintBox = el('s4-hintbox');
+  hintBtn.textContent = T('gs.sm4.hintBtn');
   dailyBtn.textContent = T('gs.sm4.dailyBtn');
 
   /* 引擎自检徽章 + 官方 S 盒表 */
@@ -318,7 +322,7 @@ var SM4 = (function () {
 
   var roundNum = 0, score = 0, streak = 0, stepIdx = 1, firstTry = true,
       answered = false, finished = false, dailyMode = false, startTs = 0,
-      cur = null;
+      cur = null, nextTimer = null, hintTaken = false;
 
   function updProg() {
     progEl.textContent = fmt('gs.sm4.prog', {
@@ -384,6 +388,9 @@ var SM4 = (function () {
 
   function renderStep() {
     updProg();
+    hintTaken = false;
+    hintBox.hidden = true;
+    hintBtn.hidden = !cur || !cur.hint;
     cur = makeQ(dailyMode ? mulberry(daySeed() * 31 + roundNum * 17 + stepIdx * 3) : mulberry(Math.floor(Math.random() * 2147483000) + 1));
     stepEl.innerHTML = cur.html;
     optsEl.innerHTML = '';
@@ -412,8 +419,8 @@ var SM4 = (function () {
       answered = true;
       var g = award(true);
       if (Arcade.juice) Arcade.juice.win();
-      setMsg('ok', fmt('gs.sm4.ok', { pts: '+' + g }));
-      setTimeout(advance, 700);
+      setMsg('ok', fmt('gs.sm4.ok', { pts: g }));
+      nextTimer = setTimeout(advance, 700);
     } else {
       firstTry = false;
       award(false);
@@ -457,6 +464,7 @@ var SM4 = (function () {
     renderStep();
   }
   function startGame(daily) {
+    if (nextTimer) { clearTimeout(nextTimer); nextTimer = null; }
     roundNum = 0;
     score = 0;
     streak = 0;
@@ -466,6 +474,12 @@ var SM4 = (function () {
     dailyBtn.hidden = dailyMode;
     nextRound();
   }
+  hintBtn.addEventListener('click', function () {
+    if (finished || answered || !cur || !cur.hint) return;
+    if (!hintTaken) { hintTaken = true; score = Math.max(0, score - 10); setMsg('', T('gs.sm4.hintUsed')); }
+    hintBox.hidden = false;
+    hintBox.textContent = cur.hint;
+  });
   nextBtn.addEventListener('click', function () {
     if (finished) startGame(false);
     else nextRound();

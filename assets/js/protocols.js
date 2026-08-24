@@ -41,14 +41,14 @@ window.PROTOCOL_LAB = (function () {
 
     /* ================= RC4 历史警示 ================= */
     rc4Intro: {
-      zh: 'RC4 曾加密过 WEP Wi-Fi 与半个互联网的 TLS 流量——却在 2015 年被 RFC 7465 全面禁用。死因不是算法核心被攻破，而是「密钥流重用」：同一密钥流绝不能用两次。本演示用真实 RC4（KSA+PRGA）复现 WEP 式灾难：固定密钥、只换 3 字节 IV，窃听者无需密钥就能读出两段明文的异或关系。',
-      en: 'RC4 once encrypted WEP Wi-Fi and half the internet\'s TLS traffic — until RFC 7465 banned it outright in 2015. The cause of death was not the core algorithm but keystream reuse: never encrypt twice under the same stream. This demo reproduces the WEP-style disaster with REAL RC4 (KSA+PRGA): fixed key, only a 3-byte IV changes — and an eavesdropper reads the XOR of two plaintexts without any key.'
+      zh: 'RC4 曾加密过 WEP Wi-Fi 与半个互联网的 TLS 流量——却在 2015 年被 RFC 7465 全面禁用。死因有二：WEP 死于 IV 可预测导致的「密钥流重用」；TLS 中的 RC4 则死于输出统计偏置（FMS 2001 → RC4 NOMORE 2015），终被 RFC 7465 全面禁用。共同教训：本演示用真实 RC4（KSA+PRGA）复现 WEP 式灾难：固定密钥、只换 3 字节 IV，窃听者无需密钥就能读出两段明文的异或关系。',
+      en: 'RC4 once encrypted WEP Wi-Fi and half the internet\'s TLS traffic — until RFC 7465 banned it outright in 2015. It died twice over: WEP fell to predictable-IV keystream reuse, while TLS RC4 was banned for output biases (FMS 2001 → RC4 NOMORE 2015, RFC 7465). Shared lesson: This demo reproduces the WEP-style disaster with REAL RC4 (KSA+PRGA): fixed key, only a 3-byte IV changes — and an eavesdropper reads the XOR of two plaintexts without any key.'
     },
 
     /* ================= ChaCha20 quarter-round ================= */
     chachaIntro: {
       zh: 'ChaCha20 把 4×4 的 32 位字状态搅 20 轮：每轮先对四列、再对四条对角线各跑一次 quarter-round——八条指令（加法、异或、循环移位交替），现代 CPU 上快得飞起，且常数时间无查表侧信道。单步走一遍双轮的 64 条操作，亲眼看雪崩扩散。',
-      en: 'ChaCha20 churns a 4×4 state of 32-bit words for 20 rounds: each round runs a quarter-round over the four columns then the four diagonals — eight instructions alternating add, XOR and rotation. Blazing fast on modern CPUs and constant-time with no table lookups. Single-step all 64 ops of one double round and watch the avalanche.'
+      en: 'ChaCha20 churns a 4×4 state of 32-bit words for 20 rounds: each round runs a quarter-round over the four columns then the four diagonals — eight instructions alternating add, XOR and rotation. Blazing fast on modern CPUs and constant-time with no table lookups. Single-step all 96 ops of one double round and watch the avalanche.'
     },
 
     /* ================= A5/1 ================= */
@@ -66,7 +66,7 @@ window.PROTOCOL_LAB = (function () {
           txt: { zh: '服务器回应：服务器随机数 + 选定套件 + 证书——证书里是服务器公钥，由 CA 用自己的私钥签名。', en: 'Server replies: server nonce + chosen suite + certificate — containing the server public key, signed by a CA private key.' } },
         { from: 'C', to: 'S', tag: { zh: '验证证书 → 密钥交换（密文）', en: 'Verify cert → Key exchange (encrypted)' },
           txt: { zh: '客户端沿 CA 链验证证书真伪；通过后生成预主密钥，用服务器公钥加密发送。只有持有对应私钥的真服务器能解开。', en: 'The client validates the chain; then encrypts a pre-master secret with the server public key. Only the true holder of the private key can decrypt it.' } },
-        { from: 'C', to: 'S', tag: { zh: '双方导出会话密钥（本地）', en: 'Both derive session keys (local)' },
+        { from: 'L', to: 'L', tag: { zh: '双方导出会话密钥（本地）', en: 'Both derive session keys (local)' },
           txt: { zh: '两端各自用「预主密钥 + 两个随机数」推导出同一组对称会话密钥——它从不在线路上出现。', en: 'Both sides derive identical symmetric session keys from the pre-master secret and both nonces — the keys themselves never travel.' } },
         { from: 'C', to: 'S', tag: { zh: 'Finished（加密）', en: 'Finished (encrypted)' },
           txt: { zh: '客户端把此前全部握手消息的摘要用会话密钥加密发回——篡改过握手的中间人无法伪造它。', en: 'A MAC of the whole handshake, encrypted with the session key — a tampering MITM cannot forge it.' } },
@@ -105,7 +105,7 @@ window.PROTOCOL_LAB = (function () {
       { id: 'E', x: 150, y: 112 }
     ],
     zkpEdges: [['A', 'B'], ['B', 'D'], ['D', 'C'], ['C', 'A'], ['A', 'E'], ['B', 'E'], ['C', 'E'], ['D', 'E']],
-    zkpBase: { A: 1, B: 2, C: 1, D: 2, E: 0 },   /* 合法三着色（同三角内互异） */
+    zkpBase: { A: 1, B: 2, C: 2, D: 1, E: 0 },   /* 合法三着色（同三角内互异） */
     zkpColors: ['#ff2d95', '#39ff14', '#ffe600'],
     zkpNames: [{ zh: '品红', en: 'magenta' }, { zh: '绿', en: 'green' }, { zh: '黄', en: 'yellow' }],
     zkpIntro: {
@@ -171,6 +171,7 @@ window.PROTOCOL_LAB = (function () {
       var box = el('tls-steps');
       var idx = 0, eve = false;
       function arrow(a, b) {
+        if (a === 'L') return 'C ∥ S';
         if (a === 'C' && b === 'S') return 'C ⟶ S';
         return 'S ⟶ C';
       }
@@ -243,6 +244,7 @@ window.PROTOCOL_LAB = (function () {
           rows.push('<tr><td>Alice 算出密钥 ' + kAE + '</td><td>Bob 算出密钥 ' + kBE + '</td></tr>');
           rows.push('<tr><td>Eve 与 Alice 共享 ' + kAE + '</td><td>Eve 与 Bob 共享 ' + kBE + '</td></tr>');
           el('dh-verdict').innerHTML = '<span class="bad">' +
+            (a === b ? (isEn ? '(Demo coincidence: a=b makes the two keys equal — practically never happens.) ' : '（演示巧合：a=b 时两把钥匙恰好相同——真实场景几乎不会发生。）') : '') +
             L({ zh: '✗ Alice 和 Bob 各自「协商成功」，却都在跟 Eve 说悄悄话——两个密钥不相等，DH 本身毫无察觉。对照 BB84：窃听会留痕；DH 无认证即失守。现实中的解药就是上一节的数字证书。', en: '✗ Alice and Bob each "succeeded" — but are whispering to Eve. Two unequal keys, and plain DH never notices. Contrast BB84: eavesdropping leaves marks; DH without authentication simply fails. The real-world antidote is the certificate from section one.' }) + '</span>';
         }
         el('dh-out').innerHTML = rows.join('');
@@ -271,9 +273,10 @@ window.PROTOCOL_LAB = (function () {
         }
         return lv;
       }
-      function hexRnd() {
-        var s = '0123456789abcdef';
-        return s.charAt(Math.floor(Math.random() * 16));
+      function hexRnd(avoid) {
+        var s = '0123456789abcdef', c;
+        do { c = s.charAt(Math.floor(Math.random() * 16)); } while (c === avoid);
+        return c;
       }
       function renderTree(changed) {
         changed = changed || {};
@@ -300,7 +303,7 @@ window.PROTOCOL_LAB = (function () {
           btn.addEventListener('click', function () {
             var i = parseInt(this.getAttribute('data-i'), 10);
             /* 无条件改写最后一个字符，保证哈希必然变化 */
-            leaves[i] = leaves[i].slice(0, -1) + hexRnd();
+            leaves[i] = leaves[i].slice(0, -1) + hexRnd(leaves[i].slice(-1));
             this.textContent = '✏️ ' + leaves[i];
             var chg = {};
             chg['0-' + i] = 1;
@@ -358,7 +361,7 @@ window.PROTOCOL_LAB = (function () {
         return '<button class="pl-znode" data-id="' + n.id + '" style="left:' + (n.x - 16) + 'px;top:' + (n.y - 16) + 'px;background:' +
           LAB.zkpColors[base[n.id]] + '" title="' + n.id + '">' + n.id + '</button>';
       }).join('');
-      var rounds = 0, committed = false;
+      var rounds = 0;
       function setNode(id, color, blur) {
         var n = el('zkp-graph').querySelector('[data-id="' + id + '"]');
         n.style.background = color;
@@ -459,6 +462,7 @@ window.PROTOCOL_LAB = (function () {
       function singular(a, b) { return Math.abs(4 * a * a * a + 27 * b * b) < 0.001; }
       function redraw() {
         if (singular(st.a, st.b)) {
+          ctx.clearRect(0, 0, WID, HEI);
           msg.textContent = isEn ? '⚠ Singular curve (4a³+27b²=0) — adjust sliders' : '⚠ 奇异曲线（4a³+27b²=0）——请调整滑杆';
           return;
         }
@@ -493,7 +497,8 @@ window.PROTOCOL_LAB = (function () {
         if (!st.P || !st.Q) return;
         if (singular(st.a, st.b)) return;
         var a = st.a, b = st.b, P = st.P, Q = st.Q, m, c1 = toPx(P.x, P.y), c2 = toPx(Q.x, Q.y);
-        if (Math.abs(P.x - Q.x) < 1e-9 && Math.abs(Math.abs(P.y) - Math.abs(Q.y)) < 1e-9) {
+        if (Math.abs(P.x - Q.x) < 1e-9 && Math.abs(P.y + Q.y) < 1e-9 && Math.abs(P.y) > 1e-9) { msg.textContent = isEn ? 'P + (-P) = point at infinity ∞' : 'P + (-P) = 无穷远点 ∞'; return; }
+          if (Math.abs(P.x - Q.x) < 1e-9 && Math.abs(Math.abs(P.y) - Math.abs(Q.y)) < 1e-9) {
           if (Math.abs(P.y) < 1e-9) { msg.textContent = isEn ? 'P+P = point at infinity ∞' : 'P+P = 无穷远点 ∞'; return; }
           m = (3 * P.x * P.x + a) / (2 * P.y);           /* 切线（倍点） */
         } else {
@@ -563,8 +568,11 @@ window.PROTOCOL_LAB = (function () {
       function humanTime(sec) {
         if (sec < 1) return isEn ? 'instant' : '瞬间';
         var yr = 31557600;
-        if (sec / yr >= 1e8) return L({ zh: '约 ' + (sec / yr / 1e8).toExponential(1) + ' 亿年', en: '≈' + (sec / yr / 1e8).toExponential(1) + 'e8 years' });
-        if (sec / yr >= 1e4) return L({ zh: '约 ' + LAB.fmtInt(Math.round(sec / yr / 1e4)) + ' 万年', en: '≈' + LAB.fmtInt(Math.round(sec / yr / 1e4)) + '0K years' });
+        if (sec / yr >= 1e4) {
+          var e10 = Math.floor(Math.log10(sec / yr));
+          var man = (sec / yr) / Math.pow(10, e10);
+          return L({ zh: '约 ' + man.toFixed(1) + '×10' + sup(e10) + ' 年', en: '≈' + man.toFixed(1) + '×10' + sup(e10) + ' years' });
+        }
         var units = [
           [1, { zh: '秒', en: 's' }], [60, { zh: '分钟', en: 'min' }],
           [3600, { zh: '小时', en: 'h' }], [86400, { zh: '天', en: 'days' }],
@@ -670,7 +678,7 @@ window.PROTOCOL_LAB = (function () {
         ops = buildOps();
         opIdx = 0;
         renderGrid(null);
-        statEl.textContent = isEn ? 'Step through the double round (columns → diagonals), 64 ops' : '单步走完一个双轮（先列后对角），共 64 条操作';
+        statEl.textContent = isEn ? 'Step through the double round (columns → diagonals), 96 ops' : '单步走完一个双轮（先列后对角），共 96 条操作（8 个 quarter-round × 12 条指令）';
       }
       el('cc-step').addEventListener('click', function () {
         if (opIdx >= ops.length) { reset(); return; }
@@ -679,8 +687,8 @@ window.PROTOCOL_LAB = (function () {
         renderGrid(o.hl);
         opIdx++;
         statEl.textContent = isEn
-          ? 'Op ' + opIdx + '/64 · ' + o.t + (opIdx === 64 ? ' — double round done; ×10 more for ChaCha20' : '')
-          : '操作 ' + opIdx + '/64 · ' + o.t + (opIdx === 64 ? ' —— 双轮完成；ChaCha20 还要再来十遍' : '');
+          ? 'Op ' + opIdx + '/96 · ' + o.t + (opIdx === 96 ? ' — double round done; ×10 more for ChaCha20' : '')
+          : '操作 ' + opIdx + '/96 · ' + o.t + (opIdx === 96 ? ' —— 双轮完成；ChaCha20 还要再来十遍' : '');
       });
       el('cc-reset').addEventListener('click', reset);
       reset();

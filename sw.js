@@ -8,7 +8,7 @@
    注意：SW 仅在 http(s) 下生效；file:// 本地打开时浏览器不注册，属预期。
    ============================================================ */
 
-var CACHE = 'decode-arcade-v19';
+var CACHE = 'decode-arcade-v20';
 var CORE_ASSETS = [
   '/',
   '/index.html',
@@ -23,6 +23,7 @@ var CORE_ASSETS = [
   '/morse-listen.html',
   '/map.html',
   '/machine.html',
+  '/protocols.html',
   '/quotes.html',
   '/path.html',
   '/stats.html',

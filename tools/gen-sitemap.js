@@ -49,6 +49,7 @@ const pages = [
   { loc: BASE + '/morse-listen.html', priority: '0.7' },
   { loc: BASE + '/map.html', priority: '0.7' },
   { loc: BASE + '/machine.html', priority: '0.7' },
+  { loc: BASE + '/protocols.html', priority: '0.7' },
   { loc: BASE + '/quotes.html', priority: '0.6' },
   { loc: BASE + '/path.html', priority: '0.8' },
   { loc: BASE + '/stats.html', priority: '0.9' },

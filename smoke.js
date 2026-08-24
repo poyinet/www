@@ -243,7 +243,9 @@ function smokePage(page, lang) {
     workshop: ['assets/js/core/i18n.js', 'assets/js/core/i18n-dict.js', 'assets/js/core/storage.js',
                'assets/js/workshop.js', 'assets/js/nav.js'],
     path: ['assets/js/core/i18n.js', 'assets/js/core/i18n-dict.js', 'assets/js/core/i18n-story.js', 'assets/js/core/storage.js',
-           'assets/js/games.js', 'assets/js/stories.js', 'assets/js/nav.js']
+           'assets/js/games.js', 'assets/js/stories.js', 'assets/js/nav.js'],
+    protocols: ['assets/js/core/i18n.js', 'assets/js/core/i18n-dict.js', 'assets/js/core/i18n-ui.js', 'assets/js/core/storage.js',
+                'assets/js/core/extras.js', 'assets/js/protocols.js', 'assets/js/nav.js']
   };
   const ids = files[page];
   if (!ids) return { id: page, fail: '未知页面' };
@@ -468,6 +470,10 @@ function smokePage(page, lang) {
         'var h = \'\';' +
         'Q.QUOTES.forEach(function (q) { h += \'<div class="qt-item">\' + q.zh + \'</div>\'; });' +
         'document.getElementById(\'qt-grid\').innerHTML = h;', sandbox);
+    } else if (page === 'protocols') {
+      // protocols.html：六大演示初始化（stub DOM 下全跑一遍防运行期异常）
+      vm.runInContext('if (window.Arcade && Arcade.i18n) { Arcade.i18n.applyStatic(); document.title = Arcade.i18n.t(\'pl.title\') + Arcade.i18n.t(\'app.titleSuffix\'); }' +
+        'window.PROTOCOL_LAB.init();', sandbox);
     } else {
       vm.runInContext('if (window.Arcade && Arcade.i18n) { Arcade.i18n.applyStatic(); document.title = \'404\' + Arcade.i18n.t(\'app.titleSuffix\'); }', sandbox);
     }
@@ -518,6 +524,12 @@ function smokePage(page, lang) {
       if (sectionCount < 8) errors.push('game-sections: got ' + sectionCount);
       if (cards < 95) errors.push('game-cards: got ' + cards);
       if (!docs['lobby-stats'] || !docs['lobby-stats'].textContent) errors.push('game-stats: empty');
+    }
+    if (page === 'protocols') {
+      const rd = docs['pl-ready'];
+      if (!rd || String(rd.textContent) !== '6') errors.push('pl-ready: got "' + (rd ? rd.textContent : 'null') + '" (want 6 demos)');
+      const tls = docs['tls-steps'];
+      if (!tls || !tls._html || tls._html.indexOf('pl-step') < 0) errors.push('tls-steps: not rendered');
     }
     if (page === 'people') {
       /* 人物志：纯时间轴，卡片数 = PEOPLE 数组长度（动态） */
@@ -612,14 +624,14 @@ if (arg === 'page' || arg === 'pages') {
   const pageLang = process.argv[3] === 'en' ? 'en' : (process.argv[3] === 'zh' ? 'zh' : null);
   const pageLabel = pageLang ? (pageLang === 'en' ? 'English' : '中文') : '默认';
   let pp = 0;
-  for (const p of ['index', 'game', 'stats', 'notfound', 'stories', 'people', 'artifacts', 'story', 'glossary', 'quiz', 'duel', 'morse', 'map', 'machine', 'quotes', 'workshop', 'path']) {
+  for (const p of ['index', 'game', 'stats', 'notfound', 'stories', 'people', 'artifacts', 'story', 'glossary', 'quiz', 'duel', 'morse', 'map', 'machine', 'quotes', 'workshop', 'path', 'protocols']) {
     const r = smokePage(p, pageLang);
     if (r.ok) { pp++; console.log('PASS page:' + p); }
     else { console.log('FAIL page:' + p + ' :: ' + r.errors.join(' ;; ')); }
     RESULTS.push(r);
   }
   console.log('---');
-  console.log('页面冒烟(' + pageLabel + '): ' + pp + '/17 通过');
+  console.log('页面冒烟(' + pageLabel + '): ' + pp + '/18 通过');
   const pf = RESULTS.filter(r => !r.ok);
   console.log('失败清单: ' + (pf.length ? pf.map(f => f.id).join(', ') : '无'));
   process.exit(pf.length ? 1 : 0);

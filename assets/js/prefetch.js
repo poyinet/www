@@ -26,6 +26,7 @@
     '/morse-listen.html',
     '/map.html',
     '/machine.html',
+    '/protocols.html',
     '/quotes.html',
     '/path.html'
   ];

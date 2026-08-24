@@ -762,6 +762,7 @@ html.theme-daylight .tabbar { border-top-color: rgba(122, 91, 184, 0.28); }
   --accent: #00f0ff;
 }
 
+/* 主题 · 晨光档案（亮色：晨光暖白 + 暖橙/天蓝 + 深棕文字，与暗色主题最大反差）
    卡片底色用奶油纸色（比背景深），配合边框与柔和投影突出层次 */
 html.theme-daylight {
   --bg-deep: #f2ead8;

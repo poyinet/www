@@ -30,7 +30,8 @@ const GATES = [
   ['workshop',  'node', ['tools/verify-workshop.js'],    '工坊 16 算法往返'],
   ['eggs',      'node', ['tools/verify-eggs.js'],        '彩蛋 20 密文'],
   ['quiz',      'node', ['tools/verify-quiz.js'],        '测验题库结构'],
-  ['linkdensity','node',['tools/check-link-density.js'], '互链密度与死链']
+  ['linkdensity','node',['tools/check-link-density.js'], '互链密度与死链'],
+  ['css',       'node', ['tools/check-css.js'],          'CSS 结构健康']
 ];
 
 console.log('=== 破译 DECODE ARCADE · 全站质检 ===\n');

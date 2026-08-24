@@ -253,4 +253,14 @@
   d.en['pl.signH'] = 'Digital Signatures: RSA used in reverse';
   d.zh['pl.rngH'] = '随机数：密码学的地基';
   d.en['pl.rngH'] = 'Randomness: the foundation of cryptography';
+  d.zh['pl.mathH'] = '数论小课堂：三块基石';
+  d.en['pl.mathH'] = 'Number Theory 101: three foundation stones';
+  d.zh['pl.diffH'] = '差分分析：偏置即杠杆';
+  d.en['pl.diffH'] = 'Differential Analysis: bias is the lever';
+  d.zh['pl.aeadH'] = '认证加密：改一位你知不知道？';
+  d.en['pl.aeadH'] = 'Authenticated Encryption: would you notice one flipped bit?';
+  d.zh['pl.extH'] = '长度扩展攻击：无钥伪造 MAC';
+  d.en['pl.extH'] = 'Length Extension: forge a MAC without the key';
+  d.zh['pl.bigH'] = '真实大数 RSA：256 位现场生成';
+  d.en['pl.bigH'] = 'Real-Bignum RSA: 256-bit generated live';
 })();

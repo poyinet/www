@@ -191,7 +191,14 @@ function smokeGame(id, lang) {
         }
       }
       const poll = joined.match(/\b(?:undefined|NaN|\[object Object\])\b/g);
-      if (poll) errors.push('render-pollution: ' + [...new Set(poll)].slice(0, 8).join(','));
+      if (poll) {
+        const src = Object.keys(docs).filter(k => {
+          const d = docs[k];
+          const s = (d._html || '') + (d.textContent || '');
+          return /\b(?:undefined|NaN|\[object Object\])\b/.test(s);
+        });
+        errors.push('render-pollution: ' + [...new Set(poll)].slice(0, 8).join(',') + ' @ ' + src.slice(0, 4).join(',') + ' CTX: ' + (joined.match(/.{0,60}\b(?:NaN|undefined)\b.{0,30}/) || [''])[0].replace(/\n/g, '⏎'));
+      }
     }
   } catch (e) {
     errors.push('load: ' + (e && e.stack ? e.stack.split('\n').slice(0, 3).join(' | ') : e));
@@ -496,8 +503,15 @@ function smokePage(page, lang) {
     if (ph) errors.push('placeholder-residue: ' + [...new Set(ph)].slice(0, 6).join(','));
     const kb = joined.match(/(?:gs|gt)\.[a-zA-Z0-9-]+\.[a-zA-Z0-9]+/g);
     if (kb) errors.push('key-fallback: ' + [...new Set(kb)].slice(0, 6).join(','));
-    const poll = joined.match(/\b(?:undefined|NaN|\[object Object\])\b/g);
-    if (poll) errors.push('render-pollution: ' + [...new Set(poll)].slice(0, 8).join(','));
+      const poll = joined.match(/\b(?:undefined|NaN|\[object Object\])\b/g);
+      if (poll) {
+        const src = Object.keys(docs).filter(k => {
+          const d = docs[k];
+          const s = (d._html || '') + (d.textContent || '');
+          return /\b(?:undefined|NaN|\[object Object\])\b/.test(s);
+        });
+        errors.push('render-pollution: ' + [...new Set(poll)].slice(0, 8).join(',') + ' @ ' + src.slice(0, 4).join(',') + ' CTX: ' + (joined.match(/.{0,60}\b(?:NaN|undefined)\b.{0,30}/) || [''])[0].replace(/\n/g, '⏎'));
+      }
     // title 断言（404 页标题 = '404' + app.titleSuffix，宽松匹配避免硬编码）
     const wantTitle = page === 'notfound' ? '404 · ' : null;
     if (wantTitle && documentStub.title.indexOf(wantTitle) !== 0) errors.push('title: got "' + documentStub.title + '"');
@@ -527,7 +541,7 @@ function smokePage(page, lang) {
     }
     if (page === 'protocols') {
       const rd = docs['pl-ready'];
-      if (!rd || String(rd.textContent) !== '11') errors.push('pl-ready: got "' + (rd ? rd.textContent : 'null') + '" (want 11 demos)');
+      if (!rd || String(rd.textContent) !== '16') errors.push('pl-ready: got "' + (rd ? rd.textContent : 'null') + '" (want 16 demos)');
       const tls = docs['tls-steps'];
       if (!tls || !tls._html || tls._html.indexOf('pl-step') < 0) errors.push('tls-steps: not rendered');
     }

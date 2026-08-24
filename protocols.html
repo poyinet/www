@@ -11,19 +11,19 @@
   <meta name="apple-mobile-web-app-title" content="破译游戏">
   <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
   <title>协议实验室 · 用游戏破译人类三千年加密解密史</title>
-  <meta name="description" content="破译 DECODE ARCADE · 协议实验室：TLS 握手时序、DH 中间人攻防、Merkle 树与区块链防篡改、零知识证明三色图、椭圆曲线点加法几何、口令破解成本计算器——十一大交互演示，看懂现代密码协议如何运转。">
+  <meta name="description" content="破译 DECODE ARCADE · 协议实验室：TLS 握手时序、DH 中间人攻防、Merkle 树与区块链防篡改、零知识证明三色图、椭圆曲线点加法几何、口令破解成本计算器——十六大交互演示，看懂现代密码协议如何运转。">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://poyi.net/protocols.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="破译游戏 DECODE ARCADE">
   <meta property="og:title" content="协议实验室 · 用游戏破译人类三千年加密解密史">
-  <meta property="og:description" content="TLS 握手 / DH 中间人 / Merkle 树与区块链 / 零知识证明 / ChaCha20 / ECC 几何 / A5/1 / RC4 警示录 / 数字签名 / 随机数 / 口令成本——十一大交互演示。">
+  <meta property="og:description" content="TLS 握手 / DH 中间人 / Merkle 树与区块链 / 零知识证明 / ChaCha20 / ECC 几何 / A5/1 / RC4 警示录 / 数字签名 / 随机数 / 数论 / 差分 / AEAD / 长度扩展 / 大数 RSA / 口令成本——十六大交互演示。">
   <meta property="og:url" content="https://poyi.net/protocols.html">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:image" content="https://poyi.net/assets/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="协议实验室 · 破译 DECODE ARCADE">
-  <meta name="twitter:description" content="TLS 握手 / DH 中间人 / Merkle 树与区块链 / 零知识证明 / ChaCha20 / ECC 几何 / A5/1 / RC4 警示录 / 数字签名 / 随机数 / 口令成本——十一大交互演示。">
+  <meta name="twitter:description" content="TLS 握手 / DH 中间人 / Merkle 树与区块链 / 零知识证明 / ChaCha20 / ECC 几何 / A5/1 / RC4 警示录 / 数字签名 / 随机数 / 数论 / 差分 / AEAD / 长度扩展 / 大数 RSA / 口令成本——十六大交互演示。">
   <meta name="twitter:image" content="https://poyi.net/assets/og-image.png">
   <script type="application/ld+json">
   {
@@ -34,7 +34,7 @@
     "isPartOf": { "@type": "WebSite", "name": "破译游戏 DECODE ARCADE", "url": "https://poyi.net/" },
     "inLanguage": "zh-CN",
     "about": "现代密码协议交互演示",
-    "description": "TLS 握手、DH 中间人、Merkle 树与区块链、零知识证明、ChaCha20、ECC 点加法、A5/1、RC4 警示录、数字签名、随机数、口令破解成本——十一大交互演示。"
+    "description": "TLS 握手、DH 中间人、Merkle 树与区块链、零知识证明、ChaCha20、ECC 点加法、A5/1、RC4 警示录、数字签名、随机数、数论、差分分析、认证加密、长度扩展、真实大数 RSA、口令破解成本——十六大交互演示。"
   }
   </script>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
@@ -112,6 +112,10 @@
     .pl-checks label { cursor: pointer; }
     .ws-note { font-size: 12px; color: var(--text-dim); line-height: 1.8; }
     .pl-cells.mono { font-family: var(--font-mono); color: var(--neon-green); word-break: break-all; }
+    .pl-ddt td { text-align: center; padding: 3px 4px; font-family: var(--font-mono); font-size: 11px; }
+    .pl-ddt td.dim { opacity: .3; }
+    .pl-ddt td.hot { background: rgba(255,45,149,.3); color: #fff; font-weight: 700; }
+    .pl-ddt td.row { outline: 1px solid rgba(0,240,255,.7); }
     table.pl-cc { border-collapse: collapse; margin: 10px auto; font-family: var(--font-mono); font-size: 12px; }
     table.pl-cc td { border: 1px solid rgba(0,240,255,.25); padding: 6px 10px; color: var(--neon-green);
       background: rgba(0,240,255,.04); min-width: 74px; }
@@ -137,11 +141,11 @@
   <div class="pl-wrap" id="content">
     <div class="pl-hero">
       <h1 class="pl-title" data-i18n="pl.title">🛡️ 协议实验室</h1>
-      <p class="pl-sub" data-i18n="pl.sub">TLS 握手 · DH 中间人 · Merkle 树与区块链 · 零知识证明 · ECC 几何 · 口令破解成本——现代密码学的十一堂交互课</p>
+      <p class="pl-sub" data-i18n="pl.sub">TLS 握手 · DH 中间人 · Merkle 树与区块链 · 零知识证明 · ECC 几何 · 口令破解成本——现代密码学的十六堂交互课</p>
       <div class="pl-nav">
         <a href="#pl-tls">🤝 TLS</a><a href="#pl-dh">🕵️ DH</a><a href="#pl-merkle">🌳 Merkle</a>
         <a href="#pl-zkp">🎭 ZKP</a><a href="#pl-chacha">🌀 ChaCha20</a><a href="#pl-ecc">📈 ECC</a>
-        <a href="#pl-a51">📡 A5/1</a>        <a href="#pl-rc4">🧨 RC4</a><a href="#pl-sign">✍️ 签名</a><a href="#pl-rng">🎲 随机数</a><a href="#pl-pwd">⏳ 口令成本</a>
+        <a href="#pl-a51">📡 A5/1</a>        <a href="#pl-rc4">🧨 RC4</a><a href="#pl-sign">✍️ 签名</a><a href="#pl-rng">🎲 随机数</a><a href="#pl-math">∑ 数论</a><a href="#pl-diff">🎯 差分</a><a href="#pl-aead">🛡️ AEAD</a><a href="#pl-ext">🧟 长度扩展</a><a href="#pl-big">🐘 大数</a><a href="#pl-pwd">⏳ 口令成本</a>
       </div>
     </div>
 
@@ -268,6 +272,55 @@
       </div>
       <div id="rng-view"></div>
       <div class="pl-note-line" id="rng-crackstat"></div>
+    </div>
+
+    <div class="pl-card" id="pl-math">
+      <div class="pl-h"><span class="ic">∑</span><b data-i18n="pl.mathH">数论小课堂：三块基石</b></div>
+      <div class="pl-note" id="math-intro"></div>
+      <div class="pl-btnrow" id="math-p"></div>
+      <div id="math-view"></div>
+      <div class="pl-btnrow" id="math-phi"></div>
+      <div class="pl-note-line" id="math-note"></div>
+    </div>
+
+    <div class="pl-card" id="pl-diff">
+      <div class="pl-h"><span class="ic">🎯</span><b data-i18n="pl.diffH">差分分析：偏置即杠杆</b></div>
+      <div class="pl-note" id="diff-intro"></div>
+      <div class="pl-btnrow" id="diff-chips"></div>
+      <div id="diff-view"></div>
+      <div class="pl-note-line" id="diff-note"></div>
+    </div>
+
+    <div class="pl-card" id="pl-aead">
+      <div class="pl-h"><span class="ic">🛡️</span><b data-i18n="pl.aeadH">认证加密：改一位你知不知道？</b></div>
+      <div class="pl-note" id="aead-intro"></div>
+      <div class="pl-btnrow">
+        <button class="btn pink" id="aead-raw">裸加密（无认证）</button>
+        <button class="btn accent" id="aead-etm">Encrypt-then-MAC</button>
+        <button class="btn yellow" id="aead-flip">⚡ 翻转密文一位</button>
+      </div>
+      <div id="aead-view"></div>
+      <div class="pl-note-line" id="aead-verdict"></div>
+    </div>
+
+    <div class="pl-card" id="pl-ext">
+      <div class="pl-h"><span class="ic">🧟</span><b data-i18n="pl.extH">长度扩展攻击：无钥伪造 MAC</b></div>
+      <div class="pl-note" id="ext-intro"></div>
+      <div class="pl-btnrow">
+        <button class="btn accent" id="ext-gen">🔑 生成 secret-prefix MAC</button>
+        <button class="btn pink" id="ext-forge">🧟 无钥伪造 &amp;admin=true</button>
+        <button class="btn yellow" id="ext-verify">✅ 服务端验证</button>
+      </div>
+      <div id="ext-view"></div>
+      <div class="pl-note-line" id="ext-verdict"></div>
+    </div>
+
+    <div class="pl-card" id="pl-big">
+      <div class="pl-h"><span class="ic">🐘</span><b data-i18n="pl.bigH">真实大数 RSA：256 位现场生成</b></div>
+      <div class="pl-note" id="big-intro"></div>
+      <div class="pl-btnrow"><button class="btn accent" id="big-gen">🔐 现场生成 256 位密钥对</button></div>
+      <div id="big-view"></div>
+      <div class="pl-note-line" id="big-note"></div>
     </div>
 
     <div class="pl-card" id="pl-pwd">

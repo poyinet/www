@@ -18,7 +18,7 @@ async function trackErrors(page) {
 test('TLS：六步走完 + Eve 在第 3 步露馅', async function ({ page }) {
   const errors = await trackErrors(page);
   await page.goto('/protocols.html', { waitUntil: 'networkidle' });
-  await expect(page.locator('#pl-ready')).toHaveText('11', { timeout: 10_000 });
+  await expect(page.locator('#pl-ready')).toHaveText('16', { timeout: 10_000 });
 
   await page.locator('#tls-eve').click();
   for (let i = 0; i < 6; i++) {
@@ -59,6 +59,8 @@ test('DH：无认证时 Eve 拿到两把不同的钥匙', async function ({ page
 test('Merkle：改叶子传染到根；篡改第 2 块链断裂可还原', async function ({ page }) {
   const errors = await trackErrors(page);
   await page.goto('/protocols.html', { waitUntil: 'networkidle' });
+  await page.locator('#pl-merkle').scrollIntoViewIfNeeded();
+  await page.waitForTimeout(400);          /* LAZY 预热 */
 
   const rootBefore = await page.evaluate(function () {
     var n = document.querySelectorAll('#merkle-tree .pl-mrow')[0];
@@ -86,6 +88,8 @@ test('Merkle：改叶子传染到根；篡改第 2 块链断裂可还原', async
 test('ZKP：轮次推进且节点经历模糊承诺', async function ({ page }) {
   const errors = await trackErrors(page);
   await page.goto('/protocols.html', { waitUntil: 'networkidle' });
+  await page.locator('#pl-zkp').scrollIntoViewIfNeeded();
+  await page.waitForTimeout(400);          /* LAZY 预热 */
   const stat0 = await page.locator('#zkp-stat').textContent();
   await page.locator('#zkp-round').click();
   await page.waitForTimeout(600);

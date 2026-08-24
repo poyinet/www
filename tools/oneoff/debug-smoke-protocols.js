@@ -45,6 +45,11 @@ vm.createContext(sandbox);
 try {
   vm.runInContext("if (window.Arcade && Arcade.i18n) { Arcade.i18n.applyStatic(); } window.PROTOCOL_LAB.init();", sandbox);
   console.log('init OK, pl-ready =', docs['pl-ready'] ? docs['pl-ready'].textContent : 'null');
+  Object.keys(docs).forEach(function (k) {
+    var d = docs[k];
+    var s = (d._html || '') + (d.textContent || '');
+    if (/NaN|undefined/.test(s)) console.log('POLLUTE:', k, '::', (s.match(/.{0,50}(NaN|undefined).{0,25}/) || [''])[0]);
+  });
 } catch (e) {
   console.log('INIT THROW:', e.message);
   console.log(e.stack.split('\n').slice(0, 4).join('\n'));

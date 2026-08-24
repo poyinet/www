@@ -570,6 +570,21 @@ node tools/preflight.js       # 部署前资源完整性检查（109 HTML 引用
 
 开发中修复：LAZY 块收尾误写 `})();`（立即调用 undefined，smoke 桩下抛错）；rc4 风格正则对 textContent 无空格拼接不匹配。
 
+## 🏁 第十期：「尽量完整」收官（2026-08-24 立项即实施）
+
+> 概念面覆盖度提升至 ≈90%；终态回归 qa-all **22/22** · chromium 全量 **436/436**。
+
+| # | 内容 | 结果 |
+|---|---|---|
+| 21 | protocols 第 12 卡「∑ 数论小课堂」：费马小定理全表验证（p=13/17/23/97 可选）· 原根表（与 DH 卡 g=5 互链）· φ 探索器（561 卡迈克尔反例内置） | 数学基础层落地 |
+| 22 | protocols 第 13 卡「🎯 差分分析」：PRESENT 真实 4-bit S 盒 16×16 差分分布表活算 + Δx 芯片选行 + 最高偏置高亮 | 密码分析从词条变实操 |
+| 23 | protocols 第 14 卡「🛡️ 认证加密」：裸加密 vs Encrypt-then-MAC 同一比特翻转的两种命运（接收方盲收 ✗ vs 标签拒收 ✓）；MT-E 时代注脚 | AEAD 直觉落地 |
+| 24 | protocols 第 15 卡「🧟 长度扩展攻击」：自实现真实 SHA-1（含状态接力 extend）——无钥伪造 msg‖glue‖&admin=true 的合法 MAC，服务端重算验证通过 ✗；防御 = HMAC/SHA-3 | Merkle-Damgård 软肋实证 |
+| 25 | protocols 第 16 卡「🐘 真实大数 RSA」：BigInt Miller-Rabin 现场生成 256 位密钥对（显示真实耗时）+ 模幂加解密往返；注明 2048 位现行标准 | 玩具数字→真实世界 |
+| 集成 | pl-ready 11→16（smoke/r7/r8 断言同步）· meta 十六大交互演示 · SW v25 · 差分表样式 | 全绿 |
+
+**边界声明（收官）**：侧信道互动 / MPC / 同态加密 / SHA-3 结构 / PoS 共识列入「明确不做」——词条级保留，博物馆定位不再扩展。开发中修复：LAZY 批量替换曾误杀三处内层 IIFE 的立即调用（DH populate / merkle build / pwd build），已全部恢复并加结构校验器（check-lazy-inners）。
+
 ## 🗺️ 路线图（未来规划） RFC 7465 禁用史可视化 |
 
 

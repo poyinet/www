@@ -32,9 +32,23 @@ window.PROTOCOL_LAB = (function () {
       { id: 'dh', icon: '🕵️', name: { zh: 'DH 中间人', en: 'DH Man-in-the-Middle' } },
       { id: 'merkle', icon: '🌳', name: { zh: 'Merkle 树与区块链', en: 'Merkle Tree & Blockchain' } },
       { id: 'zkp', icon: '🎭', name: { zh: '零知识证明', en: 'Zero-Knowledge Proof' } },
+      { id: 'chacha', icon: '🌀', name: { zh: 'ChaCha20', en: 'ChaCha20' } },
       { id: 'ecc', icon: '📈', name: { zh: 'ECC 点加法', en: 'ECC Point Addition' } },
+      { id: 'a51', icon: '📡', name: { zh: 'A5/1 流密码', en: 'A5/1 Stream Cipher' } },
       { id: 'pwd', icon: '⏳', name: { zh: '口令破解成本', en: 'Password Cracking Cost' } }
     ],
+
+    /* ================= ChaCha20 quarter-round ================= */
+    chachaIntro: {
+      zh: 'ChaCha20 把 4×4 的 32 位字状态搅 20 轮：每轮先对四列、再对四条对角线各跑一次 quarter-round——八条指令（加法、异或、循环移位交替），现代 CPU 上快得飞起，且常数时间无查表侧信道。单步走一遍双轮的 64 条操作，亲眼看雪崩扩散。',
+      en: 'ChaCha20 churns a 4×4 state of 32-bit words for 20 rounds: each round runs a quarter-round over the four columns then the four diagonals — eight instructions alternating add, XOR and rotation. Blazing fast on modern CPUs and constant-time with no table lookups. Single-step all 64 ops of one double round and watch the avalanche.'
+    },
+
+    /* ================= A5/1 ================= */
+    a51Intro: {
+      zh: 'GSM 手机的通话加密：三个不同长度的 LFSR（19/22/23 位）靠「少数服从多数」钟控——多数位决定谁走谁留，输出位是三个最高位的异或。简单、硬件便宜，却在 2009 年被 Karsten Nohl 用彩虹表实测攻破：如今它只活在教科书里。单步看多数投票与密钥流诞生。',
+      en: 'GSM call encryption: three LFSRs (19/22/23 bits) clocked by majority vote — the majority clock-bit decides who steps, and each output bit is the XOR of three top cells. Cheap in hardware, broken in practice by Karsten Nohl\'s rainbow tables (2009). Today it lives only in textbooks. Step through the voting and the keystream.'
+    },
 
     /* ================= ① TLS 握手 ================= */
     tlsSteps: function () {
@@ -594,6 +608,132 @@ window.PROTOCOL_LAB = (function () {
       run();
     })();
 
-    el('pl-ready').textContent = '6';
+    /* ---------- 🌀 ChaCha20 quarter-round ---------- */
+    (function () {
+      el('cc-intro').textContent = L(LAB.chachaIntro);
+      var st = new Uint32Array(16);
+      var CONSTANTS = [0x61707865, 0x3320646e, 0x79622d32, 0x6b206574]; /* "expand 32-byte k" */
+      function freshState() {
+        for (var i = 0; i < 4; i++) st[i] = CONSTANTS[i];
+        for (i = 4; i < 12; i++) st[i] = (Math.random() * 4294967296) >>> 0;
+        st[12] = 0; /* counter */
+        for (i = 13; i < 16; i++) st[i] = (Math.random() * 4294967296) >>> 0;
+      }
+      function rotl(x, n) { return ((x << n) | (x >>> (32 - n))) >>> 0; }
+      /* 标准对角线索引（显式列出，避免取模歧义） */
+      var DIAG = [[0, 5, 10, 15], [1, 6, 11, 12], [2, 7, 8, 13], [3, 4, 9, 14]];
+      function buildOps() {
+        var ops = [];
+        function qr(A, B, C, D) {
+          ops.push({ t: 'a += b', hl: [A, B], f: function () { st[A] = (st[A] + st[B]) >>> 0; } });
+          ops.push({ t: 'd ^= a', hl: [D, A], f: function () { st[D] = (st[D] ^ st[A]) >>> 0; } });
+          ops.push({ t: 'd <<<= 16', hl: [D], f: function () { st[D] = rotl(st[D], 16); } });
+          ops.push({ t: 'c += d', hl: [C, D], f: function () { st[C] = (st[C] + st[D]) >>> 0; } });
+          ops.push({ t: 'b ^= c', hl: [B, C], f: function () { st[B] = (st[B] ^ st[C]) >>> 0; } });
+          ops.push({ t: 'b <<<= 12', hl: [B], f: function () { st[B] = rotl(st[B], 12); } });
+          ops.push({ t: 'a += b', hl: [A, B], f: function () { st[A] = (st[A] + st[B]) >>> 0; } });
+          ops.push({ t: 'd ^= a', hl: [D, A], f: function () { st[D] = (st[D] ^ st[A]) >>> 0; } });
+          ops.push({ t: 'd <<<= 8', hl: [D], f: function () { st[D] = rotl(st[D], 8); } });
+          ops.push({ t: 'c += d', hl: [C, D], f: function () { st[C] = (st[C] + st[D]) >>> 0; } });
+          ops.push({ t: 'b ^= c', hl: [B, C], f: function () { st[B] = (st[B] ^ st[C]) >>> 0; } });
+          ops.push({ t: 'b <<<= 7', hl: [B], f: function () { st[B] = rotl(st[B], 7); } });
+        }
+        for (var c = 0; c < 4; c++) qr(c, c + 4, c + 8, c + 12);            /* 列 QR */
+        DIAG.forEach(function (q) { qr(q[0], q[1], q[2], q[3]); });          /* 对角 QR */
+        return ops;
+      }
+      var grid = el('cc-grid'), statEl = el('cc-stat');
+      var ops = [], opIdx = 0;
+      function renderGrid(hl) {
+        var h = '<table class="pl-cc">';
+        for (var r = 0; r < 4; r++) {
+          h += '<tr>';
+          for (var c = 0; c < 4; c++) {
+            var i = r * 4 + c;
+            var hot = hl && hl.indexOf(i) >= 0;
+            h += '<td class="' + (hot ? 'hot' : '') + '">' + w8c(st[i]).substr(0, 8) + '</td>';
+          }
+          h += '</tr>';
+        }
+        grid.innerHTML = h + '</table>';
+      }
+      function w8c(x) { return ('00000000' + (x >>> 0).toString(16)).slice(-8); }
+      function reset() {
+        freshState();
+        ops = buildOps();
+        opIdx = 0;
+        renderGrid(null);
+        statEl.textContent = isEn ? 'Step through the double round (columns → diagonals), 64 ops' : '单步走完一个双轮（先列后对角），共 64 条操作';
+      }
+      el('cc-step').addEventListener('click', function () {
+        if (opIdx >= ops.length) { reset(); return; }
+        var o = ops[opIdx];
+        o.f();
+        renderGrid(o.hl);
+        opIdx++;
+        statEl.textContent = isEn
+          ? 'Op ' + opIdx + '/64 · ' + o.t + (opIdx === 64 ? ' — double round done; ×10 more for ChaCha20' : '')
+          : '操作 ' + opIdx + '/64 · ' + o.t + (opIdx === 64 ? ' —— 双轮完成；ChaCha20 还要再来十遍' : '');
+      });
+      el('cc-reset').addEventListener('click', reset);
+      reset();
+    })();
+
+    /* ---------- 📡 A5/1 LFSR ---------- */
+    (function () {
+      el('a51-intro').textContent = L(LAB.a51Intro);
+      var LEN = [19, 22, 23];
+      var TAPS = [[13, 16, 17, 18], [20, 21], [7, 20, 21, 22]];
+      var CLOCKBIT = [8, 10, 10];
+      var regs = [[], [], []];
+      var stream = [];
+      function resetRegs() {
+        for (var r = 0; r < 3; r++) {
+          regs[r] = [];
+          for (var i = 0; i < LEN[r]; i++) regs[r].push(Math.random() < 0.5 ? 0 : 1);
+        }
+        stream = [];
+      }
+      function render(hlMajor, tapped) {
+        var h = '';
+        for (var r = 0; r < 3; r++) {
+          h += '<div class="pl-r"><span class="pl-rl">R' + (r + 1) + '(' + LEN[r] + ')</span><span class="pl-cells">';
+          for (var i = regs[r].length - 1; i >= 0; i--) {
+            var cls = 'pl-bit';
+            if (hlMajor && CLOCKBIT[r] === i) cls += ' maj';
+            if (tapped && TAPS[r].indexOf(i) >= 0 && hlMajor) cls += ' tap';
+            h += '<span class="' + cls + '">' + regs[r][i] + '</span>';
+          }
+          h += '</span><span class="pl-out">out ' + (regs[r][LEN[r] - 1]) + '</span></div>';
+        }
+        el('a51-registers').innerHTML = h;
+        var ks = '';
+        for (i = Math.max(0, stream.length - 40); i < stream.length; i++) ks += stream[i];
+        el('a51-stream').innerHTML = '<span class="pl-klabel">keystream</span> ' + (ks || '—') +
+          ' <small>(' + stream.length + ' bits)</small>';
+      }
+      function step() {
+        var m = regs[0][CLOCKBIT[0]] + regs[1][CLOCKBIT[1]] + regs[2][CLOCKBIT[2]];
+        var majority = m >= 2 ? 1 : 0;
+        for (var r = 0; r < 3; r++) {
+          if (regs[r][CLOCKBIT[r]] === majority) {
+            var fb = 0;
+            TAPS[r].forEach(function (t) { fb ^= regs[r][t]; });
+            regs[r].pop();
+            regs[r].unshift(fb & 1);
+          }
+        }
+        stream.push(regs[0][LEN[0] - 1] ^ regs[1][LEN[1] - 1] ^ regs[2][LEN[2] - 1]);
+        render(true, true);
+      }
+      el('a51-step').addEventListener('click', function () { step(); });
+      el('a51-fast').addEventListener('click', function () {
+        for (var i = 0; i < 100; i++) step();
+      });
+      el('a51-reset').addEventListener('click', function () { resetRegs(); render(false, false); });
+      resetRegs(); render(false, false);
+    })();
+
+    el('pl-ready').textContent = '8';
   };
 })();

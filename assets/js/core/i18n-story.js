@@ -740,6 +740,14 @@
   /* 第六期 #1：shamir 挂靠现代章（末位追加） */
   d.zh['st.c10.g17'] = 'Shamir 分钥密约：把密信撕成五份分给五人——任何两份即可拼回原信，一份永远读不出半字，门限秘密分享手算实战。';
   d.en['st.c10.g17'] = 'Shamir Split-Key Pact: cut a letter into five shares for five allies — any two rebuild it, one reveals nothing; hands-on threshold secret sharing.';
+  /* 第八期 #13：sm4 挂靠现代章（末位追加） */
+  d.zh['st.c10.g18'] = 'SM4 国密试炼场：真实引擎与官方向量对拍——S 盒查表、轮迹追踪、国密史话，中国密码从跟随到输出的代表。';
+  d.en['st.c10.g18'] = 'SM4 National-Cipher Trial: a real engine vector-checked against the official standard — S-box lookups, round traces, and the story of Chinese crypto going global.';
+  /* 第八期 #17/#18：acrostic 挂文艺复兴章、phishhunt 挂现代章（末位追加） */
+  d.zh['st.c3.g9'] = '藏头诗密信：每行首字连读成密信——与培根双字体同源的隐写雅趣，秘密藏在「看起来正常」里。';
+  d.en['st.c3.g9'] = 'Acrostic Letters: read the line openings as one hidden word — steganography in the spirit of Bacon\'s two fonts, a secret hiding inside the ordinary.';
+  d.zh['st.c10.g19'] = '钓鱼邮件狩猎：再强的加密也挡不住你亲手点开的链接——社会工程是密码链上最弱的一环，练出火眼金睛。';
+  d.en['st.c10.g19'] = 'Phishing Hunt: the strongest crypto cannot stop your own click — social engineering is the weakest link; train the eye.';
 })();
 
 /* ============================================================

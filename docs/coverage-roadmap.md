@@ -13,7 +13,7 @@
 
 | 维度 | 数量 | 说明 |
 |---|---|---|
-| 游戏 | **111 款** | 8 大分类；密码破译类 45+；每款 audit S1-S13 全绿（第六期 +rsa/+shamir）|
+| 游戏 | **114 款** | 8 大分类；密码破译类 48；每款 audit S1-S13 全绿（第六期 +rsa/+shamir，第八期 +sm4/+acrostic/+phishhunt）|
 | 编年史章节 | **12 章** | dawn（罗塞塔）→ quantum（量子转折点）；11 章 CODEBREAKER 密语机制 |
 | 人物志 | **48 位** | 凯撒 → 王小云；全字段 zh/en（name/icon/role/era/bio/quote/fact） |
 | 密件册 | **41 件** | real/dramatized/reconstructed 三级史料标注 |
@@ -45,7 +45,7 @@
 | 社会工程 | 🟡 口令喷涂/金丝雀陷阱词条　🔲 钓鱼识别、口令破解成本计算器 |
 
 ### 1.4 质量与工程基座
-- **21 项 qa 门禁**（`node tools/qa-all.js`）：audit S1-S13 ×111 · smoke 四模式 · deep 静态扫描 · preflight 资源完整性 · i18n 三审计 · chapter-copy · link-density 等
+- **21 项 qa 门禁**（`node tools/qa-all.js`）：audit S1-S13 ×114 · smoke 四模式 · deep 静态扫描 · preflight 资源完整性 · i18n 三审计 · chapter-copy · link-density 等
 - **性能基线**：`tools/report/perf-baseline.json`（19 页 FCP ≤408ms 本地）；dict 三层架构（core 143KB + ui 10KB + archive/story 懒加载）
 - **无障碍**：skip-link / prefers-reduced-motion / 浮层焦点管理（Esc+Tab 圈定）
 - **安全**：XSS 清零（escapeHtml+DOM API）、零遥测、纯本地存储
@@ -84,7 +84,7 @@
 | 11 | ECC 点运算可视化 | 实数域椭圆曲线加法几何演示（滑杆取点连线） |
 | 12 | 口令破解成本计算器 | 字符集×长度×硬件速率 → 穷举耗时；接入 Argon2 词条 |
 
-### 第八期（P2 —— 深水区，需外部资源核对的专项）
+### 第八期（P2 —— 深水区）✅ 2026-08-24 已全部实施（SM4 真实现经 IETF 官方文本核对常量并向量对拍；详见 `PLAN.md`「第八期」节）
 
 | # | 项目 | 前置条件 |
 |---|---|---|

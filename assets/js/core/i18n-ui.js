@@ -241,4 +241,8 @@
   d.en['pl.pwdH'] = 'Password Cracking Cost Calculator';
   d.zh['workshop.protocolLink'] = '🛡️ 协议实验室 →';
   d.en['workshop.protocolLink'] = '🛡️ Protocol Lab →';
+  d.zh['pl.chachaH'] = 'ChaCha20：八条指令的雪崩';
+  d.en['pl.chachaH'] = 'ChaCha20: avalanche in eight instructions';
+  d.zh['pl.a51H'] = 'A5/1：多数投票驱动的三转子移位寄存器';
+  d.en['pl.a51H'] = 'A5/1: three LFSRs driven by majority vote';
 })();

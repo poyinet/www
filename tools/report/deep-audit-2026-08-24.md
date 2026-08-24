@@ -1,15 +1,15 @@
 # 破译 DECODE ARCADE · 全站深度扫描报告（2026-08-24）
 
-扫描范围：111 款游戏（注册表全覆盖）
+扫描范围：114 款游戏（注册表全覆盖）
 
 ## 严重度统计
 
 | 级别 | 数量 |
 |---|---|
 | 🔴 MAJOR | 0 |
-| 🟠 MED | 0 |
-| 🟡 MINOR | 6 |
-| 🔵 INFO | 92 |
+| 🟠 MED | 3 |
+| 🟡 MINOR | 9 |
+| 🔵 INFO | 95 |
 
 ## 逐款结论
 
@@ -126,6 +126,15 @@
 | solitaire（纸牌密码） | 密码破译 | ok | 🟡 MINOR |
 | rsa（RSA 小素数保险柜） | 密码破译 | ok | 🟡 MINOR |
 | shamir（Shamir 分钥密约） | 密码破译 | ok | 🟡 MINOR |
+| sm4（SM4 国密试炼场） | 密码破译 | ok | 🟠 MED |
+| acrostic（藏头诗密信） | 密码破译 | ok | 🟠 MED |
+| phishhunt（钓鱼邮件狩猎） | 密码破译 | ok | 🟠 MED |
+
+## MED 明细
+
+- **sm4**（SM4 国密试炼场）[I3] JS 硬编码中文 34 行（非注释），示例: q: { zh: 'SM4 解密时轮密钥的使用顺序是？', en: 'In SM | ok: { zh: 'rk31 → rk0 反序使用', en: 'Revers
+- **acrostic**（藏头诗密信）[I3] JS 硬编码中文 8 行（非注释），示例: { word: '破译万岁', lines: ['破晓行舟雾未开', '译尽残碑 | { word: '凯撒密码', lines: ['凯风南来拂战旗', '撒手千金
+- **phishhunt**（钓鱼邮件狩猎）[I3] JS 硬编码中文 28 行（非注释），示例: subj: { zh: '【紧急】您的账户已被限制，请立即验证', en: '[ | body: { zh: '我们检测到异常登录，您的账户将在 24 小时内被永久冻
 
 ## MINOR 明细
 
@@ -135,6 +144,9 @@
 - **solitaire**（纸牌密码）[C1] lobby 标签表（TIME_LABELS/DIFF_LABELS）未收录——卡带无时长/难度徽章
 - **rsa**（RSA 小素数保险柜）[C1] lobby 标签表（TIME_LABELS/DIFF_LABELS）未收录——卡带无时长/难度徽章
 - **shamir**（Shamir 分钥密约）[C1] lobby 标签表（TIME_LABELS/DIFF_LABELS）未收录——卡带无时长/难度徽章
+- **sm4**（SM4 国密试炼场）[C1] lobby 标签表（TIME_LABELS/DIFF_LABELS）未收录——卡带无时长/难度徽章
+- **acrostic**（藏头诗密信）[C1] lobby 标签表（TIME_LABELS/DIFF_LABELS）未收录——卡带无时长/难度徽章
+- **phishhunt**（钓鱼邮件狩猎）[C1] lobby 标签表（TIME_LABELS/DIFF_LABELS）未收录——卡带无时长/难度徽章
 
 ## INFO 明细
 
@@ -230,6 +242,9 @@
 - **solitaire**（纸牌密码）[I3] JS 硬编码中文 2 行
 - **rsa**（RSA 小素数保险柜）[M1] 仅 click 交互（点按类可接受；滑动/连续操作类需复核）
 - **shamir**（Shamir 分钥密约）[M1] 仅 click 交互（点按类可接受；滑动/连续操作类需复核）
+- **sm4**（SM4 国密试炼场）[M1] 仅 click 交互（点按类可接受；滑动/连续操作类需复核）
+- **acrostic**（藏头诗密信）[M1] 仅 click 交互（点按类可接受；滑动/连续操作类需复核）
+- **phishhunt**（钓鱼邮件狩猎）[M1] 仅 click 交互（点按类可接受；滑动/连续操作类需复核）
 
 ## 版权合规
 

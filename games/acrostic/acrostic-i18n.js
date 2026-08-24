@@ -1,0 +1,32 @@
+/* 破译 DECODE ARCADE · acrostic 游戏内文案（zh/en 对称，占位符一致） */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.acrostic.tutTitle'] = '藏头诗密信 — 玩法';
+  d.en['gs.acrostic.tutTitle'] = 'Acrostic Letters — How to Play';
+  d.zh['gs.acrostic.tut1t'] = '目标';
+  d.en['gs.acrostic.tut1t'] = 'Objective';
+  d.zh['gs.acrostic.tut1'] = '把密词拆进诗行开头：中文取每行首字，英文取每行首字母。读出藏在诗里的那封信，五题通关。';
+  d.en['gs.acrostic.tut1'] = 'The secret word is split across the line openings: first characters in Chinese, first letters in English. Read the hidden letter — five poems to solve.';
+  d.zh['gs.acrostic.tut2t'] = '历史';
+  d.en['gs.acrostic.tut2t'] = 'History';
+  d.zh['gs.acrostic.tut2'] = '《水浒传》里吴用用一首藏头「卢俊义反」逼反了玉麒麟；文艺复兴的贵族也用藏头向心上人递情书——隐写不必是数学，也可以是诗。';
+  d.en['gs.acrostic.tut2'] = 'In Water Margin, Wu Yong used an acrostic spelling "Lu Junyi rebels" to turn a hero; Renaissance courtiers hid love letters the same way. Steganography need not be math — it can be poetry.';
+  d.zh['gs.acrostic.tut3t'] = '计分与每日';
+  d.en['gs.acrostic.tut3t'] = 'Scoring & daily';
+  d.zh['gs.acrostic.tut3'] = '首答 +20、连击加成；答错揭示答案但可继续。总分入 BEST（max）。每日挑战按日种子换诗。';
+  d.en['gs.acrostic.tut3'] = 'First-try answers earn +20 with streak bonuses; a wrong pick reveals the answer and play continues. Total goes to BEST (max). The daily challenge rotates poems by date seed.';
+  d.zh['gs.acrostic.qText'] = '第 {n}/{total} 题 · 这首诗藏着的密词是？';
+  d.en['gs.acrostic.qText'] = 'Poem {n}/{total} · what word does it hide?';
+  d.zh['gs.acrostic.ok'] = '✓ 正确！+{pts} 分';
+  d.en['gs.acrostic.ok'] = '✓ Correct! +{pts} pts';
+  d.zh['gs.acrostic.retry'] = '✗ 不是它——再读读每行开头（连击已断）';
+  d.en['gs.acrostic.retry'] = '✗ Not this one — read the line openings again (streak broken)';
+  d.zh['gs.acrostic.done'] = '🖋️ 全部读完 · 总分 {score}';
+  d.en['gs.acrostic.done'] = '🖋️ All poems read · total {score}';
+  d.zh['gs.acrostic.againBtn'] = '🔁 再来一局';
+  d.en['gs.acrostic.againBtn'] = '🔁 Play again';
+  d.zh['gs.acrostic.dailyBtn'] = '📅 每日挑战';
+  d.en['gs.acrostic.dailyBtn'] = '📅 Daily challenge';
+  d.zh['gs.acrostic.helpText'] = '为什么重要：这是最古老的隐写术之一——不隐藏「内容」，而隐藏「内容存在」。现代隐写把它搬进图片最低比特位（见破译工坊·隐写工坊），但原理一脉相承：秘密必须看起来完全像正常事物。本页诗作均为原创示例。';
+  d.en['gs.acrostic.helpText'] = "Why it matters: this is one of the oldest steganography tricks — hiding not the message but the fact that a message exists. Modern stego moved the idea into image least-significant bits (see Workshop → Stego Lab); the principle is unchanged: a secret must look perfectly ordinary. All poems on this page are original examples.";
+})();

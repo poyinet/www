@@ -1,0 +1,38 @@
+/* 破译 DECODE ARCADE · phishhunt 游戏内文案（zh/en 对称，占位符一致） */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.phishhunt.tutTitle'] = '钓鱼邮件狩猎 — 玩法';
+  d.en['gs.phishhunt.tutTitle'] = 'Phishing Hunt — How to Play';
+  d.zh['gs.phishhunt.tut1t'] = '目标';
+  d.en['gs.phishhunt.tut1t'] = 'Objective';
+  d.zh['gs.phishhunt.tut1'] = '八封邮件真假连判：仿冒域名、回复地址错位、制造恐慌、天上掉馅饼……点「钓鱼」或「正常」，答后自动亮出线索。';
+  d.en['gs.phishhunt.tut1'] = 'Judge eight emails real or fake: lookalike domains, mismatched reply-tos, urgency threats, too-good-to-be-true prizes. Answer, then the clues light up.';
+  d.zh['gs.phishhunt.tut2t'] = '心法';
+  d.en['gs.phishhunt.tut2t'] = 'Mindset';
+  d.zh['gs.phishhunt.tut2'] = '再强的加密也挡不住你自己点开链接——社会工程学攻击的是人，不是数学。三问：发件域名对吗？情绪在催我吗？链接真的指向它声称的地方吗？';
+  d.en['gs.phishhunt.tut2'] = 'The strongest crypto cannot stop you from clicking — social engineering attacks people, not math. Three questions: is the domain right? Is emotion rushing me? Does the link really go where it claims?';
+  d.zh['gs.phishhunt.tut3t'] = '计分与每日';
+  d.en['gs.phishhunt.tut3t'] = 'Scoring & daily';
+  d.zh['gs.phishhunt.tut3'] = '判对 +20、连击加成；答错扣连击但线索照亮。总分入 BEST（max）。每日挑战按日种子换邮件。';
+  d.en['gs.phishhunt.tut3'] = 'Correct calls earn +20 with streak bonuses; a wrong call breaks the streak but clues still light up. Total goes to BEST (max). Daily challenge reshuffles by date seed.';
+  d.zh['gs.phishhunt.prog'] = '第 {n}/{total} 封 · 连击 {streak}';
+  d.en['gs.phishhunt.prog'] = 'Email {n}/{total} · streak {streak}';
+  d.zh['gs.phishhunt.phishBtn'] = '🎣 是钓鱼';
+  d.en['gs.phishhunt.phishBtn'] = '🎣 Phishing';
+  d.zh['gs.phishhunt.realBtn'] = '✅ 是正常';
+  d.en['gs.phishhunt.realBtn'] = '✅ Legitimate';
+  d.zh['gs.phishhunt.cluesT'] = '🔍 线索';
+  d.en['gs.phishhunt.cluesT'] = '🔍 Clues';
+  d.zh['gs.phishhunt.ok'] = '✓ 眼力过人！+{pts} 分';
+  d.en['gs.phishhunt.ok'] = '✓ Sharp eye! +{pts} pts';
+  d.zh['gs.phishhunt.no'] = '✗ 判断失误（连击已断）';
+  d.en['gs.phishhunt.no'] = '✗ Wrong call (streak broken)';
+  d.zh['gs.phishhunt.done'] = '🎣 狩猎结束 · 总分 {score}';
+  d.en['gs.phishhunt.done'] = '🎣 Hunt over · total {score}';
+  d.zh['gs.phishhunt.againBtn'] = '🔁 再来一局';
+  d.en['gs.phishhunt.againBtn'] = '🔁 Play again';
+  d.zh['gs.phishhunt.dailyBtn'] = '📅 每日挑战';
+  d.en['gs.phishhunt.dailyBtn'] = '📅 Daily challenge';
+  d.zh['gs.phishhunt.helpText'] = '为什么重要：历史上多起著名入侵（2016 年美国大选相关的鱼叉攻击、RSA 2011 年被 Flash 零日拿下）都始于一封被信任的邮件。密码学解决「信息在途」的安全；「人按下按钮」的那一环，只能靠教育与警觉。本页案例均为教学虚构，如有雷同纯属巧合。';
+  d.en['gs.phishhunt.helpText'] = "Why it matters: famous breaches (spear-phishing around the 2016 US election, RSA's 2011 Flash zero-day) all began with one trusted email. Cryptography secures information in transit; the human pressing the button can only be secured by education and vigilance. All cases here are fictional teaching examples.";
+})();

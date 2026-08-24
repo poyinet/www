@@ -15,7 +15,7 @@ window.GAME_CATEGORIES = ['经典街机', '动作反应', '逻辑谜题', '空�
 
 /* 每日破译中心：启用「📅 每日一题」的游戏（大厅今日面板 + 档案页共用）
    所有列出的游戏均实现 daily 模式：日种子确定性生成 + 解完调用 Arcade.daily.markSolved */
-window.DAILY_IDS = ['sudoku', 'enigma', 'bifid', 'slitherlink', 'hashi', 'trifid', 'bacon', 'klondike', 'caesar', 'llk', 'spotdiff', 'sectorsiege', 'sheep', 'morse', 'atbash', 'polybius', 'nihilist', 'starflag', 'autokey', 'rsa', 'shamir'];
+window.DAILY_IDS = ['sudoku', 'enigma', 'bifid', 'slitherlink', 'hashi', 'trifid', 'bacon', 'klondike', 'caesar', 'llk', 'spotdiff', 'sectorsiege', 'sheep', 'morse', 'atbash', 'polybius', 'nihilist', 'starflag', 'autokey', 'rsa', 'shamir', 'sm4', 'acrostic', 'phishhunt'];
 
 window.GAMES = [
   /* ---------- 经典街机 ---------- */
@@ -805,6 +805,27 @@ window.GAMES = [
     id: 'shamir', title: 'Shamir 分钥密约', category: '密码破译',
     desc: '第六期旗舰 · 把密信撕成五份分给五人：任何两份拼回原信，一份无所知——门限秘密分享的生成、验证与还原手算实战。',
     icon: '🗝️', path: 'games/shamir/index.html',
+    mobile: 'ok', bestMode: 'max',
+    lvl: 'easy', time: '5min',
+  },
+  {
+    id: 'sm4', title: 'SM4 国密试炼场', category: '密码破译',
+    desc: '第八期旗舰 · 真实 SM4 引擎（GB/T 32907，启动即与官方向量对拍）：S 盒查表、官方轮迹追踪、国密史话一局通关。',
+    icon: '🇨🇳', path: 'games/sm4/index.html',
+    mobile: 'ok', bestMode: 'max',
+    lvl: 'mid', time: '5min',
+  },
+  {
+    id: 'acrostic', title: '藏头诗密信', category: '密码破译',
+    desc: '第八期 · 每行第一个字连起来读就是密信——中文隐写的千年雅趣，原创中英双语诗库，看诗猜词。',
+    icon: '🖋️', path: 'games/acrostic/index.html',
+    mobile: 'ok', bestMode: 'max',
+    lvl: 'easy', time: '1min',
+  },
+  {
+    id: 'phishhunt', title: '钓鱼邮件狩猎', category: '密码破译',
+    desc: '第八期 · 真假邮件八连判：仿冒域名、回复错位、恐慌话术——社会工程是密码链最弱一环，练出火眼金睛。',
+    icon: '🎣', path: 'games/phishhunt/index.html',
     mobile: 'ok', bestMode: 'max',
     lvl: 'easy', time: '5min',
   }

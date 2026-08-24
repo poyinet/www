@@ -70,6 +70,15 @@
     .cm-param .v { font-size: 13px; color: var(--neon-green); margin-top: 3px; }
     .cm-play { display: inline-block; margin-top: 14px; font-size: 12px; color: var(--neon-pink); text-decoration: none; border: 1px solid rgba(255,45,149,.4); border-radius: 8px; padding: 8px 16px; background: rgba(255,45,149,.07); }
     .cm-play:hover { background: rgba(255,45,149,.16); }
+    .aes-lab { margin-top: 14px; border: 1px dashed rgba(0,240,255,.4); }
+    .aes-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; max-width: 300px; margin: 12px auto; }
+    .aes-cell { display: block; text-align: center; font-family: var(--font-mono); font-size: 13px; padding: 9px 0;
+      background: rgba(0,240,255,.06); border: 1px solid rgba(0,240,255,.3); border-radius: 6px; color: var(--neon-cyan); }
+    .aes-cell.hot { background: rgba(57,255,20,.14); border-color: rgba(57,255,20,.55); color: var(--neon-green); animation: aespulse .8s ease-out; }
+    @keyframes aespulse { 0% { transform: scale(1.15); } 100% { transform: scale(1); } }
+    .aes-steps { display: flex; gap: 8px; flex-wrap: wrap; justify-content: center; margin-top: 10px; }
+    .aes-steps button.on { border-color: rgba(255,214,0,.6); background: rgba(255,214,0,.12); color: var(--neon-yellow); }
+    .aes-note { min-height: 18px; margin-top: 10px; font-size: 12px; color: var(--neon-yellow); line-height: 1.8; text-align: center; }
 
     @media (max-width: 480px) {
       .cm-title { font-size: 16px; }
@@ -141,10 +150,108 @@
             '<div class="cm-params">' + params + '</div></div>' +
             '<a class="cm-play" href="' + pre + 'games/' + m.game + '/index.html">🎮 ' + (isEn ? 'Play the machine' : '去游戏厅操作这台机器') + ' →</a>' +
           '</div>';
+        if (m.lab) cardBox.innerHTML += buildAesLab(isEn);
         var navs = navBox.querySelectorAll('button');
         for (var i = 0; i < navs.length; i++) navs[i].classList.toggle('on', parseInt(navs[i].getAttribute('data-idx'), 10) === idx);
       }
       render(0);
+
+      /* AES 内部结构动画（第八期 #15）：四拍数据流，示意运算 */
+      function buildAesLab(isEn) {
+        var html = '<div class="cm-card aes-lab" id="aes-lab">' +
+          '<div class="cm-head"><span class="cm-ic">🎬</span><span class="cm-name">' + (isEn ? 'One round, four beats (illustrative ops)' : '一轮四拍（示意运算）') + '</span></div>' +
+          '<div class="cm-summary">' + (isEn
+            ? 'Real AES uses the GF(2⁸) S-box and MixColumns matrix; here readable stand-in ops show WHERE each beat hits the 4×4 state. Watch which cells glow.'
+            : '真实 AES 的 S 盒与 MixColumns 是 GF(2⁸) 数学；这里用可读的替代表演示每一拍作用在 4×4 状态的哪里——看哪些格子发光。') + '</div>' +
+          '<div class="aes-grid" id="aes-grid"></div>' +
+          '<div class="aes-steps">' +
+            '<button class="btn" data-step="0">1 · ' + (isEn ? 'State' : '输入状态') + '</button>' +
+            '<button class="btn accent" data-step="1">2 · SubBytes</button>' +
+            '<button class="btn yellow" data-step="2">3 · ShiftRows</button>' +
+            '<button class="btn pink" data-step="3">4 · MixColumns</button>' +
+            '<button class="btn green" data-step="4">5 · AddRoundKey</button>' +
+            '<button class="btn" id="aes-auto">▶ Auto</button>' +
+          '</div>' +
+          '<div class="aes-note" id="aes-note"></div>' +
+          '</div>';
+        setTimeout(function () { wireAesLab(isEn); }, 0);
+        return html;
+      }
+      function wireAesLab(isEn) {
+        var lab = document.getElementById('aes-lab');
+        if (!lab) return;
+        var seed = 'AES-ROCKS-2026!!';
+        var base = [];
+        for (var i = 0; i < 16; i++) base.push(seed.charCodeAt(i % seed.length));
+        var NOTES = [
+          isEn ? 'The 16-byte state laid out as a 4×4 grid.' : '16 字节状态排成 4×4 方阵。',
+          isEn ? 'SubBytes: byte-wise substitution — non-linearity lives here (real AES: GF(2⁸) inverse S-box).' : 'SubBytes：逐字节代换——非线性来源（真 AES 用 GF(2⁸) 逆元 S 盒）。',
+          isEn ? 'ShiftRows: row r rotates left by r — spreads bytes across columns.' : 'ShiftRows：第 r 行左旋 r 位——把字节摊到不同列。',
+          isEn ? 'MixColumns: each column mixed linearly — diffusion across rows (here: weighted sums mod 256).' : 'MixColumns：逐列线性混合——行间扩散（此处：加权和 mod 256）。',
+          isEn ? 'AddRoundKey: XOR with round key derived from your secret — the only step using the key.' : 'AddRoundKey：与轮密钥异或——唯一用到密钥的一拍。'
+        ];
+        function transform(step, arr) {
+          var out = arr.slice();
+          if (step === 1) { for (var i = 0; i < 16; i++) out[i] = (arr[i] * 7 + 13) & 255; }
+          else if (step === 2) {
+            for (i = 0; i < 16; i++) {
+              var r = Math.floor(i / 4), c = i % 4;
+              out[r * 4 + c] = arr[r * 4 + ((c + r) % 4)];
+            }
+          } else if (step === 3) {
+            for (var c2 = 0; c2 < 4; c2++) {
+              for (var r2 = 0; r2 < 4; r2++) {
+                out[r2 * 4 + c2] = (arr[((r2 + 1) % 4) * 4 + c2] + 2 * arr[((r2 + 2) % 4) * 4 + c2] + arr[((r2 + 3) % 4) * 4 + c2]) & 255;
+              }
+            }
+          } else if (step === 4) {
+            for (i = 0; i < 16; i++) out[i] = (arr[i] ^ (0x5A + i * 37)) & 255;
+          }
+          return out;
+        }
+        function renderGrid(arr, hotRowFrom) {
+          var h = '';
+          for (var r = 0; r < 4; r++) {
+            h += '<div class="aes-row">';
+            for (var c = 0; c < 4; c++) {
+              var v = arr[r * 4 + c];
+              var hot = hotRowFrom !== undefined && r >= hotRowFrom;
+              h += '<span class="aes-cell' + (hot ? ' hot' : '') + '">' + ('00' + v.toString(16)).slice(-2).toUpperCase() + '</span>';
+            }
+            h += '</div>';
+          }
+          document.getElementById('aes-grid').innerHTML = h;
+        }
+        var states = [base];
+        for (var s = 1; s <= 4; s++) states.push(transform(s, states[s - 1]));
+        function show(stepIdx) {
+          renderGrid(states[stepIdx], stepIdx === 0 ? undefined : stepIdx - 1);
+          document.getElementById('aes-note').textContent = NOTES[stepIdx];
+          var bs = lab.querySelectorAll('.aes-steps button[data-step]');
+          for (var i = 0; i < bs.length; i++) bs[i].classList.toggle('on', parseInt(bs[i].getAttribute('data-step'), 10) === stepIdx);
+        }
+        var bs2 = lab.querySelectorAll('.aes-steps button[data-step]');
+        for (var j = 0; j < bs2.length; j++) {
+          (function (b) {
+            b.addEventListener('click', function () { show(parseInt(b.getAttribute('data-step'), 10)); });
+          })(bs2[j]);
+        }
+        var timer = null;
+        var auto = document.getElementById('aes-auto');
+        if (auto) {
+          auto.addEventListener('click', function () {
+            if (timer) { clearInterval(timer); timer = null; return; }
+            var k = 0;
+            show(0);
+            timer = setInterval(function () {
+              k++;
+              if (k > 4) { clearInterval(timer); timer = null; return; }
+              show(k);
+            }, 900);
+          });
+        }
+        show(0);
+      }
 
       var btns = navBox.querySelectorAll('button');
       for (var i = 0; i < btns.length; i++) {

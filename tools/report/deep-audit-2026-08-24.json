@@ -1898,11 +1898,114 @@
           "msg": "ok-generic：（未收录，需人工确认）"
         }
       ]
+    },
+    {
+      "id": "sm4",
+      "title": "SM4 国密试炼场",
+      "category": "密码破译",
+      "mobile": "ok",
+      "issues": [
+        {
+          "sev": "INFO",
+          "code": "M1",
+          "msg": "仅 click 交互（点按类可接受；滑动/连续操作类需复核）"
+        },
+        {
+          "sev": "MED",
+          "code": "I3",
+          "msg": "JS 硬编码中文 34 行（非注释），示例: q: { zh: 'SM4 解密时轮密钥的使用顺序是？', en: 'In SM | ok: { zh: 'rk31 → rk0 反序使用', en: 'Revers"
+        },
+        {
+          "sev": "MINOR",
+          "code": "C1",
+          "msg": "lobby 标签表（TIME_LABELS/DIFF_LABELS）未收录——卡带无时长/难度徽章"
+        },
+        {
+          "sev": "OK",
+          "code": "CP",
+          "msg": "ok-generic：（未收录，需人工确认）"
+        }
+      ]
+    },
+    {
+      "id": "acrostic",
+      "title": "藏头诗密信",
+      "category": "密码破译",
+      "mobile": "ok",
+      "issues": [
+        {
+          "sev": "INFO",
+          "code": "M1",
+          "msg": "仅 click 交互（点按类可接受；滑动/连续操作类需复核）"
+        },
+        {
+          "sev": "MED",
+          "code": "I3",
+          "msg": "JS 硬编码中文 8 行（非注释），示例: { word: '破译万岁', lines: ['破晓行舟雾未开', '译尽残碑 | { word: '凯撒密码', lines: ['凯风南来拂战旗', '撒手千金"
+        },
+        {
+          "sev": "MINOR",
+          "code": "C1",
+          "msg": "lobby 标签表（TIME_LABELS/DIFF_LABELS）未收录——卡带无时长/难度徽章"
+        },
+        {
+          "sev": "OK",
+          "code": "CP",
+          "msg": "ok-generic：（未收录，需人工确认）"
+        }
+      ]
+    },
+    {
+      "id": "phishhunt",
+      "title": "钓鱼邮件狩猎",
+      "category": "密码破译",
+      "mobile": "ok",
+      "issues": [
+        {
+          "sev": "INFO",
+          "code": "M1",
+          "msg": "仅 click 交互（点按类可接受；滑动/连续操作类需复核）"
+        },
+        {
+          "sev": "MED",
+          "code": "I3",
+          "msg": "JS 硬编码中文 28 行（非注释），示例: subj: { zh: '【紧急】您的账户已被限制，请立即验证', en: '[ | body: { zh: '我们检测到异常登录，您的账户将在 24 小时内被永久冻"
+        },
+        {
+          "sev": "MINOR",
+          "code": "C1",
+          "msg": "lobby 标签表（TIME_LABELS/DIFF_LABELS）未收录——卡带无时长/难度徽章"
+        },
+        {
+          "sev": "OK",
+          "code": "CP",
+          "msg": "ok-generic：（未收录，需人工确认）"
+        }
+      ]
     }
   ],
   "bySeverity": {
     "MAJOR": [],
-    "MED": [],
+    "MED": [
+      {
+        "id": "sm4",
+        "title": "SM4 国密试炼场",
+        "code": "I3",
+        "msg": "JS 硬编码中文 34 行（非注释），示例: q: { zh: 'SM4 解密时轮密钥的使用顺序是？', en: 'In SM | ok: { zh: 'rk31 → rk0 反序使用', en: 'Revers"
+      },
+      {
+        "id": "acrostic",
+        "title": "藏头诗密信",
+        "code": "I3",
+        "msg": "JS 硬编码中文 8 行（非注释），示例: { word: '破译万岁', lines: ['破晓行舟雾未开', '译尽残碑 | { word: '凯撒密码', lines: ['凯风南来拂战旗', '撒手千金"
+      },
+      {
+        "id": "phishhunt",
+        "title": "钓鱼邮件狩猎",
+        "code": "I3",
+        "msg": "JS 硬编码中文 28 行（非注释），示例: subj: { zh: '【紧急】您的账户已被限制，请立即验证', en: '[ | body: { zh: '我们检测到异常登录，您的账户将在 24 小时内被永久冻"
+      }
+    ],
     "MINOR": [
       {
         "id": "bb84",
@@ -1937,6 +2040,24 @@
       {
         "id": "shamir",
         "title": "Shamir 分钥密约",
+        "code": "C1",
+        "msg": "lobby 标签表（TIME_LABELS/DIFF_LABELS）未收录——卡带无时长/难度徽章"
+      },
+      {
+        "id": "sm4",
+        "title": "SM4 国密试炼场",
+        "code": "C1",
+        "msg": "lobby 标签表（TIME_LABELS/DIFF_LABELS）未收录——卡带无时长/难度徽章"
+      },
+      {
+        "id": "acrostic",
+        "title": "藏头诗密信",
+        "code": "C1",
+        "msg": "lobby 标签表（TIME_LABELS/DIFF_LABELS）未收录——卡带无时长/难度徽章"
+      },
+      {
+        "id": "phishhunt",
+        "title": "钓鱼邮件狩猎",
         "code": "C1",
         "msg": "lobby 标签表（TIME_LABELS/DIFF_LABELS）未收录——卡带无时长/难度徽章"
       }
@@ -2491,6 +2612,24 @@
       {
         "id": "shamir",
         "title": "Shamir 分钥密约",
+        "code": "M1",
+        "msg": "仅 click 交互（点按类可接受；滑动/连续操作类需复核）"
+      },
+      {
+        "id": "sm4",
+        "title": "SM4 国密试炼场",
+        "code": "M1",
+        "msg": "仅 click 交互（点按类可接受；滑动/连续操作类需复核）"
+      },
+      {
+        "id": "acrostic",
+        "title": "藏头诗密信",
+        "code": "M1",
+        "msg": "仅 click 交互（点按类可接受；滑动/连续操作类需复核）"
+      },
+      {
+        "id": "phishhunt",
+        "title": "钓鱼邮件狩猎",
         "code": "M1",
         "msg": "仅 click 交互（点按类可接受；滑动/连续操作类需复核）"
       }

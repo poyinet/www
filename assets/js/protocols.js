@@ -36,6 +36,8 @@ window.PROTOCOL_LAB = (function () {
       { id: 'ecc', icon: '📈', name: { zh: 'ECC 点加法', en: 'ECC Point Addition' } },
       { id: 'a51', icon: '📡', name: { zh: 'A5/1 流密码', en: 'A5/1 Stream Cipher' } },
       { id: 'rc4', icon: '🧨', name: { zh: 'RC4 警示录', en: 'RC4 Cautionary Tale' } },
+      { id: 'sign', icon: '✍️', name: { zh: '数字签名', en: 'Digital Signatures' } },
+      { id: 'rng', icon: '🎲', name: { zh: '随机数', en: 'Randomness' } },
       { id: 'pwd', icon: '⏳', name: { zh: '口令破解成本', en: 'Password Cracking Cost' } }
     ],
 
@@ -118,6 +120,18 @@ window.PROTOCOL_LAB = (function () {
     eccIntro: {
       zh: '椭圆曲线 y² = x³ + ax + b 上定义一种「加法」：两点连线延长交曲线于第三点，其关于 x 轴的镜像即为「和」。已知一端与和，反推另一端——数学上没有高效算法。ECC 的安全性就藏在这条几何规则里（演示为实数域示意，真实曲线在有限域上）。',
       en: 'On y² = x³ + ax + b, "addition" is geometric: the chord through two points meets the curve at a third; mirroring it across the x-axis gives the sum. Recovering either input from the other plus the sum has no efficient algorithm — that is where ECC security lives (real-domain sketch here; real curves live over finite fields).'
+    },
+
+    /* ================= ✍️ 数字签名 ================= */
+    signIntro: {
+      zh: 'RSA 的神来之笔：把加密倒过来用。加密是「公钥锁、私钥开」；签名是「私钥锁、公钥开」——只有持有私钥的人能产出签名，而全世界都能用公钥验证它。走一遍：签名 → 传输中被 Eve 篡改 → 验证当场识破。真实系统先对消息的哈希值签名并加填充（PSS），本演示为看清数学直接签原始小数字。',
+      en: 'RSA\'s masterstroke: encryption used in reverse. Encryption locks with the public key and opens with the private one; signing locks with the PRIVATE key and opens with the public — only the private-key holder can produce a signature, yet everyone can verify it. Walk the flow: sign → Eve tampers in transit → verification catches it instantly. Real systems sign a hash with padding (PSS); this demo signs raw small numbers to expose the math.'
+    },
+
+    /* ================= 🎲 随机数 ================= */
+    rngIntro: {
+      zh: '密码学的地基不是算法，是随机数。再强的算法遇上可预测的密钥等于零。本演示用「当前秒数当种子」的普通 LCG 生成一把"随机"密钥——攻击者只需穷举一天之内的 86400 个种子，秒级还原全部输出。V8 的 Math.random（xorshift128+）同样可从连续输出恢复内部状态。密码学必须使用 CSPRNG：种子来自操作系统熵源，且不可观测、不可穷举。',
+      en: 'The foundation of cryptography is not algorithms — it is randomness. The strongest cipher with a predictable key equals zero. This demo generates a "random" key from an ordinary LCG seeded by the current second: an attacker brute-forces just 86,400 seeds per day and reproduces every output. V8\'s Math.random (xorshift128+) can likewise have its state recovered from outputs. Cryptography demands a CSPRNG: seeded from OS entropy, unobservable and unenumerable.'
     },
 
     /* ================= ⑥ 口令破解成本 ================= */
@@ -823,6 +837,91 @@ window.PROTOCOL_LAB = (function () {
       });
     });
 
-    el('pl-ready').textContent = '9';
+    /* ---------- ✍️ 数字签名（RSA 倒置） ---------- */
+    LAZY('pl-sign', function () {
+      el('sign-intro').textContent = L(LAB.signIntro);
+      var P = { p: 5, q: 11, e: 3 };
+      P.n = P.p * P.q;
+      var phi = (P.p - 1) * (P.q - 1);
+      var d = 1;
+      while ((P.e * d) % phi !== 1) d++;
+      P.d = d;
+      el('sign-params').textContent = (isEn ? 'p = 5, q = 11 → n = 55, φ = 40, public key e = 3, private key d = 27' : 'p = 5，q = 11 → n = 55，φ = 40，公钥 e = 3，私钥 d = 27');
+      var st = { m: 7, s: null, sent: null, tampered: false };
+      function render() {
+        var h = '';
+        h += '<div class="pl-r"><span class="pl-rl">m</span><span class="pl-cells mono">' + st.m + '</span></div>';
+        if (st.s !== null) h += '<div class="pl-r"><span class="pl-rl">s = m^d</span><span class="pl-cells mono">' + st.s + '</span></div>';
+        if (st.sent !== null) h += '<div class="pl-r"><span class="pl-rl">m\' 传输</span><span class="pl-cells mono">' + st.sent + (st.tampered ? ' ⚡' : '') + '</span></div>';
+        el('sign-view').innerHTML = h;
+        el('sign-verdict').textContent = '';
+      }
+      function upd() { el('sign-m-v').textContent = st.m; }
+      el('sign-m').addEventListener('input', function () {
+        st.m = parseInt(this.value, 10); upd();
+        st.s = null; st.sent = null; st.tampered = false; render();
+        el('sign-verify').hidden = true;
+      });
+      el('sign-do').addEventListener('click', function () {
+        st.s = LAB.modPow(st.m, P.d, P.n);
+        st.sent = st.m;
+        st.tampered = false;
+        render();
+        el('sign-verify').hidden = false;
+        el('sign-verdict').textContent = isEn ? 'Signed with the PRIVATE key. Now send it — or let Eve tamper.' : '已用私钥签名。现在发送——或者让 Eve 改一个数字。';
+      });
+      el('sign-tamper').addEventListener('click', function () {
+        if (st.s === null) return;
+        st.sent = (st.m + 1) % P.n;
+        st.tampered = true;
+        render();
+      });
+      el('sign-verify').addEventListener('click', function () {
+        if (st.s === null) return;
+        var back = LAB.modPow(st.s, P.e, P.n);
+        var ok = back === st.sent;
+        el('sign-verdict').textContent = ok
+          ? (isEn ? '✓ s^e mod n = ' + back + ' = m\' — signature VALID (authentic + untampered)' : '✓ s^e mod n = ' + back + ' = m\' —— 验证通过（确系私钥持有者所签，且未被篡改）')
+          : (isEn ? '✗ s^e mod n = ' + back + ' ≠ m\' = ' + st.sent + ' — TAMPERED. Verification fails.' : '✗ s^e mod n = ' + back + ' ≠ m\' = ' + st.sent + ' —— 验证失败，消息被篡改！');
+        if (Arcade.audio) Arcade.audio.play(ok ? 'ui' : 'error');
+      });
+      upd(); render();
+    });
+
+    /* ---------- 🎲 CSPRNG 直觉实验室 ---------- */
+    LAZY('pl-rng', function () {
+      el('rng-intro').textContent = L(LAB.rngIntro);
+      function lcg(seed, n) {
+        var s = seed % 2147483647, out = [];
+        for (var i = 0; i < n; i++) { s = (s * 1103515245 + 12345) % 2147483647; out.push((s >>> 8) & 255); }
+        return out;
+      }
+      function hex(b) { return ('0' + b.toString(16)).slice(-2).toUpperCase(); }
+      el('rng-gen').addEventListener('click', function () {
+        var seed = Math.floor(Date.now() / 1000);           /* 「随机」= 当前秒数 */
+        var key = lcg(seed, 8);
+        el('rng-view').innerHTML =
+          '<div class="pl-r"><span class="pl-rl">seed</span><span class="pl-cells mono">' + seed + '（' + (isEn ? 'unix seconds' : 'Unix 秒') + '）</span></div>' +
+          '<div class="pl-r"><span class="pl-rl">key</span><span class="pl-cells mono">' + key.map(hex).join(' ') + '</span></div>' +
+          '<div class="ws-note" style="text-align:center">' + (isEn ? 'Looks random. The seed space is one day = 86,400 values. Press attack.' : '看起来很随机。种子空间只有一天 = 86400 个。按攻击试试。') + '</div>';
+      });
+      el('rng-crack').addEventListener('click', function () {
+        var txt = el('rng-view').textContent || '';
+        var mm = txt.match(/key\s*([0-9A-F]{2}(?:\s*[0-9A-F]{2}){7})/);
+        if (!mm) { el('rng-crackstat').textContent = isEn ? 'Generate a key first' : '请先生成一把密钥'; return; }
+        var target = mm[1].split(/\s+/).map(function (h) { return parseInt(h, 16); });
+        var found = -1, tries = 0;
+        for (var s0 = 0; s0 < 86400 && found < 0; s0++) {
+          var cand = lcg(s0, 3);
+          if (cand[0] === target[0] && cand[1] === target[1] && cand[2] === target[2]) { found = s0; }
+          tries++;
+        }
+        el('rng-crackstat').textContent = isEn
+          ? '🕵️ ' + tries + ' seeds enumerated in milliseconds → seed = ' + found + ' → the whole keystream is now predictable.'
+          : '🕵️ 枚举 ' + tries + ' 个种子（毫秒级）→ 命中种子 = ' + found + ' → 整条密钥流已可预测。';
+      });
+    });
+
+    el('pl-ready').textContent = '11';
   };
 })();

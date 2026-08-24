@@ -527,7 +527,7 @@ function smokePage(page, lang) {
     }
     if (page === 'protocols') {
       const rd = docs['pl-ready'];
-      if (!rd || String(rd.textContent) !== '9') errors.push('pl-ready: got "' + (rd ? rd.textContent : 'null') + '" (want 9 demos)');
+      if (!rd || String(rd.textContent) !== '11') errors.push('pl-ready: got "' + (rd ? rd.textContent : 'null') + '" (want 11 demos)');
       const tls = docs['tls-steps'];
       if (!tls || !tls._html || tls._html.indexOf('pl-step') < 0) errors.push('tls-steps: not rendered');
     }

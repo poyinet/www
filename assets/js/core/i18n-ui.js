@@ -217,8 +217,8 @@
   /* 第七期：协议实验室 */
   d.zh['pl.title'] = '🛡️ 协议实验室';
   d.en['pl.title'] = '🛡️ Protocol Lab';
-  d.zh['pl.sub'] = 'TLS 握手 · DH 中间人 · Merkle 树与区块链 · 零知识证明 · ECC 几何 · 口令破解成本——现代密码学的九堂交互课';
-  d.en['pl.sub'] = 'TLS handshake · DH man-in-the-middle · Merkle tree & blockchain · zero-knowledge proof · ECC geometry · password cracking cost — nine interactive lessons in modern crypto';
+  d.zh['pl.sub'] = 'TLS 握手 · DH 中间人 · Merkle 树与区块链 · 零知识证明 · ECC 几何 · 口令破解成本——现代密码学的十一堂交互课';
+  d.en['pl.sub'] = 'TLS handshake · DH man-in-the-middle · Merkle tree & blockchain · zero-knowledge proof · ECC geometry · password cracking cost — eleven interactive lessons in modern crypto';
   d.zh['pl.tlsH'] = 'TLS 握手：HTTPS 的第一秒';
   d.en['pl.tlsH'] = 'TLS Handshake: the first second of HTTPS';
   d.zh['pl.tlsNote'] = '逐步走完一次 TLS 握手，观察「哪些是明文、哪些已加密」；打开中间人开关，看看窃听者在哪一步露馅。';
@@ -249,4 +249,8 @@
   d.en['pl.a51H'] = 'A5/1: three LFSRs driven by majority vote';
   d.zh['pl.rc4H'] = 'RC4 警示录：密钥流绝不能用两次';
   d.en['pl.rc4H'] = 'RC4 Cautionary Tale: never reuse a keystream';
+  d.zh['pl.signH'] = '数字签名：把 RSA 倒过来用';
+  d.en['pl.signH'] = 'Digital Signatures: RSA used in reverse';
+  d.zh['pl.rngH'] = '随机数：密码学的地基';
+  d.en['pl.rngH'] = 'Randomness: the foundation of cryptography';
 })();

@@ -18,7 +18,7 @@ async function trackErrors(page) {
 test('TLS：六步走完 + Eve 在第 3 步露馅', async function ({ page }) {
   const errors = await trackErrors(page);
   await page.goto('/protocols.html', { waitUntil: 'networkidle' });
-  await expect(page.locator('#pl-ready')).toHaveText('9', { timeout: 10_000 });
+  await expect(page.locator('#pl-ready')).toHaveText('11', { timeout: 10_000 });
 
   await page.locator('#tls-eve').click();
   for (let i = 0; i < 6; i++) {
@@ -157,5 +157,48 @@ test('口令成本：熵与穷举时间随算法/装备变化', async function (
   await page.locator('#pwd-len').dispatchEvent('input');
   await expect(page.locator('#pwd-len-v')).toHaveText('20');
   await expect(page.locator('#pwd-out')).toContainText(/114\.0 bits/);
+  expect(errors, errors.join('\n')).toHaveLength(0);
+});
+
+test('签名：签名→篡改→验证识破 全流程', async function ({ page }) {
+  const errors = await trackErrors(page);
+  await page.goto('/protocols.html', { waitUntil: 'networkidle' });
+  await page.locator('#pl-sign').scrollIntoViewIfNeeded();
+  await page.waitForTimeout(400);
+
+  await page.locator('#sign-do').click();
+  await page.waitForTimeout(150);
+  await expect(page.locator('#sign-view')).toContainText(/s = m\^d/);
+
+  await page.locator('#sign-tamper').click();
+  await page.waitForTimeout(150);
+  await page.locator('#sign-verify').click();
+  await page.waitForTimeout(150);
+  await expect(page.locator('#sign-verdict')).toContainText(/✗/);
+
+  await page.locator('#sign-m').fill('7');
+  await page.locator('#sign-m').dispatchEvent('input');
+  await page.waitForTimeout(100);
+  await page.locator('#sign-do').click();
+  await page.waitForTimeout(100);
+  await page.locator('#sign-verify').click();
+  await page.waitForTimeout(150);
+  await expect(page.locator('#sign-verdict')).toContainText(/✓/);
+  expect(errors, errors.join('\n')).toHaveLength(0);
+});
+
+test('随机数：时间种子密钥被 86400 空间爆破', async function ({ page }) {
+  const errors = await trackErrors(page);
+  await page.goto('/protocols.html', { waitUntil: 'networkidle' });
+  await page.locator('#pl-rng').scrollIntoViewIfNeeded();
+  await page.waitForTimeout(400);
+
+  await page.locator('#rng-gen').click();
+  await page.waitForTimeout(150);
+  await expect(page.locator('#rng-view')).toContainText(/seed/);
+
+  await page.locator('#rng-crack').click();
+  await page.waitForTimeout(500);
+  await expect(page.locator('#rng-crackstat')).toContainText(/86400|种子 = \d+/);
   expect(errors, errors.join('\n')).toHaveLength(0);
 });

@@ -11,19 +11,19 @@
   <meta name="apple-mobile-web-app-title" content="破译游戏">
   <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
   <title>协议实验室 · 用游戏破译人类三千年加密解密史</title>
-  <meta name="description" content="破译 DECODE ARCADE · 协议实验室：TLS 握手时序、DH 中间人攻防、Merkle 树与区块链防篡改、零知识证明三色图、椭圆曲线点加法几何、口令破解成本计算器——九大交互演示，看懂现代密码协议如何运转。">
+  <meta name="description" content="破译 DECODE ARCADE · 协议实验室：TLS 握手时序、DH 中间人攻防、Merkle 树与区块链防篡改、零知识证明三色图、椭圆曲线点加法几何、口令破解成本计算器——十一大交互演示，看懂现代密码协议如何运转。">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://poyi.net/protocols.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="破译游戏 DECODE ARCADE">
   <meta property="og:title" content="协议实验室 · 用游戏破译人类三千年加密解密史">
-  <meta property="og:description" content="TLS 握手 / DH 中间人 / Merkle 树与区块链 / 零知识证明 / ChaCha20 / ECC 几何 / A5/1 / RC4 警示录 / 口令成本——九大交互演示。">
+  <meta property="og:description" content="TLS 握手 / DH 中间人 / Merkle 树与区块链 / 零知识证明 / ChaCha20 / ECC 几何 / A5/1 / RC4 警示录 / 数字签名 / 随机数 / 口令成本——十一大交互演示。">
   <meta property="og:url" content="https://poyi.net/protocols.html">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:image" content="https://poyi.net/assets/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="协议实验室 · 破译 DECODE ARCADE">
-  <meta name="twitter:description" content="TLS 握手 / DH 中间人 / Merkle 树与区块链 / 零知识证明 / ChaCha20 / ECC 几何 / A5/1 / RC4 警示录 / 口令成本——九大交互演示。">
+  <meta name="twitter:description" content="TLS 握手 / DH 中间人 / Merkle 树与区块链 / 零知识证明 / ChaCha20 / ECC 几何 / A5/1 / RC4 警示录 / 数字签名 / 随机数 / 口令成本——十一大交互演示。">
   <meta name="twitter:image" content="https://poyi.net/assets/og-image.png">
   <script type="application/ld+json">
   {
@@ -34,7 +34,7 @@
     "isPartOf": { "@type": "WebSite", "name": "破译游戏 DECODE ARCADE", "url": "https://poyi.net/" },
     "inLanguage": "zh-CN",
     "about": "现代密码协议交互演示",
-    "description": "TLS 握手、DH 中间人、Merkle 树与区块链、零知识证明、ChaCha20、ECC 点加法、A5/1、RC4 警示录、口令破解成本——九大交互演示。"
+    "description": "TLS 握手、DH 中间人、Merkle 树与区块链、零知识证明、ChaCha20、ECC 点加法、A5/1、RC4 警示录、数字签名、随机数、口令破解成本——十一大交互演示。"
   }
   </script>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
@@ -137,11 +137,11 @@
   <div class="pl-wrap" id="content">
     <div class="pl-hero">
       <h1 class="pl-title" data-i18n="pl.title">🛡️ 协议实验室</h1>
-      <p class="pl-sub" data-i18n="pl.sub">TLS 握手 · DH 中间人 · Merkle 树与区块链 · 零知识证明 · ECC 几何 · 口令破解成本——现代密码学的九堂交互课</p>
+      <p class="pl-sub" data-i18n="pl.sub">TLS 握手 · DH 中间人 · Merkle 树与区块链 · 零知识证明 · ECC 几何 · 口令破解成本——现代密码学的十一堂交互课</p>
       <div class="pl-nav">
         <a href="#pl-tls">🤝 TLS</a><a href="#pl-dh">🕵️ DH</a><a href="#pl-merkle">🌳 Merkle</a>
         <a href="#pl-zkp">🎭 ZKP</a><a href="#pl-chacha">🌀 ChaCha20</a><a href="#pl-ecc">📈 ECC</a>
-        <a href="#pl-a51">📡 A5/1</a><a href="#pl-rc4">🧨 RC4</a><a href="#pl-pwd">⏳ 口令成本</a>
+        <a href="#pl-a51">📡 A5/1</a>        <a href="#pl-rc4">🧨 RC4</a><a href="#pl-sign">✍️ 签名</a><a href="#pl-rng">🎲 随机数</a><a href="#pl-pwd">⏳ 口令成本</a>
       </div>
     </div>
 
@@ -241,6 +241,33 @@
         <button class="btn" id="rc4-reset">↺ 清空</button>
       </div>
       <div id="rc4-view"></div>
+    </div>
+
+    <div class="pl-card" id="pl-sign">
+      <div class="pl-h"><span class="ic">✍️</span><b data-i18n="pl.signH">数字签名：把 RSA 倒过来用</b></div>
+      <div class="pl-note" id="sign-intro"></div>
+      <div class="pl-note" id="sign-params"></div>
+      <div class="pl-btnrow">
+        <label class="ws-note">m = <input type="range" id="sign-m" class="pl-slider" min="0" max="9" value="7"> <b id="sign-m-v">7</b></label>
+      </div>
+      <div id="sign-view"></div>
+      <div class="pl-btnrow">
+        <button class="btn accent" id="sign-do">✍️ 用私钥签名</button>
+        <button class="btn pink" id="sign-tamper">🕵️ Eve 篡改一个数字</button>
+        <button class="btn green" id="sign-verify" hidden>✅ Bob 用公钥验证</button>
+      </div>
+      <div class="pl-note-line" id="sign-verdict"></div>
+    </div>
+
+    <div class="pl-card" id="pl-rng">
+      <div class="pl-h"><span class="ic">🎲</span><b data-i18n="pl.rngH">随机数：密码学的地基</b></div>
+      <div class="pl-note" id="rng-intro"></div>
+      <div class="pl-btnrow">
+        <button class="btn accent" id="rng-gen">🎲 用"时间种子"生成密钥</button>
+        <button class="btn pink" id="rng-crack">🕵️ 攻击者爆破种子</button>
+      </div>
+      <div id="rng-view"></div>
+      <div class="pl-note-line" id="rng-crackstat"></div>
     </div>
 
     <div class="pl-card" id="pl-pwd">

@@ -21,7 +21,7 @@
   d.zh['path.sub'] = '从零开始的密码学学习路径——每天读 1 章、玩 2 款游戏、懂 1 个术语，24 天走完三千年密码史';
   d.zh['quiz.title'] = '🧠 密码学测验场';
   d.zh['quiz.entry'] = '密码学测验场';
-  d.zh['quiz.sub'] = '110 道题 · 4 个段位（入门/进阶/专家/大师）· 每轮随机抽 10 题——答完评出你的「密码学段位」';
+  d.zh['quiz.sub'] = '120 道题 · 4 个段位（入门/进阶/专家/大师）· 每轮随机抽 10 题——答完评出你的「密码学段位」';
   d.zh['quiz.start'] = '🚀 开始测验';
   d.zh['quiz.next'] = '下一题 →';
   d.zh['quiz.q'] = '第 {n} 题';
@@ -104,7 +104,7 @@
   d.en['path.sub'] = 'A learn-by-playing path from zero — each day: read 1 chapter, play 2 games, learn 1 term. 24 days through 3,000 years of cipher history';
   d.en['quiz.title'] = '🧠 Crypto Quiz Arena';
   d.en['quiz.entry'] = 'Crypto Quiz Arena';
-  d.en['quiz.sub'] = '110 questions · 4 ranks (Novice / Advanced / Expert / Master) · 10 random questions per round — earn your cipher rank';
+  d.en['quiz.sub'] = '120 questions · 4 ranks (Novice / Advanced / Expert / Master) · 10 random questions per round — earn your cipher rank';
   d.en['quiz.start'] = '🚀 Start Quiz';
   d.en['quiz.next'] = 'Next →';
   d.en['quiz.q'] = 'Q{n}';
@@ -241,6 +241,8 @@
   d.en['pl.pwdH'] = 'Password Cracking Cost Calculator';
   d.zh['workshop.protocolLink'] = '🛡️ 协议实验室 →';
   d.en['workshop.protocolLink'] = '🛡️ Protocol Lab →';
+  d.zh['pl.tls13Note'] = '📌 本演示为教学清晰采用经典握手叙事（RSA 式预主密钥传输，TLS 1.2 及更早）。现代 TLS 1.3 已改为强制（EC）DHE 密钥协商、废弃无前向安全的 RSA 传输，且 ServerHello 之后的所有握手消息全部加密——「认证身份」这一防中间人根基从未改变。';
+  d.en['pl.tls13Note'] = '📌 For clarity this demo uses the classic handshake narrative (RSA-style pre-master transport, TLS ≤1.2). Modern TLS 1.3 mandates (EC)DHE key agreement, drops non-forward-secret RSA transport, and encrypts all handshake messages after ServerHello — the anti-MITM foundation of authenticating identity never changed.';
   d.zh['pl.chachaH'] = 'ChaCha20：八条指令的雪崩';
   d.en['pl.chachaH'] = 'ChaCha20: avalanche in eight instructions';
   d.zh['pl.a51H'] = 'A5/1：多数投票驱动的三转子移位寄存器';

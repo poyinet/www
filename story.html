@@ -286,7 +286,23 @@
       '明文': { zh: '加密前的原始文字', en: 'the original readable text' },
       '密文': { zh: '加密后无法直接读懂的文本', en: 'the scrambled text produced by encryption' },
       '密钥': { zh: '控制加解密方式的一串秘密参数', en: 'a secret parameter controlling encryption and decryption' },
-      '维吉尼亚密码': { zh: '密钥逐字母选择字母表的多表替换密码', en: 'a polyalphabetic cipher choosing an alphabet per letter' }
+      '维吉尼亚密码': { zh: '密钥逐字母选择字母表的多表替换密码', en: 'a polyalphabetic cipher choosing an alphabet per letter' },
+      '加表': { zh: '附加在码组上的密钥数字表，定期换版、期内复用', en: 'an additive table superimposed on code groups, changed periodically' },
+      '深度': { zh: '同版加表期内两封密电相减抵消加表，只剩明文差值', en: 'two messages under the same additive cancel it when subtracted' },
+      '转子': { zh: 'Enigma 的核心旋转盘，每次按键步进一格改变接线', en: 'Enigma\'s core rotating disc, stepping one position per keypress' },
+      '插线板': { zh: 'Enigma 前面板的字母对交换装置', en: 'Enigma\'s front-panel letter-pair swapping board' },
+      '反射器': { zh: 'Enigma 内部使加密等于解密的固定反射盘', en: 'Enigma\'s fixed reflector making encryption equal decryption' },
+      '差分': { zh: '相邻比特或块的异或差值，统计分析的起点', en: 'the XOR difference of adjacent bits or blocks, the start of statistical analysis' },
+      '熵': { zh: '香农定义的信息不确定性度量，单位为比特', en: 'Shannon\'s measure of information uncertainty, in bits' },
+      '完美保密': { zh: '密文与明文统计独立——OTP 的性质', en: 'ciphertext statistically independent of plaintext — OTP\'s property' },
+      '公钥': { zh: '可公开分发的加密密钥，与私钥配对使用', en: 'the publicly shared key, paired with a private key' },
+      '哈希碰撞': { zh: '两个不同输入产生同一哈希输出', en: 'two different inputs producing the same hash output' },
+      'QKD': { zh: '量子密钥分发——利用量子力学原理安全分发密钥', en: 'Quantum Key Distribution — securely distributing keys via quantum mechanics' },
+      '筛选密钥': { zh: 'BB84 中双方保留基匹配部分的原始密钥', en: 'the sifted key in BB84, keeping only matching-basis bits' },
+      'QBER': { zh: '量子误码率——超过阈值即判定存在窃听', en: 'Quantum Bit Error Rate — above threshold, eavesdropping is detected' },
+      '差分分析': { zh: '通过对比输入/输出差分来攻击分组密码', en: 'attacking block ciphers by comparing input/output differences' },
+      '字验': { zh: '北宋以诗配军情的验证体系', en: 'the Song-dynasty poem-to-military-action verification system' },
+      '反切码': { zh: '戚继光以两首诗的声母韵母交叉编密', en: 'Qi Jiguang\'s cipher crossing initials and finals from two poems' }
     };
     function glossify(s) {
       var out = s;

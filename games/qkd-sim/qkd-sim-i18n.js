@@ -44,5 +44,7 @@ d.zh['gs.qkd-sim.eveOff'] = '不在';d.en['gs.qkd-sim.eveOff'] = 'absent';
   d.zh['gs.qkd-sim.eveBtn'] = '🕵️ Eve 开关';
   d.en['gs.qkd-sim.eveBtn'] = '🕵️ Eve toggle';
   d.zh['gs.qkd-sim.helpText'] = 'BB84 由 Bennett 与 Brassard 于 1984 年提出：量子不可克隆定理保证了窃听必然引入误码。真实 QKD 系统使用单光子源与偏振分束器，商用网络已在北京-上海骨干网部署。本模拟的 QBER 阈值为 15%——真实系统通常设在 11-14%。见编年史「量子转折点」章。';
+  d.zh['gs.qkd-sim.dailyBtn'] = '📅 每日挑战';
+  d.en['gs.qkd-sim.dailyBtn'] = '📅 Daily challenge';
   d.en['gs.qkd-sim.helpText'] = 'BB84, proposed by Bennett & Brassard in 1984: the no-cloning theorem guarantees eavesdropping introduces errors. Real QKD uses single-photon sources and polarization beam splitters, deployed on the Beijing-Shanghai backbone. This simulation\'s QBER threshold is 15% — real systems typically set it at 11-14%. See the Chronicle chapter "The Quantum Turning Point".';
 })();

@@ -14,12 +14,14 @@ var CASES=[
  {real:true,src:'OP-20-G · Washington',subj:{zh:'外交密电：东京指示使馆销毁密码本',en:'Diplomatic cable: Tokyo orders embassy to burn codebooks'},body:{zh:'截获东京致各使馆的电报：指示销毁密码本与机密文件——这通常意味着战争即将爆发。建议全球美军进入最高警戒。',en:'Cable from Tokyo to all embassies: destroy codebooks and confidential documents — this usually means war is imminent. Recommend maximum alert worldwide.'},clues:{zh:['销毁密码本=战争前兆','来源可靠（OP-20-G）','历史验证：此信号高度准确'],en:['Burning codebooks = war imminent','Reliable source (OP-20-G)','Historically verified: this signal is highly accurate']}},
 ];
 var wrap=document.createElement('div');wrap.className='ia-wrap';
-wrap.innerHTML='<div class="ia-prog" id="ia-prog"></div><div class="ia-card" id="ia-card"></div><div class="ia-btns"><button class="btn accent" id="ia-trust"></button><button class="btn pink" id="ia-doubt"></button></div><div class="ia-msg" id="ia-msg"></div><div class="ia-clues" id="ia-clues"></div><div class="ia-btnrow"><button class="btn green" id="ia-next" hidden></button></div><div class="ia-help">'+T('gs.ia.helpText')+'</div>';
+wrap.innerHTML='<div class="ia-prog" id="ia-prog"></div><div class="ia-card" id="ia-card"></div><div class="ia-btns"><button class="btn accent" id="ia-trust"></button><button class="btn pink" id="ia-doubt"></button></div><div class="ia-msg" id="ia-msg"></div><div class="ia-clues" id="ia-clues"></div><div class="ia-btnrow"><button class="btn green" id="ia-next" hidden></button></div><div class="ia-btnrow"><button class="btn" id="ia-daily">'+T('gs.ia.dailyBtn')+'</button></div><div class="ia-help">'+T('gs.ia.helpText')+'</div>';
 root.appendChild(wrap);
 var $=function(id){return wrap.querySelector('#'+id)};
-var progEl=$('ia-prog'),cardEl=$('ia-card'),msgEl=$('ia-msg'),clueBox=$('ia-clues'),nextB=$('ia-next');
+var progEl=$('ia-prog'),cardEl=$('ia-card'),msgEl=$('ia-msg'),clueBox=$('ia-clues'),nextB=$('ia-next'),dailyBtn=$('ia-daily');
 $('ia-trust').textContent=T('gs.ia.trustBtn');$('ia-doubt').textContent=T('gs.ia.doubtBtn');
-var idx=0,score=0,streak=0,answered=false,finished=false,order=[];
+var idx=0,score=0,streak=0,answered=false,finished=false,order=[],dailyMode=false,startTs=0;
+function daySeed(){var d=new Date();return d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate()}
+function mulberry(seed){var s=Math.abs(Math.floor(seed))%2147483647;if(s<=0)s+=2147483646;return function(){s=s*16807%2147483647;return(s-1)/2147483646}}
 function upd(){progEl.textContent=fmt('gs.ia.round',{n:Math.min(idx+1,TOTAL),total:TOTAL,streak:streak})}
 function setMsg(c,t){msgEl.className='ia-msg '+c;msgEl.textContent=t}
 function render(c){if(!c||!c.subj||!c.body)return;var lang=isEn()?'en':'zh';cardEl.innerHTML='<div class="ia-src">📡 '+c.src+'</div><div class="ia-subj">'+c.subj[lang]+'</div><div class="ia-body">'+c.body[lang]+'</div>'}
@@ -29,14 +31,16 @@ if(ok){streak++;score+=20+(streak-1)*5;if(Arcade.juice)Arcade.juice.win();setMsg
 else{streak=0;if(Arcade.juice)Arcade.juice.lose();setMsg('no',T('gs.ia.no'))}
 showClues(c);setTimeout(nextQ,1800)}
 function nextQ(){idx++;answered=false;clueBox.classList.remove('on');
-if(idx>=TOTAL||idx>=order.length){finished=true;if(Arcade.shell)Arcade.shell.submitScore(score);setMsg('ok',fmt('gs.ia.done',{score:score}));nextB.textContent=T('gs.ia.againBtn');nextB.hidden=false;return}
+if(idx>=TOTAL||idx>=order.length){finished=true;if(Arcade.shell)Arcade.shell.submitScore(score);if(dailyMode&&Arcade.daily){var sec=Math.max(1,Math.round((Date.now()-startTs)/1000));Arcade.daily.markSolved('intel-assess',sec)}setMsg('ok',fmt('gs.ia.done',{score:score}));nextB.textContent=T('gs.ia.againBtn');nextB.hidden=false;return}
 upd();render(order[idx])}
-function startGame(daily){idx=0;score=0;streak=0;finished=false;nextB.hidden=true;
+function startGame(daily){idx=0;score=0;streak=0;finished=false;nextB.hidden=true;dailyMode=!!daily;if(dailyMode){startTs=Date.now();var rnd=mulberry(daySeed()*31+17)}else var rnd=Math.random;dailyBtn.hidden=dailyMode;
 var arr=[];for(var i=0;i<CASES.length;i++)arr.push(i);
-for(i=arr.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=arr[i];arr[i]=arr[j];arr[j]=t}
+for(i=arr.length-1;i>0;i--){var j=Math.floor(rnd()*(i+1));var t=arr[i];arr[i]=arr[j];arr[j]=t}
 order=arr.slice(0,TOTAL);nextQ()}
 $('ia-trust').addEventListener('click',function(){judge(true)});
 $('ia-doubt').addEventListener('click',function(){judge(false)});
+nextB.addEventListener('click',function(){startGame(false)});
+dailyBtn.addEventListener('click',function(){startGame(true)});
 nextB.addEventListener('click',function(){startGame(false)});
 window.GAME_RESTART=function(){startGame(false)};startGame();
 })();

@@ -26,19 +26,24 @@ window.GAME_TUTORIAL_STEPS = [
       '<button class="btn pink" id="qk-eve"></button>' +
       '<button class="btn green" id="qk-next" hidden></button>' +
     '</div>' +
+    '<div class="qk-btns"><button class="btn" id="qk-daily">' + T('gs.qkd-sim.dailyBtn') + '</button></div>' +
     '<div class="qk-help">' + T('gs.qkd-sim.helpText') + '</div>';
   root.appendChild(wrap);
   var $ = function (id) { return wrap.querySelector('#' + id); };
   var progEl = $('qk-prog'), step = $('qk-step'), grid = $('qk-grid'),
       msgEl = $('qk-msg'), rectB = $('qk-rect'), diagB = $('qk-diag'),
-      eveB = $('qk-eve'), nextB = $('qk-next');
+      eveB = $('qk-eve'), nextB = $('qk-next'), dailyBtn = $('qk-daily');
   rectB.textContent = T('gs.qkd-sim.basisRect');
   diagB.textContent = T('gs.qkd-sim.basisDiag');
   eveB.textContent = T('gs.qkd-sim.eveBtn');
 
+  function daySeed() { var d = new Date(); return d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate(); }
+  function mulberry(seed) { var s = Math.abs(Math.floor(seed)) % 2147483647; if (s <= 0) s += 2147483646; return function () { s = s * 16807 % 2147483647; return (s - 1) / 2147483646; }; }
+
   var round = 1, ph = 0, score = 0, sifted = 0, errors = 0,
       eveOn = false, bits = [], aliceBases = [], aliceBits = [],
-      bobBases = [], awaiting = false;
+      bobBases = [], awaiting = false, dailyMode = false, startTs = 0,
+      rnd = Math.random;
 
   function upd() {
     progEl.textContent = fmt('gs.qkd-sim.round', {
@@ -51,8 +56,8 @@ window.GAME_TUTORIAL_STEPS = [
   function genPhotons() {
     aliceBases = []; aliceBits = [];
     for (var i = 0; i < PHOTONS; i++) {
-      aliceBases.push(Math.random() < 0.5 ? 0 : 1);
-      aliceBits.push(Math.random() < 0.5 ? 0 : 1);
+      aliceBases.push(rnd() < 0.5 ? 0 : 1);
+      aliceBits.push(rnd() < 0.5 ? 0 : 1);
     }
   }
 
@@ -68,10 +73,10 @@ window.GAME_TUTORIAL_STEPS = [
     awaiting = true;
     var aB = aliceBases[ph], aBit = aliceBits[ph];
     var match = base === aB;
-    var bit = match ? aBit : (Math.random() < 0.5 ? 0 : 1);
+    var bit = match ? aBit : (rnd() < 0.5 ? 0 : 1);
     var eveTouched = false;
     /* Eve 截获重发：以 50% 概率用错误基测量→50% 概率引入误码 */
-    if (eveOn && Math.random() < 0.5) {
+    if (eveOn && rnd() < 0.5) {
       bit = 1 - bit; eveTouched = true;
     }
     bobBases.push(base);
@@ -93,8 +98,8 @@ window.GAME_TUTORIAL_STEPS = [
     var sampleSize = Math.floor(sifted / 2);
     var sampleErr = 0;
     for (var i = 0; i < sampleSize; i++) {
-      var idx = Math.floor(Math.random() * sifted);
-      if (Math.random() < (eveOn ? 0.25 : 0)) sampleErr++;
+      var idx = Math.floor(rnd() * sifted);
+      if (rnd() < (eveOn ? 0.25 : 0)) sampleErr++;
     }
     var qber = sampleSize > 0 ? Math.round(sampleErr / sampleSize * 100) : 0;
     score += sifted * 10;
@@ -117,6 +122,10 @@ window.GAME_TUTORIAL_STEPS = [
 
   function finish() {
     if (Arcade.shell) Arcade.shell.submitScore(score);
+    if (dailyMode && Arcade.daily) {
+      var sec = Math.max(1, Math.round((Date.now() - startTs) / 1000));
+      Arcade.daily.markSolved('qkd-sim', sec);
+    }
     setMsg('ok', fmt('gs.qkd-sim.done', { score: score }));
     nextB.textContent = T('gs.qkd-sim.againBtn');
     nextB.hidden = false;
@@ -127,6 +136,10 @@ window.GAME_TUTORIAL_STEPS = [
     round = 1; ph = 0; score = 0; sifted = 0; errors = 0;
     bits = []; bobBases = []; eveOn = false;
     eveB.classList.remove('on');
+    dailyMode = !!daily;
+    if (dailyMode) { startTs = Date.now(); rnd = mulberry(daySeed() * 31 + 7); }
+    else rnd = Math.random;
+    dailyBtn.hidden = dailyMode;
     grid.innerHTML = ''; nextB.hidden = true;
     genPhotons(); upd();
     step.textContent = T('gs.qkd-sim.chooseBase');
@@ -140,6 +153,7 @@ window.GAME_TUTORIAL_STEPS = [
     eveB.classList.toggle('on', eveOn);
     upd();
   });
+  dailyBtn.addEventListener('click', function () { startGame(true); });
 
   window.GAME_RESTART = function () { startGame(false); };
   startGame(false);

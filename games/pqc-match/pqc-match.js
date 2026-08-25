@@ -10,22 +10,24 @@ var PAIRS=[
  {c:'ECDH',pq:'ML-KEM (FIPS 203)',type:'密钥交换',expl:{zh:'ECDH 基于椭圆曲线离散对数，Shor 算法可破。ML-KEM 是其后量子继任者，已入选 TLS 1.3 混合密钥交换。',en:'ECDH relies on elliptic-curve discrete log, broken by Shor. ML-KEM is its PQ successor, already in TLS 1.3 hybrid key exchange.'}},
 ];
 var w=document.createElement('div');w.className='pq-wrap';
-w.innerHTML='<div class="pq-prog" id="pq-prog"></div><div class="pq-q" id="pq-q"></div><div class="pq-btns" id="pq-opts"></div><div class="pq-msg" id="pq-msg"></div><div class="pq-explain" id="pq-explain"></div><div class="pq-btns"><button class="btn green" id="pq-next" hidden></button></div><div class="pq-help">'+T('gs.pqc-match.helpText')+'</div>';
+w.innerHTML='<div class="pq-prog" id="pq-prog"></div><div class="pq-q" id="pq-q"></div><div class="pq-btns" id="pq-opts"></div><div class="pq-msg" id="pq-msg"></div><div class="pq-explain" id="pq-explain"></div><div class="pq-btns"><button class="btn green" id="pq-next" hidden></button></div><div class="pq-btns"><button class="btn" id="pq-daily">'+T('gs.pqc-match.dailyBtn')+'</button></div><div class="pq-help">'+T('gs.pqc-match.helpText')+'</div>';
 root.appendChild(w);
 var $=function(id){return w.querySelector('#'+id)};
-var progEl=$('pq-prog'),qEl=$('pq-q'),optsEl=$('pq-opts'),msgEl=$('pq-msg'),explEl=$('pq-explain'),nextB=$('pq-next');
-var idx=0,score=0,streak=0,answered=false,finished=false,cur=null,order=[];
+var progEl=$('pq-prog'),qEl=$('pq-q'),optsEl=$('pq-opts'),msgEl=$('pq-msg'),explEl=$('pq-explain'),nextB=$('pq-next'),dailyBtn=$('pq-daily');
+function daySeed(){var d=new Date();return d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate()}
+function mulberry(seed){var s=Math.abs(Math.floor(seed))%2147483647;if(s<=0)s+=2147483646;return function(){s=s*16807%2147483647;return(s-1)/2147483646}}
+var idx=0,score=0,streak=0,answered=false,finished=false,cur=null,order=[],dailyMode=false,startTs=0,rnd=Math.random;
 function isEn(){return window.Arcade&&Arcade.i18n&&Arcade.i18n.getLang()==='en'}
-function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
-function startGame(){idx=0;score=0;streak=0;finished=false;order=shuffle([0,1,2,3,4]);nextQ()}
-function nextQ(){if(idx>=TOTAL){finished=true;if(Arcade.shell)Arcade.shell.submitScore(score);setMsg('ok',fmt('gs.pqc-match.done',{score:score}));nextB.textContent=T('gs.pqc-match.againBtn');nextB.hidden=false;nextB.onclick=function(){startGame()};upd();return}
+function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(rnd()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+function startGame(daily){idx=0;score=0;streak=0;finished=false;dailyMode=!!daily;if(dailyMode){startTs=Date.now();rnd=mulberry(daySeed()*31+13)}else rnd=Math.random;dailyBtn.hidden=dailyMode;order=shuffle([0,1,2,3,4]);nextQ()}
+function nextQ(){if(idx>=TOTAL){finished=true;if(Arcade.shell)Arcade.shell.submitScore(score);if(dailyMode&&Arcade.daily){var sec=Math.max(1,Math.round((Date.now()-startTs)/1000));Arcade.daily.markSolved('pqc-match',sec)}setMsg('ok',fmt('gs.pqc-match.done',{score:score}));nextB.textContent=T('gs.pqc-match.againBtn');nextB.hidden=false;nextB.onclick=function(){startGame(false)};upd();return}
 answered=false;cur=PAIRS[order[idx]];upd();
 qEl.innerHTML=fmt('gs.pqc-match.qText',{algo:'<b>'+cur.c+'</b>'})+' <small style="color:var(--text-dim)">('+cur.type+')</small>';
 /* 生成选项：正确+3 随机干扰 */
 var allPQ=PAIRS.map(function(p){return p.pq});
 var opts=[{t:cur.pq,ok:true}];
 var pool=allPQ.filter(function(x){return x!==cur.pq});
-while(opts.length<4&&pool.length){var c=pool.splice(Math.floor(Math.random()*pool.length),1)[0];if(!opts.some(function(o){return o.t===c}))opts.push({t:c,ok:false});}
+while(opts.length<4&&pool.length){var c=pool.splice(Math.floor(rnd()*pool.length),1)[0];if(!opts.some(function(o){return o.t===c}))opts.push({t:c,ok:false});}
 shuffle(opts);
 optsEl.innerHTML='';
 opts.forEach(function(o){var b=document.createElement('button');b.className='btn accent';b.style.fontFamily='var(--font-mono)';b.textContent=o.t;b.addEventListener('click',function(){judge(o.ok,o.t)});optsEl.appendChild(b)});
@@ -38,5 +40,5 @@ idx++;setTimeout(function(){explEl.classList.remove('on');nextQ()},1800)}
 function setMsg(c,t){msgEl.className='pq-msg '+c;msgEl.textContent=t}
 function upd(){progEl.textContent=fmt('gs.pqc-match.round',{n:Math.min(idx+1,TOTAL),total:TOTAL,streak:streak})}
 function fmt(k,v){var s=T(k);for(var k2 in(v||{}))s=s.split('{'+k2+'}').join(v[k2]);return s}
-window.GAME_RESTART=function(){startGame()};startGame();
+window.GAME_RESTART=function(){startGame(false)};dailyBtn.addEventListener('click',function(){startGame(true)});startGame(false);
 })();

@@ -32,5 +32,7 @@
   d.zh['gs.stepping-switch.againBtn'] = '🔁 再来一局';
   d.en['gs.stepping-switch.againBtn'] = '🔁 Play again';
   d.zh['gs.stepping-switch.helpText'] = '为什么重要：紫密（Purple）是美国对日本外务省密码机 Crypton 的代号，1939 年由弗里德曼团队用纯统计方法破译——没有机器仿制，只有数学。六元音/二十辅音双路步进开关的设计使它比恩尼格玛更难分析，但也被更精妙的分析攻破。见编年史「紫密与珍珠港」章。';
+  d.zh['gs.stepping-switch.dailyBtn'] = '📅 每日挑战';
+  d.en['gs.stepping-switch.dailyBtn'] = '📅 Daily challenge';
   d.en['gs.stepping-switch.helpText'] = 'Why it matters: Purple was the US codename for Japan\'s Foreign Ministry cipher machine Crypton, broken in 1939 by Friedman\'s team using pure statistics — no machine imitation, only mathematics. The six-vowel/twenty-consonant dual-path stepping switch design made it harder to analyze than Enigma, yet it fell to more elegant analysis. See the Chronicle chapter "Purple and Pearl Harbor".';
 })();

@@ -11,20 +11,20 @@ for(var i=0;i<25;i++){var j=Math.floor(rnd()*alphabet.length);V_PATH.push(alphab
 for(i=0;i<20;i++){var j2=Math.floor(rnd()*alphabet.length);C_PATH.push(alphabet.splice(j2,1)[0])}})();
 var vPos=0,cPos=0;
 var wrap=document.createElement('div');wrap.className='ss-wrap';
-wrap.innerHTML='<div class="ss-prog" id="ss-prog"></div><div class="ss-step" id="ss-step"></div><div class="ss-paths"><div class="ss-path vowels"><h4 id="ss-lbl-v"></h4><div class="ss-cells" id="ss-vcells"></div></div><div class="ss-path cons"><h4 id="ss-lbl-c"></h4><div class="ss-cells" id="ss-ccells"></div></div></div><input class="ss-input" id="ss-in" maxlength="1" autocomplete="off" placeholder="A-Z"><div class="ss-btns"><button class="btn accent" id="ss-go"></button><button class="btn" id="ss-again" hidden></button></div><div class="ss-msg" id="ss-msg"></div><div class="ss-help">'+T('gs.stepping-switch.helpText')+'</div>';
+wrap.innerHTML='<div class="ss-prog" id="ss-prog"></div><div class="ss-step" id="ss-step"></div><div class="ss-paths"><div class="ss-path vowels"><h4 id="ss-lbl-v"></h4><div class="ss-cells" id="ss-vcells"></div></div><div class="ss-path cons"><h4 id="ss-lbl-c"></h4><div class="ss-cells" id="ss-ccells"></div></div></div><input class="ss-input" id="ss-in" maxlength="1" autocomplete="off" placeholder="A-Z"><div class="ss-btns"><button class="btn accent" id="ss-go"></button><button class="btn" id="ss-again" hidden></button></div><div class="ss-btns"><button class="btn" id="ss-daily">'+T('gs.stepping-switch.dailyBtn')+'</button></div><div class="ss-msg" id="ss-msg"></div><div class="ss-help">'+T('gs.stepping-switch.helpText')+'</div>';
 root.appendChild(wrap);
 var $=function(id){return wrap.querySelector('#'+id)};
-var progEl=$('ss-prog'),step=$('ss-step'),inEl=$('ss-in'),goB=$('ss-go'),againB=$('ss-again'),msgEl=$('ss-msg');
+var progEl=$('ss-prog'),step=$('ss-step'),inEl=$('ss-in'),goB=$('ss-go'),againB=$('ss-again'),msgEl=$('ss-msg'),dailyBtn=$('ss-daily');
 $('ss-lbl-v').textContent=T('gs.stepping-switch.pathV');$('ss-lbl-c').textContent=T('gs.stepping-switch.pathC');
 goB.textContent=T('gs.stepping-switch.inputLbl');againB.textContent=T('gs.stepping-switch.againBtn');
-var idx=0,score=0,streak=0,answered=false,finished=false;
+var idx=0,score=0,streak=0,answered=false,finished=false,dailyMode=false,startTs=0;
 function upd(){progEl.textContent=fmt('gs.stepping-switch.round',{n:Math.min(idx+1,TOTAL),total:TOTAL,streak:streak})}
 function setMsg(c,t){msgEl.className='ss-msg '+c;msgEl.textContent=t}
 function renderPaths(activeChar){var vEl=$('ss-vcells'),cEl=$('ss-ccells');vEl.innerHTML='';cEl.innerHTML='';
 var isV=isVowel(activeChar||'A');
 for(var i=0;i<V_PATH.length;i++){var d=document.createElement('span');d.className='ss-bit'+(i===vPos?' active':'')+(isV?' tapped':'');d.textContent=V_PATH[i];vEl.appendChild(d)}
 for(i=0;i<C_PATH.length;i++){var d2=document.createElement('span');d2.className='ss-bit'+(i===cPos?' active':'')+( !isV?' tapped':'');d2.textContent=C_PATH[i];cEl.appendChild(d2)}}
-function nextRound(){if(idx>=TOTAL){finished=true;if(Arcade.shell)Arcade.shell.submitScore(score);setMsg('ok',fmt('gs.stepping-switch.done',{score:score}));againB.hidden=false;inEl.hidden=true;goB.hidden=true;return}
+function nextRound(){if(idx>=TOTAL){finished=true;if(Arcade.shell)Arcade.shell.submitScore(score);if(dailyMode&&Arcade.daily){var sec=Math.max(1,Math.round((Date.now()-startTs)/1000));Arcade.daily.markSolved('stepping-switch',sec)}setMsg('ok',fmt('gs.stepping-switch.done',{score:score}));againB.hidden=false;inEl.hidden=true;goB.hidden=true;return}
 answered=false;inEl.value='';inEl.hidden=false;goB.hidden=false;upd();step.textContent=T('gs.stepping-switch.inputLbl');setMsg('','')}
 function submit(){if(answered||finished||inEl.hidden)return;var ch=inEl.value.trim().toUpperCase();if(!ch||!/^[A-Z]$/.test(ch))return;
 var isV=isVowel(ch);var out;
@@ -37,6 +37,7 @@ idx++;setTimeout(function(){renderPaths(ch);nextRound()},900)}
 goB.addEventListener('click',submit);
 inEl.addEventListener('keydown',function(e){if(e.key==='Enter')submit()});
 againB.addEventListener('click',function(){idx=0;score=0;streak=0;finished=false;vPos=0;cPos=0;againB.hidden=true;inEl.hidden=false;goB.hidden=false;setMsg('','');upd();step.textContent=T('gs.stepping-switch.inputLbl')});
+dailyBtn.addEventListener('click',function(){idx=0;score=0;streak=0;finished=false;vPos=0;cPos=0;dailyMode=true;startTs=Date.now();dailyBtn.hidden=true;againB.hidden=true;inEl.hidden=false;goB.hidden=false;setMsg('','');upd();step.textContent=T('gs.stepping-switch.inputLbl')});
 window.GAME_RESTART=function(){idx=0;score=0;streak=0;finished=false;vPos=0;cPos=0;againB.hidden=true;inEl.hidden=false;goB.hidden=false;setMsg('','');upd();step.textContent=T('gs.stepping-switch.inputLbl')};
 renderPaths('A');upd();step.textContent=T('gs.stepping-switch.inputLbl');
 })();

@@ -1,6 +1,8 @@
 /* 破译 DECODE ARCADE · intel-assess 游戏内文案（zh/en 对称，占位符一致） */
 (function () {
   var d = Arcade.i18n.dicts;
+  d.zh['gs.ia.dailyBtn'] = '📅 每日挑战';
+  d.en['gs.ia.dailyBtn'] = '📅 Daily challenge';
   d.zh['gs.ia.tutTitle'] = '情报评估 — 玩法';
   d.en['gs.ia.tutTitle'] = 'Intelligence Assessment — How to Play';
   d.zh['gs.ia.tut1t'] = '目标';

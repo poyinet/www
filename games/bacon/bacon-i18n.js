@@ -102,4 +102,6 @@
   d.en['gs.bacon.hint2'] = 'Level 2: a 7-letter message. Longer sentences — don\'t be fooled, judge by the actual weight.';
   d.zh['gs.bacon.hint3'] = '第 3 关：10 字母电文。提示用满 3 次会直接揭示全部正确标记。';
   d.en['gs.bacon.hint3'] = 'Level 3: a 10-letter message. After 3 hints all correct marks are revealed.';
+  d.zh['gs.bacon.helpText'] = '培根密码是隐写术的教科书案例：用两种字体（A/B）编码五个二进制位，把秘密缝进一页看似正常的散文。弗朗西斯·培根 1623 年发表——四百年后，同样的思想被搬进了图片的最低比特位。见编年史「培根的隐形墨水」章。';
+  d.en['gs.bacon.helpText'] = 'The Bacon cipher is steganography\'s textbook case: two typefaces (A/B) encoding five binary bits, sewing secrets into seemingly normal prose. Francis Bacon published it in 1623 — four hundred years later, the same idea lives in image least-significant bits. See the Chronicle chapter "Bacon\'s Invisible Ink".';
 })();

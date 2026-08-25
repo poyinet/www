@@ -34,4 +34,6 @@
   d.en['gs.vigenere.key'] = 'Key: {key}';
   d.zh['gs.vigenere.msgWin'] = '✓ 破译成功！明文：{plain}';
   d.en['gs.vigenere.msgWin'] = '✓ Cipher broken! Plaintext: {plain}';
+  d.zh['gs.vigenere.helpText'] = '维吉尼亚密码曾被称为「不可破译的密码」——三百年无人能破，直到 19 世纪卡西斯基试验揭示了重合指数的弱点。它的历史也是一堂谦逊课：真正的发明者是贝拉索（1553），而非维吉尼亚（1586）。见编年史「培根的隐形墨水」章。';
+  d.en['gs.vigenere.helpText'] = 'The Vigenère cipher was called "the indecipherable cipher" — unbroken for 300 years until Kasiski exposed its repeating weakness. Its history is also a lesson in humility: the true inventor was Bellaso (1553), not Vigenère (1586). See the Chronicle chapter "Bacon\'s Invisible Ink".';
 })();

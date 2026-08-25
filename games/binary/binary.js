@@ -40,7 +40,13 @@ window.GAME_TUTORIAL_STEPS = [
     '<div class="bin-top"><span>' + T('gs.binary.typeHint') + '</span><span id="bin-time">00:00</span></div>' +
     '<div class="bin-msg" id="bin-msg"></div>' +
     '<div class="game-controls"><button id="bin-reset" class="btn purple">' + T('gs.binary.newPuzzle') + '</button></div>';
-  root.appendChild(wrap);
+  
+  /* helpText 知识延伸 */
+  var helpDiv = document.createElement('div');
+  helpDiv.style.cssText = 'font-size:12px;color:var(--text-dim);line-height:1.8;margin-top:12px;text-align:left;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 12px';
+  helpDiv.textContent = T('gs.binary.helpText');
+  wrap.appendChild(helpDiv);
+root.appendChild(wrap);
   var diffRow = wrap.querySelector('#bin-diff');
   var rowEl = wrap.querySelector('#bin-row'), msgEl = wrap.querySelector('#bin-msg'),
       timeEl = wrap.querySelector('#bin-time'), resetBtn = wrap.querySelector('#bin-reset');

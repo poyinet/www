@@ -96,4 +96,6 @@
   d.en['gs.m209.wheel3'] = 'Wheel IV·21';
   d.en['gs.m209.wheel4'] = 'Wheel V·19';
   d.en['gs.m209.wheel5'] = 'Wheel VI·17';
+  d.zh['gs.m209.helpText'] = 'M-209 是美军在二战使用的便携式机械密码机，重量仅 2.7kg——士兵可以背着它行军。它的齿轮结构精巧但密钥空间有限：德军能在数小时内破译低级流量。便携性与安全性的取舍至今仍是密码工程的永恒课题。见编年史「布莱切利园的机器」章。';
+  d.en['gs.m209.helpText'] = 'The M-209 was the US military\'s portable mechanical cipher machine, weighing only 2.7kg — soldiers carried it into battle. Its gearing was elegant but the keyspace limited: Germans broke low-level traffic in hours. The portability-vs-security tradeoff remains cryptography\'s eternal challenge. See the Chronicle chapter "The Machines of Bletchley Park".';
 })();

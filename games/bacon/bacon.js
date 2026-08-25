@@ -532,6 +532,12 @@
     startLevel();
   });
 
+    /* helpText */
+  var hd = document.createElement('div');
+  hd.style.cssText = 'font-size:12px;color:var(--text-dim);line-height:1.8;margin-top:12px;text-align:left;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 12px';
+  hd.textContent = T('gs.bacon.helpText');
+  root.appendChild(hd);
+
   window.GAME_RESTART = function () {
     if (mode === 'chal') { levelIdx = 0; totalMs = 0; hintUsed = 0; dailyMode = false; revealed = false; marked = {}; overlayEl.classList.add('hidden'); resetClock(); startLevel(); }
     else if (mode === 'free') { document.getElementById('bc-free-new').click(); }

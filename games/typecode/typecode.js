@@ -31,7 +31,13 @@ window.GAME_TUTORIAL_STEPS = [
     '<input class="tc-input" id="tc-in" autocomplete="off" spellcheck="false" placeholder="' + T('gs.typecode.inputPlaceholder') + '">' +
     '<div class="tc-stat" id="tc-stat"></div>' +
     '<div class="tc-msg" id="tc-msg"></div>';
-  root.appendChild(wrap);
+  
+  /* helpText 知识延伸 */
+  var helpDiv = document.createElement('div');
+  helpDiv.style.cssText = 'font-size:12px;color:var(--text-dim);line-height:1.8;margin-top:12px;text-align:left;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 12px';
+  helpDiv.textContent = T('gs.typecode.helpText');
+  wrap.appendChild(helpDiv);
+root.appendChild(wrap);
   var quote = wrap.querySelector('#tc-quote'), input = wrap.querySelector('#tc-in'),
       stat = wrap.querySelector('#tc-stat'), msg = wrap.querySelector('#tc-msg');
 

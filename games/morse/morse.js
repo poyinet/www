@@ -40,7 +40,13 @@ window.GAME_TUTORIAL_STEPS = [
     '<div class="mo-msg" id="mo-msg"></div>' +
     '<button class="btn accent" id="mo-sub">' + T('gs.morse.submit') + '</button>' +
     '<div style="margin-top:10px"><button class="btn yellow" id="mo-daily">📅 ' + T('gs.morse.dailyBtn') + '</button></div>';
-  root.appendChild(wrap);
+  
+  /* helpText 知识延伸 */
+  var helpDiv = document.createElement('div');
+  helpDiv.style.cssText = 'font-size:12px;color:var(--text-dim);line-height:1.8;margin-top:12px;text-align:left;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 12px';
+  helpDiv.textContent = T('gs.morse.helpText');
+  wrap.appendChild(helpDiv);
+root.appendChild(wrap);
   var prog = wrap.querySelector('#mo-prog'), morseEl = wrap.querySelector('#mo-morse'),
       hint = wrap.querySelector('#mo-hint'), input = wrap.querySelector('#mo-in'),
       msg = wrap.querySelector('#mo-msg'), sub = wrap.querySelector('#mo-sub');

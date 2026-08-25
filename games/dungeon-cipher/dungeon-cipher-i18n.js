@@ -142,4 +142,6 @@
   d.en['gs.dungeonCipher.finalMsg'] = '🏁 Settle: reached floor <b>{f}</b> \u00b7 score <b>{s}</b> ({f}\u00d7100 + HP {h}\u00d72)<br>Press "🏳\ufe0f Retreat & Settle" or just "Restart" for another run.';
   d.zh['gs.dungeonCipher.noSolveMsg'] = '本次未完成任何破译，不计分也不提交（先破译至少一条电文再撤离）。';
   d.en['gs.dungeonCipher.noSolveMsg'] = 'No cipher solved this run — no score submitted. Decrypt at least one message before retreating.';
+  d.zh['gs.dungeonCipher.helpText'] = '密室密码将密码学谜题嵌入冒险叙事——正如历史上真实的密码战：布莱切利园的破译员在木屋里解谜，每解一封电报就可能拯救一艘船。见编年史「布莱切利园的机器」章。';
+  d.en['gs.dungeonCipher.helpText'] = 'The cipher dungeon embeds cryptographic puzzles in an adventure — just like real codebreaking: each decrypted message potentially saving lives. The urgency is something textbooks cannot convey.';
 })();

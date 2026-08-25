@@ -34,4 +34,6 @@
   d.en['gs.typecode.kbdAria'] = 'On-screen keyboard: tap to type letters';
   d.zh['gs.typecode.spaceK'] = '空格';
   d.en['gs.typecode.spaceK'] = 'space';
+  d.zh['gs.typecode.helpText'] = '打字破译训练的是密码分析的基本功：从密文中识别模式、频率与结构。布莱切利园的破译员每天面对成千上万字符的密文——快速识别「这是哪种密码」是破译的第一步。见编年史「布莱切利园的机器」章。';
+  d.en['gs.typecode.helpText'] = 'Typing cipher training builds cryptanalysis fundamentals: identifying patterns, frequencies and structures in ciphertext. Bletchley Park\'s analysts faced thousands of characters daily — quickly identifying "which cipher is this" was the first step. See the Chronicle chapter "The Machines of Bletchley Park".';
 })();

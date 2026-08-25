@@ -70,4 +70,6 @@
   d.en['gs.plugboard.hintMsg'] = '🧩 Hint: correct swap <b>{p}↔{q}</b> added.';
   d.zh['gs.plugboard.hintAll'] = '所有正确插线都已配上！';
   d.en['gs.plugboard.hintAll'] = 'All correct swaps are already in place!';
+  d.zh['gs.plugboard.helpText'] = '插线板是恩尼格玛最外层的防线：操作员每天用电缆交换六对字母，将密钥空间扩大了 150 万亿倍。但它也有致命弱点——交换是固定的，不随按键步进，成为破译的突破口之一。见编年史「布莱切利园的机器」章。';
+  d.en['gs.plugboard.helpText'] = 'The plugboard was Enigma\'s outermost defense: operators swapped six letter pairs daily with cables, expanding the keyspace 150 trillion-fold. But it had a fatal flaw — swaps were fixed, not stepping, becoming one of the cracks codebreakers exploited. See the Chronicle chapter "The Machines of Bletchley Park".';
 })();

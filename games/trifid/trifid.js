@@ -475,6 +475,12 @@ window.GAME_TUTORIAL_STEPS = [
   // 初始化（默认进入挑战模式，与其他破译机一致；重开保留当前模式）
   setMode('chal');
 
+    /* helpText */
+  var hd = document.createElement('div');
+  hd.style.cssText = 'font-size:12px;color:var(--text-dim);line-height:1.8;margin-top:12px;text-align:left;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 12px';
+  hd.textContent = T('gs.trifid.helpText');
+  root.appendChild(hd);
+
   window.GAME_RESTART = function () {
     stopTimer();
     setMode(mode === 'lab' ? 'lab' : mode);

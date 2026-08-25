@@ -38,4 +38,6 @@
   d.en['gs.caesar.dailyBtn'] = '📅 Daily (same for everyone)';
   d.zh['gs.caesar.dailyTag'] = '📅 每日一题 · 今天全世界同一个密文';
   d.en['gs.caesar.dailyTag'] = '📅 Daily puzzle · the same ciphertext for everyone today';
+  d.zh['gs.caesar.helpText'] = '凯撒密码是西方密码学的起点——两千年来无数密码体系都从「平移」这个简单思想出发。它早已不安全，但「替换」与「移位」这两个核心操作至今仍是一切现代密码的积木。见编年史「凯撒的密令」章。';
+  d.en['gs.caesar.helpText'] = 'The Caesar cipher is where Western cryptography began — countless systems have grown from the simple idea of "shifting". Long broken, but substitution and rotation remain the building blocks of all modern ciphers. See the Chronicle chapter "Caesar\'s Secret Orders".';
 })();

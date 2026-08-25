@@ -116,4 +116,6 @@
   d.en['gs.xor.analResetMsg'] = 'Reset. {h}';
   d.zh['gs.xor.toastAllMsg'] = '🏆 全部电文还原！';
   d.en['gs.xor.toastAllMsg'] = '🏆 All messages recovered!';
+  d.zh['gs.xor.helpText'] = '异或是现代密码的原子操作：A⊕K⊕K=A。它对称、廉价、在电路里只是一排晶体管——DES、AES 等一切现代分组密码都建立在它之上。香农证明了它是实现完美保密的唯一途径。见编年史「数学家的反击」章。';
+  d.en['gs.xor.helpText'] = 'XOR is the atom of modern cryptography: A⊕K⊕K=A. Symmetric, cheap, just a row of transistors — every modern block cipher from DES to AES is built on it. Shannon proved it\'s the only path to perfect secrecy. See the Chronicle chapter "The Mathematicians Strike Back".';
 })();

@@ -150,4 +150,6 @@
   d.en['gs.campaign.again'] = '🔄 Play again';
   d.zh['gs.campaign.wrong'] = '❌ 不对，再试试——注意大小写与空格（答案只含大写字母）';
   d.en['gs.campaign.wrong'] = '❌ Not quite — try again. Mind case and spaces (the answer contains only capital letters)';
+  d.zh['gs.campaign.helpText'] = '密码战役模拟了真实密码战的完整循环：截获→分析→破译→行动→敌方换钥→重新破译。这个循环从凯撒到恩尼格玛从未改变——改变的是每轮的数学复杂度。见编年史「布莱切利园的机器」章。';
+  d.en['gs.campaign.helpText'] = 'The cipher campaign simulates the complete cycle of real cryptographic warfare: intercept → analyze → break → act → enemy rotates keys → break again. This cycle has never changed from Caesar to Enigma — only the mathematical complexity of each round. See the Chronicle chapter "The Machines of Bletchley Park".';
 })();

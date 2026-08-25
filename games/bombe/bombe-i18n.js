@@ -118,4 +118,6 @@
   d.en['gs.bombe.statusChal'] = 'Crack mode';
   d.zh['gs.bombe.statusFree'] = '自由模式';
   d.en['gs.bombe.statusFree'] = 'Free mode';
+  d.zh['gs.bombe.helpText'] = '炸弹机是图灵为破译恩尼格玛设计的机电计算设备——不是破解密码本身，而是每天找出当日的转子设置。它的「对角线板」由韦尔奇曼改进，将搜索速度提升数倍。这是现代计算机的前身。见编年史「布莱切利园的机器」章。';
+  d.en['gs.bombe.helpText'] = 'The Bombe was Turing\'s electromechanical device for finding Enigma\'s daily rotor settings — not breaking the cipher itself, but finding each day\'s configuration. Welchman\'s diagonal board multiplied its speed. A precursor of the modern computer. See the Chronicle chapter "The Machines of Bletchley Park".';
 })();

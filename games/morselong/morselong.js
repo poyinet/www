@@ -46,7 +46,13 @@ window.GAME_TUTORIAL_STEPS = [
     '<input class="ml-input" id="ml-input" placeholder="' + T('gs.morselong.phInput') + '" autocomplete="off" spellcheck="false">' +
     '<div class="ml-msg" id="ml-msg"></div>' +
     '<div class="game-controls"><button id="ml-reset" class="btn purple">' + T('gs.morselong.newPuzzle') + '</button></div>';
-  root.appendChild(wrap);
+  
+  /* helpText 知识延伸 */
+  var helpDiv = document.createElement('div');
+  helpDiv.style.cssText = 'font-size:12px;color:var(--text-dim);line-height:1.8;margin-top:12px;text-align:left;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 12px';
+  helpDiv.textContent = T('gs.morselong.helpText');
+  wrap.appendChild(helpDiv);
+root.appendChild(wrap);
   var diffRow = wrap.querySelector('#ml-diff');
   var cipherEl = wrap.querySelector('#ml-cipher'), inputEl = wrap.querySelector('#ml-input'),
       msg = wrap.querySelector('#ml-msg'), timeEl = wrap.querySelector('#ml-time'),

@@ -174,4 +174,6 @@
   d.en['gs.hill.statusChal'] = 'Crack mode';
   d.zh['gs.hill.statusFree'] = '自由模式';
   d.en['gs.hill.statusFree'] = 'Free mode';
+  d.zh['gs.hill.helpText'] = '希尔密码是史上第一个基于线性代数的实用矩阵分组密码（1929）——它把字母变成数字、用矩阵乘法一次性变换多个字母。虽然因手算太慢被遗忘，但「分组」思想被 AES 等现代密码继承。见编年史「数学家的反击」章。';
+  d.en['gs.hill.helpText'] = 'The Hill cipher (1929) was the first practical matrix-based block cipher, converting letters to numbers and transforming groups with matrix multiplication. Forgotten for being too slow by hand, but its "block" concept lives on in AES and modern ciphers. See the Chronicle chapter "The Mathematicians Strike Back".';
 })();

@@ -42,4 +42,6 @@
   d.en['gs.morse.dailyBtn'] = '📅 Daily (fixed message)';
   d.zh['gs.morse.dailyTag'] = '· 今日全球同一组电文';
   d.en['gs.morse.dailyTag'] = '· same messages for everyone today';
+  d.zh['gs.morse.helpText'] = '摩斯电码不是密码而是编码——但它教会了世界「两种符号可以表达一切」。塞缪尔·摩斯 1838 年发明，至今仍是无线电应急通信标准。恩尼格玛的电波就是用摩斯码发送的。见编年史「一战的电波战」章。';
+  d.en['gs.morse.helpText'] = 'Morse code isn\'t a cipher but an encoding — yet it taught the world that "two symbols can express everything". Samuel Morse invented it in 1838; it remains a radio emergency standard. Enigma\'s radio waves were sent in Morse. See the Chronicle chapter "The Radio War".';
 })();

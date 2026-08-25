@@ -51,7 +51,13 @@ window.GAME_TUTORIAL_STEPS = [
     '<div class="ca-msg" id="ca-msg"></div>' +
     '<button class="btn accent" id="ca-check">' + T('gs.caesar.check') + '</button>' +
     '<div style="margin-top:10px"><button class="btn yellow" id="ca-daily">📅 ' + T('gs.caesar.dailyBtn') + '</button></div>';
-  root.appendChild(wrap);
+  
+  /* helpText 知识延伸 */
+  var helpDiv = document.createElement('div');
+  helpDiv.style.cssText = 'font-size:12px;color:var(--text-dim);line-height:1.8;margin-top:12px;text-align:left;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 12px';
+  helpDiv.textContent = T('gs.caesar.helpText');
+  wrap.appendChild(helpDiv);
+root.appendChild(wrap);
 
   var range = wrap.querySelector('#ca-range');
   var pre = wrap.querySelector('#ca-pre');

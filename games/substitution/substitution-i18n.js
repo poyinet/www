@@ -30,4 +30,6 @@
   d.en['gs.substitution.tip'] = '💡 Trial and error: letters appear with different frequencies — try common ones like E, T, A first';
   d.zh['gs.substitution.msgWin'] = '✓ 破译成功！明文：{plain}';
   d.en['gs.substitution.msgWin'] = '✓ Cipher broken! Plaintext: {plain}';
+  d.zh['gs.substitution.helpText'] = '替换密码是最古老的加密思想：把每个字母换成另一个。凯撒用它、玛丽女王因它丧命、频率分析终结了它——但替换的思想至今活在 AES 的 S 盒里，只是被数学武装到了牙齿。见编年史「凯撒的密令」章。';
+  d.en['gs.substitution.helpText'] = 'Substitution is the oldest encryption idea: replace each letter with another. Caesar used it, Mary Queen of Scots died for it, frequency analysis killed it — yet substitution lives on in AES\'s S-boxes, armed with mathematics. See the Chronicle chapter "Caesar\'s Secret Orders".';
 })();

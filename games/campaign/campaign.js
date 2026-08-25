@@ -625,6 +625,12 @@ window.GAME_TUTORIAL_STEPS = [
   answerEl.addEventListener('keydown', function (e) { if (e.key === 'Enter') submit(); });
 
   /* ---------- 重开（计时器由 startLevel 统一先清后设） ---------- */
+    /* helpText */
+  var hd = document.createElement('div');
+  hd.style.cssText = 'font-size:12px;color:var(--text-dim);line-height:1.8;margin-top:12px;text-align:left;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 12px';
+  hd.textContent = T('gs.campaign.helpText');
+  root.appendChild(hd);
+
   window.GAME_RESTART = function () {
     if (timerTick) { clearInterval(timerTick); timerTick = null; }
     levelIdx = 0; totalMs = 0; totalEl.textContent = '0s';

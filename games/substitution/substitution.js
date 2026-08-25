@@ -47,7 +47,13 @@ window.GAME_TUTORIAL_STEPS = [
     '<div class="sub-msg" id="sub-msg"></div>' +
     '<div class="game-controls"><button id="sub-reset" class="btn purple">' + T('gs.substitution.reset') + '</button></div>' +
     '<p class="sub-tip">' + T('gs.substitution.tip') + '</p>';
-  root.appendChild(wrap);
+  
+  /* helpText 知识延伸 */
+  var helpDiv = document.createElement('div');
+  helpDiv.style.cssText = 'font-size:12px;color:var(--text-dim);line-height:1.8;margin-top:12px;text-align:left;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 12px';
+  helpDiv.textContent = T('gs.substitution.helpText');
+  wrap.appendChild(helpDiv);
+root.appendChild(wrap);
   var cipherEl = wrap.querySelector('#sub-cipher'), prevEl = wrap.querySelector('#sub-prev'),
       keyEl = wrap.querySelector('#sub-key'), msg = wrap.querySelector('#sub-msg'),
       resetBtn = wrap.querySelector('#sub-reset');

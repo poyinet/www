@@ -789,7 +789,7 @@ window.GAMES = [
   },
   {
     id: 'solitaire', title: '纸牌密码', category: '密码破译',
-    desc: '第四期旗舰 · Pontifex 纸牌流密码：看一副扑克的四步规程产出密钥流，解开情报员的密文——《编码宝典》同名密码。',
+    desc: '第四期旗舰 · Pontifex 纸牌流密码：看一副扑克的五步规程产出密钥流，解开情报员的密文——《编码宝典》同名密码。',
     icon: '🃏', path: 'games/solitaire/index.html',
     mobile: 'ok', bestMode: 'max',
     lvl: 'hard', time: '5min',

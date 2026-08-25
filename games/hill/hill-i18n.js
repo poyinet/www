@@ -6,7 +6,7 @@
   d.en['gs.hill.tutTitle'] = 'Hill Cipher Machine · How to Play';
   d.zh['gs.hill.tut1t'] = '背景';
   d.en['gs.hill.tut1t'] = 'Background';
-  d.zh['gs.hill.tut1'] = '希尔密码是史上第一个「多字母分组密码」：把字母看成数字 A=0…Z=25，每 2 个字母一组，用 2×2 密钥矩阵一次性变换，彻底打散字母间的关系，是古典密码迈向现代密码的里程碑。';
+  d.zh['gs.hill.tut1'] = '希尔密码是首个实用化的「矩阵分组密码」：把字母看成数字 A=0…Z=25，每 2 个字母一组，用 2×2 密钥矩阵一次性变换，彻底打散字母间的关系，是古典密码迈向现代密码的里程碑。';
   d.en['gs.hill.tut1'] = 'The Hill cipher is history\u2019s first polygraphic cipher: letters become numbers A=0…Z=25, grouped in pairs and transformed at once by a 2\u00d72 key matrix, smashing letter-for-letter relationships — a milestone on the road from classical to modern ciphers.';
   d.zh['gs.hill.tut2t'] = '加密';
   d.en['gs.hill.tut2t'] = 'Encryption';

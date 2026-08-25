@@ -13,7 +13,7 @@
   d.en['gs.acrostic.tut2'] = 'In Water Margin, Wu Yong used an acrostic spelling "Lu Junyi rebels" to turn a hero; Renaissance courtiers hid love letters the same way. Steganography need not be math — it can be poetry.';
   d.zh['gs.acrostic.tut3t'] = '计分与每日';
   d.en['gs.acrostic.tut3t'] = 'Scoring & daily';
-  d.zh['gs.acrostic.tut3'] = '首答 +20、连击加成；答错揭示答案但可继续。总分入 BEST（max）。每日挑战按日种子换诗。';
+  d.zh['gs.acrostic.tut3'] = '首答 +20、连击加成；答错可换选项继续，答对后高亮行首揭晓。总分入 BEST（max）。每日挑战按日种子换诗。';
   d.en['gs.acrostic.tut3'] = 'First-try answers earn +20 with streak bonuses; a wrong pick reveals the answer and play continues. Total goes to BEST (max). The daily challenge rotates poems by date seed.';
   d.zh['gs.acrostic.qText'] = '第 {n}/{total} 题 · 这首诗藏着的密词是？';
   d.en['gs.acrostic.qText'] = 'Poem {n}/{total} · what word does it hide?';

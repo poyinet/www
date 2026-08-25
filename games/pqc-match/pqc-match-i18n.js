@@ -1,0 +1,36 @@
+/* 破译 DECODE ARCADE · pqc-match 游戏内文案（zh/en 对称，占位符一致） */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.pqc-match.tutTitle'] = '后量子迁移配对 — 玩法';
+  d.en['gs.pqc-match.tutTitle'] = 'Post-Quantum Matching — How to Play';
+  d.zh['gs.pqc-match.tut1t'] = '目标';
+  d.en['gs.pqc-match.tut1t'] = 'Objective';
+  d.zh['gs.pqc-match.tut1'] = '把经典密码算法与其后量子继任者配对。RSA → ML-KEM，ECDSA → ML-DSA……每对配对正确后显示解释。五题一局。';
+  d.en['gs.pqc-match.tut1'] = 'Pair classical algorithms with their post-quantum successors. RSA → ML-KEM, ECDSA → ML-DSA…… Each correct match reveals an explanation. Five rounds.';
+  d.zh['gs.pqc-match.tut2t'] = '为什么现在就要迁移';
+  d.en['gs.pqc-match.tut2t'] = 'Why migrate now';
+  d.zh['gs.pqc-match.tut2'] = 'Shor 算法在量子计算机上可以破解 RSA 和 ECC——「先存后解」意味着今天的加密数据可能已被存档等待未来解密。NIST 2024 年发布了首批后量子标准。';
+  d.en['gs.pqc-match.tut2'] = 'Shor\'s algorithm on a quantum computer breaks RSA and ECC — "harvest now, decrypt later" means today\'s encrypted data may already be archived. NIST published the first PQ standards in 2024.';
+  d.zh['gs.pqc-match.tut3t'] = '计分';
+  d.en['gs.pqc-match.tut3t'] = 'Scoring';
+  d.zh['gs.pqc-match.tut3'] = '首配正确 +20、连击加成。总分入 BEST（max）。';
+  d.en['gs.pqc-match.tut3'] = 'First-try matches earn +20 with streak bonuses. Total goes to BEST (max).';
+  d.zh['gs.pqc-match.round'] = '第 {n}/{total} 题 · 连击 {streak}';
+  d.en['gs.pqc-match.round'] = 'Round {n}/{total} · streak {streak}';
+  d.zh['gs.pqc-match.qText'] = '「{algo}」的后量子继任者是？';
+  d.en['gs.pqc-match.qText'] = 'What is the post-quantum successor of {algo}?';
+  d.zh['gs.pqc-match.ok'] = '✓ 配对正确！+{pts} 分';
+  d.en['gs.pqc-match.ok'] = '✓ Correct! +{pts} pts';
+  d.zh['gs.pqc-match.retry'] = '✗ 不对——再想想（连击已断）';
+  d.en['gs.pqc-match.retry'] = '✗ Not quite — think again (streak broken)';
+  d.zh['gs.pqc-match.explainTitle'] = '📖 ';
+  d.en['gs.pqc-match.explainTitle'] = '📖 ';
+  d.zh['gs.pqc-match.done'] = '⚡ 五题完成 · 总分 {score}';
+  d.en['gs.pqc-match.done'] = '⚡ All five done · total {score}';
+  d.zh['gs.pqc-match.nextBtn'] = '▶ 下一题';
+  d.en['gs.pqc-match.nextBtn'] = '▶ Next';
+  d.zh['gs.pqc-match.againBtn'] = '🔁 再来一局';
+  d.en['gs.pqc-match.againBtn'] = '🔁 Play again';
+  d.zh['gs.pqc-match.helpText'] = '为什么重要：NIST 2024 年 8 月发布 FIPS 203（ML-KEM）、204（ML-DSA）、205（SLH-DSA）——全球银行、政府与互联网系统正开始一场静悄悄的「换锁」迁移。本游戏帮你记住谁接替谁。见编年史「量子转折点」章。';
+  d.en['gs.pqc-match.helpText'] = 'Why it matters: NIST published FIPS 203 (ML-KEM), 204 (ML-DSA) and 205 (SLH-DSA) in August 2024 — banks, governments and the internet are quietly "changing the locks". This game helps you remember who succeeds whom. See the Chronicle chapter "The Quantum Turning Point".';
+})();

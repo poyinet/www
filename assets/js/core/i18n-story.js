@@ -830,6 +830,9 @@
   /* 第十二期：qkd-sim 挂靠量子章（末位追加） */
   d.zh['st.c11.g2'] = 'QKD 密钥分发模拟：选基测量光子、筛选密钥、比对 QBER——亲手体验 BB84 量子密钥分发的完整流程。';
   d.en['st.c11.g2'] = 'QKD Simulator: choose bases, measure photons, sift keys and compare QBER — hands-on BB84 quantum key distribution.';
+  /* 第十二期：pqc-match 挂靠量子章（末位追加） */
+  d.zh['st.c11.g3'] = '后量子迁移配对：把经典密码算法与其后量子继任者配对——NIST 2024 标准速记。';
+  d.en['st.c11.g3'] = 'Post-Quantum Matching: pair classical algorithms with their PQ successors — NIST 2024 standards quick reference.';
   d.zh['st.c11.facts'] = '「墨子号」2017 年实现星地量子密钥分发，把 BB84 从光纤搬上太空，2017 年北京与维也纳曾借此完成跨洲量子加密视频通话。另一条：谷歌已在 Chrome 中试水「混合密钥交换」，让传统椭圆曲线与后量子 Kyber 并肩护航——迁移不是换闸刀，而是先让两把锁同门站岗。';
   d.en['st.c11.facts'] = 'In 2017 China\'s Micius satellite achieved space-to-ground QKD, lifting BB84 off fiber and into orbit; Beijing and Vienna once held an intercontinental quantum-encrypted video call over it. And Google has been trialing hybrid key exchange in Chrome — classical elliptic curves standing guard alongside post-quantum Kyber, because migration means two locks at the door before one is swapped.';
   d.zh['st.c11.facts2'] = '后量子竞选中也有惨痛教训：曾一路领跑的 SIKE，2022 年被鲁汶大学研究者用一台普通笔记本在一小时内击倒；同年彩虹签名 Rainbow 也在一个周末内陷落。七年的公开评审因此显得必要而非多余——「还没人攻破」从来不等于「安全」。';

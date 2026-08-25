@@ -15,7 +15,7 @@ window.GAME_CATEGORIES = ['经典街机', '动作反应', '逻辑谜题', '空�
 
 /* 每日破译中心：启用「📅 每日一题」的游戏（大厅今日面板 + 档案页共用）
    所有列出的游戏均实现 daily 模式：日种子确定性生成 + 解完调用 Arcade.daily.markSolved */
-window.DAILY_IDS = ['sudoku', 'enigma', 'bifid', 'slitherlink', 'hashi', 'trifid', 'bacon', 'klondike', 'caesar', 'llk', 'spotdiff', 'sectorsiege', 'sheep', 'morse', 'atbash', 'polybius', 'nihilist', 'starflag', 'autokey', 'rsa', 'shamir', 'sm4', 'acrostic', 'phishhunt', 'qkd-sim'];
+window.DAILY_IDS = ['sudoku', 'enigma', 'bifid', 'slitherlink', 'hashi', 'trifid', 'bacon', 'klondike', 'caesar', 'llk', 'spotdiff', 'sectorsiege', 'sheep', 'morse', 'atbash', 'polybius', 'nihilist', 'starflag', 'autokey', 'rsa', 'shamir', 'sm4', 'acrostic', 'phishhunt', 'qkd-sim', 'pqc-match'];
 
 window.GAMES = [
   /* ---------- 经典街机 ---------- */
@@ -828,6 +828,13 @@ window.GAMES = [
     icon: '⚡', path: 'games/qkd-sim/index.html',
     mobile: 'ok', bestMode: 'max',
     lvl: 'mid', time: '5min',
+  },
+  {
+    id: 'pqc-match', title: '后量子迁移配对', category: '密码破译',
+    desc: '第十二期 · 把经典密码算法与其后量子继任者配对——RSA→ML-KEM，ECDSA→ML-DSA，NIST 2024 标准速记。',
+    icon: '🔮', path: 'games/pqc-match/index.html',
+    mobile: 'ok', bestMode: 'max',
+    lvl: 'easy', time: '5min',
   },
   {
     id: 'phishhunt', title: '钓鱼邮件狩猎', category: '密码破译',

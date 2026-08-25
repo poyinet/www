@@ -111,6 +111,12 @@ window.GAME_TUTORIAL_STEPS = [
   }
 
   gen(); draw();
+    /* helpText */
+  var hd = document.createElement('div');
+  hd.style.cssText = 'font-size:12px;color:var(--text-dim);line-height:1.8;margin-top:12px;text-align:left;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 12px';
+  hd.textContent = T('gs.maze.helpText');
+  root.appendChild(hd);
+
   window.GAME_RESTART = function () {
     steps = 0; over = false; pr = 0; pc = 0;
     top.textContent = T('gs.maze.hud').replace('{n}', 0);

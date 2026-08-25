@@ -28,4 +28,6 @@
   d.en['gs.codeguess.continue'] = 'Keep going… ({n} tries left)';
   d.zh['gs.codeguess.again'] = '🔄 再来一局';
   d.en['gs.codeguess.again'] = '🔄 Play again';
+  d.zh['gs.codeguess.helpText'] = '猜词破译训练的是信息增益最大化——每次猜测应该选择能排除最多可能性的候选。这与破译员选择「最有价值的 crib」策略完全一致。';
+  d.en['gs.codeguess.helpText'] = 'Code guessing trains information-gain maximization — each guess should eliminate the most possibilities. The same strategy codebreakers use when choosing the most valuable cribs.';
 })();

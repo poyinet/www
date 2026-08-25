@@ -84,4 +84,6 @@
   d.en['gs.towerdefense.lose'] = '💀 Base destroyed! Kills: {n}';
   d.zh['gs.towerdefense.defending'] = '防守中…';
   d.en['gs.towerdefense.defending'] = 'Defending…';
+  d.zh['gs.towerdefense.helpText'] = '塔防训练的是多层防御策略——密码系统的「纵深防御」（多层加密+认证+密钥轮换）需要同样的分层思维。';
+  d.en['gs.towerdefense.helpText'] = 'Tower defense trains layered defense strategy — "defense in depth" in cryptographic systems (multiple encryption + authentication + key rotation) needs the same layered thinking.';
 })();

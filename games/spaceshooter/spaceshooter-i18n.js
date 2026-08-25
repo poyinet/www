@@ -30,4 +30,6 @@
   d.en['gs.spaceshooter.waveFmt'] = 'Wave {n} incoming!';
   d.zh['gs.spaceshooter.loseFmt'] = '💀 防线失守！击落 {n}';
   d.en['gs.spaceshooter.loseFmt'] = '💀 Line breached! Kills {n}';
+  d.zh['gs.spaceshooter.helpText'] = '太空射击训练的是多目标追踪与模式识别——雷达操作员在二战中同时追踪多个信号时用的正是同样的技能。';
+  d.en['gs.spaceshooter.helpText'] = 'Space shooters train multi-target tracking and pattern recognition — WWII radar operators tracking multiple signals simultaneously used the same skills.';
 })();

@@ -28,4 +28,6 @@
   d.en['gs.lightsout.stepsFmt'] = 'Moves: {n}';
   d.zh['gs.lightsout.winFmt'] = '🎉 全部熄灭！用了 {n} 步';
   d.en['gs.lightsout.winFmt'] = '🎉 All lights out! It took {n} moves';
+  d.zh['gs.lightsout.helpText'] = '点灯是 GF(2) 线性代数的游戏化：每次按键翻转相邻格 = 异或操作。求解点灯就是解一个 GF(2) 上的线性方程组——现代密码的数学基础。';
+  d.en['gs.lightsout.helpText'] = 'Lights Out is GF(2) linear algebra gamified: pressing a cell XORs its neighbors. Solving it means solving a GF(2) linear system — the mathematical foundation of modern crypto.';
 })();

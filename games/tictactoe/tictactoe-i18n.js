@@ -46,4 +46,6 @@
   d.en['gs.tictactoe.startPvp'] = 'X moves first — let\'s play!';
   d.zh['gs.tictactoe.startAi'] = '你执 X 先手，请落子';
   d.en['gs.tictactoe.startAi'] = 'You are X and move first — place your mark';
+  d.zh['gs.tictactoe.helpText'] = '井字棋是博弈论的入门教科书——它的完全解（平局）证明了「信息完全+双方最优=不可战胜」。这与一次性密码本的完美保密异曲同工。';
+  d.en['gs.tictactoe.helpText'] = 'Tic-tac-toe is game theory 101 — its complete solution (always a draw) proves "perfect information + optimal play = unbeatable". Echoes the perfect secrecy of one-time pads.';
 })();

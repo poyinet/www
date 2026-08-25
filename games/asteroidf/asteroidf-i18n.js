@@ -42,4 +42,6 @@
   d.en['gs.asteroidf.hit'] = '💥 Hit! {n} lives left';
   d.zh['gs.asteroidf.clear'] = '🎉 清空小行星！得分 {n}';
   d.en['gs.asteroidf.clear'] = '🎉 Asteroid field cleared! Score {n}';
+  d.zh['gs.asteroidf.helpText'] = '小行星训练的是向量数学与碎片预测——ECC 的椭圆曲线运算就是向量空间中的数学游戏，只是发生在有限域上。';
+  d.en['gs.asteroidf.helpText'] = 'Asteroids trains vector math and fragment prediction — ECC\'s elliptic curve operations are vector-space math games, just over finite fields instead of real numbers.';
 })();

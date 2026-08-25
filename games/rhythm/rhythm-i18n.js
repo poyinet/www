@@ -34,4 +34,6 @@
   d.en['gs.rhythm.jGood'] = 'GOOD';
   d.zh['gs.rhythm.jMiss'] = '漏击';
   d.en['gs.rhythm.jMiss'] = 'MISS';
+  d.zh['gs.rhythm.helpText'] = '节拍脉冲训练的是时序精确性——侧信道攻击中的「差分功耗分析」需要精确到纳秒级的时序测量。节奏感是精确度的直觉训练。';
+  d.en['gs.rhythm.helpText'] = 'Rhythm games train temporal precision — differential power analysis in side-channel attacks needs nanosecond-level timing measurements. Rhythm is intuition training for precision.';
 })();

@@ -38,4 +38,6 @@
   d.en['gs.twopaddle.tut4t'] = 'Scoring';
   d.zh['gs.twopaddle.tut4'] = '每赢一球得 1 分，率先 7 分获胜。成绩=你的得分。';
   d.en['gs.twopaddle.tut4'] = 'Each rally you win scores 1 point; first to 7 wins. Your score is your points.';
+  d.zh['gs.twopaddle.helpText'] = '双人弹球训练的是对抗性思维——密码学的本质就是对抗：攻击者与防御者在同一个系统上博弈。';
+  d.en['gs.twopaddle.helpText'] = 'Two-player pong trains adversarial thinking — cryptography IS adversarial: attacker and defender playing on the same system.';
 })();

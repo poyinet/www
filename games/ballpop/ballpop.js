@@ -108,6 +108,7 @@ window.GAME_TUTORIAL_STEPS = [
     '  <div class="zm-msg" id="zm-msg"></div></div>' +
     '<div class="zm-help">' + T('gs.ballpop.help') + '</div>';
   root.innerHTML = html;
+  var hd=document.createElement('div');hd.style.cssText='font-size:12px;color:var(--text-dim);line-height:1.8;margin-top:12px;text-align:left;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 12px';hd.textContent=T('gs.ballpop.helpText');root.appendChild(hd);
 
   // 结算后「再来一局」按钮（胜/负后显示；此前需用顶栏重开）
   var againBtn = document.createElement('button');
@@ -115,7 +116,8 @@ window.GAME_TUTORIAL_STEPS = [
   againBtn.style.display = 'none';
   againBtn.style.margin = '10px auto 0';
   againBtn.textContent = T('gs.ballpop.again');
-  againBtn.addEventListener('click', function () { if (window.GAME_RESTART) window.GAME_RESTART(); });
+  againBtn.addEventListener('click', function () { if (
+  window.GAME_RESTART) window.GAME_RESTART(); });
   root.appendChild(againBtn);
   function showAgain() { againBtn.style.display = 'inline-block'; }
 

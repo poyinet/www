@@ -36,4 +36,6 @@
   d.en['gs.klotski.pcGuan'] = 'GUAN';
   d.zh['gs.klotski.pcBing'] = '兵';
   d.en['gs.klotski.pcBing'] = 'SOL';
+  d.zh['gs.klotski.helpText'] = '华容道是状态空间搜索的中国古典版本：有限的移动方式、庞大的状态空间——密码分析中的「中间相遇攻击」就是在这种状态图中找到通路。';
+  d.en['gs.klotski.helpText'] = 'Klotski is the Chinese classical version of state-space search: limited moves, enormous state space — "meet-in-the-middle attacks" in cryptography find paths through such state graphs.';
 })();

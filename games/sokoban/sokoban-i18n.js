@@ -28,4 +28,6 @@
   d.en['gs.sokoban.levelDone'] = '✓ Level cleared! Entering level {n}';
   d.zh['gs.sokoban.win'] = '🎉 全部通关！总步数 {n}';
   d.en['gs.sokoban.win'] = '🎉 All levels cleared! Total moves {n}';
+  d.zh['gs.sokoban.helpText'] = '推箱子训练的是状态空间搜索与死锁避免——密码分析中「避免走进不可解的分支」需要同样的前瞻性思维。';
+  d.en['gs.sokoban.helpText'] = 'Sokoban trains state-space search and deadlock avoidance — cryptanalysis needs the same forward thinking to avoid "unsolvable branches" in the analysis tree.';
 })();

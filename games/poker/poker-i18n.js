@@ -60,4 +60,6 @@
   d.en['gs.poker.youFold'] = 'You folded — AI wins {n} chips';
   d.zh['gs.poker.aiShow'] = 'AI 已摊牌：{c} —— 再点「摊牌」比大小';
   d.en['gs.poker.aiShow'] = 'AI shows: {c} — tap Show again to compare';
+  d.zh['gs.poker.helpText'] = '扑克对决训练的是博弈论与信息不完全下的决策——这正是密码学的核心场景：你在信息不完全的情况下与对手博弈，加密是你的信息优势。';
+  d.en['gs.poker.helpText'] = 'Poker trains game theory and decision-making under incomplete information — the core scenario of cryptography: playing against an opponent with encryption as your information advantage.';
 })();

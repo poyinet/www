@@ -38,4 +38,6 @@
   d.en['gs.shikaku.wrongRect'] = '✗ Wrong rectangle (area must equal its single number)';
   d.zh['gs.shikaku.win'] = '🎉 分割完成！用了 {n} 步';
   d.en['gs.shikaku.win'] = '🎉 Grid divided! {n} moves';
+  d.zh['gs.shikaku.helpText'] = '方形分割训练的是因数分解的几何直觉——RSA 的安全正建立在「大数因数分解困难」之上。玩这个游戏时你在做 RSA 逆向思维的训练。';
+  d.en['gs.shikaku.helpText'] = 'Shikaku trains geometric intuition for factorization — RSA\'s security rests on "factoring large numbers is hard". Playing this is RSA reverse-thinking practice.';
 })();

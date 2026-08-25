@@ -38,4 +38,6 @@
   d.en['gs.bridge.timeout'] = '⏰ Time\'s up — the ball didn\'t make it';
   d.zh['gs.bridge.rolling'] = '球滚动了！看它能不能到终点…';
   d.en['gs.bridge.rolling'] = 'The ball is rolling — let\'s see if it makes it…';
+  d.zh['gs.bridge.helpText'] = '桥梁搭建训练的是结构工程与承重计算——密码协议中的「证书链验证」就是一座需要每环都牢固的桥。';
+  d.en['gs.bridge.helpText'] = 'Bridge-building trains structural engineering and load calculation — "certificate chain verification" in crypto protocols is a bridge where every link must hold.';
 })();

@@ -26,4 +26,6 @@
   d.en['gs.pipe.newGame'] = 'New Round';
   d.zh['gs.pipe.win'] = '🎉 接通！旋转 {n} 次';
   d.en['gs.pipe.win'] = '🎉 Connected! {n} rotations';
+  d.zh['gs.pipe.helpText'] = '管道连接训练的是拓扑思维——网络协议（如 TLS）中的「握手路径」就是一条需要正确连接的管道。';
+  d.en['gs.pipe.helpText'] = 'Pipe connection trains topological thinking — the "handshake path" in network protocols like TLS is a pipeline needing correct connection.';
 })();

@@ -44,4 +44,6 @@
   d.en['gs.siege.yourTurn'] = 'Your turn (Blue) — press the attack!';
   d.zh['gs.siege.aiTurn'] = 'AI 思考中…';
   d.en['gs.siege.aiTurn'] = 'AI thinking…';
+  d.zh['gs.siege.helpText'] = '攻城棋训练的是战术规划与资源分配——密码战中的「密钥管理」就是资源分配：哪些密钥用在哪些信道上，何时轮换。';
+  d.en['gs.siege.helpText'] = 'Siege games train tactical planning and resource allocation — "key management" in cryptographic warfare is resource allocation: which keys for which channels, when to rotate.';
 })();

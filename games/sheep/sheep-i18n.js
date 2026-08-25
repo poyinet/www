@@ -50,4 +50,6 @@
   d.en['gs.sheep.tut3'] = '↩ Undo (return the last tile), 📦 Eject (return the first 3 tiles to the board), 🔀 Shuffle (rearrange icons, solvability not guaranteed). One use each on Level 2.';
   d.en['gs.sheep.tut4t'] = 'Strategy';
   d.en['gs.sheep.tut4'] = 'Prioritize clearing tiles piled above bottom-layer tiles; the blind piles and side stacks are lifesavers — don\'t burn them early.';
+  d.zh['gs.sheep.helpText'] = '绵羊三消训练的是空间模式匹配——破译员在密文中识别重复结构时用的正是同样的空间直觉。';
+  d.en['gs.sheep.helpText'] = 'Sheep matching trains spatial pattern recognition — the same spatial intuition codebreakers use when spotting repeating structures in ciphertext.';
 })();

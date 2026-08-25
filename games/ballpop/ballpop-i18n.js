@@ -46,4 +46,6 @@
   d.en['gs.ballpop.tut4t'] = 'Scoring';
   d.zh['gs.ballpop.tut4'] = '每球 +10，连锁×倍率，清空链 +1000；成绩=总分。';
   d.en['gs.ballpop.tut4'] = '+10 per ball, chain reactions multiply, clearing the chain +1000; your score is the total.';
+  d.zh['gs.ballpop.helpText'] = '弹球消消训练的是物理直觉与连锁反应预测——密码学中的「雪崩效应」也是一种连锁反应：一个比特的改变扩散到整个输出。';
+  d.en['gs.ballpop.helpText'] = 'Ball-popper trains physics intuition and chain-reaction prediction — the "avalanche effect" in cryptography is also a chain reaction: one bit change spreading through the entire output.';
 })();

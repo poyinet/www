@@ -28,4 +28,6 @@
   d.en['gs.fillomino.help'] = '💡 Rule: every cell must be filled; cells with the same number must connect orthogonally into one region, and that region\u2019s total equals the number. Blocks of different numbers can\u2019t touch.';
   d.zh['gs.fillomino.win'] = '🎉 完成！用时 {s} 秒 · {n} 步';
   d.en['gs.fillomino.win'] = '🎉 Complete! {s}s \u00b7 {n} moves';
+  d.zh['gs.fillomino.helpText'] = '数方是约束满足谜题：每个区域的大小约束邻域的扩展——与密码分析中「已知约束逐步缩小密钥空间」的推理链完全一致。';
+  d.en['gs.fillomino.helpText'] = 'Fillomino is a constraint-satisfaction puzzle: each region\'s size constrains its neighbors — mirroring how known constraints progressively narrow the keyspace in cryptanalysis.';
 })();

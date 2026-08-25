@@ -56,4 +56,6 @@
   d.en['gs.blackjack.broke'] = '💀 Out of chips — game over. Score {n}';
   d.zh['gs.blackjack.restartMsg'] = '下注 {a} 筹码开始，攒满 {b} 获胜';
   d.en['gs.blackjack.restartMsg'] = 'Bet {a} chips to start — reach {b} to win';
+  d.zh['gs.blackjack.helpText'] = '21 点训练的是概率决策与记牌——「记牌」改变概率分布的思想与密码分析中「利用已知信息改变概率分布」完全一致。';
+  d.en['gs.blackjack.helpText'] = 'Blackjack trains probabilistic decisions and card counting — "counting cards" shifts probability distributions, the same as using known information to shift distributions in cryptanalysis.';
 })();

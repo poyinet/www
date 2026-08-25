@@ -38,4 +38,6 @@
   d.en['gs.bullethell.tut4t'] = 'Scoring';
   d.zh['gs.bullethell.tut4'] = '击破敌机 +100、Boss 击破 +5000、擦弹每帧 +1 且连击越高越有利；成绩=总分。';
   d.en['gs.bullethell.tut4'] = 'Destroy an enemy +100, defeat the Boss +5000, graze +1 per frame with bigger combos paying off; your score is the total.';
+  d.zh['gs.bullethell.helpText'] = '弹幕射击训练的是多目标并行处理——破译员同时追踪多条密文线索、多个假设、多个密钥候选时需要同样的并行思维。';
+  d.en['gs.bullethell.helpText'] = 'Bullet-hell trains multi-target parallel processing — codebreakers tracking multiple ciphertext threads, hypotheses and key candidates need the same parallel thinking.';
 })();

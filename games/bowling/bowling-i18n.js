@@ -38,4 +38,6 @@
   d.en['gs.bowling.tut3t'] = 'Scoring';
   d.zh['gs.bowling.tut3'] = 'Strike=10+下两投，Spare=10+下一投；总分越高越好。（困难难度单投有随机偏差，全中几乎不可能）';
   d.en['gs.bowling.tut3'] = 'Strike = 10 + next two throws, Spare = 10 + next throw; the higher the total, the better. (Hard mode adds random error, so a Strike is nearly impossible.)';
+  d.zh['gs.bowling.helpText'] = '保龄球训练的是角度、旋转与碰撞的物理计算——差分分析中「输入差分如何通过 S 盒传播」的追踪需要同样的物理直觉。';
+  d.en['gs.bowling.helpText'] = 'Bowling trains physics of angles, spin and collision — tracking "how input differences propagate through S-boxes" in differential analysis needs the same physical intuition.';
 })();

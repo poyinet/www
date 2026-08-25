@@ -72,4 +72,6 @@
   d.en['gs.klondike.tut4t'] = 'Scoring';
   d.zh['gs.klondike.tut4'] = '成绩 = 通关用时；每日一题固定洗牌（人人同局）并共享连破记录。';
   d.en['gs.klondike.tut4'] = 'Score = time to win; the daily puzzle uses a fixed shuffle (everyone gets the same deal) and shares the streak record.';
+  d.zh['gs.klondike.helpText'] = '纸牌接龙训练的是序列规划与延迟决策——有些牌现在不打，留着后面用。这与密码学中「保存截获密文等未来技术破解」（先存后解）的策略同构。';
+  d.en['gs.klondike.helpText'] = 'Klondike trains sequence planning and deferred decisions — some cards you don\'t play now, saving them for later. Mirrors "harvest now, decrypt later": saving intercepted ciphertext for future technology.';
 })();

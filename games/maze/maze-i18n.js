@@ -20,4 +20,6 @@
   d.en['gs.maze.hud'] = 'Steps {n}';
   d.zh['gs.maze.win'] = '🎉 走出迷宫！用了 {n} 步';
   d.en['gs.maze.win'] = '🎉 Maze cleared! {n} steps';
+  d.zh['gs.maze.helpText'] = '迷宫训练的是路径搜索与死胡同识别——密码分析中的「分支限界搜索」需要同样的技能：快速识别死路并回溯。';
+  d.en['gs.maze.helpText'] = 'Mazes train pathfinding and dead-end recognition — cryptanalysis\'s "branch-and-bound search" needs the same skill: quickly identifying dead ends and backtracking.';
 })();

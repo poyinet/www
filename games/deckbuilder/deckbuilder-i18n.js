@@ -160,4 +160,6 @@
   d.en['gs.deckbuilder.intentLine'] = 'Intent: {i} {d} damage';
   d.zh['gs.deckbuilder.poisonTag'] = ' · ☠毒 {p}';
   d.en['gs.deckbuilder.poisonTag'] = ' · ☠ poison {p}';
+  d.zh['gs.deckbuilder.helpText'] = '卡牌构筑训练的是组合优化与资源管理——密码系统设计中的「密钥调度」就是组合优化：如何在有限资源下最大化安全性。';
+  d.en['gs.deckbuilder.helpText'] = 'Deck-builders train combinatorial optimization and resource management — "key scheduling" in cipher design is combinatorial optimization: maximizing security with limited resources.';
 })();

@@ -36,4 +36,6 @@
   d.en['gs.roperescue.levelDone'] = '🎉 Level {n} complete! Tap "Next"';
   d.zh['gs.roperescue.nextLevel'] = '下一关 ▶';
   d.en['gs.roperescue.nextLevel'] = 'Next ▶';
+  d.zh['gs.roperescue.helpText'] = '切绳救援训练的是物理模拟与时机判断——密码系统中的「密钥生命周期管理」需要同样的精确时机判断：何时生成、使用、销毁。';
+  d.en['gs.roperescue.helpText'] = 'Rope-rescue trains physics simulation and timing judgment — "key lifecycle management" in crypto systems needs the same precise timing: when to generate, use and destroy keys.';
 })();

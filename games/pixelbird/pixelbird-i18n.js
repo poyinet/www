@@ -38,4 +38,6 @@
   d.en['gs.pixelbird.idleTitle'] = 'Tap to Start';
   d.zh['gs.pixelbird.idleHint'] = '点击 / 空格 让小鸟向上飞';
   d.en['gs.pixelbird.idleHint'] = 'Tap / Space to flap';
+  d.zh['gs.pixelbird.helpText'] = '像素鸟训练的是精确时机控制——侧信道攻击中的「计时攻击」利用的正是运算时间的微小差异。精确测量与精确控制是攻防两端的共同武器。';
+  d.en['gs.pixelbird.helpText'] = 'Flappy-bird trains precise timing — timing attacks in side-channel cryptanalysis exploit tiny computation-time differences. Precision measurement and control are weapons on both sides.';
 })();

@@ -138,6 +138,12 @@ window.GAME_TUTORIAL_STEPS = [
   canvas.addEventListener('pointerdown', function (e) { e.preventDefault(); jump(); });
 
   restartBtn.addEventListener('click', function () { setup(); scoreEl.textContent = '0'; speedEl.textContent = '1x'; msg.textContent = T('gs.pixeldino.help'); msg.style.color = ''; if (Arcade.audio) Arcade.audio.play('ui'); });
+    /* helpText */
+  var hd = document.createElement('div');
+  hd.style.cssText = 'font-size:12px;color:var(--text-dim);line-height:1.8;margin-top:12px;text-align:left;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 12px';
+  hd.textContent = T('gs.pixeldino.helpText');
+  root.appendChild(hd);
+
   window.GAME_RESTART = function () { setup(); scoreEl.textContent = '0'; speedEl.textContent = '1x'; msg.textContent = T('gs.pixeldino.help'); msg.style.color = ''; };
 
   setup();

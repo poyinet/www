@@ -34,4 +34,6 @@
   d.en['gs.catapult.clear'] = '🎉 All targets hit! {n} rocks left';
   d.zh['gs.catapult.out'] = '💀 石头用完了！还剩 {n} 个目标';
   d.en['gs.catapult.out'] = '💀 Out of rocks! {n} targets left';
+  d.zh['gs.catapult.helpText'] = '投石机训练的是弹道计算与精确瞄准——密码分析中的「选择明文攻击」需要同样的精确瞄准：选择能泄露最多信息的输入。';
+  d.en['gs.catapult.helpText'] = 'Catapults train ballistic calculation and precise aiming — "chosen-plaintext attacks" in cryptanalysis need the same precision: selecting inputs that leak the most information.';
 })();

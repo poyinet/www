@@ -62,4 +62,6 @@
   d.en['gs.sectorsiege.tut4t'] = 'Scoring';
   d.zh['gs.sectorsiege.tut4'] = '成绩 = 统一战线用时，越短越好；每日一题共享连破记录。';
   d.en['gs.sectorsiege.tut4'] = 'Score = time to unify the front, faster is better; the daily puzzle shares the streak record.';
+  d.zh['gs.sectorsiege.helpText'] = '扇区围攻训练的是区域控制与资源竞争——密码战中的「信道控制」与此同源：谁能控制加密信道，谁就掌握了信息优势。';
+  d.en['gs.sectorsiege.helpText'] = 'Sector siege trains area control and resource competition — "channel control" in cryptographic warfare is the same: whoever controls the encrypted channel holds the information advantage.';
 })();

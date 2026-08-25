@@ -50,4 +50,6 @@
   d.en['gs.guess.msgHigh'] = 'Too high — guess lower 👇';
   d.zh['gs.guess.msgOut'] = '💀 次数用尽！答案是 {n}';
   d.en['gs.guess.msgOut'] = '💀 Out of tries! The number was {n}';
+  d.zh['gs.guess.helpText'] = '猜数字训练的是二分搜索与信息增益——每猜一次排除一半可能，这正是密码学中「暴力破解」的数学模型。香农的信息论就建立在「比特=消除不确定性」之上。';
+  d.en['gs.guess.helpText'] = 'Guess-the-number trains binary search and information gain — each guess eliminates half the possibilities, the mathematical model of brute-force cracking. Shannon\'s information theory: bits = eliminated uncertainty.';
 })();

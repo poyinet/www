@@ -34,4 +34,6 @@
   d.en['gs.g2048.over'] = 'Game over · Score {s}';
   d.zh['gs.g2048.undone'] = '已撤销一步';
   d.en['gs.g2048.undone'] = 'Undid one move';
+  d.zh['gs.g2048.helpText'] = '2048 的核心是二的幂次合并——这正是二进制与哈希碰撞（生日悖论 2^(n/2)）的数学直觉训练。合并策略即贪心算法的实战。';
+  d.en['gs.g2048.helpText'] = '2048\'s core is merging powers of two — the same intuition behind binary and birthday-bound collisions (2^(n/2)). The merge strategy is greedy algorithm in action.';
 })();

@@ -64,4 +64,6 @@
   d.en['gs.reaction.doneMsg'] = '5-round average: {n} ms · {m}';
   d.zh['gs.reaction.newRec'] = ' · 新纪录！🎉';
   d.en['gs.reaction.newRec'] = ' · New record! 🎉';
+  d.zh['gs.reaction.helpText'] = '反应力测试测量的是人类神经系统的响应时间——侧信道攻击测量的是密码系统的响应时间。两者的原理相同：从时间差异中提取信息。';
+  d.en['gs.reaction.helpText'] = 'Reaction tests measure human neural response time — side-channel attacks measure cipher system response time. Same principle: extract information from timing differences.';
 })();

@@ -44,4 +44,6 @@
   d.en['gs.puzzle15.winDone'] = '🎉 Solved!';
   d.zh['gs.puzzle15.winDetail'] = ' 共用 {m} 步，{s} 秒';
   d.en['gs.puzzle15.winDetail'] = ' in {m} moves, {s} sec';
+  d.zh['gs.puzzle15.helpText'] = '数字华容道是群论的教科书：每种排列都是一个群元素，可达状态构成一个子群——数学家用它证明了「只有一半的初始排列可解」。';
+  d.en['gs.puzzle15.helpText'] = 'The 15-puzzle is group theory made tangible: each arrangement is a group element, reachable states form a subgroup — mathematicians proved only half of all starting positions are solvable.';
 })();

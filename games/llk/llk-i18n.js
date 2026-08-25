@@ -82,4 +82,6 @@
   d.en['gs.llk.tut4t'] = 'Scoring';
   d.zh['gs.llk.tut4'] = '成绩 = 清空三关总用时，越短越好；每日一题共享连破记录。';
   d.en['gs.llk.tut4'] = 'Score = total time to clear all three levels, faster is better; the daily puzzle shares the streak record.';
+  d.zh['gs.llk.helpText'] = '连连看训练的是视觉搜索与路径规划——破译员在密文中「连接」相关模式时用的就是同样的搜索策略。';
+  d.en['gs.llk.helpText'] = 'Link-link trains visual search and path planning — codebreakers "connect" related patterns in ciphertext using the same search strategy.';
 })();

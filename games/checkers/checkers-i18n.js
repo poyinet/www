@@ -46,4 +46,6 @@
   d.en['gs.checkers.winAiNoMoves'] = '🏆 You win (AI has no moves)! Score {n}';
   d.zh['gs.checkers.mustJump'] = '✋ 有跳必跳！请先选择可以跳吃的棋子';
   d.en['gs.checkers.mustJump'] = '✋ Jumps are mandatory — pick a piece that can capture first';
+  d.zh['gs.checkers.helpText'] = '跳棋 AI 的核心是博弈论与状态空间搜索——1950 年代 Arthur Samuel 的跳棋程序是最早的机器学习实例之一，比密码学的计算转向早了二十年。';
+  d.en['gs.checkers.helpText'] = 'Checkers AI embodies game theory and state-space search — Arthur Samuel\'s 1950s checkers program was one of the first machine learning examples, predating crypto\'s computational turn.';
 })();

@@ -28,4 +28,6 @@
   d.en['gs.paddle2p.tut3t'] = 'Rules';
   d.zh['gs.paddle2p.tut3'] = '球碰球拍会反弹并加速，拍子边缘击球角度更刁钻。';
   d.en['gs.paddle2p.tut3'] = 'The ball bounces off paddles and speeds up; hitting with the paddle edge sends it at trickier angles.';
+  d.zh['gs.paddle2p.helpText'] = '双人弹球训练的是对抗博弈——密码学的每一项技术都是攻防博弈的产物：有加密就有破译，有防御就有攻击。';
+  d.en['gs.paddle2p.helpText'] = 'Two-player pong trains adversarial gameplay — every cryptographic technique is a product of attack-defense gaming: encryption breeds cryptanalysis, defense breeds attack.';
 })();

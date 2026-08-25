@@ -28,4 +28,6 @@
   d.en['gs.hanoi.invalid'] = '✗ A big disk cannot sit on a small one';
   d.zh['gs.hanoi.win'] = '🎉 全部就位！用了 {n} 步';
   d.en['gs.hanoi.win'] = '🎉 All disks in place! {n} moves';
+  d.zh['gs.hanoi.helpText'] = '汉诺塔是递归算法的教科书——密码学中「分治法」（将大问题拆解为小问题）的思想与汉诺塔的解法完全一致。';
+  d.en['gs.hanoi.helpText'] = 'Towers of Hanoi is the recursion textbook — the "divide and conquer" approach in cryptography (breaking big problems into smaller ones) mirrors the Hanoi solution exactly.';
 })();

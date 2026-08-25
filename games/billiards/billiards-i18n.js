@@ -28,4 +28,6 @@
   d.en['gs.billiards.tut3t'] = 'Scoring';
   d.zh['gs.billiards.tut3'] = '进袋越多成绩越高（成绩=进球数）。白球进袋会归位，不扣分。';
   d.en['gs.billiards.tut3'] = 'The more balls you pocket, the higher your score (score = balls pocketed). If the cue ball drops, it respawns with no penalty.';
+  d.zh['gs.billiards.helpText'] = '台球训练的是角度几何与碰撞预测——差分分析中「预测输入差分通过 S 盒的传播路径」需要同样的几何直觉。';
+  d.en['gs.billiards.helpText'] = 'Billiards train angle geometry and collision prediction — predicting "how input differences propagate through S-boxes" in differential analysis needs the same geometric intuition.';
 })();

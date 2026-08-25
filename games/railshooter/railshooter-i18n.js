@@ -32,4 +32,6 @@
   d.en['gs.railshooter.restart'] = 'Restart';
   d.zh['gs.railshooter.timeUp'] = '⏱ 时间到！得分 {n}';
   d.en['gs.railshooter.timeUp'] = '⏱ Time\'s up! Score {n}';
+  d.zh['gs.railshooter.helpText'] = '轨道射击训练的是预判与反应——密码分析中的「预测密钥流下一个输出」需要同样的预判能力。';
+  d.en['gs.railshooter.helpText'] = 'Rail shooters train prediction and reaction — "predicting the next keystream output" in cryptanalysis needs the same anticipatory ability.';
 })();

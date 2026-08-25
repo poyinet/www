@@ -52,4 +52,6 @@
   d.en['gs.curling.tut4t'] = 'Scoring';
   d.zh['gs.curling.tut4'] = '8 局后总分高者胜；成绩=总分。';
   d.en['gs.curling.tut4'] = 'After 8 ends, the higher total wins; your score is the total.';
+  d.zh['gs.curling.helpText'] = '冰壶训练的是精确控制与摩擦力预测——侧信道攻击中的「功耗分析」需要同样的物理精确度：测量微小能量差异。';
+  d.en['gs.curling.helpText'] = 'Curling trains precision control and friction prediction — power analysis in side-channel attacks needs the same physical precision: measuring tiny energy differences.';
 })();

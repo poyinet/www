@@ -42,4 +42,6 @@
   d.en['gs.memory.winAll'] = '🎉 All pairs matched!';
   d.zh['gs.memory.winDetail'] = ' 共用 {m} 步，{s} 秒';
   d.en['gs.memory.winDetail'] = ' in {m} moves, {s} sec';
+  d.zh['gs.memory.helpText'] = '记忆翻牌训练工作记忆——破译员需要在脑中同时保持密文、密钥与部分明文的对应关系。香农说「密码分析是一种艺术，需要超凡的记忆力与直觉」。';
+  d.en['gs.memory.helpText'] = 'Memory matching trains working memory — codebreakers must hold ciphertext, keys and partial plaintext in mind simultaneously. Shannon said cryptanalysis "requires unusual memory and intuition".';
 })();

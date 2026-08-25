@@ -32,4 +32,6 @@
   d.en['gs.platformer.fall'] = '💀 Oops! Back to the start…';
   d.zh['gs.platformer.spike'] = '💀 撞上尖刺！即将回到起点…';
   d.en['gs.platformer.spike'] = '💀 Hit a spike! Back to the start…';
+  d.zh['gs.platformer.helpText'] = '平台跳跃训练的是精确时机与空间判断——侧信道攻击需要同样的精确性：在正确的时间测量正确的东西。';
+  d.en['gs.platformer.helpText'] = 'Platformers train precise timing and spatial judgment — side-channel attacks need the same precision: measuring the right thing at the right time.';
 })();

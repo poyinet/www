@@ -36,4 +36,6 @@
   d.en['gs.nonogram.time'] = 'Time {t}';
   d.zh['gs.nonogram.win'] = '🎉 「{p}」破译成功！用时 {s} 秒';
   d.en['gs.nonogram.win'] = '🎉 "{p}" decoded! Time: {s}s';
+  d.zh['gs.nonogram.helpText'] = '数织是约束传播的视觉训练：行与列的数字提示逐步确定像素状态——与「已知明文逐步揭示密钥位」的推理链完全一致。';
+  d.en['gs.nonogram.helpText'] = 'Nonograms train constraint propagation visually: row/column clues progressively determine pixel states — the same chain as known-plaintext attacks revealing key bits.';
 })();

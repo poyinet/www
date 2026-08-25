@@ -26,4 +26,6 @@
   d.en['gs.circuit.restart'] = 'New Board';
   d.zh['gs.circuit.win'] = '🎉 电路接通！{r}';
   d.en['gs.circuit.win'] = '🎉 Circuit connected! {r}';
+  d.zh['gs.circuit.helpText'] = '电路连接是布尔逻辑的物理化身——AND、OR、XOR 在导线中流淌。现代密码的每一次加密都是一次布尔电路运算，香农称之为「混合与扩散」。';
+  d.en['gs.circuit.helpText'] = 'Circuit connection is Boolean logic made physical — AND, OR, XOR flowing through wires. Every modern encryption is a Boolean circuit operation: Shannon called it "confusion and diffusion".';
 })();

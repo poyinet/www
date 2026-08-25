@@ -183,6 +183,12 @@ window.GAME_TUTORIAL_STEPS = [
     });
   });
   restartBtn.addEventListener('click', function () { reset(); rotsEl.textContent = '0'; msg.textContent = T('gs.circuit.startMsg'); draw(); if (Arcade.audio) Arcade.audio.play('ui'); });
+    /* helpText */
+  var hd = document.createElement('div');
+  hd.style.cssText = 'font-size:12px;color:var(--text-dim);line-height:1.8;margin-top:12px;text-align:left;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 12px';
+  hd.textContent = T('gs.circuit.helpText');
+  root.appendChild(hd);
+
   window.GAME_RESTART = function () { reset(); rotsEl.textContent = '0'; msg.textContent = T('gs.circuit.startMsg'); draw(); };
 
   N = 5; reset(); draw();

@@ -32,4 +32,6 @@
   d.en['gs.wordsearch.notFound'] = '✗ No such word found';
   d.zh['gs.wordsearch.win'] = '🎉 全部找到！用时 {n} 秒';
   d.en['gs.wordsearch.win'] = '🎉 All words found! {n}s';
+  d.zh['gs.wordsearch.helpText'] = '单词搜索训练的是模式识别——在噪声中找到有意义的信号。频率分析的破译员做的正是同样的事：从随机字母的海洋中捞出有意义的单词。';
+  d.en['gs.wordsearch.helpText'] = 'Word search trains pattern recognition — finding meaningful signals in noise. Frequency analysts do exactly the same: fishing meaningful words from a sea of random letters.';
 })();

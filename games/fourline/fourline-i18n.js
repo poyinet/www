@@ -36,4 +36,6 @@
   d.en['gs.fourline.draw'] = '🤝 Draw — streak broken';
   d.zh['gs.fourline.colFull'] = '这列已满，换一列！';
   d.en['gs.fourline.colFull'] = 'That column is full — pick another!';
+  d.zh['gs.fourline.helpText'] = '四子棋训练的是威胁识别与多重规划——密码分析员同时追踪多个攻击向量时需要同样的多重规划能力。';
+  d.en['gs.fourline.helpText'] = 'Connect-4 trains threat identification and multi-threaded planning — cryptanalysts tracking multiple attack vectors simultaneously need the same multi-threaded planning.';
 })();

@@ -32,4 +32,6 @@
   d.en['gs.pixeldino.restart'] = 'Restart';
   d.zh['gs.pixeldino.dead'] = '💀 撞上障碍！跑了 {n}m';
   d.en['gs.pixeldino.dead'] = '💀 Hit an obstacle! Ran {n}m';
+  d.zh['gs.pixeldino.helpText'] = '像素恐龙训练的是持续专注与阈值反应——密码系统的「入侵检测」需要同样的持续监控与阈值触发机制。';
+  d.en['gs.pixeldino.helpText'] = 'The pixel dino trains sustained focus and threshold reaction — "intrusion detection" in cryptographic systems needs the same continuous monitoring and threshold triggering.';
 })();

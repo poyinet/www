@@ -56,4 +56,6 @@
   d.en['gs.paintbynum.colother'] = 'color';
   d.zh['gs.paintbynum.win'] = '🎉 图案完成「{p}」用时 {s} 秒';
   d.en['gs.paintbynum.win'] = '🎉 "{p}" complete! Time: {s}s';
+  d.zh['gs.paintbynum.helpText'] = '数字填色是约束传播与逻辑推理的视觉训练——每一步填色都为下一步提供新约束。这与「已知明文攻击逐步揭示密钥」的推理链同构。';
+  d.en['gs.paintbynum.helpText'] = 'Paint-by-numbers trains constraint propagation and logical deduction — each fill provides new constraints. Mirrors how known-plaintext attacks progressively reveal the key.';
 })();

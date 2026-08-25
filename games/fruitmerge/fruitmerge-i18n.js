@@ -38,4 +38,6 @@
   d.en['gs.fruitmerge.watermelon'] = '🍉 Watermelon created!';
   d.zh['gs.fruitmerge.keepGoing'] = '继续合成冲击更高！';
   d.en['gs.fruitmerge.keepGoing'] = 'Keep merging for even higher!';
+  d.zh['gs.fruitmerge.helpText'] = '合成大西瓜训练的是递归合并与等级体系——哈希函数的「链式结构」（Merkle 树）就是递归合并的密码学应用。';
+  d.en['gs.fruitmerge.helpText'] = 'Watermelon-merging trains recursive merging and tier systems — the "chaining structure" of hash functions (Merkle trees) is recursive merging applied to cryptography.';
 })();

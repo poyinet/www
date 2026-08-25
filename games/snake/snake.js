@@ -387,6 +387,12 @@
   menuActive = true;
   highlight(modeRow, 'data-mode', selectedMode);
   highlight(diffRow, 'data-diff', selectedDiff);
+    /* helpText */
+  var hd = document.createElement('div');
+  hd.style.cssText = 'font-size:12px;color:var(--text-dim);line-height:1.8;margin-top:12px;text-align:left;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 12px';
+  hd.textContent = T('gs.snake.helpText');
+  root.appendChild(hd);
+
   window.GAME_RESTART = function () {
     // 从未开局（菜单态）时点「重开」也要能直接开局
     if (!mode) {

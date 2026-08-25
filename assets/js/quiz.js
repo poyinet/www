@@ -404,7 +404,32 @@ window.QUIZ = (function () {
       en: { q: 'Why did Purple\'s stepping pattern initially stump US cryptanalysts?', opts: ['It had no pattern', 'Too fast to track', 'Six vowels and twenty consonants follow completely different paths', 'It used quantum keys'], explain: 'The six-vowel group and twenty-consonant group step in entirely different rhythms — attacking it as a rotor machine hits a wall.' } },
     { lvl: 4, a: 1,
       zh: { q: '为什么 HMAC 结构能免疫长度扩展攻击？', opts: ['它用了更长的密钥', '两层嵌套使得中间状态不外泄', '它不用填充', '它每次换密钥'], explain: 'HMAC = H((k⊕opad) ‖ H((k⊕ipad) ‖ msg))——外层哈希从新的 IV 开始，内层输出被完全遮蔽，攻击者没有可接力的内部状态。' },
-      en: { q: 'Why is HMAC immune to length extension?', opts: ['Longer key', 'Two-layer nesting hides the intermediate state', 'No padding used', 'Key changes each time'], explain: 'HMAC = H((k⊕opad) ‖ H((k⊕ipad) ‖ msg)) — the outer hash starts from a fresh IV and the inner output is fully absorbed; no state to chain from.' } }
+      en: { q: 'Why is HMAC immune to length extension?', opts: ['Longer key', 'Two-layer nesting hides the intermediate state', 'No padding used', 'Key changes each time'], explain: 'HMAC = H((k⊕opad) ‖ H((k⊕ipad) ‖ msg)) — the outer hash starts from a fresh IV and the inner output is fully absorbed; no state to chain from.' } },
+    /* ---------- 第十二期补题：线性分析 / AEAD / CSPRNG / GCM / Poly1305 / SHA-3 / Miller-Rabin ---------- */
+    { lvl: 3, a: 0,
+      zh: { q: '线性分析攻击分组密码的核心思想是？', opts: ['寻找明文/密文/密钥比特间的高概率线性近似', '暴力穷举所有密钥', '利用时序差异提取密钥', '伪造证书链'], explain: 'Matsui 1993 年对 DES 首次公开线性分析——通过大量已知明密文对统计比特间的线性偏置。' },
+      en: { q: 'What is the core idea of linear cryptanalysis against block ciphers?', opts: ['Find high-probability linear approximations among plaintext/ciphertext/key bits', 'Brute-force all keys', 'Exploit timing differences', 'Forge certificate chains'], explain: 'Mitsuru Matsui first applied linear analysis to DES in 1993 — statistically exploiting biased linear relations over many known pairs.' } },
+    { lvl: 3, a: 2,
+      zh: { q: '差分分析与线性分析的根本区别是？', opts: ['差分用选择明文，线性用已知明文', '差分只对 DES 有效', '线性分析更快', '没有区别'], explain: '差分分析（Biham-Shamir 1991）需要选择明文控制差分；线性分析（Matsui 1993）只用已知明文统计偏置。', en: '' },
+      en: { q: 'The fundamental difference between differential and linear cryptanalysis?', opts: ['Differential uses chosen plaintext; linear uses known plaintext', 'Differential only works on DES', 'Linear is faster', 'No difference'], explain: 'Differential (Biham-Shamir 1991) needs chosen plaintexts to control differences; linear (Matsui 1993) statistically exploits bias from known pairs only.' } },
+    { lvl: 3, a: 1,
+      zh: { q: 'AEAD（认证加密）相比「加密+拼接 MAC」的核心优势是？', opts: ['密文更短', '加密与认证在单个原子操作中完成，不会因顺序不当而泄露', '不需要密钥', '可以解密两次'], explain: 'TLS 1.0 时代的 MAC-then-Encrypt 顺序曾导致 padding oracle 攻击——AEAD（如 GCM/ChaCha20-Poly1305）把两步合成一个不可拆分的原子操作。' },
+      en: { q: 'AEAD\'s core advantage over "encrypt-then-append-MAC"?', opts: ['Shorter ciphertext', 'Encryption and authentication in one atomic operation, immune to ordering mistakes', 'No key needed', 'Can decrypt twice'], explain: 'TLS 1.0-era MAC-then-Encrypt ordering caused padding oracle attacks — AEAD (GCM/ChaCha20-Poly1305) fuses both into one indivisible operation.' } },
+    { lvl: 3, a: 0,
+      zh: { q: 'GCM 模式中 nonce 重用的后果是？', opts: ['认证密钥泄露，攻击者可伪造任意密文', '只是加密强度降低', '没有后果', '性能提升'], explain: 'GCM 的认证标签由密钥流与消息共同决定——nonce 重用使攻击者可以恢复认证子密钥并伪造任意标签。' },
+      en: { q: 'What happens when a GCM nonce is reused?', opts: ['Authentication key leaks, allowing arbitrary tag forgery', 'Only encryption strength drops', 'No consequence', 'Performance improves'], explain: 'GCM\'s authentication tag depends on the keystream and message — nonce reuse lets an attacker recover the auth subkey and forge any tag.' } },
+    { lvl: 3, a: 1,
+      zh: { q: 'Poly1305 与 ChaCha20 的关系是？', opts: ['Poly1305 加密，ChaCha20 认证', 'ChaCha20 加密，Poly1305 认证——组合为 AEAD', '两者都是哈希函数', '两者都是流密码'], explain: 'ChaCha20 负责加密（流密码），Poly1305 负责认证（一次性 MAC）——组合即 RFC 8439 定义的 ChaCha20-Poly1305 AEAD。' },
+      en: { q: 'What is the relationship between Poly1305 and ChaCha20?', opts: ['Poly1305 encrypts, ChaCha20 authenticates', 'ChaCha20 encrypts, Poly1305 authenticates — together they form an AEAD', 'Both are hash functions', 'Both are stream ciphers'], explain: 'ChaCha20 encrypts (stream cipher), Poly1305 authenticates (one-time MAC) — combined as the ChaCha20-Poly1305 AEAD defined in RFC 8439.' } },
+    { lvl: 3, a: 2,
+      zh: { q: 'SHA-3 与 SHA-2 的核心结构区别是？', opts: ['SHA-3 用 Merkle-Damgård，SHA-2 用海绵', 'SHA-3 用海绵结构（Keccak），天然免疫长度扩展', 'SHA-3 有密钥', '没有区别'], explain: 'SHA-3 的 Keccak 海绵结构吸收-挤压数据，不再使用 MD 结构的链式状态——长度扩展攻击对它无效。' },
+      en: { q: 'The core structural difference between SHA-3 and SHA-2?', opts: ['SHA-3 uses Merkle-Damgård; SHA-2 uses sponge', 'SHA-3 uses the sponge construction (Keccak), naturally immune to length extension', 'SHA-3 has a key', 'No difference'], explain: 'SHA-3\'s Keccak sponge absorbs and squeezes data without the chained state of MD constructions — length extension doesn\'t apply.' } },
+    { lvl: 3, a: 1,
+      zh: { q: 'Miller-Rabin 素性测试为什么被广泛使用？', opts: ['它是确定性的', '误判率可控制在任意低（如 2⁻¹²⁸），速度远快于试除法', '不需要数学', '只能测试小数字'], explain: '每次测试误判率 ≤ 1/4，重复 k 次误判率 ≤ 4⁻ᵏ——RSA/SM4 密钥生成的标准步骤。' },
+      en: { q: 'Why is the Miller-Rabin primality test so widely used?', opts: ['It\'s deterministic', 'Error rate controllable to any level (e.g. 2^-128), far faster than trial division', 'No math needed', 'Only works on small numbers'], explain: 'Each round has ≤1/4 error rate; repeating k times gives ≤4^-k — the standard step in RSA/SM4 key generation.' } },
+    { lvl: 4, a: 0,
+      zh: { q: 'Poly1305 为什么是「一次性」MAC？', opts: ['每个密钥只能安全认证一条消息', '它只能运行一次', '一次性密码本的缩写', '它自动销毁'], explain: 'Poly1305 的密钥是每次调用时生成的单次性 pad——同一密钥认证两条消息会泄露认证子密钥，因此必须每条消息换密钥。' },
+      en: { q: 'Why is Poly1305 a "one-time" MAC?', opts: ['Each key safely authenticates only one message', 'It runs only once', 'It\'s an OTP abbreviation', 'It self-destructs'], explain: 'Poly1305\'s key is a per-call one-time pad — authenticating two messages with the same key leaks the authentication subkey, so each message needs a fresh key.' } }
   ];
 
   /* 段位评级（8 级）：按得分率 */

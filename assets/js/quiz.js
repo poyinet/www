@@ -429,7 +429,25 @@ window.QUIZ = (function () {
       en: { q: 'Why is the Miller-Rabin primality test so widely used?', opts: ['It\'s deterministic', 'Error rate controllable to any level (e.g. 2^-128), far faster than trial division', 'No math needed', 'Only works on small numbers'], explain: 'Each round has ≤1/4 error rate; repeating k times gives ≤4^-k — the standard step in RSA/SM4 key generation.' } },
     { lvl: 4, a: 0,
       zh: { q: 'Poly1305 为什么是「一次性」MAC？', opts: ['每个密钥只能安全认证一条消息', '它只能运行一次', '一次性密码本的缩写', '它自动销毁'], explain: 'Poly1305 的密钥是每次调用时生成的单次性 pad——同一密钥认证两条消息会泄露认证子密钥，因此必须每条消息换密钥。' },
-      en: { q: 'Why is Poly1305 a "one-time" MAC?', opts: ['Each key safely authenticates only one message', 'It runs only once', 'It\'s an OTP abbreviation', 'It self-destructs'], explain: 'Poly1305\'s key is a per-call one-time pad — authenticating two messages with the same key leaks the authentication subkey, so each message needs a fresh key.' } }
+      en: { q: 'Why is Poly1305 a "one-time" MAC?', opts: ['Each key safely authenticates only one message', 'It runs only once', 'It\'s an OTP abbreviation', 'It self-destructs'], explain: 'Poly1305\'s key is a per-call one-time pad — authenticating two messages with the same key leaks the authentication subkey, so each message needs a fresh key.' } },
+    { lvl: 1, a: 0,
+      zh: { q: '码（CODE）与密码（CIPHER）的本质区别是？', opts: ['码整词对照替换，密码逐字母变换', '码比密码古老，密码已淘汰', '两者完全等价', '码是数字、密码是字母'], explain: '码(code)是词→词的对照（如密码本），密码(cipher)是逐字母的变换——破译两者的手段完全不同。' },
+      en: { q: 'What is the difference between a code and a cipher?', opts: ['Codes replace whole words; ciphers transform letters', 'Codes are older and ciphers are obsolete', 'They are exactly equivalent', 'Codes are numeric, ciphers alphabetic'], explain: 'A code maps words via a codebook; a cipher transforms letters one by one — breaking them requires different methods.' } },
+    { lvl: 2, a: 3,
+      zh: { q: '维吉尼亚密码的密钥周期常常用哪种方法检测？', opts: ['凯撒试错', '频率统计', '简森试验', '卡西斯基测试'], explain: '重复密钥段的间距是密钥周期的整数倍，卡西斯基从重复词块的距离反推周期，再分列做频率分析。' },
+      en: { q: 'Which method is often used to detect the Vigenere key period?', opts: ['Caesar trial and error', 'Frequency counting', 'The Jensen test', 'The Kasiski examination'], explain: 'Repeated key strands make repeated blocks at multiples of the period — Kasiski found the period from repeated fragments, then attacked each column by frequency.' } },
+    { lvl: 3, a: 1,
+      zh: { q: 'Diffie-Hellman 类密钥交换的安全基础是什么？', opts: ['大整数因子分解难解', '有限域离散对数难解', '哈希碰撞难解', '格基归约难解'], explain: '双方只交换公开值 g^x、g^y，攻击者求 x 需解离散对数——与 RSA 的因子分解难题不同。' },
+      en: { q: 'What is the security basis of Diffie-Hellman key exchange?', opts: ['Hard integer factorization', 'Hard discrete logarithms in finite fields', 'Hard hash collisions', 'Hard lattice reduction'], explain: 'Parties only exchange g^x and g^y; reversing the exponent requires solving discrete logarithms — distinct from RSA factorization.' } },
+    { lvl: 3, a: 2,
+      zh: { q: '模幂运算为什么要用「平方乘」（Square-and-multiply）算法？', opts: ['为了节省存储空间', '为了生成随机密钥', 'O(log n) 次乘法替代 O(n) 次', '为了抗侧信道攻击'], explain: '把指数按二进制位拆分：平方与选择性相乘，把 n 次连乘压到约 2×log₂n 次——RSA、DH 都靠它。' },
+      en: { q: 'Why does modular exponentiation use the Square-and-multiply algorithm?', opts: ['To save memory', 'To generate random keys', 'O(log n) multiplications instead of O(n)', 'To resist side channels'], explain: 'Processing the exponent bitwise turns n repeated multiplications into ~2-log2-n multiplications — vital for RSA and DH.' } },
+    { lvl: 4, a: 0,
+      zh: { q: 'CTR 模式下，每个密文块是这样得到的：', opts: ['明文块 XOR 密钥加密的计数器', '明文块整体加密', '计数器按链式加密', '明文块与密钥异或'], explain: 'CTR 用 E(计数器值) 作为一次性 pad 与明文异或——可并行、无需填充，但计数器绝不能复用。' },
+      en: { q: 'In CTR mode, each ciphertext block is obtained by:', opts: ['plaintext XOR E(counter)', 'encrypting the plaintext block as a whole', 'chaining the counters', 'XORing the plaintext with the key'], explain: 'CTR uses E(counter) as a one-time pad XORed with plaintext — parallelizable and padding-free, but counters must never repeat.' } },
+    { lvl: 4, a: 1,
+      zh: { q: 'GCM 认证加密组合了哪两种结构？', opts: ['CBC + HMAC', 'CTR + GHASH（伽罗瓦域哈希）', 'ECB + OTP', '瀑布 + 栅栏'], explain: 'GCM 用 CTR 保密、用 GHASH 认证——在伽罗瓦域 GF(2^128) 上做乘法构造认证标签，一次处理一块。' },
+      en: { q: 'Which two structures does GCM authenticated encryption combine?', opts: ['CBC + HMAC', 'CTR + GHASH (Galois-field hashing)', 'ECB + OTP', 'Cascades + fences'], explain: 'GCM uses CTR for secrecy and GHASH in GF(2^128) for authentication — a multiplication-based tag, one block at a time.' } },
   ];
 
   /* 段位评级（8 级）：按得分率 */

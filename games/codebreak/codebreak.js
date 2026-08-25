@@ -147,6 +147,8 @@ window.GAME_TUTORIAL_STEPS = [
 
   buildSecretHoles(); renderCur(); buildPalette();
 
+    var hd=document.createElement('div');hd.style.cssText='font-size:12px;color:var(--text-dim);line-height:1.8;margin-top:12px;text-align:left;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 12px';hd.textContent=T('gs.codebreak.helpText');root.appendChild(hd);
+
   window.GAME_RESTART = function () { // 完整重置：清空历史与当前行，避免残留上一局
     msg.textContent = '';
     newGame(); buildSecretHoles(); renderCur(); buildPalette(); hist.innerHTML = '';

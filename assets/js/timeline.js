@@ -12,7 +12,7 @@ window.CRYPTO_TIMELINE = [
   { y: -600, zh: '希伯来 Atbash 密码', en: 'Hebrew Atbash cipher', icon: '✡️', link: { type: 'game', id: 'atbash' } },
   { y: -487, zh: '斯巴达密码棒', en: 'Spartan scytale', icon: '🪢', link: { type: 'story', id: 'caesar' } },
   { y: -100, zh: '凯撒移位密码', en: 'Caesar cipher', icon: '🏛️', link: { type: 'story', id: 'caesar' } },
-  { y: 60, zh: '普鲁塔克记载密码棒', en: 'Plutarch on the scytale', icon: '📜', link: { type: 'story', id: 'caesar' } },
+  { y: 100, zh: '普鲁塔克记载密码棒', en: 'Plutarch on the scytale', icon: '📜', link: { type: 'story', id: 'caesar' } },
   { y: 196, zh: '罗塞塔石碑刻立', en: 'Rosetta Stone carved', icon: '🗿', link: { type: 'artifact', id: 'rosetta' } },
   { y: 725, zh: '阿拉伯密码学兴起', en: 'Arab cryptography rises', icon: '🌙', link: { type: 'story', id: 'arab' } },
   { y: 850, zh: '肯迪发明频率分析', en: 'Al-Kindi\'s frequency analysis', icon: '📊', link: { type: 'story', id: 'arab' } },
@@ -45,7 +45,7 @@ window.CRYPTO_TIMELINE = [
   { y: 1918, zh: 'ADFGVX 密码登场', en: 'ADFGVX fielded', icon: '🛡️', link: { type: 'game', id: 'adfgvx' } },
   { y: 1926, zh: '德国海军列装 Enigma', en: 'German Navy adopts Enigma', icon: '⚓', link: { type: 'term', id: 'Enigma' } },
   { y: 1929, zh: '美国 SIS 建立', en: 'US SIS founded', icon: '🏛️', link: { type: 'people', id: 'yardley' } },
-  { y: 1932, zh: '波兰破译 Enigma', en: 'Rejewski breaks Enigma', icon: '🇵🇱', link: { type: 'people', id: 'turing' } },
+  { y: 1932, zh: '波兰破译 Enigma', en: 'Rejewski breaks Enigma', icon: '🇵🇱', link: { type: 'people', id: 'rejewski' } },
   { y: 1938, zh: 'Zygalski 穿孔片', en: 'Zygalski\'s perforated sheets', icon: '📄', link: { type: 'people', id: 'rejewski' } },
   { y: 1939, zh: '布莱切利园启用', en: 'Bletchley Park opens', icon: '🏰', link: { type: 'story', id: 'bletchley' } },
   { y: 1940, zh: '图灵 Bombe 服役', en: 'Turing\'s Bombe in service', icon: '⚙️', link: { type: 'game', id: 'bombe' } },
@@ -81,7 +81,7 @@ window.CRYPTO_TIMELINE = [
   { y: 2004, zh: '王小云团队攻破 MD5', en: "Wang's team breaks MD5", icon: '💥', link: { type: 'people', id: 'wangxy' } },
   { y: 2017, zh: 'SHAttered：SHA-1 实际碰撞', en: 'SHAttered: first real SHA-1 collision', icon: '🧨', link: { type: 'term', id: 'SHA-1' } },
   /* 第五期：国密节点 */
-  { y: 2006, zh: '国密 SM 系列算法公布', en: 'China publishes the SM cipher suite', icon: '🇨🇳', link: { type: 'term', id: 'SM4' } },
+  { y: 2006, zh: 'SMS4 公开 · 国密系列起步', en: 'China publishes the SM cipher suite', icon: '🇨🇳', link: { type: 'term', id: 'SM4' } },
   { y: 2011, zh: '祖冲之算法入选 4G 标准', en: 'ZUC adopted into 4G/LTE security', icon: '📡', link: { type: 'term', id: 'ZUC (Zu Chongzhi)' } },
   { y: 2026, zh: '你在这里 · 破译工坊', en: 'You are here · the Workshop', icon: '🔬', link: { type: 'page', id: 'workshop' } }
 ];

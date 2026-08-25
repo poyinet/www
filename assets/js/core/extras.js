@@ -471,7 +471,7 @@ Arcade.ui = (function () {
       }
     }
 
-    // ② 编年史章节（11 章）
+    // ② 编年史章节（12 章）
     if (window.Arcade && Arcade.stories && window.STORIES) {
       var chRes = Arcade.stories.getAll().filter(function (ch) {
         var t = (T(ch.titleKey) || '').toLowerCase();
@@ -508,7 +508,7 @@ Arcade.ui = (function () {
       }
     }
 
-    // ④ 密件册（11 件）
+    // ④ 密件册（41 件）
     if (window.ARTIFACTS) {
       var aRes = window.ARTIFACTS.filter(function (art) {
         return (T('sta.' + art.id + '.name') || '').toLowerCase().indexOf(q) >= 0 ||

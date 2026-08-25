@@ -1,5 +1,15 @@
-# 开发工具产物 —— 上传 GitHub Pages 时请勿包含
+# 开发工具产物 —— 上传 GitHub 时不包含（站点运行无关）
 node_modules/
 test-results/
 playwright-report/
 .github/
+tools/
+e2e/
+docs/
+package.json
+package-lock.json
+playwright.config.js
+audit.js
+smoke.js
+PLAN.md
+README.md

@@ -1,0 +1,36 @@
+/* 破译 DECODE ARCADE · stepping-switch 游戏内文案（zh/en 对称，占位符一致） */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.stepping-switch.tutTitle'] = '紫密步进开关 — 玩法';
+  d.en['gs.stepping-switch.tutTitle'] = 'Purple Stepping Switch — How to Play';
+  d.zh['gs.stepping-switch.tut1t'] = '目标';
+  d.en['gs.stepping-switch.tut1t'] = 'Objective';
+  d.zh['gs.stepping-switch.tut1'] = '紫密用步进开关代替转子：二十五个字母被拆成六元音（六段路）和二十辅音（二十段路）两条完全独立的通路。输入明文字母，观察它走哪条路、如何步进。十题一局。';
+  d.en['gs.stepping-switch.tut1'] = 'Purple uses stepping switches instead of rotors: 25 letters split into six vowels (six-level path) and twenty consonants (twenty-level path), completely independent. Type plaintext letters and watch which path each takes. Ten rounds.';
+  d.zh['gs.stepping-switch.tut2t'] = '为什么难破';
+  d.en['gs.stepping-switch.tut2t'] = 'Why it was hard';
+  d.zh['gs.stepping-switch.tut2'] = '恩尼格玛的转子每按一键都步进，但紫密的两条路步进规律完全不同——按转子机器的思路去解永远撞墙。美军破译它靠的是统计元音频率的异常分布，而非机器模仿。';
+  d.en['gs.stepping-switch.tut2'] = 'Enigma rotors step every keypress, but Purple\'s two paths step in completely different rhythms — attacking it as a rotor machine hits a wall forever. The US broke it by statistical analysis of vowel frequency anomalies, not by machine imitation.';
+  d.zh['gs.stepping-switch.tut3t'] = '计分';
+  d.en['gs.stepping-switch.tut3t'] = 'Scoring';
+  d.zh['gs.stepping-switch.tut3'] = '正确预测 +20、连击加成。总分入 BEST（max）。每日挑战按日种子固定起始状态。';
+  d.en['gs.stepping-switch.tut3'] = 'Correct predictions earn +20 with streak bonuses. Total goes to BEST (max). Daily challenge fixes the starting state by date seed.';
+  d.zh['gs.stepping-switch.round'] = '第 {n}/{total} 题 · 连击 {streak}';
+  d.en['gs.stepping-switch.round'] = 'Round {n}/{total} · streak {streak}';
+  d.zh['gs.stepping-switch.inputLbl'] = '输入字母：';
+  d.en['gs.stepping-switch.inputLbl'] = 'Type letter:';
+  d.zh['gs.stepping-switch.pathV'] = '元音路';
+  d.en['gs.stepping-switch.pathV'] = 'Vowel path';
+  d.zh['gs.stepping-switch.pathC'] = '辅音路';
+  d.en['gs.stepping-switch.pathC'] = 'Consonant path';
+  d.zh['gs.stepping-switch.ok'] = '✓ 正确！+{pts} 分';
+  d.en['gs.stepping-switch.ok'] = '✓ Correct! +{pts} pts';
+  d.zh['gs.stepping-switch.retry'] = '✗ 不对——再想想（连击已断）';
+  d.en['gs.stepping-switch.retry'] = '✗ Not quite — think again (streak broken)';
+  d.zh['gs.stepping-switch.done'] = '🔮 十题完成 · 总分 {score}';
+  d.en['gs.stepping-switch.done'] = '🔮 All ten done · total {score}';
+  d.zh['gs.stepping-switch.againBtn'] = '🔁 再来一局';
+  d.en['gs.stepping-switch.againBtn'] = '🔁 Play again';
+  d.zh['gs.stepping-switch.helpText'] = '为什么重要：紫密（Purple）是美国对日本外务省密码机 Crypton 的代号，1939 年由弗里德曼团队用纯统计方法破译——没有机器仿制，只有数学。六元音/二十辅音双路步进开关的设计使它比恩尼格玛更难分析，但也被更精妙的分析攻破。见编年史「紫密与珍珠港」章。';
+  d.en['gs.stepping-switch.helpText'] = 'Why it matters: Purple was the US codename for Japan\'s Foreign Ministry cipher machine Crypton, broken in 1939 by Friedman\'s team using pure statistics — no machine imitation, only mathematics. The six-vowel/twenty-consonant dual-path stepping switch design made it harder to analyze than Enigma, yet it fell to more elegant analysis. See the Chronicle chapter "Purple and Pearl Harbor".';
+})();

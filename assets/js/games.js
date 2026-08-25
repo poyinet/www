@@ -15,7 +15,7 @@ window.GAME_CATEGORIES = ['经典街机', '动作反应', '逻辑谜题', '空�
 
 /* 每日破译中心：启用「📅 每日一题」的游戏（大厅今日面板 + 档案页共用）
    所有列出的游戏均实现 daily 模式：日种子确定性生成 + 解完调用 Arcade.daily.markSolved */
-window.DAILY_IDS = ['sudoku', 'enigma', 'bifid', 'slitherlink', 'hashi', 'trifid', 'bacon', 'klondike', 'caesar', 'llk', 'spotdiff', 'sectorsiege', 'sheep', 'morse', 'atbash', 'polybius', 'nihilist', 'starflag', 'autokey', 'rsa', 'shamir', 'sm4', 'acrostic', 'phishhunt', 'qkd-sim', 'pqc-match'];
+window.DAILY_IDS = ['sudoku', 'enigma', 'bifid', 'slitherlink', 'hashi', 'trifid', 'bacon', 'klondike', 'caesar', 'llk', 'spotdiff', 'sectorsiege', 'sheep', 'morse', 'atbash', 'polybius', 'nihilist', 'starflag', 'autokey', 'rsa', 'shamir', 'sm4', 'acrostic', 'phishhunt', 'qkd-sim', 'pqc-match', 'stepping-switch', 'intel-assess'];
 
 window.GAMES = [
   /* ---------- 经典街机 ---------- */
@@ -833,6 +833,20 @@ window.GAMES = [
     id: 'pqc-match', title: '后量子迁移配对', category: '密码破译',
     desc: '第十二期 · 把经典密码算法与其后量子继任者配对——RSA→ML-KEM，ECDSA→ML-DSA，NIST 2024 标准速记。',
     icon: '🔮', path: 'games/pqc-match/index.html',
+    mobile: 'ok', bestMode: 'max',
+    lvl: 'easy', time: '5min',
+  },
+  {
+    id: 'stepping-switch', title: '紫密步进开关', category: '密码破译',
+    desc: '第十二期 · 六元音/二十辅音双路步进可视化——输入字母看它走哪条路，理解 Purple 密码机的核心设计。',
+    icon: '🔀', path: 'games/stepping-switch/index.html',
+    mobile: 'ok', bestMode: 'max',
+    lvl: 'easy', time: '5min',
+  },
+  {
+    id: 'intel-assess', title: '情报评估', category: '密码破译',
+    desc: '第十二期 · 判断截获情报的可信度——哪些是真信号，哪些是烟雾弹？破译密码只是第一步。',
+    icon: '📋', path: 'games/intel-assess/index.html',
     mobile: 'ok', bestMode: 'max',
     lvl: 'easy', time: '5min',
   },

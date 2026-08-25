@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
-<!-- 由注册表自动生成，共 133 个页面（node tools/gen-sitemap.js） -->
+<!-- 由注册表自动生成，共 135 个页面（node tools/gen-sitemap.js） -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://poyi.net/</loc>
@@ -790,6 +790,18 @@
   </url>
   <url>
     <loc>https://poyi.net/games/pqc-match/</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://poyi.net/games/stepping-switch/</loc>
+    <lastmod>2026-08-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://poyi.net/games/intel-assess/</loc>
     <lastmod>2026-08-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

@@ -1,0 +1,36 @@
+/* 破译 DECODE ARCADE · intel-assess 游戏内文案（zh/en 对称，占位符一致） */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.ia.tutTitle'] = '情报评估 — 玩法';
+  d.en['gs.ia.tutTitle'] = 'Intelligence Assessment — How to Play';
+  d.zh['gs.ia.tut1t'] = '目标';
+  d.en['gs.ia.tut1t'] = 'Objective';
+  d.zh['gs.ia.tut1'] = '破译密码只是第一步——把破译结果送进决策者的脑子，是另一场更难的战争。判断截获情报的可信度：哪些是真信号，哪些是烟雾弹？八题一局。';
+  d.en['gs.ia.tut1'] = 'Breaking codes is step one — getting decision-makers to trust the results is a harder war. Judge the reliability of intercepted intelligence: real signal or smoke screen? Eight rounds.';
+  d.zh['gs.ia.tut2t'] = '珍珠港的教训';
+  d.en['gs.ia.tut2t'] = 'The Pearl Harbor lesson';
+  d.zh['gs.ia.tut2'] = '1941 年 12 月，华盛顿收到了足够的预警信号——但没人相信它们。破译密码只是第一步，让决策者相信破译结果是另一场更难的战争。';
+  d.en['gs.ia.tut2'] = 'In December 1941, Washington had enough warning signals — but nobody believed them. Breaking codes is step one; getting decision-makers to trust the results is harder still.';
+  d.zh['gs.ia.tut3t'] = '计分';
+  d.en['gs.ia.tut3t'] = 'Scoring';
+  d.zh['gs.ia.tut3'] = '判对 +20、连击加成。答错亮线索但可继续。总分入 BEST（max）。';
+  d.en['gs.ia.tut3'] = 'Correct calls earn +20 with streak bonuses. Wrong calls reveal clues but play continues. Total goes to BEST (max).';
+  d.zh['gs.ia.round'] = '第 {n}/{total} 份 · 连击 {streak}';
+  d.en['gs.ia.round'] = 'Report {n}/{total} · streak {streak}';
+  d.zh['gs.ia.trustBtn'] = '✅ 可信情报';
+  d.en['gs.ia.trustBtn'] = '✅ Trust it';
+  d.zh['gs.ia.doubtBtn'] = '⚠️ 疑似烟雾弹';
+  d.en['gs.ia.doubtBtn'] = '⚠️ Smoke screen';
+  d.zh['gs.ia.clues'] = '🔍 分析线索';
+  d.en['gs.ia.clues'] = '🔍 Analysis';
+  d.zh['gs.ia.ok'] = '✓ 判断准确！+{pts} 分';
+  d.en['gs.ia.ok'] = '✓ Sharp call! +{pts} pts';
+  d.zh['gs.ia.no'] = '✗ 判断失误（连击已断）';
+  d.en['gs.ia.no'] = '✗ Wrong call (streak broken)';
+  d.zh['gs.ia.done'] = '📋 评估完成 · 总分 {score}';
+  d.en['gs.ia.done'] = '📋 Assessment done · total {score}';
+  d.zh['gs.ia.againBtn'] = '🔁 再来一局';
+  d.en['gs.ia.againBtn'] = '🔁 Play again';
+  d.zh['gs.ia.helpText'] = '为什么重要：中途岛的「AF 淡水陷阱」是情报评估的教科书案例——罗奇福特不仅破译了密码，还设计了让日军亲口确认的验证方案。破译密码只是第一步，让决策者相信破译结果是另一场更难的战争。见编年史「中途岛之雾」章。';
+  d.en['gs.ia.helpText'] = 'Why it matters: Midway\'s "AF water trap" is the textbook case of intelligence assessment — Rochefort not only broke the cipher but designed a verification scheme that made Japan confirm it themselves. Breaking codes is step one; getting decision-makers to trust the results is harder. See the Chronicle chapter "The Fog of Midway".';
+})();

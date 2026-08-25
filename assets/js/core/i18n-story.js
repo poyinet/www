@@ -691,6 +691,8 @@
   d.en['st.c7.g5'] = 'Reversi: the flip-capture game commercialized in Japan in the 1970s.';
   d.zh['st.c7.g6'] = '四子棋：1974 年发明的立式连四，重力落子经典。';
   d.en['st.c7.g6'] = 'Four in a Row: the 1974 gravity-drop connect-four classic.';
+  d.zh['st.c7.g7'] = '情报评估：判断截获情报的可信度——哪些是真信号，哪些是烟雾弹。破译密码只是第一步。';
+  d.en['st.c7.g7'] = 'Intelligence Assessment: judge the reliability of intercepted reports — real signal or smoke screen?';
   d.zh['st.c8.g4'] = '地牢探险：1980 年《Rogue》开创的随机地牢，Roguelike 之祖。';
   d.en['st.c8.g4'] = 'Dungeon: the 1980 game Rogue spawned random-floor roguelikes.';
   d.zh['st.c8.g5'] = '平台跳跃：1981 年《大金刚》起跳，像素时代的看家类型。';
@@ -746,6 +748,12 @@
   /* 第八期 #17/#18：acrostic 挂文艺复兴章、phishhunt 挂现代章（末位追加） */
   d.zh['st.c3.g9'] = '藏头诗密信：每行首字连读成密信——与培根双字体同源的隐写雅趣，秘密藏在「看起来正常」里。';
   d.en['st.c3.g9'] = 'Acrostic Letters: read the line openings as one hidden word — steganography in the spirit of Bacon\'s two fonts, a secret hiding inside the ordinary.';
+  /* 第十二期：stepping-switch 挂靠培根章（末位追加） */
+  d.zh['st.c3.g10'] = '紫密步进开关：六元音/二十辅音双路步进可视化——输入字母看它走哪条路。';
+  d.en['st.c3.g10'] = 'Stepping Switch: six-vowel/twenty-consonant dual-path stepping visualization — type a letter and watch which path it takes.';
+  /* 第十二期：intel-assess 挂靠培根章 */
+  d.zh['st.c3.g11'] = '情报评估：判断截获情报的可信度——哪些是真信号，哪些是烟雾弹。';
+  d.en['st.c3.g11'] = 'Intelligence Assessment: judge the reliability of intercepted reports — real signal or smoke screen?';
   d.zh['st.c10.g19'] = '钓鱼邮件狩猎：再强的加密也挡不住你亲手点开的链接——社会工程是密码链上最弱的一环，练出火眼金睛。';
   d.en['st.c10.g19'] = 'Phishing Hunt: the strongest crypto cannot stop your own click — social engineering is the weakest link; train the eye.';
 })();

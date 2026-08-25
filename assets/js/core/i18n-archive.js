@@ -239,8 +239,8 @@
   d.en['sta.culper-ring.text'] = 'Code 711 meant Washington himself, 71 the British commander Clinton, and 355 a female agent; messages hidden between the lines of business letters surfaced with sympathetic ink — the Revolution\'s most legendary spy ring.';
   d.zh['sta.bazeries-cylinder.text'] = '1891 年巴泽里把二十枚乱序字母圆盘串于一轴，收发双方对齐明文与密文行即完成加密；法军以「密码圆筒」之名列装，与杰斐逊轮式密码异曲同工。';
   d.en['sta.bazeries-cylinder.text'] = 'In 1891 Bazeries threaded twenty scrambled-letter disks onto one rod: sender and receiver align plaintext and ciphertext rows and the code appears on the other row; the French Army fielded it as the “cipher cylinder,” echoing Jefferson\'s wheel cypher.';
-  d.zh['sta.commercial-enigma.text'] = '1923 年谢尔比乌斯携恩尼格玛 D 型亮相伯尔尼邮政大会，向各国推销这台「无法破译」的机器；德军以它为蓝本加装插线板改出军用型，日后让布莱切利园吃尽苦头。';
-  d.en['sta.commercial-enigma.text'] = 'In 1923 Scherbius presented the Enigma D at the Bern Postal Congress, pitching an “unbreakable” machine to the world\'s postal services; the Reichswehr rebuilt that commercial design with a plugboard into the military Enigma that would torment Bletchley Park.';
+  d.zh['sta.commercial-enigma.text'] = '1924 年谢尔比乌斯携恩尼格玛 D 型亮相伯尔尼邮政大会，向各国推销这台「无法破译」的机器；德军以它为蓝本加装插线板改出军用型，日后让布莱切利园吃尽苦头。';
+  d.en['sta.commercial-enigma.text'] = 'In 1924 Scherbius presented the Enigma D at the Bern Postal Congress, pitching an “unbreakable” machine to the world\'s postal services; the Reichswehr rebuilt that commercial design with a plugboard into the military Enigma that would torment Bletchley Park.';
   d.zh['sta.navajo-code.text'] = '初版密码仅 211 词：战斗机叫「蜂鸟」，潜艇叫「铁鱼」，战列舰叫「鲸鱼」；硫磺岛六名译电员 48 小时收发 800 余条电文，无一差错。';
   d.en['sta.navajo-code.text'] = 'The original code held just 211 words: a fighter was “hummingbird,” a submarine “iron fish,” a battleship “whale”; at Iwo Jima six operators passed 800-plus messages in 48 hours without a single error.';
   d.zh['sta.monastic-cipher.text'] = '修士在古英语手稿里用符文替换拉丁字母，把署名藏进寻常抄本；1518 年特里特米乌斯出版《多文书写法》，创制多套「天使字母」，开西方密码学著作先河。';

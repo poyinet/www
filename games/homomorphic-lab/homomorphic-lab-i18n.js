@@ -1,0 +1,34 @@
+/* 破译 DECODE ARCADE · homomorphic-lab 游戏内文案 */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.homomorphic-lab.tutTitle'] = '同态加密实验室 — 玩法';
+  d.en['gs.homomorphic-lab.tutTitle'] = 'Homomorphic Lab — How to Play';
+  d.zh['gs.homomorphic-lab.tut1t'] = '目标';
+  d.en['gs.homomorphic-lab.tut1t'] = 'Objective';
+  d.zh['gs.homomorphic-lab.tut1'] = '六关：你敢不敢把密文交给云？用「加扰」教学版演示——即便云端只拿到两个密文，也能直接对它们做加减，再让你解密得到明文的运算结果。';
+  d.en['gs.homomorphic-lab.tut1'] = 'Six levels: would you hand ciphertexts to the cloud? The demo\'s "scrambled" scheme shows the cloud adding and subtracting the hiders, never seeing plaintext numbers, while your key recovers the computed result.';
+  d.zh['gs.homomorphic-lab.tut2t'] = '原理';
+  d.en['gs.homomorphic-lab.tut2t'] = 'The property';
+  d.zh['gs.homomorphic-lab.tut2'] = '同态加密的圣杯：E(x) + E(y) = E(x + y)。云端无需解密，就能在密文上执行计算。BGV/BFV/CKKS 用环多项式撑起这个等式——抗量子、可大规模并行。';
+  d.en['gs.homomorphic-lab.tut2'] = 'The Holy Grail: E(x) + E(y) = E(x+y). Compute on ciphertext without decrypting; BGV/BFV/CKKS realize it with ring polynomials — quantum-resistant and embarrassingly parallel.';
+  d.zh['gs.homomorphic-lab.tut3t'] = '计分';
+  d.en['gs.homomorphic-lab.tut3t'] = 'Scoring';
+  d.zh['gs.homomorphic-lab.tut3'] = '六关各 +25，满分 150。这个玩具谱安全有限，但能让你目睹「运算不出门」的直觉。';
+  d.en['gs.homomorphic-lab.tut3'] = '+25 per level, 150 max. The toy is not secure, but it delivers the intuition of never decrypting.';
+  d.zh['gs.homomorphic-lab.helpText'] = '为什么重要：医疗数据、金融记录、个人基因组——「云上计算」曾意味着必须解密。1978 年 Rivest 提出假设，2009 年 Gentry 用格密码完成，把「第三方算数据」变成「第三方算密文」。<a class="gh-link" href="../../story.html?id=modern">见编年史「数学家的反击」→</a>';
+  d.en['gs.homomorphic-lab.helpText'] = 'Why it matters: medical records, financial data, genomes — "cloud computation" used to mean decrypting first. Rivest conjectured it in 1978; Gentry solved it with lattices in 2009, turning third-party computation into third-party ciphertext.<a class="gh-link" href="../../story.html?id=modern">See the Chronicle chapter "The Mathematicians Strike Back" &rarr;</a>';
+  d.zh['gs.homomorphic-lab.dailyBtn'] = '📅 每日挑战';
+  d.en['gs.homomorphic-lab.dailyBtn'] = '📅 Daily challenge';
+  d.zh['gs.homomorphic-lab.prog'] = '第 {n} / {total} 关 · 得分 {score}';
+  d.en['gs.homomorphic-lab.prog'] = 'Level {n}/{total} · Score {score}';
+  d.zh['gs.homomorphic-lab.correct'] = '✓ 算式成立！';
+  d.en['gs.homomorphic-lab.correct'] = '✓ Identity holds!';
+  d.zh['gs.homomorphic-lab.wrong'] = '✗ 解密结果应为 {a}';
+  d.en['gs.homomorphic-lab.wrong'] = '✗ It should be {a}';
+  d.zh['gs.homomorphic-lab.nextBtn'] = '下一关 →';
+  d.en['gs.homomorphic-lab.nextBtn'] = 'Next →';
+  d.zh['gs.homomorphic-lab.done'] = '云端密算完成！最终得分 {score}。';
+  d.en['gs.homomorphic-lab.done'] = 'Cloud computed! Final score {score}.';
+  d.zh['gs.homomorphic-lab.againBtn'] = '↻ 再密算一轮';
+  d.en['gs.homomorphic-lab.againBtn'] = '↻ Compute again';
+})();

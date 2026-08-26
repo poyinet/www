@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0a0a12">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-touch-icon" content="/assets/icons/apple-touch-icon.png">
+  <title>同态加密实验室 · 用游戏破译人类三千年加密解密史</title>
+  <meta name="description" content="破译 DECODE ARCADE · 同态加密实验室：在不看明文的情况下直接对密文做加法——云端计算不可能的圣杯。">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <link rel="canonical" href="https://poyi.net/games/homomorphic-lab/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="破译游戏 DECODE ARCADE">
+  <meta property="og:title" content="同态加密实验室 · 用游戏破译人类三千年加密解密史">
+  <meta property="og:description" content="密文上做加法——云端计算的圣杯。">
+  <meta property="og:url" content="https://poyi.net/games/homomorphic-lab/">
+  <meta property="og:image" content="https://poyi.net/assets/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="同态加密实验室 · 破译 DECODE ARCADE">
+  <meta name="twitter:description" content="密文上做加法——云端计算的圣杯。">
+  <meta name="twitter:image" content="https://poyi.net/assets/og-image.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "同态加密实验室",
+    "url": "https://poyi.net/games/homomorphic-lab/",
+    "applicationCategory": "Game",
+    "inLanguage": "zh-CN",
+    "isPartOf": { "@type": "WebSite", "name": "破译游戏 DECODE ARCADE", "url": "https://poyi.net/" },
+    "description": "密文上做加法——云端计算的圣杯。"
+  }
+  </script>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧮</text></svg>">
+  <link rel="preload" href="../../assets/fonts/press-start-2p.woff2" as="font" type="font/woff2" crossorigin>
+  <script>
+  (function(){var K="arcade_lang",lang="zh";try{var s=localStorage.getItem(K);if(s==="zh"||s==="en"){lang=s;}else{lang=/^zh/i.test(navigator.language||navigator.userLanguage||"")?"zh":"en";}}catch(e){}var de=document.documentElement;if(de){de.setAttribute("lang",lang==="en"?"en":"zh-CN");}if(lang==="en"){return;}var l=document.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="anonymous";l.href="../../assets/fonts/fusion-pixel-site.woff2";document.head.appendChild(l);})();
+  </script>
+<link rel="stylesheet" href="../../assets/css/theme.css">
+  <style>.seo-h1{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}</style>
+  <link rel="stylesheet" href="../../assets/css/shell.css">
+  <style>
+    .game-wrap { padding: 14px; width: min(680px, 96vw); text-align: center; }
+    .game-prog { font-size: 12px; color: var(--text-dim); margin-bottom: 6px; }
+    .game-stage { font-size: 13px; color: var(--neon-cyan); min-height: 20px; margin-bottom: 8px; }
+    .game-visual { font-family: var(--font-mono); font-size: 13px; line-height: 2; background: rgba(0,0,0,.3); border: 1px solid rgba(255,255,255,.15); border-radius: 10px; padding: 12px; margin: 8px auto; max-width: 560px; color: var(--text-main); word-break: break-all; }
+    .game-q { text-align: left; background: rgba(0,0,0,.3); border: 1px solid rgba(255,255,255,.15); border-radius: 10px; padding: 12px 14px; margin: 10px auto; max-width: 540px; font-size: 13px; line-height: 1.9; color: var(--text-main); }
+    .game-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin: 10px 0; }
+    .game-msg { min-height: 18px; font-size: 13px; margin: 6px 0; }
+    .game-msg.ok { color: var(--neon-green); } .game-msg.no { color: var(--neon-pink); }
+    .game-expl { display: none; text-align: left; font-size: 12px; line-height: 1.9; color: var(--neon-yellow); background: rgba(255,230,0,.06); border: 1px dashed rgba(255,230,0,.4); border-radius: 8px; padding: 8px 12px; margin: 8px auto; max-width: 540px; }
+    .game-expl.on { display: block; }
+    .game-help { font-size: 12px; color: var(--text-dim); line-height: 1.8; margin-top: 12px; text-align: left; background: rgba(255,255,255,.04); border-radius: 8px; padding: 10px 12px; }
+  </style>
+</head>
+<body data-game-id="homomorphic-lab" data-game-title="同态加密实验室" data-best-mode="max">
+  <div id="game-root"></div>
+  <h1 class="seo-h1">同态加密实验室：密码学教学互动游戏</h1>
+  <script src="../../assets/js/core/storage.js"></script>
+  <script src="../../assets/js/core/input.js"></script>
+  <script src="../../assets/js/core/loop.js"></script>
+  <script src="../../assets/js/core/i18n.js"></script>
+  <script src="../../assets/js/core/i18n-dict.js"></script>
+  <script src="homomorphic-lab-i18n.js"></script>
+  <script src="../../assets/js/core/extras.js"></script>
+  <script src="../../assets/js/rank.js"></script>
+  <script src="../../assets/js/plot.js"></script>
+  <script src="../../assets/js/stories.js"></script>
+  <script src="../../assets/js/shell.js"></script>
+  <script src="homomorphic-lab.js"></script>
+  <script src="../../assets/js/pwa.js"></script>
+</body>
+</html>

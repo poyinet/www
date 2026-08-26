@@ -1,0 +1,34 @@
+/* 破译 DECODE ARCADE · alberti-disc 游戏内文案（zh/en 对称） */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.alberti-disc.tutTitle'] = '阿尔贝蒂密码盘 — 玩法';
+  d.en['gs.alberti-disc.tutTitle'] = 'Alberti Disc — How to Play';
+  d.zh['gs.alberti-disc.tut1t'] = '目标';
+  d.en['gs.alberti-disc.tut1t'] = 'Objective';
+  d.zh['gs.alberti-disc.tut1'] = '内盘相对外盘旋转 s 位，就能得到一个整表替换字母表。六关：设盘加密、盘面解译、未知索引破译。答对 +25。';
+  d.en['gs.alberti-disc.tut1'] = 'Rotate the inner ring s positions and the whole alphabet re-maps. Six levels: set-and-encrypt, read the disc, break with unknown index. +25 per correct answer.';
+  d.zh['gs.alberti-disc.tut2t'] = '历史价值';
+  d.en['gs.alberti-disc.tut2t'] = 'Historic value';
+  d.zh['gs.alberti-disc.tut2'] = '1467 年莱昂·巴蒂斯塔·阿尔贝蒂设计了这部双盘装置——每次旋转换一张字母表，多表替换由此诞生，单表频率分析从此失效。';
+  d.en['gs.alberti-disc.tut2'] = 'In 1467 Leon Battista Alberti built a two-disc device: each rotation gives a new alphabet, birthing polyalphabetic substitution and defeating single-alphabet frequency analysis.';
+  d.zh['gs.alberti-disc.tut3t'] = '计分';
+  d.en['gs.alberti-disc.tut3t'] = 'Scoring';
+  d.zh['gs.alberti-disc.tut3'] = '六关各 +25，满分 150。学完你会看懂文艺复兴密码学的逻辑核心。';
+  d.en['gs.alberti-disc.tut3'] = 'Six levels, +25 each, 150 max — you will see the logical core of Renaissance cryptography.';
+  d.zh['gs.alberti-disc.helpText'] = '为什么重要：阿尔贝蒂被尊称「西方密码学之父」：在这部盘诞生之前，替换加密一直是「一张字母表用到底」；盘一转就换表，字母频率被抹平——维吉尼亚表正是这个思想的正统继承者。<a class="gh-link" href="../../story.html?id=caesar">见编年史「凯撒的密令」→</a>';
+  d.en['gs.alberti-disc.helpText'] = 'Why it matters: Alberti is honored as a father of Western cryptography. Before his disc, substitution stayed one-alphabet-fits-all; one twist mixes the frequencies flat — and the Vigenere square is that idea\'s rightful heir.<a class="gh-link" href="../../story.html?id=caesar">See the Chronicle chapter "Caesar\'s Secret Orders" &rarr;</a>';
+  d.zh['gs.alberti-disc.dailyBtn'] = '📅 每日挑战';
+  d.en['gs.alberti-disc.dailyBtn'] = '📅 Daily challenge';
+  d.zh['gs.alberti-disc.prog'] = '第 {n} / {total} 关 · 得分 {score}';
+  d.en['gs.alberti-disc.prog'] = 'Level {n}/{total} · Score {score}';
+  d.zh['gs.alberti-disc.correct'] = '✓ 正确！';
+  d.en['gs.alberti-disc.correct'] = '✓ Correct!';
+  d.zh['gs.alberti-disc.wrong'] = '✗ 正确答案已标出';
+  d.en['gs.alberti-disc.wrong'] = '✗ The right answer is marked';
+  d.zh['gs.alberti-disc.nextBtn'] = '下一关 →';
+  d.en['gs.alberti-disc.nextBtn'] = 'Next →';
+  d.zh['gs.alberti-disc.done'] = '盘面校准完成！最终得分 {score}。';
+  d.en['gs.alberti-disc.done'] = 'Disc aligned! Final score {score}.';
+  d.zh['gs.alberti-disc.againBtn'] = '↻ 重校一轮';
+  d.en['gs.alberti-disc.againBtn'] = '↻ Align again';
+})();

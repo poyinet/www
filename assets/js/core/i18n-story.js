@@ -862,4 +862,16 @@
   d.en['st.c11.ch'] = 'Eavesdropper test: in BB84, Eve measures every photon in a random basis. Among the sifted key bits (where Alice and Bob used the same basis), what average error rate QBER does Eve introduce? Answer with a number (e.g., 42 means 42%).';
   d.zh['st.demoBb84Note'] = '点击「发射光子」模拟 BB84：Alice 随机选基编码比特，Bob 随机选基测量；基一致才保留为筛选密钥位。打开 Eve 后再发射若干次，观察误码率上升——窃听者自己会暴露自己。';
   d.en['st.demoBb84Note'] = 'Press "Send photon" to simulate BB84: Alice encodes a bit in a random basis, Bob measures in a random basis; matching bases become sifted key bits. Switch Eve on and send more photons — watch the error rate climb as the eavesdropper betrays herself.';
+  d.zh['st.c0.g11'] = '斯巴达密码棒：绕棒的圈数就是密钥——两千五百年前最早的军用换位。';
+  d.en['st.c0.g11'] = 'Scytale: the number of wraps is the key — 2,500 years ago, the first military transposition.';
+  d.zh['st.c1.g10'] = '阿尔贝蒂密码盘：双盘一转、字母表全换——文艺复兴为多表替换投下第一声雷。';
+  d.en['st.c1.g10'] = 'Alberti Disc: one twist, a new alphabet — the Renaissance thunderclap of polyalphabetic substitution.';
+  d.zh['st.c3.g11'] = '卡当格栅——把秘密藏在明面的艺术：四转一张卡，隐藏四百年。';
+  d.en['st.c3.g11'] = 'Cardan Grille: hiding in plain sight — four turns, one card, four centuries of concealment.';
+  d.zh['st.c4.g18'] = '杰斐逊转轮：总统的圆盘排成棒——从私人发明到美军 M-94。';
+  d.en['st.c4.g18'] = 'Jefferson Disk: the president\'s wheels — from private invention to the Army\'s M-94.';
+  d.zh['st.c10.g25'] = '侧信道实验室：时序曲线不会说谎——算法的完美挡不住实现的疏漏。';
+  d.en['st.c10.g25'] = 'Side-Channel Lab: timing curves never lie — perfect math cannot save sloppy code.';
+  d.zh['st.c10.g26'] = '同态加密实验室：密文上直接计算——云端不改一字却算出整个结果。';
+  d.en['st.c10.g26'] = 'Homomorphic Lab: compute on ciphertext — the cloud calculates without seeing a thing.';
 })();

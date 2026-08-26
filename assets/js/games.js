@@ -15,7 +15,7 @@ window.GAME_CATEGORIES = ['经典街机', '动作反应', '逻辑谜题', '空�
 
 /* 每日破译中心：启用「📅 每日一题」的游戏（大厅今日面板 + 档案页共用）
    所有列出的游戏均实现 daily 模式：日种子确定性生成 + 解完调用 Arcade.daily.markSolved */
-window.DAILY_IDS = ['sudoku', 'enigma', 'bifid', 'slitherlink', 'hashi', 'trifid', 'bacon', 'klondike', 'caesar', 'llk', 'spotdiff', 'sectorsiege', 'sheep', 'morse', 'atbash', 'polybius', 'nihilist', 'starflag', 'autokey', 'rsa', 'shamir', 'sm4', 'acrostic', 'phishhunt', 'qkd-sim', 'pqc-match', 'stepping-switch', 'intel-assess', 'aes-lab', 'password-vault', 'pgp-mail', 'blockchain-miner', 'zkp-cave', 'totp-verify'];
+window.DAILY_IDS = ['sudoku', 'enigma', 'bifid', 'slitherlink', 'hashi', 'trifid', 'bacon', 'klondike', 'caesar', 'llk', 'spotdiff', 'sectorsiege', 'sheep', 'morse', 'atbash', 'polybius', 'nihilist', 'starflag', 'autokey', 'rsa', 'shamir', 'sm4', 'acrostic', 'phishhunt', 'qkd-sim', 'pqc-match', 'stepping-switch', 'intel-assess', 'aes-lab', 'password-vault', 'pgp-mail', 'blockchain-miner', 'zkp-cave', 'totp-verify', 'scytale', 'alberti-disc', 'cardan-grille', 'jefferson-disk', 'side-channel-lab', 'homomorphic-lab'];
 
 window.GAMES = [
   /* ---------- 经典街机 ---------- */
@@ -898,5 +898,47 @@ window.GAMES = [
     icon: '📱', path: 'games/totp-verify/index.html',
     mobile: 'ok', bestMode: 'max',
     lvl: 'easy', time: '5min',
+  },
+  {
+    id: 'scytale', title: '斯巴达密码棒', category: '密码破译',
+    desc: '第十四期 · 羊皮纸绕棒斜缠、横向读出——人类最早的军用换位密码实物。',
+    icon: '🪵', path: 'games/scytale/index.html',
+    mobile: 'ok', bestMode: 'max',
+    lvl: 'easy', time: '5min',
+  },
+  {
+    id: 'alberti-disc', title: '阿尔贝蒂密码盘', category: '密码破译',
+    desc: '第十四期 · 双盘旋转换字母表——1467 年首台多表替换装置，设盘加密与破译。',
+    icon: '💿', path: 'games/alberti-disc/index.html',
+    mobile: 'ok', bestMode: 'max',
+    lvl: 'easy', time: '5min',
+  },
+  {
+    id: 'cardan-grille', title: '卡当格栅', category: '密码破译',
+    desc: '第十四期 · 挖孔卡片四转覆盖全盘——文艺复兴的隐藏艺术。',
+    icon: '🕳️', path: 'games/cardan-grille/index.html',
+    mobile: 'ok', bestMode: 'max',
+    lvl: 'easy', time: '5min',
+  },
+  {
+    id: 'jefferson-disk', title: '杰斐逊转轮', category: '密码破译',
+    desc: '第十四期 · 六片乱序圆盘排成棒：总统发明的机械密码机，后世成为美陆军 M-94。',
+    icon: '🔩', path: 'games/jefferson-disk/index.html',
+    mobile: 'ok', bestMode: 'max',
+    lvl: 'mid', time: '5min',
+  },
+  {
+    id: 'side-channel-lab', title: '侧信道实验室', category: '密码破译',
+    desc: '第十四期 · 不破解算法，只看耗时直方图：从6条时序逐位还原口令。',
+    icon: '📈', path: 'games/side-channel-lab/index.html',
+    mobile: 'ok', bestMode: 'max',
+    lvl: 'mid', time: '5min',
+  },
+  {
+    id: 'homomorphic-lab', title: '同态加密实验室', category: '密码破译',
+    desc: '第十四期 · 云端只碰密文就完成计算：E(x)+E(y)=E(x+y)，亲手验证同态等式。',
+    icon: '🧮', path: 'games/homomorphic-lab/index.html',
+    mobile: 'ok', bestMode: 'max',
+    lvl: 'mid', time: '5min',
   }
 ];

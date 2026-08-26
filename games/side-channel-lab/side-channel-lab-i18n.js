@@ -1,0 +1,34 @@
+/* 破译 DECODE ARCADE · side-channel-lab 游戏内文案 */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.side-channel-lab.tutTitle'] = '侧信道实验室 — 玩法';
+  d.en['gs.side-channel-lab.tutTitle'] = 'Side-Channel Lab — How to Play';
+  d.zh['gs.side-channel-lab.tut1t'] = '目标';
+  d.en['gs.side-channel-lab.tut1t'] = 'Objective';
+  d.zh['gs.side-channel-lab.tut1'] = '系统逐字节校验登录口令，匹配得越多耗时越长。你要从 6 条加密线路的耗时直方图中，逐位猜出完整密码。';
+  d.en['gs.side-channel-lab.tut1'] = 'The system verifies logins byte by byte — the longer the match, the longer it takes. Read six timing traces and guess the full password one character at a time.';
+  d.zh['gs.side-channel-lab.tut2t'] = '原理';
+  d.en['gs.side-channel-lab.tut2t'] = 'The attack';
+  d.zh['gs.side-channel-lab.tut2'] = '侧信道不破密码学算法：它偷看物理层的实现痕迹——时间、能耗、电磁、缓存。逐字节的「早返回」让匹配位数直接呈现在耗时长条上。';
+  d.en['gs.side-channel-lab.tut2'] = 'Side channels skip the math and watch the physical implementation — timing, power, EM, cache. Byte-by-byte "fail fast" logic paints the match length right onto every timing bar.';
+  d.zh['gs.side-channel-lab.tut3t'] = '计分';
+  d.en['gs.side-channel-lab.tut3t'] = 'Scoring';
+  d.zh['gs.side-channel-lab.tut3'] = '每正确锁定一位 +25 分，共四位——若四关全破即满分 100。';
+  d.en['gs.side-channel-lab.tut3'] = '+25 per locked character; four in all, 100 max.';
+  d.zh['gs.side-channel-lab.helpText'] = '为什么重要：这是所有「算法完美但实现破产」故事的源头——1996 年 Kocher 的时序攻击破解 RSA，OpenSSL 长除法慢几毫秒即被远程爆破。防御答案：恒定时间比较 + 白盒约束。<a class="gh-link" href="../../story.html?id=modern">见编年史「数学家的反击」→</a>';
+  d.en['gs.side-channel-lab.helpText'] = 'Why it matters: the origin of every "perfect algorithm, broken implementation" story — Kocher\'s 1996 timing attack broke RSA, and a few milliseconds in OpenSSL\'s division was remotely exploitable. Constant-time code is the answer.<a class="gh-link" href="../../story.html?id=modern">See the Chronicle chapter "The Mathematicians Strike Back" &rarr;</a>';
+  d.zh['gs.side-channel-lab.dailyBtn'] = '📅 每日挑战';
+  d.en['gs.side-channel-lab.dailyBtn'] = '📅 Daily challenge';
+  d.zh['gs.side-channel-lab.prog'] = '攻击第 {pos}/{len} 位 · 得分 {score}';
+  d.en['gs.side-channel-lab.prog'] = 'Char {pos}/{len} · Score {score}';
+  d.zh['gs.side-channel-lab.stage'] = '📡 监听室 · 已定位 {pos}/{len} 位';
+  d.en['gs.side-channel-lab.stage'] = '📡 Listening · {pos}/{len} located';
+  d.zh['gs.side-channel-lab.correct'] = '✓ 撞对了！继续下一位。';
+  d.en['gs.side-channel-lab.correct'] = '✓ Meter hit! Next.';
+  d.zh['gs.side-channel-lab.wrong'] = '✗ 这条短于峰值——猜错了，重新观察。';
+  d.en['gs.side-channel-lab.wrong'] = '✗ This trace is short — wrong guess, watch the peak again.';
+  d.zh['gs.side-channel-lab.done'] = '密码还原「{pw}」！最终得分 {score}。';
+  d.en['gs.side-channel-lab.done'] = 'Password recovered: {pw}! Final score {score}.';
+  d.zh['gs.side-channel-lab.againBtn'] = '↻ 再监听一轮';
+  d.en['gs.side-channel-lab.againBtn'] = '↻ Re-listen';
+})();

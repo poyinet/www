@@ -249,7 +249,7 @@
     siege: 'Pts', 'dungeon-cipher': 'Pts', maker: 'Pts', tank: 'Pts', bullethell: 'Pts',
     ballpop: 'Pts', curling: 'Pts', bowling: 'Pts', typecode: 'Pts', platformer: 'Pts',
     spaceshooter: 'Pts', rhythm: 'Pts', billiards: 'Pts', mazedot: 'Pts', asteroidf: 'Pts',
-    bb84: 'Pts', autokey: 'Pts', hashlab: 'Pts', solitaire: 'Pts', rsa: 'Pts', shamir: 'Pts', sm4: 'Pts', acrostic: 'Pts', phishhunt: 'Pts', 'qkd-sim': 'Pts', 'pqc-match': 'Pts', 'stepping-switch': 'Pts', 'intel-assess': 'Pts', 'aes-lab': 'Pts', 'password-vault': 'Pts', 'pgp-mail': 'Pts', 'blockchain-miner': 'Pts', 'zkp-cave': 'Pts', 'totp-verify': 'Pts', pixeldino: 'Pts', deckbuilder: 'Pts', tactics: 'Pts', roperescue: 'Pts',
+    bb84: 'Pts', autokey: 'Pts', hashlab: 'Pts', solitaire: 'Pts', rsa: 'Pts', shamir: 'Pts', sm4: 'Pts', acrostic: 'Pts', phishhunt: 'Pts', 'qkd-sim': 'Pts', 'pqc-match': 'Pts', 'stepping-switch': 'Pts', 'intel-assess': 'Pts', 'aes-lab': 'Pts', 'password-vault': 'Pts', 'pgp-mail': 'Pts', 'blockchain-miner': 'Pts', 'zkp-cave': 'Pts', 'totp-verify': 'Pts', 'scytale': 'Pts', 'alberti-disc': 'Pts', 'cardan-grille': 'Pts', 'jefferson-disk': 'Pts', 'side-channel-lab': 'Pts', 'homomorphic-lab': 'Pts', pixeldino: 'Pts', deckbuilder: 'Pts', tactics: 'Pts', roperescue: 'Pts',
     fruitmerge: 'Pts', railshooter: 'Pts', dungeon: 'Pts',
     /* 特殊语义 */
     poker: 'Chips', blackjack: 'Chips',

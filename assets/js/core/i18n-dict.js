@@ -61,7 +61,7 @@ Arcade.i18n.dicts = {
     'workshop.decNote': '自动识别：凯撒 / 摩斯 / 培根 / 二进制 / 异或 / Base64 / 栅栏 / 维吉尼亚（常用密钥）',
     'workshop.eggTitle': '🎯 彩蛋收集（全站寻宝）',
     'workshop.eggNote': '全站藏有 20 条密文彩蛋——破解后在下方输入答案单词，收集进度点亮。全部集齐解锁隐藏成就！',
-    'quiz.entrySub': '143 题测出你的段位',
+    'quiz.entrySub': '153 题测出你的段位',
     'quiz.lvl1': '入门', 'quiz.lvl2': '进阶', 'quiz.lvl3': '专家', 'quiz.lvl4': '大师',
     'quiz.right': '✅ 答对了！',
     'quiz.wrong': '❌ 答错了',
@@ -338,6 +338,8 @@ Arcade.i18n.dicts = {
     'g.password-vault.t': '口令保险库', 'g.password-vault.d': '强度判定与存储方案八连题：熵、盐、彩虹表与 Argon2 的攻防一课。',
     'g.pgp-mail.t': 'PGP 加密邮件', 'g.pgp-mail.d': '八步寄出一封无法偷看的信——混合加密、数字签名与信任之网。',
     'g.blockchain-miner.t': '区块链矿工', 'g.blockchain-miner.d': '调 nonce 撞哈希前缀，亲历工作量证明的难度爆炸与算力经济学。',
+    'g.zkp-cave.t': '零知识洞穴', 'g.zkp-cave.d': 'Ali Baba 洞穴三轮交互证明——不泄露咒语本身，证明你知道咒语。',
+    'g.totp-verify.t': 'TOTP 双因素验证', 'g.totp-verify.d': '亲手计算会旋转的六位验证码——时间片、共享密钥与 Passkey 后继。',
     'g.qkd-sim.t': 'QKD 密钥分发模拟',     'g.qkd-sim.d': 'BB84 协议模拟：选基测量光子、筛选密钥、比对 QBER 揪出窃听者 Eve。',
     'g.pqc-match.t': '后量子迁移配对', 'g.pqc-match.d': '把经典密码算法与其后量子继任者配对——NIST 2024 标准速记。',
     'g.stepping-switch.t': '紫密步进开关',     'g.stepping-switch.d': '六元音/二十辅音双路步进可视化——理解 Purple 密码机的核心设计。',
@@ -452,7 +454,7 @@ Arcade.i18n.dicts = {
     'workshop.decNote': 'Auto-detect: Caesar / Morse / Bacon / Binary / XOR / Base64 / Rail Fence / Vigenère (common keys)',
     'workshop.eggTitle': '🎯 Egg Hunt (site-wide treasure)',
     'workshop.eggNote': '20 cipher eggs are hidden across the site — crack them and type the answer word below. Collect all to unlock a hidden achievement!',
-    'quiz.entrySub': '143 questions · find your rank',
+    'quiz.entrySub': '153 questions · find your rank',
     'quiz.lvl1': 'Novice', 'quiz.lvl2': 'Advanced', 'quiz.lvl3': 'Expert', 'quiz.lvl4': 'Master',
     'quiz.right': '✅ Correct!',
     'quiz.wrong': '❌ Wrong',
@@ -729,6 +731,8 @@ Arcade.i18n.dicts = {
     'g.password-vault.t': 'Password Vault', 'g.password-vault.d': 'Eight scenarios on strength and storage: entropy, salt, rainbow tables and the Argon2 lesson.',
     'g.pgp-mail.t': 'PGP Mail', 'g.pgp-mail.d': 'Eight steps to an unreadable letter — hybrid encryption, signatures and the Web of Trust.',
     'g.blockchain-miner.t': 'Blockchain Miner', 'g.blockchain-miner.d': 'Vary the nonce, chase the hash prefix — feel proof-of-work difficulty explode.',
+    'g.zkp-cave.t': 'ZKP Cave', 'g.zkp-cave.d': 'Three interactive rounds in the Ali Baba cave — prove you know the word without revealing it.',
+    'g.totp-verify.t': 'TOTP Verify', 'g.totp-verify.d': 'Compute the rotating six-digit code yourself — time slices, shared secrets and the Passkey heir.',
     'g.qkd-sim.t': 'QKD Simulator',     'g.qkd-sim.d': 'BB84 protocol simulation: choose bases, measure photons, sift keys and compare QBER to catch Eve.',
     'g.pqc-match.t': 'Post-Quantum Matching', 'g.pqc-match.d': 'Pair classical algorithms with their PQ successors — NIST 2024 standards quick reference.',
     'g.stepping-switch.t': 'Purple Stepping Switch', 'g.stepping-switch.d': 'Six-vowel/twenty-consonant dual-path stepping visualization — understanding Purple\'s core design.',
@@ -1572,4 +1576,52 @@ Arcade.i18n.dicts = {
   dd.en['stp.wangxy.era'] = '1966– · China';
   dd.zh['stp.wangxy.fact'] = '2004 年美州密码学大会上，王小云团队宣布攻破 MD5 时全场起立鼓掌；与会者当场改写论文结论。此后她的团队又拿下 SHA-1 的理论碰撞，直接催生了 SHA-3 竞赛加速与全球哈希算法迁移。';
   dd.en['stp.wangxy.fact'] = 'At Crypto 2004 the audience gave Xiaoyun Wang\'s team a standing ovation as MD5 fell — attendees rewrote their own papers on the spot. Her team later broke SHA-1\'s theoretical collision, accelerating the SHA-3 competition and the global hash migration.';
+  dd.zh['stp.gardner.name'] = '梅雷迪思·加德纳'; dd.en['stp.gardner.name'] = 'Meredith Gardner';
+  dd.zh['stp.gardner.icon'] = '🕵️'; dd.en['stp.gardner.icon'] = '🕵️';
+  dd.zh['stp.gardner.role'] = '语言学家 · VENONA 破译核心'; dd.en['stp.gardner.role'] = 'Linguist · core cryptanalyst of VENONA';
+  dd.zh['stp.gardner.era'] = '1912–2002 · 美国'; dd.en['stp.gardner.era'] = '1912–2002 · 美国';
+  dd.zh['stp.gardner.fact'] = '他不懂密码学却懂古法语与德语文学——1946 年仅凭苏联贸易电报里的重复数字残迹重建了苏联间谍体制的骨架，让罗森堡案浮出水面。同事说他「用读诗的方法读密文」。';
+  dd.en['stp.gardner.fact'] = 'A scholar of Old French and German literature who knew no cryptology, he rebuilt the skeleton of Soviet espionage in 1946 from repeated number-groups in trade traffic — the Rosenberg case surfaced from his reading. Colleagues said he "read ciphertext like poetry."';
+  dd.zh['stp.clarke.name'] = '琼·克拉克'; dd.en['stp.clarke.name'] = 'Joan Clarke';
+  dd.zh['stp.clarke.icon'] = '🧩'; dd.en['stp.clarke.icon'] = '🧩';
+  dd.zh['stp.clarke.role'] = '密码破译员 · Enigma 海军方案核心分析员'; dd.en['stp.clarke.role'] = 'Codebreaker · key analyst for naval Enigma';
+  dd.zh['stp.clarke.era'] = '1917–1996 · 英国'; dd.en['stp.clarke.era'] = '1917–1996 · 英国';
+  dd.zh['stp.clarke.fact'] = '因女性身份长期只拿「语言学级」薪水、无法挂主管头衔——但图灵亲口说她是他最信任的同行。凯拉·奈特莉在《模仿游戏》中饰演了她。';
+  dd.en['stp.clarke.fact'] = 'Barred by her gender from a full "linguist-grade" career grade and official titles, she was nonetheless — by Turing\'s own account — the colleague he trusted most. Keira Knightley played her in The Imitation Game.';
+  dd.zh['stp.alberti.name'] = '莱昂·巴蒂斯塔·阿尔贝蒂'; dd.en['stp.alberti.name'] = 'Leon Battista Alberti';
+  dd.zh['stp.alberti.icon'] = '💿'; dd.en['stp.alberti.icon'] = '💿';
+  dd.zh['stp.alberti.role'] = '文艺复兴通才 · 密码盘发明者'; dd.en['stp.alberti.role'] = 'Renaissance polymath · inventor of the cipher disk';
+  dd.zh['stp.alberti.era'] = '1404–1472 · 意大利'; dd.en['stp.alberti.era'] = '1404–1472 · 意大利';
+  dd.zh['stp.alberti.fact'] = '1467 年他的《论密码》首次系统提出多表替换——两个同轴圆盘一转，单表频率分析瞬间失效。「西方密码学之父」的头衔由此而来。';
+  dd.en['stp.alberti.fact'] = 'His 1467 treatise introduced polyalphabetic substitution: two coaxial disks, one twist, and single-alphabet frequency analysis collapsed. Hence his title as a father of Western cryptography.';
+  dd.zh['stp.cardano.name'] = '吉罗拉莫·卡尔达诺'; dd.en['stp.cardano.name'] = 'Girolamo Cardano';
+  dd.zh['stp.cardano.icon'] = '🕳️'; dd.en['stp.cardano.icon'] = '🕳️';
+  dd.zh['stp.cardano.role'] = '数学家 · 卡当格栅发明者'; dd.en['stp.cardano.role'] = 'Mathematician · inventor of the Cardan grille';
+  dd.zh['stp.cardano.era'] = '1501–1576 · 意大利'; dd.en['stp.cardano.era'] = '1501–1576 · 意大利';
+  dd.zh['stp.cardano.fact'] = '他写的掩码格栅只需一张挖孔卡片——无孔处填上无害闲话，有孔处拼出密信。四百年后二战双方仍在用它传递情书与军令。';
+  dd.en['stp.cardano.fact'] = 'His grille is just a card with holes cut out: fill innocuous chatter through them and a hidden letter appears. Both World Wars still used grilles for love letters and military orders alike.';
+  dd.zh['stp.rijmen.name'] = '文森特·赖伊曼'; dd.en['stp.rijmen.name'] = 'Vincent Rijmen';
+  dd.zh['stp.rijmen.icon'] = '🧊'; dd.en['stp.rijmen.icon'] = '🧊';
+  dd.zh['stp.rijmen.role'] = '密码学家 · AES 联合设计者'; dd.en['stp.rijmen.role'] = 'Cryptographer · co-designer of AES';
+  dd.zh['stp.rijmen.era'] = '1975– · 比利时'; dd.en['stp.rijmen.era'] = '1975– · 比利时';
+  dd.zh['stp.rijmen.fact'] = '他与导师 Daemen 的 Rijndael 从 15 个候选中胜出成为 AES（FIPS 197，2001）——设计文档公开、免专利费，如今保护着从手机到卫星的一切。';
+  dd.en['stp.rijmen.fact'] = 'Rijndael, designed with his mentor Daemen, beat 15 candidates to become AES (FIPS 197, 2001) — publicly documented and royalty-free, it now protects everything from phones to satellites.';
+  dd.zh['stp.elgamal.name'] = '塔赫尔·埃尔加马尔'; dd.en['stp.elgamal.name'] = 'Taher ElGamal';
+  dd.zh['stp.elgamal.icon'] = '🔐'; dd.en['stp.elgamal.icon'] = '🔐';
+  dd.zh['stp.elgamal.role'] = '密码学家 · ElGamal 加密与 DSA 之父'; dd.en['stp.elgamal.role'] = 'Cryptographer · father of ElGamal encryption and DSA';
+  dd.zh['stp.elgamal.era'] = '1955–2022 · 埃及/美国'; dd.en['stp.elgamal.era'] = '1955–2022 · 埃及/美国';
+  dd.zh['stp.elgamal.fact'] = '1985 年一篇论文同时奠定 ElGamal 公钥加密与美国联邦签名标准 DSA 的地基；他还领导设计了 SSL 3.0 的早期形态——今天 HTTPS 的祖先。';
+  dd.en['stp.elgamal.fact'] = 'One 1985 paper underpins both ElGamal public-key encryption and the US signature standard DSA; he also led early SSL 3.0 work — a direct ancestor of today\'s HTTPS.';
+  dd.zh['stp.miller.name'] = '维克托·米勒'; dd.en['stp.miller.name'] = 'Victor Miller';
+  dd.zh['stp.miller.icon'] = '📈'; dd.en['stp.miller.icon'] = '📈';
+  dd.zh['stp.miller.role'] = '数学家 · 椭圆曲线密码学联合创始人'; dd.en['stp.miller.role'] = 'Mathematician · co-founder of elliptic-curve cryptography';
+  dd.zh['stp.miller.era'] = '1947– · 美国'; dd.en['stp.miller.era'] = '1947– · 美国';
+  dd.zh['stp.miller.fact'] = '1985 年他与 Koblitz 各自独立提出把椭圆曲线引入公钥密码——同样安全强度下密钥更短、速度更快，今天 TLS 握手默认都在用它。';
+  dd.en['stp.miller.fact'] = 'Independently of Koblitz in 1985, he brought elliptic curves into public-key crypto: shorter keys at equal strength and faster math — now the default inside every TLS handshake.';
+  dd.zh['stp.back.name'] = '亚当·贝克'; dd.en['stp.back.name'] = 'Adam Back';
+  dd.zh['stp.back.icon'] = '⛓️'; dd.en['stp.back.icon'] = '⛓️';
+  dd.zh['stp.back.role'] = '密码朋克 · Hashcash 发明者'; dd.en['stp.back.role'] = 'Cypherpunk · inventor of Hashcash';
+  dd.zh['stp.back.era'] = '1970– · 英国/马耳他'; dd.en['stp.back.era'] = '1970– · 英国/马耳他';
+  dd.zh['stp.back.fact'] = '1997 年的反垃圾邮件方案 Hashcash 要求发件人付出少量算力——十年后中本聪把它变成比特币的工作量证明核心，并在创世论文里引用了他。';
+  dd.en['stp.back.fact'] = 'His 1997 anti-spam scheme Hashcash made senders burn a little CPU — a decade later Satoshi turned it into Bitcoin\'s proof-of-work core and cited him in the whitepaper.';
 })();

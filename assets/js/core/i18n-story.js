@@ -703,6 +703,8 @@
   d.en['st.c10.g22'] = 'PGP Mail: hybrid encryption and the Web of Trust — the first time cryptography stood up to guns.';
   d.zh['st.c10.g23'] = '区块链矿工：工作量证明用算力买信任——中本聪把密码学变成了经济学。';
   d.en['st.c10.g23'] = 'Blockchain Miner: proof of work buys trust with hashpower — Satoshi turned cryptography into economics.';
+  d.zh['st.c10.g24'] = 'TOTP 双因素验证：时间片与共享密钥铸成的旋转锁——把每天在用的安全工具用明白。';
+  d.en['st.c10.g24'] = 'TOTP Verify: a rotating lock forged from time slices and shared secrets — master the tool you use daily.';
   d.zh['st.c8.g4'] = '地牢探险：1980 年《Rogue》开创的随机地牢，Roguelike 之祖。';
   d.en['st.c8.g4'] = 'Dungeon: the 1980 game Rogue spawned random-floor roguelikes.';
   d.zh['st.c8.g5'] = '平台跳跃：1981 年《大金刚》起跳，像素时代的看家类型。';
@@ -761,6 +763,8 @@
   /* 第十二期：stepping-switch 挂靠培根章（末位追加） */
   d.zh['st.c3.g10'] = '紫密步进开关：六元音/二十辅音双路步进可视化——输入字母看它走哪条路。';
   d.en['st.c3.g10'] = 'Stepping Switch: six-vowel/twenty-consonant dual-path stepping visualization — type a letter and watch which path it takes.';
+  d.zh['st.c11.g4'] = '零知识洞穴：不泄露咒语证明你知道咒语——Goldwasser 与 Micali 的图灵奖思想。';
+  d.en['st.c11.g4'] = 'ZKP Cave: prove you know the word without revealing it — the Turing-Award-winning idea.';
   d.zh['st.c10.g19'] = '钓鱼邮件狩猎：再强的加密也挡不住你亲手点开的链接——社会工程是密码链上最弱的一环，练出火眼金睛。';
   d.en['st.c10.g19'] = 'Phishing Hunt: the strongest crypto cannot stop your own click — social engineering is the weakest link; train the eye.';
 })();

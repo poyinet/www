@@ -15,7 +15,7 @@ window.GAME_CATEGORIES = ['经典街机', '动作反应', '逻辑谜题', '空�
 
 /* 每日破译中心：启用「📅 每日一题」的游戏（大厅今日面板 + 档案页共用）
    所有列出的游戏均实现 daily 模式：日种子确定性生成 + 解完调用 Arcade.daily.markSolved */
-window.DAILY_IDS = ['sudoku', 'enigma', 'bifid', 'slitherlink', 'hashi', 'trifid', 'bacon', 'klondike', 'caesar', 'llk', 'spotdiff', 'sectorsiege', 'sheep', 'morse', 'atbash', 'polybius', 'nihilist', 'starflag', 'autokey', 'rsa', 'shamir', 'sm4', 'acrostic', 'phishhunt', 'qkd-sim', 'pqc-match', 'stepping-switch', 'intel-assess', 'aes-lab', 'password-vault', 'pgp-mail', 'blockchain-miner'];
+window.DAILY_IDS = ['sudoku', 'enigma', 'bifid', 'slitherlink', 'hashi', 'trifid', 'bacon', 'klondike', 'caesar', 'llk', 'spotdiff', 'sectorsiege', 'sheep', 'morse', 'atbash', 'polybius', 'nihilist', 'starflag', 'autokey', 'rsa', 'shamir', 'sm4', 'acrostic', 'phishhunt', 'qkd-sim', 'pqc-match', 'stepping-switch', 'intel-assess', 'aes-lab', 'password-vault', 'pgp-mail', 'blockchain-miner', 'zkp-cave', 'totp-verify'];
 
 window.GAMES = [
   /* ---------- 经典街机 ---------- */
@@ -884,5 +884,19 @@ window.GAMES = [
     icon: '⛏️', path: 'games/blockchain-miner/index.html',
     mobile: 'ok', bestMode: 'max',
     lvl: 'mid', time: '5min',
+  },
+  {
+    id: 'zkp-cave', title: '零知识洞穴', category: '密码破译',
+    desc: '第十三期 · Ali Baba 洞穴三轮交互证明：不泄露咒语本身证明你知道咒语——图灵奖的诞生地。',
+    icon: '🕳️', path: 'games/zkp-cave/index.html',
+    mobile: 'ok', bestMode: 'max',
+    lvl: 'easy', time: '5min',
+  },
+  {
+    id: 'totp-verify', title: 'TOTP 双因素验证', category: '密码破译',
+    desc: '第十三期 · 亲手计算会旋转的六位验证码：时间片、共享密钥、SIM 劫持攻防与 Passkey 后继。',
+    icon: '📱', path: 'games/totp-verify/index.html',
+    mobile: 'ok', bestMode: 'max',
+    lvl: 'easy', time: '5min',
   }
 ];

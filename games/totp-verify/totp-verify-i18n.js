@@ -1,0 +1,38 @@
+/* 破译 DECODE ARCADE · totp-verify 游戏内文案（zh/en 对称，占位符一致） */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.totp-verify.tutTitle'] = 'TOTP 双因素验证 — 玩法';
+  d.en['gs.totp-verify.tutTitle'] = 'TOTP Verify — How to Play';
+  d.zh['gs.totp-verify.tut1t'] = '目标';
+  d.en['gs.totp-verify.tut1t'] = 'Objective';
+  d.zh['gs.totp-verify.tut1'] = '两道真实计算题（用教学哈希算出当前时间片的六位码）+ 六道双因素安全题。每步答对 +25。';
+  d.en['gs.totp-verify.tut1'] = 'Two real computation steps (derive the rotating six-digit code with our teaching hash) plus six security questions. +25 per step.';
+  d.zh['gs.totp-verify.tut2t'] = 'TOTP 原理';
+  d.en['gs.totp-verify.tut2t'] = 'How TOTP works';
+  d.zh['gs.totp-verify.tut2'] = '扫码绑定后，你的手机和服务器共享同一把密钥。验证码 = 截断(HMAC(密钥, 当前时间 ÷ 30)) mod 10⁶——时间片每 30 秒轮换，码就跟着旋转。';
+  d.en['gs.totp-verify.tut2'] = 'After scanning the QR code, your phone and the server share one secret. Code = truncate(HMAC(key, now ÷ 30)) mod 10^6 — as each 30-second slice passes, the code rotates.';
+  d.zh['gs.totp-verify.tut3t'] = '计分';
+  d.en['gs.totp-verify.tut3t'] = 'Scoring';
+  d.zh['gs.totp-verify.tut3'] = '八步各 +25，满分 200——学完你会比 99% 的用户更懂自己手机上那串数字。';
+  d.en['gs.totp-verify.tut3'] = 'Eight steps, +25 each, 200 max — you will understand the digits on your phone better than 99% of users.';
+  d.zh['gs.totp-verify.helpText'] = '为什么重要：2011 年 RSA SecureID 被入侵、2019 年推特 CEO 账号被 SIM 劫持——「你知道的」会泄露，「你持有的」会丢失，双因素把两把不同的锁串在一起。Google 统计：仅加一道 SMS 验证就能挡下 100% 的自动化批量盗号。<a class="gh-link" href="../../story.html?id=modern">见编年史「数学家的反击」→</a>';
+  d.en['gs.totp-verify.helpText'] = 'Why it matters: RSA SecureID was breached in 2011 and Jack Dorsey\'s Twitter account SIM-jacked in 2019 — what you know can leak, what you hold can be lost; two-factor chains two different locks. Google\'s data: even SMS alone blocks 100% of automated bulk hijacks.<a class="gh-link" href="../../story.html?id=modern">See the Chronicle chapter "The Mathematicians Strike Back" &rarr;</a>';
+  d.zh['gs.totp-verify.dailyBtn'] = '📅 每日挑战';
+  d.en['gs.totp-verify.dailyBtn'] = '📅 Daily challenge';
+  d.zh['gs.totp-verify.prog'] = '第 {n} / {total} 步 · 得分 {score}';
+  d.en['gs.totp-verify.prog'] = 'Step {n}/{total} · Score {score}';
+  d.zh['gs.totp-verify.calcStage'] = '🧮 计算题 · 密钥 K 与时间片 T 如下';
+  d.en['gs.totp-verify.calcStage'] = '🧮 Compute · key K and time slice T below';
+  d.zh['gs.totp-verify.quizStage'] = '🧠 双因素问答';
+  d.en['gs.totp-verify.quizStage'] = '🧠 Two-factor quiz';
+  d.zh['gs.totp-verify.correct'] = '✓ 正确！';
+  d.en['gs.totp-verify.correct'] = '✓ Correct!';
+  d.zh['gs.totp-verify.wrong'] = '✗ 正确答案已标出';
+  d.en['gs.totp-verify.wrong'] = '✗ The right answer is marked';
+  d.zh['gs.totp-verify.nextBtn'] = '下一步 →';
+  d.en['gs.totp-verify.nextBtn'] = 'Next →';
+  d.zh['gs.totp-verify.done'] = '验证通过！最终得分 {score}。';
+  d.en['gs.totp-verify.done'] = 'Verified! Final score {score}.';
+  d.zh['gs.totp-verify.againBtn'] = '↻ 再来一轮';
+  d.en['gs.totp-verify.againBtn'] = '↻ Play again';
+})();

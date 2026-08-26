@@ -346,6 +346,7 @@ Arcade.i18n.dicts = {
     'g.jefferson-disk.t': '杰斐逊转轮', 'g.jefferson-disk.d': '六片乱序圆盘排成棒——总统的发明成为美军 M-94。',
     'g.side-channel-lab.t': '侧信道实验室', 'g.side-channel-lab.d': '不破算法只看时序——从耗时直方图逐位还原口令。',
     'g.homomorphic-lab.t': '同态加密实验室', 'g.homomorphic-lab.d': '密文上直接计算——云端不窥明文完成全部运算。',
+    'g.homophonic.t': '同音替换', 'g.homophonic.d': '多替身卡摊平频率直方图——文艺复兴对抗统计破译的秘诀。',
     'g.qkd-sim.t': 'QKD 密钥分发模拟',     'g.qkd-sim.d': 'BB84 协议模拟：选基测量光子、筛选密钥、比对 QBER 揪出窃听者 Eve。',
     'g.pqc-match.t': '后量子迁移配对', 'g.pqc-match.d': '把经典密码算法与其后量子继任者配对——NIST 2024 标准速记。',
     'g.stepping-switch.t': '紫密步进开关',     'g.stepping-switch.d': '六元音/二十辅音双路步进可视化——理解 Purple 密码机的核心设计。',
@@ -746,6 +747,7 @@ Arcade.i18n.dicts = {
     'g.jefferson-disk.t': 'Jefferson Disk', 'g.jefferson-disk.d': 'Six scrambled rings in a bar — a president\'s invention, later the Army\'s M-94.',
     'g.side-channel-lab.t': 'Side-Channel Lab', 'g.side-channel-lab.d': 'Skip the algebra, read the timing — recover a password from six traces.',
     'g.homomorphic-lab.t': 'Homomorphic Lab', 'g.homomorphic-lab.d': 'Compute on ciphertext — the cloud calculates without seeing anything.',
+    'g.homophonic.t': 'Homophonic', 'g.homophonic.d': 'Dozens of aliases flatten the histogram — the Renaissance answer to statistics.',
     'g.qkd-sim.t': 'QKD Simulator',     'g.qkd-sim.d': 'BB84 protocol simulation: choose bases, measure photons, sift keys and compare QBER to catch Eve.',
     'g.pqc-match.t': 'Post-Quantum Matching', 'g.pqc-match.d': 'Pair classical algorithms with their PQ successors — NIST 2024 standards quick reference.',
     'g.stepping-switch.t': 'Purple Stepping Switch', 'g.stepping-switch.d': 'Six-vowel/twenty-consonant dual-path stepping visualization — understanding Purple\'s core design.',
@@ -1643,4 +1645,52 @@ Arcade.i18n.dicts = {
   dd.en['stp.koblitz.era'] = '1948– · United States';
   dd.zh['stp.koblitz.fact'] = '1985 年与 Victor Miller 各自独立提出 ECC。他还是「密码学战争」中公开辩论的积极参与者，长期在越南与非洲支教数学。';
   dd.en['stp.koblitz.fact'] = 'In 1985 he independently proposed ECC alongside Victor Miller. An outspoken participant in the Crypto Wars debates, he has also spent decades teaching mathematics in Vietnam and Africa.';
+  dd.zh['stp.goldwasser.name'] = '莎菲耶·戈德瓦瑟'; dd.en['stp.goldwasser.name'] = 'Shafi Goldwasser';
+  dd.zh['stp.goldwasser.icon'] = '🏆'; dd.en['stp.goldwasser.icon'] = '🏆';
+  dd.zh['stp.goldwasser.role'] = '密码学家 · 零知识证明与量子计算安全奠基人'; dd.en['stp.goldwasser.role'] = 'Cryptographer · co-founder of zero-knowledge proofs';
+  dd.zh['stp.goldwasser.era'] = '1958– · 以色列/美国'; dd.en['stp.goldwasser.era'] = '1958– · 以色列/美国';
+  dd.zh['stp.goldwasser.fact'] = '2012 年与 Micali 因「概率加密」与「可在不泄露信息情况下证明任何计算性定理」获图灵奖——他们 1984 年的双投注加密论文也是现代公钥密码安全框架的基础。';
+  dd.en['stp.goldwasser.fact'] = 'In 2012 she shared the Turing Award for turning probable encryption and the ability to prove any computational theorem without leaking information — the 1984 paper that founded semantic security.';
+  dd.zh['stp.micali.name'] = '西尔维奥·米卡利'; dd.en['stp.micali.name'] = 'Silvio Micali';
+  dd.zh['stp.micali.icon'] = '🏆'; dd.en['stp.micali.icon'] = '🏆';
+  dd.zh['stp.micali.role'] = '密码学家 · 概率加密/零知识双图灵奖者'; dd.en['stp.micali.role'] = 'Cryptographer · probabilities and zero-knowledge, Turing Award';
+  dd.zh['stp.micali.era'] = '1955– · 以色列'; dd.en['stp.micali.era'] = '1955– · 以色列';
+  dd.zh['stp.micali.fact'] = '2012 图灵奖得主；1982 年与 Rabin 提出的公钥随机化协议以及 1990 年用于售门票的回绕协议。由他来构建可公开验证的诚实下注协议，正合其巧思。';
+  dd.en['stp.micali.fact'] = 'Turing Award 2012; his 1990 coin-tossing-stark protocols and modern transparency platform draw on the same elegant protocol design.';
+  dd.zh['stp.rackoff.name'] = '查尔斯·拉科夫'; dd.en['stp.rackoff.name'] = 'Charles Rackoff';
+  dd.zh['stp.rackoff.icon'] = '🧩'; dd.en['stp.rackoff.icon'] = '🧩';
+  dd.zh['stp.rackoff.role'] = '密码学家 · 零知识证明三合伙之一'; dd.en['stp.rackoff.role'] = 'Co-author of zero-knowledge proofs';
+  dd.zh['stp.rackoff.era'] = '1948– · 加拿大'; dd.en['stp.rackoff.era'] = '1948– · 加拿大';
+  dd.zh['stp.rackoff.fact'] = '1985 年与 Goldwasser、Micali 合写的《可证明安全性的密码学协议》论文构成了 ZKP 的完备、可靠性、零知识三大定义——他的合同游戏化演示题是证明中经典的引理论述。';
+  dd.en['stp.rackoff.fact'] = 'The 1985 paper with Goldwasser and Micali established the completeness-soundness-zero-knowledge trinity; his contract-signing protocol remains a classic.';
+  dd.zh['stp.gentry.name'] = '克雷格·金特里'; dd.en['stp.gentry.name'] = 'Craig Gentry';
+  dd.zh['stp.gentry.icon'] = '🧮'; dd.en['stp.gentry.icon'] = '🧮';
+  dd.zh['stp.gentry.role'] = '密码学家 · 全同态加密第一人'; dd.en['stp.gentry.role'] = 'First practical fully homomorphic encryption';
+  dd.zh['stp.gentry.era'] = '1976– · 美国'; dd.en['stp.gentry.era'] = '1976– · 美国';
+  dd.zh['stp.gentry.fact'] = '2009 年在斯坦福博士论文中首次提供了在任何计算上不需要解密的加密方案——当年被《泰晤士报》称为「密码学圣杯」。9 年后 Google 同态云面世。';
+  dd.en['stp.gentry.fact'] = 'His 2009 PhD dissertation gave the first encryption that allows arbitrary computation without decryption, hailed as the cryptographic holy grail.';
+  dd.zh['stp.chaum.name'] = '大卫·肖姆'; dd.en['stp.chaum.name'] = 'David Chaum';
+  dd.zh['stp.chaum.icon'] = '🪙'; dd.en['stp.chaum.icon'] = '🪙';
+  dd.zh['stp.chaum.role'] = '密码学家 · 电子现金与匿名协议之父'; dd.en['stp.chaum.role'] = 'Father of e-cash and anonymity protocols';
+  dd.zh['stp.chaum.era'] = '1955– · 美国/比利时'; dd.en['stp.chaum.era'] = '1955– · 美国/比利时';
+  dd.zh['stp.chaum.fact'] = '1981 年发表《不可追踪的邮件》开创邮件匿名学；1983 年设计盲签名，直接促成数字货币与匿名投票——他 1995 年的 DigiCash 是第一个尝试。';
+  dd.en['stp.chaum.fact'] = 'The 1981 untraceable mail paper founded anonymity research; 1983 blind signatures seeded e-cash and anonymous voting — DigiCash was his 1995 attempt.';
+  dd.zh['stp.bernstein.name'] = '丹尼尔·伯恩斯坦'; dd.en['stp.bernstein.name'] = 'Daniel J. Bernstein';
+  dd.zh['stp.bernstein.icon'] = '🦉'; dd.en['stp.bernstein.icon'] = '🦉';
+  dd.zh['stp.bernstein.role'] = '密码学家 · 曲线 25519 与 ChaCha20 之父'; dd.en['stp.bernstein.role'] = 'Creator of Curve25519, ChaCha20 and Poly1305';
+  dd.zh['stp.bernstein.era'] = '1971– · 美国'; dd.en['stp.bernstein.era'] = '1971– · 美国';
+  dd.zh['stp.bernstein.fact'] = '在他 2005 年设计 Curve25519 之前，椭圆曲线是「专利疑云缠绕的学科」——他选择开源曲线并将其与快速常数时间实现绑定。他是现代安全实现的两位守护者之一。';
+  dd.en['stp.bernstein.fact'] = 'His 2005 Curve25519, ChaCha20 and Poly1305 became TLS 1.3 default — and his djb2 hash roams this very site.';
+  dd.zh['stp.matsui.name'] = '三宅满'; dd.en['stp.matsui.name'] = 'Mitsuru Matsui';
+  dd.zh['stp.matsui.icon'] = '🎯'; dd.en['stp.matsui.icon'] = '🎯';
+  dd.zh['stp.matsui.role'] = '密码学家 · 线性分析发明者'; dd.en['stp.matsui.role'] = 'Founder of linear cryptanalysis';
+  dd.zh['stp.matsui.era'] = '1961– · 日本'; dd.en['stp.matsui.era'] = '1961– · 日本';
+  dd.zh['stp.matsui.fact'] = '1993 年他发表线性密码分析，用 2^43 已知明文攻破 DES 16 轮；他的名字与 Biham 的差分分析并列，成为现代分组密码评估的双引擎。';
+  dd.en['stp.matsui.fact'] = 'His 1993 linear cryptanalysis broke 16-round DES with 2^43 known plaintexts; with Biham\'s differential analysis it made modern block-cipher evaluation possible.';
+  dd.zh['stp.biham.name'] = '伊莱·比哈姆'; dd.en['stp.biham.name'] = 'Eli Biham';
+  dd.zh['stp.biham.icon'] = '🔬'; dd.en['stp.biham.icon'] = '🔬';
+  dd.zh['stp.biham.role'] = '密码学家 · 差分分析发明者'; dd.en['stp.biham.role'] = 'Founder of differential cryptanalysis';
+  dd.zh['stp.biham.era'] = '1960– · 以色列'; dd.en['stp.biham.era'] = '1960– · 以色列';
+  dd.zh['stp.biham.fact'] = '1990 年与 Shamir 合作发表差分攻击，快 到 IBM 不得不承认 DES 的替换置换盒对差分具有独特防御——这是算法学会给自己设计免疫系统的第一例。';
+  dd.en['stp.biham.fact'] = 'His 1990 attack with Shamir on DES, differential analysis, proved that IBM designed the S-boxes to resist it — the first known design immune to the new attack.';
 })();

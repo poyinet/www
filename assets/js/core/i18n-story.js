@@ -874,4 +874,6 @@
   d.en['st.c10.g25'] = 'Side-Channel Lab: timing curves never lie — perfect math cannot save sloppy code.';
   d.zh['st.c10.g26'] = '同态加密实验室：密文上直接计算——云端不改一字却算出整个结果。';
   d.en['st.c10.g26'] = 'Homomorphic Lab: compute on ciphertext — the cloud calculates without seeing a thing.';
-})();
+
+  d.zh['st.c2.g15'] = '同音替换：给高频字母发多张替身卡，把频率分析摊平——文艺复兴破译与反破译的正面交锋。';
+  d.en['st.c2.g15'] = 'Homophonic: deal high-frequency letters extra aliases and flatten the histogram — the Renaissance counter-strike on frequency analysis.';})();

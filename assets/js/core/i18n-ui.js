@@ -10,11 +10,11 @@
   d.zh['glossary.title'] = '🔐 密码学词典';
   d.zh['glossary.catTheoretical'] = '🧪 理论基础'; d.en['glossary.catTheoretical'] = '🧪 Theory';
   d.zh['glossary.catPostquantum'] = '⚛️ 后量子'; d.en['glossary.catPostquantum'] = '⚛️ Post-Quantum';
-  d.zh['glossary.sub'] = '208 个术语 · 中英对照 · 边玩边懂——每个词都能在站内找到对应的游戏或章节';
+  d.zh['glossary.sub'] = '237 个术语 · 中英对照 · 边玩边懂——每个词都能在站内找到对应的游戏或章节';
   d.zh['onboard.title'] = '欢迎来到破译街机';
   d.en['onboard.title'] = 'Welcome to Decode Arcade';
-  d.zh['onboard.desc'] = '用 130 款小游戏破译人类三千年的加密与解密史——从凯撒移位到量子密钥。先试试这三款镇馆之作，或跟随 24 天学习路径稳步前进。';
-  d.en['onboard.desc'] = 'Decrypt three millennia of secrets through 130 mini-games — from Caesar shifts to quantum keys. Start with these three favorites, or follow the 24-day path.';
+  d.zh['onboard.desc'] = '用 131 款小游戏破译人类三千年的加密与解密史——从凯撒移位到量子密钥。先试试这三款镇馆之作，或跟随 24 天学习路径稳步前进。';
+  d.en['onboard.desc'] = 'Decrypt three millennia of secrets through 131 mini-games — from Caesar shifts to quantum keys. Start with these three favorites, or follow the 24-day path.';
   d.zh['onboard.path'] = '24 天学习路径';
   d.en['onboard.path'] = 'The 24-day path';
   d.zh['onboard.go'] = '✓ 开始探索';
@@ -68,7 +68,7 @@
   d.zh['artifacts.need'] = '需破译';
   d.zh['app.desc404'] = '404 页面走丢了 —— 回破译 DECODE ARCADE 大厅继续玩。';
   d.zh['err.msg'] = 'GAME OVER · 页面不存在';
-  d.zh['err.sub'] = '这张卡带被吞了，或者地址敲错了。回大厅再投一枚硬币，继续挑战 130 款小游戏吧。';
+  d.zh['err.sub'] = '这张卡带被吞了，或者地址敲错了。回大厅再投一枚硬币，继续挑战 131 款小游戏吧。';
   d.zh['err.back'] = '◀ 回大厅';
   d.zh['lobby.brand'] = '破译游戏';
   d.zh['lobby.desc'] = '密码破译街机 · 打开即玩 · 本地记录你的最高分';
@@ -101,7 +101,7 @@
   d.en['nav.people'] = 'People';
   d.en['nav.artifacts'] = 'Artifacts';
   d.en['glossary.title'] = '🔐 Cryptography Glossary';
-  d.en['glossary.sub'] = '208 terms · bilingual · learn by playing — every word maps to a game or chapter in this arcade';
+  d.en['glossary.sub'] = '237 terms · bilingual · learn by playing — every word maps to a game or chapter in this arcade';
   d.en['glossary.play'] = 'Play';
   d.en['workshop.title'] = '🔬 Cipher Workshop';
   d.en['workshop.sub'] = 'A one-of-a-kind encrypt/decrypt lab — encrypt with 16 classic ciphers, or paste ciphertext for one-click auto-cracking';
@@ -151,7 +151,7 @@
   d.en['artifacts.need'] = 'Decode';
   d.en['app.desc404'] = 'Page not found — head back to the DECODE ARCADE lobby and keep playing.';
   d.en['err.msg'] = 'GAME OVER · PAGE NOT FOUND';
-  d.en['err.sub'] = 'This cartridge got swallowed — or the address was mistyped. Head back to the lobby, drop in another coin, and keep playing 130 mini-games.';
+  d.en['err.sub'] = 'This cartridge got swallowed — or the address was mistyped. Head back to the lobby, drop in another coin, and keep playing 131 mini-games.';
   d.en['err.back'] = '◀ Back to lobby';
   d.en['lobby.brand'] = 'DECODE ARCADE';
   d.en['lobby.desc'] = 'A retro cipher arcade — open and play, best scores stored locally';

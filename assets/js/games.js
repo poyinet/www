@@ -15,7 +15,7 @@ window.GAME_CATEGORIES = ['经典街机', '动作反应', '逻辑谜题', '空�
 
 /* 每日破译中心：启用「📅 每日一题」的游戏（大厅今日面板 + 档案页共用）
    所有列出的游戏均实现 daily 模式：日种子确定性生成 + 解完调用 Arcade.daily.markSolved */
-window.DAILY_IDS = ['sudoku', 'enigma', 'bifid', 'slitherlink', 'hashi', 'trifid', 'bacon', 'klondike', 'caesar', 'llk', 'spotdiff', 'sectorsiege', 'sheep', 'morse', 'atbash', 'polybius', 'nihilist', 'starflag', 'autokey', 'rsa', 'shamir', 'sm4', 'acrostic', 'phishhunt', 'qkd-sim', 'pqc-match', 'stepping-switch', 'intel-assess', 'aes-lab', 'password-vault', 'pgp-mail', 'blockchain-miner', 'zkp-cave', 'totp-verify', 'scytale', 'alberti-disc', 'cardan-grille', 'jefferson-disk', 'side-channel-lab', 'homomorphic-lab'];
+window.DAILY_IDS = ['sudoku', 'enigma', 'bifid', 'slitherlink', 'hashi', 'trifid', 'bacon', 'klondike', 'caesar', 'llk', 'spotdiff', 'sectorsiege', 'sheep', 'morse', 'atbash', 'polybius', 'nihilist', 'starflag', 'autokey', 'rsa', 'shamir', 'sm4', 'acrostic', 'phishhunt', 'qkd-sim', 'pqc-match', 'stepping-switch', 'intel-assess', 'aes-lab', 'password-vault', 'pgp-mail', 'blockchain-miner', 'zkp-cave', 'totp-verify', 'scytale', 'alberti-disc', 'cardan-grille', 'jefferson-disk', 'side-channel-lab', 'homomorphic-lab', 'homophonic'];
 
 window.GAMES = [
   /* ---------- 经典街机 ---------- */
@@ -940,5 +940,12 @@ window.GAMES = [
     icon: '🧮', path: 'games/homomorphic-lab/index.html',
     mobile: 'ok', bestMode: 'max',
     lvl: 'mid', time: '5min',
+  },
+  {
+    id: 'homophonic', title: '同音替换', category: '密码破译',
+    desc: '第十五期 · 给高频字母发多张替身卡——让频率分析无从下手，文艺复兴对抗统计破译的秘诀。',
+    icon: '♒', path: 'games/homophonic/index.html',
+    mobile: 'ok', bestMode: 'max',
+    lvl: 'easy', time: '5min',
   }
 ];

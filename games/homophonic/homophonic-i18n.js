@@ -1,0 +1,34 @@
+/* 破译 DECODE ARCADE · homophonic 游戏内文案 */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.homophonic.tutTitle'] = '同音替换 — 玩法';
+  d.en['gs.homophonic.tutTitle'] = 'Homophonic — How to Play';
+  d.zh['gs.homophonic.tut1t'] = '目标';
+  d.en['gs.homophonic.tut1t'] = 'Objective';
+  d.zh['gs.homophonic.tut1'] = '六关：为每个字母发替身卡（数量按字母频率分配），用多替身表加密、反弹频率攻击、最后靠书签字典破译。答对 +20。';
+  d.en['gs.homophonic.tut1'] = 'Six levels: deal each letter as many aliases as its frequency deserves, encrypt with the multi-表 table, foil frequency analysis, then break via a crib dictionary. +20 per correct answer.';
+  d.zh['gs.homophonic.tut2t'] = '原理';
+  d.en['gs.homophonic.tut2t'] = 'The trick';
+  d.zh['gs.homophonic.tut2'] = '频率分析靠「E 出现最多」的统计。同音替换给 E 发 12 张卡、Z 发 1 张——同样大小写，密文里 E 的位置被混淆，统计不再可靠。';
+  d.en['gs.homophonic.tut2'] = 'Frequency analysis bets on "E appears most." Homophonic substitution deals E twelve aliases and Z one — the ciphertext no longer shows the tell, and statistics fail.';
+  d.zh['gs.homophonic.tut3t'] = '计分';
+  d.en['gs.homophonic.tut3t'] = 'Scoring';
+  d.zh['gs.homophonic.tut3'] = '六关各 +20，满分 120。完整体会一回文艺复兴密码员的日常。';
+  d.en['gs.homophonic.tut3'] = '+20 per level, 120 max — a day in the life of a Renaissance cryptographer.';
+  d.zh['gs.homophonic.helpText'] = '为什么重要：文艺复兴的密码员把同音码表藏在名词义整理码簿里，让频率分析走了两百年弯路——直到 19 世纪卡西斯基与《密码学新论》用周期探测才真正把它拉下马。<a class="gh-link" href="../../story.html?id=arab">见编年史「阿拉伯的破译者」→</a>';
+  d.en['gs.homophonic.helpText'] = 'Why it matters: Renaissance clerk-keepers hid homophones inside their nomenclators and sent frequency analysis off course for two centuries — Kasiski\'s period detection and the 19th-century treatises finally unmasked them.<a class="gh-link" href="../../story.html?id=arab">See the Chronicle chapter "The Arab Cryptanalysts" &rarr;</a>';
+  d.zh['gs.homophonic.dailyBtn'] = '📅 每日挑战';
+  d.en['gs.homophonic.dailyBtn'] = '📅 Daily challenge';
+  d.zh['gs.homophonic.prog'] = '第 {n} / {total} 关 · 得分 {score}';
+  d.en['gs.homophonic.prog'] = 'Level {n}/{total} · Score {score}';
+  d.zh['gs.homophonic.correct'] = '✓ 正确！';
+  d.en['gs.homophonic.correct'] = '✓ Correct!';
+  d.zh['gs.homophonic.wrong'] = '✗ 正确答案已标出';
+  d.en['gs.homophonic.wrong'] = '✗ The right answer is marked';
+  d.zh['gs.homophonic.nextBtn'] = '下一关 →';
+  d.en['gs.homophonic.nextBtn'] = 'Next →';
+  d.zh['gs.homophonic.done'] = '码表完工！最终得分 {score}。';
+  d.en['gs.homophonic.done'] = 'Table built! Final score {score}.';
+  d.zh['gs.homophonic.againBtn'] = '↻ 重编一张';
+  d.en['gs.homophonic.againBtn'] = '↻ Deal again';
+})();

@@ -15,7 +15,7 @@ window.GAME_CATEGORIES = ['经典街机', '动作反应', '逻辑谜题', '空�
 
 /* 每日破译中心：启用「📅 每日一题」的游戏（大厅今日面板 + 档案页共用）
    所有列出的游戏均实现 daily 模式：日种子确定性生成 + 解完调用 Arcade.daily.markSolved */
-window.DAILY_IDS = ['sudoku', 'enigma', 'bifid', 'slitherlink', 'hashi', 'trifid', 'bacon', 'klondike', 'caesar', 'llk', 'spotdiff', 'sectorsiege', 'sheep', 'morse', 'atbash', 'polybius', 'nihilist', 'starflag', 'autokey', 'rsa', 'shamir', 'sm4', 'acrostic', 'phishhunt', 'qkd-sim', 'pqc-match', 'stepping-switch', 'intel-assess'];
+window.DAILY_IDS = ['sudoku', 'enigma', 'bifid', 'slitherlink', 'hashi', 'trifid', 'bacon', 'klondike', 'caesar', 'llk', 'spotdiff', 'sectorsiege', 'sheep', 'morse', 'atbash', 'polybius', 'nihilist', 'starflag', 'autokey', 'rsa', 'shamir', 'sm4', 'acrostic', 'phishhunt', 'qkd-sim', 'pqc-match', 'stepping-switch', 'intel-assess', 'aes-lab', 'password-vault'];
 
 window.GAMES = [
   /* ---------- 经典街机 ---------- */
@@ -854,6 +854,20 @@ window.GAMES = [
     id: 'phishhunt', title: '钓鱼邮件狩猎', category: '密码破译',
     desc: '第八期 · 真假邮件八连判：仿冒域名、回复错位、恐慌话术——社会工程是密码链最弱一环，练出火眼金睛。',
     icon: '🎣', path: 'games/phishhunt/index.html',
+    mobile: 'ok', bestMode: 'max',
+    lvl: 'easy', time: '5min',
+  },
+  {
+    id: 'aes-lab', title: 'AES 轮函数实验室', category: '密码破译',
+    desc: '第十三期 · SubBytes→ShiftRows→MixColumns→AddRoundKey：真实 S 盒与 GF(2^8) 运算，亲手驱动 AES 状态矩阵的演化。',
+    icon: '🧊', path: 'games/aes-lab/index.html',
+    mobile: 'ok', bestMode: 'max',
+    lvl: 'hard', time: '5min',
+  },
+  {
+    id: 'password-vault', title: '口令保险库', category: '密码破译',
+    desc: '第十三期 · 强度判定与存储方案八连题：长短语的熵优势、盐对抗彩虹表、Argon2 的慢工出细活。',
+    icon: '🗝️', path: 'games/password-vault/index.html',
     mobile: 'ok', bestMode: 'max',
     lvl: 'easy', time: '5min',
   }

@@ -1,0 +1,38 @@
+/* 破译 DECODE ARCADE · password-vault 游戏内文案（zh/en 对称，占位符一致） */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.password-vault.tutTitle'] = '口令保险库 — 玩法';
+  d.en['gs.password-vault.tutTitle'] = 'Password Vault — How to Play';
+  d.zh['gs.password-vault.tut1t'] = '目标';
+  d.en['gs.password-vault.tut1t'] = 'Objective';
+  d.zh['gs.password-vault.tut1'] = '八道真实场景题：判定口令强度、替网站选对存储方案、看懂盐与慢哈希的攻防。答对 +20。';
+  d.en['gs.password-vault.tut1'] = 'Eight real-world scenarios: rate password strength, pick the right storage scheme, and understand salt versus rainbow tables. +20 per correct answer.';
+  d.zh['gs.password-vault.tut2t'] = '核心原则';
+  d.en['gs.password-vault.tut2t'] = 'The core principles';
+  d.zh['gs.password-vault.tut2'] = '熵随长度指数增长——长短语胜过复杂短串；口令绝不能明文存储；哈希必须加盐；存储用 bcrypt/Argon2 这类故意慢的 KDF，而不是裸 MD5/SHA。';
+  d.en['gs.password-vault.tut2'] = 'Entropy grows exponentially with length — long phrases beat short complex strings; never store plaintext; always salt hashes; use deliberately slow KDFs like bcrypt/Argon2, never bare MD5/SHA.';
+  d.zh['gs.password-vault.tut3t'] = '计分';
+  d.en['gs.password-vault.tut3t'] = 'Scoring';
+  d.zh['gs.password-vault.tut3'] = '每题答对 +20 分；答错会展示讲解。八题满分 160。';
+  d.en['gs.password-vault.tut3'] = '+20 per correct answer; wrong picks show the reasoning. Eight questions, 160 max.';
+  d.zh['gs.password-vault.helpText'] = '为什么重要：口令是大多数人每天使用的唯一密码系统，而它恰恰是最常被搞坏的一环——2012 年 LinkedIn 泄露的 650 万条无盐 SHA-1 口令在数天内被大部分破解，推动全行业转向加盐慢哈希。<a class="gh-link" href="../../story.html?id=modern">见编年史「数学家的反击」→</a>';
+  d.en['gs.password-vault.helpText'] = 'Why it matters: passwords are the only crypto most people touch daily — and the most often broken. LinkedIn\'s 2012 leak of 6.5M unsalted SHA-1 hashes was largely cracked within days, pushing the industry toward salted slow hashing.<a class="gh-link" href="../../story.html?id=modern">See the Chronicle chapter "The Mathematicians Strike Back" &rarr;</a>';
+  d.zh['gs.password-vault.dailyBtn'] = '📅 每日挑战';
+  d.en['gs.password-vault.dailyBtn'] = '📅 Daily challenge';
+  d.zh['gs.password-vault.prog'] = '第 {n} / {total} 题 · 得分 {score}';
+  d.en['gs.password-vault.prog'] = 'Question {n}/{total} · Score {score}';
+  d.zh['gs.password-vault.tagStrength'] = '场景一 · 强度判定';
+  d.en['gs.password-vault.tagStrength'] = 'Scenario · strength check';
+  d.zh['gs.password-vault.tagStorage'] = '场景二 · 存储与防御';
+  d.en['gs.password-vault.tagStorage'] = 'Scenario · storage & defense';
+  d.zh['gs.password-vault.correct'] = '✓ 正确！';
+  d.en['gs.password-vault.correct'] = '✓ Correct!';
+  d.zh['gs.password-vault.wrong'] = '✗ 正确答案已标出';
+  d.en['gs.password-vault.wrong'] = '✗ The right answer is marked';
+  d.zh['gs.password-vault.nextBtn'] = '下一题 →';
+  d.en['gs.password-vault.nextBtn'] = 'Next →';
+  d.zh['gs.password-vault.done'] = '完成！最终得分 {score}。';
+  d.en['gs.password-vault.done'] = 'Done! Final score {score}.';
+  d.zh['gs.password-vault.againBtn'] = '↻ 再来一轮';
+  d.en['gs.password-vault.againBtn'] = '↻ Play again';
+})();

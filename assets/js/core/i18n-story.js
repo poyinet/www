@@ -695,6 +695,10 @@
   d.en['st.c7.g6'] = 'Four in a Row: the 1974 gravity-drop connect-four classic.';
   d.zh['st.c7.g7'] = '情报评估：判断截获情报的可信度——哪些是真信号，哪些是烟雾弹。破译密码只是第一步。';
   d.en['st.c7.g7'] = 'Intelligence Assessment: judge the reliability of intercepted reports — real signal or smoke screen?';
+  d.zh['st.c10.g20'] = 'AES 轮函数实验室：真实 S 盒与 GF(2^8) 列混淆——亲手驱动现代分组密码的心跳。';
+  d.en['st.c10.g20'] = 'AES Round Lab: real S-box and GF(2^8) mixing — drive the heartbeat of modern block ciphers yourself.';
+  d.zh['st.c10.g21'] = '口令保险库：熵、盐与慢哈希——把每天都在用的那套密码系统真正用对。';
+  d.en['st.c10.g21'] = 'Password Vault: entropy, salt and slow hashing — finally get right the crypto you use every day.';
   d.zh['st.c8.g4'] = '地牢探险：1980 年《Rogue》开创的随机地牢，Roguelike 之祖。';
   d.en['st.c8.g4'] = 'Dungeon: the 1980 game Rogue spawned random-floor roguelikes.';
   d.zh['st.c8.g5'] = '平台跳跃：1981 年《大金刚》起跳，像素时代的看家类型。';

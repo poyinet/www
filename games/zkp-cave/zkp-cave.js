@@ -98,7 +98,7 @@ window.GAME_TUTORIAL_STEPS = [
   var QIDX = [0, 1, 2, 3, 4];
 
   var idx = 0, score = 0, answered = false, finished = false,
-      enteredSide = null, demandSide = null,
+      enteredSide = null, demandSide = null, emergedThisRound = false,
       curQ = null, curOpts = [], curA = 0,
       dailyMode = false, startTs = 0, rnd = Math.random;
 
@@ -109,7 +109,7 @@ window.GAME_TUTORIAL_STEPS = [
 
   /* ---------- 洞穴步 ---------- */
   function renderCave(roundNo) {
-    enteredSide = null; demandSide = null;
+    enteredSide = null; demandSide = null; emergedThisRound = false;
     stageEl.textContent = fmt('gs.zkp-cave.enterLbl', { n: roundNo });
     caveEl.innerHTML =
       '🕳️ 洞穴入口<br>' +
@@ -151,7 +151,8 @@ window.GAME_TUTORIAL_STEPS = [
   }
 
   function emerge() {
-    if (!enteredSide || finished) return;
+    if (!enteredSide || finished || emergedThisRound) return;
+    emergedThisRound = true;
     score += 25;
     setMsg('ok', T('gs.zkp-cave.roundOk'));
     if (Arcade.juice) Arcade.juice.win();
@@ -168,11 +169,12 @@ window.GAME_TUTORIAL_STEPS = [
     caveEl.textContent = ''; sideBtns.style.display = 'none'; sideBtns.innerHTML = '';
     qEl.textContent = L(curQ.q);
     curOpts = curQ.opts.slice();
-    curA = 0;
+    var correctRef = curOpts[curA];
     for (var i = curOpts.length - 1; i > 0; i--) {
       var j = Math.floor(rnd() * (i + 1));
       var tmp = curOpts[i]; curOpts[i] = curOpts[j]; curOpts[j] = tmp;
     }
+    curA = curOpts.indexOf(correctRef);
     optsEl.innerHTML = '';
     curOpts.forEach(function (o, oi) {
       var b = document.createElement('button');
@@ -238,7 +240,8 @@ window.GAME_TUTORIAL_STEPS = [
   function startGame(daily) {
     idx = 0; score = 0; answered = false; finished = false; enteredSide = null;
     dailyMode = !!daily;
-    if (dailyMode) startTs = Date.now();
+    if (dailyMode) { startTs = Date.now(); rnd = mulberry(daySeed() * 31 + 71); }
+    else rnd = Math.random;
     dailyBtn.hidden = dailyMode;
     setMsg('', '');
     renderStep();

@@ -1,3 +1,5 @@
+(function () {
+'use strict';
 /* 编年史章节渲染逻辑（自 story.html 外置：SW 可缓存、HTML 减重）
    依赖（须先加载）：core/i18n.js、i18n-dict.js、i18n-story.js、games.js、glossary-data.js、stories.js */
 if (window.Arcade && Arcade.i18n) {
@@ -916,4 +918,4 @@ if (window.Arcade && Arcade.i18n) {
         }
       });
     }
-  
+})();

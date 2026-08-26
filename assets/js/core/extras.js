@@ -494,9 +494,12 @@ Arcade.ui = (function () {
         return;
       }
       if (typing || e.ctrlKey || e.metaKey || e.altKey) return;
+      if (e.repeat) return; /* 按住不连发 */
+      /* 浮层开启时 R/T 短路，避免隔层误操作底层游戏 */
+      if (document.querySelector('.tut-overlay') || (searchOv && searchOv.classList.contains('open'))) return;
       if (e.key === '/') {
-        /* 避免与游戏内「/」输入冲突：仅当页面无 canvas 游戏焦点时触发 */
-        if (!(window.Arcade && Arcade.input)) {
+        /* '/' 仅在非游戏页启用（游戏页用 Ctrl+K 或 🔍 按钮） */
+        if (!document.body.hasAttribute('data-game-id')) {
           e.preventDefault();
           if (Arcade.ui && Arcade.ui.toggleSearch) Arcade.ui.toggleSearch();
         }

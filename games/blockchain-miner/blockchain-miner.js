@@ -100,7 +100,7 @@ window.GAME_TUTORIAL_STEPS = [
     '<div class="bm-hash" id="bm-hash"></div>' +
     '<div class="bm-tries" id="bm-tries"></div>' +
     '<div class="bm-btns" id="bm-minebtns">' +
-    '  <button class="btn yellow" id="bm-hash">' + T('gs.blockchain-miner.hashBtn') + '</button>' +
+    '  <button class="btn yellow" id="bm-hashbtn">' + T('gs.blockchain-miner.hashBtn') + '</button>' +
     '  <button class="btn pink" id="bm-auto">' + T('gs.blockchain-miner.autoBtn') + '</button>' +
     '</div>' +
     '<div class="bm-q" id="bm-q"></div>' +
@@ -114,7 +114,7 @@ window.GAME_TUTORIAL_STEPS = [
   var $ = function (id) { return wrap.querySelector('#' + id); };
   var progEl = $('bm-prog'), stageEl = $('bm-stage'), blockEl = $('bm-block'),
       hashEl = $('bm-hash'), triesEl = $('bm-tries'), mineBtns = $('bm-minebtns'),
-      hashB = $('bm-hash'), autoB = $('bm-auto'), qEl = $('bm-q'),
+      hashB = $('bm-hashbtn'), autoB = $('bm-auto'), qEl = $('bm-q'),
       optsEl = $('bm-opts'), msgEl = $('bm-msg'), explEl = $('bm-expl'),
       nextB = $('bm-next'), dailyBtn = $('bm-daily');
 
@@ -191,11 +191,12 @@ window.GAME_TUTORIAL_STEPS = [
     mineBtns.style.display = 'none';
     qEl.textContent = L(curQ.q);
     curOpts = curQ.opts.slice();
-    curA = 0;
+    var correctRef = curOpts[curA];
     for (var i = curOpts.length - 1; i > 0; i--) {
       var j = Math.floor(rnd() * (i + 1));
       var tmp = curOpts[i]; curOpts[i] = curOpts[j]; curOpts[j] = tmp;
     }
+    curA = curOpts.indexOf(correctRef);
     optsEl.innerHTML = '';
     curOpts.forEach(function (o, oi) {
       var b = document.createElement('button');

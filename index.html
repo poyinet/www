@@ -306,6 +306,7 @@
     .ob-card { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-main, #dcdce8); text-decoration: none; border: 1px solid rgba(255,255,255,.2); border-radius: 20px; padding: 7px 14px; }
     .ob-card:hover { border-color: rgba(0,240,255,.6); color: var(--neon-cyan, #00f0ff); }
     .ob-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    @media (max-width: 760px) { .ob-overlay { bottom: calc(56px + env(safe-area-inset-bottom)); padding-left: 8px; padding-right: 8px; } }
     @media (max-width: 480px) { .ob-cards { gap: 6px; } .ob-card { font-size: 11px; padding: 6px 10px; } }
   </style>
 </body>

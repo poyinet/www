@@ -148,11 +148,12 @@ window.GAME_TUTORIAL_STEPS = [
     stageEl.textContent = L(curQ.stage);
     qEl.textContent = L(curQ.q);
     curOpts = curQ.opts.slice();
-    curA = 0;
+    var correctRef = curOpts[curA];
     for (var i = curOpts.length - 1; i > 0; i--) {
       var j = Math.floor(rnd() * (i + 1));
       var tmp = curOpts[i]; curOpts[i] = curOpts[j]; curOpts[j] = tmp;
     }
+    curA = curOpts.indexOf(correctRef);
     optsEl.innerHTML = '';
     curOpts.forEach(function (o, oi) {
       var b = document.createElement('button');

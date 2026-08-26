@@ -221,14 +221,19 @@ window.GAME_TUTORIAL_STEPS = [
     curQ = rounds[ri.r][ri.s];
     curQ._a = curQ.a;
     stageEl.textContent = T('gs.aes-lab.' + curQ.opKey);
-    matEl.innerHTML = matStr(state, ri.s === 3 ? curQ.hot : curQ.hot);
+    matEl.innerHTML = matStr(state, curQ.hot);
     qEl.textContent = L(curQ.q);
     var opts;
     if (!curQ.opts.length) {
-      /* 密钥加计算题：动态生成选项并打乱 */
+      /* 密钥加计算题：动态生成选项（干扰项与正确值按位构造，必然互异）并打乱 */
       var stByte = state[curQ.hot];
       var correct = hex(stByte ^ curQ.keyByte);
-      opts = [correct, hex(stByte), hex((stByte + curQ.keyByte) & 0xFF)];
+      var ci = parseInt(correct, 16);
+      opts = [correct];
+      for (var w = 1; opts.length < 3 && w < 256; w++) {
+        var cand = hex(ci ^ w);
+        if (cand !== correct && opts.indexOf(cand) < 0) opts.push(cand);
+      }
       if (rnd() < 0.5) { var tmp = opts[0]; opts[0] = opts[2]; opts[2] = tmp; }
       curQ._a = opts.indexOf(correct);
     } else {

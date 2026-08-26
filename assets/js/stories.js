@@ -181,7 +181,7 @@ Arcade.stories = (function () {
      lockedByRank: 5, sources: ['Stephen Wiesner, Conjugate Coding (written c. 1970; published in SIGACT News, 1983)', 'C.H. Bennett & G. Brassard, Quantum Cryptography: Public Key Distribution and Coin Tossing (IEEE ICCSSP, 1984)', 'NIST, FIPS 203/204/205: Post-Quantum Cryptography Standards (2024)'], reads: ['Simon Singh, The Code Book', 'Scott Aaronson, Quantum Computing Since Democritus (2013)', 'NIST IR 8547: Transition to Post-Quantum Cryptography Standards (2024)'] }
   ];
 
-  /* 人物志（生平/金句文案在 stp.* 字典） */
+  /* 人物志（57 人；生平/金句文案在 stp.* 字典） */
   window.PEOPLE = [
     'champollion', 'caesar', 'kindi', 'bacon', 'vigenere', 'payne',
     'turing', 'welchman', 'rochefort', 'friedman', 'flowers', 'shannon', 'rosenberg',

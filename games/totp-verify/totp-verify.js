@@ -147,7 +147,7 @@ window.GAME_TUTORIAL_STEPS = [
   function tick() {
     demoSlice++;
     codeEl.textContent = totp(demoKey, demoSlice);
-    clockEl.textContent = '⏱ time-slice #' + demoSlice + ' (demo ×10000)';
+    clockEl.textContent = L({ zh: '⏱ 时间片 #' + demoSlice + '（演示加速 ×10000）', en: '⏱ time-slice #' + demoSlice + ' (demo x10000)' });
   }
 
   /* ---------- 计算步 ---------- */
@@ -200,11 +200,12 @@ window.GAME_TUTORIAL_STEPS = [
     stageEl.textContent = T('gs.totp-verify.quizStage');
     qEl.textContent = L(curQ.q);
     curOpts = curQ.opts.slice();
-    curA = 0;
+    var correctRef = curOpts[curA];
     for (var i = curOpts.length - 1; i > 0; i--) {
       var j = Math.floor(rnd() * (i + 1));
       var tmp = curOpts[i]; curOpts[i] = curOpts[j]; curOpts[j] = tmp;
     }
+    curA = curOpts.indexOf(correctRef);
     optsEl.innerHTML = '';
     curOpts.forEach(function (o, oi) {
       var b = document.createElement('button');

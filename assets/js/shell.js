@@ -119,6 +119,7 @@ Arcade.shell = (function () {
   }
 
   function showTutorial() {
+    if (document.querySelector('.tut-overlay')) return; /* 已开不叠加 */
     var steps = window.GAME_TUTORIAL_STEPS;
     if (!steps || !steps.length) {
       if (Arcade.ui) Arcade.ui.toast(Arcade.i18n ? Arcade.i18n.t('shell.noTutorial') : '该游戏暂未配置教程', 'warn');

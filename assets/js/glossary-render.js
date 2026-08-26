@@ -7,6 +7,8 @@
       classical: { key: 'glossary.catClassical', zh: '🏛️ 古典密码', en: '🏛️ Classical Ciphers' },
       methods: { key: 'glossary.catMethods', zh: '🔍 破译方法', en: '🔍 Breaking Methods' },
       modern: { key: 'glossary.catModern', zh: '💻 现代密码', en: '💻 Modern Cryptography' },
+      theoretical: { key: 'glossary.catTheoretical', zh: '🧪 理论基础', en: '🧪 Theory' },
+      postquantum: { key: 'glossary.catPostquantum', zh: '⚛️ 后量子', en: '⚛️ Post-Quantum' },
       protocol: { key: 'glossary.catProtocol', zh: '🛡️ 协议与工程', en: '🛡️ Protocols & Engineering' },
       people: { key: 'glossary.catPeople', zh: '👤 人物与机构', en: '👤 People & Places' },
       encoding: { key: 'glossary.catEncoding', zh: '📡 隐写与编码', en: '📡 Steganography & Codes' }
@@ -49,7 +51,7 @@
     function build() {
       if (!root) return;
       var html = '';
-      ['basic', 'classical', 'methods', 'modern', 'protocol', 'people', 'encoding'].forEach(function (cat) {
+      ['basic', 'classical', 'methods', 'modern', 'protocol', 'people', 'encoding', 'theoretical', 'postquantum'].forEach(function (cat) {
         var items = window.GLOSSARY.filter(function (g) { return g.cat === cat; });
         if (!items.length) return;
         var catMeta = CATS[cat];

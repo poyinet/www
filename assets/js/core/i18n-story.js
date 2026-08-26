@@ -166,6 +166,8 @@
   d.en['st.c7.next'] = 'From the Pacific to OKW headquarters — Lorenz and the first computer';
   d.zh['st.c8.next'] = '机器时代落幕，冷战登场——VENONA 与被窃听的帝国';
   d.en['st.c8.next'] = 'The machine age fades into the Cold War — VENONA and the bugged empire';
+  d.zh['st.c9.next'] = '冷战铁幕落下后，密码学从军事秘密变成全民科学——公开竞赛的时代来了。';
+  d.en['st.c9.next'] = 'After the Iron Curtain fell, cryptography turned from military secret to public science — the age of open competition began.';
   d.zh['st.backList'] = '📜 编年史';
   d.en['st.backList'] = '📜 chronicle';
   d.zh['st.finalTitle'] = '最终密语';

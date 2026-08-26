@@ -8,7 +8,9 @@
   d.zh['nav.people'] = '人物志';
   d.zh['nav.artifacts'] = '密件册';
   d.zh['glossary.title'] = '🔐 密码学词典';
-  d.zh['glossary.sub'] = '210 个术语 · 中英对照 · 边玩边懂——每个词都能在站内找到对应的游戏或章节';
+  d.zh['glossary.catTheoretical'] = '🧪 理论基础'; d.en['glossary.catTheoretical'] = '🧪 Theory';
+  d.zh['glossary.catPostquantum'] = '⚛️ 后量子'; d.en['glossary.catPostquantum'] = '⚛️ Post-Quantum';
+  d.zh['glossary.sub'] = '208 个术语 · 中英对照 · 边玩边懂——每个词都能在站内找到对应的游戏或章节';
   d.zh['onboard.title'] = '欢迎来到破译街机';
   d.en['onboard.title'] = 'Welcome to Decode Arcade';
   d.zh['onboard.desc'] = '用 124 款小游戏破译人类三千年的加密与解密史——从凯撒移位到量子密钥。先试试这三款镇馆之作，或跟随 24 天学习路径稳步前进。';
@@ -99,7 +101,7 @@
   d.en['nav.people'] = 'People';
   d.en['nav.artifacts'] = 'Artifacts';
   d.en['glossary.title'] = '🔐 Cryptography Glossary';
-  d.en['glossary.sub'] = '210 terms · bilingual · learn by playing — every word maps to a game or chapter in this arcade';
+  d.en['glossary.sub'] = '208 terms · bilingual · learn by playing — every word maps to a game or chapter in this arcade';
   d.en['glossary.play'] = 'Play';
   d.en['workshop.title'] = '🔬 Cipher Workshop';
   d.en['workshop.sub'] = 'A one-of-a-kind encrypt/decrypt lab — encrypt with 16 classic ciphers, or paste ciphertext for one-click auto-cracking';
@@ -148,8 +150,7 @@
   d.en['artifacts.sub'] = 'Beat games to unlock three thousand years of cryptographic evidence';
   d.en['artifacts.need'] = 'Decode';
   d.en['app.desc404'] = 'Page not found — head back to the DECODE ARCADE lobby and keep playing.';
-  d.en['err.msg'] = 'GAME OVER · PAGE NOT FOUND';
-  d.en['err.code'] = '404';
+  d.en['err.msg'] = 'GAME OVER · PAGE NOT FOUND';
   d.en['err.sub'] = 'This cartridge got swallowed — or the address was mistyped. Head back to the lobby, drop in another coin, and keep playing 124 mini-games.';
   d.en['err.back'] = '◀ Back to lobby';
   d.en['lobby.brand'] = 'DECODE ARCADE';
@@ -159,8 +160,7 @@
   d.en['rank.local'] = '· Local Rank';
   d.en['stats.back'] = '← Back to Lobby';
   d.en['stats.title'] = 'My Profile';
-  d.en['stats.progress'] = 'Progress';
-  d.en['stats.of'] = '/';
+  d.en['stats.progress'] = 'Progress';
   d.en['stats.cats'] = 'Category coverage';
   d.en['stats.daily'] = 'Daily Decode';
   d.en['stats.today'] = 'Done today';

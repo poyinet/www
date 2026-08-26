@@ -59,7 +59,7 @@
       d.en['stp.elgamal.bio'] = 'A Stanford PhD under Hellman, he built both encryption and signatures on discrete logarithms, then drove Netscape security and Visa\'s 3-D Secure protocol in industry.';
       d.zh['stp.elgamal.quote'] = '好的密码学应当像空气：无处不在而不被察觉。';
       d.en['stp.elgamal.quote'] = 'Good cryptography should be like air: everywhere and unnoticed.';
-      d.zh['stp.miller.bio'] = '普林斯顿与克拉克大学出身的计算复杂度学者，在 IBM 与数学研究所度过研究生涯。ECC 已写入所有现代协议，而他当年那篇会议报告只有薄薄几页。';
+      d.zh['stp.miller.bio'] = '哥伦比亚学士、哈佛博士出身的计算复杂度学者，在 IBM 与数学研究所度过研究生涯。ECC 已写入所有现代协议，而他当年那篇会议报告只有薄薄几页。';
       d.en['stp.miller.bio'] = 'A complexity theorist trained at Princeton and Clark, with a career across IBM and mathematics institutes. ECC now sits inside every modern protocol — born from a conference paper of only a few pages.';
       d.zh['stp.miller.quote'] = '曲线上的点，藏着最快的锁。';
       d.en['stp.miller.quote'] = 'The fastest locks hide among points on a curve.';
@@ -340,7 +340,7 @@
    ============================================================ */
 (function () {
   var dd = Arcade.i18n.dicts;
-  dd.zh['stp.wangxy.bio'] = '王小云，中国密码学家，山东大学本科至博士，先后任教于山东大学与清华大学。2004 年与团队公布 MD5、HAVAL 等多个哈希函数的碰撞攻击，次年扩展至 SHA-1；2005 年获陈嘉庚科学奖，后当选中国科学院院士，并参与设计中国 SM3 哈希标准。';
+  dd.zh['stp.wangxy.bio'] = '王小云，中国密码学家，山东大学本科至博士，先后任教于山东大学与清华大学。2004 年与团队公布 MD5、HAVAL 等多个哈希函数的碰撞攻击，次年扩展至 SHA-1；2006 年获陈嘉庚科学奖，后当选中国科学院院士，并参与设计中国 SM3 哈希标准。';
   dd.en['stp.wangxy.bio'] = 'Xiaoyun Wang, Chinese cryptographer (Shandong University PhD; later Shandong and Tsinghua). In 2004 her team announced collision attacks on MD5 and several other hash functions, extending to SHA-1 the next year. A Cheung Kong scholar and CAS academician, she helped shape China\'s SM3 hash standard.';
   dd.zh['stp.wangxy.quote'] = '哈希函数的安全，不能只靠「至今没人撞上」。（意译，编者拟）';
   dd.en['stp.wangxy.quote'] = '"The security of a hash function cannot rest on \"nobody has collided with it yet\"." (paraphrased)';

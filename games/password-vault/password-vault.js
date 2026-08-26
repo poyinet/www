@@ -46,7 +46,7 @@ window.GAME_TUTORIAL_STEPS = [
       q: { zh: '四个随机单词组成的长短语，判定其强度：', en: 'A long phrase of four random words. Rate its strength:' },
       opts: [
         { zh: '中——全是词典词，必被字典攻破', en: 'Medium — all dictionary words, doomed by a dictionary attack' },
-        { zh: '强——熵随长度指数增长，约 60+ 比特且好记', en: 'Strong — entropy grows exponentially with length, ~60+ bits and memorable' },
+        { zh: '强——熵随长度指数增长，约 45–52 比特且好记', en: 'Strong — entropy grows exponentially with length, ~45–52 bits and memorable' },
         { zh: '弱——没有符号和数字', en: 'Weak — no symbols or digits' }
       ],
       a: 1,
@@ -157,11 +157,12 @@ window.GAME_TUTORIAL_STEPS = [
     qEl.textContent = L(curQ.q);
     /* 打乱选项 */
     curOpts = curQ.opts.slice();
-    curA = 0;
+    var correctRef = curOpts[curA];
     for (var i = curOpts.length - 1; i > 0; i--) {
       var j = Math.floor(rnd() * (i + 1));
       var tmp = curOpts[i]; curOpts[i] = curOpts[j]; curOpts[j] = tmp;
     }
+    curA = curOpts.indexOf(correctRef);
     optsEl.innerHTML = '';
     curOpts.forEach(function (o, oi) {
       var b = document.createElement('button');

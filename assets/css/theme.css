@@ -748,17 +748,7 @@ html.theme-daylight .tabbar { border-top-color: rgba(122, 91, 184, 0.28); }
 
 /* 主题① 默认 · 街机霓虹（黑底霓虹） */
 :root {
-  --bg-deep: #0a0a12;
-  --bg-panel: #12121f;
-  --bg-panel-2: #181830;
-  --neon-cyan: #00f0ff;
-  --neon-pink: #ff2d95;
-  --neon-green: #39ff14;
-  --neon-yellow: #ffe600;
-  --neon-purple: #b967ff;
-  --neon-orange: #ff9f1c;
-  --text-main: #e8e8f0;
-  --text-dim: #8a8aa0;
+  /* F4：仅保留本块独有变量，其余复用文件头部 :root（消除双份维护） */
   --accent: #00f0ff;
 }
 
@@ -779,6 +769,21 @@ html.theme-daylight {
   --text-dim: #6e6454; /* 加深保证奶油纸底上的对比度（≈4.9:1，通过 WCAG AA） */
   --accent: #2d7dd2;
   --on-accent: #ffffff; /* 亮色主题：霓虹背景上白字 */
+}
+
+/* F4：晨光主题残存深色块修复——游戏页顶栏与编年史史料框 */
+html.theme-daylight .shell-header {
+  background: rgba(253, 248, 236, .92);
+  border-bottom-color: rgba(122, 91, 184, .28);
+}
+html.theme-daylight .shell-header,
+html.theme-daylight .shell-header a,
+html.theme-daylight .shell-header button {
+  color: var(--text-main);
+}
+html.theme-daylight .sy-sources {
+  background: var(--bg-panel);
+  border-color: rgba(122, 91, 184, .28);
 }
 
 /* 晨光主题：卡片统一奶油纸底 + 浅紫边框 + 柔和投影（覆盖 .card/.game-card/.st-chapter/.jp-node/.daily-hub 等 var(--bg-panel) 卡片） */

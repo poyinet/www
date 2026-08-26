@@ -531,7 +531,9 @@
       var achvRes = Arcade.stats.check();
       statsText += ' · ' + T('lobby.achv') + ' ' + achvRes.unlocked.length + '/' + achvRes.list.length;
       achvRes.fresh.forEach(function (a) {
-        if (Arcade.ui) Arcade.ui.toast(T('stats.achvNew').replace('{n}', a.name), 'win');
+        var nm = (window.Arcade && Arcade.i18n && Arcade.i18n.t('achv.' + a.id + '.n')) || a.name;
+        if (nm.indexOf('achv.') === 0) nm = a.name; /* 键缺失回退 */
+        if (Arcade.ui) Arcade.ui.toast(T('stats.achvNew').replace('{n}', nm), 'win');
       });
     }
     stats.textContent = statsText;

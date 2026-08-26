@@ -8,7 +8,7 @@
    注意：SW 仅在 http(s) 下生效；file:// 本地打开时浏览器不注册，属预期。
    ============================================================ */
 
-var CACHE = 'decode-arcade-v35';
+var CACHE = 'decode-arcade-v36';
 var CORE_ASSETS = [
   '/',
   '/index.html',
@@ -43,6 +43,7 @@ var CORE_ASSETS = [
   '/assets/js/core/music.js',
   '/assets/js/core/input.js',
   '/assets/js/core/loop.js',
+  '/assets/js/i18n-titles.js',
   '/assets/js/games.js',
   '/assets/js/glossary-data.js',
   '/assets/js/glossary-render.js',
@@ -54,6 +55,7 @@ var CORE_ASSETS = [
   '/assets/js/stats.js',
   '/assets/js/plot.js',
   '/assets/js/stories.js',
+  '/assets/js/story-render.js',
   '/assets/js/chapter-quiz.js',
   '/assets/js/pwa.js',
   '/assets/js/prefetch.js',

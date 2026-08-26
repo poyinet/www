@@ -401,6 +401,7 @@
     if (Arcade.daily) {
       var dailySec = document.createElement('section');
       dailySec.className = 'lobby-section';
+      dailySec.id = 'daily'; /* E7：PWA 每日捷径锚点 */
       var dTitle = document.createElement('h2');
       dTitle.className = 'section-title neon-text purple';
       var streak = Arcade.daily.streak();
@@ -574,5 +575,13 @@
   flushSeen();
 
   buildControls();
-  render();
+  
+  /* E7：#daily 锚点——PWA 每日破译捷径落地到每日中心区块 */
+  if (window.location && window.location.hash === '#daily') {
+    setTimeout(function () {
+      var el = document.getElementById('daily');
+      if (el && el.scrollIntoView) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 300);
+  }
+render();
 })();

@@ -98,6 +98,13 @@
     .qz-extend { margin-top: 16px; display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
     .qz-extend a { font-size: 12px; color: var(--neon-cyan); text-decoration: none; }
     .qz-extend a:hover { color: var(--neon-green); }
+    /* E4：本轮错题回顾 */
+    .qz-review { margin: 14px auto 0; max-width: 420px; text-align: left; font-size: 12px; }
+    .qz-review summary { cursor: pointer; color: var(--neon-pink); font-size: 12px; margin-bottom: 6px; }
+    .qz-rw { border: 1px dashed rgba(255,255,255,.15); border-radius: 8px; padding: 8px 10px; margin-top: 6px; line-height: 1.8; }
+    .qz-rw .rw-q { color: var(--text-main); }
+    .qz-rw .rw-a { color: var(--neon-green); }
+    .qz-rw .rw-x { color: var(--text-dim); }
     .qz-ladder .r { display: flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 8px; font-size: 12px; color: var(--text-dim); border: 1px solid rgba(255,255,255,.06); background: rgba(0,0,0,.2); }
     .qz-ladder .r.on { border-color: rgba(57,255,20,.45); background: rgba(57,255,20,.07); color: var(--neon-green); }
     .qz-ladder .r .pct { margin-left: auto; font-family: var(--font-pixel); font-size: 9px; color: var(--neon-yellow); }
@@ -152,7 +159,7 @@
         : QUIZ.BANK.length + ' 道题 · ' + QUIZ.RANKS.length + ' 个段位 · 每轮 10 题';
 
       var root = document.getElementById('qz-root');
-      var state = { list: [], idx: 0, score: 0, practice: false };
+      var state = { list: [], idx: 0, score: 0, practice: false, roundWrong: [] };
 
       function lvName(lvl) {
         return T('quiz.lvl' + lvl);
@@ -160,10 +167,10 @@
 
       /* 开始屏 */
       function startNormal() {
-        state.list = QUIZ.draw10(); state.idx = 0; state.score = 0; state.practice = false; renderQ();
+        state.list = QUIZ.draw10(); state.idx = 0; state.score = 0; state.practice = false; state.roundWrong = []; renderQ();
       }
       function startPractice() {
-        state.list = QUIZ.drawWrong(10); state.idx = 0; state.score = 0; state.practice = true; renderQ();
+        state.list = QUIZ.drawWrong(10); state.idx = 0; state.score = 0; state.practice = true; state.roundWrong = []; renderQ();
       }
       function renderStart() {
         var html = '<div class="qz-start">';
@@ -217,6 +224,22 @@
         }
       }
 
+      /* E1：数字键 1-4 选择答案 */
+      if (!window.__arcadeQuizDigitKeys) {
+        window.__arcadeQuizDigitKeys = true;
+        window.addEventListener('keydown', function (e) {
+          var tag = ((e.target && e.target.tagName) || '').toLowerCase();
+          if (tag === 'input' || tag === 'textarea') return;
+          var n = '1234'.indexOf(e.key);
+          if (n < 0) return;
+          var btn = root.querySelector('.qz-opt[data-i="' + n + '"]');
+          if (btn && !btn.classList.contains('right') && !btn.classList.contains('wrong')) {
+            e.preventDefault();
+            answer({ currentTarget: btn });
+          }
+        });
+      }
+
       /* 作答 */
       function answer(ev) {
         var btn = ev.currentTarget;
@@ -226,7 +249,7 @@
         var qd = isEn ? q.en : q.zh;
         var right = i === q.a;
         if (right) { state.score++; QUIZ.markRight(q); }
-        else QUIZ.markWrong(q);
+        else { QUIZ.markWrong(q); state.roundWrong.push(q); }
 
         var opts = root.querySelectorAll('.qz-opt');
         for (var k = 0; k < opts.length; k++) {
@@ -277,6 +300,15 @@
             '<div class="rank-name">' + (isEn ? r.en : r.zh) + '</div>' +
             '<div class="rank-sub">' + T('quiz.resultSub') + '</div>' +
             '<div class="qz-ladder">' + ladder + '</div>' +
+            (state.roundWrong.length
+              ? '<details class="qz-review"><summary>📋 ' + T('quiz.reviewWrong').replace('{n}', state.roundWrong.length) + '</summary>' +
+                state.roundWrong.map(function (w) {
+                  var wd = isEn ? w.en : w.zh;
+                  return '<div class="qz-rw"><div class="rw-q">' + wd.q + '</div>' +
+                    '<div class="rw-a">✓ ' + wd.opts[w.a] + '</div>' +
+                    '<div class="rw-x">' + wd.explain + '</div></div>';
+                }).join('') + '</details>'
+              : '') +
             '<div class="qz-extend">' +
               '<a href="glossary.html">📖 ' + T('nav.glossary') + '</a>' +
               '<a href="protocols.html">🛡️ ' + T('nav.protocols') + '</a>' +

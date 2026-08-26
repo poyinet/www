@@ -250,5 +250,63 @@
   </script>
   <script src="assets/js/pwa.js"></script>
   <script src="assets/js/prefetch.js"></script>
+  <script>
+    /* E5：首访引导——推荐位 + 学习路径入口（仅一次，localStorage 记忆） */
+    (function () {
+      var SEEN = 'arcade_onboarded';
+      try { if (localStorage.getItem(SEEN)) return; } catch (e) { return; }
+      function T(k) { return (window.Arcade && Arcade.i18n) ? Arcade.i18n.t(k) : k; }
+      function isEn() { return window.Arcade && Arcade.i18n && Arcade.i18n.getLang() === 'en'; }
+      function show() {
+        var ov = document.createElement('div');
+        ov.className = 'ob-overlay';
+        var recs = [
+          { id: 'enigma', icon: '🔐' },
+          { id: 'rsa', icon: '🔑' },
+          { id: 'bb84', icon: '⚛️' }
+        ];
+        var cards = '';
+        recs.forEach(function (r) {
+          cards += '<a class="ob-card" href="games/' + r.id + '/index.html"><span class="oi">' + r.icon + '</span>' +
+            '<span class="ot">' + T('g.' + r.id + '.t') + '</span></a>';
+        });
+        ov.innerHTML =
+          '<div class="ob-box" role="dialog" aria-label="' + T('onboard.title') + '">' +
+            '<button class="ob-close" aria-label="' + T('common.close') + '">✕</button>' +
+            '<div class="ob-kicker">🎮 DECODE ARCADE</div>' +
+            '<h2 class="ob-title">' + T('onboard.title') + '</h2>' +
+            '<p class="ob-desc">' + T('onboard.desc') + '</p>' +
+            '<div class="ob-cards">' + cards + '</div>' +
+            '<div class="ob-actions">' +
+              '<a class="btn accent" href="path.html">🗺️ ' + T('onboard.path') + '</a>' +
+              '<button class="btn green" id="ob-go">' + T('onboard.go') + '</button>' +
+            '</div>' +
+          '</div>';
+        document.body.appendChild(ov);
+        function close() {
+          if (ov.parentNode) ov.parentNode.removeChild(ov);
+          try { localStorage.setItem(SEEN, '1'); } catch (e) {}
+        }
+        ov.querySelector('#ob-go').addEventListener('click', close);
+        ov.querySelector('.ob-close').addEventListener('click', close);
+      }
+      if (document.readyState === 'complete') setTimeout(show, 600);
+      else window.addEventListener('load', function () { setTimeout(show, 600); });
+    })();
+  </script>
+  <style>
+    /* E5 首访引导：底部卡片式（不阻塞页面其他区域交互） */
+    .ob-overlay { position: fixed; left: 0; right: 0; bottom: 0; z-index: 150; display: flex; justify-content: center; padding: 12px; pointer-events: none; }
+    .ob-box { width: min(560px, 94vw); text-align: center; background: linear-gradient(180deg, rgba(20,20,34,.97), rgba(10,10,18,.95)); border: 1px solid rgba(0,240,255,.35); border-radius: 16px 16px 0 0; padding: 20px 22px 18px; box-shadow: 0 -6px 40px rgba(0,240,255,.15); pointer-events: auto; position: relative; }
+    .ob-close { position: absolute; top: 8px; right: 10px; background: none; border: none; color: var(--text-dim, #8a8aa0); font-size: 16px; cursor: pointer; }
+    .ob-kicker { font-family: var(--font-pixel, monospace); font-size: 10px; color: var(--neon-purple, #b967ff); letter-spacing: 2px; margin-bottom: 8px; }
+    .ob-title { font-size: 18px; color: var(--neon-cyan, #00f0ff); margin: 0 0 6px; }
+    .ob-desc { font-size: 12px; line-height: 1.9; color: var(--text-dim, #8a8aa0); margin: 0 auto 14px; max-width: 420px; }
+    .ob-cards { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 14px; }
+    .ob-card { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; color: var(--text-main, #dcdce8); text-decoration: none; border: 1px solid rgba(255,255,255,.2); border-radius: 20px; padding: 7px 14px; }
+    .ob-card:hover { border-color: rgba(0,240,255,.6); color: var(--neon-cyan, #00f0ff); }
+    .ob-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    @media (max-width: 480px) { .ob-cards { gap: 6px; } .ob-card { font-size: 11px; padding: 6px 10px; } }
+  </style>
 </body>
 </html>

@@ -9,6 +9,14 @@
   d.zh['nav.artifacts'] = '密件册';
   d.zh['glossary.title'] = '🔐 密码学词典';
   d.zh['glossary.sub'] = '199 个术语 · 中英对照 · 边玩边懂——每个词都能在站内找到对应的游戏或章节';
+  d.zh['onboard.title'] = '欢迎来到破译街机';
+  d.en['onboard.title'] = 'Welcome to Decode Arcade';
+  d.zh['onboard.desc'] = '用 124 款小游戏破译人类三千年的加密与解密史——从凯撒移位到量子密钥。先试试这三款镇馆之作，或跟随 24 天学习路径稳步前进。';
+  d.en['onboard.desc'] = 'Decrypt three millennia of secrets through 124 mini-games — from Caesar shifts to quantum keys. Start with these three favorites, or follow the 24-day path.';
+  d.zh['onboard.path'] = '24 天学习路径';
+  d.en['onboard.path'] = 'The 24-day path';
+  d.zh['onboard.go'] = '✓ 开始探索';
+  d.en['onboard.go'] = '✓ Start exploring';
   d.zh['glossary.play'] = '玩一玩';
   d.zh['workshop.title'] = '🔬 破译工坊';
   d.zh['workshop.sub'] = '全网独有的加密/破解二合一实验室——16 种经典算法现场加密，或粘贴密文一键自动破解';

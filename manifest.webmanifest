@@ -59,7 +59,7 @@
     {
       "name": "每日破译",
       "short_name": "每日",
-      "url": "/games.html?focus=search",
+      "url": "/games.html#daily",
       "icons": [{ "src": "/assets/icons/icon-192.png", "sizes": "192x192" }]
     }
   ]

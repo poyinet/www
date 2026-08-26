@@ -383,6 +383,7 @@ Arcade.shell = (function () {
     refreshBest: refreshBest,
     flashBest: flashBest,
     submitScore: submitScore,
-    setBestMode: setBestMode
+    setBestMode: setBestMode,
+    showTutorial: showTutorial
   };
 })();

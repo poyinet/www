@@ -140,6 +140,12 @@
     /* 史料来源（P1） */
     .sy-sources { margin-top: 22px; padding: 12px 16px; border-radius: 10px; background: rgba(0,0,0,.22); border: 1px dashed rgba(255,255,255,.14); }
 
+    /* E3：阅读进度条 + 字号控制 */
+    .sy-readbar { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 60; background: transparent; pointer-events: none; }
+    .sy-readbar i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--neon-cyan), var(--neon-purple)); transition: width .15s ease-out; }
+    .sy-fontctl button { font-family: var(--font-pixel); font-size: 11px; color: var(--text-dim); background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.18); border-radius: 6px; padding: 4px 8px; margin-left: 6px; cursor: pointer; }
+    .sy-fontctl button:hover { color: var(--neon-cyan); border-color: rgba(0,240,255,.5); }
+
     /* 本章延伸（C1 互链） */
     .sy-extend { margin-top: 22px; padding: 12px 16px; border-radius: 10px; background: rgba(0,240,255,.05); border: 1px dashed rgba(0,240,255,.25); }
     .sy-extend .sy-st { font-family: var(--font-pixel); font-size: 12px; color: var(--neon-cyan); letter-spacing: 1px; margin-bottom: 10px; }
@@ -178,10 +184,12 @@
 </head>
 <body>
   <div id="arcade-nav"></div>
+  <div class="sy-readbar" id="sy-readbar"><i></i></div>
   <div id="content" class="sy-wrap">
     <div class="sy-top">
       <a class="sy-back" href="stories.html" id="sy-back">◀ 编年史</a>
       <span class="sy-prog" id="sy-prog"></span>
+      <span class="sy-fontctl"><button id="sy-fminus" aria-label="A-">A−</button><button id="sy-fplus" aria-label="A+">A+</button></span>
     </div>
     <div id="sy-root"></div>
   </div>
@@ -342,7 +350,9 @@
         if (!GLOSS_NOTES.hasOwnProperty(term)) continue;
         var note = GLOSS_NOTES[term];
         var tip = isStoryEn ? note.en : note.zh;
-        out = out.split(term).join('<span class="sy-gloss" title="' + tip + '">' + term + '</span>');
+        /* E3：触屏/键盘可用——点击或 Enter 弹出释义 toast */
+        out = out.split(term).join('<span class="sy-gloss" tabindex="0" role="button" data-tip="' +
+          String(tip).replace(/"/g, '&quot;') + '" title="' + String(tip).replace(/"/g, '&quot;') + '">' + term + '</span>');
       }
       out = out.replace(/\u0000(\d+)\u0000/g, function (m, i) { return chips[Number(i)]; });
       return out;
@@ -362,12 +372,26 @@
       var chips = root.querySelectorAll('.sy-person');
       for (var i = 0; i < chips.length; i++) {
         (function (el) {
-          el.addEventListener('click', function () {
+          /* E3：触屏/键盘可达 */
+          el.setAttribute('tabindex', '0');
+          el.setAttribute('role', 'button');
+          var open = function () {
             var pid = el.getAttribute('data-person');
             if (Arcade.tutorial && Arcade.tutorial.profile) Arcade.tutorial.profile(pid);
             else if (Arcade.ui) Arcade.ui.toast(T('stp.' + pid + '.name') + ' — ' + T('stp.' + pid + '.quote'), 'info');
-          });
+          };
+          el.addEventListener('click', open);
+          el.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(); } });
         })(chips[i]);
+      }
+      /* E3：术语注点击/Enter → toast 释义（title 悬停仍保留） */
+      var gloss = root.querySelectorAll('.sy-gloss[data-tip]');
+      for (var k = 0; k < gloss.length; k++) {
+        (function (el) {
+          var showTip = function () { if (Arcade.ui && Arcade.ui.toast) Arcade.ui.toast(el.getAttribute('data-tip'), 'info'); };
+          el.addEventListener('click', showTip);
+          el.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); showTip(); } });
+        })(gloss[k]);
       }
     }
 
@@ -1114,6 +1138,51 @@
       Arcade.music.setEnabled(Arcade.settings.get().music !== false);
       Arcade.music.play('cipher');
     }
+    /* E3：阅读进度条 + 字号控制 + 方向键翻章 */
+    (function () {
+      var bar = document.querySelector('#sy-readbar i');
+      function updBar() {
+        var h = document.documentElement;
+        var max = h.scrollHeight - h.clientHeight;
+        var pct = max > 0 ? Math.min(100, Math.round(h.scrollTop / max * 100)) : 0;
+        if (bar) bar.style.width = pct + '%';
+      }
+      window.addEventListener('scroll', updBar, { passive: true });
+      updBar();
+
+      /* 字号 A-/A+（14–20px，记忆于 localStorage） */
+      var body = null;
+      function applyFont(px) {
+        if (!body) body = document.getElementById('sy-root');
+        if (!body) return;
+        body.style.fontSize = px + 'px';
+        try { localStorage.setItem('arcade_story_font', String(px)); } catch (e) {}
+      }
+      var saved = 0;
+      try { saved = parseInt(localStorage.getItem('arcade_story_font') || '0', 10); } catch (e) {}
+      if (saved >= 13 && saved <= 22) applyFont(saved);
+      var fm = document.getElementById('sy-fminus'), fp = document.getElementById('sy-fplus');
+      if (fm) fm.addEventListener('click', function () {
+        var cur = parseInt((body && getComputedStyle(body).fontSize) || '14', 10);
+        applyFont(Math.max(13, cur - 1));
+      });
+      if (fp) fp.addEventListener('click', function () {
+        var cur = parseInt((body && getComputedStyle(body).fontSize) || '14', 10);
+        applyFont(Math.min(22, cur + 1));
+      });
+
+      /* ←/→ 翻章（输入态不劫持） */
+      window.addEventListener('keydown', function (e) {
+        var tag = ((e.target && e.target.tagName) || '').toLowerCase();
+        if (tag === 'input' || tag === 'textarea') return;
+        if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+        var links = document.querySelectorAll('.sy-nav a:not(.disabled)');
+        if (links.length < 2) return;
+        /* links[0]=prev links[1]=目录 links[2]=next */
+        var target = e.key === 'ArrowLeft' ? links[0] : links[links.length - 1];
+        if (target) window.location.href = target.getAttribute('href');
+      });
+    })();
   </script>
   <script src="assets/js/pwa.js"></script>
 </body>

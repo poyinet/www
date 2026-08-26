@@ -846,3 +846,25 @@ html:not([lang="en"]) .egg-hint .egg-en { display: none; }
   content-visibility: auto;
   contain-intrinsic-size: auto 600px;
 }
+
+/* ---------- E6：移动端输入 ≥16px（防 iOS 聚焦自动缩放） ----------
+   仅根页面生效：游戏页有自研固定布局，豁免（body[data-game-id]） */
+@media (hover: none) and (pointer: coarse) {
+  body:not([data-game-id]) input[type="text"],
+  body:not([data-game-id]) input[type="search"],
+  body:not([data-game-id]) input[type="number"],
+  body:not([data-game-id]) input[type="password"],
+  body:not([data-game-id]) input:not([type]),
+  body:not([data-game-id]) textarea,
+  body:not([data-game-id]) select {
+    font-size: max(16px, 1em);
+  }
+}
+
+/* ---------- E6：底部 Tab / 顶导航键盘焦点环 ---------- */
+.tabbar-item:focus-visible,
+.anav-item:focus-visible {
+  outline: 2px solid var(--neon-cyan);
+  outline-offset: 2px;
+  border-radius: 6px;
+}

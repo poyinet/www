@@ -249,6 +249,8 @@ Arcade.ui = (function () {
     if (toastBox) return toastBox;
     toastBox = document.createElement('div');
     toastBox.id = 'arcade-toast';
+    toastBox.setAttribute('aria-live', 'polite'); /* E6：读屏可感知 */
+    toastBox.setAttribute('role', 'status');
     document.body.appendChild(toastBox);
     return toastBox;
   }
@@ -389,19 +391,28 @@ Arcade.ui = (function () {
     if (searchOv.classList.contains('open')) { closeSearch(); return; }
     searchOv.classList.add('open');
     searchOv.style.display = 'flex'; // 内联强制显示（防 CSS 干扰）
+    lastSearchFocus = document.activeElement; /* E2：焦点归还目标 */
     if (searchInput) setTimeout(function () { searchInput.focus(); }, 30);
   }
   function closeSearch() {
     if (searchOv) {
       searchOv.classList.remove('open');
       searchOv.style.display = 'none'; // 内联强制隐藏（防 CSS 干扰/残留）
+      /* E2：焦点归还触发按钮（搜索浮层 a11y） */
+      try { if (lastSearchFocus && lastSearchFocus.focus) lastSearchFocus.focus(); } catch (e) {}
+      lastSearchFocus = null;
     }
   }
+  var lastSearchFocus = null;
 
   function buildSearch() {
     var T = Arcade.i18n ? Arcade.i18n.t : function (k) { return k; };
     searchOv = document.createElement('div');
     searchOv.className = 'search-overlay';
+    /* E2 a11y：对话框语义 + 键盘可达 */
+    searchOv.setAttribute('role', 'dialog');
+    searchOv.setAttribute('aria-modal', 'true');
+    searchOv.setAttribute('aria-label', T('search.title'));
     searchOv.innerHTML =
       '<div class="search-box">' +
       '  <div class="search-head">🔍 ' + T('search.title') + '<button class="search-close" aria-label="' + T('common.close') + '">✕</button></div>' +
@@ -414,15 +425,41 @@ Arcade.ui = (function () {
     searchList = searchOv.querySelector('.search-results');
     var box = searchOv.querySelector('.search-box');
 
+    /* E2：结果列表 ↑↓ 导航的高亮样式（注入一次） */
+    if (!document.getElementById('arcade-sr-style')) {
+      var st = document.createElement('style');
+      st.id = 'arcade-sr-style';
+      st.textContent = '.search-results a.sr-active{outline:2px solid var(--neon-cyan);outline-offset:-2px;background:rgba(0,240,255,.08)}';
+      document.head.appendChild(st);
+    }
+
     searchOv.querySelector('.search-close').addEventListener('click', closeSearch);
     // 点击搜索框外任意处关闭（不只遮罩自身，兼容 box 边缘空隙）
     searchOv.addEventListener('click', function (e) {
       if (!box.contains(e.target)) closeSearch();
     });
+    /* E2：↑↓ 在结果间移动高亮，Enter 跟随当前高亮项（无高亮则取第一个） */
+    function activeLink() { return searchList.querySelector('a.sr-active'); }
+    function moveActive(dir) {
+      var links = searchList.querySelectorAll('a');
+      if (!links.length) return;
+      var cur = activeLink();
+      var next;
+      if (!cur) next = links[dir > 0 ? 0 : links.length - 1];
+      else {
+        var idx = Array.prototype.indexOf.call(links, cur);
+        next = links[Math.min(links.length - 1, Math.max(0, idx + dir))];
+        if (cur) cur.classList.remove('sr-active');
+      }
+      next.classList.add('sr-active');
+      try { next.scrollIntoView({ block: 'nearest' }); } catch (e) {}
+    }
     searchInput.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowDown') { e.preventDefault(); moveActive(1); return; }
+      if (e.key === 'ArrowUp') { e.preventDefault(); moveActive(-1); return; }
       if (e.key === 'Enter' && e.target.value.trim()) {
-        var first = searchList.querySelector('a');
-        if (first) window.location.href = first.getAttribute('href');
+        var go = activeLink() || searchList.querySelector('a');
+        if (go) window.location.href = go.getAttribute('href');
       }
     });
     var searchTimer = null;
@@ -443,6 +480,37 @@ Arcade.ui = (function () {
       if (e.key === 'Escape' && Arcade.ui && Arcade.ui.closeSearch) Arcade.ui.closeSearch();
     });
     window.__arcadeSearchEscBound = true;
+  }
+
+  /* E1 全局热键：Ctrl/Cmd+K 或 / 开搜索；R 重开（游戏页）；T 教程（游戏页）。
+     输入框/富文本内不劫持任何单字符键。 */
+  if (!window.__arcadeHotkeysBound) {
+    window.addEventListener('keydown', function (e) {
+      var tag = ((e.target && e.target.tagName) || '').toLowerCase();
+      var typing = tag === 'input' || tag === 'textarea' || tag === 'select' || !!(e.target && e.target.isContentEditable);
+      if ((e.ctrlKey || e.metaKey) && (e.key === 'k' || e.key === 'K')) {
+        e.preventDefault();
+        if (Arcade.ui && Arcade.ui.toggleSearch) Arcade.ui.toggleSearch();
+        return;
+      }
+      if (typing || e.ctrlKey || e.metaKey || e.altKey) return;
+      if (e.key === '/') {
+        /* 避免与游戏内「/」输入冲突：仅当页面无 canvas 游戏焦点时触发 */
+        if (!(window.Arcade && Arcade.input)) {
+          e.preventDefault();
+          if (Arcade.ui && Arcade.ui.toggleSearch) Arcade.ui.toggleSearch();
+        }
+        return;
+      }
+      if (typeof window.GAME_RESTART === 'function' && (e.key === 'r' || e.key === 'R')) {
+        window.GAME_RESTART();
+        return;
+      }
+      if ((e.key === 't' || e.key === 'T') && Arcade.shell && Arcade.shell.showTutorial) {
+        Arcade.shell.showTutorial();
+      }
+    });
+    window.__arcadeHotkeysBound = true;
   }
 
   /* 检索四类内容（大小写不敏感，匹配标题/名称/描述/正文前 60 字） */
@@ -530,7 +598,7 @@ Arcade.ui = (function () {
     return html;
   }
 
-  return { toast: toast, ensureQuickbar: ensureQuickbar, closeSearch: closeSearch };
+  return { toast: toast, ensureQuickbar: ensureQuickbar, closeSearch: closeSearch, toggleSearch: openSearch };
 })();
 
 /* ---------------- 教程浮层 ---------------- */

@@ -1,4 +1,4 @@
-window.GAME_TUTORIAL_STEPS=[{t:T('gs.ia.tut1t'),d:T('gs.ia.tut1')},{t:T('gs.ia.tut2t'),d:T('gs.ia.tut2')},{t:T('gs.ia.tut3t'),d:T('gs.ia.tut3')}];
+window.GAME_TUTORIAL_STEPS=[{t:T('gs.intel-assess.tut1t'),d:T('gs.intel-assess.tut1')},{t:T('gs.intel-assess.tut2t'),d:T('gs.intel-assess.tut2')},{t:T('gs.intel-assess.tut3t'),d:T('gs.intel-assess.tut3')}];
 (function(){var root=document.getElementById('game-root');var TOTAL=8;
 function fmt(k,v){var s=T(k);for(var k2 in(v||{}))s=s.split('{'+k2+'}').join(v[k2]);return s}
 function isEn(){return window.Arcade&&Arcade.i18n&&Arcade.i18n.getLang()==='en'}
@@ -14,24 +14,24 @@ var CASES=[
  {real:true,src:'OP-20-G · Washington',subj:{zh:'外交密电：东京指示使馆销毁密码本',en:'Diplomatic cable: Tokyo orders embassy to burn codebooks'},body:{zh:'截获东京致各使馆的电报：指示销毁密码本与机密文件——这通常意味着战争即将爆发。建议全球美军进入最高警戒。',en:'Cable from Tokyo to all embassies: destroy codebooks and confidential documents — this usually means war is imminent. Recommend maximum alert worldwide.'},clues:{zh:['销毁密码本=战争前兆','来源可靠（OP-20-G）','历史验证：此信号高度准确'],en:['Burning codebooks = war imminent','Reliable source (OP-20-G)','Historically verified: this signal is highly accurate']}},
 ];
 var wrap=document.createElement('div');wrap.className='ia-wrap';
-wrap.innerHTML='<div class="ia-prog" id="ia-prog"></div><div class="ia-card" id="ia-card"></div><div class="ia-btns"><button class="btn accent" id="ia-trust"></button><button class="btn pink" id="ia-doubt"></button></div><div class="ia-msg" id="ia-msg"></div><div class="ia-clues" id="ia-clues"></div><div class="ia-btnrow"><button class="btn green" id="ia-next" hidden></button></div><div class="ia-btnrow"><button class="btn" id="ia-daily">'+T('gs.ia.dailyBtn')+'</button></div><div class="ia-help">'+T('gs.ia.helpText')+'</div>';
+wrap.innerHTML='<div class="ia-prog" id="ia-prog"></div><div class="ia-card" id="ia-card"></div><div class="ia-btns"><button class="btn accent" id="ia-trust"></button><button class="btn pink" id="ia-doubt"></button></div><div class="ia-msg" id="ia-msg"></div><div class="ia-clues" id="ia-clues"></div><div class="ia-btnrow"><button class="btn green" id="ia-next" hidden></button></div><div class="ia-btnrow"><button class="btn" id="ia-daily">'+T('gs.intel-assess.dailyBtn')+'</button></div><div class="ia-help">'+T('gs.intel-assess.helpText')+'</div>';
 root.appendChild(wrap);
 var $=function(id){return wrap.querySelector('#'+id)};
 var progEl=$('ia-prog'),cardEl=$('ia-card'),msgEl=$('ia-msg'),clueBox=$('ia-clues'),nextB=$('ia-next'),dailyBtn=$('ia-daily');
-$('ia-trust').textContent=T('gs.ia.trustBtn');$('ia-doubt').textContent=T('gs.ia.doubtBtn');
+$('ia-trust').textContent=T('gs.intel-assess.trustBtn');$('ia-doubt').textContent=T('gs.intel-assess.doubtBtn');
 var idx=0,score=0,streak=0,answered=false,finished=false,order=[],dailyMode=false,startTs=0;
 function daySeed(){var d=new Date();return d.getFullYear()*10000+(d.getMonth()+1)*100+d.getDate()}
 function mulberry(seed){var s=Math.abs(Math.floor(seed))%2147483647;if(s<=0)s+=2147483646;return function(){s=s*16807%2147483647;return(s-1)/2147483646}}
-function upd(){progEl.textContent=fmt('gs.ia.round',{n:Math.min(idx+1,TOTAL),total:TOTAL,streak:streak})}
+function upd(){progEl.textContent=fmt('gs.intel-assess.round',{n:Math.min(idx+1,TOTAL),total:TOTAL,streak:streak})}
 function setMsg(c,t){msgEl.className='ia-msg '+c;msgEl.textContent=t}
 function render(c){if(!c||!c.subj||!c.body)return;var lang=isEn()?'en':'zh';cardEl.innerHTML='<div class="ia-src">📡 '+c.src+'</div><div class="ia-subj">'+c.subj[lang]+'</div><div class="ia-body">'+c.body[lang]+'</div>'}
-function showClues(c){if(!c||!c.clues)return;var list=c.clues[isEn()?'en':'zh'];var h='<b>'+T('gs.ia.clues')+'</b><br>';for(var i=0;i<list.length;i++)h+='· '+list[i]+'<br>';clueBox.innerHTML=h;clueBox.classList.add('on')}
+function showClues(c){if(!c||!c.clues)return;var list=c.clues[isEn()?'en':'zh'];var h='<b>'+T('gs.intel-assess.clues')+'</b><br>';for(var i=0;i<list.length;i++)h+='· '+list[i]+'<br>';clueBox.innerHTML=h;clueBox.classList.add('on')}
 function judge(trust){if(answered||finished)return;answered=true;var c=order[idx];var ok=trust===c.real;
-if(ok){streak++;score+=20+(streak-1)*5;if(Arcade.juice)Arcade.juice.win();setMsg('ok',fmt('gs.ia.ok',{pts:'+'+(20+(streak-1)*5)}))}
-else{streak=0;if(Arcade.juice)Arcade.juice.lose();setMsg('no',T('gs.ia.no'))}
+if(ok){streak++;score+=20+(streak-1)*5;if(Arcade.juice)Arcade.juice.win();setMsg('ok',fmt('gs.intel-assess.ok',{pts:'+'+(20+(streak-1)*5)}))}
+else{streak=0;if(Arcade.juice)Arcade.juice.lose();setMsg('no',T('gs.intel-assess.no'))}
 showClues(c);setTimeout(nextQ,1800)}
 function nextQ(){idx++;answered=false;clueBox.classList.remove('on');
-if(idx>=TOTAL||idx>=order.length){finished=true;if(Arcade.shell)Arcade.shell.submitScore(score);if(dailyMode&&Arcade.daily){var sec=Math.max(1,Math.round((Date.now()-startTs)/1000));Arcade.daily.markSolved('intel-assess',sec)}setMsg('ok',fmt('gs.ia.done',{score:score}));nextB.textContent=T('gs.ia.againBtn');nextB.hidden=false;return}
+if(idx>=TOTAL||idx>=order.length){finished=true;if(Arcade.shell)Arcade.shell.submitScore(score);if(dailyMode&&Arcade.daily){var sec=Math.max(1,Math.round((Date.now()-startTs)/1000));Arcade.daily.markSolved('intel-assess',sec)}setMsg('ok',fmt('gs.intel-assess.done',{score:score}));nextB.textContent=T('gs.intel-assess.againBtn');nextB.hidden=false;return}
 upd();render(order[idx])}
 function startGame(daily){idx=0;score=0;streak=0;finished=false;nextB.hidden=true;dailyMode=!!daily;if(dailyMode){startTs=Date.now();var rnd=mulberry(daySeed()*31+17)}else var rnd=Math.random;dailyBtn.hidden=dailyMode;
 var arr=[];for(var i=0;i<CASES.length;i++)arr.push(i);

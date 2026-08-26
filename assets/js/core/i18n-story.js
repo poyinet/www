@@ -751,9 +751,6 @@
   /* 第十二期：stepping-switch 挂靠培根章（末位追加） */
   d.zh['st.c3.g10'] = '紫密步进开关：六元音/二十辅音双路步进可视化——输入字母看它走哪条路。';
   d.en['st.c3.g10'] = 'Stepping Switch: six-vowel/twenty-consonant dual-path stepping visualization — type a letter and watch which path it takes.';
-  /* 第十二期：intel-assess 挂靠培根章 */
-  d.zh['st.c3.g11'] = '情报评估：判断截获情报的可信度——哪些是真信号，哪些是烟雾弹。';
-  d.en['st.c3.g11'] = 'Intelligence Assessment: judge the reliability of intercepted reports — real signal or smoke screen?';
   d.zh['st.c10.g19'] = '钓鱼邮件狩猎：再强的加密也挡不住你亲手点开的链接——社会工程是密码链上最弱的一环，练出火眼金睛。';
   d.en['st.c10.g19'] = 'Phishing Hunt: the strongest crypto cannot stop your own click — social engineering is the weakest link; train the eye.';
 })();

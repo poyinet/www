@@ -410,7 +410,7 @@ window.QUIZ = (function () {
       zh: { q: '线性分析攻击分组密码的核心思想是？', opts: ['寻找明文/密文/密钥比特间的高概率线性近似', '暴力穷举所有密钥', '利用时序差异提取密钥', '伪造证书链'], explain: 'Matsui 1993 年对 DES 首次公开线性分析——通过大量已知明密文对统计比特间的线性偏置。' },
       en: { q: 'What is the core idea of linear cryptanalysis against block ciphers?', opts: ['Find high-probability linear approximations among plaintext/ciphertext/key bits', 'Brute-force all keys', 'Exploit timing differences', 'Forge certificate chains'], explain: 'Mitsuru Matsui first applied linear analysis to DES in 1993 — statistically exploiting biased linear relations over many known pairs.' } },
     { lvl: 3, a: 2,
-      zh: { q: '差分分析与线性分析的根本区别是？', opts: ['差分用选择明文，线性用已知明文', '差分只对 DES 有效', '线性分析更快', '没有区别'], explain: '差分分析（Biham-Shamir 1991）需要选择明文控制差分；线性分析（Matsui 1993）只用已知明文统计偏置。', en: '' },
+      zh: { q: '差分分析与线性分析的根本区别是？', opts: ['差分用选择明文，线性用已知明文', '差分只对 DES 有效', '线性分析更快', '没有区别'], explain: '差分分析（Biham-Shamir 1991）需要选择明文控制差分；线性分析（Matsui 1993）只用已知明文统计偏置。' },
       en: { q: 'The fundamental difference between differential and linear cryptanalysis?', opts: ['Differential uses chosen plaintext; linear uses known plaintext', 'Differential only works on DES', 'Linear is faster', 'No difference'], explain: 'Differential (Biham-Shamir 1991) needs chosen plaintexts to control differences; linear (Matsui 1993) statistically exploits bias from known pairs only.' } },
     { lvl: 3, a: 1,
       zh: { q: 'AEAD（认证加密）相比「加密+拼接 MAC」的核心优势是？', opts: ['密文更短', '加密与认证在单个原子操作中完成，不会因顺序不当而泄露', '不需要密钥', '可以解密两次'], explain: 'TLS 1.0 时代的 MAC-then-Encrypt 顺序曾导致 padding oracle 攻击——AEAD（如 GCM/ChaCha20-Poly1305）把两步合成一个不可拆分的原子操作。' },

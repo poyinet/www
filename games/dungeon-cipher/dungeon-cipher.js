@@ -10,10 +10,10 @@
 
 
 window.GAME_TUTORIAL_STEPS = [
-  { t: T('gs.dungeonCipher.tut1t'), d: T('gs.dungeonCipher.tut1') },
-  { t: T('gs.dungeonCipher.tut2t'), d: T('gs.dungeonCipher.tut2') },
-  { t: T('gs.dungeonCipher.tut3t'), d: T('gs.dungeonCipher.tut3') },
-  { t: T('gs.dungeonCipher.tut4t'), d: T('gs.dungeonCipher.tut4') }
+  { t: T('gs.dungeon-cipher.tut1t'), d: T('gs.dungeon-cipher.tut1') },
+  { t: T('gs.dungeon-cipher.tut2t'), d: T('gs.dungeon-cipher.tut2') },
+  { t: T('gs.dungeon-cipher.tut3t'), d: T('gs.dungeon-cipher.tut3') },
+  { t: T('gs.dungeon-cipher.tut4t'), d: T('gs.dungeon-cipher.tut4') }
 ];
 
 (function () {
@@ -304,8 +304,8 @@ window.GAME_TUTORIAL_STEPS = [
   root.innerHTML =
     '<div class="cd-dungeon">' +
     '  <div class="cd-info">' +
-    '    <span>' + T('gs.dungeonCipher.floorLbl') + '</span>' +
-    '    <span>' + T('gs.dungeonCipher.hpLbl') + '</span>' +
+    '    <span>' + T('gs.dungeon-cipher.floorLbl') + '</span>' +
+    '    <span>' + T('gs.dungeon-cipher.hpLbl') + '</span>' +
     '    <span>💎 <span class="stat-value" id="cd-score">0</span></span>' +
     '  </div>' +
     '  <div class="cd-msg" id="cd-msg"></div>' +
@@ -313,18 +313,18 @@ window.GAME_TUTORIAL_STEPS = [
     '  <div class="cd-hint" id="cd-hint"></div>' +
     '  <div id="cd-tools"></div>' +
     '  <div class="cd-row" id="cd-answer-row" style="display:none">' +
-    '    <input id="cd-answer" maxlength="20" placeholder="' + T('gs.dungeonCipher.ansPh') + '" aria-label="' + T('gs.dungeonCipher.ansAria') + '">' +
-    '    <button class="btn yellow" id="cd-answer-submit">' + T('gs.dungeonCipher.attackBtn') + '</button>' +
+    '    <input id="cd-answer" maxlength="20" placeholder="' + T('gs.dungeon-cipher.ansPh') + '" aria-label="' + T('gs.dungeon-cipher.ansAria') + '">' +
+    '    <button class="btn yellow" id="cd-answer-submit">' + T('gs.dungeon-cipher.attackBtn') + '</button>' +
     '  </div>' +
     '  <div class="cd-result" id="cd-result"></div>' +
     '  <div class="cd-items" id="cd-items"></div>' +
     '  <div class="game-controls">' +
-    '    <button class="btn red" id="cd-retreat">' + T('gs.dungeonCipher.retreatBtn') + '</button>' +
-    '    <button class="btn green" id="cd-next" style="display:none">' + T('gs.dungeonCipher.nextBtn') + '</button>' +
+    '    <button class="btn red" id="cd-retreat">' + T('gs.dungeon-cipher.retreatBtn') + '</button>' +
+    '    <button class="btn green" id="cd-next" style="display:none">' + T('gs.dungeon-cipher.nextBtn') + '</button>' +
     '  </div>' +
     '</div>';
 
-  var ENEMIES = ['gs.dungeonCipher.enemy1', 'gs.dungeonCipher.enemy2', 'gs.dungeonCipher.enemy3', 'gs.dungeonCipher.enemy4', 'gs.dungeonCipher.enemy5', 'gs.dungeonCipher.enemy6', 'gs.dungeonCipher.enemy7', 'gs.dungeonCipher.enemy8', 'gs.dungeonCipher.enemy9'];
+  var ENEMIES = ['gs.dungeon-cipher.enemy1', 'gs.dungeon-cipher.enemy2', 'gs.dungeon-cipher.enemy3', 'gs.dungeon-cipher.enemy4', 'gs.dungeon-cipher.enemy5', 'gs.dungeon-cipher.enemy6', 'gs.dungeon-cipher.enemy7', 'gs.dungeon-cipher.enemy8', 'gs.dungeon-cipher.enemy9'];
   var run = null;
 
   function el(id) { return document.getElementById(id); }
@@ -360,22 +360,22 @@ window.GAME_TUTORIAL_STEPS = [
     el('cd-score').textContent = run.score;
     el('cd-enemy').textContent = enemyName() + ' \u00b7 HP ' + Math.max(1, 3 - Math.floor(run.floor / 4));
     var typeNames = {
-      caesar: 'gs.dungeonCipher.typeCaesar', xor: 'gs.dungeonCipher.typeXor',
-      affine: 'gs.dungeonCipher.typeAffine', rail: 'gs.dungeonCipher.typeRail',
-      bacon: 'gs.dungeonCipher.typeBacon'
+      caesar: 'gs.dungeon-cipher.typeCaesar', xor: 'gs.dungeon-cipher.typeXor',
+      affine: 'gs.dungeon-cipher.typeAffine', rail: 'gs.dungeon-cipher.typeRail',
+      bacon: 'gs.dungeon-cipher.typeBacon'
     };
     var typeTips = {
-      caesar: 'gs.dungeonCipher.tipCaesar',
-      xor: 'gs.dungeonCipher.tipXor',
-      affine: 'gs.dungeonCipher.tipAffine',
-      rail: 'gs.dungeonCipher.tipRail',
-      bacon: 'gs.dungeonCipher.tipBacon'
+      caesar: 'gs.dungeon-cipher.tipCaesar',
+      xor: 'gs.dungeon-cipher.tipXor',
+      affine: 'gs.dungeon-cipher.tipAffine',
+      rail: 'gs.dungeon-cipher.tipRail',
+      bacon: 'gs.dungeon-cipher.tipBacon'
     };
-    el('cd-msg').textContent = T('gs.dungeonCipher.msgAttack').replace('{e}', enemyName());
+    el('cd-msg').textContent = T('gs.dungeon-cipher.msgAttack').replace('{e}', enemyName());
     el('cd-cipher').textContent = ch.type === 'xor' ? toHex(ch.cipher) : ch.cipher;
-    el('cd-hint').innerHTML = T('gs.dungeonCipher.typeHint').replace('{t}', T(typeNames[ch.type])) +
+    el('cd-hint').innerHTML = T('gs.dungeon-cipher.typeHint').replace('{t}', T(typeNames[ch.type])) +
       T(typeTips[ch.type]) +
-      T('gs.dungeonCipher.floorHint').replace('{n}', run.floor).replace('{d}', damageFor(run.floor));
+      T('gs.dungeon-cipher.floorHint').replace('{n}', run.floor).replace('{d}', damageFor(run.floor));
     el('cd-result').textContent = '';
     el('cd-result').style.color = '';
     el('cd-next').style.display = 'none';
@@ -399,21 +399,21 @@ window.GAME_TUTORIAL_STEPS = [
     var box = el('cd-tools');
     box.innerHTML = '';
     if (ch.type === 'caesar') {
-      box.innerHTML = '<div class="cd-lbl">' + T('gs.dungeonCipher.toolCaesar') + '</div><div class="cd-grid">';
+      box.innerHTML = '<div class="cd-lbl">' + T('gs.dungeon-cipher.toolCaesar') + '</div><div class="cd-grid">';
       caesarCands(ch.cipher).forEach(function (c) {
-        box.innerHTML += '<button class="cd-cand" data-guess="' + c.text.replace(/"/g, '') + '" title="' + T('gs.dungeonCipher.candTip').replace('{k}', c.key).replace('{s}', c.score) + '">' + T('gs.dungeonCipher.candCaesar').replace('{k}', c.key).replace('{t}', c.text).replace('{s}', c.score) + '</button>';
+        box.innerHTML += '<button class="cd-cand" data-guess="' + c.text.replace(/"/g, '') + '" title="' + T('gs.dungeon-cipher.candTip').replace('{k}', c.key).replace('{s}', c.score) + '">' + T('gs.dungeon-cipher.candCaesar').replace('{k}', c.key).replace('{t}', c.text).replace('{s}', c.score) + '</button>';
       });
       box.innerHTML += '</div>';
     } else if (ch.type === 'rail') {
-      box.innerHTML = '<div class="cd-lbl">' + T('gs.dungeonCipher.toolRail') + '</div><div class="cd-grid">';
+      box.innerHTML = '<div class="cd-lbl">' + T('gs.dungeon-cipher.toolRail') + '</div><div class="cd-grid">';
       railCands(ch.cipher).forEach(function (c) {
-        box.innerHTML += '<button class="cd-cand" data-guess="' + c.text.replace(/"/g, '') + '" title="' + T('gs.dungeonCipher.railTip').replace('{k}', c.key).replace('{s}', c.score) + '">' + T('gs.dungeonCipher.candRail').replace('{k}', c.key).replace('{t}', c.text).replace('{s}', c.score) + '</button>';
+        box.innerHTML += '<button class="cd-cand" data-guess="' + c.text.replace(/"/g, '') + '" title="' + T('gs.dungeon-cipher.railTip').replace('{k}', c.key).replace('{s}', c.score) + '">' + T('gs.dungeon-cipher.candRail').replace('{k}', c.key).replace('{t}', c.text).replace('{s}', c.score) + '</button>';
       });
       box.innerHTML += '</div>';
     } else if (ch.type === 'xor') {
-      box.innerHTML = '<div class="cd-lbl">' + T('gs.dungeonCipher.toolXor') + '</div><div class="cd-grid">';
+      box.innerHTML = '<div class="cd-lbl">' + T('gs.dungeon-cipher.toolXor') + '</div><div class="cd-grid">';
       xorCands(ch.cipher).slice(0, 14).forEach(function (c) {
-        box.innerHTML += '<button class="cd-cand" data-guess="' + c.text.replace(/"/g, '') + '" title="' + T('gs.dungeonCipher.xorTip').replace('{k}', '0x' + c.key.toString(16)).replace('{s}', c.score) + '">' + T('gs.dungeonCipher.candXor').replace('{k}', '0x' + c.key.toString(16).toUpperCase()).replace('{t}', c.text).replace('{s}', c.score) + '</button>';
+        box.innerHTML += '<button class="cd-cand" data-guess="' + c.text.replace(/"/g, '') + '" title="' + T('gs.dungeon-cipher.xorTip').replace('{k}', '0x' + c.key.toString(16)).replace('{s}', c.score) + '">' + T('gs.dungeon-cipher.candXor').replace('{k}', '0x' + c.key.toString(16).toUpperCase()).replace('{t}', c.text).replace('{s}', c.score) + '</button>';
       });
       box.innerHTML += '</div>';
     } else if (ch.type === 'affine') {
@@ -422,14 +422,14 @@ window.GAME_TUTORIAL_STEPS = [
       var bOpts = '';
       for (var b = 0; b < 26; b++) bOpts += '<option value="' + b + '">' + b + '</option>';
       box.innerHTML =
-        '<div class="cd-lbl">' + T('gs.dungeonCipher.toolAffine') + '</div>' +
+        '<div class="cd-lbl">' + T('gs.dungeon-cipher.toolAffine') + '</div>' +
         '<div class="cd-row">' +
         '  a <select id="cd-a">' + sel + '</select>' +
         '  b <select id="cd-b">' + bOpts + '</select>' +
-        '  <button class="btn cyan" id="cd-affine-go">' + T('gs.dungeonCipher.applyBtn') + '</button>' +
-        '  <button class="btn purple" id="cd-affine-solve">' + T('gs.dungeonCipher.solveBtn') + '</button>' +
+        '  <button class="btn cyan" id="cd-affine-go">' + T('gs.dungeon-cipher.applyBtn') + '</button>' +
+        '  <button class="btn purple" id="cd-affine-solve">' + T('gs.dungeon-cipher.solveBtn') + '</button>' +
         '</div>' +
-        '<div class="cd-meterline">' + T('gs.dungeonCipher.readLbl') + ' <span class="cd-meter"><span class="cd-meterfill" id="cd-meterfill" style="width:0%"></span></span> <span id="cd-meterval">0</span></div>' +
+        '<div class="cd-meterline">' + T('gs.dungeon-cipher.readLbl') + ' <span class="cd-meter"><span class="cd-meterfill" id="cd-meterfill" style="width:0%"></span></span> <span id="cd-meterval">0</span></div>' +
         '<div class="cd-preview" id="cd-affine-preview">——</div>' +
         '<div class="cd-grid" id="cd-affine-cands"></div>';
       el('cd-a').value = 5;
@@ -437,7 +437,7 @@ window.GAME_TUTORIAL_STEPS = [
       bindAffine();
     } else {
       // bacon：显示分组 + 培根表 + 输入答案
-      var tableHtml = '<div class="cd-lbl">' + T('gs.dungeonCipher.baconTable') + '</div><div class="cd-bacon-table">';
+      var tableHtml = '<div class="cd-lbl">' + T('gs.dungeon-cipher.baconTable') + '</div><div class="cd-bacon-table">';
       var rows = '';
       var letters = 'ABCDEFGHIKLMNOPQRSTUWXYZ';
       for (var i = 0; i < letters.length; i++) {
@@ -445,10 +445,10 @@ window.GAME_TUTORIAL_STEPS = [
       }
       tableHtml += rows + '</div>';
       box.innerHTML =
-        '<div class="cd-lbl">' + T('gs.dungeonCipher.toolBacon') + '</div>' +
+        '<div class="cd-lbl">' + T('gs.dungeon-cipher.toolBacon') + '</div>' +
         '<div class="cd-bacongroups">' + ch.cipher + '</div>' +
         tableHtml +
-        '<div class="cd-lbl">' + T('gs.dungeonCipher.baconExample') + '</div>';
+        '<div class="cd-lbl">' + T('gs.dungeon-cipher.baconExample') + '</div>';
     }
     // 绑定候选点击
     box.querySelectorAll('.cd-cand').forEach(function (b) {
@@ -465,7 +465,7 @@ window.GAME_TUTORIAL_STEPS = [
       if (run.answered || run.over) return;
       var text = affineDec(run.challenge.cipher, parseInt(aSel.value, 10), parseInt(bSel.value, 10));
       var sc = text === null ? 0 : readScore(text);
-      el('cd-affine-preview').textContent = text === null ? T('gs.dungeonCipher.affineBad') : text;
+      el('cd-affine-preview').textContent = text === null ? T('gs.dungeon-cipher.affineBad') : text;
       el('cd-meterfill').style.width = Math.max(0, Math.min(100, sc)) + '%';
       el('cd-meterval').textContent = sc;
     }
@@ -474,7 +474,7 @@ window.GAME_TUTORIAL_STEPS = [
       var cands = affineCands(run.challenge.cipher).slice(0, 12);
       var html = '';
       cands.forEach(function (c) {
-        html += '<button class="cd-cand" data-guess="' + c.text.replace(/"/g, '') + '" title="' + T('gs.dungeonCipher.affineTip').replace('{a}', c.a).replace('{b}', c.b).replace('{s}', c.score) + '">' + T('gs.dungeonCipher.affineCand').replace('{a}', c.a).replace('{b}', c.b).replace('{t}', c.text).replace('{s}', c.score) + '</button>';
+        html += '<button class="cd-cand" data-guess="' + c.text.replace(/"/g, '') + '" title="' + T('gs.dungeon-cipher.affineTip').replace('{a}', c.a).replace('{b}', c.b).replace('{s}', c.score) + '">' + T('gs.dungeon-cipher.affineCand').replace('{a}', c.a).replace('{b}', c.b).replace('{t}', c.text).replace('{s}', c.score) + '</button>';
       });
       el('cd-affine-cands').innerHTML = html;
       el('cd-affine-cands').querySelectorAll('.cd-cand').forEach(function (b) {
@@ -499,13 +499,13 @@ window.GAME_TUTORIAL_STEPS = [
     var res = el('cd-result');
     if (run.hp <= 0) {
       run.hp = 0;
-      res.innerHTML = T('gs.dungeonCipher.deadMsg').replace('{d}', dmg).replace('{n}', run.floor);
+      res.innerHTML = T('gs.dungeon-cipher.deadMsg').replace('{d}', dmg).replace('{n}', run.floor);
       res.style.color = 'var(--neon-pink)';
       if (Arcade.audio) Arcade.audio.play('error');
       gameOver();
       return;
     }
-    res.innerHTML = T('gs.dungeonCipher.wrongMsg').replace('{g}', guess).replace('{d}', dmg).replace('{h}', run.hp);
+    res.innerHTML = T('gs.dungeon-cipher.wrongMsg').replace('{g}', guess).replace('{d}', dmg).replace('{h}', run.hp);
     res.style.color = 'var(--neon-pink)';
     el('cd-hp').textContent = run.hp;
     if (Arcade.audio) Arcade.audio.play('error');
@@ -514,20 +514,20 @@ window.GAME_TUTORIAL_STEPS = [
   function winFloor() {
     run.answered = true;
     run.score += 100;
-    el('cd-result').innerHTML = T('gs.dungeonCipher.winMsg').replace('{e}', enemyName());
+    el('cd-result').innerHTML = T('gs.dungeon-cipher.winMsg').replace('{e}', enemyName());
     el('cd-result').style.color = 'var(--neon-green)';
     if (Arcade.juice) Arcade.juice.win();
     if (Arcade.audio) Arcade.audio.play('win');
     // 每 3 层补给
     if (run.floor % 3 === 0) {
       run.hp = Math.min(100, run.hp + 10);
-      if (Arcade.ui) Arcade.ui.toast(T('gs.dungeonCipher.supply').replace('{n}', run.floor), 'win');
+      if (Arcade.ui) Arcade.ui.toast(T('gs.dungeon-cipher.supply').replace('{n}', run.floor), 'win');
     }
     // 掉落
     if (run.rng() < 0.35 && run.items.length < 3) {
       var item = run.rng() < 0.5 ? 'heal' : 'scroll';
       run.items.push(item);
-      if (Arcade.ui) Arcade.ui.toast(item === 'heal' ? T('gs.dungeonCipher.itemHeal') : T('gs.dungeonCipher.itemScroll'), 'win');
+      if (Arcade.ui) Arcade.ui.toast(item === 'heal' ? T('gs.dungeon-cipher.itemHeal') : T('gs.dungeon-cipher.itemScroll'), 'win');
     }
     el('cd-score').textContent = run.score;
     el('cd-hp').textContent = run.hp;
@@ -539,9 +539,9 @@ window.GAME_TUTORIAL_STEPS = [
   function renderItems() {
     var box = el('cd-items');
     if (!run.items.length) { box.innerHTML = ''; return; }
-    var html = '<span class="cd-lbl">' + T('gs.dungeonCipher.itemsLbl') + '</span>';
+    var html = '<span class="cd-lbl">' + T('gs.dungeon-cipher.itemsLbl') + '</span>';
     run.items.forEach(function (it, i) {
-      html += '<button class="cd-item" data-i="' + i + '">' + (it === 'heal' ? T('gs.dungeonCipher.itemHealBtn') : T('gs.dungeonCipher.itemScrollBtn')) + '</button>';
+      html += '<button class="cd-item" data-i="' + i + '">' + (it === 'heal' ? T('gs.dungeon-cipher.itemHealBtn') : T('gs.dungeon-cipher.itemScrollBtn')) + '</button>';
     });
     box.innerHTML = html;
     box.querySelectorAll('.cd-item').forEach(function (b) {
@@ -553,14 +553,14 @@ window.GAME_TUTORIAL_STEPS = [
           run.hp = Math.min(100, run.hp + 30);
           run.items.splice(i, 1);
           el('cd-hp').textContent = run.hp;
-          if (Arcade.ui) Arcade.ui.toast(T('gs.dungeonCipher.healUse'), 'win');
+          if (Arcade.ui) Arcade.ui.toast(T('gs.dungeon-cipher.healUse'), 'win');
           if (Arcade.audio) Arcade.audio.play('ui');
           renderItems();
         } else if (it === 'scroll') {
           if (run.answered) return;
           run.items.splice(i, 1);
           renderItems();
-          if (Arcade.ui) Arcade.ui.toast(T('gs.dungeonCipher.scrollUse'), 'win');
+          if (Arcade.ui) Arcade.ui.toast(T('gs.dungeon-cipher.scrollUse'), 'win');
           winFloor();
         }
       });
@@ -576,14 +576,14 @@ window.GAME_TUTORIAL_STEPS = [
     if (run.score < 100) {
       run.score = 0;
       el('cd-score').textContent = 0;
-      res.innerHTML = T('gs.dungeonCipher.noSolveMsg');
+      res.innerHTML = T('gs.dungeon-cipher.noSolveMsg');
       res.style.color = 'var(--neon-pink)';
       return;
     }
     // 与教程/结算文案公式一致：层数×100 + HP×2（此前只累计每层 +100，HP 未参与）
     var total = run.floor * 100 + hp * 2;
     run.score = total;
-    res.innerHTML = T('gs.dungeonCipher.finalMsg')
+    res.innerHTML = T('gs.dungeon-cipher.finalMsg')
       .replace('{f}', run.floor).replace('{s}', total).replace('{h}', hp);
     res.style.color = 'var(--neon-yellow)';
     el('cd-score').textContent = total;
@@ -615,7 +615,7 @@ window.GAME_TUTORIAL_STEPS = [
   });
   el('cd-answer').addEventListener('keydown', function (e) { if (e.key === 'Enter') submitGuess(this.value); });
 
-    var hd=document.createElement('div');hd.style.cssText='font-size:12px;color:var(--text-dim);line-height:1.8;margin-top:12px;text-align:left;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 12px';hd.textContent=T('gs.dungeonCipher.helpText');root.appendChild(hd);
+    var hd=document.createElement('div');hd.style.cssText='font-size:12px;color:var(--text-dim);line-height:1.8;margin-top:12px;text-align:left;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 12px';hd.textContent=T('gs.dungeon-cipher.helpText');root.appendChild(hd);
 
   window.GAME_RESTART = function () { startRun(); };
 

@@ -8,7 +8,7 @@
    注意：SW 仅在 http(s) 下生效；file:// 本地打开时浏览器不注册，属预期。
    ============================================================ */
 
-var CACHE = 'decode-arcade-v29';
+var CACHE = 'decode-arcade-v30';
 var CORE_ASSETS = [
   '/',
   '/index.html',
@@ -35,6 +35,7 @@ var CORE_ASSETS = [
   '/assets/css/shell.css',
   '/assets/js/core/i18n.js',
   '/assets/js/core/i18n-dict.js',
+  '/assets/js/core/i18n-ui.js',
   '/assets/js/core/i18n-archive.js',
   '/assets/js/core/i18n-story.js',
   '/assets/js/core/storage.js',
@@ -65,6 +66,7 @@ var CORE_ASSETS = [
   '/assets/js/easter-eggs.js',
   '/assets/js/timeline.js',
   '/assets/fonts/press-start-2p.woff2',
+  '/assets/fonts/fusion-pixel-site.woff2',
   '/assets/icons/icon-192.png',
   '/assets/icons/icon-512.png',
   '/assets/icons/icon-maskable-512.png',

@@ -31,7 +31,7 @@
   d.zh['path.sub'] = '从零开始的密码学学习路径——每天读 1 章、玩 2 款游戏、懂 1 个术语，24 天走完三千年密码史';
   d.zh['quiz.title'] = '🧠 密码学测验场';
   d.zh['quiz.entry'] = '密码学测验场';
-  d.zh['quiz.sub'] = '160 道题 · 4 个段位（入门/进阶/专家/大师）· 每轮随机抽 10 题——答完评出你的「密码学段位」';
+  d.zh['quiz.sub'] = '180 道题 · 4 个段位（入门/进阶/专家/大师）· 每轮随机抽 10 题——答完评出你的「密码学段位」';
   d.zh['quiz.start'] = '🚀 开始测验';
   d.zh['quiz.next'] = '下一题 →';
   d.zh['quiz.q'] = '第 {n} 题';
@@ -114,7 +114,7 @@
   d.en['path.sub'] = 'A learn-by-playing path from zero — each day: read 1 chapter, play 2 games, learn 1 term. 24 days through 3,000 years of cipher history';
   d.en['quiz.title'] = '🧠 Crypto Quiz Arena';
   d.en['quiz.entry'] = 'Crypto Quiz Arena';
-  d.en['quiz.sub'] = '160 questions · 4 ranks (Novice / Advanced / Expert / Master) · 10 random questions per round — earn your cipher rank';
+  d.en['quiz.sub'] = '180 questions · 4 ranks (Novice / Advanced / Expert / Master) · 10 random questions per round — earn your cipher rank';
   d.en['quiz.start'] = '🚀 Start Quiz';
   d.en['quiz.next'] = 'Next →';
   d.en['quiz.q'] = 'Q{n}';

@@ -94,6 +94,6 @@
   d.en['gs.lorenz.tut4'] = 'Score = total time across all three levels; the shorter, the better.';
   d.zh['gs.lorenz.tutTitle'] = '洛伦兹破译机 · 玩法';
   d.en['gs.lorenz.tutTitle'] = 'Lorenz Cipher Machine · How to Play';
-  d.zh['gs.lorenz.helpText'] = '洛伦兹是德国最高统帅部专用的电传加密机——比恩尼格玛更复杂，但英国人连真机都没见过就破译了它。图灵给出了数学之刀，弗劳尔斯造出了电子之刃 Colossus——密码破译亲手催生了计算机。见编年史「洛伦兹与第一台计算机」章。';
-  d.en['gs.lorenz.helpText'] = 'Lorenz was Germany\'s highest-level teleprinter cipher — more complex than Enigma, yet the British broke it without ever seeing the machine. Turing provided the mathematical blade, Flowers built the electronic edge called Colossus — codebreaking gave birth to computing. See the Chronicle chapter "Lorenz and the First Computer".';
+  d.zh['gs.lorenz.helpText'] = '洛伦兹是德国最高统帅部专用的电传加密机——比恩尼格玛更复杂，但英国人连真机都没见过就破译了它。图灵给出了数学之刀，弗劳尔斯造出了电子之刃 Colossus——密码破译亲手催生了计算机。<a class="gh-link" href="../../story.html?id=lorenz">见编年史「洛伦兹与第一台计算机」→</a>章。';
+  d.en['gs.lorenz.helpText'] = 'Lorenz was Germany\'s highest-level teleprinter cipher — more complex than Enigma, yet the British broke it without ever seeing the machine. Turing provided the mathematical blade, Flowers built the electronic edge called Colossus — codebreaking gave birth to computing. <a class="gh-link" href="../../story.html?id=lorenz">See the Chronicle chapter "Lorenz and the First Computer" &rarr;</a>.';
 })();

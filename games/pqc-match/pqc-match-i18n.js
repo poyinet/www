@@ -31,8 +31,8 @@
   d.en['gs.pqc-match.nextBtn'] = '▶ Next';
   d.zh['gs.pqc-match.againBtn'] = '🔁 再来一局';
   d.en['gs.pqc-match.againBtn'] = '🔁 Play again';
-  d.zh['gs.pqc-match.helpText'] = '为什么重要：NIST 2024 年 8 月发布 FIPS 203（ML-KEM）、204（ML-DSA）、205（SLH-DSA）——全球银行、政府与互联网系统正开始一场静悄悄的「换锁」迁移。本游戏帮你记住谁接替谁。见编年史「量子转折点」章。';
+  d.zh['gs.pqc-match.helpText'] = '为什么重要：NIST 2024 年 8 月发布 FIPS 203（ML-KEM）、204（ML-DSA）、205（SLH-DSA）——全球银行、政府与互联网系统正开始一场静悄悄的「换锁」迁移。本游戏帮你记住谁接替谁。<a class="gh-link" href="../../story.html?id=quantum">见编年史「量子转折点」→</a>章。';
   d.zh['gs.pqc-match.dailyBtn'] = '📅 每日挑战';
   d.en['gs.pqc-match.dailyBtn'] = '📅 Daily challenge';
-  d.en['gs.pqc-match.helpText'] = 'Why it matters: NIST published FIPS 203 (ML-KEM), 204 (ML-DSA) and 205 (SLH-DSA) in August 2024 — banks, governments and the internet are quietly "changing the locks". This game helps you remember who succeeds whom. See the Chronicle chapter "The Quantum Turning Point".';
+  d.en['gs.pqc-match.helpText'] = 'Why it matters: NIST published FIPS 203 (ML-KEM), 204 (ML-DSA) and 205 (SLH-DSA) in August 2024 — banks, governments and the internet are quietly "changing the locks". This game helps you remember who succeeds whom. <a class="gh-link" href="../../story.html?id=quantum">See the Chronicle chapter "The Quantum Turning Point" &rarr;</a>.';
 })();

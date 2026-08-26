@@ -34,6 +34,6 @@
   d.en['gs.binary.newPuzzle'] = 'New puzzle';
   d.zh['gs.binary.msgWin'] = '✓ 破译成功！明文：{msg}';
   d.en['gs.binary.msgWin'] = '✓ Cipher broken! Plaintext: {msg}';
-  d.zh['gs.binary.helpText'] = '二进制是所有密码与计算的语言——莱布尼茨 1679 年发明二进制算术时预言「用 0 和 1 可以表达一切」。香农后来证明：密码学的本质就是在比特流上做数学。见编年史「数学家的反击」章。';
-  d.en['gs.binary.helpText'] = 'Binary is the language of all ciphers and computing — Leibniz invented binary arithmetic in 1679, foreseeing that "0 and 1 can express everything". Shannon later showed cryptography is essentially mathematics on bit streams. See the Chronicle chapter "The Mathematicians Strike Back".';
+  d.zh['gs.binary.helpText'] = '二进制是所有密码与计算的语言——莱布尼茨 1679 年发明二进制算术时预言「用 0 和 1 可以表达一切」。香农后来证明：密码学的本质就是在比特流上做数学。<a class="gh-link" href="../../story.html?id=modern">见编年史「数学家的反击」→</a>章。';
+  d.en['gs.binary.helpText'] = 'Binary is the language of all ciphers and computing — Leibniz invented binary arithmetic in 1679, foreseeing that "0 and 1 can express everything". Shannon later showed cryptography is essentially mathematics on bit streams. <a class="gh-link" href="../../story.html?id=modern">See the Chronicle chapter "The Mathematicians Strike Back" &rarr;</a>.';
 })();

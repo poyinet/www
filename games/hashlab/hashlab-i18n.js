@@ -67,6 +67,6 @@
   d.en['gs.hashlab.bdayPair'] = 'Messages #{a} ↔ #{b} collide on print {fp}';
   d.zh['gs.hashlab.bdayDone'] = '已捕获 {n} 对碰撞——观测暂停，清零或换宽度再来。';
   d.en['gs.hashlab.bdayDone'] = '{n} pairs captured — observation paused. Clear or switch width to go again.';
-  d.zh['gs.hashlab.bdayHelp'] = '诚实声明：生日悖论说，n 位指纹约 √2ⁿ 次就会出现碰撞——所以本观测台只截取指纹前几位做演示；真实 SHA-256 是 256 位指纹，需要约 2¹²⁸ 次运算，把全球算力用到宇宙终结也算不完，任何声称算出完整 SHA-256 碰撞的工具都是假的。参考真实战果：SHA-1（160 位）的生日界是 2⁸⁰，2017 年谷歌与 CWI 借王小云团队的密码分析突破，耗约 6500 个 CPU 年才完成史上第一次真实碰撞（SHAttered）——详见编年史「现代」章。';
+  d.zh['gs.hashlab.bdayHelp'] = '诚实声明：生日悖论说，n 位指纹约 √2ⁿ 次就会出现碰撞——所以本观测台只截取指纹前几位做演示；真实 SHA-256 是 256 位指纹，需要约 2¹²⁸ 次运算，把全球算力用到宇宙终结也算不完，任何声称算出完整 SHA-256 碰撞的工具都是假的。参考真实战果：SHA-1（160 位）的生日界是 2⁸⁰，2017 年谷歌与 CWI 借王小云团队的密码分析突破，耗约 6500 个 CPU 年才完成史上第一次真实碰撞（SHAttered）——详<a class="gh-link" href="../../story.html?id=modern">见编年史「现代」→</a>章。';
   d.en['gs.hashlab.bdayHelp'] = "Honesty note: the birthday paradox says an n-bit print collides after roughly √(2^n) trials — that is why this observatory demonstrates on truncated prints only. A real SHA-256 fingerprint is 256 bits: ~2^128 trials, more than all of Earth's computing could finish before the universe ends; any tool claiming a full SHA-256 collision is lying. For scale: SHA-1 (160 bits) had a birthday bound of 2^80, and in 2017 Google & CWI still needed ~6,500 CPU-years — leveraging Xiaoyun Wang's cryptanalysis — for the first real collision (SHAttered). See the modern chapter of the Chronicle.";
 })();

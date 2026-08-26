@@ -565,7 +565,9 @@
    ============================================================ */
 (function () {
   var d = Arcade.i18n.dicts;
-  d.zh['st.sourcesTitle'] = '史料来源'; d.en['st.sourcesTitle'] = 'Sources & Further Reading';
+  
+  d.zh['st.extendTitle'] = '本章延伸'; d.en['st.extendTitle'] = 'Go deeper';
+  d.zh['st.extendGlossary'] = '在词典中查看全部相关术语'; d.en['st.extendGlossary'] = 'View all related terms in the glossary';d.zh['st.sourcesTitle'] = '史料来源'; d.en['st.sourcesTitle'] = 'Sources & Further Reading';
   d.zh['st.sourcesNote'] = '本章叙述为史料化演绎：基于公开文献整理，人物言行与引语依史料转写或重构，仅供学习，不构成学术论断。';
   d.en['st.sourcesNote'] = 'This chapter is a dramatised retelling: compiled from public sources, with speeches and quotes transcribed or reconstructed. For study only; not an academic claim.';
 })();

@@ -175,7 +175,7 @@ window.GAME_TUTORIAL_STEPS = [
     /* helpText */
   var hd = document.createElement('div');
   hd.style.cssText = 'font-size:12px;color:var(--text-dim);line-height:1.8;margin-top:12px;text-align:left;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 12px';
-  hd.textContent = T('gs.platformer.helpText');
+  hd.innerHTML = T('gs.platformer.helpText');
   root.appendChild(hd);
 
   window.GAME_RESTART = function () { build(); syncScoreHud(); msg.textContent = T('gs.platformer.hint'); msg.style.color = 'var(--neon-green)'; };

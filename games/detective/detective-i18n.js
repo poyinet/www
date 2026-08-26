@@ -176,6 +176,6 @@
   d.en['gs.detective.c6.hint'] = 'ADFGVX double layer: undo the column transposition with key STORM, then build the 6×6 square with ATLAS and reverse-lookup the ADFGVX symbol pairs into letters.';
   d.zh['gs.detective.c6.outcome'] = '「RED OCTOBER」——红色十月。你破译了敌人的最终坐标，情报及时送达盟军指挥部。六章谍战任务，圆满完成！';
   d.en['gs.detective.c6.outcome'] = '"RED OCTOBER". You break the enemy\'s final coordinates and the intelligence reaches Allied Command in time. All six chapters of the mission — complete!';
-  d.zh['gs.detective.helpText'] = '密码侦探模拟了密码分析学的核心思维：从有限线索推断加密规则。爱伦·坡在 1841 年写道「人类的才智造不出人类才智解不开的密码」——频率分析就是这句话的最好证明。见编年史「阿拉伯的破译者」章。';
-  d.en['gs.detective.helpText'] = 'The cipher detective simulates the core mindset of cryptanalysis: inferring encryption rules from limited clues. Edgar Allan Poe wrote in 1841 that "human ingenuity cannot concoct a cipher human ingenuity cannot resolve" — frequency analysis proves it. See the Chronicle chapter "The Arab Cryptanalysts".';
+  d.zh['gs.detective.helpText'] = '密码侦探模拟了密码分析学的核心思维：从有限线索推断加密规则。爱伦·坡在 1841 年写道「人类的才智造不出人类才智解不开的密码」——频率分析就是这句话的最好证明。<a class="gh-link" href="../../story.html?id=arab">见编年史「阿拉伯的破译者」→</a>章。';
+  d.en['gs.detective.helpText'] = 'The cipher detective simulates the core mindset of cryptanalysis: inferring encryption rules from limited clues. Edgar Allan Poe wrote in 1841 that "human ingenuity cannot concoct a cipher human ingenuity cannot resolve" — frequency analysis proves it. <a class="gh-link" href="../../story.html?id=arab">See the Chronicle chapter "The Arab Cryptanalysts" &rarr;</a>.';
 })();

@@ -139,6 +139,16 @@
 
     /* 史料来源（P1） */
     .sy-sources { margin-top: 22px; padding: 12px 16px; border-radius: 10px; background: rgba(0,0,0,.22); border: 1px dashed rgba(255,255,255,.14); }
+
+    /* 本章延伸（C1 互链） */
+    .sy-extend { margin-top: 22px; padding: 12px 16px; border-radius: 10px; background: rgba(0,240,255,.05); border: 1px dashed rgba(0,240,255,.25); }
+    .sy-extend .sy-st { font-family: var(--font-pixel); font-size: 12px; color: var(--neon-cyan); letter-spacing: 1px; margin-bottom: 10px; }
+    .sy-extend-terms { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; align-items: center; }
+    .sy-ext-term { font-size: 12px; color: var(--text-main); text-decoration: none; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.15); border-radius: 20px; padding: 3px 12px; }
+    .sy-ext-term:hover { color: var(--neon-cyan); border-color: rgba(0,240,255,.5); }
+    .sy-ext-more { font-size: 11px; color: var(--text-dim); }
+    .sy-ext-link { display: inline-block; font-size: 12px; color: var(--neon-cyan); text-decoration: none; margin-right: 16px; margin-top: 4px; }
+    .sy-ext-link:hover { color: var(--neon-green); }
     .sy-sources .sy-st { font-family: var(--font-pixel); font-size: 12px; color: var(--neon-yellow); letter-spacing: 1px; margin-bottom: 8px; }
     .sy-sources ul { margin: 0 0 8px; padding-left: 18px; }
     .sy-sources li { font-size: 11px; color: var(--text-dim); line-height: 1.9; }
@@ -190,8 +200,9 @@
   <script src="assets/js/core/storage.js"></script>
   <script src="assets/js/core/extras.js"></script>
   <script src="assets/js/core/music.js"></script>
-  <script src="assets/js/games.js"></script>
-  <script src="assets/js/stories.js"></script>
+<script src="assets/js/games.js"></script>
+<script src="assets/js/glossary-data.js"></script>
+<script src="assets/js/stories.js"></script>
   <script src="assets/js/chapter-quiz.js"></script>
   <script src="assets/js/rank.js"></script>
   <script src="assets/js/plot.js"></script>
@@ -262,6 +273,7 @@
       html += renderDemo(ch);
       html += renderChallenge(ch);
       html += renderChapterQuiz(ch);
+      html += renderExtend(ch);
       html += renderSources(ch);
       html += renderNav(ch);
       root.innerHTML = html;
@@ -790,7 +802,29 @@
       }
     }
 
-    /* 史料来源（P1 内容深度）：每章真实文献 + 进阶书单（P3）+ 统一免责声明 */
+    /* 史料来源（P1    /* 本章延伸（C1 互链工程）：术语 ×N → 词典 / 测验场 / 协议实验室 */
+    function renderExtend(ch) {
+      var terms = (window.GLOSSARY || []).filter(function (g) {
+        return (g.chapters || []).indexOf(ch.id) >= 0;
+      });
+      if (!terms.length && ch.id !== 'quantum') return '';
+      var html = '<div class="sy-extend"><div class="sy-st">🧭 ' + T('st.extendTitle') + '</div>';
+      if (terms.length) {
+        var shown = terms.slice(0, 6);
+        html += '<div class="sy-extend-terms">' + shown.map(function (g) {
+          return '<a class="sy-ext-term" href="glossary.html">' + g.term + '</a>';
+        }).join('') +
+        (terms.length > 6 ? '<span class="sy-ext-more">+' + (terms.length - 6) + '</span>' : '') + '</div>' +
+        '<a class="sy-ext-link" href="glossary.html">📖 ' + T('st.extendGlossary') + '</a>';
+      }
+      html += '<a class="sy-ext-link" href="quiz.html">🎯 ' + T('nav.quiz') + '</a>' +
+        '<a class="sy-ext-link" href="protocols.html">🛡️ ' + T('nav.protocols') + '</a>' +
+        '<a class="sy-ext-link" href="workshop.html">🔬 ' + T('nav.workshop') + '</a>' +
+        '</div>';
+      return html;
+    }
+
+    /* 每章真实文献 + 进阶书单（P3）+ 统一免责声明 */
     function renderSources(ch) {
       if ((!ch.sources || !ch.sources.length) && (!ch.reads || !ch.reads.length)) return '';
       var html = '<div class="sy-sources"><div class="sy-st">📚 ' + T('st.sourcesTitle') + '</div>';

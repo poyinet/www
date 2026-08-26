@@ -78,6 +78,6 @@
   d.en['gs.spotdiff.tut4t'] = 'Scoring';
   d.zh['gs.spotdiff.tut4'] = '成绩 = 通关总用时，越短越好；每日一题与其他 6 款每日游戏共享连破记录。';
   d.en['gs.spotdiff.tut4'] = 'Score = total time to clear, faster is better; the daily puzzle shares the streak record with the other 6 daily games.';
-  d.zh['gs.spotdiff.helpText'] = '找茬破译是视觉隐写的入门：两段看似相同的文字，差异就是密信。这与培根的双字体密码同源——秘密藏在「看起来一样」的表象之下。现代隐写术把同样的思想搬进了图片像素。见编年史「培根的隐形墨水」章。';
-  d.en['gs.spotdiff.helpText'] = 'Spot-the-difference is visual steganography 101: two seemingly identical texts where the differences ARE the message. Same idea as Bacon\'s biliteral cipher — secrets hidden beneath "looking identical". Modern steganography moved the trick into image pixels. See the Chronicle chapter "Bacon\'s Invisible Ink".';
+  d.zh['gs.spotdiff.helpText'] = '找茬破译是视觉隐写的入门：两段看似相同的文字，差异就是密信。这与培根的双字体密码同源——秘密藏在「看起来一样」的表象之下。现代隐写术把同样的思想搬进了图片像素。<a class="gh-link" href="../../story.html?id=bacon">见编年史「培根的隐形墨水」→</a>章。';
+  d.en['gs.spotdiff.helpText'] = 'Spot-the-difference is visual steganography 101: two seemingly identical texts where the differences ARE the message. Same idea as Bacon\'s biliteral cipher — secrets hidden beneath "looking identical". Modern steganography moved the trick into image pixels. <a class="gh-link" href="../../story.html?id=bacon">See the Chronicle chapter "Bacon\'s Invisible Ink" &rarr;</a>.';
 })();

@@ -106,6 +106,6 @@
   d.en['gs.trifid.dailyWrong'] = '❌ Not right, try again';
   d.zh['gs.trifid.dailyHint'] = '💡 密钥提示：{a}???（法国城市）—— 解密今日电文（{b} 字母）。';
   d.en['gs.trifid.dailyHint'] = '💡 Key hint: {a}??? (a French city) — decrypt today\'s message ({b} letters).';
-  d.zh['gs.trifid.helpText'] = 'Trifid 是 Bifid 的三维升级版：把字母编入三个 5×5 方阵的立体坐标，用三进制分数实现扩散。Félix Delastelle 1902 年发明——它证明了即使不用数学，纯几何结构也能实现密码扩散。见编年史「培根的隐形墨水」章。';
-  d.en['gs.trifid.helpText'] = 'Trifid is Bifid\'s 3D upgrade: letters mapped into three 5×5 squares as cubic coordinates, using ternary fractions for diffusion. Félix Delastelle invented it in 1902 — proving that pure geometric structure achieves cipher diffusion without advanced math. See the Chronicle chapter "Bacon\'s Invisible Ink".';
+  d.zh['gs.trifid.helpText'] = 'Trifid 是 Bifid 的三维升级版：把字母编入三个 5×5 方阵的立体坐标，用三进制分数实现扩散。Félix Delastelle 1902 年发明——它证明了即使不用数学，纯几何结构也能实现密码扩散。<a class="gh-link" href="../../story.html?id=bacon">见编年史「培根的隐形墨水」→</a>章。';
+  d.en['gs.trifid.helpText'] = 'Trifid is Bifid\'s 3D upgrade: letters mapped into three 5×5 squares as cubic coordinates, using ternary fractions for diffusion. Félix Delastelle invented it in 1902 — proving that pure geometric structure achieves cipher diffusion without advanced math. <a class="gh-link" href="../../story.html?id=bacon">See the Chronicle chapter "Bacon\'s Invisible Ink" &rarr;</a>.';
 })();

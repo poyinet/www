@@ -163,5 +163,5 @@
   d.en['gs.maker.event3.txt'] = 'The enemy builds the first electronic computer.';
   d.en['gs.maker.event3.bad'] = ' — progress too high: statistical attacks are launched in full force!';
   d.zh['gs.maker.helpText'] = '密码制造者让你扮演密码设计师——从凯撒到恩尼格玛的每一位设计者都面临同一个问题：如何在让友方解密的同时让敌方无法破解？这个平衡艺术就是密码学的全部。设计一个密码，然后尝试攻击它。见编年史全十二章。';
-  d.en['gs.maker.helpText'] = 'The cipher maker puts you in the designer\'s seat — every designer from Caesar to Enigma faced the same question: how to let allies decrypt while blocking enemies? This balancing act IS cryptography. Design a cipher, then try to attack it. See all twelve Chronicle chapters.';
+  d.en['gs.maker.helpText'] = 'The cipher maker puts you in the designer\'s seat — every designer from Caesar to Enigma faced the same question: how to let allies decrypt while blocking enemies? This balancing act IS cryptography. Design a cipher, then try to attack it. See all twelve <a class="gh-link" href="../../stories.html">Chronicle chapters</a>.';
 })();

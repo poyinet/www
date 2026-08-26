@@ -35,7 +35,7 @@
   againBtn.addEventListener('click', function () { if (
   window.GAME_RESTART) window.GAME_RESTART(); });
   wrap.appendChild(againBtn);
-  var hd=document.createElement('div');hd.style.cssText='font-size:12px;color:var(--text-dim);line-height:1.8;margin-top:12px;text-align:left;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 12px';hd.textContent=T('gs.codeguess.helpText');wrap.appendChild(hd);
+  var hd=document.createElement('div');hd.style.cssText='font-size:12px;color:var(--text-dim);line-height:1.8;margin-top:12px;text-align:left;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 12px';hd.innerHTML = T('gs.codeguess.helpText');wrap.appendChild(hd);
   function showAgain() { againBtn.style.display = 'inline-block'; }
 
   // 构建棋盘

@@ -100,6 +100,6 @@
   d.en['gs.purple.wheel3'] = 'Slow Wheel';
   d.en['gs.purple.wheel4'] = 'Six-Step Wheel A';
   d.en['gs.purple.wheel5'] = 'Six-Step Wheel B';
-  d.zh['gs.purple.helpText'] = '紫密是日本外务省的最高级密码机，用步进开关代替转子——六元音和二十辅音走两条完全不同的路。美军破译它没靠机器，而是一群人从成堆密电里做统计、拼结构。见编年史「紫密与珍珠港」章。';
-  d.en['gs.purple.helpText'] = 'Purple was Japan\'s highest diplomatic cipher machine, using stepping switches instead of rotors — six vowels and twenty consonants on completely different paths. The US broke it not with machines but by people doing statistics on mountains of intercepts. See the Chronicle chapter "Purple and Pearl Harbor".';
+  d.zh['gs.purple.helpText'] = '紫密是日本外务省的最高级密码机，用步进开关代替转子——六元音和二十辅音走两条完全不同的路。美军破译它没靠机器，而是一群人从成堆密电里做统计、拼结构。<a class="gh-link" href="../../story.html?id=purple">见编年史「紫密与珍珠港」→</a>章。';
+  d.en['gs.purple.helpText'] = 'Purple was Japan\'s highest diplomatic cipher machine, using stepping switches instead of rotors — six vowels and twenty consonants on completely different paths. The US broke it not with machines but by people doing statistics on mountains of intercepts. <a class="gh-link" href="../../story.html?id=purple">See the Chronicle chapter "Purple and Pearl Harbor" &rarr;</a>.';
 })();

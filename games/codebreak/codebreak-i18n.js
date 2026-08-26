@@ -40,6 +40,6 @@
   d.en['gs.codebreak.msgLose'] = '💀 The code was {code}';
   d.zh['gs.codebreak.feedback'] = '黑钉 {b} · 白钉 {w}（剩 {n} 次）';
   d.en['gs.codebreak.feedback'] = '{b} black · {w} white ({n} left)';
-  d.zh['gs.codebreak.helpText'] = 'Code Breaker 训练密码分析的核心技能：高压下的模式识别。每一个密码都始于识别一个模式。见编年史「频率分析」与「机器密码」章。';
-  d.en['gs.codebreak.helpText'] = 'Code Breaker trains the core skill of cryptanalysis: pattern recognition under pressure. Every cipher you will ever break starts with recognizing a pattern. See the Chronicle chapters on frequency analysis and machine ciphers.';
+  d.zh['gs.codebreak.helpText'] = 'Code Breaker 训练密码分析的核心技能：高压下的模式识别。每一个密码都始于识别一个模式。<a class="gh-link" href="../../story.html?id=arab">见编年史「频率分析」→</a>与「机器密码」章。';
+  d.en['gs.codebreak.helpText'] = 'Code Breaker trains the core skill of cryptanalysis: pattern recognition under pressure. Every cipher you will ever break starts with recognizing a pattern. <a class="gh-link" href="../../story.html?id=arab">See the <a class="gh-link" href="../../stories.html">Chronicle chapters</a> on frequency analysis and machine ciphers &rarr;</a>.';
 })();

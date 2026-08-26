@@ -143,5 +143,5 @@
   d.zh['gs.workshop.keyWrong2'] = '密钥不对，继续尝试';
   d.en['gs.workshop.keyWrong2'] = 'Key is wrong — keep trying';
   d.zh['gs.workshop.helpText'] = '破译工坊让你亲手操作 16 种经典密码算法——从凯撒到希尔、从摩斯到 Base64。理解算法的最好方式不是读公式，而是亲手加密一段自己的话，再试着破解它。见编年史全十二章。';
-  d.en['gs.workshop.helpText'] = 'The workshop lets you operate 16 classic cipher algorithms hands-on — from Caesar to Hill, from Morse to Base64. The best way to understand an algorithm isn\'t reading formulas but encrypting your own words and trying to break them. See all twelve Chronicle chapters.';
+  d.en['gs.workshop.helpText'] = 'The workshop lets you operate 16 classic cipher algorithms hands-on — from Caesar to Hill, from Morse to Base64. The best way to understand an algorithm isn\'t reading formulas but encrypting your own words and trying to break them. See all twelve <a class="gh-link" href="../../stories.html">Chronicle chapters</a>.';
 })();

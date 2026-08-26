@@ -65,6 +65,8 @@
     .ar-desc { font-size: 12px; color: var(--text-dim); margin-top: 8px; line-height: 1.7; }
     .ar-text { font-size: 12px; color: var(--neon-cyan); margin-top: 10px; line-height: 1.7; white-space: pre-wrap; font-family: 'Courier New', monospace; background: rgba(0,0,0,.35); border: 1px solid rgba(0,240,255,.15); border-radius: 6px; padding: 8px 10px; }
     .ar-unlock { font-size: 12px; color: var(--neon-pink); margin-top: 10px; }
+    .ar-golink { color: var(--neon-cyan); text-decoration: none; border-bottom: 1px dashed rgba(0,240,255,.5); }
+    .ar-golink:hover { color: var(--neon-green); border-color: var(--neon-green); }
     @media (max-width: 480px) { .ar-timeline { padding-left: 14px; } }
     .lobby-footer { position: relative; z-index: 1; text-align: center; padding: 20px 16px 30px; color: var(--text-dim); font-size: 12px; line-height: 2; }
     .lobby-footer .pixel-line { font-family: var(--font-pixel); font-size: 9px; color: rgba(0,240,255,.5); }
@@ -129,8 +131,20 @@
         } else {
           var g = null;
           (window.GAMES || []).forEach(function (x) { if (x.id === art.unlockGameId) g = x; });
+          var gameHtml = g
+            ? '<a class="ar-golink" href="games/' + g.id + '/index.html">🎮 ' + T('g.' + g.id + '.t') + '</a>'
+            : (art.unlockGameId || '');
+          /* C7：解锁游戏不在本章时，附「前往章节」提示 */
+          var homeCh = null;
+          (window.STORIES || []).forEach(function (c) { if (c.id === art.chapterId) homeCh = c; });
+          var inHome = false;
+          if (homeCh && homeCh.games) homeCh.games.forEach(function (gid) { if (gid === art.unlockGameId) inHome = true; });
+          var chTip = '';
+          if (homeCh && !inHome && homeCh.id !== 'quantum') {
+            chTip = ' <a class="ar-golink" href="story.html?id=' + homeCh.id + '">📜 ' + T(homeCh.titleKey) + '</a>';
+          }
           el.innerHTML = '<div class="ar-name">🔒 ' + T('sta.' + art.id + '.name') + '</div>' +
-            '<div class="ar-unlock">' + T('artifacts.need') + '：' + (g ? T('g.' + g.id + '.t') : art.unlockGameId) + '</div>';
+            '<div class="ar-unlock">' + T('artifacts.need') + '：' + gameHtml + chTip + '</div>';
         }
         tl.appendChild(el);
       });

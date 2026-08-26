@@ -40,6 +40,6 @@
   d.en['gs.morselong.msgWin'] = '✓ Cipher broken! Plaintext: {plain}';
   d.zh['gs.morselong.noAudio'] = '当前环境不支持音频';
   d.en['gs.morselong.noAudio'] = 'Audio is not supported in this environment';
-  d.zh['gs.morselong.helpText'] = '摩斯电码本身不是密码——它是编码。但二战期间纳粹用 Enigma 加密后再用摩斯发送，使破译 Enigma 成为可能。摩斯的「点与划」也是培根二体密码思想的电报版。见编年史「一战的电波战」章。';
-  d.en['gs.morselong.helpText'] = 'Morse code isn\'t a cipher — it\'s an encoding. But WWII Nazis encrypted with Enigma first, then sent via Morse, making Enigma breaking possible. Morse\'s dots and dashes are also the telegraph version of Bacon\'s biliteral idea. See the Chronicle chapter "The Radio War".';
+  d.zh['gs.morselong.helpText'] = '摩斯电码本身不是密码——它是编码。但二战期间纳粹用 Enigma 加密后再用摩斯发送，使破译 Enigma 成为可能。摩斯的「点与划」也是培根二体密码思想的电报版。<a class="gh-link" href="../../story.html?id=ww1">见编年史「一战的电波战」→</a>章。';
+  d.en['gs.morselong.helpText'] = 'Morse code isn\'t a cipher — it\'s an encoding. But WWII Nazis encrypted with Enigma first, then sent via Morse, making Enigma breaking possible. Morse\'s dots and dashes are also the telegraph version of Bacon\'s biliteral idea. <a class="gh-link" href="../../story.html?id=ww1">See the Chronicle chapter "The Radio War" &rarr;</a>.';
 })();

@@ -65,6 +65,6 @@
   d.en['gs.rsa.againBtn'] = '🔁 Play again';
   d.zh['gs.rsa.dailyBtn'] = '📅 每日挑战';
   d.en['gs.rsa.dailyBtn'] = '📅 Daily challenge';
-  d.zh['gs.rsa.helpText'] = '为什么重要：你手机里每一次 HTTPS 握手，跑的都是这套数学——只是真实世界的 p、q 有几百位长。RSA 由 Rivest、Shamir、Adleman 于 1977 年发表；GCHQ 的科克斯更早想出等价方案却被保密到 1997 年（见编年史「现代」章）。全程零提示手算完一轮，你就摸到了公钥密码的地基。';
+  d.zh['gs.rsa.helpText'] = '为什么重要：你手机里每一次 HTTPS 握手，跑的都是这套数学——只是真实世界的 p、q 有几百位长。RSA 由 Rivest、Shamir、Adleman 于 1977 年发表；GCHQ 的科克斯更早想出等价方案却被保密到 1997 年（<a class="gh-link" href="../../story.html?id=modern">见编年史「现代」→</a>章）。全程零提示手算完一轮，你就摸到了公钥密码的地基。';
   d.en['gs.rsa.helpText'] = "Why it matters: every HTTPS handshake in your phone runs this math — only there p and q are hundreds of digits long. RSA was published in 1977 by Rivest, Shamir and Adleman; GCHQ's Clifford Cocks had an equivalent idea earlier, kept secret until 1997 (see the modern chapter). Finish one round with zero hints and you have touched bedrock.";
 })();

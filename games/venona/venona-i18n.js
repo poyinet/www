@@ -58,6 +58,6 @@
   d.en['gs.venona.candLbl'] = 'Position {i}: {s} contains the word \u2192 opposite-side whole word <b>{w}</b> ({sc})';
   d.zh['gs.venona.winToast'] = '🎉 两封电文全部还原 · {t}s';
   d.en['gs.venona.winToast'] = '🎉 Both messages fully recovered \u00b7 {t}s';
-  d.zh['gs.venona.helpText'] = 'VENONA 是密码史上最漫长的破译行动：1943 年开始截获、1946 年取得突破、1980 年才结束——苏联一次性密码本的一页重复，暴露了整个间谍网。一个印刷工的疲劳，改变了冷战格局。见编年史「VENONA 与冷战间谍」章。';
-  d.en['gs.venona.helpText'] = 'VENONA was cryptography\'s longest-running operation: intercepted from 1943, broken in 1946, ended in 1980 — a single duplicated one-time-pad page exposed an entire spy network. One printer\'s fatigue changed the Cold War. See the Chronicle chapter "VENONA and the Cold War Spies".';
+  d.zh['gs.venona.helpText'] = 'VENONA 是密码史上最漫长的破译行动：1943 年开始截获、1946 年取得突破、1980 年才结束——苏联一次性密码本的一页重复，暴露了整个间谍网。一个印刷工的疲劳，改变了冷战格局。<a class="gh-link" href="../../story.html?id=venona">见编年史「VENONA 与冷战间谍」→</a>章。';
+  d.en['gs.venona.helpText'] = 'VENONA was cryptography\'s longest-running operation: intercepted from 1943, broken in 1946, ended in 1980 — a single duplicated one-time-pad page exposed an entire spy network. One printer\'s fatigue changed the Cold War. <a class="gh-link" href="../../story.html?id=venona">See the Chronicle chapter "VENONA and the Cold War Spies" &rarr;</a>.';
 })();

@@ -84,6 +84,6 @@
   d.en['gs.jn25.win'] = '🎉 All fleet messages decoded! · {n}s';
   d.zh['gs.jn25.hintMsg'] = '🧩 提示：第 {n} 列（旗舰电文）是 <b>{w}</b>。已加入可尝试词。';
   d.en['gs.jn25.hintMsg'] = '🧩 Hint: column {n} (flagship message) is <b>{w}</b>. Added to the words you can try.';
-  d.zh['gs.jn25.helpText'] = 'JN-25 是日本海军最高级密码，中途岛的胜负取决于能否破译它。美军不是靠超级计算机，而是靠破译员在地下室里手工翻查密码本、逐列试减加表——人脑的耐力有时胜过机器。见编年史「中途岛之雾」章。';
-  d.en['gs.jn25.helpText'] = 'JN-25 was the Imperial Japanese Navy\'s highest cipher — Midway\'s outcome depended on breaking it. The US didn\'t use supercomputers but codebreakers manually searching codebooks and subtracting additive tables column by column. Human endurance sometimes beats machines. See the Chronicle chapter "The Fog of Midway".';
+  d.zh['gs.jn25.helpText'] = 'JN-25 是日本海军最高级密码，中途岛的胜负取决于能否破译它。美军不是靠超级计算机，而是靠破译员在地下室里手工翻查密码本、逐列试减加表——人脑的耐力有时胜过机器。<a class="gh-link" href="../../story.html?id=midway">见编年史「中途岛之雾」→</a>章。';
+  d.en['gs.jn25.helpText'] = 'JN-25 was the Imperial Japanese Navy\'s highest cipher — Midway\'s outcome depended on breaking it. The US didn\'t use supercomputers but codebreakers manually searching codebooks and subtracting additive tables column by column. Human endurance sometimes beats machines. <a class="gh-link" href="../../story.html?id=midway">See the Chronicle chapter "The Fog of Midway" &rarr;</a>.';
 })();

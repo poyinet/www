@@ -33,6 +33,6 @@
   d.en['gs.intel-assess.done'] = '📋 Assessment done · total {score}';
   d.zh['gs.intel-assess.againBtn'] = '🔁 再来一局';
   d.en['gs.intel-assess.againBtn'] = '🔁 Play again';
-  d.zh['gs.intel-assess.helpText'] = '为什么重要：中途岛的「AF 淡水陷阱」是情报评估的教科书案例——罗奇福特不仅破译了密码，还设计了让日军亲口确认的验证方案。破译密码只是第一步，让决策者相信破译结果是另一场更难的战争。见编年史「中途岛之雾」章。';
-  d.en['gs.intel-assess.helpText'] = 'Why it matters: Midway\'s "AF water trap" is the textbook case of intelligence assessment — Rochefort not only broke the cipher but designed a verification scheme that made Japan confirm it themselves. Breaking codes is step one; getting decision-makers to trust the results is harder. See the Chronicle chapter "The Fog of Midway".';
+  d.zh['gs.intel-assess.helpText'] = '为什么重要：中途岛的「AF 淡水陷阱」是情报评估的教科书案例——罗奇福特不仅破译了密码，还设计了让日军亲口确认的验证方案。破译密码只是第一步，让决策者相信破译结果是另一场更难的战争。<a class="gh-link" href="../../story.html?id=midway">见编年史「中途岛之雾」→</a>章。';
+  d.en['gs.intel-assess.helpText'] = 'Why it matters: Midway\'s "AF water trap" is the textbook case of intelligence assessment — Rochefort not only broke the cipher but designed a verification scheme that made Japan confirm it themselves. Breaking codes is step one; getting decision-makers to trust the results is harder. <a class="gh-link" href="../../story.html?id=midway">See the Chronicle chapter "The Fog of Midway" &rarr;</a>.';
 })();

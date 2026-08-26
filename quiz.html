@@ -95,6 +95,9 @@
     .qz-result .score-line { font-family: var(--font-pixel); font-size: 22px; color: var(--neon-green); margin: 14px 0 4px; }
     .qz-result .best-line { font-size: 12px; color: var(--text-dim); margin-bottom: 14px; }
     .qz-ladder { margin: 16px auto 0; max-width: 380px; display: grid; gap: 6px; text-align: left; }
+    .qz-extend { margin-top: 16px; display: flex; justify-content: center; gap: 18px; flex-wrap: wrap; }
+    .qz-extend a { font-size: 12px; color: var(--neon-cyan); text-decoration: none; }
+    .qz-extend a:hover { color: var(--neon-green); }
     .qz-ladder .r { display: flex; align-items: center; gap: 8px; padding: 6px 10px; border-radius: 8px; font-size: 12px; color: var(--text-dim); border: 1px solid rgba(255,255,255,.06); background: rgba(0,0,0,.2); }
     .qz-ladder .r.on { border-color: rgba(57,255,20,.45); background: rgba(57,255,20,.07); color: var(--neon-green); }
     .qz-ladder .r .pct { margin-left: auto; font-family: var(--font-pixel); font-size: 9px; color: var(--neon-yellow); }
@@ -274,6 +277,11 @@
             '<div class="rank-name">' + (isEn ? r.en : r.zh) + '</div>' +
             '<div class="rank-sub">' + T('quiz.resultSub') + '</div>' +
             '<div class="qz-ladder">' + ladder + '</div>' +
+            '<div class="qz-extend">' +
+              '<a href="glossary.html">📖 ' + T('nav.glossary') + '</a>' +
+              '<a href="protocols.html">🛡️ ' + T('nav.protocols') + '</a>' +
+              '<a href="stories.html">📜 ' + T('nav.stories') + '</a>' +
+            '</div>' +
             '<div style="margin-top:18px"><button class="btn" id="qz-again">' + T('quiz.resultAgain') + '</button></div>' +
           '</div>';
         var again = document.getElementById('qz-again');

@@ -56,7 +56,7 @@ window.GAME_TUTORIAL_STEPS = [
   /* helpText 知识延伸 */
   var helpDiv = document.createElement('div');
   helpDiv.style.cssText = 'font-size:12px;color:var(--text-dim);line-height:1.8;margin-top:12px;text-align:left;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 12px';
-  helpDiv.textContent = T('gs.vigenere.helpText');
+  helpDiv.innerHTML = T('gs.vigenere.helpText');
   wrap.appendChild(helpDiv);
 root.appendChild(wrap);
   var diffRow = wrap.querySelector('#vg-diff');

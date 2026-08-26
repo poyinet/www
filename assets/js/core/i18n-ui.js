@@ -8,7 +8,7 @@
   d.zh['nav.people'] = '人物志';
   d.zh['nav.artifacts'] = '密件册';
   d.zh['glossary.title'] = '🔐 密码学词典';
-  d.zh['glossary.sub'] = '199 个术语 · 中英对照 · 边玩边懂——每个词都能在站内找到对应的游戏或章节';
+  d.zh['glossary.sub'] = '210 个术语 · 中英对照 · 边玩边懂——每个词都能在站内找到对应的游戏或章节';
   d.zh['onboard.title'] = '欢迎来到破译街机';
   d.en['onboard.title'] = 'Welcome to Decode Arcade';
   d.zh['onboard.desc'] = '用 124 款小游戏破译人类三千年的加密与解密史——从凯撒移位到量子密钥。先试试这三款镇馆之作，或跟随 24 天学习路径稳步前进。';
@@ -29,7 +29,7 @@
   d.zh['path.sub'] = '从零开始的密码学学习路径——每天读 1 章、玩 2 款游戏、懂 1 个术语，24 天走完三千年密码史';
   d.zh['quiz.title'] = '🧠 密码学测验场';
   d.zh['quiz.entry'] = '密码学测验场';
-  d.zh['quiz.sub'] = '153 道题 · 4 个段位（入门/进阶/专家/大师）· 每轮随机抽 10 题——答完评出你的「密码学段位」';
+  d.zh['quiz.sub'] = '160 道题 · 4 个段位（入门/进阶/专家/大师）· 每轮随机抽 10 题——答完评出你的「密码学段位」';
   d.zh['quiz.start'] = '🚀 开始测验';
   d.zh['quiz.next'] = '下一题 →';
   d.zh['quiz.q'] = '第 {n} 题';
@@ -66,7 +66,7 @@
   d.zh['artifacts.need'] = '需破译';
   d.zh['app.desc404'] = '404 页面走丢了 —— 回破译 DECODE ARCADE 大厅继续玩。';
   d.zh['err.msg'] = 'GAME OVER · 页面不存在';
-  d.zh['err.sub'] = '这张卡带被吞了，或者地址敲错了。回大厅再投一枚硬币，继续挑战 118 款小游戏吧。';
+  d.zh['err.sub'] = '这张卡带被吞了，或者地址敲错了。回大厅再投一枚硬币，继续挑战 124 款小游戏吧。';
   d.zh['err.back'] = '◀ 回大厅';
   d.zh['lobby.brand'] = '破译游戏';
   d.zh['lobby.desc'] = '密码破译街机 · 打开即玩 · 本地记录你的最高分';
@@ -99,7 +99,7 @@
   d.en['nav.people'] = 'People';
   d.en['nav.artifacts'] = 'Artifacts';
   d.en['glossary.title'] = '🔐 Cryptography Glossary';
-  d.en['glossary.sub'] = '199 terms · bilingual · learn by playing — every word maps to a game or chapter in this arcade';
+  d.en['glossary.sub'] = '210 terms · bilingual · learn by playing — every word maps to a game or chapter in this arcade';
   d.en['glossary.play'] = 'Play';
   d.en['workshop.title'] = '🔬 Cipher Workshop';
   d.en['workshop.sub'] = 'A one-of-a-kind encrypt/decrypt lab — encrypt with 16 classic ciphers, or paste ciphertext for one-click auto-cracking';
@@ -112,7 +112,7 @@
   d.en['path.sub'] = 'A learn-by-playing path from zero — each day: read 1 chapter, play 2 games, learn 1 term. 24 days through 3,000 years of cipher history';
   d.en['quiz.title'] = '🧠 Crypto Quiz Arena';
   d.en['quiz.entry'] = 'Crypto Quiz Arena';
-  d.en['quiz.sub'] = '153 questions · 4 ranks (Novice / Advanced / Expert / Master) · 10 random questions per round — earn your cipher rank';
+  d.en['quiz.sub'] = '160 questions · 4 ranks (Novice / Advanced / Expert / Master) · 10 random questions per round — earn your cipher rank';
   d.en['quiz.start'] = '🚀 Start Quiz';
   d.en['quiz.next'] = 'Next →';
   d.en['quiz.q'] = 'Q{n}';
@@ -150,7 +150,7 @@
   d.en['app.desc404'] = 'Page not found — head back to the DECODE ARCADE lobby and keep playing.';
   d.en['err.msg'] = 'GAME OVER · PAGE NOT FOUND';
   d.en['err.code'] = '404';
-  d.en['err.sub'] = 'This cartridge got swallowed — or the address was mistyped. Head back to the lobby, drop in another coin, and keep playing 118 mini-games.';
+  d.en['err.sub'] = 'This cartridge got swallowed — or the address was mistyped. Head back to the lobby, drop in another coin, and keep playing 124 mini-games.';
   d.en['err.back'] = '◀ Back to lobby';
   d.en['lobby.brand'] = 'DECODE ARCADE';
   d.en['lobby.desc'] = 'A retro cipher arcade — open and play, best scores stored locally';

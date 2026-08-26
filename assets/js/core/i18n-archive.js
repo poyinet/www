@@ -67,6 +67,10 @@
       d.en['stp.back.bio'] = 'PhD in distributed systems from Exeter, core member of the cypherpunk mailing list, co-founder of Blockstream — still pushing sidechains and Bitcoin protocol research.';
       d.zh['stp.back.quote'] = '算力是最诚实的投票。';
       d.en['stp.back.quote'] = 'Hashpower is the most honest ballot.';
+      d.zh['stp.koblitz.bio'] = '华盛顿大学数学教授，数论与椭圆曲线计算的权威。1985 年普林斯顿会议后，他把椭圆曲线从纯数论研究变成保护亿万次日常握手的密码学基座；著有《数论与密码学课程》等经典教材。';
+      d.en['stp.koblitz.bio'] = 'A University of Washington professor and authority on number theory and elliptic-curve computation, he turned curves from pure number theory into the foundation of billions of daily handshakes; his algebraic-number-theory texts remain standards.';
+      d.zh['stp.koblitz.quote'] = '最深的数学，往往守护着最平凡的对话。';
+      d.en['stp.koblitz.quote'] = 'The deepest mathematics guards the most ordinary conversations.';
       d.zh['stp.turing.bio'] = '剑桥数学天才。二战中在布莱切利园领导破译德军 Enigma，设计了机电式 Bombe 高速筛选转子设置。战后以「图灵机」与人工智能测试奠基计算机时代，却被自己的时代辜负。';
       d.en['stp.turing.bio'] = 'A Cambridge mathematics prodigy. At Bletchley Park he led the attack on Enigma and designed the electromechanical Bombe that hunted rotor settings at speed. After the war his Turing machine and AI test founded the computer age — though his own age failed him.';
       d.zh['stp.turing.quote'] = '我们只能看清前方很短的距离，但那里已经有很多值得去做的事。';

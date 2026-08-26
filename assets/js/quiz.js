@@ -478,6 +478,28 @@ window.QUIZ = (function () {
     { lvl: 2, a: 1,
       zh: { q: 'TOTP 验证码 30 秒轮换一次。它的安全收益主要是？', opts: ['节省手机电量', '把偷窥/钓鱼得到的验证码价值压缩到半分钟内', '让密码更长', '防止 SIM 卡老化'], explain: '时间片赋予验证码「新鲜度」：被偷窥的码半分钟后作废。服务器允许 ±1 片时钟容差以兼顾可用性。' },
       en: { q: 'TOTP codes rotate every 30 seconds. The main security benefit?', opts: ['Battery savings', 'Codes peeked or phished lose value within half a minute', 'Longer passwords', 'SIM card longevity'], explain: 'Time slices buy freshness: a stolen code is worthless in 30 seconds. Servers accept ±1 slice of clock drift for usability.' } },
+    { lvl: 1, a: 1,
+      zh: { q: '斯巴达密码棒（Scytale）属于哪类密码？', opts: ['替换密码', '换位密码', '流密码', '公钥密码'], explain: '羊皮纸条绕棒书写，解下即乱——字母不变、只变位置，是最早的军用换位密码实物。' },
+      en: { q: 'The Spartan Scytale is what kind of cipher?', opts: ['Substitution', 'Transposition', 'Stream', 'Public-key'], explain: 'Letters unchanged, only rearranged — the earliest surviving military transposition cipher.' } },
+    { lvl: 2, a: 2,
+      zh: { q: '卡当格栅（Cardan Grille）的本质属于哪个范畴？', opts: ['多表替换', '数学加密', '隐写术——秘密藏于明文之中', '哈希函数'], explain: '挖孔卡片让密文藏在无害闲话的字缝里：不隐藏「内容」而隐藏「存在」，正是隐写术的定义。' },
+      en: { q: 'The Cardan Grille fundamentally belongs to which category?', opts: ['Polyalphabetic substitution', 'Mathematical encryption', 'Steganography — hiding existence, not content', 'Hash functions'], explain: 'A holed card lets the secret hide between innocent words: steganography hides that a message exists at all.' } },
+    { lvl: 2, a: 0,
+      zh: { q: 'Passkey（FIDO2）相比 TOTP 验证码的核心安全优势是？', opts: ['签名绑定真实域名，钓鱼站拿不到可用凭据', '验证码更长', '不需要手机', '速度更快'], explain: 'TOTP 码可被 AiTM 钓鱼站实时转发；Passkey 的私钥签名与域名绑定，假站要不到有效响应。' },
+      en: { q: 'What is Passkey\'s (FIDO2) core security advantage over TOTP codes?', opts: ['Signatures are origin-bound — phishing sites get nothing usable', 'Longer codes', 'No phone needed', 'Faster'], explain: 'AiTM phishing relays TOTP codes in real time; Passkey signatures are cryptographically bound to the true domain.' } },
+    { lvl: 3, a: 1,
+      zh: { q: '博福特密码与维吉尼亚的关键区别是？', opts: ['使用更大的字母表', '密文字母 = 密钥 − 明文（自倒置，加解密同一张表）', '只对元音加密', '每字换钥三次'], explain: 'c = k − p 的自倒置性质使加密表即解密表——这一对称性被早期机械密码设备广泛采用。' },
+      en: { q: 'The key difference of the Beaufort cipher versus Vigenere?', opts: ['A larger alphabet', 'Ciphertext = key minus plaintext — self-reciprocal, one table for both directions', 'Vowels only', 'Triple key rotation'], explain: 'c = k − p is self-reciprocal: the same table encrypts and decrypts, a symmetry early cipher machines exploited.' } },
+    { lvl: 3, a: 2,
+      zh: { q: '阿尔贝蒂密码盘（1467）的历史地位是？', opts: ['第一种公钥算法', '第一台电子密码机', '首个多表替换的实物工具——西方密码学之父之作', '第一份频率分析论文'], explain: '两个同轴圆盘一转即可逐字更换字母表，单表频率分析从此失效——比维吉尼亚早百余年。' },
+      en: { q: 'The historic status of Alberti\'s cipher disk (1467)?', opts: ['First public-key algorithm', 'First electronic cipher machine', 'First physical polyalphabetic tool — by a father of Western cryptography', 'First frequency-analysis paper'], explain: 'One twist of two coaxial disks gives each letter its own alphabet, defeating single-table frequency analysis — a century before Vigenere.' } },
+    { lvl: 4, a: 0,
+      zh: { q: 'PAKE（如 WPA3 所用的 SAE）解决的核心问题是？', opts: ['仅凭一个弱口令协商出强会话密钥，且窃听者无法离线验证猜测', '把强密钥压缩成弱口令', '加速 Wi-Fi 连接', '替代数字证书'], explain: '普通口令协议让攻击者抓包后离线穷举；PAKE 把验证做成交互式零知识过程，猜测只能在在线慢速进行。' },
+      en: { q: 'What core problem does PAKE (e.g. SAE in WPA3) solve?', opts: ['Deriving a strong session key from a weak password, with no offline guessing for eavesdroppers', 'Compressing strong keys into passwords', 'Speeding up Wi-Fi', 'Replacing certificates'], explain: 'Plain password protocols allow offline brute force on captured handshakes; PAKE makes verification interactive so guesses can only be tried slowly, online.' } },
+    { lvl: 4, a: 3,
+      zh: { q: '盲签名（Blind Signature）的独特之处在于？', opts: ['签名后文件自动销毁', '只能签一次', '不需要私钥', '签署者看不到所签内容却能为其背书'], explain: '先盲化→签名→去盲：签署者不知内容。David Chaum 据此构造了最早的电子现金与匿名投票协议。' },
+      en: { q: 'What makes Blind Signatures unique?', opts: ['The file self-destructs after signing', 'They work only once', 'No private key needed', 'The signer endorses content they cannot see'], explain: 'Blind, sign, unblind: the signer never learns the content. David Chaum built the first e-cash and anonymous voting on this.' } },
+
 
   ];
 

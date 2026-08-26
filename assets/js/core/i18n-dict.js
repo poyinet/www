@@ -61,7 +61,7 @@ Arcade.i18n.dicts = {
     'workshop.decNote': '自动识别：凯撒 / 摩斯 / 培根 / 二进制 / 异或 / Base64 / 栅栏 / 维吉尼亚（常用密钥）',
     'workshop.eggTitle': '🎯 彩蛋收集（全站寻宝）',
     'workshop.eggNote': '全站藏有 20 条密文彩蛋——破解后在下方输入答案单词，收集进度点亮。全部集齐解锁隐藏成就！',
-    'quiz.entrySub': '153 题测出你的段位',
+    'quiz.entrySub': '160 题测出你的段位',
     'quiz.lvl1': '入门', 'quiz.lvl2': '进阶', 'quiz.lvl3': '专家', 'quiz.lvl4': '大师',
     'quiz.right': '✅ 答对了！',
     'quiz.wrong': '❌ 答错了',
@@ -454,7 +454,7 @@ Arcade.i18n.dicts = {
     'workshop.decNote': 'Auto-detect: Caesar / Morse / Bacon / Binary / XOR / Base64 / Rail Fence / Vigenère (common keys)',
     'workshop.eggTitle': '🎯 Egg Hunt (site-wide treasure)',
     'workshop.eggNote': '20 cipher eggs are hidden across the site — crack them and type the answer word below. Collect all to unlock a hidden achievement!',
-    'quiz.entrySub': '153 questions · find your rank',
+    'quiz.entrySub': '160 questions · find your rank',
     'quiz.lvl1': 'Novice', 'quiz.lvl2': 'Advanced', 'quiz.lvl3': 'Expert', 'quiz.lvl4': 'Master',
     'quiz.right': '✅ Correct!',
     'quiz.wrong': '❌ Wrong',
@@ -1625,4 +1625,12 @@ Arcade.i18n.dicts = {
   dd.zh['stp.back.era'] = '1970– · 英国/马耳他'; dd.en['stp.back.era'] = '1970– · 英国/马耳他';
   dd.zh['stp.back.fact'] = '1997 年的反垃圾邮件方案 Hashcash 要求发件人付出少量算力——十年后中本聪把它变成比特币的工作量证明核心，并在创世论文里引用了他。';
   dd.en['stp.back.fact'] = 'His 1997 anti-spam scheme Hashcash made senders burn a little CPU — a decade later Satoshi turned it into Bitcoin\'s proof-of-work core and cited him in the whitepaper.';
+  dd.zh['stp.koblitz.name'] = '尼尔·科比茨'; dd.en['stp.koblitz.name'] = 'Neal Koblitz';
+  dd.zh['stp.koblitz.icon'] = '📈'; dd.en['stp.koblitz.icon'] = '📈';
+  dd.zh['stp.koblitz.role'] = '数学家 · 椭圆曲线密码学联合创始人';
+  dd.en['stp.koblitz.role'] = 'Mathematician · co-founder of elliptic-curve cryptography';
+  dd.zh['stp.koblitz.era'] = '1948– · 美国';
+  dd.en['stp.koblitz.era'] = '1948– · United States';
+  dd.zh['stp.koblitz.fact'] = '1985 年与 Victor Miller 各自独立提出 ECC。他还是「密码学战争」中公开辩论的积极参与者，长期在越南与非洲支教数学。';
+  dd.en['stp.koblitz.fact'] = 'In 1985 he independently proposed ECC alongside Victor Miller. An outspoken participant in the Crypto Wars debates, he has also spent decades teaching mathematics in Vietnam and Africa.';
 })();

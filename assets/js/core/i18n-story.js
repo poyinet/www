@@ -699,6 +699,10 @@
   d.en['st.c10.g20'] = 'AES Round Lab: real S-box and GF(2^8) mixing — drive the heartbeat of modern block ciphers yourself.';
   d.zh['st.c10.g21'] = '口令保险库：熵、盐与慢哈希——把每天都在用的那套密码系统真正用对。';
   d.en['st.c10.g21'] = 'Password Vault: entropy, salt and slow hashing — finally get right the crypto you use every day.';
+  d.zh['st.c10.g22'] = 'PGP 加密邮件：混合加密与信任之网——密码学第一次站到了枪炮的对立面。';
+  d.en['st.c10.g22'] = 'PGP Mail: hybrid encryption and the Web of Trust — the first time cryptography stood up to guns.';
+  d.zh['st.c10.g23'] = '区块链矿工：工作量证明用算力买信任——中本聪把密码学变成了经济学。';
+  d.en['st.c10.g23'] = 'Blockchain Miner: proof of work buys trust with hashpower — Satoshi turned cryptography into economics.';
   d.zh['st.c8.g4'] = '地牢探险：1980 年《Rogue》开创的随机地牢，Roguelike 之祖。';
   d.en['st.c8.g4'] = 'Dungeon: the 1980 game Rogue spawned random-floor roguelikes.';
   d.zh['st.c8.g5'] = '平台跳跃：1981 年《大金刚》起跳，像素时代的看家类型。';

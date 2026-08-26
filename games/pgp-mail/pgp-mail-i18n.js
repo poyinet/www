@@ -1,0 +1,34 @@
+/* 破译 DECODE ARCADE · pgp-mail 游戏内文案（zh/en 对称，占位符一致） */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.pgp-mail.tutTitle'] = 'PGP 加密邮件 — 玩法';
+  d.en['gs.pgp-mail.tutTitle'] = 'PGP Mail — How to Play';
+  d.zh['gs.pgp-mail.tut1t'] = '目标';
+  d.en['gs.pgp-mail.tut1t'] = 'Objective';
+  d.zh['gs.pgp-mail.tut1'] = '你要把一封机密邮件安全送到收件人手里。八个环节对应 PGP 的真实工作流：每步选出正确的做法。答对 +25。';
+  d.en['gs.pgp-mail.tut1'] = 'Deliver a secret email safely. Eight steps mirror the real PGP workflow: pick the right move at each stage. +25 per correct answer.';
+  d.zh['gs.pgp-mail.tut2t'] = '混合加密';
+  d.en['gs.pgp-mail.tut2t'] = 'Hybrid encryption';
+  d.zh['gs.pgp-mail.tut2'] = 'PGP 的核心思想：用对方公钥加密的只是一把随机会话密钥；邮件正文本身由这把密钥做对称加密——公钥密码解决分发，对称密码承担吞吐。';
+  d.en['gs.pgp-mail.tut2'] = 'The heart of PGP: only a random session key is encrypted with the recipient\'s public key; the message itself gets symmetric encryption under that key — public-key crypto solves distribution, symmetric crypto carries the load.';
+  d.zh['gs.pgp-mail.tut3t'] = '计分';
+  d.en['gs.pgp-mail.tut3t'] = 'Scoring';
+  d.zh['gs.pgp-mail.tut3'] = '每题 +25，答错展示讲解。八步满分 200——走完你就理解了 Signal 之前的时代人们如何秘密通信。';
+  d.en['gs.pgp-mail.tut3'] = '+25 per step, wrong picks show why. Eight steps, 200 max — finish it and you know how people spoke in secret before Signal.';
+  d.zh['gs.pgp-mail.helpText'] = '为什么重要：Zimmermann 1991 年发布 PGP 后遭美国政府以「军火出口」罪名调查三年——案件撤销时，「代码即言论」已成共识。今天 TLS/Signal 的混合加密骨架，正是 PGP 当年画下的蓝图。<a class="gh-link" href="../../story.html?id=modern">见编年史「数学家的反击」→</a>';
+  d.en['gs.pgp-mail.helpText'] = 'Why it matters: after Zimmermann released PGP in 1991, the US government investigated him for three years over "munitions export" — by the time the case dropped, "code as speech" was consensus. The hybrid-encryption skeleton inside today\'s TLS and Signal is exactly what PGP drew.<a class="gh-link" href="../../story.html?id=modern">See the Chronicle chapter "The Mathematicians Strike Back" &rarr;</a>';
+  d.zh['gs.pgp-mail.dailyBtn'] = '📅 每日挑战';
+  d.en['gs.pgp-mail.dailyBtn'] = '📅 Daily challenge';
+  d.zh['gs.pgp-mail.prog'] = '第 {n} / {total} 步 · 得分 {score}';
+  d.en['gs.pgp-mail.prog'] = 'Step {n}/{total} · Score {score}';
+  d.zh['gs.pgp-mail.correct'] = '✓ 正确！';
+  d.en['gs.pgp-mail.correct'] = '✓ Correct!';
+  d.zh['gs.pgp-mail.wrong'] = '✗ 正确答案已标出';
+  d.en['gs.pgp-mail.wrong'] = '✗ The right answer is marked';
+  d.zh['gs.pgp-mail.nextBtn'] = '下一步 →';
+  d.en['gs.pgp-mail.nextBtn'] = 'Next →';
+  d.zh['gs.pgp-mail.done'] = '邮件已安全送达！最终得分 {score}。';
+  d.en['gs.pgp-mail.done'] = 'Delivered safely! Final score {score}.';
+  d.zh['gs.pgp-mail.againBtn'] = '↻ 再寄一封';
+  d.en['gs.pgp-mail.againBtn'] = '↻ Send another';
+})();

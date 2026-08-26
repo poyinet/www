@@ -15,7 +15,7 @@ window.GAME_CATEGORIES = ['经典街机', '动作反应', '逻辑谜题', '空�
 
 /* 每日破译中心：启用「📅 每日一题」的游戏（大厅今日面板 + 档案页共用）
    所有列出的游戏均实现 daily 模式：日种子确定性生成 + 解完调用 Arcade.daily.markSolved */
-window.DAILY_IDS = ['sudoku', 'enigma', 'bifid', 'slitherlink', 'hashi', 'trifid', 'bacon', 'klondike', 'caesar', 'llk', 'spotdiff', 'sectorsiege', 'sheep', 'morse', 'atbash', 'polybius', 'nihilist', 'starflag', 'autokey', 'rsa', 'shamir', 'sm4', 'acrostic', 'phishhunt', 'qkd-sim', 'pqc-match', 'stepping-switch', 'intel-assess', 'aes-lab', 'password-vault'];
+window.DAILY_IDS = ['sudoku', 'enigma', 'bifid', 'slitherlink', 'hashi', 'trifid', 'bacon', 'klondike', 'caesar', 'llk', 'spotdiff', 'sectorsiege', 'sheep', 'morse', 'atbash', 'polybius', 'nihilist', 'starflag', 'autokey', 'rsa', 'shamir', 'sm4', 'acrostic', 'phishhunt', 'qkd-sim', 'pqc-match', 'stepping-switch', 'intel-assess', 'aes-lab', 'password-vault', 'pgp-mail', 'blockchain-miner'];
 
 window.GAMES = [
   /* ---------- 经典街机 ---------- */
@@ -870,5 +870,19 @@ window.GAMES = [
     icon: '🗝️', path: 'games/password-vault/index.html',
     mobile: 'ok', bestMode: 'max',
     lvl: 'easy', time: '5min',
+  },
+  {
+    id: 'pgp-mail', title: 'PGP 加密邮件', category: '密码破译',
+    desc: '第十三期 · 八步寄出一封无法偷看的信：会话密钥、混合加密、数字签名与信任之网——Zimmermann 用它对抗过整个世界。',
+    icon: '✉️', path: 'games/pgp-mail/index.html',
+    mobile: 'ok', bestMode: 'max',
+    lvl: 'easy', time: '5min',
+  },
+  {
+    id: 'blockchain-miner', title: '区块链矿工', category: '密码破译',
+    desc: '第十三期 · 亲手挖出两个区块：调 nonce 撞哈希前缀，亲历工作量证明的难度爆炸与算力经济学。',
+    icon: '⛏️', path: 'games/blockchain-miner/index.html',
+    mobile: 'ok', bestMode: 'max',
+    lvl: 'mid', time: '5min',
   }
 ];

@@ -1,0 +1,44 @@
+/* 破译 DECODE ARCADE · blockchain-miner 游戏内文案（zh/en 对称，占位符一致） */
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['gs.blockchain-miner.tutTitle'] = '区块链矿工 — 玩法';
+  d.en['gs.blockchain-miner.tutTitle'] = 'Blockchain Miner — How to Play';
+  d.zh['gs.blockchain-miner.tut1t'] = '目标';
+  d.en['gs.blockchain-miner.tut1t'] = 'Objective';
+  d.zh['gs.blockchain-miner.tut1'] = '挖出两个区块（难度 0 → 00），回答六道共识机制题。挖矿靠手点或自动档，题目答对 +25。';
+  d.en['gs.blockchain-miner.tut1'] = 'Mine two blocks (difficulty 0, then 00) and answer six consensus questions. Mine by hand or auto-hash; +25 per correct answer.';
+  d.zh['gs.blockchain-miner.tut2t'] = '工作量证明';
+  d.en['gs.blockchain-miner.tut2t'] = 'Proof of Work';
+  d.zh['gs.blockchain-miner.tut2'] = '矿工不断改变区块头里的随机数（nonce）直到哈希值满足难度前缀。验证只需一次哈希，寻找却要平均 16^N 次——不对称即安全。',
+  d.en['gs.blockchain-miner.tut2'] = 'Miners vary the nonce until the hash meets the difficulty prefix. Verifying takes one hash; finding one takes ~16^N tries on average — that asymmetry is the security.';
+  d.zh['gs.blockchain-miner.tut3t'] = '计分';
+  d.en['gs.blockchain-miner.tut3t'] = 'Scoring';
+  d.zh['gs.blockchain-miner.tut3'] = '每挖出一个区块 +25，每道题答对 +25。八步满分 200。';
+  d.en['gs.blockchain-miner.tut3'] = '+25 per block mined, +25 per correct answer. Eight steps, 200 max.';
+  d.zh['gs.blockchain-miner.helpText'] = '为什么重要：2008 年中本聪把 Adam Back 的 Hashcash 工作量证明嫁接到 Merkle 链上，创造了第一个不依赖任何机构即可达成共识的账本。「算力即投票权」重新定义了信任的物理学。<a class="gh-link" href="../../story.html?id=modern">见编年史「数学家的反击」→</a>';
+  d.en['gs.blockchain-miner.helpText'] = 'Why it matters: in 2008 Satoshi grafted Adam Back\'s Hashcash proof-of-work onto a Merkle chain, creating the first ledger to reach consensus without any institution. "Hashpower as voting rights" redefined the physics of trust.<a class="gh-link" href="../../story.html?id=modern">See the Chronicle chapter "The Mathematicians Strike Back" &rarr;</a>';
+  d.zh['gs.blockchain-miner.dailyBtn'] = '📅 每日挑战';
+  d.en['gs.blockchain-miner.dailyBtn'] = '📅 Daily challenge';
+  d.zh['gs.blockchain-miner.prog'] = '第 {n} / {total} 步 · 得分 {score}';
+  d.en['gs.blockchain-miner.prog'] = 'Step {n}/{total} · Score {score}';
+  d.zh['gs.blockchain-miner.mineTarget'] = '⛏ 挖矿：找到一个以 {pfx} 开头的哈希';
+  d.en['gs.blockchain-miner.mineTarget'] = '⛏ Mining: find a hash starting with {pfx}';
+  d.zh['gs.blockchain-miner.hashBtn'] = '⛏ 试一次哈希';
+  d.en['gs.blockchain-miner.hashBtn'] = '⛏ Try a hash';
+  d.zh['gs.blockchain-miner.autoBtn'] = '⚡ 自动挖矿';
+  d.en['gs.blockchain-miner.autoBtn'] = '⚡ Auto-mine';
+  d.zh['gs.blockchain-miner.tries'] = '已尝试 {n} 次 · 当前 nonce: {v}';
+  d.en['gs.blockchain-miner.tries'] = '{n} attempts · nonce: {v}';
+  d.zh['gs.blockchain-miner.found'] = '🎉 出块成功！尝试了 {n} 次哈希。';
+  d.en['gs.blockchain-miner.found'] = '🎉 Block found! {n} hashes tried.';
+  d.zh['gs.blockchain-miner.correct'] = '✓ 正确！';
+  d.en['gs.blockchain-miner.correct'] = '✓ Correct!';
+  d.zh['gs.blockchain-miner.wrong'] = '✗ 正确答案已标出';
+  d.en['gs.blockchain-miner.wrong'] = '✗ The right answer is marked';
+  d.zh['gs.blockchain-miner.nextBtn'] = '下一步 →';
+  d.en['gs.blockchain-miner.nextBtn'] = 'Next →';
+  d.zh['gs.blockchain-miner.done'] = '两个区块都已上链！最终得分 {score}。';
+  d.en['gs.blockchain-miner.done'] = 'Both blocks chained! Final score {score}.';
+  d.zh['gs.blockchain-miner.againBtn'] = '↻ 再挖一轮';
+  d.en['gs.blockchain-miner.againBtn'] = '↻ Mine again';
+})();

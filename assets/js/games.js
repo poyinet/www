@@ -15,7 +15,7 @@ window.GAME_CATEGORIES = ['经典街机', '动作反应', '逻辑谜题', '空�
 
 /* 每日破译中心：启用「📅 每日一题」的游戏（大厅今日面板 + 档案页共用）
    所有列出的游戏均实现 daily 模式：日种子确定性生成 + 解完调用 Arcade.daily.markSolved */
-window.DAILY_IDS = ['sudoku', 'enigma', 'bifid', 'slitherlink', 'hashi', 'trifid', 'bacon', 'klondike', 'caesar', 'llk', 'spotdiff', 'sectorsiege', 'sheep', 'morse', 'atbash', 'polybius', 'nihilist', 'starflag', 'autokey', 'rsa', 'shamir', 'sm4', 'acrostic', 'phishhunt', 'qkd-sim', 'pqc-match', 'stepping-switch', 'intel-assess', 'aes-lab', 'password-vault', 'pgp-mail', 'blockchain-miner', 'zkp-cave', 'totp-verify', 'scytale', 'alberti-disc', 'cardan-grille', 'jefferson-disk', 'side-channel-lab', 'homomorphic-lab', 'homophonic', 'typex', 'book-cipher', 'navajo-talker', 'fanqie', 'otp-telegraph'];
+window.DAILY_IDS = ['sudoku', 'enigma', 'bifid', 'slitherlink', 'hashi', 'trifid', 'bacon', 'klondike', 'caesar', 'llk', 'spotdiff', 'sectorsiege', 'sheep', 'morse', 'atbash', 'polybius', 'nihilist', 'starflag', 'autokey', 'rsa', 'shamir', 'sm4', 'acrostic', 'phishhunt', 'qkd-sim', 'pqc-match', 'stepping-switch', 'intel-assess', 'aes-lab', 'password-vault', 'pgp-mail', 'blockchain-miner', 'zkp-cave', 'totp-verify', 'scytale', 'alberti-disc', 'cardan-grille', 'jefferson-disk', 'side-channel-lab', 'homomorphic-lab', 'homophonic', 'typex', 'book-cipher', 'navajo-talker', 'fanqie', 'otp-telegraph', 'tor-onion'];
 
 window.GAMES = [
   /* ---------- 经典街机 ---------- */
@@ -980,6 +980,13 @@ window.GAMES = [
     id: 'otp-telegraph', title: 'OTP 电报房', category: '密码破译',
     desc: '第二十期 · Vernam 1917 电报机真机体验：ITA2 五单位码与密钥带逐位异或，再把两封同密钥电文相减——VENONA 破苏的数学亲手走一遍。',
     icon: '📨', path: 'games/otp-telegraph/index.html',
+    mobile: 'ok', bestMode: 'max',
+    lvl: 'mid', time: '5min',
+  },
+  {
+    id: 'tor-onion', title: 'Tor 洋葱路由', category: '密码破译',
+    desc: '第二十一期 · 匿名网络的每一层皮：按真实规则亲手建一条三跳电路，逐层封装与剥皮，出口可见性与流量分析——从 NRL 1995 到今天。',
+    icon: '🧅', path: 'games/tor-onion/index.html',
     mobile: 'ok', bestMode: 'max',
     lvl: 'mid', time: '5min',
   }

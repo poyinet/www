@@ -35,7 +35,43 @@ window.GAME_TUTORIAL_STEPS = [
   ];
   var li = 0, grid = [], blocks = {};
 
+  /* 断点续玩（共享模块，仅存本机） */
+  function writeSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.write(); }
+  function clearSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.clear(); }
+  function tryResume() { return !!(window.Arcade && Arcade.savegame && Arcade.savegame.resume()); }
+  if (window.Arcade && Arcade.savegame) {
+    Arcade.savegame.setup({
+      id: 'klotski',
+      collect: function () {
+        if (over) return null;
+        return { grid: grid, steps: steps, li: li };
+      },
+      apply: function (s) {
+        if (!s || !Array.isArray(s.grid) || s.grid.length !== ROWS) return false;
+        for (var r = 0; r < ROWS; r++) {
+          if (!Array.isArray(s.grid[r]) || s.grid[r].length !== COLS) return false;
+        }
+        grid = s.grid;
+        blocks = {};
+        for (var r2 = 0; r2 < ROWS; r2++) for (var c = 0; c < COLS; c++) {
+          var id = grid[r2][c];
+          if (id && !blocks[id]) blocks[id] = { id: id, cells: [], color: META[id].color, labelKey: META[id].labelKey };
+          if (id) blocks[id].cells.push([r2, c]);
+        }
+        steps = Math.max(0, Number(s.steps) || 0);
+        li = Number(s.li) >= 0 && Number(s.li) < LEVELS.length ? Number(s.li) : 0;
+        over = false;
+        selId = null;
+        var ms = diffRow.querySelectorAll('.mode-btn');
+        for (var bi = 0; bi < ms.length; bi++) ms[bi].classList.toggle('selected', parseInt(ms[bi].getAttribute('data-li'), 10) === li);
+        render();
+        return true;
+      }
+    });
+  }
+
   function load(INIT) {
+    clearSave();
     grid = []; blocks = {};
     for (var r = 0; r < ROWS; r++) {
       grid[r] = [];
@@ -119,6 +155,7 @@ window.GAME_TUTORIAL_STEPS = [
       if (Arcade.juice) Arcade.juice.win();
       if (Arcade.shell) Arcade.shell.submitScore(steps);
     }
+    writeSave();
   }
 
   diffRow.querySelectorAll('.mode-btn').forEach(function (b) {
@@ -132,7 +169,7 @@ window.GAME_TUTORIAL_STEPS = [
     });
   });
 
-  load(LEVELS[li].init); render();
+  if (!tryResume()) { load(LEVELS[li].init); render(); }
       /* helpText */
   var hd = document.createElement('div');
   hd.style.cssText = 'font-size:12px;color:var(--text-dim);line-height:1.8;margin-top:12px;text-align:left;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 12px';

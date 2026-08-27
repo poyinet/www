@@ -344,7 +344,45 @@
   var steps = 0;
   var isDaily = false;  // 当前是否每日一题（解完计入今日破译中心）
 
+  /* 断点续玩（共享模块，仅存本机） */
+  function writeSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.write(); }
+  function clearSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.clear(); }
+  function tryResume() { return !!(window.Arcade && Arcade.savegame && Arcade.savegame.resume()); }
+  if (window.Arcade && Arcade.savegame) {
+    Arcade.savegame.setup({
+      id: 'hashi',
+      collect: function () {
+        if (!puzzle || !overlayEl.classList.contains('hidden')) return null;
+        return { puzzle: puzzle, drawn: drawn, steps: steps, isDaily: isDaily, diffIdx: diffIdx,
+          day: (window.Arcade && Arcade.daily) ? Arcade.daily.dayStr() : '' };
+      },
+      apply: function (s) {
+        if (!s || !s.puzzle || !Array.isArray(s.puzzle.islands) || typeof s.puzzle.rows !== 'number' || !s.puzzle.solution || typeof s.puzzle.solution !== 'object') return false;
+        if (!s.drawn || typeof s.drawn !== 'object') return false;
+        /* 每日题跨天失效 */
+        if (s.isDaily && s.day !== ((window.Arcade && Arcade.daily) ? Arcade.daily.dayStr() : '')) return false;
+        puzzle = s.puzzle;
+        drawn = s.drawn;
+        steps = Math.max(0, Number(s.steps) || 0);
+        isDaily = !!s.isDaily;
+        diffIdx = Number(s.diffIdx) >= 0 && Number(s.diffIdx) < DIFFS.length ? Number(s.diffIdx) : 0;
+        selIsland = null;
+        diffEl.textContent = isDaily ? T('gs.hashi.dailyPre').replace('{n}', T(DIFFS[diffIdx].name)) : T(DIFFS[diffIdx].name);
+        stepsEl.textContent = String(steps);
+        overlayEl.classList.add('hidden');
+        var bs = diffRow.querySelectorAll('.mode-btn');
+        for (var bi = 0; bi < bs.length; bi++) bs[bi].classList.toggle('selected', bi === diffIdx);
+        var d2 = new Date();
+        var dstr = d2.getFullYear() + '-' + (d2.getMonth() + 1) + '-' + d2.getDate();
+        msgEl.textContent = isDaily ? T('gs.hashi.dailyMsg').replace('{d}', dstr).replace('{n}', T(DIFFS[diffIdx].name)) : T('gs.hashi.startMsg').replace('{n}', T(DIFFS[diffIdx].name));
+        render();
+        return true;
+      }
+    });
+  }
+
   function startPuzzle() {
+    clearSave();
     isDaily = false;
     var D = DIFFS[diffIdx];
     diffEl.textContent = T(D.name);
@@ -451,6 +489,7 @@
       checkComplete();
       selIsland = null;
       render();
+      writeSave();
     } else {
       msgEl.textContent = T('gs.hashi.cantBridge');
       if (Arcade.audio) Arcade.audio.play('error');
@@ -546,6 +585,7 @@
         if (Arcade.audio) Arcade.audio.play('coin');
         render();
         checkComplete();
+        writeSave();
       }
     }
     if (!hintGiven) msgEl.textContent = T('gs.hashi.allRight');
@@ -556,6 +596,7 @@
 
   /* 每日一题：日期种子确定性生成 */
   function startDaily() {
+    clearSave();
     isDaily = true;
     var rng = mulberry32(todaySeed());
     var D = DIFFS[Math.floor(rng() * DIFFS.length)];
@@ -589,7 +630,7 @@
     diffRow.appendChild(b);
   });
 
-  startPuzzle();
+  if (!tryResume()) startPuzzle();
     /* helpText */
   var hd = document.createElement('div');
   hd.style.cssText = 'font-size:12px;color:var(--text-dim);line-height:1.8;margin-top:12px;text-align:left;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 12px';

@@ -15,6 +15,35 @@ window.GAME_TUTORIAL_STEPS = [
 
   var deck, playerCards, aiCards, boardCards, pot, chips, phase, round;
 
+  /* ---------- 断点续玩（共享模块 Arcade.savegame：自动 + 即时快照 + 恢复；仅存本机） ---------- */
+  function writeSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.write(); }
+  function clearSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.clear(); }
+  function tryResume() { return !!(window.Arcade && Arcade.savegame && Arcade.savegame.resume()); }
+  if (window.Arcade && Arcade.savegame) {
+    Arcade.savegame.setup({
+      id: 'poker',
+      collect: function () {
+        /* 只在「玩家可行动」的 bet 阶段存；结算/终局（result / 筹码达标 / 破产）自动清档 */
+        if (phase !== 'bet' || chips >= GOAL || chips < ANTE) return null;
+        return { chips: chips, playerCards: playerCards, aiCards: aiCards, boardCards: boardCards, pot: pot, phase: phase, round: round };
+      },
+      apply: function (s) {
+        if (!s || typeof s.chips !== 'number' || !Array.isArray(s.playerCards) || !Array.isArray(s.aiCards) || !Array.isArray(s.boardCards) || typeof s.pot !== 'number' || s.phase !== 'bet' || typeof s.round !== 'number') return false;
+        chips = s.chips;
+        playerCards = s.playerCards;
+        aiCards = s.aiCards;
+        boardCards = s.boardCards;
+        pot = s.pot;
+        phase = 'bet';
+        round = s.round;
+        callBtn.disabled = raiseBtn.disabled = foldBtn.disabled = showBtn.disabled = false;
+        render(false);
+        msg.textContent = T('gs.poker.newRound'); msg.style.color = '';
+        return true;
+      }
+    });
+  }
+
   function buildDeck() {
     deck = [];
     for (var s = 0; s < 4; s++) for (var r = 0; r < 13; r++) deck.push({ s: SUITS[s], r: RANKS[r] });
@@ -83,9 +112,11 @@ window.GAME_TUTORIAL_STEPS = [
     phase = 'bet';
     round = 1;
     if (Arcade.audio) Arcade.audio.play('ui');
+    writeSave();
   }
 
   function newGame() {
+    clearSave();
     chips = START;
     deal();
   }
@@ -194,6 +225,7 @@ window.GAME_TUTORIAL_STEPS = [
     chips -= ANTE; pot += ANTE;
     if (Math.random() < 0.25) { resolve(true, true); return; } // AI 偶尔弃牌
     resolve(true, false);
+    writeSave();
   });
   raiseBtn.addEventListener('click', function () {
     var amt = Math.min(10, chips - ANTE);
@@ -201,12 +233,14 @@ window.GAME_TUTORIAL_STEPS = [
     chips -= ANTE + amt; pot += ANTE + amt;
     if (Math.random() < 0.4) { resolve(true, true); return; }
     resolve(true, false);
+    writeSave();
   });
   foldBtn.addEventListener('click', function () {
     msg.textContent = T('gs.poker.youFold').replace('{n}', pot);
     msg.style.color = 'var(--text-dim)';
     if (Arcade.audio) Arcade.audio.play('ui');
     checkEnd();
+    writeSave();
   });
   showBtn.addEventListener('click', function () {
     if (phase === 'show') { resolve(true, false); return; }
@@ -214,6 +248,7 @@ window.GAME_TUTORIAL_STEPS = [
     render(false);
     msg.textContent = T('gs.poker.aiShow').replace('{c}', aiCards.map(function (c) { return c.r + c.s; }).join(' '));
     msg.style.color = 'var(--neon-cyan)';
+    writeSave();
   });
 
   restartBtn.addEventListener('click', function () { newGame(); callBtn.disabled = raiseBtn.disabled = foldBtn.disabled = showBtn.disabled = false; render(false); msg.textContent = T('gs.poker.newRound'); msg.style.color = ''; if (Arcade.audio) Arcade.audio.play('ui'); });
@@ -225,6 +260,7 @@ window.GAME_TUTORIAL_STEPS = [
 
   window.GAME_RESTART = function () { newGame(); callBtn.disabled = raiseBtn.disabled = foldBtn.disabled = showBtn.disabled = false; render(false); msg.textContent = T('gs.poker.newRound'); msg.style.color = ''; };
 
-  newGame(); render(false);
+  if (!tryResume()) newGame();
+  render(false);
 
 })();

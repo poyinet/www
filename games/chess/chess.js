@@ -16,6 +16,70 @@ window.GAME_TUTORIAL_STEPS = [
   var puzzleMode = false, replayBase = null, replaying = false, replayTimer = null;
   var currentPuzzle = null;
 
+  /* ---------- 断点续玩（共享模块 Arcade.savegame：自动 + 即时快照 + 恢复；仅存本机） ---------- */
+  function writeSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.write(); }
+  function clearSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.clear(); }
+  function tryResume() { return !!(window.Arcade && Arcade.savegame && Arcade.savegame.resume()); }
+  if (window.Arcade && Arcade.savegame) {
+    Arcade.savegame.setup({
+      id: 'chess',
+      collect: function () {
+        if (over || replaying) return null; /* 终局自动清档，重进是新局；回放中不落盘 */
+        return {
+          board: board, turn: turn, capturedScore: capturedScore,
+          history: history, difficulty: difficulty,
+          puzzleMode: puzzleMode,
+          puzzleIndex: puzzleMode && currentPuzzle ? PUZZLES.indexOf(currentPuzzle) : -1,
+          replayBase: replayBase
+        };
+      },
+      apply: function (s) {
+        if (!s || !Array.isArray(s.board) || s.board.length !== 8 || !Array.isArray(s.history)) return false;
+        for (var ri = 0; ri < 8; ri++) if (!Array.isArray(s.board[ri]) || s.board[ri].length !== 8) return false;
+        if (s.turn !== 'w' && s.turn !== 'b') return false;
+        if (s.difficulty !== 'easy' && s.difficulty !== 'normal' && s.difficulty !== 'hard') return false;
+        board = s.board.map(function (r) { return r.slice(); });
+        turn = s.turn;
+        selected = null; moves = []; over = false;
+        capturedScore = s.capturedScore || 0;
+        history = s.history;
+        difficulty = s.difficulty;
+        puzzleMode = !!s.puzzleMode;
+        currentPuzzle = (puzzleMode && typeof s.puzzleIndex === 'number' && s.puzzleIndex >= 0 && s.puzzleIndex < PUZZLES.length) ? PUZZLES[s.puzzleIndex] : null;
+        replayBase = typeof s.replayBase === 'string' ? s.replayBase : JSON.stringify(board);
+        replaying = false; replayTimer = null;
+        if (puzzleMode) {
+          if (modeRow) {
+            modeRow.querySelector('[data-mode="std"]').classList.remove('selected');
+            modeRow.querySelector('[data-mode="puzzle"]').classList.add('selected');
+            puzzleRow.style.display = '';
+          }
+          if (currentPuzzle) {
+            var pzBtn = puzzleRow.querySelector('[data-pz="' + PUZZLES.indexOf(currentPuzzle) + '"]');
+            if (pzBtn) { puzzleRow.querySelectorAll('.mode-btn').forEach(function (x) { x.classList.remove('selected'); }); pzBtn.classList.add('selected'); }
+          }
+        } else if (modeRow) {
+          modeRow.querySelector('[data-mode="puzzle"]').classList.remove('selected');
+          modeRow.querySelector('[data-mode="std"]').classList.add('selected');
+          puzzleRow.style.display = 'none';
+        }
+        diffRow.querySelectorAll('.mode-btn').forEach(function (x) { x.classList.remove('selected'); });
+        var diffBtn = diffRow.querySelector('[data-d="' + difficulty + '"]');
+        if (diffBtn) diffBtn.classList.add('selected');
+        render();
+        if (turn === 'b') {
+          msg.textContent = T('gs.chess.aiThink');
+          msg.style.color = 'var(--text-dim)';
+          setTimeout(aiTurn, 420);
+        } else {
+          msg.textContent = T('gs.chess.msgYourTurn');
+          msg.style.color = '';
+        }
+        return true;
+      }
+    });
+  }
+
   /* 残局库：FEN 式行（大写=白，小写=黑，. = 空） */
   var PUZZLES = [
     { name: '王后杀王', desc: '单后配合王，把黑王逼到边角将死', rows: [
@@ -46,6 +110,7 @@ window.GAME_TUTORIAL_STEPS = [
     return b;
   }
   function loadPuzzle(pz) {
+    clearSave();
     puzzleMode = true;
     currentPuzzle = pz;
     board = parsePuzzle(pz.rows);
@@ -59,6 +124,7 @@ window.GAME_TUTORIAL_STEPS = [
   }
 
   function newGame() {
+    clearSave();
     board = [];
     var back = ['R', 'N', 'B', 'Q', 'K', 'B', 'N', 'R'];
     for (var c = 0; c < 8; c++) { board[0] = board[0] || []; board[1] = board[1] || []; board[0][c] = 'b' + back[c]; board[1][c] = 'bp'; }
@@ -205,6 +271,7 @@ window.GAME_TUTORIAL_STEPS = [
     turn = 'w'; selected = null; moves = []; over = false;
     render();
     if (!gameEnd()) { msg.textContent = T('gs.chess.msgUndone'); msg.style.color = ''; }
+    writeSave();
     return true;
   }
 
@@ -322,6 +389,7 @@ window.GAME_TUTORIAL_STEPS = [
       msg.textContent = T('gs.chess.msgYourTurn');
       msg.style.color = '';
     }
+    writeSave();
   }
 
   /* ---------- UI ---------- */
@@ -488,6 +556,7 @@ window.GAME_TUTORIAL_STEPS = [
           msg.style.color = 'var(--text-dim)';
           setTimeout(aiTurn, 420);
         }
+        writeSave();
         return;
       }
       if (p && p[0] === 'w') { selected = [r, c]; moves = legalMovesFor(r, c); render(); return; }
@@ -535,6 +604,7 @@ window.GAME_TUTORIAL_STEPS = [
 
   window.GAME_RESTART = function () { restartCurrent(); };
 
-  newGame(); render();
+  if (!tryResume()) newGame();
+  render();
 
 })();

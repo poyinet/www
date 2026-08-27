@@ -118,3 +118,62 @@ Arcade.daily = (function () {
     markSolved: markSolved, streak: streak, lastDay: lastDay
   };
 })();
+
+/* ============================================================
+   断点续玩通用件 Arcade.savegame（2026-08 批量扩展）
+   任意游戏：setup({id, collect, apply}) 后自动获得
+     - 页面隐藏（visibilitychange）与离开（pagehide）自动存档
+     - 状态变更后调用 write() 即时快照（推荐每次关键变更后）
+     - 启动时调用 resume()：恢复成功返回 true 并 toast；否则返回 false
+     apply 返回 false / 异常 → 视为无效存档自动清除
+   仅存本机 localStorage（arcade_save_<id>），绝不上传。
+   ============================================================ */
+window.Arcade = window.Arcade || {};
+
+Arcade.savegame = (function () {
+  var cfg = null;
+
+  function key() { return 'arcade_save_' + cfg.id; }
+
+  /** 快照写入；collect 返回 null/undefined 视为「无局可存」→ 清档 */
+  function write() {
+    if (!cfg || !cfg.collect) return;
+    try {
+      var s = cfg.collect();
+      if (s == null) { localStorage.removeItem(key()); return; }
+      s.__t = Date.now();
+      localStorage.setItem(key(), JSON.stringify(s));
+    } catch (e) {}
+  }
+
+  function clear() {
+    try { localStorage.removeItem(key()); } catch (e) {}
+  }
+
+  /** 读档恢复；apply 返回 false / 抛错 → 视为无效存档并清除 */
+  function resume() {
+    if (!cfg || !cfg.apply) return false;
+    try {
+      var s = JSON.parse(localStorage.getItem(key()) || 'null');
+      if (!s) return false;
+      if (!cfg.apply(s)) { clear(); return false; }
+      var msg = cfg.msg ? Arcade.i18n.t(cfg.msg) : Arcade.i18n.t('savegame.resumed');
+      if (window.Arcade && Arcade.i18n && Arcade.ui && Arcade.ui.toast) {
+        Arcade.ui.toast(msg, 'ok');
+      }
+      return true;
+    } catch (e) { return false; }
+  }
+
+  /** 注册（并挂自动存档钩子）；游戏启动后调用 resume() 决定恢复或开新局 */
+  function setup(o) {
+    cfg = o;
+    if (!cfg || !cfg.collect || !cfg.apply) return;
+    document.addEventListener('visibilitychange', function () {
+      if (document.visibilityState === 'hidden') write();
+    });
+    window.addEventListener('pagehide', write);
+  }
+
+  return { setup: setup, resume: resume, write: write, clear: clear };
+})();

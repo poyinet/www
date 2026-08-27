@@ -14,6 +14,46 @@ window.GAME_TUTORIAL_STEPS = [
 
   var solution = [], seeds = [], blocks, steps, won;
 
+  /* ---------- 断点续玩（共享模块 Arcade.savegame：自动 + 恢复；仅存本机） ---------- */
+  function writeSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.write(); }
+  function clearSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.clear(); }
+  function tryResume() { return !!(window.Arcade && Arcade.savegame && Arcade.savegame.resume()); }
+  if (window.Arcade && Arcade.savegame) {
+    Arcade.savegame.setup({
+      id: 'shikaku',
+      collect: function () {
+        if (won) return null; // 已通关：无局可存，自动清档
+        var placed = [];
+        for (var i = 0; i < cells.length; i++) if (cells[i].classList.contains('inblock')) placed.push(i);
+        return { solution: solution, seeds: seeds, N: N, difficulty: difficulty, steps: steps, corner: corner, placed: placed };
+      },
+      apply: function (s) {
+        if (!s || !Array.isArray(s.solution) || !Array.isArray(s.seeds) || typeof s.N !== 'number' ||
+            typeof s.steps !== 'number' || !Array.isArray(s.placed) || s.won) return false;
+        N = s.N;
+        difficulty = s.difficulty || 'normal';
+        solution = s.solution;
+        seeds = s.seeds;
+        steps = s.steps;
+        won = false;
+        corner = s.corner || null;
+        blocks = null;
+        diffRow.querySelectorAll('.mode-btn').forEach(function (b) {
+          b.classList.toggle('selected', b.getAttribute('data-d') === difficulty);
+        });
+        buildCells();
+        for (var i = 0; i < s.placed.length; i++) {
+          var idx = s.placed[i];
+          if (cells[idx]) cells[idx].classList.add('inblock');
+        }
+        mark();
+        msg.textContent = T('gs.shikaku.startMsg');
+        msg.style.color = '';
+        return true;
+      }
+    });
+  }
+
   /* 随机矩形分割：从左上开始贪心切分，直到全覆盖（无残余 → 保证必有解） */
   function generate(size) {
     N = size;
@@ -94,7 +134,7 @@ window.GAME_TUTORIAL_STEPS = [
   var corner = null;
   function click(r, c) {
     if (won) return;
-    if (!corner) { corner = { r: r, c: c }; steps++; mark(); return; }
+    if (!corner) { corner = { r: r, c: c }; steps++; mark(); writeSave(); return; }
     // 第二点：验证矩形
     var r1 = Math.min(corner.r, r), r2 = Math.max(corner.r, r);
     var c1 = Math.min(corner.c, c), c2 = Math.max(corner.c, c);
@@ -115,6 +155,7 @@ window.GAME_TUTORIAL_STEPS = [
       corner = null;
       steps++;
       mark();
+      writeSave();
       if (Arcade.audio) Arcade.audio.play('error');
       setTimeout(function () { if (!won) { msg.textContent = T('gs.shikaku.startMsg'); msg.style.color = ''; } }, 1100);
       return;
@@ -135,6 +176,7 @@ window.GAME_TUTORIAL_STEPS = [
       mark();
       setTimeout(function () { if (!won) { msg.textContent = T('gs.shikaku.startMsg'); msg.style.color = ''; } }, 1100);
     }
+    writeSave();
   }
 
   function mark() {
@@ -154,6 +196,7 @@ window.GAME_TUTORIAL_STEPS = [
   }
 
   function setup() {
+    clearSave();
     generate(DIFFS[difficulty]);
     blocks = null; steps = 0; won = false; corner = null;
     buildCells();
@@ -177,6 +220,7 @@ window.GAME_TUTORIAL_STEPS = [
 
   window.GAME_RESTART = function () { setup(); msg.textContent = T('gs.shikaku.startMsg'); msg.style.color = ''; };
 
-  setup();
+  /* 启动：优先恢复上次进度；无档则新开一局 */
+  if (!tryResume()) setup();
 
 })();

@@ -44,6 +44,48 @@
   var board, current, moves, gameOver, winCells, flashOn, flashTimer, hintTimer;
   var mode = 'pvp', aiThinking = false, aiTimer = null, streak = 0;
 
+  /* ---------- 断点续玩（共享模块 Arcade.savegame：自动 + 即时快照 + 恢复；仅存本机） ---------- */
+  function writeSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.write(); }
+  function clearSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.clear(); }
+  function tryResume() { return !!(window.Arcade && Arcade.savegame && Arcade.savegame.resume()); }
+  if (window.Arcade && Arcade.savegame) {
+    Arcade.savegame.setup({
+      id: 'gomoku',
+      collect: function () {
+        if (gameOver) return null; /* 终局自动清档，重进是新局 */
+        return { board: board, current: current, moves: moves, mode: mode, streak: streak };
+      },
+      apply: function (s) {
+        if (!s || !Array.isArray(s.board) || s.board.length !== SIZE) return false;
+        for (var ri = 0; ri < SIZE; ri++) if (!Array.isArray(s.board[ri]) || s.board[ri].length !== SIZE) return false;
+        if (s.current !== BLACK && s.current !== WHITE) return false;
+        if (!Array.isArray(s.moves)) return false;
+        if (s.mode !== 'pvp' && s.mode !== 'easy' && s.mode !== 'medium' && s.mode !== 'hard') return false;
+        board = s.board.map(function (r) { return r.slice(); });
+        current = s.current;
+        moves = s.moves;
+        mode = s.mode;
+        streak = s.streak || 0;
+        gameOver = false; winCells = null; aiThinking = false;
+        flashOn = false;
+        clearTimeout(hintTimer); clearTimeout(aiTimer);
+        for (var mb = 0; mb < modeBtns.length; mb++) modeBtns[mb].classList.toggle('active', modeBtns[mb].getAttribute('data-mode') === mode);
+        if (mode !== 'pvp' && current === WHITE) {
+          aiThinking = true;
+          msgEl.textContent = T('gs.gomoku.aiThinkingWhite');
+          msgEl.style.color = '';
+          draw();
+          aiTimer = setTimeout(aiMove, 450);
+        } else {
+          setTurnMessage();
+          updateUndoBtn();
+          draw();
+        }
+        return true;
+      }
+    });
+  }
+
   // DPR 适配：高分屏清晰
   var dpr = window.devicePixelRatio || 1;
   canvas.width = LOGICAL * dpr;
@@ -378,6 +420,7 @@
     }
     updateUndoBtn();
     draw();
+    writeSave();
   }
 
   function onTap(e) {
@@ -439,9 +482,11 @@
     }
     updateUndoBtn();
     draw();
+    writeSave();
   }
 
   function init() {
+    clearSave();
     clearInterval(flashTimer);
     clearTimeout(hintTimer);
     clearTimeout(aiTimer);
@@ -492,7 +537,7 @@
     });
   }
 
-  init();
+  if (!tryResume()) init();
     /* helpText */
   var hd = document.createElement('div');
   hd.style.cssText = 'font-size:12px;color:var(--text-dim);line-height:1.8;margin-top:12px;text-align:left;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 12px';

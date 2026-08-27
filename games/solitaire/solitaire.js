@@ -103,6 +103,31 @@ window.GAME_TUTORIAL_STEPS = [
   var idx = 0, correct = 0, hintsUsed = 0;
   var answer = '', nextTimer = null;
 
+  /* ---------- 断点续玩（共享模块 Arcade.savegame：自动 + 恢复；仅存本机） ---------- */
+  function writeSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.write(); }
+  function clearSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.clear(); }
+  function tryResume() { return !!(window.Arcade && Arcade.savegame && Arcade.savegame.resume()); }
+  if (window.Arcade && Arcade.savegame) {
+    Arcade.savegame.setup({
+      id: 'solitaire',
+      collect: function () {
+        /* 本轮已结算（idx 到顶）/ 未开局 → 无局可存，自动清档 */
+        if (!answer && idx >= TOTAL) return null;
+        return { idx: idx, correct: correct, hintsUsed: hintsUsed };
+      },
+      apply: function (s) {
+        if (!s || typeof s.idx !== 'number' || s.idx < 0 || s.idx >= TOTAL ||
+            typeof s.correct !== 'number') return false;
+        idx = s.idx;
+        correct = Math.max(0, s.correct | 0);
+        hintsUsed = Math.max(0, s.hintsUsed | 0);
+        if (nextTimer) { clearTimeout(nextTimer); nextTimer = null; }
+        load(); /* 重新载入当前轮的第 idx+1 题（进度保留；题目为随机重发） */
+        return true;
+      }
+    });
+  }
+
   function shuffleDeck() {
     var d = [];
     for (var v = 1; v <= 54; v++) d.push(v);
@@ -162,6 +187,7 @@ window.GAME_TUTORIAL_STEPS = [
     } else {
       nextTimer = setTimeout(load, 1200);
     }
+    writeSave();
   }
 
   sub.addEventListener('click', submit);
@@ -171,13 +197,15 @@ window.GAME_TUTORIAL_STEPS = [
     hintsUsed++;
     msg.textContent = fmt('gs.solitaire.hintMsg', { first: answer.charAt(0) });
     msg.className = 'so-msg';
+    writeSave();
   });
 
   window.GAME_RESTART = function () {
     idx = 0; correct = 0; hintsUsed = 0;
     clearTimeout(nextTimer); answer = '';
+    clearSave();
     load();
   };
 
-  load();
+  if (!tryResume()) load();
 })();

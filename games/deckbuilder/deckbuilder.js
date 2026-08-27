@@ -48,7 +48,46 @@ window.GAME_TUTORIAL_STEPS = [
   var relics, phase, isElite, bossDown;
   var bossTimer = null; // 换 Boss 定时器（重开时清理，防跨局触发 nextBoss）
 
+  /* ---------- 断点续玩（共享模块 Arcade.savegame：自动 + 恢复；仅存本机） ---------- */
+  function writeSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.write(); }
+  function clearSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.clear(); }
+  function tryResume() { return !!(window.Arcade && Arcade.savegame && Arcade.savegame.resume()); }
+  if (window.Arcade && Arcade.savegame) {
+    Arcade.savegame.setup({
+      id: 'deckbuilder',
+      collect: function () {
+        /* 终局（通关/失败）→ 无局可存，自动清档 */
+        if (over) return null;
+        return {
+          draw: draw, discard: discard, hand: hand, energy: energy, maxEnergy: maxEnergy,
+          block: block, hp: hp, maxHp: maxHp, boss: boss, bossIdx: bossIdx, poison: poison,
+          relics: relics, phase: phase, isElite: isElite, bossDown: bossDown, log: log,
+          /* bossTimer 非空 => 处于「击败 Boss 后待换 Boss」的过渡，恢复时直接推进 */
+          pendingNext: bossTimer !== null
+        };
+      },
+      apply: function (s) {
+        if (!s || !Array.isArray(s.draw) || !Array.isArray(s.hand) || !Array.isArray(s.discard) ||
+            !Array.isArray(s.relics) || !s.boss || typeof s.hp !== 'number' || typeof s.bossIdx !== 'number') {
+          return false;
+        }
+        draw = s.draw; discard = s.discard; hand = s.hand;
+        energy = s.energy; maxEnergy = s.maxEnergy; block = s.block;
+        hp = s.hp; maxHp = s.maxHp; boss = s.boss; bossIdx = s.bossIdx;
+        poison = s.poison || 0; relics = s.relics; isElite = !!s.isElite; bossDown = !!s.bossDown;
+        log = s.log || ''; over = false; won = false; bossTimer = null;
+        if (s.pendingNext) nextBoss();
+        else phase = s.phase || 'fight';
+        if (phase === 'choose') choiceEl.classList.remove('hidden');
+        else choiceEl.classList.add('hidden');
+        render();
+        return true;
+      }
+    });
+  }
+
   function reset() {
+    clearSave();
     if (bossTimer) { clearTimeout(bossTimer); bossTimer = null; }
     draw = DECK_START.slice();
     discard = [];
@@ -192,6 +231,7 @@ window.GAME_TUTORIAL_STEPS = [
       onBossDown();
     }
     render();
+    writeSave();
   }
 
   function endTurn() {
@@ -218,10 +258,12 @@ window.GAME_TUTORIAL_STEPS = [
       var score2 = bossIdx * 100;
       if (Arcade.shell) Arcade.shell.submitScore(score2);
       render();
+      writeSave();
       return;
     }
     startTurn();
     render();
+    writeSave();
   }
 
   var wrap = document.createElement('div');
@@ -263,7 +305,7 @@ window.GAME_TUTORIAL_STEPS = [
       choiceEl = wrap.querySelector('#dk-choice'),
       cFight = wrap.querySelector('#dk-c-fight'), cChest = wrap.querySelector('#dk-c-chest'), cFire = wrap.querySelector('#dk-c-fire');
 
-  cFight.addEventListener('click', function () { if (phase !== 'choose') return; startElite(); if (Arcade.audio) Arcade.audio.play('ui'); });
+  cFight.addEventListener('click', function () { if (phase !== 'choose') return; startElite(); writeSave(); if (Arcade.audio) Arcade.audio.play('ui'); });
   cChest.addEventListener('click', function () {
     if (phase !== 'choose') return;
     var avail = Object.keys(RELICS).filter(function (k) { return relics.indexOf(k) < 0; });
@@ -277,11 +319,13 @@ window.GAME_TUTORIAL_STEPS = [
       bossTimer = setTimeout(nextBoss, 1500);
     }
     choiceEl.classList.add('hidden');
+    writeSave();
     if (Arcade.audio) Arcade.audio.play('coin');
   });
   cFire.addEventListener('click', function () {
     if (phase !== 'choose') return;
     hp = Math.min(maxHp, hp + 20);
+    writeSave();
     msg.textContent = T('gs.deckbuilder.camp').replace('{a}', hp).replace('{b}', maxHp);
     msg.style.color = 'var(--neon-green)';
     choiceEl.classList.add('hidden');
@@ -323,6 +367,7 @@ window.GAME_TUTORIAL_STEPS = [
 
   window.GAME_RESTART = function () { reset(); choiceEl.classList.add('hidden'); msg.textContent = T('gs.deckbuilder.msgStart'); msg.style.color = ''; render(); };
 
-  reset(); render();
+  /* 启动：优先恢复上次进度；无档则新开一局 */
+  if (!tryResume()) { reset(); render(); }
 
 })();

@@ -65,6 +65,46 @@
   var board, current, mode, gameOver, aiThinking, aiTimer, streak = 0;
   var cells = [];
 
+  /* ---------- 断点续玩（共享模块 Arcade.savegame：自动 + 即时快照 + 恢复；仅存本机） ---------- */
+  function writeSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.write(); }
+  function clearSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.clear(); }
+  function tryResume() { return !!(window.Arcade && Arcade.savegame && Arcade.savegame.resume()); }
+  if (window.Arcade && Arcade.savegame) {
+    Arcade.savegame.setup({
+      id: 'reversi',
+      collect: function () {
+        if (gameOver) return null; /* 终局自动清档，重进是新局 */
+        return { board: board, current: current, mode: mode, streak: streak, aiDepth: AI_DEPTH };
+      },
+      apply: function (s) {
+        if (!s || !Array.isArray(s.board) || s.board.length !== SIZE) return false;
+        for (var ri = 0; ri < SIZE; ri++) if (!Array.isArray(s.board[ri]) || s.board[ri].length !== SIZE) return false;
+        if (s.current !== BLACK && s.current !== WHITE) return false;
+        if (s.mode !== 'pvp' && s.mode !== 'ai') return false;
+        board = s.board.map(function (r) { return r.slice(); });
+        current = s.current;
+        mode = s.mode;
+        streak = s.streak || 0;
+        AI_DEPTH = (s.aiDepth === 2 || s.aiDepth === 6) ? s.aiDepth : 4;
+        gameOver = false; aiThinking = false;
+        clearTimeout(aiTimer);
+        for (var mb = 0; mb < modeBtns.length; mb++) {
+          var dm = modeBtns[mb].getAttribute('data-mode');
+          if (dm) modeBtns[mb].classList.toggle('active', dm === mode);
+        }
+        for (var dm2 = 0; dm2 < diffBtns.length; dm2++) {
+          var d = diffBtns[dm2].getAttribute('data-diff');
+          var depth = d === 'easy' ? 2 : d === 'hard' ? 6 : 4;
+          diffBtns[dm2].classList.toggle('active', depth === AI_DEPTH);
+        }
+        render();
+        turnMessage();
+        maybeAi();
+        return true;
+      }
+    });
+  }
+
   // 构建 8×8 棋盘 DOM
   for (var i = 0; i < SIZE * SIZE; i++) {
     var cell = document.createElement('div');
@@ -225,6 +265,7 @@
       changed.push(mv.flips[i]);
     }
     afterMove(changed);
+    writeSave();
   }
 
   /* ---- AI（白方）：minimax + α-β 剪枝，深度 4 ---- */
@@ -344,6 +385,7 @@
   }
 
   function init() {
+    clearSave();
     clearTimeout(aiTimer);
     board = [];
     for (var r = 0; r < SIZE; r++) {
@@ -391,8 +433,8 @@
     });
   }
 
-  mode = 'pvp';
-  init();    /* helpText */
+  if (!tryResume()) { mode = 'pvp'; init(); }
+    /* helpText */
   var hd = document.createElement('div');
   hd.style.cssText = 'font-size:12px;color:var(--text-dim);line-height:1.8;margin-top:12px;text-align:left;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 12px';
   hd.innerHTML = T('gs.reversi.helpText');

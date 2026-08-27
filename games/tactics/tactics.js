@@ -147,9 +147,57 @@ window.GAME_TUTORIAL_STEPS = [
   var atkCells = [];
   var curLevel = null;
 
+  /* ---------- 断点续玩（共享模块 Arcade.savegame：自动 + 恢复；仅存本机） ---------- */
+  function writeSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.write(); }
+  function clearSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.clear(); }
+  function tryResume() { return !!(window.Arcade && Arcade.savegame && Arcade.savegame.resume()); }
+  if (window.Arcade && Arcade.savegame) {
+    Arcade.savegame.setup({
+      id: 'tactics',
+      collect: function () {
+        /* 单关取胜结算 / 战败 → 无局可存，自动清档（重进是重新开始该关） */
+        if (over) return null;
+        return { levelIdx: levelIdx, units: units, turn: turn, score: score };
+      },
+      apply: function (s) {
+        if (!s || !Array.isArray(s.units) || typeof s.levelIdx !== 'number' ||
+            s.levelIdx < 0 || s.levelIdx >= LEVELS.length) return false;
+        if (s.over) return false;
+        levelIdx = s.levelIdx;
+        curLevel = LEVELS[levelIdx];
+        turn = s.turn || 1;
+        score = s.score || 0;
+        over = false; phase = 'idle'; selUnit = null; moveCells = []; atkCells = [];
+        var rows = curLevel.map;
+        grid = [];
+        for (var y = 0; y < rows.length; y++) {
+          var row = [];
+          for (var x = 0; x < rows[y].length; x++) {
+            var ch = rows[y][x];
+            row.push({ hill: ch === 'H', wall: ch === '#', unit: null });
+          }
+          grid.push(row);
+        }
+        units = s.units;
+        for (var i = 0; i < units.length; i++) {
+          var u = units[i];
+          if (grid[u.y] && grid[u.y][u.x]) grid[u.y][u.x].unit = u;
+        }
+        levelEl.textContent = (levelIdx + 1) + '/3';
+        turnEl.textContent = turn;
+        scoreEl.textContent = score;
+        msgEl.textContent = T('gs.tactics.level' + (levelIdx + 1) + 'h');
+        updateCounts();
+        render();
+        return true;
+      }
+    });
+  }
+
   /* ---------- 初始化关卡 ---------- */
   function loadLevel(idx) {
     over = false; // 过关/战败后重新加载必须复位，否则棋盘交互被锁死
+    clearSave();
     curLevel = LEVELS[idx];
     grid = [];
     units = [];
@@ -267,6 +315,7 @@ window.GAME_TUTORIAL_STEPS = [
       msgEl.textContent = T('gs.tactics.selected').replace('{name}', T('gs.tactics.unit.' + selUnit.type + '.n'));
       if (Arcade.audio) Arcade.audio.play('ui');
       render();
+      writeSave();
       return;
     }
     if (!selUnit) { msgEl.textContent = T('gs.tactics.selectFirst'); return; }
@@ -285,6 +334,7 @@ window.GAME_TUTORIAL_STEPS = [
       if (atkCells.length) msgEl.textContent = T('gs.tactics.movedAtk');
       else { msgEl.textContent = T('gs.tactics.movedNoAtk'); selUnit.acted = true; phase = 'idle'; selUnit = null; }
       render();
+      writeSave();
       return;
     }
     // 攻击
@@ -312,6 +362,7 @@ window.GAME_TUTORIAL_STEPS = [
       scoreEl.textContent = score;
       checkEnd();
       render();
+      writeSave();
       return;
     }
     // 点其他：取消选择
@@ -320,19 +371,21 @@ window.GAME_TUTORIAL_STEPS = [
     moveCells = []; atkCells = [];
     msgEl.textContent = T('gs.tactics.level' + (levelIdx + 1) + 'h');
     render();
+    writeSave();
   }
 
   /* ---------- 回合流程 ---------- */
   endBtn.addEventListener('click', function () {
     if (over || phase === 'atk') { msgEl.textContent = T('gs.tactics.finishAction'); return; }
     enemyTurn();
-    if (over) return;
+    if (over) { clearSave(); return; }
     turn++;
     turnEl.textContent = turn;
     units.forEach(function (u) { if (u.side === 'my') { u.acted = false; u.movedThisTurn = false; } });
     msgEl.textContent = T('gs.tactics.turnMsg').replace('{n}', turn);
     if (Arcade.audio) Arcade.audio.play('ui');
     render();
+    writeSave();
   });
 
   function enemyTurn() {
@@ -538,6 +591,7 @@ window.GAME_TUTORIAL_STEPS = [
     loadLevel(0);
   };
 
-  loadLevel(0);
+  /* 启动：优先恢复上次进行中的战斗；无档则从第 1 关开始 */
+  if (!tryResume()) loadLevel(0);
 
 })();

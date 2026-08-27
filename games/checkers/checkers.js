@@ -13,7 +13,46 @@ window.GAME_TUTORIAL_STEPS = [
   var board, turn, selected, moves, over, score;
   var R = 8, C = 8;
 
+  /* ---------- 断点续玩（共享模块 Arcade.savegame：自动 + 即时快照 + 恢复；仅存本机） ---------- */
+  function writeSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.write(); }
+  function clearSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.clear(); }
+  function tryResume() { return !!(window.Arcade && Arcade.savegame && Arcade.savegame.resume()); }
+  if (window.Arcade && Arcade.savegame) {
+    Arcade.savegame.setup({
+      id: 'checkers',
+      collect: function () {
+        if (over) return null; /* 终局自动清档，重进是新局 */
+        return { board: board, turn: turn, score: score, difficulty: difficulty };
+      },
+      apply: function (s) {
+        if (!s || !Array.isArray(s.board) || s.board.length !== R) return false;
+        for (var ri = 0; ri < R; ri++) if (!Array.isArray(s.board[ri]) || s.board[ri].length !== C) return false;
+        if (s.turn !== 'red' && s.turn !== 'black') return false;
+        if (s.difficulty !== 'easy' && s.difficulty !== 'normal' && s.difficulty !== 'hard') return false;
+        board = s.board.map(function (r) { return r.map(function (c) { return c ? { color: c.color, king: !!c.king } : null; }); });
+        turn = s.turn;
+        selected = null; moves = []; over = false;
+        score = s.score || 0;
+        difficulty = s.difficulty;
+        diffRow.querySelectorAll('.mode-btn').forEach(function (x) { x.classList.remove('selected'); });
+        var db = diffRow.querySelector('[data-d="' + difficulty + '"]');
+        if (db) db.classList.add('selected');
+        render();
+        if (turn === 'black') {
+          msg.textContent = T('gs.checkers.aiThinking');
+          msg.style.color = 'var(--text-dim)';
+          setTimeout(aiTurn, 350);
+        } else {
+          msg.textContent = T('gs.checkers.yourTurn');
+          msg.style.color = '';
+        }
+        return true;
+      }
+    });
+  }
+
   function newGame() {
+    clearSave();
     board = [];
     for (var r = 0; r < R; r++) {
       board[r] = [];
@@ -249,6 +288,7 @@ window.GAME_TUTORIAL_STEPS = [
     turn = 'red';
     render();
     if (!gameEnd()) { msg.textContent = T('gs.checkers.yourTurn'); msg.style.color = ''; }
+    writeSave();
   }
 
   /* ---------- UI ---------- */
@@ -316,6 +356,7 @@ window.GAME_TUTORIAL_STEPS = [
           msg.style.color = 'var(--text-dim)';
           setTimeout(aiTurn, 350);
         }
+        writeSave();
         return;
       }
       if (p && p.color === 'red') {
@@ -356,6 +397,7 @@ window.GAME_TUTORIAL_STEPS = [
 
   window.GAME_RESTART = function () { newGame(); render(); msg.textContent = T('gs.checkers.startMsg'); msg.style.color = ''; };
 
-  newGame(); render();
+  if (!tryResume()) newGame();
+  render();
 
 })();

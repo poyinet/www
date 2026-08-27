@@ -271,6 +271,50 @@
   var history = [];
   var isDaily = false;
   var chalStart = 0, totalMs = 0, timerTick = null;
+  var curDiff = 1;
+
+  /* ---------- 断点续玩（共享模块 Arcade.savegame：自动 + 恢复；仅存本机） ---------- */
+  function writeSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.write(); }
+  function clearSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.clear(); }
+  function tryResume() { return !!(window.Arcade && Arcade.savegame && Arcade.savegame.resume()); }
+  if (window.Arcade && Arcade.savegame) {
+    Arcade.savegame.setup({
+      id: 'klondike',
+      collect: function () {
+        /* 未开局（pick 界面）/ 已通关 → 无局可存，自动清档 */
+        if (!st || K_won(st)) return null;
+        return { st: st, history: history, isDaily: isDaily, totalMs: totalMs, diffIdx: curDiff,
+          day: (window.Arcade && Arcade.daily) ? Arcade.daily.dayStr() : '' };
+      },
+      apply: function (s) {
+        if (!s || !s.st || !Array.isArray(s.st.cols) || s.st.cols.length !== 7 ||
+            !Array.isArray(s.st.found) || s.st.found.length !== 4 ||
+            !Array.isArray(s.st.stock) || !Array.isArray(s.st.waste)) return false;
+        /* 每日题跨天失效 */
+        if (s.isDaily && s.day !== ((window.Arcade && Arcade.daily) ? Arcade.daily.dayStr() : '')) return false;
+        st = s.st;
+        history = Array.isArray(s.history) ? s.history : [];
+        isDaily = !!s.isDaily;
+        totalMs = s.totalMs || 0;
+        sel = null;
+        pickEl.classList.add('hidden');
+        gameEl.style.display = '';
+        if (isDaily) {
+          levEl.textContent = T('gs.klondike.dailyLev');
+        } else {
+          var info = DIFF_INFO[s.diffIdx] || DIFF_INFO[1];
+          levEl.textContent = T('gs.klondike.chalLev').replace('{t}', info.t).replace('{d}', T(st.drawMode === 1 ? 'gs.klondike.draw1' : 'gs.klondike.draw3'));
+        }
+        if (timerTick) clearInterval(timerTick);
+        chalStart = Date.now();
+        timerTick = setInterval(function () {
+          timerEl.textContent = Math.round((Date.now() - chalStart + totalMs) / 1000) + 's';
+        }, 500);
+        paintAll();
+        return true;
+      }
+    });
+  }
 
   function totalSec() { return Math.round(totalMs / 1000); }
 
@@ -285,6 +329,8 @@
 
   function startGame(diffIdx, daily) {
     isDaily = !!daily;
+    curDiff = diffIdx;
+    clearSave();
     var drawMode = daily || diffIdx === 2 ? 3 : 1;
     var undos = daily ? 0 : (diffIdx === 0 ? 3 : (diffIdx === 1 ? 1 : 0));
     // 每日一题：构造式必胜牌局（花色按日种子置换，全部可解；修复随机洗牌可能不可解）
@@ -335,6 +381,7 @@
         K_draw(st);
         sel = null;
         paintAll();
+        writeSave();
         if (Arcade.audio) Arcade.audio.play('coin');
       });
     } else if (st.waste.length) {
@@ -346,6 +393,7 @@
         K_draw(st);
         sel = null;
         paintAll();
+        writeSave();
         if (Arcade.audio) Arcade.audio.play('coin');
       });
     }
@@ -411,6 +459,7 @@
           paintAll();
           if (Arcade.audio) Arcade.audio.play('coin');
           checkWin();
+          writeSave();
         } else {
           sel = null;
           msgEl.textContent = T('gs.klondike.msgCantMove');
@@ -430,7 +479,7 @@
       if (K_canWasteToCol(st, ci)) {
         pushHistory();
         K_moveWasteToCol(st, ci);
-        sel = null; paintAll(); if (Arcade.audio) Arcade.audio.play('coin'); checkWin();
+        sel = null; paintAll(); if (Arcade.audio) Arcade.audio.play('coin'); checkWin(); writeSave();
       } else { sel = null; msgEl.textContent = T('gs.klondike.msgCantCol'); if (Arcade.audio) Arcade.audio.play('error'); paintAll(); }
       return;
     }
@@ -450,7 +499,7 @@
         if (K_canToFound(st, sel.col)) {
           pushHistory();
           K_toFound(st, sel.col);
-          sel = null; paintAll(); if (Arcade.audio) Arcade.audio.play('win'); checkWin();
+          sel = null; paintAll(); if (Arcade.audio) Arcade.audio.play('win'); checkWin(); writeSave();
         } else { sel = null; msgEl.textContent = T('gs.klondike.msgCantFound'); if (Arcade.audio) Arcade.audio.play('error'); paintAll(); }
       } else {
         msgEl.textContent = T('gs.klondike.msgSingleOnly');
@@ -461,7 +510,7 @@
       if (K_canWasteToFound(st)) {
         pushHistory();
         K_wasteToFound(st);
-        sel = null; paintAll(); if (Arcade.audio) Arcade.audio.play('win'); checkWin();
+        sel = null; paintAll(); if (Arcade.audio) Arcade.audio.play('win'); checkWin(); writeSave();
       } else { sel = null; msgEl.textContent = T('gs.klondike.msgCantFound'); if (Arcade.audio) Arcade.audio.play('error'); paintAll(); }
       return;
     }
@@ -494,9 +543,12 @@
     st.undosLeft = (st.undosLeft || 0) - 1;
     sel = null;
     paintAll();
+    writeSave();
     if (Arcade.audio) Arcade.audio.play('ui');
   });
   document.getElementById('kl-new').addEventListener('click', function () {
+    clearSave();
+    st = null; sel = null;
     overlayEl.classList.add('hidden');
     pickEl.classList.remove('hidden');
     gameEl.style.display = 'none';
@@ -529,6 +581,8 @@
   root.appendChild(hd);
 
   window.GAME_RESTART = function () {
+    clearSave();
+    st = null; sel = null;
     overlayEl.classList.add('hidden');
     pickEl.classList.remove('hidden');
     gameEl.style.display = 'none';
@@ -541,5 +595,14 @@
     { t: T('gs.klondike.tut3t'), d: T('gs.klondike.tut3') },
     { t: T('gs.klondike.tut4t'), d: T('gs.klondike.tut4') }
   ];
+
+  /* 启动：优先恢复上次进行中的牌局；无档则直接显示难度选择界面 */
+  if (!tryResume()) {
+    st = null; sel = null;
+    overlayEl.classList.add('hidden');
+    pickEl.classList.remove('hidden');
+    gameEl.style.display = 'none';
+    resetClock();
+  }
 
 })();

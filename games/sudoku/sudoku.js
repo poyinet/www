@@ -86,6 +86,7 @@ window.GAME_TUTORIAL_STEPS = [
   }
   var dailyMode = false; // 当前是否每日一题（解完计入今日破译中心）
   function applyGen(gen, dailyMsg) {
+    clearSave();
     puzzle = gen.puzzle; solution = gen.solution;
     fixed = puzzle.map(function (row) { return row.map(function (v) { return v !== 0; }); });
     resetNotes();
@@ -130,7 +131,65 @@ window.GAME_TUTORIAL_STEPS = [
       diffRow = wrap.querySelector('#su-diffs');
   errEl = wrap.querySelector('#su-err');
 
-  newRandom(); // 需在 DOM 引用就绪后初始化（applyGen 会写 msg）
+  /* 断点续玩（共享模块，仅存本机） */
+  function writeSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.write(); }
+  function clearSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.clear(); }
+  function tryResume() { return !!(window.Arcade && Arcade.savegame && Arcade.savegame.resume()); }
+  if (window.Arcade && Arcade.savegame) {
+    Arcade.savegame.setup({
+      id: 'sudoku',
+      collect: function () {
+        if (over) return null;
+        return {
+          puzzle: puzzle, solution: solution, fixed: fixed,
+          notes: notes, noteMode: noteMode, difficulty: difficulty,
+          dailyMode: dailyMode, errors: errors,
+          day: (window.Arcade && Arcade.daily) ? Arcade.daily.dayStr() : '',
+          elapsed: Math.round((Date.now() - startTs) / 1000)
+        };
+      },
+      apply: function (s) {
+        if (!s || !Array.isArray(s.puzzle) || s.puzzle.length !== 9) return false;
+        if (!Array.isArray(s.solution) || s.solution.length !== 9) return false;
+        if (!Array.isArray(s.fixed) || s.fixed.length !== 9) return false;
+        if (!Array.isArray(s.notes) || s.notes.length !== 9) return false;
+        /* 每日题跨天失效：昨天的每日进度不再恢复 */
+        if (s.dailyMode && s.day !== ((window.Arcade && Arcade.daily) ? Arcade.daily.dayStr() : '')) return false;
+        for (var i = 0; i < 9; i++) {
+          if (!Array.isArray(s.puzzle[i]) || s.puzzle[i].length !== 9) return false;
+          if (!Array.isArray(s.solution[i]) || s.solution[i].length !== 9) return false;
+          if (!Array.isArray(s.fixed[i]) || s.fixed[i].length !== 9) return false;
+          if (!Array.isArray(s.notes[i]) || s.notes[i].length !== 9) return false;
+        }
+        puzzle = s.puzzle;
+        solution = s.solution;
+        fixed = s.fixed;
+        notes = s.notes;
+        noteMode = !!s.noteMode;
+        difficulty = ['easy', 'normal', 'hard'].indexOf(s.difficulty) >= 0 ? s.difficulty : 'normal';
+        dailyMode = !!s.dailyMode;
+        errors = Math.max(0, Number(s.errors) || 0);
+        var el = Math.max(0, Number(s.elapsed) || 0);
+        startTs = Date.now() - el * 1000;
+        over = false;
+        sel = null;
+        if (errEl) errEl.textContent = String(errors);
+        var nb = wrap.querySelector('#su-note');
+        if (nb) nb.classList.toggle('selected', noteMode);
+        var btns = diffRow.getElementsByTagName('button');
+        for (var b = 0; b < btns.length; b++) {
+          if (btns[b].getAttribute('data-diff')) btns[b].classList.toggle('selected', btns[b].getAttribute('data-diff') === difficulty);
+        }
+        msg.textContent = '';
+        renderBoard();
+        highlight();
+        return true;
+      }
+    });
+  }
+
+  // 需在 DOM 引用就绪后初始化（applyGen 会写 msg）
+  if (!tryResume()) newRandom();
 
   function renderBoard() {
     board.innerHTML = '';
@@ -186,6 +245,7 @@ window.GAME_TUTORIAL_STEPS = [
       if (Arcade.juice) Arcade.juice.select();
       renderBoard();
       highlight();
+      writeSave();
       return;
     }
     puzzle[sel.r][sel.c] = n;
@@ -201,6 +261,7 @@ window.GAME_TUTORIAL_STEPS = [
     cells[sel.r][sel.c].classList.remove('wrong');
     if (Arcade.juice) { if (n) Arcade.juice.select(); else Arcade.juice.select(); }
     check();
+    writeSave();
   }
   function check() {
     var full = true;

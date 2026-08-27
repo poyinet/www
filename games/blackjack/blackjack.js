@@ -14,6 +14,36 @@ window.GAME_TUTORIAL_STEPS = [
 
   var deck, player, dealer, chips, phase, hidden;
 
+  /* ---------- 断点续玩（共享模块 Arcade.savegame：自动 + 即时快照 + 恢复；仅存本机） ---------- */
+  function writeSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.write(); }
+  function clearSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.clear(); }
+  function tryResume() { return !!(window.Arcade && Arcade.savegame && Arcade.savegame.resume()); }
+  if (window.Arcade && Arcade.savegame) {
+    Arcade.savegame.setup({
+      id: 'blackjack',
+      collect: function () {
+        /* 达成目标 / 破产为终局，自动清档；仅在「可继续」的 玩家回合 或 牌局间 状态存档 */
+        if (phase === 'win' || phase === 'over') return null;
+        return { chips: chips, player: player, dealer: dealer, phase: phase };
+      },
+      apply: function (s) {
+        if (!s || typeof s.chips !== 'number' || !Array.isArray(s.player) || !Array.isArray(s.dealer)) return false;
+        if (s.phase !== 'player' && s.phase !== 'idle') return false;
+        chips = s.chips;
+        player = s.player;
+        dealer = s.dealer;
+        phase = s.phase;
+        render();
+        if (phase === 'player') {
+          msg.textContent = T('gs.blackjack.hitOrStand'); msg.style.color = '';
+        } else {
+          msg.textContent = T('gs.blackjack.restartMsg').replace('{a}', BET).replace('{b}', GOAL); msg.style.color = '';
+        }
+        return true;
+      }
+    });
+  }
+
   function buildDeck() {
     deck = [];
     for (var s = 0; s < SUITS.length; s++) for (var r = 0; r < RANKS.length; r++) deck.push({ s: SUITS[s], r: RANKS[r] });
@@ -76,6 +106,7 @@ window.GAME_TUTORIAL_STEPS = [
     if (Arcade.audio) Arcade.audio.play('ui');
     render();
     if (value(player) === 21) stand();
+    writeSave();
   }
 
   function hit() {
@@ -84,6 +115,7 @@ window.GAME_TUTORIAL_STEPS = [
     if (Arcade.juice) Arcade.juice.select();
     render();
     if (value(player) > 21) endRound('bust');
+    writeSave();
   }
 
   function stand() {
@@ -109,6 +141,7 @@ window.GAME_TUTORIAL_STEPS = [
     if (chips >= GOAL) { phase = 'win'; msg.textContent = T('gs.blackjack.goalWin').replace('{a}', GOAL).replace('{b}', chips); msg.style.color = 'var(--neon-yellow)'; if (Arcade.juice) Arcade.juice.win(); if (Arcade.shell) Arcade.shell.submitScore(chips); }
     else if (chips < BET) { phase = 'over'; msg.textContent = T('gs.blackjack.broke').replace('{n}', chips); msg.style.color = 'var(--neon-pink)'; if (Arcade.shell) Arcade.shell.submitScore(chips); }
     else { phase = 'idle'; }
+    writeSave();
   }
 
   function resolve() { endRound('compare'); }
@@ -117,9 +150,7 @@ window.GAME_TUTORIAL_STEPS = [
   hitBtn.addEventListener('click', hit);
   standBtn.addEventListener('click', stand);
 
-  chips = START; phase = 'idle';
-  player = []; dealer = [];
-  render();
+  if (!tryResume()) { chips = START; phase = 'idle'; player = []; dealer = []; render(); }
     /* helpText */
   var hd = document.createElement('div');
   hd.style.cssText = 'font-size:12px;color:var(--text-dim);line-height:1.8;margin-top:12px;text-align:left;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 12px';
@@ -127,6 +158,7 @@ window.GAME_TUTORIAL_STEPS = [
   root.appendChild(hd);
 
   window.GAME_RESTART = function () {
+    clearSave();
     chips = START; phase = 'idle';
     player = []; dealer = [];
     msg.textContent = T('gs.blackjack.restartMsg').replace('{a}', BET).replace('{b}', GOAL); msg.style.color = '';

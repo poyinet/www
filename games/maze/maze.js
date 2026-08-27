@@ -55,6 +55,34 @@ window.GAME_TUTORIAL_STEPS = [
     });
   });
 
+  /* 断点续玩（共享模块，仅存本机） */
+  function writeSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.write(); }
+  function clearSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.clear(); }
+  function tryResume() { return !!(window.Arcade && Arcade.savegame && Arcade.savegame.resume()); }
+  if (window.Arcade && Arcade.savegame) {
+    Arcade.savegame.setup({
+      id: 'maze',
+      collect: function () {
+        if (over) return null;
+        return { walls: walls, pr: pr, pc: pc, steps: steps };
+      },
+      apply: function (s) {
+        if (!s || !Array.isArray(s.walls) || s.walls.length !== H) return false;
+        for (var r = 0; r < H; r++) {
+          if (!Array.isArray(s.walls[r]) || s.walls[r].length !== W) return false;
+        }
+        walls = s.walls;
+        pr = Math.max(0, Math.min(H - 1, Number(s.pr) || 0));
+        pc = Math.max(0, Math.min(W - 1, Number(s.pc) || 0));
+        steps = Math.max(0, Number(s.steps) || 0);
+        over = false;
+        top.textContent = T('gs.maze.hud').replace('{n}', steps);
+        draw();
+        return true;
+      }
+    });
+  }
+
   function draw() {
     ctx.clearRect(0, 0, W * cell, H * cell);
     ctx.strokeStyle = 'rgba(0,240,255,0.85)'; ctx.lineWidth = 2;
@@ -94,6 +122,7 @@ window.GAME_TUTORIAL_STEPS = [
       if (Arcade.juice) Arcade.juice.win();
       if (Arcade.shell) Arcade.shell.submitScore(steps);
     } else draw();
+    writeSave();
   }
 
   document.addEventListener('keydown', function (e) {
@@ -110,7 +139,7 @@ window.GAME_TUTORIAL_STEPS = [
     });
   }
 
-  gen(); draw();
+  if (!tryResume()) { gen(); draw(); }
     /* helpText */
   var hd = document.createElement('div');
   hd.style.cssText = 'font-size:12px;color:var(--text-dim);line-height:1.8;margin-top:12px;text-align:left;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 12px';
@@ -118,6 +147,7 @@ window.GAME_TUTORIAL_STEPS = [
   root.appendChild(hd);
 
   window.GAME_RESTART = function () {
+    clearSave();
     steps = 0; over = false; pr = 0; pc = 0;
     top.textContent = T('gs.maze.hud').replace('{n}', 0);
     gen(); draw();

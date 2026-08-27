@@ -434,8 +434,47 @@
   var edgeState = {};   // key -> 0 未画 / 1 画 / -1 ✕
   var steps = 0;
   var isDaily = false;  // 当前是否每日一题（解完计入今日破译中心）
+  var solved = false;   // 是否已判定完成（通关后清档）
+
+  /* 断点续玩（共享模块，仅存本机） */
+  function writeSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.write(); }
+  function clearSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.clear(); }
+  function tryResume() { return !!(window.Arcade && Arcade.savegame && Arcade.savegame.resume()); }
+  if (window.Arcade && Arcade.savegame) {
+    Arcade.savegame.setup({
+      id: 'slitherlink',
+      collect: function () {
+        if (solved || !puzzle) return null;
+        return { puzzle: puzzle, edgeState: edgeState, steps: steps, isDaily: isDaily, diffIdx: diffIdx,
+          day: (window.Arcade && Arcade.daily) ? Arcade.daily.dayStr() : '' };
+      },
+      apply: function (s) {
+        if (!s || !s.puzzle || !Array.isArray(s.puzzle.clues) || typeof s.puzzle.rows !== 'number' || !s.puzzle.solution || typeof s.puzzle.solution !== 'object') return false;
+        if (!s.edgeState || typeof s.edgeState !== 'object') return false;
+        /* 每日题跨天失效 */
+        if (s.isDaily && s.day !== ((window.Arcade && Arcade.daily) ? Arcade.daily.dayStr() : '')) return false;
+        puzzle = s.puzzle;
+        edgeState = s.edgeState;
+        steps = Math.max(0, Number(s.steps) || 0);
+        isDaily = !!s.isDaily;
+        diffIdx = Number(s.diffIdx) >= 0 && Number(s.diffIdx) < DIFFS.length ? Number(s.diffIdx) : 0;
+        solved = false;
+        diffEl.textContent = isDaily ? T('gs.slitherlink.dailyPre').replace('{n}', T(DIFFS[diffIdx].name)) : T(DIFFS[diffIdx].name);
+        stepsEl.textContent = String(steps);
+        var bs = diffRow.querySelectorAll('.mode-btn');
+        for (var bi = 0; bi < bs.length; bi++) bs[bi].classList.toggle('selected', bi === diffIdx);
+        var d2 = new Date();
+        var dstr = d2.getFullYear() + '-' + (d2.getMonth() + 1) + '-' + d2.getDate();
+        msgEl.textContent = isDaily ? T('gs.slitherlink.dailyMsg').replace('{d}', dstr).replace('{n}', T(DIFFS[diffIdx].name)) : T('gs.slitherlink.startMsg').replace('{n}', T(DIFFS[diffIdx].name));
+        buildBoard();
+        return true;
+      }
+    });
+  }
 
   function startPuzzle() {
+    clearSave();
+    solved = false;
     isDaily = false;
     var D = DIFFS[diffIdx];
     diffEl.textContent = T(D.name);
@@ -505,6 +544,7 @@
       refreshEdges();
       if (Arcade.audio) Arcade.audio.play('ui');
       if (edgeState[key] === 1) { okEl.textContent = countOn(); }
+      writeSave();
     }
     cell.addEventListener('click', function (e) { e.preventDefault(); cycle(); });
     cell.addEventListener('keydown', function (e) {
@@ -540,6 +580,7 @@
     var solCount = 0;
     for (var k2 in puzzle.solution) solCount++;
     if (wrong === 0 && onCount === solCount) {
+      solved = true;
       msgEl.textContent = T('gs.slitherlink.win').replace('{n}', steps);
       if (Arcade.juice) Arcade.juice.win();
       if (Arcade.shell) Arcade.shell.submitScore(steps);
@@ -550,6 +591,7 @@
       msgEl.textContent = T('gs.slitherlink.wrong').replace('{n}', wrong);
       if (Arcade.audio) Arcade.audio.play('error');
     }
+    writeSave();
   }
 
   checkBtn.addEventListener('click', function () { check(); if (Arcade.audio) Arcade.audio.play('ui'); });
@@ -557,6 +599,8 @@
 
   /* 每日一题：日期种子确定性生成（同一天同一题） */
   function startDaily() {
+    clearSave();
+    solved = false;
     isDaily = true;
     var rng = mulberry32(todaySeed());
     var D = DIFFS[Math.floor(rng() * DIFFS.length)];
@@ -590,7 +634,7 @@
     diffRow.appendChild(b);
   });
 
-  startPuzzle();
+  if (!tryResume()) startPuzzle();
 
     /* helpText */
   var hd = document.createElement('div');

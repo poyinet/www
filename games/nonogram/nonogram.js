@@ -57,21 +57,58 @@
   var grid = wrap.querySelector('#no-grid'), top = wrap.querySelector('#no-top'), msg = wrap.querySelector('#no-msg');
 
   var units = [];
-  for (var r = 0; r <= S; r++) {
-    units[r] = [];
-    for (var c = 0; c <= S; c++) {
-      var u = document.createElement('div'); u.className = 'no-unit';
-      if (r === 0 && c === 0) { /* corner */ }
-      else if (r === 0) { u.classList.add('no-hint'); u.textContent = clues(target.map(function (row) { return row[c - 1]; })).join(' '); }
-      else if (c === 0) { u.classList.add('no-hint'); u.textContent = clues(target[r - 1]).join(' '); }
-      else {
-        u.classList.add('no-cell');
-        (function (rr, cc) { u.addEventListener('click', function () { toggle(rr, cc); }); })(r - 1, c - 1);
+  function buildBoard() {
+    grid.innerHTML = '';
+    units = [];
+    for (var r = 0; r <= S; r++) {
+      units[r] = [];
+      for (var c = 0; c <= S; c++) {
+        var u = document.createElement('div'); u.className = 'no-unit';
+        if (r === 0 && c === 0) { /* corner */ }
+        else if (r === 0) { u.classList.add('no-hint'); u.textContent = clues(target.map(function (row) { return row[c - 1]; })).join(' '); }
+        else if (c === 0) { u.classList.add('no-hint'); u.textContent = clues(target[r - 1]).join(' '); }
+        else {
+          u.classList.add('no-cell');
+          (function (rr, cc) { u.addEventListener('click', function () { toggle(rr, cc); }); })(r - 1, c - 1);
+        }
+        grid.appendChild(u);
+        units[r][c] = u;
       }
-      grid.appendChild(u);
-      units[r][c] = u;
     }
+    for (var fr = 0; fr < S; fr++) for (var fc = 0; fc < S; fc++) if (state[fr][fc]) units[fr + 1][fc + 1].classList.add('filled');
   }
+
+  /* 断点续玩（共享模块，仅存本机） */
+  function writeSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.write(); }
+  function clearSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.clear(); }
+  function tryResume() { return !!(window.Arcade && Arcade.savegame && Arcade.savegame.resume()); }
+  if (window.Arcade && Arcade.savegame) {
+    Arcade.savegame.setup({
+      id: 'nonogram',
+      collect: function () {
+        if (over) return null;
+        return { target: target, state: state, picName: picName, elapsed: Math.round((Date.now() - startTs) / 1000) };
+      },
+      apply: function (s) {
+        if (!s || !Array.isArray(s.target) || s.target.length !== S) return false;
+        if (!Array.isArray(s.state) || s.state.length !== S) return false;
+        for (var i = 0; i < S; i++) {
+          if (!Array.isArray(s.target[i]) || s.target[i].length !== S) return false;
+          if (!Array.isArray(s.state[i]) || s.state[i].length !== S) return false;
+        }
+        target = s.target;
+        state = s.state;
+        picName = s.picName || 'gs.nonogram.picRandom';
+        var el = Math.max(0, Number(s.elapsed) || 0);
+        startTs = Date.now() - el * 1000;
+        over = false;
+        buildBoard();
+        return true;
+      }
+    });
+  }
+
+  if (!tryResume()) buildBoard();
 
   function toggle(r, c) {
     if (over) return;
@@ -79,6 +116,7 @@
     units[r + 1][c + 1].classList.toggle('filled', !!state[r][c]);
     if (Arcade.juice) Arcade.juice.select();
     check();
+    writeSave();
   }
   function check() {
     // 按线索校验（接受与目标图案行列线索一致的任一合法解；修复随机图案多解导致的假软锁）
@@ -110,6 +148,6 @@
   hd.innerHTML = T('gs.nonogram.helpText');
   root.appendChild(hd);
 
-  window.GAME_RESTART = function () { location.reload(); };
+  window.GAME_RESTART = function () { clearSave(); location.reload(); };
 
 })();

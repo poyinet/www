@@ -67,6 +67,42 @@ window.GAME_TUTORIAL_STEPS = [
 
   var gold, wave, lives, towers, enemies, bullets, spawnT, over, won, kills, paused, loopApi, selectedType;
 
+  /* ---------- 断点续玩（共享模块 Arcade.savegame：自动 + 恢复；仅存本机） ---------- */
+  function writeSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.write(); }
+  function clearSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.clear(); }
+  function tryResume() { return !!(window.Arcade && Arcade.savegame && Arcade.savegame.resume()); }
+  if (window.Arcade && Arcade.savegame) {
+    Arcade.savegame.setup({
+      id: 'towerdefense',
+      collect: function () {
+        /* 通关/失败 → 无局可存，自动清档；含计时器/敌弹等动态体不存档（恢复后从当前波次重来） */
+        if (over) return null;
+        return { gold: gold, wave: wave, lives: lives, kills: kills, towers: towers, mapStyle: mapStyle, selectedType: selectedType };
+      },
+      apply: function (s) {
+        if (!s || typeof s.gold !== 'number' || typeof s.wave !== 'number' || !Array.isArray(s.towers)) return false;
+        gold = s.gold; wave = s.wave; lives = s.lives; kills = s.kills || 0;
+        towers = s.towers; enemies = []; bullets = []; spawnT = 0;
+        over = false; won = false; paused = false;
+        selectedType = s.selectedType || 'bolt';
+        mapStyle = s.mapStyle || 'std';
+        buildPath(mapStyle);
+        mapRow.querySelectorAll('.mode-btn').forEach(function (b) {
+          b.classList.toggle('selected', b.getAttribute('data-map') === mapStyle);
+        });
+        tray.querySelectorAll('.td-tower').forEach(function (b) {
+          b.classList.toggle('sel', b.getAttribute('data-t') === selectedType);
+        });
+        startBtn.textContent = wave >= 20 ? T('gs.towerdefense.defending') : T('gs.towerdefense.startWave').replace('{n}', wave + 1);
+        nextEl.textContent = nextWaveInfo();
+        msg.textContent = T('gs.towerdefense.msgStart');
+        msg.style.color = '';
+        render();
+        return true;
+      }
+    });
+  }
+
   /* 敌人生成：普通 / 快速（第5波起）/ 坦克（第10波起） */
   function enemyFor(w) {
     var roll = Math.random();
@@ -90,6 +126,7 @@ window.GAME_TUTORIAL_STEPS = [
   }
 
   function reset() {
+    clearSave();
     gold = 60; wave = 0; lives = 20; kills = 0;
     towers = []; enemies = []; bullets = [];
     spawnT = 0; over = false; won = false; paused = false;
@@ -343,6 +380,7 @@ window.GAME_TUTORIAL_STEPS = [
         existing.range = TOWERS[existing.type].range + (existing.level - 1) * 12;
         msg.textContent = T('gs.towerdefense.upgraded').replace('{name}', T('gs.towerdefense.tower.' + TYPE_NAME[existing.type] + '.n')).replace('{n}', existing.level);
         if (Arcade.juice) Arcade.juice.select();
+        writeSave();
       } else { msg.textContent = T('gs.towerdefense.maxed'); }
       return;
     }
@@ -352,6 +390,7 @@ window.GAME_TUTORIAL_STEPS = [
     towers.push({ x: c * CELL + CELL / 2, y: r * CELL + CELL / 2, type: selectedType, cd: 0, level: 1, range: spec.range });
     if (Arcade.juice) Arcade.juice.coin(null, null, 'var(--neon-green)');
     msg.textContent = T('gs.towerdefense.built').replace('{name}', T('gs.towerdefense.tower.' + TYPE_NAME[selectedType] + '.n'));
+    writeSave();
   }
   canvas.addEventListener('mousedown', click);
   canvas.addEventListener('touchstart', function (e) { click(e.touches[0]); e.preventDefault(); }, { passive: false });
@@ -362,6 +401,7 @@ window.GAME_TUTORIAL_STEPS = [
     spawnT = 5;
     startBtn.textContent = wave >= 20 ? T('gs.towerdefense.defending') : T('gs.towerdefense.startWave').replace('{n}', wave + 1);
     nextEl.textContent = nextWaveInfo();
+    writeSave();
     if (Arcade.audio) Arcade.audio.play('ui');
   });
   function resetUI() {
@@ -387,8 +427,8 @@ window.GAME_TUTORIAL_STEPS = [
     livesEl.textContent = Math.max(0, lives); killsEl.textContent = kills;
   }
 
-  buildPath();
-  reset(); render();
+  /* 启动：优先恢复上次进度；无档则新开一局 */
+  if (!tryResume()) { buildPath(); reset(); render(); }
   loopApi = Arcade.loop.start(update, draw, 16);
 
 })();

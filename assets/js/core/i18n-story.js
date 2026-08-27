@@ -878,4 +878,6 @@
   d.en['st.c10.g26'] = 'Homomorphic Lab: compute on ciphertext — the cloud calculates without seeing a thing.';
 
   d.zh['st.c2.g15'] = '同音替换：给高频字母发多张替身卡，把频率分析摊平——文艺复兴破译与反破译的正面交锋。';
-  d.en['st.c2.g15'] = 'Homophonic: deal high-frequency letters extra aliases and flatten the histogram — the Renaissance counter-strike on frequency analysis.';})();
+  d.en['st.c2.g15'] = 'Homophonic: deal high-frequency letters extra aliases and flatten the histogram — the Renaissance counter-strike on frequency analysis.';
+  d.zh['st.c2.g16'] = '书密码：约定同一本书当钥匙，密文只是一串线-词坐标——Beale 宝藏用到独立宣言，SOE 让诗码阅后即焚。';
+  d.en['st.c2.g16'] = 'Book cipher: one shared book is the key, the message just a list of line-and-word coordinates — Beale used the Declaration, SOE burned its poem codes.';})();

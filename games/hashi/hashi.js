@@ -345,7 +345,7 @@
   var isDaily = false;  // 当前是否每日一题（解完计入今日破译中心）
 
   /* 断点续玩（共享模块，仅存本机） */
-  function writeSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.write(); }
+  function writeSave() { return !!(window.Arcade && Arcade.savegame && Arcade.savegame.write()); }
   function clearSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.clear(); }
   function tryResume() { return !!(window.Arcade && Arcade.savegame && Arcade.savegame.resume()); }
   if (window.Arcade && Arcade.savegame) {

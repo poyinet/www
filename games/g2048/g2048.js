@@ -41,7 +41,7 @@
   var newCells, mergedCells; // Set<'r,c'>，用于 CSS 动画标记
 
   /* ---------- 本地存档（共享模块 Arcade.savegame：自动 + 手动 + 恢复；仅存本机） ---------- */
-  function writeSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.write(); }
+  function writeSave() { return !!(window.Arcade && Arcade.savegame && Arcade.savegame.write()); }
   function clearSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.clear(); }
   function tryResume() { return !!(window.Arcade && Arcade.savegame && Arcade.savegame.resume()); }
   if (window.Arcade && Arcade.savegame) {

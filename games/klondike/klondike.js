@@ -274,7 +274,7 @@
   var curDiff = 1;
 
   /* ---------- 断点续玩（共享模块 Arcade.savegame：自动 + 恢复；仅存本机） ---------- */
-  function writeSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.write(); }
+  function writeSave() { return !!(window.Arcade && Arcade.savegame && Arcade.savegame.write()); }
   function clearSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.clear(); }
   function tryResume() { return !!(window.Arcade && Arcade.savegame && Arcade.savegame.resume()); }
   if (window.Arcade && Arcade.savegame) {

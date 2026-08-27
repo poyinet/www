@@ -49,7 +49,7 @@ window.GAME_TUTORIAL_STEPS = [
   var bossTimer = null; // 换 Boss 定时器（重开时清理，防跨局触发 nextBoss）
 
   /* ---------- 断点续玩（共享模块 Arcade.savegame：自动 + 恢复；仅存本机） ---------- */
-  function writeSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.write(); }
+  function writeSave() { return !!(window.Arcade && Arcade.savegame && Arcade.savegame.write()); }
   function clearSave() { if (window.Arcade && Arcade.savegame) Arcade.savegame.clear(); }
   function tryResume() { return !!(window.Arcade && Arcade.savegame && Arcade.savegame.resume()); }
   if (window.Arcade && Arcade.savegame) {

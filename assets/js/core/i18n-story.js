@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    编年史正文字典（i18n-story.js）—— S3 后仅含章节正文
    仅 stories.html / story.html / people.html / artifacts.html 需要
    依赖：core/i18n.js + core/i18n-dict.js（先加载；摘要键已下沉至 dict）
@@ -675,6 +675,8 @@
   d.en['st.c5.g10'] = 'Blackjack: descended from French vingt-et-un, beloved of card counters.';
   d.zh['st.c5.g11'] = '接龙：随 Windows 1990 年首发，教会一代人拖拽鼠标。';
   d.en['st.c5.g11'] = 'Klondike: shipped with Windows in 1990, teaching a generation to drag and drop.';
+  d.zh['st.c5.g12'] = 'Typex：英军自己的五转子打字密码机——德军始终没读懂的电波，破译成果常借它落纸。';
+  d.en['st.c5.g12'] = 'Typex: Britain\'s five-rotor typewriter machine — traffic the Germans never read, and the stand-in that printed Ultra.';
   d.zh['st.c6.g4'] = '拉线占领：拖线派兵、吞并中立——太平洋岛屿争夺战，就是一张会动的棋盘。';
   d.en['st.c6.g4'] = 'Sectorsiege: drag lines, seize territory — the island-hopping campaign was a living board game.';
   d.zh['st.c6.g5'] = '青蛙过河：穿越车流与河流——两栖登陆的缩影：时机、路线、一点点运气。';

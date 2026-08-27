@@ -15,7 +15,7 @@ window.GAME_CATEGORIES = ['经典街机', '动作反应', '逻辑谜题', '空�
 
 /* 每日破译中心：启用「📅 每日一题」的游戏（大厅今日面板 + 档案页共用）
    所有列出的游戏均实现 daily 模式：日种子确定性生成 + 解完调用 Arcade.daily.markSolved */
-window.DAILY_IDS = ['sudoku', 'enigma', 'bifid', 'slitherlink', 'hashi', 'trifid', 'bacon', 'klondike', 'caesar', 'llk', 'spotdiff', 'sectorsiege', 'sheep', 'morse', 'atbash', 'polybius', 'nihilist', 'starflag', 'autokey', 'rsa', 'shamir', 'sm4', 'acrostic', 'phishhunt', 'qkd-sim', 'pqc-match', 'stepping-switch', 'intel-assess', 'aes-lab', 'password-vault', 'pgp-mail', 'blockchain-miner', 'zkp-cave', 'totp-verify', 'scytale', 'alberti-disc', 'cardan-grille', 'jefferson-disk', 'side-channel-lab', 'homomorphic-lab', 'homophonic'];
+window.DAILY_IDS = ['sudoku', 'enigma', 'bifid', 'slitherlink', 'hashi', 'trifid', 'bacon', 'klondike', 'caesar', 'llk', 'spotdiff', 'sectorsiege', 'sheep', 'morse', 'atbash', 'polybius', 'nihilist', 'starflag', 'autokey', 'rsa', 'shamir', 'sm4', 'acrostic', 'phishhunt', 'qkd-sim', 'pqc-match', 'stepping-switch', 'intel-assess', 'aes-lab', 'password-vault', 'pgp-mail', 'blockchain-miner', 'zkp-cave', 'totp-verify', 'scytale', 'alberti-disc', 'cardan-grille', 'jefferson-disk', 'side-channel-lab', 'homomorphic-lab', 'homophonic', 'typex'];
 
 window.GAMES = [
   /* ---------- 经典街机 ---------- */
@@ -947,5 +947,12 @@ window.GAMES = [
     icon: '♒', path: 'games/homophonic/index.html',
     mobile: 'ok', bestMode: 'max',
     lvl: 'easy', time: '5min',
+  },
+  {
+    id: 'typex', title: 'Typex 打字密码机', category: '密码破译',
+    desc: '第十六期 · 复刻英军五转子打字密码机：两固定轮 + 三步进轮，设置单加密后用已知明文 crib 扫描 26³ 轮位——德军始终没读懂的电波。',
+    icon: '🖨️', path: 'games/typex/index.html',
+    mobile: 'ok', bestMode: 'max',
+    lvl: 'hard', time: '5min',
   }
 ];

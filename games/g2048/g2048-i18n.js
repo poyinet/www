@@ -24,6 +24,12 @@
   d.en['gs.g2048.maxTile'] = 'Max tile';
   d.zh['gs.g2048.undo'] = '撤销 (U)';
   d.en['gs.g2048.undo'] = 'Undo (U)';
+  d.zh['gs.g2048.saveBtn'] = '💾 存档';
+  d.en['gs.g2048.saveBtn'] = '💾 Save';
+  d.zh['gs.g2048.saved'] = '✅ 进度已存档（本机）';
+  d.en['gs.g2048.saved'] = '✅ Progress saved (this device)';
+  d.zh['gs.g2048.resumed'] = '📥 已恢复上次进度 · 得分 {s}';
+  d.en['gs.g2048.resumed'] = '📥 Resumed last progress · Score {s}';
   d.zh['gs.g2048.restart'] = '重新开始';
   d.en['gs.g2048.restart'] = 'Restart';
   d.zh['gs.g2048.help'] = '⌨️ 方向键 / WASD · 触屏在棋盘上滑动';

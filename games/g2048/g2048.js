@@ -24,6 +24,7 @@
     '</div>' +
     '<div class="game-controls">' +
     '  <button id="undo-btn" class="btn">' + T('gs.g2048.undo') + '</button>' +
+    '  <button id="save-btn" class="btn">' + T('gs.g2048.saveBtn') + '</button>' +
     '  <button id="restart-btn" class="btn pink">' + T('gs.g2048.restart') + '</button>' +
     '</div>' +
     '<p class="help-text">' + T('gs.g2048.help') + '</p>';
@@ -34,9 +35,47 @@
   var maxTileEl = document.getElementById('max-tile');
   var restartBtn = document.getElementById('restart-btn');
   var undoBtn = document.getElementById('undo-btn');
+  var saveBtn = document.getElementById('save-btn');
 
   var grid, score, over, won, undoStack;
   var newCells, mergedCells; // Set<'r,c'>，用于 CSS 动画标记
+
+  /* ---------- 本地存档（自动保存 + 手动存档 + 启动恢复；仅存本机） ---------- */
+  var SAVE_KEY = 'arcade_save_g2048';
+  function loadSave() {
+    try {
+      var s = JSON.parse(localStorage.getItem(SAVE_KEY) || 'null');
+      if (!s || !Array.isArray(s.grid) || s.grid.length !== SIZE) return null;
+      return s;
+    } catch (e) { return null; }
+  }
+  function writeSave() {
+    try {
+      localStorage.setItem(SAVE_KEY, JSON.stringify({
+        grid: grid, score: score, over: over, won: won, undoStack: undoStack, savedAt: Date.now()
+      }));
+    } catch (e) {}
+  }
+  function clearSave() {
+    try { localStorage.removeItem(SAVE_KEY); } catch (e) {}
+  }
+  function tryResume() {
+    var s = loadSave();
+    if (!s) return false;
+    if (s.over) { clearSave(); return false; } /* 局末存档视为无存档（返回时重新开局） */
+    grid = s.grid.map(function (r) { return r.slice(); });
+    score = s.score || 0;
+    over = !!s.over;
+    won = !!s.won;
+    undoStack = Array.isArray(s.undoStack) ? s.undoStack : [];
+    newCells = new Set();
+    mergedCells = new Set();
+    scoreEl.textContent = String(score);
+    msgEl.textContent = T('gs.g2048.resumed').replace('{s}', score);
+    msgEl.style.color = 'var(--neon-cyan)';
+    render();
+    return true;
+  }
 
   function emptyGrid() {
     var g = [];
@@ -52,6 +91,7 @@
     undoStack = [];
     newCells = new Set();
     mergedCells = new Set();
+    clearSave();
     scoreEl.textContent = '0';
     msgEl.textContent = T('gs.g2048.hint');
     msgEl.style.color = '';
@@ -175,6 +215,9 @@
       msgEl.style.color = 'var(--neon-pink)';
       Arcade.shell.submitScore(score);
     }
+    /* 自动存档：每步成功移动后写入（本机） */
+    if (!over) writeSave();
+    else clearSave();
   }
 
   function render() {
@@ -225,11 +268,23 @@
 
   restartBtn.addEventListener('click', init);
   undoBtn.addEventListener('click', undo);
+  saveBtn.addEventListener('click', function () {
+    writeSave();
+    msgEl.textContent = T('gs.g2048.saved');
+    msgEl.style.color = 'var(--neon-green)';
+  });
   window.addEventListener('keydown', function (e) {
     if (e.code === 'KeyU') { e.preventDefault(); undo(); }
   });
 
-  init();    /* helpText */
+  /* 切走页面/隐藏时自动存档（移动端切 App 也能续玩） */
+  document.addEventListener('visibilitychange', function () {
+    if (document.visibilityState === 'hidden') { if (over) clearSave(); else writeSave(); }
+  });
+  window.addEventListener('pagehide', function () { if (over) clearSave(); else writeSave(); });
+
+  /* 启动：优先恢复上次进度（局末状态自动清除），否则新开一局 */
+  if (!tryResume()) init();    /* helpText */
   var hd = document.createElement('div');
   hd.style.cssText = 'font-size:12px;color:var(--text-dim);line-height:1.8;margin-top:12px;text-align:left;background:rgba(255,255,255,0.04);border-radius:8px;padding:10px 12px';
   hd.innerHTML = T('gs.g2048.helpText');

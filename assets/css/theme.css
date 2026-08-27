@@ -404,30 +404,30 @@ body:not(.has-nav) .qb-btn.qb-lang { font-size: 14px; }
 }
 @keyframes qbTipIn { from { opacity: 0; transform: translateX(-50%) translateY(-4px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
 .qb-btn { position: relative; }
-/* 无导航页面：右上角悬浮 + 提示 */
+/* 无导航页面（游戏页）：快捷条固定于顶栏下方、水平居中——修复移动端右侧悬浮遮挡游戏区 */
 body:not(.has-nav) #arcade-quickbar {
-  position: fixed; top: 14px; right: 14px; z-index: 9500;
-  flex-direction: column;
+  position: fixed; top: 54px; left: 50%; transform: translateX(-50%);
+  z-index: 9500; flex-direction: row;
 }
 body:not(.has-nav) .qb-btn {
-  width: 42px; height: 42px; border-radius: 50%;
-  font-size: 18px; background: var(--bg-panel);
+  width: 40px; height: 40px; border-radius: 50%;
+  font-size: 17px; background: var(--bg-panel);
   border: 1px solid var(--accent, #00f0ff);
   box-shadow: 0 0 10px color-mix(in srgb, var(--accent, #00f0ff) 30%, transparent);
 }
 body:not(.has-nav) .qb-btn:hover { box-shadow: 0 0 16px color-mix(in srgb, var(--accent, #00f0ff) 55%, transparent); }
 body:not(.has-nav) .qb-btn .qb-tip {
-  display: block; position: absolute; right: 52px; top: 50%; transform: translateY(-50%);
+  display: block; position: absolute; top: calc(100% + 6px); left: 50%; transform: translateX(-50%);
   white-space: nowrap; font-size: 11px; color: var(--text-main);
   background: var(--bg-panel-2); border: 1px solid var(--accent, #00f0ff);
   padding: 5px 10px; border-radius: 6px; opacity: 0; pointer-events: none;
   transition: opacity 0.15s; font-family: var(--font-body);
 }
 body:not(.has-nav) .qb-btn:hover .qb-tip { opacity: 1; }
-/* 游戏页（无导航）快捷条：小屏收紧尺寸，避免遮挡过多游戏区 */
+/* 游戏页快捷条小屏收紧尺寸 */
 @media (max-width: 480px) {
-  body:not(.has-nav) #arcade-quickbar { gap: 6px; top: 10px; right: 10px; }
-  body:not(.has-nav) .qb-btn { width: 36px; height: 36px; font-size: 15px; }
+  body:not(.has-nav) #arcade-quickbar { top: 48px; gap: 5px; }
+  body:not(.has-nav) .qb-btn { width: 33px; height: 33px; font-size: 14px; }
 }
 
 /* ---------- 全站搜索浮层 ---------- */

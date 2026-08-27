@@ -691,6 +691,8 @@
   d.en['st.c6.g9'] = 'Paddle Pong: same-screen arcade duels, ancestor of party games.';
   d.zh['st.c6.g10'] = '冰壶：起源于 16 世纪苏格兰冰湖上的投石游戏。';
   d.en['st.c6.g10'] = 'Curling: stone-sliding born on frozen Scottish lochs in the 1500s.';
+  d.zh['st.c6.g11'] = '纳瓦霍传令兵：没有文字、极少人懂的语言加上军用词汇码——日军听到终战都没读懂。';
+  d.en['st.c6.g11'] = 'Navajo code talkers: an unwritten, near-unknown language plus military codewords — heard to the end, never understood.';
   d.zh['st.c7.g4'] = '五子棋：源自中国的连五棋，日本称「五目並べ」。';
   d.en['st.c7.g4'] = 'Gomoku: the five-in-a-row game from China, "gomoku narabe" in Japan.';
   d.zh['st.c7.g5'] = '黑白棋：1970 年代日本改良并商业化的翻转棋。';

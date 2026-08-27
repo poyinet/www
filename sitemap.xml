@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?xml-stylesheet type="text/xsl" href="sitemap.xsl"?>
-<!-- 由注册表自动生成，共 150 个页面（node tools/gen-sitemap.js） -->
+<!-- 由注册表自动生成，共 151 个页面（node tools/gen-sitemap.js） -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://poyi.net/</loc>
@@ -898,6 +898,12 @@
   </url>
   <url>
     <loc>https://poyi.net/games/book-cipher/</loc>
+    <lastmod>2026-08-27</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://poyi.net/games/navajo-talker/</loc>
     <lastmod>2026-08-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>

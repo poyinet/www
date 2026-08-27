@@ -223,6 +223,8 @@ Arcade.i18n.dicts = {
     /* ---------- stats（我的档案） ---------- */
     'stats.gamesUnit': '款',
     'stats.barNote': '全部纪录仅存本地 · 不上传任何数据',
+    'stats.swHit': '🧠 本地缓存命中率 {p}% · 离线兜底 {o} 次（仅存本机，不上传）',
+    'stats.swNone': '🧠 统计中：本机尚未产生缓存记录',
     'stats.pctNote': '已挑战 {p}% · 全部纪录仅存本地 · 不上传任何数据',
     'stats.dailyTotal': '累计完成每日题',
     'stats.achv': '🎖 成就墙',
@@ -626,6 +628,8 @@ Arcade.i18n.dicts = {
     /* ---------- stats ---------- */
     'stats.gamesUnit': 'games',
     'stats.barNote': 'All records stay local · nothing is uploaded',
+    'stats.swHit': 'Local cache hit rate {p}% · {o} offline fallback(s) — stored on this device only',
+    'stats.swNone': 'Awaiting stats: no SW cache record on this device yet',
     'stats.pctNote': 'Played {p}% · all records stay local · nothing is uploaded',
     'stats.dailyTotal': 'Total dailies solved',
     'stats.achv': '🎖 Achievements',

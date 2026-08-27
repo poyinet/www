@@ -152,6 +152,7 @@
       <div class="st-big"><span id="st-played">0</span> <span data-i18n="stats.of">/</span> <span id="st-total">0</span> <span data-i18n="stats.gamesUnit">款</span></div>
       <div class="energy-bar"><i id="st-bar" style="width:0%"></i><span class="energy-txt" id="st-bar-pct">0%</span></div>
       <div class="st-sub" id="st-sub" data-i18n="stats.barNote">全部纪录仅存本地 · 不上传任何数据</div>
+      <div class="st-sub" id="st-sw"></div>
       <div class="st-rank-divider"></div>
       <div class="st-rank">
         <div class="st-rank-row">
@@ -605,6 +606,21 @@
           prompt(T('share.recordDone') + '\n\n', text);
         }
       }
+    })();
+  </script>
+  <script>
+    /* P3-11 SW 缓存命中统计展示（数据仅存 localStorage，无任何上报） */
+    (function () {
+      var el = document.getElementById('st-sw');
+      if (!el) return;
+      var T = function (k) { return (window.Arcade && Arcade.i18n) ? Arcade.i18n.t(k) : k; };
+      try {
+        var s = JSON.parse(localStorage.getItem('arcade_sw_stats') || '{}');
+        var h = (s.hit || 0) + (s.nav_cache || 0);
+        var t = h + (s.miss || 0) + (s.nav_net || 0);
+        if (!t) { el.textContent = T('stats.swNone'); return; }
+        el.textContent = T('stats.swHit').replace('{p}', Math.round(h / t * 100)).replace('{o}', (s.nav_offline || 0));
+      } catch (e) { el.textContent = ''; }
     })();
   </script>
   <script>

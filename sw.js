@@ -1,4 +1,4 @@
-﻿/* ============================================================
+/* ============================================================
    破译 DECODE ARCADE · Service Worker
    策略：
    - 安装：预缓存「外壳」资源（大厅样式/脚本/字体/图标/根页面）
@@ -8,7 +8,7 @@
    注意：SW 仅在 http(s) 下生效；file:// 本地打开时浏览器不注册，属预期。
    ============================================================ */
 
-var CACHE = 'decode-arcade-v46';
+var CACHE = 'decode-arcade-v47';
 var CORE_ASSETS = [
   '/',
   '/index.html',
@@ -122,6 +122,17 @@ function putInCache(request, response) {
   caches.open(CACHE).then(function (cache) { cache.put(request, copy); }).catch(function () {});
 }
 
+/* P3-11 缓存命中统计：SW 无 localStorage，经 postMessage 交页面落本地（绝不上传） */
+function statHit(kind) {
+  try {
+    self.clients.matchAll({ includeUncontrolled: true, type: 'window' }).then(function (clients) {
+      clients.forEach(function (c) {
+        try { c.postMessage({ type: 'SW_STATS', kind: kind }); } catch (e) {}
+      });
+    }).catch(function () {});
+  } catch (e) { /* 统计不可用不影响服务 */ }
+}
+
 self.addEventListener('fetch', function (event) {
   var req = event.request;
   if (req.method !== 'GET') return;
@@ -133,12 +144,13 @@ self.addEventListener('fetch', function (event) {
     event.respondWith(
       fetch(req)
         .then(function (res) {
-          if (res && res.status === 200) putInCache(req, res);
+          if (res && res.status === 200) { putInCache(req, res); statHit('nav_net'); }
           return res;
         })
         .catch(function () {
           return caches.match(req).then(function (hit) {
-            if (hit) return hit;
+            if (hit) { statHit('nav_cache'); return hit; }
+            statHit('nav_offline');
             // 未缓存过的页面 → 首页兜底
             return caches.match('/').then(function (home) { return home || caches.match('/index.html'); });
           });
@@ -150,9 +162,10 @@ self.addEventListener('fetch', function (event) {
   // 静态资源：cache-first
   event.respondWith(
     caches.match(req).then(function (hit) {
-      if (hit) return hit;
+      if (hit) { statHit('hit'); return hit; }
       return fetch(req).then(function (res) {
         putInCache(req, res);
+        statHit('miss');
         return res;
       });
     })

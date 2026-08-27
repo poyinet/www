@@ -61,7 +61,7 @@ Arcade.i18n.dicts = {
     'workshop.decNote': '自动识别：凯撒 / 摩斯 / 培根 / 二进制 / 异或 / Base64 / 栅栏 / 维吉尼亚（常用密钥）',
     'workshop.eggTitle': '🎯 彩蛋收集（全站寻宝）',
     'workshop.eggNote': '全站藏有 20 条密文彩蛋——破解后在下方输入答案单词，收集进度点亮。全部集齐解锁隐藏成就！',
-    'quiz.entrySub': '180 题测出你的段位',
+    'quiz.entrySub': '200 题测出你的段位',
     'quiz.lvl1': '入门', 'quiz.lvl2': '进阶', 'quiz.lvl3': '专家', 'quiz.lvl4': '大师',
     'quiz.right': '✅ 答对了！',
     'quiz.wrong': '❌ 答错了',
@@ -466,7 +466,7 @@ Arcade.i18n.dicts = {
     'workshop.decNote': 'Auto-detect: Caesar / Morse / Bacon / Binary / XOR / Base64 / Rail Fence / Vigenère (common keys)',
     'workshop.eggTitle': '🎯 Egg Hunt (site-wide treasure)',
     'workshop.eggNote': '20 cipher eggs are hidden across the site — crack them and type the answer word below. Collect all to unlock a hidden achievement!',
-    'quiz.entrySub': '180 questions · find your rank',
+    'quiz.entrySub': '200 questions · find your rank',
     'quiz.lvl1': 'Novice', 'quiz.lvl2': 'Advanced', 'quiz.lvl3': 'Expert', 'quiz.lvl4': 'Master',
     'quiz.right': '✅ Correct!',
     'quiz.wrong': '❌ Wrong',
@@ -1724,4 +1724,80 @@ Arcade.i18n.dicts = {
   d.zh['stp.biham.era'] = '1960– · 以色列'; d.en['stp.biham.era'] = '1960– · 以色列';
   d.zh['stp.biham.fact'] = '1990 年与 Shamir 合作发表差分攻击，快 到 IBM 不得不承认 DES 的替换置换盒对差分具有独特防御——这是算法学会给自己设计免疫系统的第一例。';
   d.en['stp.biham.fact'] = 'His 1990 attack with Shamir on DES, differential analysis, proved that IBM designed the S-boxes to resist it — the first known design immune to the new attack.';
+})();
+
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['stp.zygalski.name'] = '亨里克·齐加尔斯基'; d.en['stp.zygalski.name'] = 'Henryk Zygalski';
+  d.zh['stp.zygalski.icon'] = '🕳️'; d.en['stp.zygalski.icon'] = '🕳️';
+  d.zh['stp.zygalski.role'] = '波兰密码学家 · Enigma 破译三杰之一'; d.en['stp.zygalski.role'] = 'Polish mathematician · one of the Enigma trio';
+  d.zh['stp.zygalski.era'] = '1908–1978 · 波兰/英国'; d.en['stp.zygalski.era'] = 'Poland/UK';
+  d.zh['stp.zygalski.fact'] = '1938 年发明「齐加尔斯基打孔片」，把 Enigma 轮序筛选从手工变成机械比对；战前与雷耶夫斯基、鲁日茨基重构出德军 Enigma。战后因《官方机密法》隐姓埋名在英国教书，身份到 1970 年代才被承认。';
+  d.en['stp.zygalski.fact'] = 'His 1938 perforated Zygalski sheets mechanised the rotor-elimination sieve; with Rejewski and Różycki he rebuilt German Enigma before the war. Post-war secrecy kept him teaching anonymously in Britain until the 1970s.';
+  d.zh['stp.zygalski.bio'] = '数学家出身，业余痴迷棋类；生前从未公开讲述破译经历——直到 1978 年去世，作品才被历史学家重新发现。';
+  d.en['stp.zygalski.bio'] = 'A mathematician by training and a chess enthusiast, he never spoke publicly about his codebreaking until his death in 1978.';
+  d.zh['stp.zygalski.quote'] = '—'; d.en['stp.zygalski.quote'] = '—';
+  d.zh['stp.rozycki.name'] = '耶日·鲁日茨基'; d.en['stp.rozycki.name'] = 'Jerzy Różycki';
+  d.zh['stp.rozycki.icon'] = '🧭'; d.en['stp.rozycki.icon'] = '🧭';
+  d.zh['stp.rozycki.role'] = '波兰密码学家 ·「钟法」发明者'; d.en['stp.rozycki.role'] = 'Polish mathematician · inventor of the clock method';
+  d.zh['stp.rozycki.era'] = '1909–1942 · 波兰'; d.en['stp.rozycki.era'] = 'Poland';
+  d.zh['stp.rozycki.fact'] = '1930 年代中期发明的「钟法（clock method）」能从电文首字母推算 Enigma 每日转子设置；1942 年 1 月在地中海客轮「拉姆 II 号」海难中遇难——三杰中唯一没能看到胜利的人。';
+  d.en['stp.rozycki.fact'] = 'His mid-1930s clock method inferred Enigma\'s daily rotor settings from message prefixes; in January 1942 he drowned when the passenger ship Lamoricière sank — the only member of the trio not to see victory.';
+  d.zh['stp.rozycki.bio'] = '波兰三杰中最年轻的一位；他的「钟法」在雷耶夫斯基的数学重构之外补上了工程化的一环。';
+  d.en['stp.rozycki.bio'] = 'The youngest of the Polish trio, he added the engineering piece alongside Rejewski\'s mathematics.';
+  d.zh['stp.rozycki.quote'] = '—'; d.en['stp.rozycki.quote'] = '—';
+  d.zh['stp.tiltman.name'] = '约翰·蒂尔特曼'; d.en['stp.tiltman.name'] = 'John Tiltman';
+  d.zh['stp.tiltman.icon'] = '🗣️'; d.en['stp.tiltman.icon'] = '🗣️';
+  d.zh['stp.tiltman.role'] = '英国密码学家 · VENONA 破译主帅'; d.en['stp.tiltman.role'] = 'British codebreaker · lead on VENONA';
+  d.zh['stp.tiltman.era'] = '1894–1982 · 英国'; d.en['stp.tiltman.era'] = 'United Kingdom';
+  d.zh['stp.tiltman.fact'] = '二战破译率最高的密码学家之一，精通日文、中文与俄文；1940 年代中期转入 VENONA，破解出 KGB 一次性密码本被复用的最早证据，并用「金发女郎」线索撬开苏联间谍网。';
+  d.en['stp.tiltman.fact'] = 'One of the war\'s most prolific codebreakers, fluent in Japanese, Chinese and Russian; from the mid-1940s he led VENONA\'s break-ins, exposing KGB pad reuse and the "Blonde" opening into Soviet networks.';
+  d.zh['stp.tiltman.bio'] = '被同事形容为「用直觉解题」的语言天才；他向新人们讲授破译时最常说的一句话是「先别急着分析，先把它读完」。';
+  d.en['stp.tiltman.bio'] = 'Described as a linguistic genius who solved problems "by feel"; his advice to newcomers was famously "read it first, analyse later".';
+  d.zh['stp.tiltman.quote'] = '—'; d.en['stp.tiltman.quote'] = '—';
+  d.zh['stp.ekert.name'] = '阿图尔·埃克特'; d.en['stp.ekert.name'] = 'Artur Ekert';
+  d.zh['stp.ekert.icon'] = '🔗'; d.en['stp.ekert.icon'] = '🔗';
+  d.zh['stp.ekert.role'] = '量子密码学家 · E91 协议提出者'; d.en['stp.ekert.role'] = 'Quantum cryptographer · author of E91';
+  d.zh['stp.ekert.era'] = '1961– · 英国'; d.en['stp.ekert.era'] = 'United Kingdom';
+  d.zh['stp.ekert.fact'] = '1991 年提出 E91：用贝尔不等式与量子纠缠检测窃听——只要纠缠关联被测量破坏，Eve 就留下指纹。它与 BB84 共同构成量子密钥分发的两条路线。';
+  d.en['stp.ekert.fact'] = 'In 1991 he proposed E91: detect eavesdropping through Bell inequalities and quantum entanglement — any measurement disturbs the correlations and Eve leaves fingerprints. With BB84 it defines QKD\'s two routes.';
+  d.zh['stp.ekert.bio'] = '受信息论与张量纠缠双线训练；他坚持「安全来源是量子关联而非单个光子」这一视角塑造了整个纠缠 QKD 学派。';
+  d.en['stp.ekert.bio'] = 'Trained across physics and information theory, he championed the view that entanglement, not single photons, is the true source of quantum security.';
+  d.zh['stp.ekert.quote'] = '—'; d.en['stp.ekert.quote'] = '—';
+  d.zh['stp.regev.name'] = '奥德·雷格夫'; d.en['stp.regev.name'] = 'Oded Regev';
+  d.zh['stp.regev.icon'] = '🧮'; d.en['stp.regev.icon'] = '🧮';
+  d.zh['stp.regev.role'] = '计算机科学家 · LWE 问题奠基者'; d.en['stp.regev.role'] = 'Computer scientist · author of LWE';
+  d.zh['stp.regev.era'] = '1979– · 以色列'; d.en['stp.regev.era'] = 'Israel';
+  d.zh['stp.regev.fact'] = '2005 年定义「带误差学习」（Learning With Errors）并证明最坏情况格难题可归约到它——Kyber/ML-KEM 等后量子标准建立在 LWE 框架上，是现代格密码的支点。';
+  d.en['stp.regev.fact'] = 'In 2005 he defined Learning With Errors and proved worst-case lattice problems reduce to it — Kyber/ML-KEM and the post-quantum era rest on the LWE frame.';
+  d.zh['stp.regev.bio'] = 'LWE 之前格密码只是「看似难」；他给出的归约把「平均情况」与「最坏情况」连成一条安全链。';
+  d.en['stp.regev.bio'] = 'Before LWE, lattice crypto merely "seemed hard"; his reduction chained average-case security to worst-case hardness.';
+  d.zh['stp.regev.quote'] = '—'; d.en['stp.regev.quote'] = '—';
+  d.zh['stp.kocher.name'] = '保罗·科赫尔'; d.en['stp.kocher.name'] = 'Paul Kocher';
+  d.zh['stp.kocher.icon'] = '⌛'; d.en['stp.kocher.icon'] = '⌛';
+  d.zh['stp.kocher.role'] = '密码学家 · 侧信道攻击奠基人'; d.en['stp.kocher.role'] = 'Cryptographer · founder of side-channel analysis';
+  d.zh['stp.kocher.era'] = '1965– · 美国'; d.en['stp.kocher.era'] = 'United States';
+  d.zh['stp.kocher.fact'] = '1996 年发表首篇时序攻击论文：仅凭 RSA 解密耗时的差异恢复密钥比特；同年与 Jaffe、Jun 提出差分功耗分析（DPA），并指出无校验的 CRT-RSA 会中故障注入——「恒定时间」从此成为芯片安全铁律。';
+  d.en['stp.kocher.fact'] = 'His 1996 timing-attack paper recovered RSA key bits from decryption time alone; the same year brought DPA with Jaffe and Jun plus the CRT fault-injection flaw — "constant time" became silicon law.';
+  d.zh['stp.kocher.bio'] = '日后他还参与早期 SSL 3.0 的设计；他把密码学从「数学证明」拖回「工程实现」的战场。';
+  d.en['stp.kocher.bio'] = 'Later involved in early SSL 3.0; he dragged cryptography back from pure proofs to the battlefield of implementations.';
+  d.zh['stp.kocher.quote'] = '—'; d.en['stp.kocher.quote'] = '—';
+  d.zh['stp.yao.name'] = '姚期智'; d.en['stp.yao.name'] = 'Andrew Chi-Chih Yao';
+  d.zh['stp.yao.icon'] = '🤝'; d.en['stp.yao.icon'] = '🤝';
+  d.zh['stp.yao.role'] = '计算机科学家 · 安全多方计算开创者'; d.en['stp.yao.role'] = 'Computer scientist · founder of secure computation';
+  d.zh['stp.yao.era'] = '1946– · 美籍华裔'; d.en['stp.yao.era'] = 'USA/China';
+  d.zh['stp.yao.fact'] = '1979 年建立通信复杂度理论；1982 年发表的「百万富翁问题」首次让两方在不泄露各自输入的情况下比较大小——安全多方计算（MPC）由此诞生。2000 年凭计算复杂性获图灵奖，2004 年回国执教清华。';
+  d.en['stp.yao.fact'] = 'His 1979 communication-complexity theory and the 1982 Millionaires\' Problem let two parties compare secrets without revealing them — MPC was born. The 2000 Turing Award (complexity theory) brought him back to Tsinghua in 2004.';
+  d.zh['stp.yao.bio'] = '物理出身转行理论计算机；被问及「密码学是什么」时他常说：让不信任的人一起做事的那门学科。';
+  d.en['stp.yao.bio'] = 'Trained as a physicist, he calls cryptography the discipline of making untrusted parties cooperate.';
+  d.zh['stp.yao.quote'] = '—'; d.en['stp.yao.quote'] = '—';
+  d.zh['stp.rabin.name'] = '迈克尔·拉宾'; d.en['stp.rabin.name'] = 'Michael O. Rabin';
+  d.zh['stp.rabin.icon'] = '🔑'; d.en['stp.rabin.icon'] = '🔑';
+  d.zh['stp.rabin.role'] = '计算机科学家 · 公钥与概率算法先驱'; d.en['stp.rabin.role'] = 'Computer scientist · pioneer of public key & probability';
+  d.zh['stp.rabin.era'] = '1931– · 以色列'; d.en['stp.rabin.era'] = 'Israel';
+  d.zh['stp.rabin.fact'] = '1976 年以非确定性机获图灵奖；1977 年提出基于二次剩余的 Rabin 密码系统（破解它等价于大数分解）；1979 年概率素性测试；1981 年不经意传输（OT）——安全计算最基础的原语之一。';
+  d.en['stp.rabin.fact'] = 'Turing Award 1976 for nondeterministic machines; the 1977 Rabin encryption (breaking it ≡ factoring); 1979 probabilistic primality; and 1981 oblivious transfer — a foundational primitive of secure computing.';
+  d.zh['stp.rabin.bio'] = '习惯在散步时思考，自称成果大半来自漫无边际的散步；他的素性测试直接服务了后来 RSA 的密钥生成。';
+  d.en['stp.rabin.bio'] = 'A famously peripatetic thinker, he attributes much of his work to long walks; his primality test became the engine of RSA key generation.';
+  d.zh['stp.rabin.quote'] = '—'; d.en['stp.rabin.quote'] = '—';
 })();

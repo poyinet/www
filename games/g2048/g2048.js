@@ -258,9 +258,13 @@
   restartBtn.addEventListener('click', init);
   undoBtn.addEventListener('click', undo);
   saveBtn.addEventListener('click', function () {
-    writeSave();
-    msgEl.textContent = T('gs.g2048.saved');
-    msgEl.style.color = 'var(--neon-green)';
+    if (writeSave()) {
+      msgEl.textContent = T('gs.g2048.saved');
+      msgEl.style.color = 'var(--neon-green)';
+    } else {
+      msgEl.textContent = T('gs.g2048.saveFail');
+      msgEl.style.color = 'var(--neon-pink)';
+    }
   });
   window.addEventListener('keydown', function (e) {
     if (e.code === 'KeyU') { e.preventDefault(); undo(); }

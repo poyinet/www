@@ -28,6 +28,8 @@
   d.en['gs.g2048.saveBtn'] = '💾 Save';
   d.zh['gs.g2048.saved'] = '✅ 进度已存档（本机）';
   d.en['gs.g2048.saved'] = '✅ Progress saved (this device)';
+  d.zh['gs.g2048.saveFail'] = '⚠ 存档失败：本地存储不可用';
+  d.en['gs.g2048.saveFail'] = '⚠ Save failed: local storage unavailable';
   d.zh['gs.g2048.resumed'] = '📥 已恢复上次进度 · 得分 {s}';
   d.en['gs.g2048.resumed'] = '📥 Resumed last progress · Score {s}';
   d.zh['gs.g2048.restart'] = '重新开始';

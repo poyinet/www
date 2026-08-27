@@ -135,15 +135,17 @@ Arcade.savegame = (function () {
 
   function key() { return 'arcade_save_' + cfg.id; }
 
-  /** 快照写入；collect 返回 null/undefined 视为「无局可存」→ 清档 */
+  /** 快照写入；collect 返回 null/undefined 视为「无局可存」→ 清档。
+      返回 true=已持久化（或已清档），false=存储不可用/失败（调用方可提示用户） */
   function write() {
-    if (!cfg || !cfg.collect) return;
+    if (!cfg || !cfg.collect) return false;
     try {
       var s = cfg.collect();
-      if (s == null) { localStorage.removeItem(key()); return; }
+      if (s == null) { localStorage.removeItem(key()); return true; }
       s.__t = Date.now();
       localStorage.setItem(key(), JSON.stringify(s));
-    } catch (e) {}
+      return true;
+    } catch (e) { return false; }
   }
 
   function clear() {

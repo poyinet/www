@@ -80,6 +80,8 @@
     table.pl-tab th { color: var(--neon-yellow); background: rgba(255,230,0,.05); }
     table.pl-tab tr.ok td { color: var(--neon-green); }
     table.pl-tab tr.bad td { color: var(--neon-pink); }
+    table.pl-tab td.mono { font-family: var(--font-mono); font-size: 11px; word-break: break-all; color: var(--neon-green); }
+    table.pl-tab tr.bad td.mono { color: var(--neon-pink); }
     #dh-verdict { margin-top: 10px; font-size: 12px; line-height: 1.8; }
     #dh-verdict .ok { color: var(--neon-green); } #dh-verdict .bad { color: var(--neon-pink); }
 
@@ -145,11 +147,11 @@
   <div class="pl-wrap" id="content">
     <div class="pl-hero">
       <h1 class="pl-title" data-i18n="pl.title">🛡️ 协议实验室</h1>
-      <p class="pl-sub" data-i18n="pl.sub">TLS 握手 · DH 中间人 · Merkle 树与区块链 · 零知识证明 · ECC 几何 · 口令破解成本——现代密码学的十六堂交互课</p>
+      <p class="pl-sub" data-i18n="pl.sub">TLS 握手 · DH 中间人 · Merkle 树与区块链 · 零知识证明 · ECC 几何 · 口令破解成本——现代密码学的十七堂交互课</p>
       <div class="pl-nav">
         <a href="#pl-tls">🤝 TLS</a><a href="#pl-dh">🕵️ DH</a><a href="#pl-merkle">🌳 Merkle</a>
         <a href="#pl-zkp">🎭 ZKP</a><a href="#pl-chacha">🌀 ChaCha20</a><a href="#pl-ecc">📈 ECC</a>
-        <a href="#pl-a51">📡 A5/1</a>        <a href="#pl-rc4">🧨 RC4</a><a href="#pl-sign">✍️ 签名</a><a href="#pl-rng">🎲 随机数</a><a href="#pl-math">∑ 数论</a><a href="#pl-diff">🎯 差分</a><a href="#pl-aead">🛡️ AEAD</a><a href="#pl-ext">🧟 长度扩展</a><a href="#pl-big">🐘 大数</a><a href="#pl-pwd">⏳ 口令成本</a>
+        <a href="#pl-a51">📡 A5/1</a>        <a href="#pl-rc4">🧨 RC4</a><a href="#pl-sign">✍️ 签名</a><a href="#pl-rng">🎲 随机数</a><a href="#pl-math">∑ 数论</a><a href="#pl-diff">🎯 差分</a><a href="#pl-aead">🛡️ AEAD</a><a href="#pl-ext">🧟 长度扩展</a><a href="#pl-big">🐘 大数</a><a href="#pl-pwd">⏳ 口令成本</a><a href="#pl-otp">📨 OTP</a>
       </div>
     </div>
 
@@ -354,6 +356,27 @@
       </div>
       <div id="pwd-out"></div>
       <div class="pl-extend"><a href="story.html?id=modern">📜 相关编年史章节</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
+    </div>
+
+    <div class="pl-card" id="pl-otp">
+      <div class="pl-h"><span class="ic">📨</span><b data-i18n="pl.otpH">OTP 与复用灾难：密钥流绝不能再用第二次</b></div>
+      <div class="pl-note" id="otp-intro"></div>
+      <div class="pl-btnrow">
+        <button class="btn accent" id="otp-key">🔁 换密钥重新加密</button>
+        <button class="btn" id="otp-pair">🔀 换一组消息</button>
+      </div>
+      <table class="pl-tab" id="otp-view"></table>
+      <div class="pl-btnrow">
+        <label class="ws-note">🎯 crib <input id="otp-crib" class="ws-input" style="width:140px;padding:6px 10px" value="ATTACK"></label>
+        <label class="ws-note"><select id="otp-which" class="ws-input" style="width:auto;padding:6px 10px"></select><select id="otp-pos" class="ws-input" style="width:auto;padding:6px 10px"></select></label>
+        <button class="btn yellow" id="otp-drag">⊕ 拖拽 crib</button>
+      </div>
+      <div class="pl-note-line" id="otp-verdict"></div>
+      <div class="pl-btnrow">
+        <button class="btn pink" id="otp-solve">⚡ 显示答案</button>
+      </div>
+      <div class="pl-note" id="otp-note"></div>
+      <div class="pl-extend"><a href="story.html?id=venona">📜 相关编年史章节</a><a href="games/otp-telegraph/">📨 OTP 电报房（游戏）</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
     </div>
   </div>
   <div id="pl-ready"></div>

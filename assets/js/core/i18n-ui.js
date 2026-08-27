@@ -13,8 +13,8 @@
   d.zh['glossary.sub'] = '270 个术语 · 中英对照 · 边玩边懂——每个词都能在站内找到对应的游戏或章节';
   d.zh['onboard.title'] = '欢迎来到破译街机';
   d.en['onboard.title'] = 'Welcome to Decode Arcade';
-  d.zh['onboard.desc'] = '用 135 款小游戏破译人类三千年的加密与解密史——从凯撒移位到量子密钥。先试试这三款镇馆之作，或跟随 24 天学习路径稳步前进。';
-  d.en['onboard.desc'] = 'Decrypt three millennia of secrets through 135 mini-games — from Caesar shifts to quantum keys. Start with these three favorites, or follow the 24-day path.';
+  d.zh['onboard.desc'] = '用 136 款小游戏破译人类三千年的加密与解密史——从凯撒移位到量子密钥。先试试这三款镇馆之作，或跟随 24 天学习路径稳步前进。';
+  d.en['onboard.desc'] = 'Decrypt three millennia of secrets through 136 mini-games — from Caesar shifts to quantum keys. Start with these three favorites, or follow the 24-day path.';
   d.zh['onboard.path'] = '24 天学习路径';
   d.en['onboard.path'] = 'The 24-day path';
   d.zh['onboard.go'] = '✓ 开始探索';
@@ -68,7 +68,7 @@
   d.zh['artifacts.need'] = '需破译';
   d.zh['app.desc404'] = '404 页面走丢了 —— 回破译 DECODE ARCADE 大厅继续玩。';
   d.zh['err.msg'] = 'GAME OVER · 页面不存在';
-  d.zh['err.sub'] = '这张卡带被吞了，或者地址敲错了。回大厅再投一枚硬币，继续挑战 135 款小游戏吧。';
+  d.zh['err.sub'] = '这张卡带被吞了，或者地址敲错了。回大厅再投一枚硬币，继续挑战 136 款小游戏吧。';
   d.zh['err.back'] = '◀ 回大厅';
   d.zh['lobby.brand'] = '破译游戏';
   d.zh['lobby.desc'] = '密码破译街机 · 打开即玩 · 本地记录你的最高分';
@@ -151,7 +151,7 @@
   d.en['artifacts.need'] = 'Decode';
   d.en['app.desc404'] = 'Page not found — head back to the DECODE ARCADE lobby and keep playing.';
   d.en['err.msg'] = 'GAME OVER · PAGE NOT FOUND';
-  d.en['err.sub'] = 'This cartridge got swallowed — or the address was mistyped. Head back to the lobby, drop in another coin, and keep playing 135 mini-games.';
+  d.en['err.sub'] = 'This cartridge got swallowed — or the address was mistyped. Head back to the lobby, drop in another coin, and keep playing 136 mini-games.';
   d.en['err.back'] = '◀ Back to lobby';
   d.en['lobby.brand'] = 'DECODE ARCADE';
   d.en['lobby.desc'] = 'A retro cipher arcade — open and play, best scores stored locally';
@@ -225,8 +225,8 @@
   /* 第七期：协议实验室 */
   d.zh['pl.title'] = '🛡️ 协议实验室';
   d.en['pl.title'] = '🛡️ Protocol Lab';
-  d.zh['pl.sub'] = 'TLS 握手 · DH 中间人 · Merkle 树与区块链 · 零知识证明 · ECC 几何 · 口令破解成本——现代密码学的十一堂交互课';
-  d.en['pl.sub'] = 'TLS handshake · DH man-in-the-middle · Merkle tree & blockchain · zero-knowledge proof · ECC geometry · password cracking cost — eleven interactive lessons in modern crypto';
+  d.zh['pl.sub'] = 'TLS 握手 · DH 中间人 · Merkle 树与区块链 · 零知识证明 · ECC 几何 · 口令破解成本——现代密码学的十七堂交互课';
+  d.en['pl.sub'] = 'TLS handshake · DH man-in-the-middle · Merkle tree & blockchain · zero-knowledge proof · ECC geometry · password cracking cost — seventeen interactive lessons in modern crypto';
   d.zh['pl.tlsH'] = 'TLS 握手：HTTPS 的第一秒';
   d.en['pl.tlsH'] = 'TLS Handshake: the first second of HTTPS';
   d.zh['pl.tlsNote'] = '逐步走完一次 TLS 握手，观察「哪些是明文、哪些已加密」；打开中间人开关，看看窃听者在哪一步露馅。';
@@ -271,4 +271,6 @@
   d.en['pl.extH'] = 'Length Extension: forge a MAC without the key';
   d.zh['pl.bigH'] = '真实大数 RSA：256 位现场生成';
   d.en['pl.bigH'] = 'Real-Bignum RSA: 256-bit generated live';
+  d.zh['pl.otpH'] = 'OTP 与复用灾难：密钥流绝不能再用第二次';
+  d.en['pl.otpH'] = 'OTP & the Reuse Disaster: never reuse a keystream';
 })();

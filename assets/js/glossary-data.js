@@ -35,7 +35,7 @@ window.GLOSSARY = [
       { cat: 'methods', term: 'Known Plaintext', zh: '已知明文', zhDef: '破译者已知的明文片段（与 crib 同义但更宽泛）。', enDef: 'A plaintext fragment the codebreaker already knows (broader than a crib).' , game: 'venona', chapters: ['venona']  },
 
       /* ---------- 现代密码 ---------- */
-      { cat: 'modern', term: 'One-Time Pad (OTP)', zh: '一次性密码本', zhDef: '密钥与明文等长、完全随机、只用一次的密码——香农证明其绝对不可破。', enDef: 'A truly random key as long as the message, used once — Shannon proved it is unbreakable.' , chapters: ['venona'], game: 'venona' },
+      { cat: 'modern', term: 'One-Time Pad (OTP)', zh: '一次性密码本', zhDef: '密钥与明文等长、完全随机、只用一次的密码——香农证明其绝对不可破。', enDef: 'A truly random key as long as the message, used once — Shannon proved it is unbreakable.' , chapters: ['venona'], game: 'otp-telegraph' },
       { cat: 'modern', term: 'XOR', zh: '异或', zhDef: '按位比较的运算：相同得 0、不同得 1。现代密码的原子，A⊕K⊕K=A。', enDef: 'The bitwise operation where equal bits give 0 and different bits give 1 — the atom of modern crypto: A⊕K⊕K=A.' , game: 'xor', chapters: ['lorenz','modern']},
       { cat: 'modern', term: 'Entropy', zh: '熵', zhDef: '香农对「信息量/不确定性」的数学度量。', enDef: 'Shannon\'s mathematical measure of information and uncertainty.' , chapters: ['modern'], game: 'hashlab' },
       { cat: 'modern', term: 'Perfect Secrecy', zh: '完美保密', zhDef: '密文与明文统计独立——唯一实现方式是 OTP。', enDef: 'Ciphertext statistically independent of plaintext — achievable only with the OTP.' , chapters: ['modern'], game: 'venona' },

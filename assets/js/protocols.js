@@ -43,8 +43,24 @@ window.PROTOCOL_LAB = (function () {
       { id: 'ext', icon: '🧟', name: { zh: '长度扩展攻击', en: 'Length Extension' } },
       { id: 'big', icon: '🐘', name: { zh: '真实大数 RSA', en: 'Real-Bignum RSA' } },
       { id: 'rng', icon: '🎲', name: { zh: '随机数', en: 'Randomness' } },
-      { id: 'pwd', icon: '⏳', name: { zh: '口令破解成本', en: 'Password Cracking Cost' } }
+      { id: 'pwd', icon: '⏳', name: { zh: '口令破解成本', en: 'Password Cracking Cost' } },
+      { id: 'otp', icon: '📨', name: { zh: 'OTP 与复用灾难', en: 'OTP Reuse Disaster' } }
     ],
+
+    /* ================= OTP 与复用灾难 ================= */
+    otpPairs: [
+      { m1: 'ATTACK AT DAWN', m2: 'BRIDGE IS MINE' },
+      { m1: 'MEETING AT NOON', m2: 'CANCEL THE MEET' },
+      { m1: 'FLEET MOVES EAST', m2: 'FLEET STAYS EAST' }
+    ],
+    otpIntro: {
+      zh: '1917 年 AT&T 的 Gilbert Vernam 把电传打字电报与随机密钥流异或，发明了一次一密；1949 年 Shannon 证明：密钥真随机且绝不重复时，密文对攻击者不泄露任何信息——「完美保密」。但全部安全性只压在一个词上：一次。1942–46 年苏联 KGB/GRU 向多个站点重复发放同一批密码本页，1943 年起美国 Venona 项目靠「密钥复用 + crib 拖拽」破译了约 3000 条谍报电报。本演示：让两条消息共用同一条密钥，看密钥如何被抵消成白给。提示：永远从空格猜起（英文文本 0x20 最高发），再把猜出的词当作新的 crib 滚雪球。',
+      en: 'In 1917, AT&T\'s Gilbert Vernam XORed teleprinter text with a random keystream — the one-time pad. In 1949 Shannon proved that with a truly random, never-reused key the ciphertext leaks nothing: "perfect secrecy". All of it rides on one word: ONE-time. In 1942–46 the Soviet KGB/GRU re-issued the same pad pages to multiple stations; starting 1943 the US Venona project exploited those reuses with crib dragging and partially decrypted ~3,000 coded messages. This demo: run two messages under the same key and watch the key cancel itself. Tip: always start from spaces (0x20 is the most frequent byte in English text), then snowball each recovered word into the next crib.'
+    },
+    otpNote: {
+      zh: '为什么「复用」直接泄底？C1 ⊕ C2 =（M1 ⊕ K）⊕（M2 ⊕ K）= M1 ⊕ M2——密钥完好无损地从算式中消失。剩下的是两份明文互相异或：它像一张叠影底片，你只需要猜中一条明文里的一句话，另一条的高余对应段立刻露出来。这就是 Venona 破译员的日常：从俄语电报的固定套路（问候语、日期、代号）入手，把「叠影」一片片刮亮。',
+      en: 'Why does reuse leak everything? C1 ⊕ C2 = (M1 ⊕ K) ⊕ (M2 ⊕ K) = M1 ⊕ M2 — the key vanishes from the algebra untouched. What remains is the two plaintexts XORed together: a double-exposure where guessing one phrase in either message instantly exposes the other side of the sandwich. That was the Venona cryptanalyst\'s daily bread: start from the fixed rituals of Russian cable traffic (greetings, dates, code names) and scrape the overlay clean.'
+    },
 
     /* ================= RC4 历史警示 ================= */
     rc4Intro: {
@@ -1274,6 +1290,127 @@ window.PROTOCOL_LAB = (function () {
       });
     });
 
-    el('pl-ready').textContent = '16';
+    /* ---------- 📨 OTP 与复用灾难 ---------- */
+    LAZY('pl-otp', function () {
+      el('otp-intro').textContent = L(LAB.otpIntro);
+      el('otp-note').textContent = L(LAB.otpNote);
+      var PAIRS = LAB.otpPairs;
+      var pi = 0, K = [], C1 = [], C2 = [], X = [], solved = false;
+      function chrs(s) { return s.split('').map(function (c) { return c.charCodeAt(0); }); }
+      function txt(a) { return String.fromCharCode.apply(null, a); }
+      function hx(a) { return a.map(function (b) { return ('0' + ((b & 255).toString(16))).slice(-2).toUpperCase(); }).join(' '); }
+      function esc(s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'); }
+      function randKey(n) { var k = []; for (var i = 0; i < n; i++) k.push(Math.random() * 256 | 0); return k; }
+      function enc(m, k) { return m.map(function (b, i) { return b ^ k[i]; }); }
+      function plainLen() { return Math.min(PAIRS[pi].m1.length, PAIRS[pi].m2.length); }
+      function setup() {
+        var n = plainLen();
+        K = randKey(n);
+        C1 = enc(chrs(PAIRS[pi].m1.slice(0, n)), K);
+        C2 = enc(chrs(PAIRS[pi].m2.slice(0, n)), K);
+        X = C1.map(function (b, i) { return b ^ C2[i]; });
+        solved = false;
+        render();
+        el('otp-verdict').textContent = '';
+        rebuildPos();
+      }
+      function render() {
+        var r = [];
+        if (solved) {
+          var p = PAIRS[pi];
+          r.push('<tr class="ok"><td>' + (isEn ? 'M1 plaintext' : '明文 M1') + '</td><td class="mono">' + esc(p.m1) + '</td></tr>');
+          r.push('<tr class="ok"><td>' + (isEn ? 'M2 plaintext' : '明文 M2') + '</td><td class="mono">' + esc(p.m2) + '</td></tr>');
+        }
+        r.push('<tr><td>C1 (' + (isEn ? 'ciphertext' : '密文') + ')</td><td class="mono">' + hx(C1) + '</td></tr>');
+        r.push('<tr><td>C2 (' + (isEn ? 'ciphertext' : '密文') + ')</td><td class="mono">' + hx(C2) + '</td></tr>');
+        r.push('<tr class="bad"><td>C1 ⊕ C2</td><td class="mono">' + hx(X) + '</td></tr>');
+        el('otp-view').innerHTML = r.join('');
+        var sol = el('otp-solve');
+        if (sol) sol.textContent = solved ? (isEn ? '🙈 Hide answers' : '🙈 隐藏答案') : (isEn ? '⚡ Reveal plaintexts' : '⚡ 显示答案');
+      }
+      function rebuildPos() {
+        var n = plainLen();
+        var L2 = el('otp-crib').value.replace(/[^\x20-\x7E]/g, '').length;
+        var max = Math.max(0, n - L2);
+        var sel = el('otp-pos');
+        sel.innerHTML = '';
+        for (var i = 0; i <= max; i++) {
+          var op = doc.createElement('option');
+          op.value = String(i);
+          op.textContent = (isEn ? 'char ' : '第 ') + i + (isEn ? '' : ' 位');
+          sel.appendChild(op);
+        }
+      }
+      function isLikely(s) {
+        var ok = 0;
+        for (var i = 0; i < s.length; i++) {
+          var c = s.charCodeAt(i);
+          if (c === 0x20 || (c >= 0x41 && c <= 0x5A) || (c >= 0x61 && c <= 0x7A)) ok++;
+        }
+        return s.length > 0 && ok / s.length >= 0.8;
+      }
+      (function () {
+        var w = el('otp-which');
+        [[isEn ? 'I guess M2 contains' : '我猜 M2 里有', 'm2'], [isEn ? 'I guess M1 contains' : '我猜 M1 里有', 'm1']].forEach(function (o) {
+          var op = doc.createElement('option');
+          op.value = o[1];
+          op.textContent = o[0] + ' …';
+          w.appendChild(op);
+        });
+      })();
+      el('otp-key').addEventListener('click', setup);
+      el('otp-pair').addEventListener('click', function () {
+        pi = (pi + 1) % PAIRS.length;
+        setup();
+      });
+      el('otp-crib').addEventListener('input', rebuildPos);
+      el('otp-solve').addEventListener('click', function () {
+        solved = !solved;
+        render();
+      });
+      el('otp-drag').addEventListener('click', function () {
+        var crib = el('otp-crib').value.replace(/[^\x20-\x7E]/g, '');
+        var v = el('otp-verdict');
+        if (!crib.length) {
+          v.textContent = isEn
+            ? 'Type a crib first — a likely word or phrase (a single space is the classic starter).'
+            : '先输入一个 crib——一个可能出现的词或短语（单个空格是经典开场）。';
+          return;
+        }
+        var which = el('otp-which').value;
+        var p = parseInt(el('otp-pos').value, 10);
+        if (isNaN(p) || p < 0) p = 0;
+        var cb = chrs(crib);
+        var seg = X.slice(p, p + cb.length).map(function (b, i) { return b ^ cb[i]; });
+        var cand = txt(seg);
+        var guess = which === 'm2' ? 'M2' : 'M1';
+        var other = which === 'm2' ? 'M1' : 'M2';
+        var html;
+        if (solved) {
+          var real = which === 'm2' ? PAIRS[pi].m2.slice(p, p + cb.length) : PAIRS[pi].m1.slice(p, p + cb.length);
+          var realOther = which === 'm2' ? PAIRS[pi].m1.slice(p, p + cb.length) : PAIRS[pi].m2.slice(p, p + cb.length);
+          var good = real.toUpperCase() === crib.toUpperCase();
+          html = isEn
+            ? 'If ' + guess + '[' + p + '..' + (p + cb.length) + '] = "<b>' + esc(crib) + '</b>", then ' + other + ' there = "<b>' + esc(cand) + '</b>"' + (good
+              ? ' — guess verified ✓ the other side really reads "' + esc(realOther) + '"'
+              : ' — but the real ' + guess + ' there is "' + esc(real) + '"; move on')
+            : '若 ' + guess + ' 第 ' + p + ' 位起 = "<b>' + esc(crib) + '</b>" ⇒ ' + other + ' 同区间 = "<b>' + esc(cand) + '</b>"' + (good
+              ? '——猜中了 ✓ 另一份明文对应段实为 "' + esc(realOther) + '"'
+              : '——但 ' + guess + ' 该处实为 "' + esc(real) + '"，换个位置继续');
+        } else {
+          html = isEn
+            ? 'If ' + guess + '[' + p + '..' + (p + cb.length) + '] = "<b>' + esc(crib) + '</b>", then ' + other + ' there = "<b>' + esc(cand) + '</b>"' + (isLikely(cand)
+              ? ' 😉 that reads like language — snowball it into the next crib'
+              : ' — gibberish so far; try another position or word')
+            : '若 ' + guess + ' 第 ' + p + ' 位起 = "<b>' + esc(crib) + '</b>" ⇒ ' + other + ' 同区间 = "<b>' + esc(cand) + '</b>"' + (isLikely(cand)
+              ? ' 😉 读起来像语言——把它当作下一个 crib 滚雪球'
+              : '——暂时是乱码，换个位置或换个词试试');
+        }
+        v.innerHTML = html;
+      });
+      setup();
+    });
+
+    el('pl-ready').textContent = '17';
   };
 })();

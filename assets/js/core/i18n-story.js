@@ -876,6 +876,8 @@
   d.en['st.c3.g12'] = 'Fanqie code room: Qi Jiguang turned the fanqie spelling trick into two-character signals — initial, final, and a codebook that resolves the order.';
   d.zh['st.c4.g18'] = '杰斐逊转轮：总统的圆盘排成棒——从私人发明到美军 M-94。';
   d.en['st.c4.g18'] = 'Jefferson Disk: the president\'s wheels — from private invention to the Army\'s M-94.';
+  d.zh['st.c4.g19'] = 'OTP 电报房：Vernam 把密钥带与明文带逐位相加——一次性密码本从电路变成原理。';
+  d.en['st.c4.g19'] = 'OTP telegraph room: Vernam XORed a key tape into the message tape — the one-time pad from circuit to principle.';
   d.zh['st.c10.g25'] = '侧信道实验室：时序曲线不会说谎——算法的完美挡不住实现的疏漏。';
   d.en['st.c10.g25'] = 'Side-Channel Lab: timing curves never lie — perfect math cannot save sloppy code.';
   d.zh['st.c10.g26'] = '同态加密实验室：密文上直接计算——云端不改一字却算出整个结果。';

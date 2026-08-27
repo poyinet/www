@@ -886,6 +886,8 @@
   d.en['st.c10.g27'] = 'Tor onion routing: every skin of the anonymity stack — three-hop circuits, layered wrap, exit visibility and traffic analysis, from NRL 1995 to today.';
   d.zh['st.c10.g28'] = '块模式实验室：同一块密码、不同的模式决定命运——ECB 泄漏图案、CBC 依赖不可预测 IV、CTR 流式无认证、GCM 一举两得。';
   d.en['st.c10.g28'] = 'Block Mode Lab: the same block cipher, and the mode decides its fate — ECB leaks patterns, CBC leans on an unpredictable IV, CTR streams unauthenticated, GCM delivers both.';
+  d.zh['st.c10.g29'] = 'DH 握手场：1976 新方向的手算现场——真实模幂交换、共享密钥验证、Eve 中间人、参数退化陷阱与 ECDHE/Logjam 工程红线。';
+  d.en['st.c10.g29'] = 'DH Handshake: the 1976 New Directions, computed live — modular exponentiation, shared-secret verification, Eve the MITM, degenerate-parameter traps and the ECDHE/Logjam engineering red lines.';
 
   d.zh['st.c2.g15'] = '同音替换：给高频字母发多张替身卡，把频率分析摊平——文艺复兴破译与反破译的正面交锋。';
   d.en['st.c2.g15'] = 'Homophonic: deal high-frequency letters extra aliases and flatten the histogram — the Renaissance counter-strike on frequency analysis.';

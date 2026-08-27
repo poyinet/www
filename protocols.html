@@ -147,11 +147,11 @@
   <div class="pl-wrap" id="content">
     <div class="pl-hero">
       <h1 class="pl-title" data-i18n="pl.title">🛡️ 协议实验室</h1>
-      <p class="pl-sub" data-i18n="pl.sub">TLS 握手 · DH 中间人 · Merkle 树与区块链 · 零知识证明 · ECC 几何 · 口令破解成本——现代密码学的十七堂交互课</p>
+      <p class="pl-sub" data-i18n="pl.sub">TLS 握手 · DH 中间人 · Merkle 树与区块链 · 零知识证明 · ECC 几何 · 口令破解成本——现代密码学的十八堂交互课</p>
       <div class="pl-nav">
         <a href="#pl-tls">🤝 TLS</a><a href="#pl-dh">🕵️ DH</a><a href="#pl-merkle">🌳 Merkle</a>
         <a href="#pl-zkp">🎭 ZKP</a><a href="#pl-chacha">🌀 ChaCha20</a><a href="#pl-ecc">📈 ECC</a>
-        <a href="#pl-a51">📡 A5/1</a>        <a href="#pl-rc4">🧨 RC4</a><a href="#pl-sign">✍️ 签名</a><a href="#pl-rng">🎲 随机数</a><a href="#pl-math">∑ 数论</a><a href="#pl-diff">🎯 差分</a><a href="#pl-aead">🛡️ AEAD</a><a href="#pl-ext">🧟 长度扩展</a><a href="#pl-big">🐘 大数</a><a href="#pl-pwd">⏳ 口令成本</a><a href="#pl-otp">📨 OTP</a>
+        <a href="#pl-a51">📡 A5/1</a>        <a href="#pl-rc4">🧨 RC4</a><a href="#pl-sign">✍️ 签名</a><a href="#pl-rng">🎲 随机数</a><a href="#pl-math">∑ 数论</a><a href="#pl-diff">🎯 差分</a><a href="#pl-aead">🛡️ AEAD</a><a href="#pl-ext">🧟 长度扩展</a><a href="#pl-big">🐘 大数</a><a href="#pl-pwd">⏳ 口令成本</a><a href="#pl-otp">📨 OTP</a><a href="#pl-dhpt">🧮 DH 参数</a>
       </div>
     </div>
 
@@ -377,6 +377,20 @@
       </div>
       <div class="pl-note" id="otp-note"></div>
       <div class="pl-extend"><a href="story.html?id=venona">📜 相关编年史章节</a><a href="games/otp-telegraph/">📨 OTP 电报房（游戏）</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
+    </div>
+
+    <div class="pl-card" id="pl-dhpt">
+      <div class="pl-h"><span class="ic">🧮</span><b data-i18n="pl.dhpH">DH 参数验证：p、安全素数与 g 的阶</b></div>
+      <div class="pl-note" id="dhpt-intro"></div>
+      <div class="pl-btnrow">
+        <label class="ws-note">p = <input id="dhpt-p" class="ws-input" style="width:110px;padding:6px 10px"></label>
+        <label class="ws-note">g = <input id="dhpt-g" class="ws-input" style="width:90px;padding:6px 10px"></label>
+        <button class="btn accent" id="dhpt-run">🔍 验证</button>
+      </div>
+      <div class="pl-btnrow" id="dhpt-presets"></div>
+      <table class="pl-tab" id="dhpt-out"></table>
+      <div class="pl-note" id="dhpt-note"></div>
+      <div class="pl-extend"><a href="story.html?id=modern">📜 相关编年史章节</a><a href="games/dh-handshake/">🔑 DH 握手场（游戏）</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
     </div>
   </div>
   <div id="pl-ready"></div>

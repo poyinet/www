@@ -44,7 +44,8 @@ window.PROTOCOL_LAB = (function () {
       { id: 'big', icon: '🐘', name: { zh: '真实大数 RSA', en: 'Real-Bignum RSA' } },
       { id: 'rng', icon: '🎲', name: { zh: '随机数', en: 'Randomness' } },
       { id: 'pwd', icon: '⏳', name: { zh: '口令破解成本', en: 'Password Cracking Cost' } },
-      { id: 'otp', icon: '📨', name: { zh: 'OTP 与复用灾难', en: 'OTP Reuse Disaster' } }
+      { id: 'otp', icon: '📨', name: { zh: 'OTP 与复用灾难', en: 'OTP Reuse Disaster' } },
+      { id: 'dhpt', icon: '🧮', name: { zh: 'DH 参数验证', en: 'DH Parameter Validation' } }
     ],
 
     /* ================= OTP 与复用灾难 ================= */
@@ -60,6 +61,22 @@ window.PROTOCOL_LAB = (function () {
     otpNote: {
       zh: '为什么「复用」直接泄底？C1 ⊕ C2 =（M1 ⊕ K）⊕（M2 ⊕ K）= M1 ⊕ M2——密钥完好无损地从算式中消失。剩下的是两份明文互相异或：它像一张叠影底片，你只需要猜中一条明文里的一句话，另一条的高余对应段立刻露出来。这就是 Venona 破译员的日常：从俄语电报的固定套路（问候语、日期、代号）入手，把「叠影」一片片刮亮。',
       en: 'Why does reuse leak everything? C1 ⊕ C2 = (M1 ⊕ K) ⊕ (M2 ⊕ K) = M1 ⊕ M2 — the key vanishes from the algebra untouched. What remains is the two plaintexts XORed together: a double-exposure where guessing one phrase in either message instantly exposes the other side of the sandwich. That was the Venona cryptanalyst\'s daily bread: start from the fixed rituals of Russian cable traffic (greetings, dates, code names) and scrape the overlay clean.'
+    },
+
+    /* ================= DH 参数验证 ================= */
+    dhpIntro: {
+      zh: 'DH 的安全不仅看 p 够不够大。g = 1 时共享密钥恒为 1（参数混入攻击）；p 不是安全素数时，小阶子群攻击能把秘密旋进小圈子。本演示真的在做三件事：p 素性、安全素数（p = 2q+1 且 q 素）、g 的阶恰为 p−1（真生成元）。全部通过，才是「可验证参数」（RFC 7919 的 FFDHE 命名组就是经过这种验证后固化的）。',
+      en: 'DH security is not just about a big p. With g = 1 the shared secret is always 1 (parameter-mixing); with a non-safe prime, small-subgroup attacks trap secrets in tiny circles. This demo really does three checks: p primality, safe-prime property (p = 2q+1 with q prime), and whether the order of g is exactly p−1 (a true generator). Pass all three and the parameters are "validated" — RFC 7919 FFDHE named groups were hardened exactly this way.'
+    },
+    dhpPresets: [
+      { p: 23, g: 5, tag: '23 / 5' },
+      { p: 47, g: 5, tag: '47 / 5' },
+      { p: 59, g: 2, tag: '59 / 2' },
+      { p: 1009, g: 11, tag: '1009 / 11' }
+    ],
+    dhpNote: {
+      zh: '📌 试试教材外的两组：1009 / 11 会连环翻车（(1009−1)/2 不是素数、11 的阶不足 p−1）——这正是「参数混入攻击」与「小阶子群攻击」的猎物。现实世界：TLS 1.3 的 ECDHE 与 RFC 7919 的 FFDHE 命名组都是先验证、后固化；X25519 甚至绕过了「g 的阶」问题（曲线阶与基点为规范固定值）。',
+      en: '📌 Try the extra pair 1009 / 11: it fails on several counts ((1009−1)/2 is not prime; the order of 11 is short) — precisely the prey of parameter-mixing and small-subgroup attacks. In the real world, TLS 1.3 ECDHE and RFC 7919 FFDHE named groups are validated then frozen; X25519 even sidesteps the whole order question with canonical, standardised curve and base point.'
     },
 
     /* ================= RC4 历史警示 ================= */
@@ -1411,6 +1428,91 @@ window.PROTOCOL_LAB = (function () {
       setup();
     });
 
-    el('pl-ready').textContent = '17';
+    /* ---------- 🧮 DH 参数验证 ---------- */
+    LAZY('pl-dhpt', function () {
+      el('dhpt-intro').textContent = L(LAB.dhpIntro);
+      el('dhpt-note').textContent = L(LAB.dhpNote);
+      function isPrimeNum(n) {
+        if (n < 2) return false;
+        if (n % 2 === 0) return n === 2;
+        for (var d = 3; d * d <= n; d += 2) if (n % d === 0) return false;
+        return true;
+      }
+      function distinctPrimeFactors(n) {
+        var out = [];
+        for (var d = 2; d * d <= n; d++) {
+          if (n % d === 0) {
+            out.push(d);
+            while (n % d === 0) n /= d;
+          }
+        }
+        if (n > 1) out.push(n);
+        return out;
+      }
+      function mpow(b, e, m) {
+        var out = 1;
+        b %= m;
+        while (e > 0) {
+          if (e & 1) out = (out * b) % m;
+          b = (b * b) % m;
+          e >>= 1;
+        }
+        return out;
+      }
+      function run(p, g) {
+        if (!isNaN(p) && !isNaN(g)) {
+          var rows = [];
+          var okP = isPrimeNum(p);
+          rows.push({ k: isEn ? 'p primality' : 'p 素性', v: okP ? '✓ prime' : (p < 2 ? '✗ p < 2' : '✗ not prime'), gd: okP });
+          var okSafe = okP && p > 3 && isPrimeNum((p - 1) / 2);
+          rows.push({ k: isEn ? 'safe prime p=2q+1 (q prime)' : '安全素数 p=2q+1（q 为素数）', v: okSafe ? '✓ q = ' + ((p - 1) / 2) + ' is prime' : '✗ (p-1)/2 not prime', gd: okSafe });
+          var okG = g >= 2 && g <= p - 2;
+          rows.push({ k: isEn ? 'g in [2, p-2]' : 'g ∈ [2, p−2]', v: okG ? '✓ inside range' : '✗ degenerate (g=1 or beyond)', gd: okG });
+          var okOrd = false, ordNote = '';
+          if (okG && okP) {
+            var fs = distinctPrimeFactors(p - 1);
+            okOrd = fs.every(function (r) { return mpow(g, (p - 1) / r, p) !== 1; });
+            ordNote = okOrd ? '✓ order = ' + (p - 1) + ' (full generator)'
+              : '✗ order < p-1 — small-subgroup trap window';
+          }
+          rows.push({ k: isEn ? 'order of g == p-1' : 'g 的阶 = p−1（真生成元）', v: okOrd ? ordNote : (okP ? ordNote : (isEn ? '— skip (p invalid)' : '— 跳过（p 无效）')), gd: okOrd });
+          var allOk = okP && okSafe && okG && okOrd;
+          var h = '';
+          rows.forEach(function (r) {
+            h += '<tr class="' + (r.gd ? 'ok' : 'bad') + '"><td>' + r.k + '</td><td>' + r.v + '</td></tr>';
+          });
+          h += '<tr><td colspan="2" class="' + (allOk ? 'ok' : 'bad') + '">' +
+            (allOk
+              ? (isEn ? '✓ Validated parameter set — no small subgroup, no degeneration. For real use: p ≥ 2048 bits (RFC 7919).' : '✓ 参数通过验证——无小阶子群、无退化。现实使用：p ≥ 2048 位（RFC 7919 命名组）。')
+              : (isEn ? '✗ Rejected. Never ship unvalidated DH parameters.' : '✗ 拒绝。未经验证的 DH 参数绝不可投入使用。')) +
+            '</td></tr>';
+          el('dhpt-out').innerHTML = h;
+        } else {
+          el('dhpt-out').innerHTML = '<tr><td colspan="2" class="bad">' + (isEn ? '✗ Enter integers for p and g.' : '✗ 请输入整数 p 与 g。') + '</td></tr>';
+        }
+      }
+      el('dhpt-run').addEventListener('click', function () {
+        run(parseInt(el('dhpt-p').value, 10), parseInt(el('dhpt-g').value, 10));
+      });
+      /* 预设按钮挂载区 */
+      var presetBox = el('dhpt-presets');
+      presetBox.innerHTML = '';
+      (LAB.dhpPresets || []).forEach(function (pr) {
+        var b = document.createElement('button');
+        b.className = 'btn';
+        b.textContent = pr.tag;
+        b.addEventListener('click', function () {
+          el('dhpt-p').value = String(pr.p);
+          el('dhpt-g').value = String(pr.g);
+          run(pr.p, pr.g);
+        });
+        presetBox.appendChild(b);
+      });
+      el('dhpt-p').value = '23';
+      el('dhpt-g').value = '5';
+      run(23, 5);
+    });
+
+    el('pl-ready').textContent = '18';
   };
 })();

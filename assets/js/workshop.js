@@ -381,8 +381,83 @@ window.Workshop = (function () {
     trifid: { name: 'Trifid', enName: 'Trifid', enc: function (s) { return trifid(s, 'enc'); }, dec: function (s) { return trifid(s, 'dec'); }, key: 'none', keyLabel: '', keyEn: '', keyDefault: '' },
     hill: { name: '希尔 2×2 Hill', enName: 'Hill 2×2', enc: hillEnc, dec: hillDec, key: 'ab', keyLabel: 'k11,k12,k21,k22', keyEn: 'k11,k12,k21,k22', keyDefault: '3,2,2,3' },
     base64: { name: 'Base64', enName: 'Base64', enc: b64Enc, dec: b64Dec, key: 'none', keyLabel: '', keyEn: '', keyDefault: '' },
-    binary: { name: '二进制 Binary', enName: 'Binary (8-bit)', enc: binEnc, dec: binDec, key: 'none', keyLabel: '', keyEn: '', keyDefault: '' }
+    binary: { name: '二进制 Binary', enName: 'Binary (8-bit)', enc: binEnc, dec: binDec, key: 'none', keyLabel: '', keyEn: '', keyDefault: '' },
+    columnar: { name: '列换位 Columnar', enName: 'Columnar Transposition', enc: columnarEnc, dec: columnarDec, key: 'word', keyLabel: '密钥词', keyEn: 'Key word', keyDefault: 'CIPHER' },
+    porta: { name: '波尔塔 Porta', enName: 'Porta Cipher', enc: portaEnc, dec: portaDec, key: 'word', keyLabel: '密钥词（每对字母一档）', keyEn: 'Key word (letter pairs as key groups)', keyDefault: 'PORTA' }
   };
+
+  /* ================= 列换位（密钥列换位 + 填充 X） ================= */
+  function colOrder(key) {
+    var arr = [];
+    for (var i = 0; i < key.length; i++) arr.push([key[i], i]);
+    arr.sort(function (a, b) { return a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : a[1] - b[1]; });
+    return arr.map(function (x) { return x[1]; });
+  }
+  function columnarEnc(s, k) {
+    var t = (String(s).toUpperCase().replace(/[^A-Z]/g, '') || '');
+    var key = (String(k).toUpperCase().replace(/[^A-Z]/g, '') || 'CIPHER');
+    var cols = key.length;
+    var rows = Math.ceil(t.length / cols);
+    while (t.length < rows * cols) t += 'X';
+    var grid = [];
+    for (var r = 0; r < rows; r++) grid.push(t.slice(r * cols, (r + 1) * cols).split(''));
+    var order = colOrder(key);
+    var out = '';
+    order.forEach(function (c) {
+      for (var r2 = 0; r2 < rows; r2++) out += grid[r2][c];
+    });
+    return out;
+  }
+  function columnarDec(s, k) {
+    var t = (String(s).toUpperCase().replace(/[^A-Z]/g, '') || '');
+    var key = (String(k).toUpperCase().replace(/[^A-Z]/g, '') || 'CIPHER');
+    var cols = key.length;
+    var rows = Math.ceil(t.length / cols);
+    var order = colOrder(key);
+    var colsChars = {};
+    var ptr = 0;
+    order.forEach(function (c) {
+      colsChars[c] = t.slice(ptr, ptr + rows); ptr += rows;
+    });
+    var out = '';
+    for (var r = 0; r < rows; r++) {
+      for (var c = 0; c < cols; c++) out += colsChars[c][r];
+    }
+    while (out.length && out.charAt(out.length - 1) === 'X') out = out.slice(0, -1);
+    return out;
+  }
+
+  /* ================= 波尔塔（对称表，行=左旋右旋拼接；加密=取位/解密=反查） ================= */
+  function portaRow(gi) {
+    var leftA = 'NOPQRSTUVWXYZ';
+    var rightA = 'ABCDEFGHIJKLM';
+    var left = leftA.slice(gi) + leftA.slice(0, gi);
+    var right = rightA.slice(-gi) + rightA.slice(0, -gi);
+    return left + right;
+  }
+  function portaEnc(s, k) {
+    var t = (String(s).toUpperCase().replace(/[^A-Z]/g, '') || '');
+    var key = (String(k).toUpperCase().replace(/[^A-Z]/g, '') || 'PORTA');
+    var out = '';
+    for (var i = 0; i < t.length; i++) {
+      var gi = Math.floor((key.charCodeAt(i % key.length) - 65) / 2);
+      if (gi < 0) gi = 0; if (gi > 12) gi = 12;
+      out += portaRow(gi).charAt(t.charCodeAt(i) - 65);
+    }
+    return out;
+  }
+  function portaDec(s, k) {
+    var t = (String(s).toUpperCase().replace(/[^A-Z]/g, '') || '');
+    var key = (String(k).toUpperCase().replace(/[^A-Z]/g, '') || 'PORTA');
+    var out = '';
+    for (var i = 0; i < t.length; i++) {
+      var gi = Math.floor((key.charCodeAt(i % key.length) - 65) / 2);
+      if (gi < 0) gi = 0; if (gi > 12) gi = 12;
+      var idx = portaRow(gi).indexOf(t.charAt(i));
+      out += String.fromCharCode(65 + idx);
+    }
+    return out;
+  }
 
   function parseKey(keyType, raw) {
     if (keyType === 'k') return parseInt(raw, 10) || 0;

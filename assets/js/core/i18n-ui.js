@@ -10,7 +10,7 @@
   d.zh['glossary.title'] = '🔐 密码学词典';
   d.zh['glossary.catTheoretical'] = '🧪 理论基础'; d.en['glossary.catTheoretical'] = '🧪 Theory';
   d.zh['glossary.catPostquantum'] = '⚛️ 后量子'; d.en['glossary.catPostquantum'] = '⚛️ Post-Quantum';
-  d.zh['glossary.sub'] = '251 个术语 · 中英对照 · 边玩边懂——每个词都能在站内找到对应的游戏或章节';
+  d.zh['glossary.sub'] = '270 个术语 · 中英对照 · 边玩边懂——每个词都能在站内找到对应的游戏或章节';
   d.zh['onboard.title'] = '欢迎来到破译街机';
   d.en['onboard.title'] = 'Welcome to Decode Arcade';
   d.zh['onboard.desc'] = '用 135 款小游戏破译人类三千年的加密与解密史——从凯撒移位到量子密钥。先试试这三款镇馆之作，或跟随 24 天学习路径稳步前进。';
@@ -31,7 +31,7 @@
   d.zh['path.sub'] = '从零开始的密码学学习路径——每天读 1 章、玩 2 款游戏、懂 1 个术语，24 天走完三千年密码史';
   d.zh['quiz.title'] = '🧠 密码学测验场';
   d.zh['quiz.entry'] = '密码学测验场';
-  d.zh['quiz.sub'] = '200 道题 · 4 个段位（入门/进阶/专家/大师）· 每轮随机抽 10 题——答完评出你的「密码学段位」';
+  d.zh['quiz.sub'] = '230 道题 · 4 个段位（入门/进阶/专家/大师）· 每轮随机抽 10 题——答完评出你的「密码学段位」';
   d.zh['quiz.start'] = '🚀 开始测验';
   d.zh['quiz.next'] = '下一题 →';
   d.zh['quiz.q'] = '第 {n} 题';
@@ -101,7 +101,7 @@
   d.en['nav.people'] = 'People';
   d.en['nav.artifacts'] = 'Artifacts';
   d.en['glossary.title'] = '🔐 Cryptography Glossary';
-  d.en['glossary.sub'] = '251 terms · bilingual · learn by playing — every word maps to a game or chapter in this arcade';
+  d.en['glossary.sub'] = '270 terms · bilingual · learn by playing — every word maps to a game or chapter in this arcade';
   d.en['glossary.play'] = 'Play';
   d.en['workshop.title'] = '🔬 Cipher Workshop';
   d.en['workshop.sub'] = 'A one-of-a-kind encrypt/decrypt lab — encrypt with 16 classic ciphers, or paste ciphertext for one-click auto-cracking';
@@ -114,7 +114,7 @@
   d.en['path.sub'] = 'A learn-by-playing path from zero — each day: read 1 chapter, play 2 games, learn 1 term. 24 days through 3,000 years of cipher history';
   d.en['quiz.title'] = '🧠 Crypto Quiz Arena';
   d.en['quiz.entry'] = 'Crypto Quiz Arena';
-  d.en['quiz.sub'] = '200 questions · 4 ranks (Novice / Advanced / Expert / Master) · 10 random questions per round — earn your cipher rank';
+  d.en['quiz.sub'] = '230 questions · 4 ranks (Novice / Advanced / Expert / Master) · 10 random questions per round — earn your cipher rank';
   d.en['quiz.start'] = '🚀 Start Quiz';
   d.en['quiz.next'] = 'Next →';
   d.en['quiz.q'] = 'Q{n}';

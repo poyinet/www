@@ -61,7 +61,7 @@ Arcade.i18n.dicts = {
     'workshop.decNote': '自动识别：凯撒 / 摩斯 / 培根 / 二进制 / 异或 / Base64 / 栅栏 / 维吉尼亚（常用密钥）',
     'workshop.eggTitle': '🎯 彩蛋收集（全站寻宝）',
     'workshop.eggNote': '全站藏有 20 条密文彩蛋——破解后在下方输入答案单词，收集进度点亮。全部集齐解锁隐藏成就！',
-    'quiz.entrySub': '200 题测出你的段位',
+    'quiz.entrySub': '230 题测出你的段位',
     'quiz.lvl1': '入门', 'quiz.lvl2': '进阶', 'quiz.lvl3': '专家', 'quiz.lvl4': '大师',
     'quiz.right': '✅ 答对了！',
     'quiz.wrong': '❌ 答错了',
@@ -468,7 +468,7 @@ Arcade.i18n.dicts = {
     'workshop.decNote': 'Auto-detect: Caesar / Morse / Bacon / Binary / XOR / Base64 / Rail Fence / Vigenère (common keys)',
     'workshop.eggTitle': '🎯 Egg Hunt (site-wide treasure)',
     'workshop.eggNote': '20 cipher eggs are hidden across the site — crack them and type the answer word below. Collect all to unlock a hidden achievement!',
-    'quiz.entrySub': '200 questions · find your rank',
+    'quiz.entrySub': '230 questions · find your rank',
     'quiz.lvl1': 'Novice', 'quiz.lvl2': 'Advanced', 'quiz.lvl3': 'Expert', 'quiz.lvl4': 'Master',
     'quiz.right': '✅ Correct!',
     'quiz.wrong': '❌ Wrong',
@@ -1804,4 +1804,166 @@ Arcade.i18n.dicts = {
   d.zh['stp.rabin.bio'] = '习惯在散步时思考，自称成果大半来自漫无边际的散步；他的素性测试直接服务了后来 RSA 的密钥生成。';
   d.en['stp.rabin.bio'] = 'A famously peripatetic thinker, he attributes much of his work to long walks; his primality test became the engine of RSA key generation.';
   d.zh['stp.rabin.quote'] = '—'; d.en['stp.rabin.quote'] = '—';
+})();
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['stp.williamson.name'] = '马尔科姆·威廉森'; d.en['stp.williamson.name'] = 'Malcolm Williamson';
+  d.zh['stp.williamson.icon'] = '🔢'; d.en['stp.williamson.icon'] = '🔢';
+  d.zh['stp.williamson.role'] = '英国密码学家 · GCHQ 密钥交换先驱'; d.en['stp.williamson.role'] = 'British cryptologist · GCHQ key-exchange pioneer';
+  d.zh['stp.williamson.era'] = '1950–2013 · 英国'; d.en['stp.williamson.era'] = 'United Kingdom';
+  d.zh['stp.williamson.fact'] = '1974 年在 GCHQ 独立构想出类 Diffie-Hellman 的公钥交换思想，因保密三十余年不为世知；1997 年 GCHQ 解密历史后，他与 Ellis、Cocks 的「三分盘」故事才公开——与公开学术界发现相映成趣。';
+  d.en['stp.williamson.fact'] = 'In 1974 he independently conceived a public-key exchange much like Diffie-Hellman while at GCHQ, classified for decades; only in 1997 did the ministry declassify the history. The Ellis-Cocks-Williamson trio mirrors the public discovery.';
+  d.zh['stp.williamson.bio'] = 'undefined';
+  d.en['stp.williamson.bio'] = 'undefined';
+  d.zh['stp.williamson.quote'] = '—'; d.en['stp.williamson.quote'] = '—';
+  d.zh['stp.playfair.name'] = '莱昂·普莱费尔勋爵'; d.en['stp.playfair.name'] = 'Lyon Playfair';
+  d.zh['stp.playfair.icon'] = '🃏'; d.en['stp.playfair.icon'] = '🃏';
+  d.zh['stp.playfair.role'] = '科学家 · Playfair 密码得名者'; d.en['stp.playfair.role'] = 'Scientist · namesake of the Playfair cipher';
+  d.zh['stp.playfair.era'] = '1818–1898 · 英国'; d.en['stp.playfair.era'] = 'United Kingdom';
+  d.zh['stp.playfair.fact'] = '数学家惠斯通发明双字母密码后，普莱费尔于 1854 年将它递交给战争部并大力推广，以至于后世以他的名字命名——历史上的「以推广者命名」典型：发明归一人，冠名归另一人。';
+  d.en['stp.playfair.fact'] = 'After Wheatstone invented the digraph cipher, Playfair handed it to the War Office in 1854 and championed it — so history named it after him. A classic case of inventor versus popularizer.';
+  d.zh['stp.playfair.bio'] = 'undefined';
+  d.en['stp.playfair.bio'] = 'undefined';
+  d.zh['stp.playfair.quote'] = '—'; d.en['stp.playfair.quote'] = '—';
+  d.zh['stp.rowlett.name'] = '弗兰克·罗利特'; d.en['stp.rowlett.name'] = 'Frank Rowlett';
+  d.zh['stp.rowlett.icon'] = '📻'; d.en['stp.rowlett.icon'] = '📻';
+  d.zh['stp.rowlett.role'] = '美国密码学家 · 紫密破译主力'; d.en['stp.rowlett.role'] = 'US cryptologist · core Purple breaker';
+  d.zh['stp.rowlett.era'] = '1908–1998 · 美国'; d.en['stp.rowlett.era'] = 'United States';
+  d.zh['stp.rowlett.fact'] = '弗里德曼的亲传与同僚，1940 年带队攻破日本「紫密」，之后主持美军密码机构建设；他的整个职业生涯几乎与美国陆军密码学共进退。';
+  d.en['stp.rowlett.fact'] = 'Trained by and working beside Friedman, he led the 1940 break of the Japanese Purple machine, then built the Armys cryptologic institutions — his career tracks the whole rise of US army cryptology.';
+  d.zh['stp.rowlett.bio'] = 'undefined';
+  d.en['stp.rowlett.bio'] = 'undefined';
+  d.zh['stp.rowlett.quote'] = '—'; d.en['stp.rowlett.quote'] = '—';
+  d.zh['stp.safford.name'] = '劳伦斯·萨福德'; d.en['stp.safford.name'] = 'Laurance Safford';
+  d.zh['stp.safford.icon'] = '🌊'; d.en['stp.safford.icon'] = '🌊';
+  d.zh['stp.safford.role'] = '美国海军密码局长 · OP-20-G 主官'; d.en['stp.safford.role'] = 'Chief of US Navy cryptology · OP-20-G';
+  d.zh['stp.safford.era'] = '1893–1973 · 美国'; d.en['stp.safford.era'] = 'United States';
+  d.zh['stp.safford.fact'] = '太平洋战争前夜美国海军密码破译的实权人物：指挥 OP-20-G 对日本海军密码的攻势，1942 年 AF 淡水謎局的判断链条上，他所在的机构正是关键一环。';
+  d.en['stp.safford.fact'] = 'The operational chief of Navy cryptology before and during the Pacific war: under him OP-20-G pressed the Japanese naval codes, a key link in the 1942 AF fresh-water judgment.';
+  d.zh['stp.safford.bio'] = 'undefined';
+  d.en['stp.safford.bio'] = 'undefined';
+  d.zh['stp.safford.quote'] = '—'; d.en['stp.safford.quote'] = '—';
+  d.zh['stp.newman.name'] = '马克斯·纽曼'; d.en['stp.newman.name'] = 'Max Newman';
+  d.zh['stp.newman.icon'] = '💻'; d.en['stp.newman.icon'] = '💻';
+  d.zh['stp.newman.role'] = '英国数学家 · Colossus 项目主持者'; d.en['stp.newman.role'] = 'British mathematician · led Colossus';
+  d.zh['stp.newman.era'] = '1897–1984 · 英国'; d.en['stp.newman.era'] = 'United Kingdom';
+  d.zh['stp.newman.fact'] = '1942 年主持「新曼行动」：把图灵式机器思想用于破译洛伦兹（Tunny），催生了世界第一台可编程电子计算机 Colossus；战后他组建曼彻斯特计算实验室，计算机科学正式登台。';
+  d.en['stp.newman.fact'] = 'In 1942 he led the Newmanry: turning machine ideas onto Tunny and bringing about Colossus, the first programmable electronic computer. After the war his Manchester computing laboratory launched computer science.';
+  d.zh['stp.newman.bio'] = 'undefined';
+  d.en['stp.newman.bio'] = 'undefined';
+  d.zh['stp.newman.quote'] = '—'; d.en['stp.newman.quote'] = '—';
+  d.zh['stp.tutte.name'] = '威廉·图特'; d.en['stp.tutte.name'] = 'Bill Tutte';
+  d.zh['stp.tutte.icon'] = '🧩'; d.en['stp.tutte.icon'] = '🧩';
+  d.zh['stp.tutte.role'] = '英国密码学家 · 洛伦兹结构破解者'; d.en['stp.tutte.role'] = 'British cryptologist · cracked Lorenz structure';
+  d.zh['stp.tutte.era'] = '1917–2002 · 英国'; d.en['stp.tutte.era'] = 'United Kingdom';
+  d.zh['stp.tutte.fact'] = '1942 年凭借两个深度电文对，用纯逻辑推算出德军 Tunny 十二轮结构与轮齿周期——没有截获整机，却造出了整机的逻辑模型；战后成为组合数学领域的世界级学者。';
+  d.en['stp.tutte.fact'] = 'In 1942, from only two depth messages, he deduced by pure logic the twelve-wheel structure and cycle lengths of Tunny — reconstructing a machine he had never seen. Postwar he became a world-class combinatorialist.';
+  d.zh['stp.tutte.bio'] = 'undefined';
+  d.en['stp.tutte.bio'] = 'undefined';
+  d.zh['stp.tutte.quote'] = '—'; d.en['stp.tutte.quote'] = '—';
+  d.zh['stp.roberts.name'] = '杰里·罗伯茨'; d.en['stp.roberts.name'] = 'Jerry Roberts';
+  d.zh['stp.roberts.icon'] = '🗂️'; d.en['stp.roberts.icon'] = '🗂️';
+  d.zh['stp.roberts.role'] = '英国密码学家 · Testery 首席之一'; d.en['stp.roberts.role'] = 'British codebreaker · one of the Testery chiefs';
+  d.zh['stp.roberts.era'] = '1920–2014 · 英国'; d.en['stp.roberts.era'] = 'United Kingdom';
+  d.zh['stp.roberts.fact'] = '布莱切利园 Tunny 破译组（Testery）的四名首席密码学家之一，主持手工破译工艺流程；战后恪守保密数十年，晚年才在镜头前讲述这段历史——直到离世仍是官方史中最晚发声的人之一。';
+  d.en['stp.roberts.fact'] = 'One of the four chief codebreakers at Testery, he ran the manual Tunny workflow. Bound by secrecy for decades, he only spoke publicly in old age — among the last voices of the Bletchley story.';
+  d.zh['stp.roberts.bio'] = 'undefined';
+  d.en['stp.roberts.bio'] = 'undefined';
+  d.zh['stp.roberts.quote'] = '—'; d.en['stp.roberts.quote'] = '—';
+  d.zh['stp.davies.name'] = '唐纳德·戴维斯'; d.en['stp.davies.name'] = 'Donald Davies';
+  d.zh['stp.davies.icon'] = '🧬'; d.en['stp.davies.icon'] = '🧬';
+  d.zh['stp.davies.role'] = '英国计算机科学家 · 分组密码先驱'; d.en['stp.davies.role'] = 'British computer scientist · block-cipher pioneer';
+  d.zh['stp.davies.era'] = '1924–2000 · 英国'; d.en['stp.davies.era'] = 'United Kingdom';
+  d.zh['stp.davies.fact'] = '国家物理实验室的计算机科学家：分组密码设计与安全评估的早期倡导者（他的工作与 DES 的起源相互交织），同时以「分组交换」网络技术共同创立者的身份留名计算机史。';
+  d.en['stp.davies.fact'] = 'At the National Physical Laboratory he championed early block-cipher design and security assessment — his work intersects the DES origin story — and he co-founded packet switching, a name in computer-network history alike.';
+  d.zh['stp.davies.bio'] = 'undefined';
+  d.en['stp.davies.bio'] = 'undefined';
+  d.zh['stp.davies.quote'] = '—'; d.en['stp.davies.quote'] = '—';
+  d.zh['stp.vonneumann.name'] = '约翰·冯·诺依曼'; d.en['stp.vonneumann.name'] = 'John von Neumann';
+  d.zh['stp.vonneumann.icon'] = '🧠'; d.en['stp.vonneumann.icon'] = '🧠';
+  d.zh['stp.vonneumann.role'] = '数学家 · 现代计算机架构之父'; d.en['stp.vonneumann.role'] = 'Mathematician · father of the stored-program architecture';
+  d.zh['stp.vonneumann.era'] = '1903–1957 · 匈牙利/美国'; d.en['stp.vonneumann.era'] = 'Hungary/USA';
+  d.zh['stp.vonneumann.fact'] = '「冯·诺依曼架构」（程序与数据同存于存储器）奠定了计算机的形态，而 ALL 密码破译机械都长在这台机器上；他在曼哈顿计划期间的博约与保密实践，也是密码工程史的注脚。';
+  d.en['stp.vonneumann.fact'] = 'The von Neumann architecture — program and data in one memory — defines every computer, and every modern cryptanalytic machine stands on it. His wartime security practices at Los Alamos are a footnote in cipher history.';
+  d.zh['stp.vonneumann.bio'] = 'undefined';
+  d.en['stp.vonneumann.bio'] = 'undefined';
+  d.zh['stp.vonneumann.quote'] = '—'; d.en['stp.vonneumann.quote'] = '—';
+  d.zh['stp.gauss.name'] = '卡尔·弗里德里希·高斯'; d.en['stp.gauss.name'] = 'Carl Friedrich Gauss';
+  d.zh['stp.gauss.icon'] = '∑'; d.en['stp.gauss.icon'] = '∑';
+  d.zh['stp.gauss.role'] = '数学家 · 数论之王'; d.en['stp.gauss.role'] = 'Mathematician · prince of number theory';
+  d.zh['stp.gauss.era'] = '1777–1855 · 德国'; d.en['stp.gauss.era'] = 'Germany';
+  d.zh['stp.gauss.fact'] = '同余理论、二次剩余、二次互反律——RSA 的模运算与离散对数的地基几乎全在他笔下奠基；十九世纪「为数学而数学」的纯粹性，意外成为二十世纪密码学的承重墙。';
+  d.en['stp.gauss.fact'] = 'Congruences, quadratic residues, reciprocity: the floors RSA and discrete logarithms stand on were laid by him. His pure mathematics of the 1800s became the load-bearing wall of twentieth-century cryptography.';
+  d.zh['stp.gauss.bio'] = 'undefined';
+  d.en['stp.gauss.bio'] = 'undefined';
+  d.zh['stp.gauss.quote'] = '—'; d.en['stp.gauss.quote'] = '—';
+  d.zh['stp.galois.name'] = '埃瓦里斯特·伽罗瓦'; d.en['stp.galois.name'] = 'Évariste Galois';
+  d.zh['stp.galois.icon'] = '🪞'; d.en['stp.galois.icon'] = '🪞';
+  d.zh['stp.galois.role'] = '数学家 · 群论创立者'; d.en['stp.galois.role'] = 'Mathematician · founder of group theory';
+  d.zh['stp.galois.era'] = '1811–1832 · 法国'; d.en['stp.galois.era'] = 'France';
+  d.zh['stp.galois.fact'] = '二十岁创立群论，二十岁死于决斗——他的抽象代数在两百年后被 AES 的 S 盒、有限域 GF(2^8) 与椭圆曲线密码全面调用；密码学与代数的联姻，始于一场决斗夜的手稿。';
+  d.en['stp.galois.fact'] = 'He founded group theory at twenty and died in a duel at twenty. Two centuries later his abstractions power AES S-boxes, GF(2^8) and elliptic-curve crypto — cryptography itself to algebra began in his night-before-duel manuscripts.';
+  d.zh['stp.galois.bio'] = 'undefined';
+  d.en['stp.galois.bio'] = 'undefined';
+  d.zh['stp.galois.quote'] = '—'; d.en['stp.galois.quote'] = '—';
+  d.zh['stp.heninger.name'] = '娜迪娅·赫宁格'; d.en['stp.heninger.name'] = 'Nadia Heninger';
+  d.zh['stp.heninger.icon'] = '🛰️'; d.en['stp.heninger.icon'] = '🛰️';
+  d.zh['stp.heninger.role'] = '现代密码工程师 · 实证安全研究者'; d.en['stp.heninger.role'] = 'Modern security researcher · empirical cryptography';
+  d.zh['stp.heninger.era'] = '1980s– · 美国'; d.en['stp.heninger.era'] = 'United States';
+  d.zh['stp.heninger.fact'] = '发起「Mining Your Ps and Qs」系列研究：对互联网上数百万公钥做批量实证，发现大量误用导致的弱密钥（共享素数、熵不足）——把「理论正确、实现翻车」变成可统计的工程学。';
+  d.en['stp.heninger.fact'] = 'Her "Mining Your Ps and Qs" work empirically scanned millions of internet keys, exposing widespread weak keys from bad randomness and shared primes — turning implementation failure into measurable engineering evidence.';
+  d.zh['stp.heninger.bio'] = 'undefined';
+  d.en['stp.heninger.bio'] = 'undefined';
+  d.zh['stp.heninger.quote'] = '—'; d.en['stp.heninger.quote'] = '—';
+  d.zh['stp.morse.name'] = '塞缪尔·摩斯'; d.en['stp.morse.name'] = 'Samuel Morse';
+  d.zh['stp.morse.icon'] = '📡'; d.en['stp.morse.icon'] = '📡';
+  d.zh['stp.morse.role'] = '发明家 · 摩斯电码之父'; d.en['stp.morse.role'] = 'Inventor · father of the Morse code';
+  d.zh['stp.morse.era'] = '1791–1872 · 美国'; d.en['stp.morse.era'] = 'United States';
+  d.zh['stp.morse.fact'] = '1830 年代发明电报并设计出点划编码，1844 年「What hath God wrought」开启第一封远距电子报文——人类第一次把信息与传输物分离，「编码」从此进入大众史。';
+  d.en['stp.morse.fact'] = 'He built the electric telegraph in the 1830s and its dot-dash code; the 1844 "What hath God wrought" opened the first long-distance electronic message — separating information from its carrier for the first time in mass history.';
+  d.zh['stp.morse.bio'] = 'undefined';
+  d.en['stp.morse.bio'] = 'undefined';
+  d.zh['stp.morse.quote'] = '—'; d.en['stp.morse.quote'] = '—';
+  d.zh['stp.miller.name'] = '弗兰克·米勒'; d.en['stp.miller.name'] = 'Frank Miller';
+  d.zh['stp.miller.icon'] = '📜'; d.en['stp.miller.icon'] = '📜';
+  d.zh['stp.miller.role'] = '银行家 · 一次性密钥本先驱'; d.en['stp.miller.role'] = 'Banker · one-time-key pioneer';
+  d.zh['stp.miller.era'] = '1842–1911 · 美国'; d.en['stp.miller.era'] = 'United States';
+  d.zh['stp.miller.fact'] = '1882 年在一份银行家研讨文集中描述了「一次性密钥集」：密钥与密文等长、只用一次——比 Vernam 早三十七年、比香农的证明早六十余年，是 OTP 思想最早的公开记载之一。';
+  d.en['stp.miller.fact'] = 'In 1882 he described one-time key sets in a bankers lecture pamphlet: keys as long as the message, used once — thirty-seven years before Vernam and sixty-plus before a proof by Shannon. One of the earliest public OTP records.';
+  d.zh['stp.miller.bio'] = 'undefined';
+  d.en['stp.miller.bio'] = 'undefined';
+  d.zh['stp.miller.quote'] = '—'; d.en['stp.miller.quote'] = '—';
+})();
+(function () {
+  var d = Arcade.i18n.dicts;
+  d.zh['sta.rockex-msg.name'] = 'Rockex 密电'; d.en['sta.rockex-msg.name'] = 'A Rockex Dispatch';
+  d.zh['sta.rockex-msg.era'] = '1946–1960s · 英国/英联邦'; d.en['sta.rockex-msg.era'] = '1946–1960s · UK & Commonwealth';
+  d.zh['sta.rockex-msg.desc'] = '英国战后外交电报专用机 Rockex 输出的加密电文一份：滚轮密码机的商用前夜，外交密电从此告别手工密码。';
+  d.en['sta.rockex-msg.desc'] = 'A sample dispatch generated by Rockex, the postwar British diplomatic machine: the commercial twilight of cipher machines replaced hand ciphers for serious traffic.';
+  d.zh['sta.rockex-msg.text'] = '原文节选为五分钟电文样例，密文以 5 字母组印制——收报方持同一转轮设定即可还原。';
+  d.en['sta.rockex-msg.text'] = 'The excerpt is a five-minute sample dispatch printed in five-letter groups; a receiver with the same rotor settings reproduces the plaintext.';
+  d.zh['sta.turing1936.name'] = '图灵 1936 年论文页'; d.en['sta.turing1936.name'] = 'Turing 1936 Paper Page';
+  d.zh['sta.turing1936.era'] = '1936 · 英国'; d.en['sta.turing1936.era'] = '1936 · United Kingdom';
+  d.zh['sta.turing1936.desc'] = '《论可计算数及其在判定问题中的应用》首页：抽象机、停机问题——「能算什么」第一次被严格界定，现代计算机与一切密码破译机的思想起点。';
+  d.en['sta.turing1936.desc'] = 'The first page of On Computable Numbers: the abstract machine, the halting problem — the first rigorous line between what can and cannot be computed, the intellectual origin of every modern machine, including the codebreakers.';
+  d.zh['sta.turing1936.text'] = '该页把「机械执行规则」形式化为无限纸带与读写头；十年后人类的密码机与其在布莱切利园相遇。';
+  d.en['sta.turing1936.text'] = 'The page formalizes mechanical rule-following as a tape and a head; a decade later mans cipher machines would meet it at Bletchley.';
+  d.zh['sta.letsencrypt.name'] = 'Let’s Encrypt 首张证书'; d.en['sta.letsencrypt.name'] = 'First Let’s Encrypt Certificate';
+  d.zh['sta.letsencrypt.era'] = '2015 · 互联网'; d.en['sta.letsencrypt.era'] = '2015 · Internet';
+  d.zh['sta.letsencrypt.desc'] = '2015 年 9 月签发的首张免费 DV 证书：自动化 ACME 协议让 HTTPS 从「要钱要手续」变成「一键可得」——全球加密流量占比随即过半。';
+  d.en['sta.letsencrypt.desc'] = 'The first free domain-validated certificate issued in September 2015: ACME automation turned HTTPS from paperwork into a default, and the encrypted share of global traffic crossed half.';
+  d.zh['sta.letsencrypt.text'] = '证书链包含中间 CA ISRG Root X1；公钥只用于证明「域名控制」，是「证书=身份锚点」的最简现代注脚。';
+  d.en['sta.letsencrypt.text'] = 'The chain includes intermediate CA ISRG Root X1; the key proves only domain control — the simplest modern footnote that a certificate is an identity anchor.';
+  d.zh['sta.spectre-paper.name'] = 'Spectre/Meltdown 论文页'; d.en['sta.spectre-paper.name'] = 'Spectre/Meltdown Paper Page';
+  d.zh['sta.spectre-paper.era'] = '2018 · 美国'; d.en['sta.spectre-paper.era'] = '2018 · United States';
+  d.zh['sta.spectre-paper.desc'] = '首篇公开论文的摘要页：CPU 推测执行留下的缓存痕迹可被侧信道读出——「代码零漏洞也可能泄露」成为芯片时代的警报。';
+  d.en['sta.spectre-paper.desc'] = 'The abstract page of the first public paper: cache traces of speculative execution are readable via side channels — the alarm that flawless code can still leak in the chip era.';
+  d.zh['sta.spectre-paper.text'] = '三篇论文（Spectre 变体 + Meltdown）同月公开，直接催生处理器微码补丁与「恒定时间+栅栏指令」的工程规范。';
+  d.en['sta.spectre-paper.text'] = 'Spectre variants and Meltdown landed within a month, forcing microcode patches and constant-time plus fencing conventions in engineering.';
+  d.zh['sta.cryptolaw.name'] = '《密码法》公布稿'; d.en['sta.cryptolaw.name'] = 'Cryptography Law Text';
+  d.zh['sta.cryptolaw.era'] = '2019 公布 · 2020 施行 · 中国'; d.en['sta.cryptolaw.era'] = 'Published 2019 · effective 2020 · China';
+  d.zh['sta.cryptolaw.desc'] = '《中华人民共和国密码法》公布稿首版：三类分级 + 商用密码市场准入——把算法合规写进国家法律，国密体系有了「法治底座」。';
+  d.en['sta.cryptolaw.desc'] = 'The promulgated text of the Cryptography Law of the PRC: three tiers plus commercial market access — algorithm compliance as national law, the rule-of-law base under the SM ecosystem.';
+  d.zh['sta.cryptolaw.text'] = '配套《商用密码管理条例》2023 年修订：检测认证、安全评估、进出口清单——从法条到可执行的市场规则。';
+  d.en['sta.cryptolaw.text'] = 'The 2023 implementing regulation adds certification, assessment and import/export lists — from statute to executable market rules.';
 })();

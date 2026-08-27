@@ -271,7 +271,7 @@
             '<span class="ot">' + T('g.' + r.id + '.t') + '</span></a>';
         });
         ov.innerHTML =
-          '<div class="ob-box" role="dialog" aria-label="' + T('onboard.title') + '">' +
+          '<div class="ob-box" role="dialog" aria-modal="false" aria-label="' + T('onboard.title') + '" tabindex="-1">' +
             '<button class="ob-close" aria-label="' + T('common.close') + '">✕</button>' +
             '<div class="ob-kicker">🎮 DECODE ARCADE</div>' +
             '<h2 class="ob-title">' + T('onboard.title') + '</h2>' +
@@ -283,12 +283,20 @@
             '</div>' +
           '</div>';
         document.body.appendChild(ov);
+        var prevFocus = document.activeElement;
         function close() {
           if (ov.parentNode) ov.parentNode.removeChild(ov);
           try { localStorage.setItem(SEEN, '1'); } catch (e) {}
+          if (prevFocus && prevFocus.focus) { try { prevFocus.focus(); } catch (e) {} }
         }
         ov.querySelector('#ob-go').addEventListener('click', close);
         ov.querySelector('.ob-close').addEventListener('click', close);
+        /* A11Y：非阻断式底部卡（aria-modal=false，不圈定 Tab）；打开时焦点进入、Esc 可关闭 */
+        ov.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape') { e.preventDefault(); close(); }
+        });
+        var box = ov.querySelector('.ob-box');
+        try { box.focus({ preventScroll: true }); } catch (e) { box.focus(); }
       }
       if (document.readyState === 'complete') setTimeout(show, 600);
       else window.addEventListener('load', function () { setTimeout(show, 600); });
@@ -298,6 +306,7 @@
     /* E5 首访引导：底部卡片式（不阻塞页面其他区域交互） */
     .ob-overlay { position: fixed; left: 0; right: 0; bottom: 0; z-index: 150; display: flex; justify-content: center; padding: 12px; pointer-events: none; }
     .ob-box { width: min(560px, 94vw); text-align: center; background: linear-gradient(180deg, rgba(20,20,34,.97), rgba(10,10,18,.95)); border: 1px solid rgba(0,240,255,.35); border-radius: 16px 16px 0 0; padding: 20px 22px 18px; box-shadow: 0 -6px 40px rgba(0,240,255,.15); pointer-events: auto; position: relative; }
+    .ob-box:focus { outline: none; }
     .ob-close { position: absolute; top: 8px; right: 10px; background: none; border: none; color: var(--text-dim, #8a8aa0); font-size: 16px; cursor: pointer; }
     .ob-kicker { font-family: var(--font-pixel, monospace); font-size: 10px; color: var(--neon-purple, #b967ff); letter-spacing: 2px; margin-bottom: 8px; }
     .ob-title { font-size: 18px; color: var(--neon-cyan, #00f0ff); margin: 0 0 6px; }

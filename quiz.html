@@ -215,7 +215,7 @@
             '<span class="qz-lvl">' + lvName(q.lvl) + '</span>' +
             '<div class="qz-q">' + qd.q + '</div>' +
             '<div class="qz-opts">' + opts + '</div>' +
-            '<div class="qz-feedback" id="qz-fb"></div>' +
+            '<div class="qz-feedback" id="qz-fb" role="status"></div>' +
             '<div class="qz-next"><button class="btn" id="qz-next" style="display:none">' + T('quiz.next') + '</button></div>' +
           '</div>';
         var btns = root.querySelectorAll('.qz-opt');
@@ -270,6 +270,16 @@
 
       /* 结果屏 */
       function renderResult() {
+        var focusResult = function () {
+          /* A11Y：结果卡获得焦点（Tab 序列从结果内开始），SR 直接播报段位 */
+          var res = root.querySelector('.qz-result');
+          if (res) {
+            res.setAttribute('tabindex', '-1');
+            res.setAttribute('role', 'region');
+            res.setAttribute('aria-label', T('quiz.resultTitle'));
+            try { res.focus({ preventScroll: true }); } catch (e) { res.focus(); }
+          }
+        };
         /* 错题重练模式：不计段位、不写最佳，只反馈本轮成绩 */
         if (state.practice) {
           root.innerHTML =
@@ -282,6 +292,7 @@
             '</div>';
           var againP = document.getElementById('qz-again');
           if (againP) againP.addEventListener('click', renderStart);
+          focusResult();
           return;
         }
         var r = QUIZ.recordResult(state.score, state.list.length);
@@ -318,6 +329,7 @@
           '</div>';
         var again = document.getElementById('qz-again');
         if (again) again.addEventListener('click', startNormal);
+        focusResult();
         if (Arcade.ui && Arcade.ui.toast) {
           setTimeout(function () { Arcade.ui.toast(T('quiz.resultRank') + (isEn ? ': ' : '：') + (isEn ? r.en : r.zh), 'win'); }, 350);
         }

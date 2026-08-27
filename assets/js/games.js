@@ -15,7 +15,7 @@ window.GAME_CATEGORIES = ['经典街机', '动作反应', '逻辑谜题', '空�
 
 /* 每日破译中心：启用「📅 每日一题」的游戏（大厅今日面板 + 档案页共用）
    所有列出的游戏均实现 daily 模式：日种子确定性生成 + 解完调用 Arcade.daily.markSolved */
-window.DAILY_IDS = ['sudoku', 'enigma', 'bifid', 'slitherlink', 'hashi', 'trifid', 'bacon', 'klondike', 'caesar', 'llk', 'spotdiff', 'sectorsiege', 'sheep', 'morse', 'atbash', 'polybius', 'nihilist', 'starflag', 'autokey', 'rsa', 'shamir', 'sm4', 'acrostic', 'phishhunt', 'qkd-sim', 'pqc-match', 'stepping-switch', 'intel-assess', 'aes-lab', 'password-vault', 'pgp-mail', 'blockchain-miner', 'zkp-cave', 'totp-verify', 'scytale', 'alberti-disc', 'cardan-grille', 'jefferson-disk', 'side-channel-lab', 'homomorphic-lab', 'homophonic', 'typex', 'book-cipher', 'navajo-talker'];
+window.DAILY_IDS = ['sudoku', 'enigma', 'bifid', 'slitherlink', 'hashi', 'trifid', 'bacon', 'klondike', 'caesar', 'llk', 'spotdiff', 'sectorsiege', 'sheep', 'morse', 'atbash', 'polybius', 'nihilist', 'starflag', 'autokey', 'rsa', 'shamir', 'sm4', 'acrostic', 'phishhunt', 'qkd-sim', 'pqc-match', 'stepping-switch', 'intel-assess', 'aes-lab', 'password-vault', 'pgp-mail', 'blockchain-miner', 'zkp-cave', 'totp-verify', 'scytale', 'alberti-disc', 'cardan-grille', 'jefferson-disk', 'side-channel-lab', 'homomorphic-lab', 'homophonic', 'typex', 'book-cipher', 'navajo-talker', 'fanqie'];
 
 window.GAMES = [
   /* ---------- 经典街机 ---------- */
@@ -966,6 +966,13 @@ window.GAMES = [
     id: 'navajo-talker', title: '纳瓦霍传令兵', category: '密码破译',
     desc: '第十八期 · 太平洋上的语言密码：纳瓦霍语 + 军用词汇码（坦克=乌龟、潜艇=铁鱼）——整词对照传令，日军到终战都没读懂。',
     icon: '🪶', path: 'games/navajo-talker/index.html',
+    mobile: 'ok', bestMode: 'max',
+    lvl: 'easy', time: '5min',
+  },
+  {
+    id: 'fanqie', title: '反切码军情室', category: '密码破译',
+    desc: '第十九期 · 戚继光《纪效新书》的两字暗号：上字定声、下字定韵，十六声母 × 十六韵母查表传军情——中国古密码走进演军场。',
+    icon: '🀄', path: 'games/fanqie/index.html',
     mobile: 'ok', bestMode: 'max',
     lvl: 'easy', time: '5min',
   }

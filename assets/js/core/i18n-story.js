@@ -872,6 +872,8 @@
   d.en['st.c1.g10'] = 'Alberti Disc: one twist, a new alphabet — the Renaissance thunderclap of polyalphabetic substitution.';
   d.zh['st.c3.g11'] = '卡当格栅——把秘密藏在明面的艺术：四转一张卡，隐藏四百年。';
   d.en['st.c3.g11'] = 'Cardan Grille: hiding in plain sight — four turns, one card, four centuries of concealment.';
+  d.zh['st.c3.g12'] = '反切码军情室：戚继光把反切注音改造成两字暗号——上字定声、下字定韵，暗号本一翻军情即明。';
+  d.en['st.c3.g12'] = 'Fanqie code room: Qi Jiguang turned the fanqie spelling trick into two-character signals — initial, final, and a codebook that resolves the order.';
   d.zh['st.c4.g18'] = '杰斐逊转轮：总统的圆盘排成棒——从私人发明到美军 M-94。';
   d.en['st.c4.g18'] = 'Jefferson Disk: the president\'s wheels — from private invention to the Army\'s M-94.';
   d.zh['st.c10.g25'] = '侧信道实验室：时序曲线不会说谎——算法的完美挡不住实现的疏漏。';

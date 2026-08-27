@@ -15,7 +15,7 @@ window.GAME_CATEGORIES = ['经典街机', '动作反应', '逻辑谜题', '空�
 
 /* 每日破译中心：启用「📅 每日一题」的游戏（大厅今日面板 + 档案页共用）
    所有列出的游戏均实现 daily 模式：日种子确定性生成 + 解完调用 Arcade.daily.markSolved */
-window.DAILY_IDS = ['sudoku', 'enigma', 'bifid', 'slitherlink', 'hashi', 'trifid', 'bacon', 'klondike', 'caesar', 'llk', 'spotdiff', 'sectorsiege', 'sheep', 'morse', 'atbash', 'polybius', 'nihilist', 'starflag', 'autokey', 'rsa', 'shamir', 'sm4', 'acrostic', 'phishhunt', 'qkd-sim', 'pqc-match', 'stepping-switch', 'intel-assess', 'aes-lab', 'password-vault', 'pgp-mail', 'blockchain-miner', 'zkp-cave', 'totp-verify', 'scytale', 'alberti-disc', 'cardan-grille', 'jefferson-disk', 'side-channel-lab', 'homomorphic-lab', 'homophonic', 'typex', 'book-cipher', 'navajo-talker', 'fanqie', 'otp-telegraph', 'tor-onion'];
+window.DAILY_IDS = ['sudoku', 'enigma', 'bifid', 'slitherlink', 'hashi', 'trifid', 'bacon', 'klondike', 'caesar', 'llk', 'spotdiff', 'sectorsiege', 'sheep', 'morse', 'atbash', 'polybius', 'nihilist', 'starflag', 'autokey', 'rsa', 'shamir', 'sm4', 'acrostic', 'phishhunt', 'qkd-sim', 'pqc-match', 'stepping-switch', 'intel-assess', 'aes-lab', 'password-vault', 'pgp-mail', 'blockchain-miner', 'zkp-cave', 'totp-verify', 'scytale', 'alberti-disc', 'cardan-grille', 'jefferson-disk', 'side-channel-lab', 'homomorphic-lab', 'homophonic', 'typex', 'book-cipher', 'navajo-talker', 'fanqie', 'otp-telegraph', 'tor-onion', 'block-modes'];
 
 window.GAMES = [
   /* ---------- 经典街机 ---------- */
@@ -987,6 +987,13 @@ window.GAMES = [
     id: 'tor-onion', title: 'Tor 洋葱路由', category: '密码破译',
     desc: '第二十一期 · 匿名网络的每一层皮：按真实规则亲手建一条三跳电路，逐层封装与剥皮，出口可见性与流量分析——从 NRL 1995 到今天。',
     icon: '🧅', path: 'games/tor-onion/index.html',
+    mobile: 'ok', bestMode: 'max',
+    lvl: 'mid', time: '5min',
+  },
+  {
+    id: 'block-modes', title: '块模式实验室', category: '密码破译',
+    desc: '第二十二期 · 一台真实微型块密码驱动真实模式结构：ECB 重复块泄漏图案、CBC 链接与 IV 铁律、CTR 计数器流、GCM 认证加密——从第一行异或看到企鹅图。',
+    icon: '📦', path: 'games/block-modes/index.html',
     mobile: 'ok', bestMode: 'max',
     lvl: 'mid', time: '5min',
   }

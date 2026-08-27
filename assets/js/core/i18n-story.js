@@ -884,6 +884,8 @@
   d.en['st.c10.g26'] = 'Homomorphic Lab: compute on ciphertext — the cloud calculates without seeing a thing.';
   d.zh['st.c10.g27'] = 'Tor 洋葱路由：匿名网络的每一层皮——三跳电路、逐层封装、出口可见性与流量分析，从 NRL 1995 到今天。';
   d.en['st.c10.g27'] = 'Tor onion routing: every skin of the anonymity stack — three-hop circuits, layered wrap, exit visibility and traffic analysis, from NRL 1995 to today.';
+  d.zh['st.c10.g28'] = '块模式实验室：同一块密码、不同的模式决定命运——ECB 泄漏图案、CBC 依赖不可预测 IV、CTR 流式无认证、GCM 一举两得。';
+  d.en['st.c10.g28'] = 'Block Mode Lab: the same block cipher, and the mode decides its fate — ECB leaks patterns, CBC leans on an unpredictable IV, CTR streams unauthenticated, GCM delivers both.';
 
   d.zh['st.c2.g15'] = '同音替换：给高频字母发多张替身卡，把频率分析摊平——文艺复兴破译与反破译的正面交锋。';
   d.en['st.c2.g15'] = 'Homophonic: deal high-frequency letters extra aliases and flatten the histogram — the Renaissance counter-strike on frequency analysis.';

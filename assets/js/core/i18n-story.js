@@ -890,6 +890,8 @@
   d.en['st.c10.g29'] = 'DH Handshake: the 1976 New Directions, computed live — modular exponentiation, shared-secret verification, Eve the MITM, degenerate-parameter traps and the ECDHE/Logjam engineering red lines.';
   d.zh['st.c10.g30'] = '国密网关：一条报文走完国密管线——SM4 真引擎加密、SM3 真实现摘要、微型曲线 SM2 式验签、SM9 标识密码与国标法律时间线。';
   d.en['st.c10.g30'] = 'GM Gateway: one message through the whole SM pipeline — real SM4 engine encryption, real SM3 digests, SM2-equation verification on a tiny curve, SM9 identity crypto, and the standards-and-law timeline.';
+  d.zh['st.c10.g31'] = '百万富翁协议：姚氏 1982 开山问题——只比较、不泄露；玩具 RSA 盲化、1-out-of-2 OT、决策树首次分歧与 MPC 的史实版图。';
+  d.en['st.c10.g31'] = 'Millionaires\' Protocol: Yao\'s 1982 founding problem — compare without revealing; toy-RSA blinding, 1-out-of-2 OT, the first-difference decision tree and the MPC timeline.';
 
   d.zh['st.c2.g15'] = '同音替换：给高频字母发多张替身卡，把频率分析摊平——文艺复兴破译与反破译的正面交锋。';
   d.en['st.c2.g15'] = 'Homophonic: deal high-frequency letters extra aliases and flatten the histogram — the Renaissance counter-strike on frequency analysis.';

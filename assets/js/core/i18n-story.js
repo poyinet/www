@@ -888,6 +888,8 @@
   d.en['st.c10.g28'] = 'Block Mode Lab: the same block cipher, and the mode decides its fate — ECB leaks patterns, CBC leans on an unpredictable IV, CTR streams unauthenticated, GCM delivers both.';
   d.zh['st.c10.g29'] = 'DH 握手场：1976 新方向的手算现场——真实模幂交换、共享密钥验证、Eve 中间人、参数退化陷阱与 ECDHE/Logjam 工程红线。';
   d.en['st.c10.g29'] = 'DH Handshake: the 1976 New Directions, computed live — modular exponentiation, shared-secret verification, Eve the MITM, degenerate-parameter traps and the ECDHE/Logjam engineering red lines.';
+  d.zh['st.c10.g30'] = '国密网关：一条报文走完国密管线——SM4 真引擎加密、SM3 真实现摘要、微型曲线 SM2 式验签、SM9 标识密码与国标法律时间线。';
+  d.en['st.c10.g30'] = 'GM Gateway: one message through the whole SM pipeline — real SM4 engine encryption, real SM3 digests, SM2-equation verification on a tiny curve, SM9 identity crypto, and the standards-and-law timeline.';
 
   d.zh['st.c2.g15'] = '同音替换：给高频字母发多张替身卡，把频率分析摊平——文艺复兴破译与反破译的正面交锋。';
   d.en['st.c2.g15'] = 'Homophonic: deal high-frequency letters extra aliases and flatten the histogram — the Renaissance counter-strike on frequency analysis.';

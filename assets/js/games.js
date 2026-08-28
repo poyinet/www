@@ -15,7 +15,7 @@ window.GAME_CATEGORIES = ['经典街机', '动作反应', '逻辑谜题', '空�
 
 /* 每日破译中心：启用「📅 每日一题」的游戏（大厅今日面板 + 档案页共用）
    所有列出的游戏均实现 daily 模式：日种子确定性生成 + 解完调用 Arcade.daily.markSolved */
-window.DAILY_IDS = ['sudoku', 'enigma', 'bifid', 'slitherlink', 'hashi', 'trifid', 'bacon', 'klondike', 'caesar', 'llk', 'spotdiff', 'sectorsiege', 'sheep', 'morse', 'atbash', 'polybius', 'nihilist', 'starflag', 'autokey', 'rsa', 'shamir', 'sm4', 'acrostic', 'phishhunt', 'qkd-sim', 'pqc-match', 'stepping-switch', 'intel-assess', 'aes-lab', 'password-vault', 'pgp-mail', 'blockchain-miner', 'zkp-cave', 'totp-verify', 'scytale', 'alberti-disc', 'cardan-grille', 'jefferson-disk', 'side-channel-lab', 'homomorphic-lab', 'homophonic', 'typex', 'book-cipher', 'navajo-talker', 'fanqie', 'otp-telegraph', 'tor-onion', 'block-modes', 'dh-handshake'];
+window.DAILY_IDS = ['sudoku', 'enigma', 'bifid', 'slitherlink', 'hashi', 'trifid', 'bacon', 'klondike', 'caesar', 'llk', 'spotdiff', 'sectorsiege', 'sheep', 'morse', 'atbash', 'polybius', 'nihilist', 'starflag', 'autokey', 'rsa', 'shamir', 'sm4', 'acrostic', 'phishhunt', 'qkd-sim', 'pqc-match', 'stepping-switch', 'intel-assess', 'aes-lab', 'password-vault', 'pgp-mail', 'blockchain-miner', 'zkp-cave', 'totp-verify', 'scytale', 'alberti-disc', 'cardan-grille', 'jefferson-disk', 'side-channel-lab', 'homomorphic-lab', 'homophonic', 'typex', 'book-cipher', 'navajo-talker', 'fanqie', 'otp-telegraph', 'tor-onion', 'block-modes', 'dh-handshake', 'gm-gateway'];
 
 window.GAMES = [
   /* ---------- 经典街机 ---------- */
@@ -1001,6 +1001,13 @@ window.GAMES = [
     id: 'dh-handshake', title: 'DH 握手场', category: '密码破译',
     desc: '第二十三期 · 1976 新方向的手算现场：真实模幂交换、共享密钥验证、Eve 中间人插入、参数退化陷阱（g=1 时密钥恒为 1）——再补上 ECDHE 与 Logjam。',
     icon: '🔑', path: 'games/dh-handshake/index.html',
+    mobile: 'ok', bestMode: 'max',
+    lvl: 'mid', time: '5min',
+  },
+  {
+    id: 'gm-gateway', title: '国密网关', category: '密码破译',
+    desc: '第二十四期 · 一条报文走完国密管线：SM4 真引擎（官方向量对拍）、SM3 真实现摘要、微型曲线 SM2 式验签、SM9 标识密码——中国密码学的标准主权。',
+    icon: '🇨🇳', path: 'games/gm-gateway/index.html',
     mobile: 'ok', bestMode: 'max',
     lvl: 'mid', time: '5min',
   }

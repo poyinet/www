@@ -8,7 +8,7 @@
    注意：SW 仅在 http(s) 下生效；file:// 本地打开时浏览器不注册，属预期。
    ============================================================ */
 
-var CACHE = 'decode-arcade-v53';
+var CACHE = 'decode-arcade-v54';
 var CORE_ASSETS = [
   '/',
   '/index.html',

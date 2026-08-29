@@ -277,4 +277,12 @@
   d.en['pl.dhpH'] = 'DH Parameter Validation: p, safe primes and the order of g';
   d.zh['common.srcTitle'] = '出处';
   d.en['common.srcTitle'] = 'Sources';
+  d.zh['nav.discover'] = '发现';
+  d.en['nav.discover'] = 'Discover';
+  d.zh['discover.title'] = '🧭 发现 · 破译知识墙';
+  d.en['discover.title'] = '🧭 Discover · The Crypto Wall';
+  d.zh['discover.sub'] = '一座可以玩的密码学博物馆——三千年的加密与解密，从街机游戏到术语词典再到历史档案，全部从这里出发。';
+  d.en['discover.sub'] = 'A playable museum of cryptography — three millennia of ciphers and breaks, from arcade games to the glossary to the archives, all starting here.';
+  d.zh['discover.startTitle'] = '🎯 从哪开始';
+  d.en['discover.startTitle'] = '🎯 Where to start';
 })();

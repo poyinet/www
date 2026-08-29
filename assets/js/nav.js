@@ -45,6 +45,7 @@ window.Arcade = window.Arcade || {};
     { key: 'people', icon: '👤', href: 'people.html' },
     { key: 'artifacts', icon: '📎', href: 'artifacts.html' },
     { key: 'glossary', icon: '📖', href: 'glossary.html' },
+    { key: 'discover', icon: '🧭', href: 'discover.html' },
     { key: 'games', icon: '🎮', href: 'games.html' },
     { key: 'profile', icon: '📊', href: 'stats.html' }
   ];

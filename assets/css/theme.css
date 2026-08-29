@@ -759,12 +759,12 @@ html.theme-daylight {
   --bg-panel: #fdf8ec;
   --bg-panel-2: #f0e6cd;
   --card-border: rgba(122, 91, 184, 0.28);
-  --neon-cyan: #2d7dd2;
-  --neon-pink: #d9586b;
-  --neon-green: #3d8b5f;
-  --neon-yellow: #c98a1b;
-  --neon-purple: #7a5bb8;
-  --neon-orange: #e07b39;
+  --neon-cyan: #155e96;
+  --neon-pink: #b04355;
+  --neon-green: #2b7249;
+  --neon-yellow: #9e6f0e;
+  --neon-purple: #6f50ab;
+  --neon-orange: #b45309;
   --text-main: #3a332b;
   --text-dim: #6e6454; /* 加深保证奶油纸底上的对比度（≈4.9:1，通过 WCAG AA） */
   --accent: #2d7dd2;

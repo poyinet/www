@@ -275,6 +275,14 @@
   d.en['pl.otpH'] = 'OTP & the Reuse Disaster: never reuse a keystream';
   d.zh['pl.dhpH'] = 'DH 参数验证：p、安全素数与 g 的阶';
   d.en['pl.dhpH'] = 'DH Parameter Validation: p, safe primes and the order of g';
+  d.zh['pl.hashchainH'] = '哈希链：一次一验的顺序认证';
+  d.en['pl.hashchainH'] = 'Hash Chain: Verify-Once Sequential Auth';
+  d.zh['pl.rsadictH'] = '教科书 RSA：确定性是颗子弹';
+  d.en['pl.rsadictH'] = 'Textbook RSA: Deterministic Is a Bullet';
+  d.zh['pl.hashchainH'] = '哈希链：一次一验的顺序认证';
+  d.en['pl.hashchainH'] = 'Hash Chain: Verify-Once Sequential Auth';
+  d.zh['pl.rsadictH'] = '教科书 RSA：确定性是颗子弹';
+  d.en['pl.rsadictH'] = 'Textbook RSA: Deterministic Is a Bullet';
   d.zh['common.srcTitle'] = '出处';
   d.en['common.srcTitle'] = 'Sources';
   d.zh['nav.discover'] = '发现';

@@ -11,19 +11,19 @@
   <meta name="apple-mobile-web-app-title" content="破译游戏">
   <link rel="apple-touch-icon" href="/assets/icons/apple-touch-icon.png">
   <title>协议实验室 · 用游戏破译人类三千年加密解密史</title>
-  <meta name="description" content="破译 DECODE ARCADE · 协议实验室：TLS 握手时序、DH 中间人攻防、Merkle 树与区块链防篡改、零知识证明三色图、椭圆曲线点加法几何、口令破解成本计算器——十六大交互演示，看懂现代密码协议如何运转。">
+  <meta name="description" content="破译 DECODE ARCADE · 协议实验室：TLS 握手时序、DH 中间人攻防、Merkle 树与区块链防篡改、零知识证明三色图、椭圆曲线点加法几何、口令破解成本计算器、哈希链一次性口令、教科书 RSA 字典攻击——二十项交互演示，看懂现代密码协议如何运转。">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <link rel="canonical" href="https://poyi.net/protocols.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="破译游戏 DECODE ARCADE">
   <meta property="og:title" content="协议实验室 · 用游戏破译人类三千年加密解密史">
-  <meta property="og:description" content="TLS 握手 / DH 中间人 / Merkle 树与区块链 / 零知识证明 / ChaCha20 / ECC 几何 / A5/1 / RC4 警示录 / 数字签名 / 随机数 / 数论 / 差分 / AEAD / 长度扩展 / 大数 RSA / 口令成本——十六大交互演示。">
+  <meta property="og:description" content="TLS 握手 / DH 中间人 / Merkle 树与区块链 / 零知识证明 / ChaCha20 / ECC 几何 / A5/1 / RC4 警示录 / 数字签名 / 随机数 / 数论 / 差分 / AEAD / 长度扩展 / 大数 RSA / 口令成本 / 哈希链 / 教科书 RSA——二十项交互演示。">
   <meta property="og:url" content="https://poyi.net/protocols.html">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:image" content="https://poyi.net/assets/og-image.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="协议实验室 · 破译 DECODE ARCADE">
-  <meta name="twitter:description" content="TLS 握手 / DH 中间人 / Merkle 树与区块链 / 零知识证明 / ChaCha20 / ECC 几何 / A5/1 / RC4 警示录 / 数字签名 / 随机数 / 数论 / 差分 / AEAD / 长度扩展 / 大数 RSA / 口令成本——十六大交互演示。">
+  <meta name="twitter:description" content="TLS 握手 / DH 中间人 / Merkle 树与区块链 / 零知识证明 / ChaCha20 / ECC 几何 / A5/1 / RC4 警示录 / 数字签名 / 随机数 / 数论 / 差分 / AEAD / 长度扩展 / 大数 RSA / 口令成本 / 哈希链 / 教科书 RSA——二十项交互演示。">
   <meta name="twitter:image" content="https://poyi.net/assets/og-image.png">
   <script type="application/ld+json">
   {
@@ -34,7 +34,7 @@
     "isPartOf": { "@type": "WebSite", "name": "破译游戏 DECODE ARCADE", "url": "https://poyi.net/" },
     "inLanguage": "zh-CN",
     "about": "现代密码协议交互演示",
-    "description": "TLS 握手、DH 中间人、Merkle 树与区块链、零知识证明、ChaCha20、ECC 点加法、A5/1、RC4 警示录、数字签名、随机数、数论、差分分析、认证加密、长度扩展、真实大数 RSA、口令破解成本——十六大交互演示。"
+    "description": "TLS 握手、DH 中间人、Merkle 树与区块链、零知识证明、ChaCha20、ECC 点加法、A5/1、RC4 警示录、数字签名、随机数、数论、差分分析、认证加密、长度扩展、真实大数 RSA、口令破解成本、哈希链一次性口令、教科书 RSA 字典攻击——二十项交互演示。"
   }
   </script>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛡️</text></svg>">
@@ -153,7 +153,7 @@
       <div class="pl-nav">
         <a href="#pl-tls">🤝 TLS</a><a href="#pl-dh">🕵️ DH</a><a href="#pl-merkle">🌳 Merkle</a>
         <a href="#pl-zkp">🎭 ZKP</a><a href="#pl-chacha">🌀 ChaCha20</a><a href="#pl-ecc">📈 ECC</a>
-        <a href="#pl-a51">📡 A5/1</a>        <a href="#pl-rc4">🧨 RC4</a><a href="#pl-sign">✍️ 签名</a><a href="#pl-rng">🎲 随机数</a><a href="#pl-math">∑ 数论</a><a href="#pl-diff">🎯 差分</a><a href="#pl-aead">🛡️ AEAD</a><a href="#pl-ext">🧟 长度扩展</a><a href="#pl-big">🐘 大数</a><a href="#pl-pwd">⏳ 口令成本</a><a href="#pl-otp">📨 OTP</a><a href="#pl-dhpt">🧮 DH 参数</a>
+        <a href="#pl-a51">📡 A5/1</a>        <a href="#pl-rc4">🧨 RC4</a><a href="#pl-sign">✍️ 签名</a><a href="#pl-rng">🎲 随机数</a><a href="#pl-math">∑ 数论</a><a href="#pl-diff">🎯 差分</a><a href="#pl-aead">🛡️ AEAD</a><a href="#pl-ext">🧟 长度扩展</a><a href="#pl-big">🐘 大数</a><a href="#pl-pwd">⏳ 口令成本</a><a href="#pl-otp">📨 OTP</a><a href="#pl-dhpt">🧮 DH 参数</a><a href="#pl-hashchain">🔗 哈希链</a><a href="#pl-rsadict">📕 RSA</a>
       </div>
     </div>
 
@@ -413,7 +413,41 @@
 <div class="pl-extend"><a href="story.html?id=modern">📜 相关编年史章节</a><a href="games/dh-handshake/">🔑 DH 握手场（游戏）</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
     </div>
   </div>
-  <div id="pl-ready"></div>
+  
+    <div class="pl-card" id="pl-hashchain">
+      <div class="pl-h"><span class="ic">🔗</span><b data-i18n="pl.hashchainH">哈希链：一次一验的顺序认证</b></div>
+      <div class="pl-note" id="hc-intro"></div>
+      <div id="hc-chain"></div>
+      <div class="pl-btnrow">
+        <button class="btn accent" id="hc-next">▶ 出示下一环</button>
+        <button class="btn pink" id="hc-replay">🔁 重放上一值</button>
+        <button class="btn" id="hc-forge">🔧 改一位再出示</button>
+        <button class="btn" id="hc-reset">↺ 新链</button>
+      </div>
+      <div id="hc-log"></div>
+      <div class="pl-note" id="hc-note"></div>
+      <div class="pl-src">📚 参考：<span class="pl-ref-a">Leslie Lamport, "Password Authentication with Insecure Communication" (1981)</span> · <span class="pl-ref-a">RFC 4226 (HOTP) / RFC 6238 (TOTP)</span> · <span class="pl-ref-a">RFC 6962: Certificate Transparency</span></div>
+<div class="pl-extend"><a href="games/totp-verify/">📟 TOTP 验证器（游戏）</a><a href="glossary.html">📖 密码学词典</a><a href="quiz.html">🎯 测验场</a></div>
+    </div>
+
+    <div class="pl-card" id="pl-rsadict">
+      <div class="pl-h"><span class="ic">📕</span><b data-i18n="pl.rsadictH">教科书 RSA：确定性是颗子弹</b></div>
+      <div class="pl-note" id="rd-intro"></div>
+      <div class="pl-btnrow">
+        <label class="ws-note">m = <input id="rd-m" class="ws-input" style="width:80px;padding:6px 10px"></label>
+        <button class="btn accent" id="rd-enc">🔒 教科书式加密</button>
+        <button class="btn pink" id="rd-dict">💥 字典攻击（区间枚举）</button>
+      </div>
+      <table class="pl-tab" id="rd-out"></table>
+      <div class="pl-btnrow">
+        <button class="btn accent" id="rd-rand">🎲 随机填充版（同明文 ×2）</button>
+        <button class="btn pink" id="rd-brutec">💥 枚举全空间（4544 组合）</button>
+      </div>
+      <div class="pl-note" id="rd-note"></div>
+      <div class="pl-src">📚 参考：<span class="pl-ref-a">Goldwasser & Micali, "Probabilistic Encryption" (STOC 1982)</span> · <span class="pl-ref-a">Bellare & Rogaway, "Optimal Asymmetric Encryption" (1994)</span> · <span class="pl-ref-a">RFC 8017: PKCS #1 v2.2 (OAEP)</span> · <span class="pl-ref-a">Bleichenbacher, "Chosen Ciphertext Attacks against PKCS #1" (CRYPTO 1998)</span></div>
+<div class="pl-extend"><a href="games/blind-sign/">🕶️ 盲签密约（游戏）</a><a href="story.html?id=modern">📜 相关编年史章节</a><a href="quiz.html">🎯 测验场</a></div>
+    </div>
+<div id="pl-ready"></div>
 
   <footer class="lobby-footer">
     <div class="pixel-line" data-i18n="home.footBrand">© 2026 破译游戏 · POYI.NET · 用游戏破译人类三千年加密解密史</div>

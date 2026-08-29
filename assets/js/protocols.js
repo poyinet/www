@@ -46,7 +46,97 @@ window.PROTOCOL_LAB = (function () {
       { id: 'pwd', icon: '⏳', name: { zh: '口令破解成本', en: 'Password Cracking Cost' } },
       { id: 'otp', icon: '📨', name: { zh: 'OTP 与复用灾难', en: 'OTP Reuse Disaster' } },
       { id: 'dhpt', icon: '🧮', name: { zh: 'DH 参数验证', en: 'DH Parameter Validation' } }
+,
+      { id: 'hashchain', icon: '🔗', name: { zh: '哈希链', en: 'Hash Chain' } },
+      { id: 'rsadict', icon: '📕', name: { zh: '教科书 RSA', en: 'Textbook RSA' } }
     ],
+    /* 协议页按钮英文映射（静态 HTML 按钮默认中文，init 时按语言替换） */
+    btns: {
+      'tls-next': 'Next step',
+      'tls-eve': '🕵️ MITM on',
+      'dh-run': '🎲 Re-run',
+      'dh-eve': '🕵️ Eve in',
+      'chain-tamper': '⚡ Tamper block 2',
+      'chain-restore': '↺ Restore',
+      'zkp-round': '🎲 Round (commit → pick edge → answer)',
+      'zkp-reset': '↺ Reset coloring',
+      'cc-step': '▶ Step',
+      'cc-reset': '↺ Reset state',
+      'ecc-add': 'P+Q',
+      'ecc-clear': '↺ Clear points',
+      'a51-step': '▶ Step (vote → clock → 1 bit)',
+      'a51-fast': '⏩ 100 steps',
+      'a51-reset': '🎲 Random reset',
+      'rc4-run': '🔒 Same IV, two messages',
+      'rc4-reset': '↺ Clear',
+      'sign-do': '✍️ Sign with private key',
+      'sign-tamper': '🕵️ Eve tampers one digit',
+      'sign-verify': '✅ Bob verifies',
+      'rng-gen': '🔑 Key from "time seed"',
+      'rng-crack': '💥 Brute-force the seed',
+      'aead-raw': '🧨 Raw encryption',
+      'aead-etm': '🛡️ Encrypt-then-MAC',
+      'aead-flip': '🔄 Flip one ciphertext bit',
+      'ext-gen': '🔑 Generate secret-prefix MAC',
+      'ext-forge': '💥 Forge &admin=true',
+      'ext-verify': '🧪 Server verification',
+      'big-gen': '⚙️ Generate 256-bit keypair',
+      'otp-key': '🎲 New key',
+      'otp-pair': '📋 Another pair',
+      'otp-drag': '🎯 Drag a crib',
+      'otp-solve': '🙈 Show answers',
+      'dhpt-run': '🔍 Validate',
+      'hc-next': '▶ Reveal next link',
+      'hc-replay': '🔁 Replay last value',
+      'hc-forge': '🔧 Guess one char off',
+      'hc-reset': '↺ New chain',
+      'rd-enc': '🔒 Textbook encrypt',
+      'rd-dict': '💥 Dict attack (interval)',
+      'rd-rand': '🎲 Randomized pad ×2',
+      'rd-brutec': '💥 Enumerate all (4544)',
+
+
+    },
+    /* pl-extend 跨链英文（仅 en 模式替换） */
+    linkL10n: {
+      '📜 相关编年史章节': '📜 Related chronicle',
+      '🎯 测验场': '🎯 Quiz',
+      '📖 密码学词典': '📖 Glossary',
+      '📜 量子转折点': '📜 The Quantum Pivot',
+      '📨 OTP 电报房（游戏）': '📨 OTP Telegraph (game)',
+      '🔑 DH 握手场（游戏）': '🔑 DH Handshake (game)',
+      '📟 TOTP 验证器（游戏）': '📟 TOTP Verifier (game)',
+      '🕶️ 盲签密约（游戏）': '🕶️ Blind Signature (game)',
+    },
+    /* 协议页导航锚点 en */
+    navL10n: {
+      '🤝 TLS': '🤝 TLS',
+      '🔑 DH': '🔑 DH',
+      '🌳 Merkle': '🌳 Merkle',
+      '🎭 ZKP': '🎭 ZKP',
+      '🌀 ChaCha20': '🌀 ChaCha20',
+      '📈 ECC': '📈 ECC',
+      '📡 A5/1': '📡 A5/1',
+      '🧨 RC4': '🧨 RC4',
+      '✍️ 签名': '✍️ Signatures',
+      '🎲 随机数': '🎲 Randomness',
+      '∑ 数论': '∑ Number Theory',
+      '🎯 差分': '🎯 Differentials',
+      '🛡️ AEAD': '🛡️ AEAD',
+      '🧟 长度扩展': '🧟 Length Extension',
+      '🐘 大数': '🐘 Big RSA',
+      '⏳ 口令成本': '⏳ Password Cost',
+      '📨 OTP': '📨 OTP',
+      '🧮 DH 参数': '🧮 DH Params',
+      '🔗 哈希链': '🔗 Hash Chain',
+      '📕 RSA': '📕 Textbook RSA',
+    },
+    /* 「📚 参考：」前缀 en */
+    srcL10n: { "📚 参考：": "📚 Sources: " },
+    /* pwd 卡 label en */
+    labelL10n: { "算法": "Algorithm", "攻击装备": "Attack rig", "长度": "Length" },
+
+
 
     /* ================= OTP 与复用灾难 ================= */
     otpPairs: [
@@ -67,6 +157,26 @@ window.PROTOCOL_LAB = (function () {
     dhpIntro: {
       zh: 'DH 的安全不仅看 p 够不够大。g = 1 时共享密钥恒为 1（参数混入攻击）；p 不是安全素数时，小阶子群攻击能把秘密旋进小圈子。本演示真的在做三件事：p 素性、安全素数（p = 2q+1 且 q 素）、g 的阶恰为 p−1（真生成元）。全部通过，才是「可验证参数」（RFC 7919 的 FFDHE 命名组就是经过这种验证后固化的）。',
       en: 'DH security is not just about a big p. With g = 1 the shared secret is always 1 (parameter-mixing); with a non-safe prime, small-subgroup attacks trap secrets in tiny circles. This demo really does three checks: p primality, safe-prime property (p = 2q+1 with q prime), and whether the order of g is exactly p−1 (a true generator). Pass all three and the parameters are "validated" — RFC 7919 FFDHE named groups were hardened exactly this way.'
+    },
+
+    /* ================= 哈希链（Lamport 一次性口令） ================= */
+    hcIntro: {
+      zh: '1981 年 Leslie Lamport 提出用哈希链做一次性口令：服务器只存链顶值，用户每次出示上一环，服务器验证 H(上一环) = 当前持有值后向前推进一格。每一环都不同，密钥从不重复；截获任何一环只能用到一次，且无法倒推出下一环（单向性）。本演示运行真实迭代哈希——玩具 32 位仅供教学，真实为 256 位。',
+      en: 'In 1981 Leslie Lamport proposed one-time passwords from a hash chain: the server keeps only the top of the chain; each time the user reveals the previous link, the server checks H(prev) = current and advances one step. Every link is unique, so no key is ever reused; intercepting any link buys exactly one use, never the next (one-wayness). This demo runs real iterated hashing — a toy 32-bit function for teaching, 256 bits in reality.'
+    },
+    hcNote: {
+      zh: '📌 一轮交互里看三件事：① 按顺序出示的每一环都一次通过；② 重放已用过的值立刻被拒（H(x) 永远不是 x）；③ 改一个字符再出示，哈希天翻地覆——服务器直接拒绝。安全根基：单向性。现代替代是 HOTP/TOTP（RFC 4226/6238）：HMAC 把「计数/时间」变成一次性密钥，服务器只需保存共享密钥、无需存链。Lamport 链今天仍活在证书透明性（RFC 6962 的 Merkle 树即哈希链树）与时间戳链一类场合。',
+      en: '📌 Watch three things in one round: ① each link in order is accepted; ② replaying a used value is rejected instantly (H(x) is never x); ③ changing one character scrambles the hash — rejected. Root of security: one-wayness. Modern replacements are HOTP/TOTP (RFC 4226/6238): HMAC turns a counter/time into a one-time key, so the server keeps a shared key instead of a chain. Lamport chains still live in certificate transparency (RFC 6962 Merkle trees are hash-chain trees) and timestamp chains.'
+    },
+
+    /* ================= 教科书 RSA：字典攻击与语义安全 ================= */
+    rdIntro: {
+      zh: '教科书 RSA：c = m^e mod n。它可解、可逆、数学全对——却有一个致命特性：确定性。同一明文每次都得到同一密文，于是攻方只要知道明文空间（订单号、证件尾号），就能把每个候选加密一遍对拍——字典攻击。1982 年 Goldwasser 与 Micali 把问题形式化：加密必须是概率性的，这就是「语义安全」的起点；1994 年 Bellare–Rogaway 的 OAEP 把 RSA 变成随机填充，成为今日标准姿势（PKCS #1 v2.2，RFC 8017）。本演示：真实模幂，n = 97×113 = 10961（玩具）。',
+      en: 'Textbook RSA: c = m^e mod n. Solvable, reversible, mathematically fine — with one fatal property: deterministic. The same plaintext yields the same ciphertext every time, so anyone who knows the plaintext space (order numbers, ID tails) can encrypt every candidate and match — a dictionary attack. In 1982 Goldwasser and Micali formalized the fix: encryption must be probabilistic — the origin of semantic security. Bellare–Rogaway’s OAEP (1994) made RSA randomized; that is the standard posture today (PKCS #1 v2.2, RFC 8017). This demo: real modular exponentiation, n = 97×113 = 10961 (toy).'
+    },
+    rdNote: {
+      zh: '📌 三步对照：① 教科书加密后字典攻击直接命中——m 在区间内被还原；② 随机填充版：同一明文两次加密得到不同密文（确定性被打破）；③ 全空间枚举演示：填了随机值也照样破——因为玩具模数只有 14 位。这就是现实世界必须 2048 位模数 + OAEP 随机填充的原因。教训：数学正确只是起点，安全性质（语义安全）才是终点——就连 RSA 解密实现也曾在 1998 年被 Bleichenbacher 的填充预言攻击击中。',
+      en: '📌 Three contrasts: ① textbook encryption falls to the dictionary attack — m is recovered from the interval; ② with random padding the same m encrypts to different ciphertexts (determinism broken); ③ full-space enumeration still works because the toy modulus is only 14 bits — exactly why the real world needs 2048-bit moduli with OAEP padding. Lesson: mathematical correctness is only the start; security properties (semantic security) are the goal. Even RSA decryption itself was hit by Bleichenbacher’s padding-oracle attack in 1998.'
     },
     dhpPresets: [
       { p: 23, g: 5, tag: '23 / 5' },
@@ -246,6 +356,38 @@ window.PROTOCOL_LAB = (function () {
     function L(o) { return isEn ? o.en : o.zh; }
     var doc = document;
     function el(id) { return doc.getElementById(id); }
+    /* 按钮文案双语化（en 模式：HTML 静态按钮默认中文 → 英文） */
+    if (isEn && LAB.btns) {
+      Object.keys(LAB.btns).forEach(function (bid) {
+        var b = doc.getElementById(bid);
+        if (b && LAB.btns[bid]) b.textContent = LAB.btns[bid];
+      });
+
+    /* pl-extend 跨链文本双语化 */
+    if (isEn && LAB.linkL10n) {
+      Array.prototype.forEach.call(doc.querySelectorAll('.pl-extend a'), function (a) {
+        var t = a.textContent.trim();
+        if (LAB.linkL10n[t]) a.textContent = LAB.linkL10n[t];
+      });
+      /* 导航锚点 / 参考前缀 / label（只动文本节点） */
+      Array.prototype.forEach.call(doc.querySelectorAll('.pl-nav a'), function (a) {
+        var t = a.textContent.trim();
+        if (LAB.navL10n[t]) a.textContent = LAB.navL10n[t];
+      });
+      Array.prototype.forEach.call(doc.querySelectorAll('.pl-src'), function (d) {
+        if (d.firstChild && d.firstChild.nodeType === 3) {
+          var v = d.firstChild.textContent.trim();
+          if (LAB.srcL10n[v]) d.firstChild.textContent = LAB.srcL10n[v];
+        }
+      });
+      Array.prototype.forEach.call(doc.querySelectorAll('label'), function (l) {
+        if (l.firstChild && l.firstChild.nodeType === 3) {
+          var t = l.firstChild.textContent.trim();
+          if (LAB.labelL10n[t]) l.firstChild.textContent = LAB.labelL10n[t];
+        }
+      });
+    }
+    }
 
     /* 懒初始化：演示卡临近视口才构建（无 IntersectionObserver 的环境立即执行，兼容冒烟桩） */
     function LAZY(secId, fn) {
@@ -321,9 +463,9 @@ window.PROTOCOL_LAB = (function () {
         var A = modPow(g, a, p), B = modPow(g, b, p), E = modPow(g, e, p);
         var rows = [];
         rows.push('<tr><th colspan="2">' + L({ zh: '公开参数：p = ' + p + '，g = ' + g, en: 'Public: p = ' + p + ', g = ' + g }) + '</th></tr>');
-        rows.push('<tr><td>Alice 私钥 a = ' + a + '</td><td>Bob 私钥 b = ' + b + '</td></tr>'.replace('Alice 私钥 a', isEn ? 'Alice secret a' : 'Alice 私钥 a').replace('Bob 私钥 b', isEn ? 'Bob secret b' : 'Bob 私钥 b'));
+        rows.push('<tr><td>' + L({ zh: 'Alice 私钥 a = ' + a, en: 'Alice secret a = ' + a }) + '</td><td>' + L({ zh: 'Bob 私钥 b = ' + b, en: 'Bob secret b = ' + b }) + '</td></tr>');
         if (!withEve) {
-          rows.push('<tr><td>A 公开发送 ' + A + '</td><td>B 公开发送 ' + B + '</td></tr>');
+          rows.push('<tr><td>' + L({ zh: 'A 公开发送 ' + A, en: 'A sends public ' + A }) + '</td><td>' + L({ zh: 'B 公开发送 ' + B, en: 'B sends public ' + B }) + '</td></tr>');
           var k1 = modPow(B, a, p), k2 = modPow(A, b, p);
           rows.push('<tr class="ok"><td colspan="2">' +
             L({ zh: '共享密钥：B^a = ' + k1 + ' = A^b ✓ 两端一致——但注意：这条信道没有认证！', en: 'Shared key: B^a = ' + k1 + ' = A^b ✓ both ends agree — yet note: this channel has NO authentication!' }) +
@@ -1513,6 +1655,132 @@ window.PROTOCOL_LAB = (function () {
       run(23, 5);
     });
 
-    el('pl-ready').textContent = '18';
+
+    /* ---------- 🔗 哈希链：一次一验的顺序认证 ---------- */
+    LAZY('pl-hashchain', function () {
+      el('hc-intro').textContent = L(LAB.hcIntro);
+      el('hc-note').textContent = L(LAB.hcNote);
+      var LEN = 6, chain = [], srv = LEN, last = null;
+      function h(v) { return H('hc:' + v); }
+      function log(line, cls) {
+        var d = document.createElement('div');
+        if (cls) d.className = cls;
+        d.textContent = line;
+        el('hc-log').appendChild(d);
+      }
+      function render() {
+        var h = '<div class="pl-r"><span class="pl-rl">' + (isEn ? 'server holds' : '服务器持有') + '</span><span class="pl-cells mono">c' + srv + ' = ' + chain[srv] + '</span></div>';
+        h += '<div class="pl-r"><span class="pl-rl">' + (isEn ? 'chain (top = next to reveal)' : '链（靠上 = 下一步要出示的）') + '</span><span class="pl-cells mono">';
+        for (var i = LEN; i >= 1; i--) {
+          var shown = i >= srv;
+          h += (i === srv ? '<b>[' : '') + 'c' + i + '=' + (shown ? chain[i] : '████') + (i === srv ? ']</b> ' : ' ');
+        }
+        h += '</span></div>';
+        el('hc-chain').innerHTML = h;
+      }
+      function fresh() {
+        chain = [];
+        chain[0] = ('000000' + String(Math.floor(Math.random() * 1e6))).slice(-6);
+        for (var i = 1; i <= LEN; i++) chain[i] = h(chain[i - 1]);
+        srv = LEN; last = null;
+        el('hc-log').innerHTML = '';
+        render();
+      }
+      el('hc-next').addEventListener('click', function () {
+        if (srv <= 1) { log(isEn ? 'All links revealed — the chain is spent. Reset for a new one.' : '六环已全部出示——链已用完，请换新链。'); return; }
+        var v = chain[srv - 1];
+        log(isEn ? 'User reveals c' + (srv - 1) + ' = ' + v + '  →  server checks H(c' + (srv - 1) + ') == c' + srv + ' … ' + (h(v) === chain[srv] ? '✓ match' : '✗ mismatch') : '用户出示 c' + (srv - 1) + ' = ' + v + ' → 服务器验证 H(c' + (srv - 1) + ') == c' + srv + ' …… ' + (h(v) === chain[srv] ? '✓ 通过' : '✗ 不符'));
+        srv--; last = v;
+        render();
+        if (srv > 0) log(isEn ? 'Accepted — server now holds c' + srv + '. But nobody can compute c' + (srv - 1) + ' from c' + srv + ': that is the one-way wall.' : '通过——服务器现在持有 c' + srv + '。但任何人都无法从 c' + srv + ' 算出 c' + (srv - 1) + '：一堵单向墙。');
+      });
+      el('hc-replay').addEventListener('click', function () {
+        if (last === null) { log(isEn ? 'Reveal a link first.' : '请先出示一环。'); return; }
+        log(isEn ? 'Attacker replays the same value ' + last + '  →  server checks H(' + last + ') == ' + last + ' …' : '攻击者重放同一值 ' + last + ' → 服务器验证 H(' + last + ') == ' + last + ' ……');
+        log(isEn ? '✗ Rejected. A hash of X is never X itself — a used link cannot be spent twice. That is the point of the word "one-time".' : '✗ 拒绝。哈希值几乎不可能等于自身——用过的环不能再花第二次。这就是「一次一验」的含义。', 'bad');
+      });
+      el('hc-forge').addEventListener('click', function () {
+        if (srv <= 1) { log(isEn ? 'The chain is spent — press reset first.' : '链已用完——请先换新链。'); return; }
+        var v = chain[srv - 1];
+        var fake = v.slice(0, -1) + (v.charCodeAt(v.length - 1) === 48 ? '1' : '0');
+        log(isEn ? 'Attacker guesses "' + fake + '" (one char off)  →  H = ' + h(fake) + ' ≠ ' + chain[srv] + '  →  server rejects.' : '攻击者猜值 "' + fake + '"（差一个字符）→ H = ' + h(fake) + ' ≠ ' + chain[srv] + ' → 服务器拒绝。', 'bad');
+      });
+      el('hc-reset').addEventListener('click', function () { fresh(); log(isEn ? 'New chain: c0 (secret seed) → c1 → … → c6. Server holds c6.' : '新链已生成：c0（秘密种子）→ c1 → … → c6。服务器持有 c6。'); });
+      fresh();
+      log(isEn ? 'Chain ready. Server holds c6; the user knows every link. Press "reveal next link".' : '新链就绪。服务器持有 c6；用户知道所有环节。按「出示下一环」。');
+    });
+
+    /* ---------- 📕 教科书 RSA：字典攻击与语义安全 ---------- */
+    LAZY('pl-rsadict', function () {
+      el('rd-intro').textContent = L(LAB.rdIntro);
+      el('rd-note').textContent = L(LAB.rdNote);
+      var P = 97, Q = 113, N = P * Q, E = 17;
+      var LO = 100, HI = 170;
+      var lastC = null, lastM = null;
+      function out(rows) {
+        el('rd-out').innerHTML = rows.map(function (r) {
+          return '<tr class="' + (r.gd === undefined ? '' : (r.gd ? 'ok' : 'bad')) + '"><td>' + r.k + '</td><td class="mono">' + r.v + '</td></tr>';
+        }).join('');
+      }
+      el('rd-enc').addEventListener('click', function () {
+        var m = parseInt(el('rd-m').value, 10);
+        if (isNaN(m) || m < 0 || m >= N) { out([{ k: isEn ? 'input' : '输入', v: isEn ? 'Enter an integer 0 ≤ m < ' + N : '请输入 0 ≤ m < ' + N + ' 的整数', gd: false }]); return; }
+        var c = modPow(m, E, N);
+        out([
+          { k: isEn ? 'public key' : '公钥', v: 'n = ' + N + ' (' + P + '×' + Q + '), e = ' + E },
+          { k: isEn ? 'plaintext m' : '明文 m', v: m },
+          { k: isEn ? 'ciphertext (textbook)' : '密文（教科书式）', v: 'c = ' + m + '^' + E + ' mod ' + N + ' = ' + c },
+          { k: isEn ? 'remark' : '提示', v: isEn ? 'Deterministic: same m → same c, every single time.' : '确定性：同一 m 永远得到同一 c。' }
+        ]);
+      });
+      el('rd-dict').addEventListener('click', function () {
+        var m = parseInt(el('rd-m').value, 10);
+        if (isNaN(m) || m < LO || m > HI) { out([{ k: isEn ? 'attack' : '攻击', v: isEn ? 'Assume the attacker knows m ∈ [' + LO + ',' + HI + '] (an order number). Pick m inside that range first.' : '假设攻击者已知明文区间 [' + LO + ',' + HI + ']（如订单号）。请先把 m 选进该区间。', gd: false }]); return; }
+        var c = modPow(m, E, N), found = -1, tries = 0;
+        for (var x = LO; x <= HI; x++) { tries++; if (modPow(x, E, N) === c) { found = x; break; } }
+        if (found === m) {
+          out([
+            { k: isEn ? 'ciphertext captured' : '截获的密文', v: c },
+            { k: isEn ? 'brute force over [' + LO + ',' + HI + ']' : '对区间 [' + LO + ',' + HI + '] 枚举', v: tries + ' ' + (isEn ? 'candidates' : '次尝试') },
+            { k: isEn ? 'result' : '结果', v: (isEn ? '💥 Recovered m = ' : '💥 破译出明文 m = ') + found + ' — ' + (isEn ? 'the "encryption" kept nothing secret.' : '「加密」没有守住任何秘密。'), gd: true }
+          ]);
+        }
+      });
+      el('rd-rand').addEventListener('click', function () {
+        var m = parseInt(el('rd-m').value, 10);
+        if (isNaN(m) || m < 0 || m >= N) { return; }
+        var r = Math.floor(Math.random() * 64);
+        var x = m * 64 + r;
+        var c = modPow(x, E, N);
+        lastC = c; lastM = m;
+        out([
+          { k: isEn ? 'plaintext' : '明文', v: m },
+          { k: isEn ? 'random padding r' : '随机填充 r', v: r },
+          { k: isEn ? 'encrypted as x = m·64 + r' : '实际加密 x = m·64 + r', v: x },
+          { k: isEn ? 'ciphertext (padded)' : '密文（填充版）', v: c },
+          { k: isEn ? 'remark' : '提示', v: isEn ? 'Try again: the same m gives a different c — randomness is what semantic security requires.' : '再点一次：同一 m 得到不同的 c——随机性正是语义安全的要求。' }
+        ]);
+      });
+      el('rd-brutec').addEventListener('click', function () {
+        if (lastC === null) { out([{ k: isEn ? 'attack' : '攻击', v: isEn ? 'First click "randomized pad" to produce a padded ciphertext to attack.' : '请先点「随机填充版」生成一个待攻击的填充密文。', gd: false }]); return; }
+        var found = -1, tries = 0;
+        outer:
+        for (var mm = LO; mm <= HI; mm++) {
+          for (var rr = 0; rr < 64; rr++) {
+            tries++;
+            if (modPow(mm * 64 + rr, E, N) === lastC) { found = mm; break outer; }
+          }
+        }
+        out([
+          { k: isEn ? 'ciphertext under attack' : '被攻击的密文', v: lastC },
+          { k: isEn ? 'full enumeration of m·64+r' : '枚举全部 m·64+r 组合', v: tries + ' / ' + (HI - LO + 1) * 64 },
+          { k: isEn ? 'result' : '结果', v: found >= 0 ? ('💥 ' + (isEn ? 'm = ' : 'm = ') + found + ' — ' + (isEn ? 'a 14-bit toy modulus cannot hide even padded messages; real OAEP uses ~2048-bit n with padding no one can enumerate.' : '14 位玩具模数连填充消息也藏不住；真实 OAEP 用 ~2048 位模数与无法枚举的随机填充。')) : (isEn ? '✗ not found' : '✗ 未命中'), gd: true }
+        ]);
+      });
+      el('rd-m').value = '137';
+      out([{ k: isEn ? 'ready' : '就绪', v: isEn ? 'n = ' + N + ' (97×113), e = ' + E + ', known plaintext interval [' + LO + ',' + HI + ']' : 'n = ' + N + '（97×113），e = ' + E + '，已知明文区间 [' + LO + ',' + HI + ']' }]);
+    });
+
+    el('pl-ready').textContent = '20';
   };
 })();

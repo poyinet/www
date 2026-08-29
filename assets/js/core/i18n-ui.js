@@ -31,7 +31,7 @@
   d.zh['path.sub'] = '从零开始的密码学学习路径——每天读 1 章、玩 2 款游戏、懂 1 个术语，24 天走完三千年密码史';
   d.zh['quiz.title'] = '🧠 密码学测验场';
   d.zh['quiz.entry'] = '密码学测验场';
-  d.zh['quiz.sub'] = '242 道题 · 4 个段位（入门/进阶/专家/大师）· 每轮随机抽 10 题——答完评出你的「密码学段位」';
+  d.zh['quiz.sub'] = '252 道题 · 4 个段位（入门/进阶/专家/大师）· 每轮随机抽 10 题——答完评出你的「密码学段位」';
   d.zh['quiz.start'] = '🚀 开始测验';
   d.zh['quiz.next'] = '下一题 →';
   d.zh['quiz.q'] = '第 {n} 题';
@@ -114,7 +114,7 @@
   d.en['path.sub'] = 'A learn-by-playing path from zero — each day: read 1 chapter, play 2 games, learn 1 term. 24 days through 3,000 years of cipher history';
   d.en['quiz.title'] = '🧠 Crypto Quiz Arena';
   d.en['quiz.entry'] = 'Crypto Quiz Arena';
-  d.en['quiz.sub'] = '242 questions · 4 ranks (Novice / Advanced / Expert / Master) · 10 random questions per round — earn your cipher rank';
+  d.en['quiz.sub'] = '252 questions · 4 ranks (Novice / Advanced / Expert / Master) · 10 random questions per round — earn your cipher rank';
   d.en['quiz.start'] = '🚀 Start Quiz';
   d.en['quiz.next'] = 'Next →';
   d.en['quiz.q'] = 'Q{n}';
@@ -150,7 +150,7 @@
   d.en['artifacts.sub'] = 'Beat games to unlock three thousand years of cryptographic evidence';
   d.en['artifacts.need'] = 'Decode';
   d.en['app.desc404'] = 'Page not found — head back to the DECODE ARCADE lobby and keep playing.';
-  d.en['err.msg'] = 'GAME OVER · PAGE NOT FOUND';
+  d.en['err.msg'] = 'GAME OVER · PAGE NOT FOUND';
   d.en['err.sub'] = 'This cartridge got swallowed — or the address was mistyped. Head back to the lobby, drop in another coin, and keep playing 142 mini-games.';
   d.en['err.back'] = '◀ Back to lobby';
   d.en['lobby.brand'] = 'DECODE ARCADE';
@@ -160,7 +160,7 @@
   d.en['rank.local'] = '· Local Rank';
   d.en['stats.back'] = '← Back to Lobby';
   d.en['stats.title'] = 'My Profile';
-  d.en['stats.progress'] = 'Progress';
+  d.en['stats.progress'] = 'Progress';
   d.en['stats.cats'] = 'Category coverage';
   d.en['stats.daily'] = 'Daily Decode';
   d.en['stats.today'] = 'Done today';
@@ -274,7 +274,7 @@
   d.zh['pl.otpH'] = 'OTP 与复用灾难：密钥流绝不能再用第二次';
   d.en['pl.otpH'] = 'OTP & the Reuse Disaster: never reuse a keystream';
   d.zh['pl.dhpH'] = 'DH 参数验证：p、安全素数与 g 的阶';
-  d.en['pl.dhpH'] = 'DH Parameter Validation: p, safe primes and the order of g';
+  d.en['pl.dhpH'] = 'DH Parameter Validation: p, safe primes and the order of g';
   d.zh['pl.hashchainH'] = '哈希链：一次一验的顺序认证';
   d.en['pl.hashchainH'] = 'Hash Chain: Verify-Once Sequential Auth';
   d.zh['pl.rsadictH'] = '教科书 RSA：确定性是颗子弹';

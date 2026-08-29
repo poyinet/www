@@ -33,7 +33,28 @@
         en: 'A hash is one-way, keyless and fixed-length; encryption is reversible and keyed.' },
       { a: { zh: '流密码', en: 'Stream cipher' }, b: { zh: '分组密码', en: 'Block cipher' },
         zh: '流密码逐比特/字节加密（RC4、ChaCha20）；分组密码按固定块加密（AES、DES）。',
-        en: 'A stream cipher encrypts bit by bit (RC4, ChaCha20); a block cipher encrypts fixed-size blocks (AES, DES).' }
+        en: 'A stream cipher encrypts bit by bit (RC4, ChaCha20); a block cipher encrypts fixed-size blocks (AES, DES).' },
+      { a: { zh: 'MAC', en: 'MAC' }, b: { zh: '数字签名', en: 'Digital signature' },
+        zh: 'MAC 用对称密钥做认证：发送方能验证，但因为共享密钥，接收方也能伪造——不抗抵赖；数字签名用非对称密钥，只有私钥持有者能签名，任何人可验，支持不可否认。',
+        en: 'A MAC authenticates with a symmetric key: verifiers can also forge — no non-repudiation. A signature binds a private key to a message: only the holder signs, anyone verifies, and the signer cannot deny it.' },
+      { a: { zh: 'CBC 模式', en: 'CBC mode' }, b: { zh: 'CTR 模式', en: 'CTR mode' },
+        zh: 'CBC 逐块链接（每块先异或上一密文块）——加密与解密必须串行，一个比特错位会污染两块；CTR 用计数器生成密钥流——完全并行、无填充、位错误只损一位，但要求计数器绝不重复。',
+        en: 'CBC chains block to block (XOR with the previous ciphertext): sequential encryption/decryption, and one flipped bit corrupts two blocks. CTR turns counters into keystream — parallel, padding-free, one bit error harms one bit, but counters must never repeat.' },
+      { a: { zh: '一次性密码本', en: 'One-time pad' }, b: { zh: '流密码', en: 'Stream cipher' },
+        zh: 'OTP 是理想极限：真随机密钥、只用一次，完美的保密性；流密码是实用近似：密钥流由伪随机算法生成（Keystream = E(counter, key)），可复用、可分发——代价是数学上的「伪」而非「真」。',
+        en: 'The OTP is the ideal: truly random, single-use, perfectly secret. Stream ciphers are the practical approximation: keystream from a pseudorandom generator — reusable, distributable, but mathematically "pseudo" rather than "true".' },
+      { a: { zh: '差分分析', en: 'Differential analysis' }, b: { zh: '线性分析', en: 'Linear analysis' },
+        zh: '差分分析追踪「输入差 → 输出差」的高概率路径（Biham–Shamir 1990）；线性分析用线性逼近代替差分（Matsui 1993，首次实测破 DES）。两者都是统计的，但一个测「差值传播」、一个测「线性相关」。',
+        en: 'Differential analysis follows high-probability input-to-output difference paths (Biham–Shamir 1990); linear analysis replaces differences with linear approximations (Matsui 1993, the first practical attack on DES). Both are statistical: one measures difference propagation, the other linear correlation.' },
+      { a: { zh: '密码学随机', en: 'Cryptographic randomness' }, b: { zh: '普通随机', en: 'Ordinary randomness' },
+        zh: 'Math.random 之类只求“分布均匀”，种子可预测——无法用于密钥；密码学 CSPRNG 要求不可预测性：即使观察到全部输出历史，也无法推断下一个比特（SP 800-90A：系统熵 + 密码学后处理）。',
+        en: 'Math.random-like generators only aim for uniform distribution with predictable seeds — useless for keys. A CSPRNG demands unpredictability: given the whole output history, the next bit stays unknown (SP 800-90A: system entropy plus cryptographic processing).' },
+      { a: { zh: '零知识证明', en: 'Zero-knowledge proof' }, b: { zh: '数字签名', en: 'Digital signature' },
+        zh: '两者都证明「我知道某事」，但对象不同：签名把知识绑定到一条消息上并支持离线验证；零知识只证明命题本身为真，与具体消息无关——验证者学不到知识内容。',
+        en: 'Both attest that "I know something", but differently: a signature binds the knowledge to a message and verifies offline; a zero-knowledge proof establishes only that a statement is true — the verifier learns nothing else.' },
+      { a: { zh: 'CVE', en: 'CVE' }, b: { zh: 'CWE', en: 'CWE' },
+        zh: 'CVE 是「某一个具体漏洞」的编号（CVE-2014-0160 = Heartbleed 实例）；CWE 是漏洞「类别」（如缓冲区溢出、注入）。一个 CWE 类别下可以有成百上千个 CVE。',
+        en: 'A CVE identifies one specific vulnerability instance (CVE-2014-0160 = Heartbleed); a CWE names a category of weakness (buffer overflow, injection). One CWE class can contain hundreds of CVEs.' }
     ];
     function renderCompare() {
       var box = document.getElementById('gl-compare');

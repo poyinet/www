@@ -1,7 +1,7 @@
 {
   "name": "破译游戏 DECODE ARCADE",
   "short_name": "破译游戏",
-  "description": "用 141 款游戏还原人类加密解密的三千年历史——读史、玩戏、破链、收藏，打开即玩，纪录仅存本地。",
+  "description": "用 142 款游戏还原人类加密解密的三千年历史——读史、玩戏、破链、收藏，打开即玩，纪录仅存本地。",
   "lang": "zh-CN",
   "dir": "ltr",
   "id": "/",
@@ -46,7 +46,7 @@
       "sizes": "640x360",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "141 款游戏 · 每日破译 · 离线可玩"
+      "label": "142 款游戏 · 每日破译 · 离线可玩"
     }
   ],
   "shortcuts": [

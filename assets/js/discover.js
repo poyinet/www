@@ -7,7 +7,7 @@
     var GL = window.GLOSSARY || [];
     var CARDS = [
       { ic: '🎮', n: N('GAMES'), t: L({ zh: '游戏厅', en: 'Arcade' }),
-        d: L({ zh: '从凯撒到量子密钥，141 款打开即玩：旗舰深度体验、长局养成的策略与每日一题全都在这里。', en: 'From Caesar to quantum keys: all 141 playable machines — flagship deep dives, long-form strategy and daily challenges.' }),
+        d: L({ zh: '从凯撒到量子密钥：旗舰深度体验、长局养成、每日一题——一整座破译街机城。', en: 'From Caesar to quantum keys: flagship deep dives, long-form strategy and daily challenges — a whole arcade city.' }),
         href: 'games.html', mini: L({ zh: '搜索 · 分类 · 收藏 · 📅 每日破译', en: 'Search · filter · favorites · daily challenges' }) },
       { ic: '📜', n: N('STORIES'), t: L({ zh: '编年史', en: 'Chronicles' }),
         d: L({ zh: '十二个时代的密码史：从罗塞塔石碑到后量子标准，正文、冷知识、挑战与史料全部带出处。', en: 'Twelve epochs of crypto history: Rosetta to post-quantum, with facts, challenges and sourced notes.' }),

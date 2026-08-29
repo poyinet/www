@@ -892,6 +892,8 @@
   d.en['st.c10.g30'] = 'GM Gateway: one message through the whole SM pipeline — real SM4 engine encryption, real SM3 digests, SM2-equation verification on a tiny curve, SM9 identity crypto, and the standards-and-law timeline.';
   d.zh['st.c10.g31'] = '百万富翁协议：姚氏 1982 开山问题——只比较、不泄露；玩具 RSA 盲化、1-out-of-2 OT、决策树首次分歧与 MPC 的史实版图。';
   d.en['st.c10.g31'] = 'Millionaires\' Protocol: Yao\'s 1982 founding problem — compare without revealing; toy-RSA blinding, 1-out-of-2 OT, the first-difference decision tree and the MPC timeline.';
+  d.zh['st.c10.g32'] = '盲签密约：Chaum 1983 电子现金的数学真机——银行给看不见的文件签名，匿名与防双花就此兼得。';
+  d.en['st.c10.g32'] = 'Blind Signature: Chaum\'s 1983 e-cash math for real — the bank signs a file it never saw, and anonymity meets anti-double-spend.';
 
   d.zh['st.c2.g15'] = '同音替换：给高频字母发多张替身卡，把频率分析摊平——文艺复兴破译与反破译的正面交锋。';
   d.en['st.c2.g15'] = 'Homophonic: deal high-frequency letters extra aliases and flatten the histogram — the Renaissance counter-strike on frequency analysis.';

@@ -15,7 +15,7 @@ window.GAME_CATEGORIES = ['经典街机', '动作反应', '逻辑谜题', '空�
 
 /* 每日破译中心：启用「📅 每日一题」的游戏（大厅今日面板 + 档案页共用）
    所有列出的游戏均实现 daily 模式：日种子确定性生成 + 解完调用 Arcade.daily.markSolved */
-window.DAILY_IDS = ['sudoku', 'enigma', 'bifid', 'slitherlink', 'hashi', 'trifid', 'bacon', 'klondike', 'caesar', 'llk', 'spotdiff', 'sectorsiege', 'sheep', 'morse', 'atbash', 'polybius', 'nihilist', 'starflag', 'autokey', 'rsa', 'shamir', 'sm4', 'acrostic', 'phishhunt', 'qkd-sim', 'pqc-match', 'stepping-switch', 'intel-assess', 'aes-lab', 'password-vault', 'pgp-mail', 'blockchain-miner', 'zkp-cave', 'totp-verify', 'scytale', 'alberti-disc', 'cardan-grille', 'jefferson-disk', 'side-channel-lab', 'homomorphic-lab', 'homophonic', 'typex', 'book-cipher', 'navajo-talker', 'fanqie', 'otp-telegraph', 'tor-onion', 'block-modes', 'dh-handshake', 'gm-gateway', 'millionaire'];
+window.DAILY_IDS = ['sudoku', 'enigma', 'bifid', 'slitherlink', 'hashi', 'trifid', 'bacon', 'klondike', 'caesar', 'llk', 'spotdiff', 'sectorsiege', 'sheep', 'morse', 'atbash', 'polybius', 'nihilist', 'starflag', 'autokey', 'rsa', 'shamir', 'sm4', 'acrostic', 'phishhunt', 'qkd-sim', 'pqc-match', 'stepping-switch', 'intel-assess', 'aes-lab', 'password-vault', 'pgp-mail', 'blockchain-miner', 'zkp-cave', 'totp-verify', 'scytale', 'alberti-disc', 'cardan-grille', 'jefferson-disk', 'side-channel-lab', 'homomorphic-lab', 'homophonic', 'typex', 'book-cipher', 'navajo-talker', 'fanqie', 'otp-telegraph', 'tor-onion', 'block-modes', 'dh-handshake', 'gm-gateway', 'millionaire', 'blind-sign'];
 
 window.GAMES = [
   /* ---------- 经典街机 ---------- */
@@ -1015,6 +1015,13 @@ window.GAMES = [
     id: 'millionaire', title: '百万富翁协议', category: '密码破译',
     desc: '第二十五期 · 姚氏 1982 开山问题：只比谁更富、谁也不露数——玩具 RSA 盲化、1-out-of-2 OT、决策树首次分歧、门限直觉与 MPC 史实版图。',
     icon: '👑', path: 'games/millionaire/index.html',
+    mobile: 'ok', bestMode: 'max',
+    lvl: 'mid', time: '5min',
+  },
+  {
+    id: 'blind-sign', title: '盲签密约', category: '密码破译',
+    desc: '第二十六期 · Chaum 1983 电子现金数学真机：RSA 盲化、银行对看不见的文件签名、去盲得普通签名、盲性判断与双花检测。',
+    icon: '👻', path: 'games/blind-sign/index.html',
     mobile: 'ok', bestMode: 'max',
     lvl: 'mid', time: '5min',
   }

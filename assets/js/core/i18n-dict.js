@@ -250,6 +250,18 @@ Arcade.i18n.dicts = {
     'achv.cfinal.n': '最终破译者', 'achv.cfinal.d': '破解最终密语',
     'achv.cart5.n': '密件收藏家', 'achv.cart5.d': '解锁 5 件历史密件',
     'achv.cgame5.n': '破译史学家', 'achv.cgame5.d': '通关 5 个编年史关联游戏',
+    'achv.ehunter.n': '密码猎人', 'achv.ehunter.d': '集齐全站 20 枚隐藏密文彩蛋',
+    'achv.qmaster.n': '测验大师', 'achv.qmaster.d': '密码学测验一轮答对全部题',
+    'achv.qlegend.n': '传说破译者', 'achv.qlegend.d': '测验段位达到「传说破译者」',
+    'achv.chq5.n': '章节学霸', 'achv.chq5.d': '点亮任意 5 章「本章精通」',
+    'achv.chqall.n': '编年史全通', 'achv.chqall.d': '点亮全部章节精通',
+    'achv.morse5.n': '摩斯听风者', 'achv.morse5.d': '摩斯听音训练满分一轮',
+    'achv.duel5.n': '决斗冠军', 'achv.duel5.d': '双人竞速累计获胜 5 场',
+    'achv.gloss30.n': '术语达人', 'achv.gloss30.d': '阅读术语表 30 个词条',
+    'achv.timeline60.n': '时间旅人', 'achv.timeline60.d': '浏览过密码史时间线',
+    'achv.discov.n': '探索者', 'achv.discov.d': '走进破译发现馆',
+    'achv.relweb.n': '人脉侦探', 'achv.relweb.d': '走过密码史关系网',
+    'achv.zhstory.n': '华夏访客', 'achv.zhstory.d': '走过中华密码史专题',
     'stats.collCats': '🗺️ 分类覆盖',
     'stats.collGames': '🎮 已挑战',
     'stats.collFlags': '⚙️ 独家旗舰',
@@ -665,6 +677,18 @@ Arcade.i18n.dicts = {
     'achv.cfinal.n': 'Final Decoder', 'achv.cfinal.d': 'Crack the final cipher',
     'achv.cart5.n': 'Artifact Collector', 'achv.cart5.d': 'Unlock 5 historical artifacts',
     'achv.cgame5.n': 'History in Games', 'achv.cgame5.d': 'Beat 5 chronicle-linked games',
+    'achv.ehunter.n': 'Cipher Hunter', 'achv.ehunter.d': 'Collect all 20 hidden cipher eggs',
+    'achv.qmaster.n': 'Quiz Master', 'achv.qmaster.d': 'Score every question in one quiz round',
+    'achv.qlegend.n': 'Legendary Decoder', 'achv.qlegend.d': 'Reach the Legend rank in the quiz',
+    'achv.chq5.n': 'Chapter Scholar', 'achv.chq5.d': 'Light up chapter mastery for 5 chapters',
+    'achv.chqall.n': 'Chronicle Complete', 'achv.chqall.d': 'Light up every chapter’s mastery',
+    'achv.morse5.n': 'Morse Listener', 'achv.morse5.d': 'Score full marks in a Morse listening round',
+    'achv.duel5.n': 'Duel Champion', 'achv.duel5.d': 'Win 5 two-player duels',
+    'achv.gloss30.n': 'Glossary Reader', 'achv.gloss30.d': 'Read 30 glossary entries',
+    'achv.timeline60.n': 'Time Traveler', 'achv.timeline60.d': 'Browse the crypto history timeline',
+    'achv.discov.n': 'Explorer', 'achv.discov.d': 'Visit the Discover hub',
+    'achv.relweb.n': 'Network Detective', 'achv.relweb.d': 'Browse the people relationship web',
+    'achv.zhstory.n': 'China Visitor', 'achv.zhstory.d': 'Visit the Chinese Crypto feature',
     'stats.collCats': '🗺️ Categories',
     'stats.collGames': '🎮 Played',
     'stats.collFlags': '⚙️ Flagships',
@@ -1611,6 +1635,22 @@ Arcade.i18n.dicts = {
   d.zh['sta.fanqie.era'] = '1560 年代 · 明'; d.en['sta.fanqie.era'] = '1560s · Ming Dynasty';
   d.zh['sta.fanqie.desc'] = '戚继光《纪效新书》所载反切码：取两首诗词，「重唱诗」取二十声母、「合声诗」取四十字韵母，声韵两两交叉得八百音码，再配以金鼓旗号传递——将本土音韵学化作军中密码。以下为依原法重构的编码页。';
   d.en['sta.fanqie.desc'] = 'The fanqie code in Qi Jiguang\'s Jixiao Xinshu: take two poems — twenty initials from one, forty finals from the other — cross twenty initials with forty finals to form eight hundred sound-codes, then signal them by gongs, drums and flags, turning phonology into an army cipher. Below, one page reconstructed from the original method.';
+  d.zh['sta.half-radio.name'] = '半部电台——红军第一部电台'; d.en['sta.half-radio.name'] = 'The Half Radio — the Red Army’s First Set';
+  d.zh['sta.half-radio.icon'] = '📻'; d.en['sta.half-radio.icon'] = '📻';
+  d.zh['sta.half-radio.era'] = '1930 · 龙冈战斗'; d.en['sta.half-radio.era'] = '1930 · Longgang';
+  d.zh['sta.half-radio.desc'] = '1930 年 12 月龙冈一仗，红军缴获国民党军第 18 师电台一部：发报机已损，唯收报机完好——“半部电台起家”。1931 年 1 月红军第一支无线电队成立，王诤任队长；同年开办无线电训练班，并由此开辟了收报、侦听与密码破译之路。'; d.en['sta.half-radio.desc'] = 'At Longgang in December 1930 the Red Army captured one radio from the KMT 18th Division — the transmitter broken, the receiver intact: “a half radio to start with”. In January 1931 the first radio corps was formed under Wang Zheng, followed by a training school that opened the road to interception, radio intelligence and cryptanalysis.';
+  d.zh['sta.redarmy-cipher.name'] = '红军无线电密码'; d.en['sta.redarmy-cipher.name'] = 'Red Army Radio Ciphers';
+  d.zh['sta.redarmy-cipher.icon'] = '⚡'; d.en['sta.redarmy-cipher.icon'] = '⚡';
+  d.zh['sta.redarmy-cipher.era'] = '1931 · 中央苏区'; d.en['sta.redarmy-cipher.era'] = '1931 · Central Soviet Area';
+  d.zh['sta.redarmy-cipher.desc'] = '拥有“看不见的电台”后，红军很快走上侦听破译之路：编印口令本、把握敌台呼号与频率规律、以加密电报的报文构筑“密中之密”。长征途中，军委二局的破译成果被誉为“令我们行军时多了一双眼睛”。以下为依史重构的敌台记录页。'; d.en['sta.redarmy-cipher.desc'] = 'Once the “invisible radios” were in hand, the Red Army moved quickly into interception and decryption: code-books, call-sign patterns, frequency discipline — the cipher within the cipher. On the Long March, decrypted traffic from the General Staff bureau warned the column like a second pair of eyes. Below, one reconstructed page of intercepted traffic.';
+  d.zh['sta.half-radio.name'] = '半部电台——红军第一部电台'; d.en['sta.half-radio.name'] = 'The Half Radio — the Red Army’s First Set';
+  d.zh['sta.half-radio.icon'] = '📻'; d.en['sta.half-radio.icon'] = '📻';
+  d.zh['sta.half-radio.era'] = '1930 · 龙冈战斗'; d.en['sta.half-radio.era'] = '1930 · Longgang';
+  d.zh['sta.half-radio.desc'] = '1930 年 12 月龙冈一仗，红军缴获国民党军第 18 师电台一部：发报机已损，唯收报机完好——“半部电台起家”。1931 年 1 月红军第一支无线电队成立，王诤任队长；同年开办无线电训练班，并由此开辟了收报、侦听与密码破译之路。'; d.en['sta.half-radio.desc'] = 'At Longgang in December 1930 the Red Army captured one radio from the KMT 18th Division — the transmitter broken, the receiver intact: “a half radio to start with”. In January 1931 the first radio corps was formed under Wang Zheng, followed by a training school that opened the road to interception, radio intelligence and cryptanalysis.';
+  d.zh['sta.redarmy-cipher.name'] = '红军无线电密码'; d.en['sta.redarmy-cipher.name'] = 'Red Army Radio Ciphers';
+  d.zh['sta.redarmy-cipher.icon'] = '⚡'; d.en['sta.redarmy-cipher.icon'] = '⚡';
+  d.zh['sta.redarmy-cipher.era'] = '1931 · 中央苏区'; d.en['sta.redarmy-cipher.era'] = '1931 · Central Soviet Area';
+  d.zh['sta.redarmy-cipher.desc'] = '拥有“看不见的电台”后，红军很快走上侦听破译之路：编印口令本、把握敌台呼号与频率规律、以加密电报的报文构筑“密中之密”。长征途中，军委二局的破译成果被誉为“令我们行军时多了一双眼睛”。以下为依史重构的敌台记录页。'; d.en['sta.redarmy-cipher.desc'] = 'Once the “invisible radios” were in hand, the Red Army moved quickly into interception and decryption: code-books, call-sign patterns, frequency discipline — the cipher within the cipher. On the Long March, decrypted traffic from the General Staff bureau warned the column like a second pair of eyes. Below, one reconstructed page of intercepted traffic.';
 })();
 
 /* ============================================================

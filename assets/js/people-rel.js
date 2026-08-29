@@ -70,6 +70,8 @@
   function render() {
     var host = document.getElementById('pp-rels');
     if (!host) return;
+
+    try { localStorage.setItem('arcade_rels_viewed', '1'); } catch (e) {}
     var isEn = window.Arcade && Arcade.i18n && Arcade.i18n.getLang() === 'en';
     var T = (window.Arcade && Arcade.i18n) ? Arcade.i18n.t : function (k) { return k; };
     function nm(pid) {

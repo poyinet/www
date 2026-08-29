@@ -58,6 +58,9 @@ Arcade.stats = (function () {
     { id: 'morse5', icon: '👂', name: '摩斯听风者', desc: '摩斯听音训练满分一轮', check: function () { return window.MORSE_L && window.MORSE_L.best().total > 0 && window.MORSE_L.best().score >= 10; } },
     { id: 'duel5', icon: '⚔️', name: '决斗冠军', desc: '双人竞速累计获胜 5 场', check: function () { try { return parseInt(localStorage.getItem('arcade_duel_wins') || '0', 10) >= 5; } catch (e) { return false; } } },
     { id: 'gloss30', icon: '📖', name: '术语达人', desc: '阅读术语表 30 个词条', check: function () { try { return parseInt(localStorage.getItem('arcade_gloss_read') || '0', 10) >= 30; } catch (e) { return false; } } },
+    { id: 'discov', icon: '🧭', name: '探索者', desc: '走进破译发现馆', check: function () { try { return !!localStorage.getItem('arcade_discover_viewed'); } catch (e) { return false; } } },
+    { id: 'relweb', icon: '🕸️', name: '人脉侦探', desc: '走过密码史关系网', check: function () { try { return !!localStorage.getItem('arcade_rels_viewed'); } catch (e) { return false; } } },
+    { id: 'zhstory', icon: '🏮', name: '华夏访客', desc: '走过中华密码史专题', check: function () { try { return !!localStorage.getItem('arcade_zhcrypto_viewed'); } catch (e) { return false; } } },
     { id: 'timeline60', icon: '🗺️', name: '时间旅人', desc: '浏览过密码史时间线', check: function () { try { return !!localStorage.getItem('arcade_timeline_viewed'); } catch (e) { return false; } } }
   ];
 

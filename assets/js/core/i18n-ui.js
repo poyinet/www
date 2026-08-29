@@ -287,6 +287,10 @@
   d.en['discover.startTitle'] = '🎯 Where to start';
   d.zh['zhcrypto.title'] = '🏮 中华密码史';
   d.en['zhcrypto.title'] = '🏮 Chinese Crypto History';
+  d.zh['toolkit.title'] = '🧰 密码工具箱';
+  d.en['toolkit.title'] = '🧰 Crypto Toolkit';
+  d.zh['toolkit.sub'] = '从 TLS 1.3、SSH 密钥、OpenPGP 到国密四件套与后量子标准——现实中你会用到的工具、命令与标准，一站备齐；每一件都能在本站找到它的原理与玩法。';
+  d.en['toolkit.sub'] = 'From TLS 1.3 and SSH keys to the SM family and post-quantum standards — the tools, commands and standards you will actually use; every one of them demystified and playable somewhere on this site.';
   d.zh['zhcrypto.sub'] = '从《六韬》阴符、北宋字验、戚继光反切码，到半部电台与红军密码，再到国密四件套与《密码法》——中国三千年的密写与保密，沿着这条专属航线走完。';
   d.en['zhcrypto.sub'] = 'From Yin-fu tallies and Song zi-yan’s fanqie code, the half-radio Red Army ciphers, the SM family and the Cryptography Law — walk the three-millennium Chinese line of secrecy.';
 })();

@@ -6,6 +6,8 @@
     function L(o) { return isEn ? o.en : o.zh; }
     var host = document.getElementById('zc-root');
     if (!host) return;
+
+    try { localStorage.setItem('arcade_zhcrypto_viewed', '1'); } catch (e) {}
     var ERA = [
       {
         t: L({ zh: '🏮 古代暗号：兵符与诗谜', en: '🏮 Ancient codes: totems and poem puzzles' }),

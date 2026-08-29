@@ -61,7 +61,7 @@ Arcade.i18n.dicts = {
     'workshop.decNote': '自动识别：凯撒 / 摩斯 / 培根 / 二进制 / 异或 / Base64 / 栅栏 / 维吉尼亚（常用密钥）',
     'workshop.eggTitle': '🎯 彩蛋收集（全站寻宝）',
     'workshop.eggNote': '全站藏有 20 条密文彩蛋——破解后在下方输入答案单词，收集进度点亮。全部集齐解锁隐藏成就！',
-    'quiz.entrySub': '240 题测出你的段位',
+    'quiz.entrySub': '242 题测出你的段位',
     'quiz.lvl1': '入门', 'quiz.lvl2': '进阶', 'quiz.lvl3': '专家', 'quiz.lvl4': '大师',
     'quiz.right': '✅ 答对了！',
     'quiz.wrong': '❌ 答错了',
@@ -475,7 +475,7 @@ Arcade.i18n.dicts = {
     'workshop.decNote': 'Auto-detect: Caesar / Morse / Bacon / Binary / XOR / Base64 / Rail Fence / Vigenère (common keys)',
     'workshop.eggTitle': '🎯 Egg Hunt (site-wide treasure)',
     'workshop.eggNote': '20 cipher eggs are hidden across the site — crack them and type the answer word below. Collect all to unlock a hidden achievement!',
-    'quiz.entrySub': '240 questions · find your rank',
+    'quiz.entrySub': '242 questions · find your rank',
     'quiz.lvl1': 'Novice', 'quiz.lvl2': 'Advanced', 'quiz.lvl3': 'Expert', 'quiz.lvl4': 'Master',
     'quiz.right': '✅ Correct!',
     'quiz.wrong': '❌ Wrong',
@@ -1930,6 +1930,13 @@ Arcade.i18n.dicts = {
   d.en['stp.heninger.bio'] = 'undefined';
   d.zh['stp.heninger.quote'] = '—'; d.en['stp.heninger.quote'] = '—';
   d.zh['stp.morse.name'] = '塞缪尔·摩斯'; d.en['stp.morse.name'] = 'Samuel Morse';
+  d.zh['stp.zengxisheng.name'] = '曾希圣'; d.en['stp.zengxisheng.name'] = 'Zeng Xisheng';
+  d.zh['stp.zengxisheng.icon'] = '🔴'; d.en['stp.zengxisheng.icon'] = '🔴';
+  d.zh['stp.zengxisheng.role'] = '红军无线电密码破译奠基人'; d.en['stp.zengxisheng.role'] = 'Founder of Red Army radio codebreaking';
+  d.zh['stp.zengxisheng.era'] = '1904–1968 · 中国'; d.en['stp.zengxisheng.era'] = '1904–1968 · China';
+  d.zh['stp.zengxisheng.fact'] = '冷知识：1930 年龙冈战斗缴获的半部电台成为红军无线电密码事业的开端——发报机损坏、收报机还能用，从不完整的设备“起家”。'; d.en['stp.zengxisheng.fact'] = 'Fun fact: the half radio captured at Longgang in 1930 — transmitter broken, receiver working — was the genesis of Red Army signals intelligence.';
+  d.zh['stp.zengxisheng.bio'] = '曾希圣，1904 年生于湖南兴宁（今资兴）。1931 年起进入中央苏区红军无线电队伍，主持消息侦察与密码破译：从国军电报的蛛丝马迹中还原作战序列，长征途中持续保障。他领导的中革军委二局被誉为“红军的情报心脏”。'; d.en['stp.zengxisheng.bio'] = 'Born 1904 in Hunan, Zeng Xisheng joined the Red Army radio corps in 1931 and led signals intelligence and codebreaking: reconstructing enemy order-of-battle from telegraphic traces, sustaining the Long March. His Second Bureau was the “information heart of the Red Army”.';
+  d.zh['stp.zengxisheng.quote'] = '「半部电台起家，一部电台测向。」（红军无线电突击队口号）'; d.en['stp.zengxisheng.quote'] = '“A half radio to start, one radio to find the bearing.” (Red Army radio corps slogan)';
   d.zh['stp.morse.icon'] = '📡'; d.en['stp.morse.icon'] = '📡';
   d.zh['stp.morse.role'] = '发明家 · 摩斯电码之父'; d.en['stp.morse.role'] = 'Inventor · father of the Morse code';
   d.zh['stp.morse.era'] = '1791–1872 · 美国'; d.en['stp.morse.era'] = 'United States';

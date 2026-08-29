@@ -10,7 +10,7 @@
   d.zh['glossary.title'] = '🔐 密码学词典';
   d.zh['glossary.catTheoretical'] = '🧪 理论基础'; d.en['glossary.catTheoretical'] = '🧪 Theory';
   d.zh['glossary.catPostquantum'] = '⚛️ 后量子'; d.en['glossary.catPostquantum'] = '⚛️ Post-Quantum';
-  d.zh['glossary.sub'] = '280 个术语 · 中英对照 · 边玩边懂——每个词都能在站内找到对应的游戏或章节';
+  d.zh['glossary.sub'] = '282 个术语 · 中英对照 · 边玩边懂——每个词都能在站内找到对应的游戏或章节';
   d.zh['onboard.title'] = '欢迎来到破译街机';
   d.en['onboard.title'] = 'Welcome to Decode Arcade';
   d.zh['onboard.desc'] = '用 142 款小游戏破译人类三千年的加密与解密史——从凯撒移位到量子密钥。先试试这三款镇馆之作，或跟随 24 天学习路径稳步前进。';
@@ -31,7 +31,7 @@
   d.zh['path.sub'] = '从零开始的密码学学习路径——每天读 1 章、玩 2 款游戏、懂 1 个术语，24 天走完三千年密码史';
   d.zh['quiz.title'] = '🧠 密码学测验场';
   d.zh['quiz.entry'] = '密码学测验场';
-  d.zh['quiz.sub'] = '240 道题 · 4 个段位（入门/进阶/专家/大师）· 每轮随机抽 10 题——答完评出你的「密码学段位」';
+  d.zh['quiz.sub'] = '242 道题 · 4 个段位（入门/进阶/专家/大师）· 每轮随机抽 10 题——答完评出你的「密码学段位」';
   d.zh['quiz.start'] = '🚀 开始测验';
   d.zh['quiz.next'] = '下一题 →';
   d.zh['quiz.q'] = '第 {n} 题';
@@ -101,7 +101,7 @@
   d.en['nav.people'] = 'People';
   d.en['nav.artifacts'] = 'Artifacts';
   d.en['glossary.title'] = '🔐 Cryptography Glossary';
-  d.en['glossary.sub'] = '280 terms · bilingual · learn by playing — every word maps to a game or chapter in this arcade';
+  d.en['glossary.sub'] = '282 terms · bilingual · learn by playing — every word maps to a game or chapter in this arcade';
   d.en['glossary.play'] = 'Play';
   d.en['workshop.title'] = '🔬 Cipher Workshop';
   d.en['workshop.sub'] = 'A one-of-a-kind encrypt/decrypt lab — encrypt with 16 classic ciphers, or paste ciphertext for one-click auto-cracking';
@@ -114,7 +114,7 @@
   d.en['path.sub'] = 'A learn-by-playing path from zero — each day: read 1 chapter, play 2 games, learn 1 term. 24 days through 3,000 years of cipher history';
   d.en['quiz.title'] = '🧠 Crypto Quiz Arena';
   d.en['quiz.entry'] = 'Crypto Quiz Arena';
-  d.en['quiz.sub'] = '240 questions · 4 ranks (Novice / Advanced / Expert / Master) · 10 random questions per round — earn your cipher rank';
+  d.en['quiz.sub'] = '242 questions · 4 ranks (Novice / Advanced / Expert / Master) · 10 random questions per round — earn your cipher rank';
   d.en['quiz.start'] = '🚀 Start Quiz';
   d.en['quiz.next'] = 'Next →';
   d.en['quiz.q'] = 'Q{n}';
@@ -285,4 +285,8 @@
   d.en['discover.sub'] = 'A playable museum of cryptography — three millennia of ciphers and breaks, from arcade games to the glossary to the archives, all starting here.';
   d.zh['discover.startTitle'] = '🎯 从哪开始';
   d.en['discover.startTitle'] = '🎯 Where to start';
+  d.zh['zhcrypto.title'] = '🏮 中华密码史';
+  d.en['zhcrypto.title'] = '🏮 Chinese Crypto History';
+  d.zh['zhcrypto.sub'] = '从《六韬》阴符、北宋字验、戚继光反切码，到半部电台与红军密码，再到国密四件套与《密码法》——中国三千年的密写与保密，沿着这条专属航线走完。';
+  d.en['zhcrypto.sub'] = 'From Yin-fu tallies and Song zi-yan’s fanqie code, the half-radio Red Army ciphers, the SM family and the Cryptography Law — walk the three-millennium Chinese line of secrecy.';
 })();

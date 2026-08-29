@@ -51,8 +51,8 @@ Arcade.stats = (function () {
     /* 隐藏彩蛋成就（N3 ARG） */
     { id: 'ehunter', icon: '🕵️', name: '密码猎人', desc: '集齐全站 20 枚隐藏密文彩蛋', check: function () { return window.EASTER_EGGS && window.EASTER_EGGS.isComplete(); } },
     /* 第五轮 F3 成就扩展：测验/精通/听音/竞速/术语/时间线/地图/全知 */
-    { id: 'qmaster', icon: '💎', name: '测验大师', desc: '密码学测验答对全部 10 题', check: function () { return window.QUIZ && window.QUIZ.lastResult().total > 0 && window.QUIZ.lastResult().score >= 10; } },
-    { id: 'qlegend', icon: '👑', name: '传说破译者', desc: '测验段位达到「传说破译者」', check: function () { return window.QUIZ && (window.QUIZ.lastResult().name === 'legend' || parseInt(localStorage.getItem('arcade_quiz_best_ever') || '0', 10) >= 10); } },
+    { id: 'qmaster', icon: '💎', name: '测验大师', desc: '密码学测验答对全部 10 题', check: function () { return window.QUIZ_META && window.QUIZ_META.lastResult().total > 0 && window.QUIZ_META.lastResult().score >= 10; } },
+    { id: 'qlegend', icon: '👑', name: '传说破译者', desc: '测验段位达到「传说破译者」', check: function () { return window.QUIZ_META && (window.QUIZ_META.lastResult().name === 'legend' || parseInt(localStorage.getItem('arcade_quiz_best_ever') || '0', 10) >= 10); } },
     { id: 'chq5', icon: '🧠', name: '章节学霸', desc: '点亮任意 5 章「本章精通」', check: function () { return window.CHAPTER_QUIZ && window.CHAPTER_QUIZ.masteredCount() >= 5; } },
     { id: 'chqall', icon: '🎓', name: '编年史全通', desc: '点亮全部章节精通', check: function () { return window.CHAPTER_QUIZ && window.CHAPTER_QUIZ.masteredCount() >= window.CHAPTER_QUIZ.totalChapters(); } },
     { id: 'morse5', icon: '👂', name: '摩斯听风者', desc: '摩斯听音训练满分一轮', check: function () { return window.MORSE_L && window.MORSE_L.best().total > 0 && window.MORSE_L.best().score >= 10; } },

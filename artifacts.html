@@ -64,6 +64,8 @@
     .ar-era { font-family: var(--font-pixel); font-size: 10px; color: var(--text-dim); margin-top: 3px; letter-spacing: 1px; }
     .ar-desc { font-size: 12px; color: var(--text-dim); margin-top: 8px; line-height: 1.7; }
     .ar-text { font-size: 12px; color: var(--neon-cyan); margin-top: 10px; line-height: 1.7; white-space: pre-wrap; font-family: 'Courier New', monospace; background: rgba(0,0,0,.35); border: 1px solid rgba(0,240,255,.15); border-radius: 6px; padding: 8px 10px; }
+    .ar-src { font-size: 11px; color: var(--text-dim); margin-top: 8px; line-height: 1.8; }
+    .ar-src a { color: var(--neon-cyan); }
     .ar-unlock { font-size: 12px; color: var(--neon-pink); margin-top: 10px; }
     .ar-golink { color: var(--neon-cyan); text-decoration: none; border-bottom: 1px dashed rgba(0,240,255,.5); }
     .ar-golink:hover { color: var(--neon-green); border-color: var(--neon-green); }
@@ -127,7 +129,15 @@
             '<div class="ar-era">' + T('sta.' + art.id + '.era') + '</div>' +
             '<div class="ar-nature ar-nature-' + nature + '">' + T('artifacts.nature.' + nature) + '</div>' +
             '<div class="ar-desc">' + T('sta.' + art.id + '.desc') + '</div>' +
-            '<div class="ar-text">' + T('sta.' + art.id + '.text') + '</div>';
+            '<div class="ar-text">' + T('sta.' + art.id + '.text') + '</div>' +
+            (window.ARTIFACT_SRC && window.ARTIFACT_SRC[art.id] && window.ARTIFACT_SRC[art.id].length
+              ? '<div class="ar-src">📚 ' + T('common.srcTitle') + ' ' +
+                window.ARTIFACT_SRC[art.id].map(function (s) {
+                  return s.url
+                    ? '<a href="' + s.url + '" target="_blank" rel="noopener">' + s.label + '</a>'
+                    : s.label;
+                }).join(' · ') + '</div>'
+              : '');
         } else {
           var g = null;
           (window.GAMES || []).forEach(function (x) { if (x.id === art.unlockGameId) g = x; });

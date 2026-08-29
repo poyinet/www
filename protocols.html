@@ -57,6 +57,8 @@
     .pl-nav a:hover { border-color: rgba(0,240,255,.55); color: var(--neon-cyan); }
 
         .pl-extend { margin-top: 14px; padding-top: 10px; border-top: 1px dashed rgba(255,255,255,.12); display: flex; gap: 16px; flex-wrap: wrap; }
+    .pl-src { margin-top: 10px; font-size: 11px; color: var(--text-dim); line-height: 1.9; }
+    .pl-src .pl-ref-a { color: var(--neon-cyan); margin-right: 10px; }
     .pl-extend a { font-size: 12px; color: var(--neon-cyan); text-decoration: none; }
     .pl-extend a:hover { color: var(--neon-green); }
 
@@ -165,7 +167,8 @@
         <button class="btn pink" id="tls-eve">🕵️ 中间人在场</button>
       </div>
       <div class="pl-note" data-i18n="pl.tls13Note">📌 本演示为教学清晰采用经典握手叙事（RSA 式预主密钥传输，TLS 1.2 及更早）。现代 TLS 1.3 已改为强制（EC）DHE 密钥协商、废弃无前向安全的 RSA 传输，且 ServerHello 之后的所有握手消息全部加密——认证身份这一根基从未改变。</div>
-      <div class="pl-extend"><a href="story.html?id=modern">📜 相关编年史章节</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
+      <div class="pl-src">📚 参考：<a href="https://www.rfc-editor.org/rfc/rfc8446" target="_blank" rel="noopener" class="pl-ref-a">RFC 8446: The Transport Layer Security (TLS) Protocol Version 1.3</a></div>
+<div class="pl-extend"><a href="story.html?id=modern">📜 相关编年史章节</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
     </div>
 
     <div class="pl-card" id="pl-dh">
@@ -179,7 +182,8 @@
       </div>
       <table class="pl-tab" id="dh-out"></table>
       <div id="dh-verdict"></div>
-      <div class="pl-extend"><a href="story.html?id=modern">📜 相关编年史章节</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
+      <div class="pl-src">📚 参考：<a href="https://doi.org/10.1109/TIT.1976.1055638" target="_blank" rel="noopener" class="pl-ref-a">Diffie & Hellman, "New Directions in Cryptography" (1976)</a> · <a href="https://www.rfc-editor.org/rfc/rfc7919" target="_blank" rel="noopener" class="pl-ref-a">RFC 7919: Negotiable Finite Field DH (2016)</a></div>
+<div class="pl-extend"><a href="story.html?id=modern">📜 相关编年史章节</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
     </div>
 
     <div class="pl-card" id="pl-merkle">
@@ -193,7 +197,8 @@
         <button class="btn" id="chain-restore">↺ 还原</button>
       </div>
       <div class="pl-note" id="chain-note"></div>
-      <div class="pl-extend"><a href="story.html?id=modern">📜 相关编年史章节</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
+      <div class="pl-src">📚 参考：<a href="https://bitcoin.org/bitcoin.pdf" target="_blank" rel="noopener" class="pl-ref-a">Satoshi Nakamoto, "Bitcoin: A Peer-to-Peer Electronic Cash System" (2008)</a> · <a href="https://www.rfc-editor.org/rfc/rfc6962" target="_blank" rel="noopener" class="pl-ref-a">RFC 6962: Certificate Transparency (Merkle trees)</a></div>
+<div class="pl-extend"><a href="story.html?id=modern">📜 相关编年史章节</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
     </div>
 
     <div class="pl-card" id="pl-zkp">
@@ -205,7 +210,8 @@
         <button class="btn" id="zkp-reset">↺ 还原着色</button>
       </div>
       <div id="zkp-stat"></div>
-      <div class="pl-extend"><a href="story.html?id=quantum">📜 量子转折点</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
+      <div class="pl-src">📚 参考：<a href="https://doi.org/10.1137/0218038" target="_blank" rel="noopener" class="pl-ref-a">Goldwasser, Micali & Rackoff, "The Knowledge Complexity of Interactive Proof Systems" (1989)</a> · <a href="https://en.wikipedia.org/wiki/Zero-knowledge_proof" target="_blank" rel="noopener" class="pl-ref-a">Cryptographic Protocol: Zero-knowledge proof</a></div>
+<div class="pl-extend"><a href="story.html?id=quantum">📜 量子转折点</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
     </div>
 
     <div class="pl-card" id="pl-chacha">
@@ -217,7 +223,8 @@
         <button class="btn" id="cc-reset">↺ 重置状态</button>
       </div>
       <div class="pl-note-line" id="cc-stat"></div>
-      <div class="pl-extend"><a href="story.html?id=modern">📜 相关编年史章节</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
+      <div class="pl-src">📚 参考：<a href="https://www.rfc-editor.org/rfc/rfc8439" target="_blank" rel="noopener" class="pl-ref-a">RFC 8439: ChaCha20 and Poly1305</a></div>
+<div class="pl-extend"><a href="story.html?id=modern">📜 相关编年史章节</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
     </div>
 
     <div class="pl-card" id="pl-ecc">
@@ -234,7 +241,8 @@
         <button class="btn" id="ecc-clear">↺ 清空点位</button>
       </div>
       <div id="ecc-msg"></div>
-      <div class="pl-extend"><a href="story.html?id=modern">📜 相关编年史章节</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
+      <div class="pl-src">📚 参考：<a href="https://csrc.nist.gov/pubs/sp/800/186/final" target="_blank" rel="noopener" class="pl-ref-a">NIST SP 800-186: Recommendations for Discrete-Logarithm-Based Cryptography (2023)</a></div>
+<div class="pl-extend"><a href="story.html?id=modern">📜 相关编年史章节</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
     </div>
 
     <div class="pl-card" id="pl-a51">
@@ -247,7 +255,8 @@
         <button class="btn" id="a51-reset">↺ 随机重置</button>
       </div>
       <div class="pl-note-line" id="a51-stream"></div>
-      <div class="pl-extend"><a href="story.html?id=modern">📜 相关编年史章节</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
+      <div class="pl-src">📚 参考：<a href="https://en.wikipedia.org/wiki/A5/1" target="_blank" rel="noopener" class="pl-ref-a">A5/1 (GSM cipher)</a></div>
+<div class="pl-extend"><a href="story.html?id=modern">📜 相关编年史章节</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
     </div>
 
     <div class="pl-card" id="pl-rc4">
@@ -258,7 +267,8 @@
         <button class="btn" id="rc4-reset">↺ 清空</button>
       </div>
       <div id="rc4-view"></div>
-      <div class="pl-extend"><a href="story.html?id=modern">📜 相关编年史章节</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
+      <div class="pl-src">📚 参考：<a href="https://www.rfc-editor.org/rfc/rfc7465" target="_blank" rel="noopener" class="pl-ref-a">RFC 7465: Prohibiting RC4 Cipher Suites (2015)</a></div>
+<div class="pl-extend"><a href="story.html?id=modern">📜 相关编年史章节</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
     </div>
 
     <div class="pl-card" id="pl-sign">
@@ -275,7 +285,8 @@
         <button class="btn green" id="sign-verify" hidden>✅ Bob 用公钥验证</button>
       </div>
       <div class="pl-note-line" id="sign-verdict"></div>
-    </div>
+    <div class="pl-src">📚 参考：<a href="https://doi.org/10.1145/359340.359342" target="_blank" rel="noopener" class="pl-ref-a">Rivest, Shamir & Adleman, "A Method for Obtaining Digital Signatures..." (1978)</a></div>
+</div>
 
     <div class="pl-card" id="pl-rng">
       <div class="pl-h"><span class="ic">🎲</span><b data-i18n="pl.rngH">随机数：密码学的地基</b></div>
@@ -286,7 +297,8 @@
       </div>
       <div id="rng-view"></div>
       <div class="pl-note-line" id="rng-crackstat"></div>
-      <div class="pl-extend"><a href="story.html?id=modern">📜 相关编年史章节</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
+      <div class="pl-src">📚 参考：<a href="https://csrc.nist.gov/pubs/sp/800/90a/r1/final" target="_blank" rel="noopener" class="pl-ref-a">NIST SP 800-90A Rev.1: Random Number Generation (2015)</a></div>
+<div class="pl-extend"><a href="story.html?id=modern">📜 相关编年史章节</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
     </div>
 
     <div class="pl-card" id="pl-math">
@@ -296,7 +308,8 @@
       <div id="math-view"></div>
       <div class="pl-btnrow" id="math-phi"></div>
       <div class="pl-note-line" id="math-note"></div>
-      <div class="pl-extend"><a href="story.html?id=caesar">📜 相关编年史章节</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
+      <div class="pl-src">📚 参考：<a href="https://en.wikipedia.org/wiki/Modular_arithmetic" target="_blank" rel="noopener" class="pl-ref-a">Modular arithmetic</a></div>
+<div class="pl-extend"><a href="story.html?id=caesar">📜 相关编年史章节</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
     </div>
 
     <div class="pl-card" id="pl-diff">
@@ -305,7 +318,8 @@
       <div class="pl-btnrow" id="diff-chips"></div>
       <div id="diff-view"></div>
       <div class="pl-note-line" id="diff-note"></div>
-      <div class="pl-extend"><a href="story.html?id=modern">📜 相关编年史章节</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
+      <div class="pl-src">📚 参考：<a href="https://doi.org/10.1007/BF00630563" target="_blank" rel="noopener" class="pl-ref-a">Biham & Shamir, "Differential Cryptanalysis of DES-like Cryptosystems" (1991)</a></div>
+<div class="pl-extend"><a href="story.html?id=modern">📜 相关编年史章节</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
     </div>
 
     <div class="pl-card" id="pl-aead">
@@ -318,7 +332,8 @@
       </div>
       <div id="aead-view"></div>
       <div class="pl-note-line" id="aead-verdict"></div>
-      <div class="pl-extend"><a href="story.html?id=modern">📜 相关编年史章节</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
+      <div class="pl-src">📚 参考：<a href="https://www.rfc-editor.org/rfc/rfc5116" target="_blank" rel="noopener" class="pl-ref-a">RFC 5116: An Interface and Algorithms for Authenticated Encryption (2008)</a> · <a href="https://csrc.nist.gov/pubs/sp/800/38d/final" target="_blank" rel="noopener" class="pl-ref-a">NIST SP 800-38D: GCM (2007)</a></div>
+<div class="pl-extend"><a href="story.html?id=modern">📜 相关编年史章节</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
     </div>
 
     <div class="pl-card" id="pl-ext">
@@ -331,7 +346,8 @@
       </div>
       <div id="ext-view"></div>
       <div class="pl-note-line" id="ext-verdict"></div>
-      <div class="pl-extend"><a href="story.html?id=modern">📜 相关编年史章节</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
+      <div class="pl-src">📚 参考：<a href="https://www.rfc-editor.org/rfc/rfc2104" target="_blank" rel="noopener" class="pl-ref-a">RFC 2104: HMAC (Length-extension resistant)</a></div>
+<div class="pl-extend"><a href="story.html?id=modern">📜 相关编年史章节</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
     </div>
 
     <div class="pl-card" id="pl-big">
@@ -340,7 +356,8 @@
       <div class="pl-btnrow"><button class="btn accent" id="big-gen">🔐 现场生成 256 位密钥对</button></div>
       <div id="big-view"></div>
       <div class="pl-note-line" id="big-note"></div>
-      <div class="pl-extend"><a href="story.html?id=modern">📜 相关编年史章节</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
+      <div class="pl-src">📚 参考：<a href="https://csrc.nist.gov/pubs/fips/186/5/final" target="_blank" rel="noopener" class="pl-ref-a">NIST FIPS 186-5: Digital Signature Standard (2023)</a></div>
+<div class="pl-extend"><a href="story.html?id=modern">📜 相关编年史章节</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
     </div>
 
     <div class="pl-card" id="pl-pwd">
@@ -355,7 +372,8 @@
         <label class="ws-note">攻击装备 <select id="pwd-rig" class="ws-input" style="width:auto;padding:6px 10px"></select></label>
       </div>
       <div id="pwd-out"></div>
-      <div class="pl-extend"><a href="story.html?id=modern">📜 相关编年史章节</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
+      <div class="pl-src">📚 参考：<a href="https://www.rfc-editor.org/rfc/rfc9106" target="_blank" rel="noopener" class="pl-ref-a">RFC 9106: Argon2 Memory-Hard Function (2021)</a></div>
+<div class="pl-extend"><a href="story.html?id=modern">📜 相关编年史章节</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
     </div>
 
     <div class="pl-card" id="pl-otp">
@@ -376,7 +394,8 @@
         <button class="btn pink" id="otp-solve">⚡ 显示答案</button>
       </div>
       <div class="pl-note" id="otp-note"></div>
-      <div class="pl-extend"><a href="story.html?id=venona">📜 相关编年史章节</a><a href="games/otp-telegraph/">📨 OTP 电报房（游戏）</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
+      <div class="pl-src">📚 参考：<a href="https://doi.org/10.1002/j.1538-7305.1949.tb00928.x" target="_blank" rel="noopener" class="pl-ref-a">Shannon, "Communication Theory of Secrecy Systems" (1949)</a></div>
+<div class="pl-extend"><a href="story.html?id=venona">📜 相关编年史章节</a><a href="games/otp-telegraph/">📨 OTP 电报房（游戏）</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
     </div>
 
     <div class="pl-card" id="pl-dhpt">
@@ -390,7 +409,8 @@
       <div class="pl-btnrow" id="dhpt-presets"></div>
       <table class="pl-tab" id="dhpt-out"></table>
       <div class="pl-note" id="dhpt-note"></div>
-      <div class="pl-extend"><a href="story.html?id=modern">📜 相关编年史章节</a><a href="games/dh-handshake/">🔑 DH 握手场（游戏）</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
+      <div class="pl-src">📚 参考：<a href="https://www.rfc-editor.org/rfc/rfc7919" target="_blank" rel="noopener" class="pl-ref-a">RFC 7919: Negotiable Finite Field DH (2016)</a> · <a href="https://doi.org/10.6028/NIST.SP.800-56Ar3" target="_blank" rel="noopener" class="pl-ref-a">NIST SP 800-56A Rev.3 (2018)</a></div>
+<div class="pl-extend"><a href="story.html?id=modern">📜 相关编年史章节</a><a href="games/dh-handshake/">🔑 DH 握手场（游戏）</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
     </div>
   </div>
   <div id="pl-ready"></div>

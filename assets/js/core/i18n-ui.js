@@ -274,5 +274,7 @@
   d.zh['pl.otpH'] = 'OTP 与复用灾难：密钥流绝不能再用第二次';
   d.en['pl.otpH'] = 'OTP & the Reuse Disaster: never reuse a keystream';
   d.zh['pl.dhpH'] = 'DH 参数验证：p、安全素数与 g 的阶';
-  d.en['pl.dhpH'] = 'DH Parameter Validation: p, safe primes and the order of g';
+  d.en['pl.dhpH'] = 'DH Parameter Validation: p, safe primes and the order of g';
+  d.zh['common.srcTitle'] = '出处';
+  d.en['common.srcTitle'] = 'Sources';
 })();

@@ -65,10 +65,18 @@
             var num = CH_IDS[cid];
             return '<a class="gl-ch" href="story.html?id=' + cid + '">📜 ' + (num ? T('st.' + num + '.t') : cid) + '</a>';
           }).join('');
+          var srcs = (window.GLOSSARY_SOURCES && window.GLOSSARY_SOURCES[g.term]) || [];
+          var srcHtml = srcs.length
+            ? '<div class="gl-src">📚 ' + T('common.srcTitle') + ' ' + srcs.map(function (s) {
+                return s.url
+                  ? '<a class="gl-src-a" href="' + s.url + '" target="_blank" rel="noopener">' + s.label + '</a>'
+                  : '<span class="gl-src-a">' + s.label + '</span>';
+              }).join(' · ') + '</div>'
+            : '';
           html += '<div class="gl-item">' +
             '<span class="gl-term">' + g.term + '</span><span class="gl-term-zh">' + g.zh + '</span>' +
             '<div class="gl-def">' + (isEn ? g.enDef : g.zhDef) + '</div>' +
-            playLink + chLinks + '</div>';
+            playLink + chLinks + srcHtml + '</div>';
         });
         html += '</div></div>';
       });

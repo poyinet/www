@@ -83,6 +83,8 @@
     .qz-feedback.ok { display: block; border: 1px solid rgba(57,255,20,.35); background: rgba(57,255,20,.07); color: var(--neon-green); }
     .qz-feedback.no { display: block; border: 1px solid rgba(255,80,80,.35); background: rgba(255,80,80,.08); color: var(--neon-pink); }
     .qz-feedback .ex { color: var(--text-dim); margin-top: 4px; }
+    .qz-feedback .qz-src { color: var(--neon-cyan); font-size: 11px; }
+    .qz-rw .rw-src { color: var(--neon-cyan); font-size: 11px; margin-top: 4px; }
     .qz-next { margin-top: 14px; text-align: right; }
     .qz-next .btn { font-size: 13px; padding: 9px 20px; }
 
@@ -261,8 +263,10 @@
         }
         var fb = document.getElementById('qz-fb');
         fb.className = right ? 'qz-feedback ok' : 'qz-feedback no';
+        var qSrc = (window.QUIZ_SRC && q._bi !== undefined && window.QUIZ_SRC[q._bi]) ? window.QUIZ_SRC[q._bi] : null;
         fb.innerHTML = (right ? T('quiz.right') : T('quiz.wrong')) +
-          '<div class="ex">' + T('quiz.explain').replace('{e}', qd.explain) + '</div>';
+          '<div class="ex">' + T('quiz.explain').replace('{e}', qd.explain) + '</div>' +
+          (qSrc ? '<div class="ex qz-src">📚 ' + T('common.srcTitle') + (qSrc.sources ? qSrc.sources[0].label : qSrc) + '</div>' : '');
         var nx = document.getElementById('qz-next');
         nx.style.display = 'inline-block';
         nx.addEventListener('click', function () { state.idx++; renderQ(); });
@@ -315,9 +319,12 @@
               ? '<details class="qz-review"><summary>📋 ' + T('quiz.reviewWrong').replace('{n}', state.roundWrong.length) + '</summary>' +
                 state.roundWrong.map(function (w) {
                   var wd = isEn ? w.en : w.zh;
+                  var wSrc = (window.QUIZ_SRC && w._bi !== undefined && window.QUIZ_SRC[w._bi]) ? window.QUIZ_SRC[w._bi] : null;
+                  var wSrcLabel = wSrc ? (wSrc.sources ? wSrc.sources[0].label : wSrc) : '';
                   return '<div class="qz-rw"><div class="rw-q">' + wd.q + '</div>' +
                     '<div class="rw-a">✓ ' + wd.opts[w.a] + '</div>' +
-                    '<div class="rw-x">' + wd.explain + '</div></div>';
+                    '<div class="rw-x">' + wd.explain + '</div>' +
+                    (wSrcLabel ? '<div class="rw-src">📚 ' + T('common.srcTitle') + wSrcLabel + '</div>' : '') + '</div>';
                 }).join('') + '</details>'
               : '') +
             '<div class="qz-extend">' +

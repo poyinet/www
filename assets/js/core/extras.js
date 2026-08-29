@@ -743,6 +743,16 @@ Arcade.tutorial = (function () {
       T('stp.' + pid + '.era') + ' · ' + T('stp.' + pid + '.role') + '</div>' +
       '<p style="font-size:13px;color:var(--text-main);line-height:1.9;margin:0 0 10px">' + T('stp.' + pid + '.bio') + '</p>' +
       '<div style="font-size:12px;color:var(--neon-yellow);line-height:1.7;border-top:1px dashed rgba(255,230,0,.3);padding-top:8px">“' + T('stp.' + pid + '.quote') + '”</div>' +
+      (window.PEOPLE_SRC && window.PEOPLE_SRC[pid] && window.PEOPLE_SRC[pid].length
+        ? '<div style="margin-top:10px;border-top:1px dashed rgba(255,255,255,.12);padding-top:8px">' +
+          '<div style="font-size:11px;color:var(--text-dim);margin-bottom:6px">📚 ' + T('common.srcTitle') + '</div>' +
+          '<div style="font-size:11px;line-height:1.9;color:var(--text-dim)">' +
+          window.PEOPLE_SRC[pid].map(function (s) {
+            return s.url
+              ? '<a style="color:var(--neon-cyan)" href="' + s.url + '" target="_blank" rel="noopener">' + s.label + '</a>'
+              : s.label;
+          }).join(' · ') + '</div></div>'
+        : '') +
       (chaptersHtml
         ? '<div style="margin-top:12px;border-top:1px dashed rgba(255,255,255,.12);padding-top:10px">' +
           '<div style="font-size:11px;color:var(--text-dim);margin-bottom:6px">' + T('people.chaptersOf') + '</div>' +

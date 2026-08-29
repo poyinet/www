@@ -364,6 +364,165 @@ window.Workshop = (function () {
     return out;
   }
 
+
+  /* ================= 现代引擎：DES（FIPS 46-3）/ SHA-256（FIPS 180-4） ================= */
+  /* 引擎经官方向量对拍验证（NIST/FIPS 81/Wikipedia DES 示例 + SHA-256 4 组标准向量），勿改数值表 */
+  const IP = [58,50,42,34,26,18,10,2,60,52,44,36,28,20,12,4,62,54,46,38,30,22,14,6,64,56,48,40,32,24,16,8,57,49,41,33,25,17,9,1,59,51,43,35,27,19,11,3,61,53,45,37,29,21,13,5,63,55,47,39,31,23,15,7];
+  const FP = [40,8,48,16,56,24,64,32,39,7,47,15,55,23,63,31,38,6,46,14,54,22,62,30,37,5,45,13,53,21,61,29,36,4,44,12,52,20,60,28,35,3,43,11,51,19,59,27,34,2,42,10,50,18,58,26,33,1,41,9,49,17,57,25];
+  const E = [32,1,2,3,4,5,4,5,6,7,8,9,8,9,10,11,12,13,12,13,14,15,16,17,16,17,18,19,20,21,20,21,22,23,24,25,24,25,26,27,28,29,28,29,30,31,32,1];
+  const P = [16,7,20,21,29,12,28,17,1,15,23,26,5,18,31,10,2,8,24,14,32,27,3,9,19,13,30,6,22,11,4,25];
+  const PC1 = [57,49,41,33,25,17,9,1,58,50,42,34,26,18,10,2,59,51,43,35,27,19,11,3,60,52,44,36,63,55,47,39,31,23,15,7,62,54,46,38,30,22,14,6,61,53,45,37,29,21,13,5,28,20,12,4];
+  const PC2 = [14,17,11,24,1,5,3,28,15,6,21,10,23,19,12,4,26,8,16,7,27,20,13,2,41,52,31,37,47,55,30,40,51,45,33,48,44,49,39,56,34,53,46,42,50,36,29,32];
+  const SHIFTS = [1,1,2,2,2,2,2,2,1,2,2,2,2,2,2,1];
+  const SBOX = [
+  [14,4,13,1,2,15,11,8,3,10,6,12,5,9,0,7,0,15,7,4,14,2,13,1,10,6,12,11,9,5,3,8,4,1,14,8,13,6,2,11,15,12,9,7,3,10,5,0,15,12,8,2,4,9,1,7,5,11,3,14,10,0,6,13],
+  [15,1,8,14,6,11,3,4,9,7,2,13,12,0,5,10,3,13,4,7,15,2,8,14,12,0,1,10,6,9,11,5,0,14,7,11,10,4,13,1,5,8,12,6,9,3,2,15,13,8,10,1,3,15,4,2,11,6,7,12,0,5,14,9],
+  [10,0,9,14,6,3,15,5,1,13,12,7,11,4,2,8,13,7,0,9,3,4,6,10,2,8,5,14,12,11,15,1,13,6,4,9,8,15,3,0,11,1,2,12,5,10,14,7,1,10,13,0,6,9,8,7,4,15,14,3,11,5,2,12],
+  [7,13,14,3,0,6,9,10,1,2,8,5,11,12,4,15,13,8,11,5,6,15,0,3,4,7,2,12,1,10,14,9,10,6,9,0,12,11,7,13,15,1,3,14,5,2,8,4,3,15,0,6,10,1,13,8,9,4,5,11,12,7,2,14],
+  [2,12,4,1,7,10,11,6,8,5,3,15,13,0,14,9,14,11,2,12,4,7,13,1,5,0,15,10,3,9,8,6,4,2,1,11,10,13,7,8,15,9,12,5,6,3,0,14,11,8,12,7,1,14,2,13,6,15,0,9,10,4,5,3],
+  [12,1,10,15,9,2,6,8,0,13,3,4,14,7,5,11,10,15,4,2,7,12,9,5,6,1,13,14,0,11,3,8,9,14,15,5,2,8,12,3,7,0,4,10,1,13,11,6,4,3,2,12,9,5,15,10,11,14,1,7,6,0,8,13],
+  [4,11,2,14,15,0,8,13,3,12,9,7,5,10,6,1,13,0,11,7,4,9,1,10,14,3,5,12,2,15,8,6,1,4,11,13,12,3,7,14,10,15,6,8,0,5,9,2,6,11,13,8,1,4,10,7,9,5,0,15,14,2,3,12],
+  [13,2,8,4,6,15,11,1,10,9,3,14,5,0,12,7,1,15,13,8,10,3,7,4,12,5,6,11,0,14,9,2,7,11,4,1,9,12,14,2,0,6,10,13,15,3,5,8,2,1,14,7,4,10,8,13,15,12,9,0,3,5,6,11]
+  ];
+  function permute64(inp, table, inBits) {
+    let out = 0n;
+    for (let i = 0; i < table.length; i++) {
+      out = (out << 1n) | ((inp >> BigInt(inBits - table[i])) & 1n);
+    }
+    return out;
+  }
+  function desSubkeys(key) {
+    let k = 0n;
+    for (let i = 0; i < 8; i++) k = (k << 8n) | BigInt(key[i] & 0xff);
+    const pc1 = permute64(k, PC1, 64);
+    let c = Number((pc1 >> 28n) & 0x0fffffffn);
+    let d = Number(pc1 & 0x0fffffffn);
+    const ks = [];
+    for (let r = 0; r < 16; r++) {
+      for (let s = 0; s < SHIFTS[r]; s++) {
+        c = ((c << 1) & 0x0fffffff) | (c >>> 27);
+        d = ((d << 1) & 0x0fffffff) | (d >>> 27);
+      }
+      ks.push(permute64((BigInt(c) << 28n) | BigInt(d), PC2, 56));
+    }
+    return ks;
+  }
+  function desCrypt(bytes, key, enc) {
+    const ks = desSubkeys(key);
+    const out = [];
+    for (let off = 0; off < bytes.length; off += 8) {
+      let block = 0n;
+      for (let i = 0; i < 8; i++) {
+        const b = (bytes[off + i] === undefined ? 0 : bytes[off + i]) & 0xff;
+        block = (block << 8n) | BigInt(b);
+      }
+      const ip = permute64(block, IP, 64);
+      let L = Number((ip >> 32n) & 0xffffffffn);
+      let R = Number(ip & 0xffffffffn);
+      for (let r = 0; r < 16; r++) {
+        const s = enc ? ks[r] : ks[15 - r];
+        const fE = permute64(BigInt(R), E, 32);
+        const x = fE ^ s;
+        let f = 0;
+        for (let g = 0; g < 8; g++) {
+          const six = Number((x >> BigInt(42 - g * 6)) & 63n);
+          const row = ((six & 32) >> 4) | (six & 1);
+          const col = (six >> 1) & 15;
+          f = (f << 4) | SBOX[g][row * 16 + col];
+        }
+        f = Number(permute64(BigInt(f), P, 32));
+        const t = (L ^ f) >>> 0;
+        L = R; R = t;
+      }
+      const pre = (BigInt(R) << 32n) | BigInt(L);
+      const res = permute64(pre, FP, 64);
+      for (let i = 7; i >= 0; i--) out.push(Number((res >> BigInt(i * 8)) & 0xffn));
+    }
+    return out;
+  }
+  
+  
+  const K256 = [0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2];
+  const H256 = [0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19];
+  function rotr(x, n) { return ((x >>> n) | (x << (32 - n))) >>> 0; }
+  function utf8Bytes(s) {
+    const out = [];
+    for (let i = 0; i < s.length; i++) {
+      let c = s.charCodeAt(i);
+      if (c < 0x80) out.push(c);
+      else if (c < 0x800) { out.push(0xc0 | (c >> 6)); out.push(0x80 | (c & 63)); }
+      else { out.push(0xe0 | (c >> 12)); out.push(0x80 | ((c >> 6) & 63)); out.push(0x80 | (c & 63)); }
+    }
+    return out;
+  }
+  function sha256(s) {
+    const data = utf8Bytes(s);
+    const bitLen = data.length * 8;
+    data.push(0x80);
+    while (data.length % 64 !== 56) data.push(0);
+    for (let i = 7; i >= 0; i--) data.push((bitLen / Math.pow(2, i * 8)) & 0xff);
+    const h = H256.slice();
+    const w = new Array(64);
+    for (let off = 0; off < data.length; off += 64) {
+      for (let i = 0; i < 16; i++) {
+        w[i] = ((data[off + i * 4] << 24) | (data[off + i * 4 + 1] << 16) | (data[off + i * 4 + 2] << 8) | data[off + i * 4 + 3]) >>> 0;
+      }
+      for (let i = 16; i < 64; i++) {
+        const s0 = (rotr(w[i-15],7) ^ rotr(w[i-15],18) ^ (w[i-15]>>>3)) >>> 0;
+        const s1 = (rotr(w[i-2],17) ^ rotr(w[i-2],19) ^ (w[i-2]>>>10)) >>> 0;
+        w[i] = (w[i-16] + s0 + w[i-7] + s1) >>> 0;
+      }
+      let a=h[0],b=h[1],c=h[2],d=h[3],e=h[4],f=h[5],g=h[6],hh=h[7];
+      for (let i = 0; i < 64; i++) {
+        const S1 = (rotr(e,6) ^ rotr(e,11) ^ rotr(e,25)) >>> 0;
+        const ch = ((e & f) ^ ((~e) & g)) >>> 0;
+        const t1 = (hh + S1 + ch + K256[i] + w[i]) >>> 0;
+        const S0 = (rotr(a,2) ^ rotr(a,13) ^ rotr(a,22)) >>> 0;
+        const maj = ((a & b) ^ (a & c) ^ (b & c)) >>> 0;
+        const t2 = (S0 + maj) >>> 0;
+        hh=g; g=f; f=e; e=(d+t1)>>>0; d=c; c=b; b=a; a=(t1+t2)>>>0;
+      }
+      h[0]=(h[0]+a)>>>0; h[1]=(h[1]+b)>>>0; h[2]=(h[2]+c)>>>0; h[3]=(h[3]+d)>>>0;
+      h[4]=(h[4]+e)>>>0; h[5]=(h[5]+f)>>>0; h[6]=(h[6]+g)>>>0; h[7]=(h[7]+hh)>>>0;
+    }
+    return h.map(x => x.toString(16).padStart(8, '0')).join('');
+  }
+  
+  
+  function keyBytes(s) {
+    var raw = utf8Bytes(String(s || ''));
+    var arr = [];
+    for (var i = 0; i < 8; i++) arr.push(raw[i] !== undefined ? raw[i] : 0);
+    return arr;
+  }
+  function utf8Decode(bytes) {
+    var s = '';
+    for (var i = 0; i < bytes.length;) {
+      var b = bytes[i];
+      if (b < 0x80) { s += String.fromCharCode(b); i += 1; }
+      else if ((b & 0xe0) === 0xc0 && i + 1 < bytes.length) { s += String.fromCharCode(((b & 31) << 6) | (bytes[i + 1] & 63)); i += 2; }
+      else if ((b & 0xf0) === 0xe0 && i + 2 < bytes.length) { s += String.fromCharCode(((b & 15) << 12) | ((bytes[i + 1] & 63) << 6) | (bytes[i + 2] & 63)); i += 3; }
+      else { i += 1; }
+    }
+    return s;
+  }
+  function desEnc(s, keyStr) {
+    var data = utf8Bytes(s);
+    var pad = 8 - (data.length % 8);
+    for (var i = 0; i < pad; i++) data.push(pad);
+    return desCrypt(data, keyBytes(keyStr), true).map(function (b) { return b.toString(16).padStart(2, '0').toUpperCase(); }).join(' ');
+  }
+  function desDec(hexStr, keyStr) {
+    var hex = String(hexStr || '').replace(/[^0-9A-Fa-f]/g, '');
+    if (hex.length === 0 || hex.length % 16 !== 0) return 'ERR: hex 长度需为 8 字节整数倍';
+    var data = [];
+    for (var i = 0; i < hex.length; i += 2) data.push(parseInt(hex.substr(i, 2), 16));
+    var out = desCrypt(data, keyBytes(keyStr), false);
+    var pad = out[out.length - 1];
+    if (pad >= 1 && pad <= 8) out.length -= pad;
+    return utf8Decode(out);
+  }
+  
   /* ================= 算法注册表 ================= */
   var ALGOS = {
     caesar: { name: '凯撒 Caesar', enName: 'Caesar Cipher', enc: caesarEnc, dec: caesarDec, key: 'k', keyLabel: '偏移量', keyEn: 'Shift amount', keyDefault: '3' },
@@ -383,7 +542,9 @@ window.Workshop = (function () {
     base64: { name: 'Base64', enName: 'Base64', enc: b64Enc, dec: b64Dec, key: 'none', keyLabel: '', keyEn: '', keyDefault: '' },
     binary: { name: '二进制 Binary', enName: 'Binary (8-bit)', enc: binEnc, dec: binDec, key: 'none', keyLabel: '', keyEn: '', keyDefault: '' },
     columnar: { name: '列换位 Columnar', enName: 'Columnar Transposition', enc: columnarEnc, dec: columnarDec, key: 'word', keyLabel: '密钥词', keyEn: 'Key word', keyDefault: 'CIPHER' },
-    porta: { name: '波尔塔 Porta', enName: 'Porta Cipher', enc: portaEnc, dec: portaDec, key: 'word', keyLabel: '密钥词（每对字母一档）', keyEn: 'Key word (letter pairs as key groups)', keyDefault: 'PORTA' }
+    porta: { name: '波尔塔 Porta', enName: 'Porta Cipher', enc: portaEnc, dec: portaDec, key: 'word', keyLabel: '密钥词（每对字母一档）', keyEn: 'Key word (letter pairs as key groups)', keyDefault: 'PORTA' },
+    des: { name: 'DES（真实引擎）', enName: 'DES (real engine)', enc: desEnc, dec: desDec, hashOnly: false, key: 'word', keyLabel: '8 字节密钥（ASCII → PKCS#7）', keyEn: '8-byte key (ASCII → PKCS#7)', keyDefault: 'SECRETKEY' },
+    sha256: { name: 'SHA-256（FIPS 180-4）', enName: 'SHA-256 (FIPS 180-4)', enc: sha256, dec: null, hashOnly: true, key: 'none', keyLabel: '', keyEn: '', keyDefault: '' }
   };
 
   /* ================= 列换位（密钥列换位 + 填充 X） ================= */
@@ -653,7 +814,7 @@ window.Workshop = (function () {
     },
     dec: function (algoId, cipher, keyRaw) {
       var a = ALGOS[algoId];
-      if (!a) return '';
+      if (!a || !a.dec) return '';
       var k = parseKey(a.key, keyRaw);
       if (a.key === 'ab') return a.dec(cipher, k[0], k[1], k[2], k[3]);
       return a.dec(cipher, k);

@@ -52,7 +52,8 @@ window.Arcade = window.Arcade || {};
 
   function itemHtml(it) {
     var active = (page === it.key) ? ' on' : '';
-    return '<a class="anav-item' + active + '" href="' + prefix + it.href + '" data-nav="' + it.key + '">' +
+    var cur = (page === it.key) ? ' aria-current="page"' : '';
+    return '<a class="anav-item' + active + '" href="' + prefix + it.href + '" data-nav="' + it.key + '"' + cur + '>' +
       '<span class="anav-ic">' + it.icon + '</span>' +
       '<span class="anav-tx">' + T('nav.' + it.key) + '</span></a>';
   }
@@ -70,7 +71,8 @@ window.Arcade = window.Arcade || {};
   tabbar.setAttribute('aria-label', T('nav.label'));
   tabbar.innerHTML = ITEMS.map(function (it) {
     var active = (page === it.key) ? ' on' : '';
-    return '<a class="tabbar-item' + active + '" href="' + prefix + it.href + '" data-nav="' + it.key + '">' +
+    var cur = (page === it.key) ? ' aria-current="page"' : '';
+    return '<a class="tabbar-item' + active + '" href="' + prefix + it.href + '" data-nav="' + it.key + '"' + cur + '>' +
       '<span class="tabbar-ic">' + it.icon + '</span>' +
       '<span class="tabbar-tx">' + T('nav.' + it.key) + '</span></a>';
   }).join('');

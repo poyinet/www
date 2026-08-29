@@ -52,6 +52,21 @@
     .pp-sub { margin-top: 8px; color: var(--text-dim); font-size: 13px; }
     .pp-count { font-family: var(--font-pixel); font-size: 11px; color: var(--neon-cyan); margin-top: 8px; }
 
+    /* 人物关系网 */
+    .pp-rels { margin: 16px 0 4px; padding: 14px 16px 10px; border-radius: 12px; background: rgba(0,0,0,.22); border: 1px solid rgba(255,255,255,.07); }
+    .pp-rel-head { font-family: var(--font-pixel); font-size: 12px; color: var(--neon-yellow); letter-spacing: 1px; margin-bottom: 4px; }
+    .pp-rel-note { font-size: 11px; color: var(--text-dim); margin-bottom: 10px; }
+    .pp-rel-group { margin: 10px 0; }
+    .pp-rel-t { font-size: 12px; color: var(--neon-purple); margin-bottom: 6px; }
+    .pp-rel-items { display: flex; flex-wrap: wrap; gap: 6px; }
+    .pp-rel-item {
+      font-size: 11px; color: var(--text-main); line-height: 1.7; padding: 4px 9px;
+      background: rgba(0,0,0,.3); border: 1px solid rgba(255,255,255,.08); border-radius: 8px;
+    }
+    .pp-rel-item i { color: var(--text-dim); font-style: normal; }
+    .pp-rel-a { color: var(--neon-cyan); cursor: pointer; }
+    .pp-rel-a:hover { text-decoration: underline; }
+
     /* 人物时间线（主体视图）：纵向置中，人物分列年代两侧 */
     .pp-timeline { margin: 22px 0 4px; padding: 14px 16px 10px; border-radius: 12px; background: rgba(0,0,0,.22); border: 1px solid rgba(255,255,255,.07); }
     .pp-tl-title { font-family: var(--font-pixel); font-size: 12px; color: var(--neon-yellow); letter-spacing: 1px; margin-bottom: 16px; }
@@ -98,6 +113,7 @@
       <div class="pp-sub" data-i18n="people.sub">三千年密码史中的破译者们</div>
       <div class="pp-count" id="pp-count"></div>
     </div>
+    <div class="pp-rels" id="pp-rels"></div>
     <div class="pp-timeline" id="pp-timeline"></div>
   </div>
 
@@ -118,6 +134,7 @@
   <script src="assets/js/core/music.js"></script>
   <script src="assets/js/games.js"></script>
   <script src="assets/js/stories.js"></script>
+  <script src="assets/js/people-rel.js"></script>
   <script src="assets/js/nav.js"></script>
   <script>
 
@@ -174,6 +191,8 @@
         })(cards[i]);
       }
     })();
+    /* 人物关系网 */
+    if (window.PEOPLE_REL) window.PEOPLE_REL.render();
   </script>
   <script>
     /* 人物志背景音乐：大厅主旋律 */

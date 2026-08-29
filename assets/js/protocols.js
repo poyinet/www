@@ -49,6 +49,9 @@ window.PROTOCOL_LAB = (function () {
 ,
       { id: 'hashchain', icon: '🔗', name: { zh: '哈希链', en: 'Hash Chain' } },
       { id: 'rsadict', icon: '📕', name: { zh: '教科书 RSA', en: 'Textbook RSA' } }
+,
+      { id: 'ecdsa', icon: '🖋️', name: { zh: 'ECDSA 签名', en: 'ECDSA Signing' } },
+      { id: 'elgamal', icon: '🔐', name: { zh: 'ElGamal 加密', en: 'ElGamal Encryption' } }
     ],
     /* 协议页按钮英文映射（静态 HTML 按钮默认中文，init 时按语言替换） */
     btns: {
@@ -94,6 +97,15 @@ window.PROTOCOL_LAB = (function () {
       'rd-dict': '💥 Dict attack (interval)',
       'rd-rand': '🎲 Randomized pad ×2',
       'rd-brutec': '💥 Enumerate all (4544)',
+      'ecdsa-key': '🎲 Random private key',
+      'ecdsa-sign': '✍️ Sign (random k)',
+      'ecdsa-verify': '✅ Verify',
+      'ecdsa-reuse': '💥 k-reuse attack',
+      'el-key': '🎲 Random private key',
+      'el-enc': '🔐 Encrypt (random k)',
+      'el-dec': '🔓 Decrypt',
+      'el-rand': '🎲 Re-encrypt (new k)',
+      'el-reuse': '💥 k-reuse break',
 
 
     },
@@ -106,6 +118,7 @@ window.PROTOCOL_LAB = (function () {
       '📨 OTP 电报房（游戏）': '📨 OTP Telegraph (game)',
       '🔑 DH 握手场（游戏）': '🔑 DH Handshake (game)',
       '📟 TOTP 验证器（游戏）': '📟 TOTP Verifier (game)',
+      '🀄 国密网关（游戏）': '🀄 GM Gateway (game)',
       '🕶️ 盲签密约（游戏）': '🕶️ Blind Signature (game)',
     },
     /* 协议页导航锚点 en */
@@ -134,7 +147,7 @@ window.PROTOCOL_LAB = (function () {
     /* 「📚 参考：」前缀 en */
     srcL10n: { "📚 参考：": "📚 Sources: " },
     /* pwd 卡 label en */
-    labelL10n: { "算法": "Algorithm", "攻击装备": "Attack rig", "长度": "Length" },
+    labelL10n: { "算法": "Algorithm", "攻击装备": "Attack rig", "长度": "Length", "私钥 d =": "private d = ", "消息 e =": "message e = ", "私钥 a =": "private a = ", "消息 m =": "message m = " },
 
 
 
@@ -159,6 +172,26 @@ window.PROTOCOL_LAB = (function () {
       en: 'DH security is not just about a big p. With g = 1 the shared secret is always 1 (parameter-mixing); with a non-safe prime, small-subgroup attacks trap secrets in tiny circles. This demo really does three checks: p primality, safe-prime property (p = 2q+1 with q prime), and whether the order of g is exactly p−1 (a true generator). Pass all three and the parameters are "validated" — RFC 7919 FFDHE named groups were hardened exactly this way.'
     },
 
+
+    /* ================= ECDSA 微曲线签名 ================= */
+    ecIntro: {
+      zh: 'ECDSA 是 FIPS 186 系列的标准签名：私钥 d ∈ [1, n−1]，公钥 Q = d·G；签名时随机数 k 决定 R = k·G（r = R 的 x 坐标）与 s = k⁻¹(e + r·d) mod n。验签只需公钥：算 w、u1、u2，验证 (u1·G + u2·Q) 的 x 坐标 ≡ r。本演示在真实微型曲线 y² = x³ + 2x + 2 mod 17（群阶 19，与国密 SM2 曲线方程同形）上真算全部点乘。',
+      en: 'ECDSA is the standard signature of FIPS 186: private key d ∈ [1, n−1], public key Q = d·G; a random k picks R = k·G (r = x-coordinate of R) and s = k⁻¹(e + r·d) mod n. Verification needs only the public key: recover u1 and u2, check that the x-coordinate of (u1·G + u2·Q) equals r. This demo runs every scalar multiplication for real on the tiny curve y² = x³ + 2x + 2 mod 17 (group order 19 — the same equation shape as the national SM2 curve).'
+    },
+    ecNote: {
+      zh: '📌 三步体验：① 换私钥看公钥 Q 变化；② 签名（内部随机 k）后验签，再点「随机化重签」看同一消息两次签名完全不同；③ 点「k 复用攻击」——固定 k 签两条不同消息，(s1−s2)⁻¹·(e1−e2) 直接算出 k，私钥 d 随即复原。这就是「随机数 k 是 ECDSA 的安全命门」的来历：2010 年 PS3 固件签名固用 k、2013 年 Bitcoin 钱包 k 复用，都直接丢了私钥。玩具曲线仅供教学（真实曲线 256 位）。',
+      en: '📌 Three steps: ① change the private key and watch Q move; ② sign (random k inside) then verify — click "re-sign" to see two signatures of the same message differ completely; ③ click "k-reuse attack": with k fixed across two messages, (s1−s2)⁻¹·(e1−e2) recovers k and the private key falls out. This is why the random k is the security lifeline of ECDSA: PS3 firmware signing in 2010 and a Bitcoin wallet in 2013 both lost keys to a fixed or reused k. Toy curve for teaching only (real curves are 256-bit).'
+    },
+
+    /* ================= ElGamal 随机化加密 ================= */
+    elIntro: {
+      zh: 'ElGamal（1985 年 Taher Elgamal）在乘法群 Z_p* 上做概率加密：公钥 h = g^a（g 为生成元，a 为私钥）；每次加密随机选 k，密文 (c1, c2) = (g^k, m·h^k) —— 同一明文两次加密得到两个完全不同密文对，这就是语义安全（IND-CPA）的雏形。本演示在 p = 47、g = 5（阶 46，安全素数组）上真算。',
+      en: 'ElGamal (Taher Elgamal, 1985) is probabilistic encryption in the multiplicative group Z_p*: public key h = g^a (g generator, a private); each encryption picks a random k and yields (c1, c2) = (g^k, m·h^k) — the same plaintext encrypts to two completely different ciphertext pairs, the seed of semantic security (IND-CPA). This demo computes for real on p = 47, g = 5 (order 46, a safe-prime group).'
+    },
+    elNote: {
+      zh: '📌 对照 RSA 字典攻击卡：ElGamal 的破解点不是明文空间——随机 k 把每个 m 都摊成一片；但 k 用两次就露馅：(c2₃/c2₁) = (m₂/m₁) mod p，已知一条消息就能算出另一条（点「k 复用攻破」看它真算出来）。铁律与 OTP 一样：随机数绝不重样。玩具 p=47 仅供教学。',
+      en: '📌 Contrast with the RSA dictionary-attack card: ElGamal does not leak the plaintext space — random k spreads every m. But reusing k gives it away: (c2₃/c2₁) = (m₂/m₁) mod p, so knowing one message reveals the other (click "k-reuse break" and watch it really recover). Same iron rule as OTP: never repeat randomness. Toy p=47 for teaching only.'
+    },
     /* ================= 哈希链（Lamport 一次性口令） ================= */
     hcIntro: {
       zh: '1981 年 Leslie Lamport 提出用哈希链做一次性口令：服务器只存链顶值，用户每次出示上一环，服务器验证 H(上一环) = 当前持有值后向前推进一格。每一环都不同，密钥从不重复；截获任何一环只能用到一次，且无法倒推出下一环（单向性）。本演示运行真实迭代哈希——玩具 32 位仅供教学，真实为 256 位。',
@@ -1781,6 +1814,206 @@ window.PROTOCOL_LAB = (function () {
       out([{ k: isEn ? 'ready' : '就绪', v: isEn ? 'n = ' + N + ' (97×113), e = ' + E + ', known plaintext interval [' + LO + ',' + HI + ']' : 'n = ' + N + '（97×113），e = ' + E + '，已知明文区间 [' + LO + ',' + HI + ']' }]);
     });
 
-    el('pl-ready').textContent = '20';
+
+    /* ---------- 🖋️ ECDSA 微曲线签名 ---------- */
+    LAZY('pl-ecdsa', function () {
+      el('ecdsa-intro').textContent = L(LAB.ecIntro);
+      el('ecdsa-note').textContent = L(LAB.ecNote);
+      var EC = { a: 2, b: 2, p: 17, n: 19, G: [5, 1] }, INF = null;
+      function nrm(x, p) { return ((x % p) + p) % p; }
+      function mInv(a, p) { var out = 1, b = nrm(a, p), e = p - 2; while (e > 0) { if (e & 1) out = out * b % p; b = b * b % p; e >>= 1; } return out; }
+      function ecAdd(P, Q) {
+        var p = EC.p;
+        if (P === INF) return Q;
+        if (Q === INF) return P;
+        var x1 = P[0], y1 = P[1], x2 = Q[0], y2 = Q[1];
+        if (x1 === x2 && nrm(y1 + y2, p) === 0) return INF;
+        var lam;
+        if (x1 === x2 && y1 === y2) lam = nrm(3 * x1 * x1 + EC.a, p) * mInv(nrm(2 * y1, p), p) % p;
+        else lam = nrm(y2 - y1, p) * mInv(nrm(x2 - x1, p), p) % p;
+        return [nrm(lam * lam - x1 - x2, p), nrm(lam * (x1 - nrm(lam * lam - x1 - x2, p)) - y1, p)];
+      }
+      function ecMul(k, P) {
+        var R = INF, Q = P;
+        k = nrm(k, EC.n);
+        while (k > 0) { if (k & 1) R = ecAdd(R, Q); Q = ecAdd(Q, Q); k >>= 1; }
+        return R;
+      }
+      var d = 5, m = 7, last = null;
+      function Q() { return ecMul(d, EC.G); }
+      function sign(ms, k) {
+        var R = ecMul(k, EC.G);
+        var r = R[0] % EC.n;
+        var s = mInv(k, EC.n) * (nrm(ms, EC.n) + r * d) % EC.n;
+        return { r: r, s: s % EC.n };
+      }
+      function verify(ms, sig) {
+        if (sig.r <= 0 || sig.s <= 0 || sig.r >= EC.n || sig.s >= EC.n) return false;
+        var w = mInv(sig.s, EC.n);
+        var u1 = ms % EC.n * w % EC.n;
+        var u2 = sig.r * w % EC.n;
+        var P = ecAdd(ecMul(u1, EC.G), ecMul(u2, Q()));
+        if (P === INF) return false;
+        return (P[0] % EC.n) === sig.r;
+      }
+      function rows(h) { el('ecdsa-out').innerHTML = h; }
+      function render(v) {
+        var h = '<tr><td>' + (isEn ? 'params' : '参数') + '</td><td class="mono">y² = x³ + 2x + 2 mod 17 · G = (5,1) · #E = 19</td></tr>' +
+          '<tr><td>' + (isEn ? 'private d' : '私钥 d') + '</td><td class="mono">' + d + '</td></tr>' +
+          '<tr><td>' + (isEn ? 'public Q = d·G' : '公钥 Q = d·G') + '</td><td class="mono">(' + Q().join(', ') + ')</td></tr>';
+        if (last) {
+          var R = ecMul(last.k, EC.G);
+          h += '<tr><td>' + (isEn ? 'message e' : '消息 e') + '</td><td class="mono">' + last.m + '</td></tr>' +
+            '<tr><td>k · R = k·G</td><td class="mono">k=' + last.k + ' → (' + R.join(', ') + '), r=' + last.r + '</td></tr>' +
+            '<tr><td>s = k⁻¹(e + r·d) mod n</td><td class="mono">' + last.s + '</td></tr>';
+        }
+        if (v !== undefined) h += '<tr class="' + (v ? 'ok' : 'bad') + '"><td colspan="2">' + (
+          v ? (isEn ? '✓ Signature VALID (u1·G + u2·Q).x ≡ r' : '✓ 验签通过：(u1·G + u2·Q) 的 x ≡ r')
+            : (isEn ? '✗ Signature INVALID' : '✗ 验签失败')) + '</td></tr>';
+        rows(h);
+      }
+      el('ecdsa-key').addEventListener('click', function () {
+        d = 1 + Math.floor(Math.random() * (EC.n - 1));
+        el('ecdsa-d').value = String(d);
+        last = null; render();
+      });
+      el('ecdsa-d').addEventListener('change', function () {
+        d = parseInt(el('ecdsa-d').value, 10);
+        if (isNaN(d) || d < 1 || d > EC.n - 1) d = 5;
+        el('ecdsa-d').value = String(d);
+        last = null; render();
+      });
+      el('ecdsa-sign').addEventListener('click', function () {
+        m = parseInt(el('ecdsa-m').value, 10);
+        if (isNaN(m) || m < 1) m = 7;
+        var k, sig;
+        do { k = 1 + Math.floor(Math.random() * (EC.n - 1)); sig = sign(m, k); } while (sig.r === 0 || sig.s === 0);
+        last = { m: m, r: sig.r, s: sig.s, k: k };
+        render();
+      });
+      el('ecdsa-verify').addEventListener('click', function () {
+        if (!last) { el('ecdsa-note2').textContent = isEn ? 'Sign first.' : '请先签名。'; return; }
+        el('ecdsa-note2').textContent = '';
+        render(verify(last.m, { r: last.r, s: last.s }));
+      });
+      el('ecdsa-reuse').addEventListener('click', function () {
+        var k, m1, m2, s1, s2;
+        do {
+          k = 1 + Math.floor(Math.random() * (EC.n - 1));
+          m1 = 1 + Math.floor(Math.random() * 15);
+          m2 = 1 + Math.floor(Math.random() * 15);
+          if (m1 === m2) m2 = (m2 % 14) + 1;
+          s1 = sign(m1, k); s2 = sign(m2, k);
+        } while (s1.r === 0 || s2.r === 0); /* r=0 时无法反演（与签名按钮同规则）*/
+        var kk = mInv(nrm(s1.s - s2.s, EC.n), EC.n) * nrm(m1 - m2, EC.n) % EC.n;
+        var dd = mInv(s1.r, EC.n) * nrm(s1.s * kk - m1, EC.n) % EC.n;
+        rows('<tr class="bad"><td colspan="2">' + (isEn ? '💥 FIXED k = ' + k + ' across e=' + m1 + ' and e=' + m2 + ' → (s1−s2)⁻¹(e1−e2) = ' + kk + ' → d = ' + dd + (dd === d ? ' — private key recovered!' : '') : '💥 固定 k = ' + k + ' 签 e=' + m1 + ' 与 e=' + m2 + ' → (s1−s2)⁻¹(e1−e2) = ' + kk + ' → d = ' + dd + (dd === d ? ' —— 私钥被复原！' : '')) + '</td></tr>');
+      });
+      function fillSel(id, lo, hi) {
+        var sel = el(id);
+        if (!sel) return;
+        sel.innerHTML = '';
+        for (var i = lo; i <= hi; i++) {
+          var op = document.createElement('option');
+          op.value = String(i);
+          op.textContent = String(i);
+          sel.appendChild(op);
+        }
+      }
+      fillSel('ecdsa-d', 1, EC.n - 1);
+      fillSel('ecdsa-m', 1, 15);
+      el('ecdsa-d').value = String(d);
+      el('ecdsa-m').value = String(m);
+      render();
+    });
+
+    /* ---------- 🔐 ElGamal 随机化加密 ---------- */
+    LAZY('pl-elgamal', function () {
+      el('el-intro').textContent = L(LAB.elIntro);
+      el('el-note').textContent = L(LAB.elNote);
+      var P = 47, G0 = 5, ORD = 46;
+      function nrm(x, m) { return ((x % m) + m) % m; }
+      function pm(b, e, m) { var out = 1; b = nrm(b, m); while (e > 0) { if (e & 1) out = out * b % m; b = b * b % m; e >>= 1; } return out; }
+      var a = 13, m = 21, last = null;
+      function egH() { return pm(G0, a, P); }
+      function enc(ms, k) { return { c1: pm(G0, k, P), c2: ms * pm(egH(), k, P) % P, k: k }; }
+      function dec(c1, c2) { return c2 * pm(c1, ORD - a, P) % P; }
+      function rows(h) { el('el-out').innerHTML = h; }
+      function render(v) {
+        var h = '<tr><td>' + (isEn ? 'params' : '参数') + '</td><td class="mono">p = 47 · g = 5 (order 46)</td></tr>' +
+          '<tr><td>' + (isEn ? 'private a' : '私钥 a') + '</td><td class="mono">' + a + '</td></tr>' +
+          '<tr><td>' + (isEn ? 'public h = g^a' : '公钥 h = g^a') + '</td><td class="mono">5^' + a + ' mod 47 = ' + egH() + '</td></tr>';
+        if (last) {
+          h += '<tr><td>' + (isEn ? 'message m' : '消息 m') + '</td><td class="mono">' + last.m + '</td></tr>' +
+            '<tr><td>c1 = g^k, c2 = m·h^k</td><td class="mono">k=' + last.k + ' → c1=' + last.c1 + ', c2=' + last.c2 + '</td></tr>';
+        }
+        if (v !== undefined) h += '<tr class="' + (v ? 'ok' : 'bad') + '"><td colspan="2">' +
+          (v ? (isEn ? '✓ decrypt: c2·c1^(46−a) mod 47 = ' + v : '✓ 解密：c2·c1^(46−a) mod 47 = ' + v)
+            : (isEn ? '✗ mismatch' : '✗ 不符')) + '</td></tr>';
+        rows(h);
+      }
+      el('el-key').addEventListener('click', function () {
+        a = 2 + Math.floor(Math.random() * 44);
+        el('el-a').value = String(a);
+        last = null; render();
+      });
+      el('el-a').addEventListener('change', function () {
+        a = parseInt(el('el-a').value, 10);
+        if (isNaN(a) || a < 2 || a > 45) a = 13;
+        el('el-a').value = String(a);
+        last = null; render();
+      });
+      el('el-enc').addEventListener('click', function () {
+        m = parseInt(el('el-m').value, 10);
+        if (isNaN(m) || m < 2 || m > 46) m = 21;
+        var k = 2 + Math.floor(Math.random() * 44);
+        last = enc(m, k);
+        var decv = dec(last.c1, last.c2);
+        rows('<tr><td>' + (isEn ? 'params' : '参数') + '</td><td class="mono">p = 47 · g = 5</td></tr>' +
+          '<tr><td>' + (isEn ? 'private a' : '私钥 a') + '</td><td class="mono">' + a + '</td></tr>' +
+          '<tr><td>' + (isEn ? 'public h' : '公钥 h') + '</td><td class="mono">' + egH() + '</td></tr>' +
+          '<tr><td>' + (isEn ? 'encrypt m=' + m : '加密 m=' + m) + '</td><td class="mono">k=' + last.k + ' → (c1, c2) = (' + last.c1 + ', ' + last.c2 + ')</td></tr>' +
+          '<tr class="ok"><td colspan="2">' + (isEn ? '✓ decrypted = ' + decv : '✓ 本地解密 = ' + decv) + '</td></tr>');
+      });
+      el('el-dec').addEventListener('click', function () {
+        if (!last) { return; }
+        var decv = dec(last.c1, last.c2);
+        render(decv);
+      });
+      el('el-rand').addEventListener('click', function () {
+        if (!last) { return; }
+        var k2 = 2 + Math.floor(Math.random() * 44);
+        var e2 = enc(last.m, k2);
+        rows('<tr><td>' + (isEn ? 'same m=' + last.m + ', new k' : '同一消息 m=' + last.m + '，换 k') + '</td><td class="mono">k=' + k2 + ' → (' + e2.c1 + ', ' + e2.c2 + ') vs previous (' + last.c1 + ', ' + last.c2 + ')</td></tr>' +
+          '<tr class="ok"><td colspan="2">' + (isEn ? '☑ Two encryptions, two ciphertexts — randomization hides the plaintext space.' : '☑ 两次加密两个密文——随机化藏住了明文空间。') + '</td></tr>');
+      });
+      el('el-reuse').addEventListener('click', function () {
+        var m1 = 2 + Math.floor(Math.random() * 10), m2p = 2 + Math.floor(Math.random() * 10);
+        if (m1 === m2p) m2p = (m2p % 9) + 2;
+        var k = 2 + Math.floor(Math.random() * 44);
+        var e1 = enc(m1, k), e2 = enc(m2p, k);
+        var mm = e2.c2 * nrm(mInv2(e1.c2, P), P) % P * m1 % P;
+        rows('<tr class="bad"><td colspan="2">' + (isEn ? '💥 SAME k=' + k + ' for m1=' + m1 + ' and m2=' + m2p + ' → c2₂ / c2₁ = m₂/m₁ → m₂ = ' + mm + (mm === m2p ? ' — revealed without the key!' : '') : '💥 固定 k = ' + k + ' 加密 m1=' + m1 + ' 与 m2=' + m2p + ' → c2₂ / c2₁ = m₂/m₁ → m₂ = ' + mm + (mm === m2p ? ' —— 无需私钥即被揭穿！' : '')) + '</td></tr>');
+      });
+      function mInv2(a, m) { var out = 1, b = nrm(a, m), e = m - 2; while (e > 0) { if (e & 1) out = out * b % m; b = b * b % m; e >>= 1; } return out; }
+      function fillSel(id, lo, hi) {
+        var sel = el(id);
+        if (!sel) return;
+        sel.innerHTML = '';
+        for (var i = lo; i <= hi; i++) {
+          var op = document.createElement('option');
+          op.value = String(i);
+          op.textContent = String(i);
+          sel.appendChild(op);
+        }
+      }
+      fillSel('el-a', 2, 45);
+      fillSel('el-m', 2, 46);
+      el('el-a').value = String(a);
+      el('el-m').value = String(m);
+      render();
+    });
+
+    el('pl-ready').textContent = '22';
   };
 })();

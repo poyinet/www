@@ -279,6 +279,10 @@
   d.en['pl.hashchainH'] = 'Hash Chain: Verify-Once Sequential Auth';
   d.zh['pl.rsadictH'] = '教科书 RSA：确定性是颗子弹';
   d.en['pl.rsadictH'] = 'Textbook RSA: Deterministic Is a Bullet';
+  d.zh['pl.ecdsaH'] = 'ECDSA：椭圆曲线上的签名';
+  d.en['pl.ecdsaH'] = 'ECDSA: Signing on a Tiny Curve';
+  d.zh['pl.elgamalH'] = 'ElGamal：随机化才是安全';
+  d.en['pl.elgamalH'] = 'ElGamal: Randomization Is the Fix';
   d.zh['pl.hashchainH'] = '哈希链：一次一验的顺序认证';
   d.en['pl.hashchainH'] = 'Hash Chain: Verify-Once Sequential Auth';
   d.zh['pl.rsadictH'] = '教科书 RSA：确定性是颗子弹';

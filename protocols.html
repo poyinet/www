@@ -153,7 +153,7 @@
       <div class="pl-nav">
         <a href="#pl-tls">🤝 TLS</a><a href="#pl-dh">🕵️ DH</a><a href="#pl-merkle">🌳 Merkle</a>
         <a href="#pl-zkp">🎭 ZKP</a><a href="#pl-chacha">🌀 ChaCha20</a><a href="#pl-ecc">📈 ECC</a>
-        <a href="#pl-a51">📡 A5/1</a>        <a href="#pl-rc4">🧨 RC4</a><a href="#pl-sign">✍️ 签名</a><a href="#pl-rng">🎲 随机数</a><a href="#pl-math">∑ 数论</a><a href="#pl-diff">🎯 差分</a><a href="#pl-aead">🛡️ AEAD</a><a href="#pl-ext">🧟 长度扩展</a><a href="#pl-big">🐘 大数</a><a href="#pl-pwd">⏳ 口令成本</a><a href="#pl-otp">📨 OTP</a><a href="#pl-dhpt">🧮 DH 参数</a><a href="#pl-hashchain">🔗 哈希链</a><a href="#pl-rsadict">📕 RSA</a>
+        <a href="#pl-a51">📡 A5/1</a>        <a href="#pl-rc4">🧨 RC4</a><a href="#pl-sign">✍️ 签名</a><a href="#pl-rng">🎲 随机数</a><a href="#pl-math">∑ 数论</a><a href="#pl-diff">🎯 差分</a><a href="#pl-aead">🛡️ AEAD</a><a href="#pl-ext">🧟 长度扩展</a><a href="#pl-big">🐘 大数</a><a href="#pl-pwd">⏳ 口令成本</a><a href="#pl-otp">📨 OTP</a><a href="#pl-dhpt">🧮 DH 参数</a><a href="#pl-hashchain">🔗 哈希链</a><a href="#pl-rsadict">📕 RSA</a><a href="#pl-ecdsa">🖋️ ECDSA</a><a href="#pl-elgamal">🔐 ElGamal</a>
       </div>
     </div>
 
@@ -447,6 +447,42 @@
       <div class="pl-src">📚 参考：<span class="pl-ref-a">Goldwasser & Micali, "Probabilistic Encryption" (STOC 1982)</span> · <span class="pl-ref-a">Bellare & Rogaway, "Optimal Asymmetric Encryption" (1994)</span> · <span class="pl-ref-a">RFC 8017: PKCS #1 v2.2 (OAEP)</span> · <span class="pl-ref-a">Bleichenbacher, "Chosen Ciphertext Attacks against PKCS #1" (CRYPTO 1998)</span></div>
 <div class="pl-extend"><a href="games/blind-sign/">🕶️ 盲签密约（游戏）</a><a href="story.html?id=modern">📜 相关编年史章节</a><a href="quiz.html">🎯 测验场</a></div>
     </div>
+    <div class="pl-card" id="pl-ecdsa">
+      <div class="pl-h"><span class="ic">🖋️</span><b data-i18n="pl.ecdsaH">ECDSA：椭圆曲线上的签名</b></div>
+      <div class="pl-note" id="ecdsa-intro"></div>
+      <table class="pl-tab" id="ecdsa-out"></table>
+      <div class="pl-btnrow">
+        <label class="ws-note">私钥 d = <select id="ecdsa-d" class="ws-input" style="width:auto;padding:6px 10px"></select></label>
+        <label class="ws-note">消息 e = <select id="ecdsa-m" class="ws-input" style="width:auto;padding:6px 10px"></select></label>
+        <button class="btn" id="ecdsa-key">🎲 随机私钥</button>
+        <button class="btn accent" id="ecdsa-sign">✍️ 签名</button>
+        <button class="btn green" id="ecdsa-verify">✅ 验签</button>
+        <button class="btn pink" id="ecdsa-reuse">💥 k 复用攻击</button>
+      </div>
+      <div class="pl-note-line" id="ecdsa-note2"></div>
+      <div class="pl-note" id="ecdsa-note"></div>
+      <div class="pl-src">📚 参考：<span class="pl-ref-a">FIPS 186-5: Digital Signature Standard (2023)</span> · <span class="pl-ref-a">ANSI X9.62: ECDSA (1998)</span> · <span class="pl-ref-a">PS3 2010 fixed-k signing incident · Bitcoin 2013 k-reuse key-losing attacks</span></div>
+<div class="pl-extend"><a href="games/gm-gateway/">🀄 国密网关（游戏）</a><a href="story.html?id=modern">📜 相关编年史章节</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
+    </div>
+
+    <div class="pl-card" id="pl-elgamal">
+      <div class="pl-h"><span class="ic">🔐</span><b data-i18n="pl.elgamalH">ElGamal：随机化才是安全</b></div>
+      <div class="pl-note" id="el-intro"></div>
+      <table class="pl-tab" id="el-out"></table>
+      <div class="pl-btnrow">
+        <label class="ws-note">私钥 a = <select id="el-a" class="ws-input" style="width:auto;padding:6px 10px"></select></label>
+        <label class="ws-note">消息 m = <select id="el-m" class="ws-input" style="width:auto;padding:6px 10px"></select></label>
+        <button class="btn" id="el-key">🎲 随机私钥</button>
+        <button class="btn accent" id="el-enc">🔐 加密</button>
+        <button class="btn green" id="el-dec">🔓 解密</button>
+        <button class="btn" id="el-rand">🎲 换 k 再加密</button>
+        <button class="btn pink" id="el-reuse">💥 k 复用攻破</button>
+      </div>
+      <div class="pl-note" id="el-note"></div>
+      <div class="pl-src">📚 参考：<span class="pl-ref-a">Taher Elgamal, "A Public Key Cryptosystem and a Signature Scheme Based on Discrete Logarithms", IEEE Trans. Info. Theory (1985)</span> · <span class="pl-ref-a">Goldwasser & Micali, "Probabilistic Encryption" (STOC 1982) — randomization & semantic security</span></div>
+<div class="pl-extend"><a href="games/blind-sign/">🕶️ 盲签密约（游戏）</a><a href="story.html?id=modern">📜 相关编年史章节</a><a href="quiz.html">🎯 测验场</a><a href="glossary.html">📖 密码学词典</a></div>
+    </div>
+
 <div id="pl-ready"></div>
 
   <footer class="lobby-footer">

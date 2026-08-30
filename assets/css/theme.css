@@ -775,6 +775,27 @@ html.theme-daylight {
   --accent: #2d7dd2;
   --on-accent: #ffffff; /* 亮色主题：霓虹背景上白字 */
 }
+/* 显示细节（维护批）：游戏可交互网格单元/模式按钮在亮色主题下的底色适配
+   （白色 alpha 在浅底上不可见 → 紫调 alpha，与主题卡片色系一致） */
+html.theme-daylight .ws-cell,
+html.theme-daylight .fo-cell,
+html.theme-daylight .sh-cell,
+html.theme-daylight .no-cell,
+html.theme-daylight .lo-cell,
+html.theme-daylight .sk-cell,
+html.theme-daylight .c4-cell,
+html.theme-daylight .g2048-cell,
+html.theme-daylight .mode-btn {
+  background: rgba(122, 91, 184, 0.12);
+}
+html.theme-daylight .ws-cell,
+html.theme-daylight .fo-cell,
+html.theme-daylight .sh-cell,
+html.theme-daylight .no-cell,
+html.theme-daylight .lo-cell,
+html.theme-daylight .c4-cell {
+  border-color: rgba(122, 91, 184, 0.38);
+}
 
 /* F4：晨光主题残存深色块修复——游戏页顶栏与编年史史料框 */
 html.theme-daylight .shell-header {

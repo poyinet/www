@@ -26,9 +26,15 @@ Arcade.ensureArchive = function (cb) {
   window.__arcadeArchiveLoaded = true; /* 先置位防并发重复注入；失败也只降级为占位文案 */
   var pre = (typeof window.__arcadePagePrefix === 'string') ? window.__arcadePagePrefix
     : (/\/games\/[^/]+\//.test(location.pathname) ? '../../' : '');
+  /* poyi enc v1：加载编码载荷 + 解码引导（secure.js 统一解码执行）*/
   var s = document.createElement('script');
-  s.src = pre + 'assets/js/core/i18n-archive.js';
-  s.onload = function () { if (cb) cb(); };
+  s.src = pre + 'assets/js/enc/i18n-archive.enc.js';
+  s.onload = function () {
+    var sec = document.createElement('script');
+    sec.src = pre + 'assets/js/secure.js';
+    sec.onload = sec.onerror = function () { if (cb) cb(); };
+    (document.head || document.documentElement).appendChild(sec);
+  };
   s.onerror = function () { if (cb) cb(); };
   (document.head || document.documentElement).appendChild(s);
 };
@@ -36,6 +42,11 @@ Arcade.ensureArchive = function (cb) {
 /* ---------------- 设置：音效 / 音乐 / 语言 / 主题 / 触感 ---------------- */
 Arcade.settings = (function () {
   var KEY = 'arcade_settings';
+  /* poyi enc v1 · 密钥散件 B */
+  window.__DSH_MASK = [0x72, 0xA4, 0x0C, 0xE9, 0x5B, 0x3F, 0xD1, 0x68];
+  /* poyi enc v1 · 密钥散件 C（全站共有文件；decode 引导读取）*/
+  window.__DSH_SALT = 'poyi-enc-v1';
+
   var THEMES = ['neon', 'daylight'];
   /* 各主题的主题色（meta theme-color / iOS 状态栏联动；与 theme.css 配色一致） */
   var THEME_COLORS = { neon: '#0a0a12', daylight: '#f2ead8' };

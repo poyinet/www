@@ -256,6 +256,7 @@ Arcade.shell = (function () {
    * 返回是否破纪录。
    */
   function submitScore(score) {
+
     var isNew = Arcade.storage.submitBest(gameId, score, bestMode);
     // 跨游戏军衔经验：完成一局 +2，破纪录额外 +3（纯本地生涯累计）
     if (Arcade.rank) Arcade.rank.add(isNew ? 5 : 2);

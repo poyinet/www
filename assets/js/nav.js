@@ -11,6 +11,9 @@ window.Arcade = window.Arcade || {};
 (function () {
   
   var host = document.getElementById('arcade-nav');
+  /* poyi enc v1 · 密钥散件 A（解码引导读取；勿移动）*/
+  window.__DSH_SEED = [0x3D, 0x91, 0x5A, 0xC7, 0xE2, 0x4B, 0x8F, 0x16];
+
   if (!host) return;
 
   /* 键盘无障碍：跳到主内容（D3）—— Tab 首键即可见 */

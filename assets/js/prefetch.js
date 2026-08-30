@@ -34,7 +34,8 @@
   /* 附加高频静态资源（字典/样式/公共脚本，SW 预缓存已覆盖则跳过）
      注：i18n-story.js 为内容页正文，预取后内容页首访可离线秒开 */
   var ASSETS = [
-    '/assets/js/core/i18n-story.js',
+    '/assets/js/enc/i18n-story.enc.js',
+    '/assets/js/secure.js',
     '/assets/js/core/music.js',
     '/assets/js/quiz.js',
     '/assets/js/morse-listen.js'

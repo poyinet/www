@@ -13,3 +13,6 @@ audit.js
 smoke.js
 PLAN.md
 README.md
+
+# 内容加密明文源 —— 仅本地（仓库/线上只含 enc 编码版）
+assets/js/plain/

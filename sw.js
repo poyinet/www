@@ -41,7 +41,7 @@ var CORE_ASSETS = [
   '/assets/css/shell.css',
   '/assets/js/core/i18n.js',
   '/assets/js/core/i18n-dict.js',
-  '/assets/js/core/i18n-ui.js',
+  '/assets/js/core/i18n-ui.js?v=2',
   '/assets/js/enc/i18n-archive.enc.js',
   '/assets/js/secure.js',
   '/assets/js/enc/i18n-story.enc.js',

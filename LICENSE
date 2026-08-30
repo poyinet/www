@@ -1,34 +1,58 @@
-# 破译游戏 DECODE ARCADE · 使用授权（License）
+# 破译游戏 DECODE ARCADE（poyi.net）· 授权声明 License
 
-**© 2026 破译游戏 DECODE ARCADE（poyi.net）· All rights reserved.**
+**© 2026 破译游戏 DECODE ARCADE（poyi.net / GitHub: poyinet/www）**
 
-本项目（含站点内容、结构、代码、文案、设计）为原创作品，保留全部权利。公开部署于
-GitHub Pages（仓库 poyinet/www）仅出于访问与学习演示之目的。
-
-## 允许（无需另行授权）
-
-- 浏览、运行、离线使用本站（学习、研究、娱乐）；
-- 学习与参考代码组织方式、算法实现思路（合理引用）；
-- 为个人学习目的克隆/搭建本地副本。
-
-## 需要保留/遵守的条件
-
-- 任何使用/引用/转载站内**文案内容**（编年史正文、人物传记、密件译文、术语释义、
-  测验题目等）时，请保留本站出处（poyi.net / 破译游戏 DECODE ARCADE）；
-- 转载或二次发布须注明来源并保留本页声明。
-
-## 不允许
-
-- **商用**：将站内内容/代码用于商业用途（含上架付费应用、售卖、广告变现）未事先
-  取得书面授权；
-- **整体搬运与仿冒**：整站复制、换披皮后作为自有作品发布或宣称原创；
-- 移除版权/出处信息后传播。
-
-> 本站部分史实信息整理自公开资料（见站内各处「出处」行）；相关先行出版物与标准
-> 的版权归原作者/组织所有，引用仅为学习说明。
+本仓库包含两类作品，分别授权（见下方条文）：
 
 ---
 
-**English summary:** Licensed for personal study and reference with attribution
-(poyi.net). No commercial use, no wholesale copying, no removal of credits without
-prior written permission.
+## 1. 内容与设计 —— CC BY 4.0
+
+站点内全部**文本内容与设计**（编年史正文、人物传记、密件译文与史料整理、
+术语释义、测验题目、页面文案、界面设计），采用
+**Creative Commons Attribution 4.0 International（CC BY 4.0）** 授权。
+
+- **你可以自由地**：共享（复制、再分发）与改编（混合、改写、基于它创作），
+  包括**商业用途**。
+- **只需**：署名（本作品来自"破译游戏 DECODE ARCADE"）并**附上来源链接
+  https://poyi.net**，注明是否对原作进行了修改；保留本许可条款链接。
+- 许可全文：https://creativecommons.org/licenses/by/4.0/
+
+> 站内各处「出处」行所引用的历史文献、标准与先行出版物，其权利归原作者/
+> 组织所有；本站引用仅供学习说明。
+
+## 2. 代码 —— MIT License
+
+本仓库内全部**软件代码**（HTML/CSS/JavaScript，含 142 款游戏与站点脚本），
+采用 **MIT License** 授权：
+
+```
+MIT License
+
+Copyright (c) 2026 破译游戏 DECODE ARCADE (poyi.net)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
+
+---
+
+**English summary:** Site content and design are licensed under
+[CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — free to share and
+adapt, even commercially, with attribution and a link to
+https://poyi.net. All software code is licensed under MIT.

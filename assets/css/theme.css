@@ -389,6 +389,11 @@ body::after {
   display: flex; align-items: center; justify-content: center;
   transition: background 0.15s, transform 0.15s, border-color 0.15s;
 }
+@media (max-width: 900px) {
+  /* 显示细节（维护批）：移动端/平板触控目标 ≥40px（WCAG 2.5.5 建议 44）*/
+  .qb-btn { width: 42px; height: 42px; font-size: 17px; }
+  .qb-btn.qb-lang { font-size: 13px; }
+}
 .qb-btn:hover { background: color-mix(in srgb, var(--accent, #00f0ff) 12%, transparent); transform: scale(1.1); }
 .qb-btn.off { opacity: 0.4; }
 /* 语言按钮：中 / EN 像素字 */

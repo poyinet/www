@@ -52,7 +52,22 @@ SOFTWARE.
 
 ---
 
+## 3. 声明与共存（Notes）
+
+- **加密与授权并存**：本站部分内容（编年史正文、人物传记、密件原文）以加密形式传输，
+  仅用于降低程序化批量爬取。该措施**不改变、不限制**上述授权——任何人在网页正常访问
+  到的内容，均可依 CC BY 4.0 自由使用（署名 + 链接即可）。
+- **第三方素材**：站点使用的中文字体 Fusion Pixel 与像素字体 Press Start 2P 依
+  **SIL Open Font License** 分发，许可证全文见 `assets/fonts/*OFL.txt`；全部图像、
+  界面、文案与音效（Web Audio 实时合成）均为本站原创。
+- **使用条款与免责**：见 <https://poyi.net/TERMS.html>；隐私说明见
+  <https://poyi.net/PRIVACY.html>。
+
+---
+
 **English summary:** Site content and design are licensed under
 [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) — free to share and
 adapt, even commercially, with attribution and a link to
-https://poyi.net. All software code is licensed under MIT.
+https://poyi.net. All software code is licensed under MIT. Encryption of some
+sections is an anti-scraping measure and does not alter these licenses. Terms:
+https://poyi.net/TERMS.html · Privacy: https://poyi.net/PRIVACY.html.

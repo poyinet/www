@@ -7,7 +7,7 @@
   <link rel="manifest" href="/manifest.webmanifest">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://poyi.net/PRIVACY.html">
-  <meta name="description" content="破译游戏 DECODE ARCADE · 隐私说明：零上传、无账号、无追踪——全部数据仅存于你的浏览器本地（中国市场法与 GDPR 合规说明）。">
+  <meta name="description" content="破译游戏 DECODE ARCADE · 隐私说明（Privacy Notice）：零上传、无账号、无追踪——全部数据仅存于你的浏览器本地。">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔒</text></svg>">
   <link rel="stylesheet" href="assets/css/theme.css">
   <style>
@@ -20,53 +20,59 @@
     .pv-table { width: 100%; border-collapse: collapse; font-size: 12px; margin: 8px 0; }
     .pv-table td, .pv-table th { border: 1px solid rgba(255,255,255,.12); padding: 8px 10px; text-align: left; color: var(--text-main); }
     .pv-table th { color: var(--neon-cyan); }
-    .pv-lang { font-size: 12px; color: var(--neon-pink); margin: 26px 0 8px; font-weight: 700; }
     .pv-footer { text-align: center; margin-top: 30px; font-size: 12px; color: var(--text-dim); }
     .pv-footer a { color: var(--neon-cyan); text-decoration: none; margin: 0 6px; }
   </style>
 </head>
 <body>
   <div id="arcade-nav"></div>
-  <h1 class="seo-h1" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">隐私说明</h1>
+  <h1 class="seo-h1" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">隐私说明 · Privacy Notice</h1>
   <div class="pv-wrap">
-    <div class="pv-h1">🔒 隐私说明</div>
-    <div class="pv-sub">Privacy Notice · 生效日期：2026-08-30</div>
-
-    <div class="pv-sec">一句话总结</div>
-    <div class="pv-p">本站<b>不收集任何个人信息</b>：无账号、无登录、无 Cookie、无分析统计、无第三方 SDK、无任何数据传输。你的所有记录只存在于<b>你自己的浏览器设备</b>上。</div>
-
-    <div class="pv-sec">我们存储什么（仅本地）</div>
-    <table class="pv-table">
-      <tr><th>数据类型</th><th>存储位置</th><th>用途</th></tr>
-      <tr><td>设置（音效/音乐/语言/主题/触感）</td><td>浏览器 localStorage（键 arcade_settings）</td><td>个性化显示与体验</td></tr>
-      <tr><td>游戏进度/最佳成绩/成就/统计</td><td>浏览器 localStorage（arcade_* 系列键）</td><td>离线档案与生涯</td></tr>
-      <tr><td>服务缓存（SW Cache）</td><td>浏览器 Cache Storage</td><td>离线可用性（功能必需）</td></tr>
-    </table>
-    <div class="pv-p">以上数据<b>不会</b>离开你的设备、不会上云、不会共享给任何第三方。清除方式：浏览器“清除站点数据”，或在档案页使用本地清零功能（全部数据随之删除）。</div>
-
-    <div class="pv-sec">我们不做什么</div>
-    <div class="pv-p">无 Cookie（包括第三方）；无广告；无追踪像素/指纹；无外链跳收集；无推送。站内无任何外链（含社交/统计），从源头杜绝数据外泄面。</div>
-
-    <div class="pv-lang">English summary (GDPR &amp; CCPA perspective)</div>
-    <div class="pv-p">
-      <b>Privacy Notice:</b> The site collects <b>no personal data whatsoever</b> — no accounts, no login, no
-      cookies (first- or third-party), no analytics, no fingerprinting, no trackers, no third-party SDKs, and
-      <b>no data leaves your device</b>. Preferences, game progress and statistics are stored exclusively in
-      your browser's localStorage; offline caching uses Cache Storage for functionality only. Under the GDPR
-      this site is not a data controller and performs no cross-border processing; under CCPA there is neither
-      sale nor sharing of personal information. You may erase all data at any time via your browser's
-      "clear site data" (or in-page reset on the profile page); nothing is stored elsewhere to delete.
-    </div>
-
+    <div class="pv-h1" data-i18n="legal.privacyTitle">🔒 隐私说明</div>
+    <div class="pv-sub" data-i18n="legal.privacySub">Privacy Notice · 生效日期 2026-08-30</div>
+    <div id="pv-body"></div>
     <div class="pv-footer">
-      <a href="/LICENSE">📄 使用授权</a>·<a href="/TERMS.html">⚖️ 使用条款</a>·<a href="/index.html">🏛️ 返回首页</a>
+      <a href="/LICENSE" data-i18n="legal.lic">📄 使用授权</a> · <a href="/TERMS.html" data-i18n="legal.terms">⚖️ 使用条款</a> · <a href="/index.html" data-i18n="legal.home">🏛️ 返回首页</a>
     </div>
   </div>
+  <script>
+  window.PRIVACY_COPY = {
+    zh: [
+      ['核心承诺', '本站<b>不收集任何个人信息</b>：无账号、无登录、无 Cookie、无分析统计、无第三方 SDK、无任何数据传输。你的所有记录只存在于<b>你自己的浏览器设备</b>上。', true],
+      ['我们存储什么（仅本地）', '<table class="pv-table"><tr><th>数据类型</th><th>存储位置</th><th>用途</th></tr><tr><td>设置（音效/音乐/语言/主题/触感）</td><td>浏览器 localStorage（键 arcade_settings）</td><td>个性化显示与体验</td></tr><tr><td>游戏进度/最佳成绩/成就/统计</td><td>浏览器 localStorage（arcade_* 系列键）</td><td>离线档案与生涯</td></tr><tr><td>服务缓存（SW Cache）</td><td>浏览器 Cache Storage</td><td>离线可用性（功能必需）</td></tr></table><p>以上数据<b>不会</b>离开你的设备、不会上云、不会共享给任何第三方。清除方式：浏览器「清除站点数据」，或在档案页使用本地清零功能（全部数据随之删除）。</p>', true],
+      ['我们不做什么', '无 Cookie（包括第三方）；无广告；无追踪像素/指纹；无外链跳收集；无推送。站内无任何外链（含社交/统计），从源头杜绝数据外泄面。'],
+      ['合规说明（中国）', '依据《中华人民共和国个人信息保护法》《网络安全法》与《数据安全法》：本站以「本地处理」方式运行，不进行个人信息收集、存储、使用、加工、传输、提供、公开与删除等任何处理活动；不存在向境外传输个人信息的场景；亦无「告知-同意」之外的向第三方提供。若适用法律要求「最小必要」原则，本站已满足（为零收集）。'],
+      ['未成年人保护', '本站内容适宜全年龄学习使用；因完全不收集数据，不存在未成年人个人信息收集问题。']
+    ],
+    en: [
+      ['Our commitment', 'This site collects <b>no personal data whatsoever</b> — no accounts, no login, no cookies, no analytics, no third-party SDKs, and no data transmission of any kind. Everything about your visit stays on <b>your own device</b>.', true],
+      ['What is stored (locally only)', '<table class="pv-table"><tr><th>Data</th><th>Location</th><th>Purpose</th></tr><tr><td>Settings (sound/music/language/theme/haptics)</td><td>localStorage (arcade_settings)</td><td>Personalised display</td></tr><tr><td>Progress, best scores, achievements, stats</td><td>localStorage (arcade_* keys)</td><td>Offline profile &amp; career</td></tr><tr><td>Service-worker cache</td><td>Cache Storage</td><td>Offline availability (functional necessity)</td></tr></table><p>None of this <b>leaves your device</b>: no cloud, no sharing with third parties. To erase it, use your browser\'s "clear site data", or the local reset on the profile page (everything is deleted).</p>', true],
+      ['What we do NOT do', 'No cookies (first- or third-party), no advertising, no tracking pixels, no fingerprinting, no outbound data collection, no push notifications. The site contains no external links (including social/analytics), eliminating the leak surface at the source.'],
+      ['GDPR / CCPA perspective', 'Under the GDPR this site is <b>not a data controller</b> and performs <b>no cross-border processing</b>: no personal data is collected, stored or transmitted, so no lawful basis, retention period or transfer mechanism applies; your rights (access, erasure, objection) are trivially satisfied because nothing exists outside your browser. Under the California Consumer Privacy Act there is <b>no sale or sharing</b> of personal information. No "Do Not Sell" link is needed. Erasure is one action away: clear site data.'],
+      ['Children', 'The site is suitable for all ages; since no data is collected, there is no children\'s personal data concern. If you use older browsers with persistent storage, note that data remains device-local and is never shared.']
+    ]
+  };
+  </script>
   <script src="assets/js/core/i18n.js"></script>
   <script src="assets/js/core/i18n-dict.js"></script>
   <script src="assets/js/core/i18n-ui.js"></script>
   <script src="assets/js/core/extras.js"></script>
   <script src="assets/js/nav.js"></script>
+  <script>
+    (function () {
+      if (!window.Arcade || !Arcade.i18n) return;
+      Arcade.i18n.applyStatic();
+      document.title = (Arcade.i18n.getLang() === 'en' ? 'Privacy Notice' : '隐私说明') + Arcade.i18n.t('app.titleSuffix');
+      var isEn = Arcade.i18n.getLang() === 'en';
+      var copy = isEn ? window.PRIVACY_COPY.en : window.PRIVACY_COPY.zh;
+      var host = document.getElementById('pv-body');
+      if (host) {
+        host.innerHTML = copy.map(function (sec) {
+          return '<div class="pv-sec">' + sec[0] + '</div><div class="pv-p' + (sec[2] ? ' pv-box' : '') + '">' + sec[1] + '</div>';
+        }).join('');
+      }
+    })();
+  </script>
   <script src="assets/js/pwa.js"></script>
 </body>
 </html>

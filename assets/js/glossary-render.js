@@ -94,7 +94,8 @@
                   : '<span class="gl-src-a">' + s.label + '</span>';
               }).join(' · ') + '</div>'
             : '';
-          html += '<div class="gl-item">' +
+          var tid = 'term-' + String(g.term).replace(/[^A-Za-z0-9_-]/g, '-');
+          html += '<div class="gl-item" id="' + tid + '">' +
             '<span class="gl-term">' + g.term + '</span><span class="gl-term-zh">' + g.zh + '</span>' +
             '<div class="gl-def">' + (isEn ? g.enDef : g.zhDef) + '</div>' +
             playLink + chLinks + srcHtml + '</div>';
@@ -111,6 +112,19 @@
         var n = parseInt(localStorage.getItem('arcade_gloss_read') || '0', 10);
         localStorage.setItem('arcade_gloss_read', String(n + 1));
       } catch (e) {}
+      scrollToHash();
+    }
+
+    /* 支持 glossary.html#<term> 定位：知识图谱等页可链到具体词条 */
+    function scrollToHash() {
+      var h = decodeURIComponent((location.hash || '').replace(/^#/, ''));
+      if (!h) return;
+      var el = document.getElementById(h);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        el.classList.add('gl-flash');
+        setTimeout(function () { el.classList.remove('gl-flash'); }, 1600);
+      }
     }
 
     if (window.Arcade && Arcade.i18n) {
@@ -119,5 +133,6 @@
     }
     renderCompare();
     build();
-  
+    if (typeof window.addEventListener === 'function') window.addEventListener('hashchange', scrollToHash);
+
 })();

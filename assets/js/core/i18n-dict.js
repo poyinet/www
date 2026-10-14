@@ -54,7 +54,7 @@ Arcade.i18n.dicts = {
     'app.titleSuffix': ' · 用游戏破译人类三千年加密解密史',
     'nav.label': '主导航',
     'nav.skip': '跳到主内容',
-    'nav.home': '首页', 'nav.chronicle': '编年史',
+    'nav.home': '首页', 'nav.chronicle': '编年史', 'nav.atlas': '知识图谱',
     'nav.glossary': '术语表', 'nav.games': '游戏', 'nav.profile': '我的档案', 'nav.stories': '编年史', 'nav.quiz': '测验场', 'nav.workshop': '破译工坊', 'nav.protocols': '协议实验室',
     'workshop.encTab': '🧪 加密', 'workshop.decTab': '🔓 自动破解',
     'workshop.encGo': '🔐 生成密文', 'workshop.decGo': '🔓 一键破解',
@@ -480,7 +480,7 @@ Arcade.i18n.dicts = {
     'app.titleSuffix': ' · Relive 3,000 Years of Cryptography Through Games',
     'nav.label': 'Main navigation',
     'nav.skip': 'Skip to content',
-    'nav.home': 'Home', 'nav.chronicle': 'Chronicle',
+    'nav.home': 'Home', 'nav.chronicle': 'Chronicle', 'nav.atlas': 'Knowledge Atlas',
     'nav.glossary': 'Glossary', 'nav.games': 'Games', 'nav.profile': 'Profile', 'nav.stories': 'Chronicle', 'nav.quiz': 'Quiz Arena', 'nav.workshop': 'Crypto Workshop', 'nav.protocols': 'Protocol Lab',
     'workshop.encTab': '🧪 Encrypt', 'workshop.decTab': '🔓 Auto-Crack',
     'workshop.encGo': '🔐 Encrypt', 'workshop.decGo': '🔓 Crack',
@@ -1416,7 +1416,7 @@ Arcade.i18n.dicts = {
   d.zh['stp.vigenere.icon'] = '✒️';
   d.en['stp.vigenere.icon'] = '✒️';
   d.zh['stp.vigenere.role'] = '多表替换密码的集大成者 · 后世以其命名此体系';
-  d.en['stp.vigenere.role'] = 'Master of polyalphabetic ciphers · the name behind the "Vigenère cipher"';
+  d.en['stp.vigenere.role'] = 'Master of polyalphabetic ciphers · the name behind the "Vigenère cipher"';
   d.zh['stp.vigenere.fact'] = '冷知识：维吉尼亚晚年痴迷炼金术与神秘学，《密码论》出版时他已年过六旬——密码学只是这位外交官多彩人生的晚年一章，却成了他身后最响亮的名字。';
   d.en['stp.vigenere.fact'] = 'Fun fact: Vigenère wrote his famous treatise in his sixties, after a long life as diplomat and alchemist — cryptography was a late hobby, yet it made his name immortal.';
   d.zh['stp.hellman.name'] = '马丁·赫尔曼';

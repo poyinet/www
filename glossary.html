@@ -44,6 +44,8 @@
     .gl-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
     .gl-item { padding: 12px 14px; border-radius: 10px; background: rgba(0,0,0,.28); border: 1px solid rgba(255,255,255,.08); }
     .gl-item:hover { border-color: rgba(0,240,255,.4); }
+    .gl-item.gl-flash { border-color: var(--neon-cyan); box-shadow: 0 0 0 2px rgba(0,240,255,.5), 0 0 22px rgba(0,240,255,.35); animation: glflash 1.6s ease-out; }
+    @keyframes glflash { 0% { background: rgba(0,240,255,.22); } 100% { background: rgba(0,0,0,.28); } }
     .gl-term { font-family: var(--font-pixel); font-size: 12px; color: var(--neon-pink); letter-spacing: 1px; }
     .gl-term-zh { font-size: 14px; font-weight: 700; color: var(--text-main); margin-left: 8px; }
     .gl-def { font-size: 12px; color: var(--text-dim); margin-top: 6px; line-height: 1.7; }

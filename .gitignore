@@ -16,3 +16,6 @@ README.md
 
 # 内容加密明文源 —— 仅本地（仓库/线上只含 enc 编码版）
 assets/js/plain/
+
+# agent 本地记忆/工作区 —— 不含隐私，不进仓库
+.workbuddy/

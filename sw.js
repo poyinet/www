@@ -4,7 +4,7 @@
    - 导航请求（HTML）：network-first �?缓存兜底 �?首页兜底（离线可玩已访问页）
    - 静态资源（JS/CSS/字体/图片）：cache-first，首次访问后即离线可�?   - 更新：新版本安装后立�?skipWaiting 接管，激活时清理旧缓�?   注意：SW 仅在 http(s) 下生效；file:// 本地打开时浏览器不注册，属预期�?   ============================================================ */
 
-var CACHE = 'decode-arcade-v1';
+var CACHE = 'decode-arcade-v2';
 var CORE_ASSETS = [
   '/',
   '/index.html',
@@ -22,6 +22,7 @@ var CORE_ASSETS = [
   '/people.html',
   '/artifacts.html',
   '/glossary.html',
+  '/atlas.html',
   '/workshop.html',
   '/quiz.html',
   '/assets/js/quiz-meta.js',
@@ -54,6 +55,9 @@ var CORE_ASSETS = [
   '/assets/js/games.js',
   '/assets/js/glossary-data.js',
   '/assets/js/glossary-render.js',
+  '/assets/js/site-knowledge.js',
+  '/assets/js/atlas-render.js',
+  '/assets/css/atlas.css',
   '/assets/js/lobby.js',
   '/assets/js/home.js',
   '/assets/js/daily-fact.js',

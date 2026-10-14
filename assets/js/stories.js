@@ -194,7 +194,7 @@ Arcade.stories = (function () {
     'koblitz',
     'goldwasser', 'micali', 'rackoff', 'gentry', 'chaum', 'bernstein', 'matsui', 'biham',
     'zygalski', 'rozycki', 'tiltman', 'ekert', 'regev', 'kocher', 'yao', 'rabin',
-    'williamson', 'playfair', 'rowlett', 'safford', 'newman', 'tutte', 'roberts', 'davies', 'vonneumann', 'gauss', 'galois', 'heninger', 'morse', 'miller',
+    'williamson', 'playfair', 'rowlett', 'safford', 'newman', 'tutte', 'roberts', 'davies', 'vonneumann', 'gauss', 'galois', 'heninger', 'morse',
     'zengxisheng'
   ];
 

@@ -42,15 +42,17 @@ window.Arcade = window.Arcade || {};
   // 暴露页面目录前缀（extras.js 搜索浮层等跨层链接使用）
   window.__arcadePagePrefix = prefix;
 
+  /* g: 知识线(k) / 娱乐线(p)；home 是通用入口，不归属任何线 */
   var ITEMS = [
-    { key: 'home', icon: '🏛️', href: 'index.html' },
-    { key: 'chronicle', icon: '📜', href: 'stories.html' },
-    { key: 'people', icon: '👤', href: 'people.html' },
-    { key: 'artifacts', icon: '📎', href: 'artifacts.html' },
-    { key: 'glossary', icon: '📖', href: 'glossary.html' },
-    { key: 'discover', icon: '🧭', href: 'discover.html' },
-    { key: 'games', icon: '🎮', href: 'games.html' },
-    { key: 'profile', icon: '📊', href: 'stats.html' }
+    { key: 'home', icon: '🏛️', href: 'index.html', g: '' },
+    { key: 'chronicle', icon: '📜', href: 'stories.html', g: 'k' },
+    { key: 'atlas', icon: '🧬', href: 'atlas.html', g: 'k' },
+    { key: 'people', icon: '👤', href: 'people.html', g: 'k' },
+    { key: 'artifacts', icon: '📎', href: 'artifacts.html', g: 'k' },
+    { key: 'glossary', icon: '📖', href: 'glossary.html', g: 'k' },
+    { key: 'discover', icon: '🧭', href: 'discover.html', g: 'p' },
+    { key: 'games', icon: '🎮', href: 'games.html', g: 'p' },
+    { key: 'profile', icon: '📊', href: 'stats.html', g: 'p' }
   ];
 
   function itemHtml(it) {
@@ -61,9 +63,20 @@ window.Arcade = window.Arcade || {};
       '<span class="anav-tx">' + T('nav.' + it.key) + '</span></a>';
   }
 
+  /* 知识线/娱乐线分家：在知识线最后一项与娱乐线第一项之间插入分隔 */
+  function withDivider(cls) {
+    var out = '', prev = '';
+    ITEMS.forEach(function (it) {
+      if (it.g === 'p' && prev === 'k') out += '<span class="' + cls + '" aria-hidden="true"></span>';
+      out += itemHtml(it);
+      prev = it.g;
+    });
+    return out;
+  }
+
   /* 顶部导航（桌面完整；移动端仅保留快捷图标条，导航项由底部 Tab 承担） */
   var html = '<nav class="anav" aria-label="' + T('nav.label') + '">' +
-    '<div class="anav-left">' + ITEMS.map(itemHtml).join('') + '</div>' +
+    '<div class="anav-left">' + withDivider('anav-div') + '</div>' +
     '<div class="anav-right" id="arcade-quickbar"></div>' +
     '</nav>';
   host.innerHTML = html;
